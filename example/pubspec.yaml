@@ -13,7 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   form_builder_validators:
-    path: ../../form_builder_validators/
+    path: ../
 
 dev_dependencies:
   flutter_lints: ^2.0.1
