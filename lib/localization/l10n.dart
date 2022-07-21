@@ -222,6 +222,7 @@ class AppLocalizationDelegate
       Locale.fromSubtags(languageCode: 'ar'),
       Locale.fromSubtags(languageCode: 'bn'),
       Locale.fromSubtags(languageCode: 'ca'),
+      Locale.fromSubtags(languageCode: 'cs'),
       Locale.fromSubtags(languageCode: 'de'),
       Locale.fromSubtags(languageCode: 'es'),
       Locale.fromSubtags(languageCode: 'et'),

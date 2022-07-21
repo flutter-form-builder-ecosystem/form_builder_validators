@@ -1,3 +1,7 @@
+## [8.2.1] - 20-Jul-2022
+
+* Added Czech language support
+
 ## [8.2.0] - 12-Jul-2022
 
 * Added equalLength validator
