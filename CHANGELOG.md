@@ -1,3 +1,10 @@
+## [8.3.0] - 28-Jul-2022
+
+* Apply license BSD-3-clause
+* Refactor readme 
+* Remove unused dependency
+* Add web example
+
 ## [8.2.0] - 12-Jul-2022
 
 * Added equalLength validator
