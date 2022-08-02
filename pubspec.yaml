@@ -1,6 +1,6 @@
 name: form_builder_validators
 description: Form Builder Validators set of validators for FlutterFormBuilder. Provides common validators and a way to make your own.
-version: 8.2.1
+version: 8.3.0
 homepage: https://github.com/flutter-form-builder-ecosystem/form_builder_validators
 issue_tracker: https://github.com/flutter-form-builder-ecosystem/form_builder_validators/issues
 
@@ -14,7 +14,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
-  collection: ^1.15.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1
