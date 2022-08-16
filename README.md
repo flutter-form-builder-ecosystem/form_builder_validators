@@ -10,27 +10,27 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_validators)
 [![Discord](https://img.shields.io/discord/985922433578053673?logo=discord&style=for-the-badge)](https://discord.com/invite/25KNPMJQf2)
 
-___
+---
 
 > ### Migrating from version 7 to 8
+>
 > To migrate from v7 to v8, remove `context` as a parameter to validator functions. For example, `FormBuilderValidators.required(context)` becomes `FormBuilderValidators.required()` without context passed to it.
 
 - [Features](#features)
 - [Validators](#validators)
   - [Supported languages](#supported-languages)
 - [Use](#use)
-    - [Setup](#setup)
-    - [Basic use](#basic-use)
-    - [Especific uses](#especific-uses)
+  - [Setup](#setup)
+  - [Basic use](#basic-use)
+  - [Especific uses](#especific-uses)
 - [Support](#support)
-    - [Contribute](#contribute)
-    - [Questions and answers](#questions-and-answers)
-    - [Donations](#donations)
+  - [Contribute](#contribute)
+  - [Questions and answers](#questions-and-answers)
+  - [Donations](#donations)
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
-    - [Contributors](#contributors)
-
+  - [Contributors](#contributors)
 
 ## Features
 
@@ -43,31 +43,34 @@ This package comes with several most common `FormFieldValidator`s such as requir
 URL, min, max, minLength, maxLength, IP, credit card, etc., with default `errorText` messages.
 
 Available built-in validators include:
-* `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
-* `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
-* `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
-* `FormBuilderValidators.equal()` - requires the field's value be equal to provided object.
-* `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-* `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
-* `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
-* `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
-* `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum length.
-* `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
-* `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
-* `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
-* `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
-* `FormBuilderValidators.required()` - requires the field have a non-empty value.
-* `FormBuilderValidators.url()` - requires the field's value to be a valid url.
 
-### Supported languages 
+- `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
+- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- `FormBuilderValidators.equal()` - requires the field's value be equal to provided object.
+- `FormBuilderValidators.integer()` - requires the field's value to be an integer.
+- `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
+- `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
+- `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
+- `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum length.
+- `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
+- `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
+- `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
+- `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
+- `FormBuilderValidators.required()` - requires the field have a non-empty value.
+- `FormBuilderValidators.url()` - requires the field's value to be a valid url.
+
+### Supported languages
 
 Validators support default errorText messages in this languages:
 
 - Arabic (ar)
 - Bangla (bn)
+- Bosnian (bs)
 - Catalan (ca)
 - Chinese Simplified (zh_Hans)
 - Chinese Traditional (zh_Hant)
+- Croatian (hr)
 - Czech (cs)
 - English (en)
 - Estonian (et)
@@ -138,6 +141,7 @@ See [pud.dev example tab](https://pub.dev/packages/form_builder_validators/examp
 On validation, each validator is run, and if any one validator returns a non-null value (i.e., a String), validation fails, and the `errorText` for the field is set as the returned string.
 
 Example:
+
 ```dart
 TextFormField(
   decoration: InputDecoration(labelText: 'Age'),
@@ -171,17 +175,17 @@ TextFormField(
 
 You have some ways to contribute to this packages
 
- - Beginner: Reporting bugs or request new features
- - Intermediate: Implement new features (from issues or not) and created pull requests
- - Advanced: Join to [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
+- Beginner: Reporting bugs or request new features
+- Intermediate: Implement new features (from issues or not) and created pull requests
+- Advanced: Join to [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
 
- See [contribution file](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
+See [contribution file](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
 
- #### Add new supported language
+#### Add new supported language
 
- We especially welcome efforts to internationalize/localize the package by translating the default validation `errorText` strings for built-in validation rules.
+We especially welcome efforts to internationalize/localize the package by translating the default validation `errorText` strings for built-in validation rules.
 
- 1. Add ARB files
+1.  Add ARB files
 
 Create one ARB file inside the `lib/l10n` folder for each of the locales you need to add support. Name the files in the following way: `intl_<LOCALE_ISO_CODE>.arb`. For example: `intl_fr.arb` or `intl_fr_FR.arb`.
 
@@ -218,7 +222,6 @@ Buy a coffe to [Danvick Miller](https://twitter.com/danvickmiller), creator of t
 ## Roadmap
 
 - [Solve open issues](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/issues), [prioritizing bugs](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/labels/bug)
-
 
 ## Ecosystem
 

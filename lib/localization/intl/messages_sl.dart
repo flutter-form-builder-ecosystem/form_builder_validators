@@ -22,17 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "Vrednost mora biti enaka ${value}.";
 
-  static String m1(max) => "Vrednost ne sme presegati ${max}";
+  static String m6(length) => "Besedilo mora biti dolgo ${length} znakov.";
+
+  static String m1(max) => "Vrednost ne sme presegati ${max}.";
 
   static String m2(maxLength) =>
-      "Besedilo mora biti krajše ali enako ${maxLength} znakov";
+      "Besedilo mora biti krajše ali enako ${maxLength} znakov.";
 
   static String m3(min) => "Vrednost mora biti večja ali enaka ${min}.";
 
   static String m4(minLength) =>
-      "Besedilo mora biti daljše ali enako ${minLength} znakov";
+      "Besedilo mora biti daljše ali enako ${minLength} znakov.";
 
-  static String m5(value) => "Vrednost ne sme biti večja kot ${value}.";
+  static String m5(value) => "Vrednost ne sme biti enaka ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -43,10 +45,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Vnesite veljaven e-mail naslov."),
         "equalErrorText": m0,
+        "equalLengthErrorText": m6,
         "integerErrorText":
             MessageLookupByLibrary.simpleMessage("Vnesite celo število."),
         "ipErrorText":
-            MessageLookupByLibrary.simpleMessage("Vnesite IP naslov."),
+            MessageLookupByLibrary.simpleMessage("Vnesite veljaven IP naslov."),
         "matchErrorText": MessageLookupByLibrary.simpleMessage(
             "Vrednost ne ustreza predpisanemu vzorcu."),
         "maxErrorText": m1,
@@ -57,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Vrednost polja mora biti numerična."),
         "requiredErrorText":
-            MessageLookupByLibrary.simpleMessage("Polje ne more biti prazno."),
+            MessageLookupByLibrary.simpleMessage("Polje ne sme biti prazno."),
         "urlErrorText":
             MessageLookupByLibrary.simpleMessage("Vnesite veljaven URL naslov.")
       };
