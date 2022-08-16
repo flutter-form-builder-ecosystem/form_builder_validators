@@ -65,9 +65,11 @@ Validators support default errorText messages in this languages:
 
 - Arabic (ar)
 - Bangla (bn)
+- Bosnian (bs)
 - Catalan (ca)
 - Chinese Simplified (zh_Hans)
 - Chinese Traditional (zh_Hant)
+- Croatian (hr)
 - Czech (cs)
 - English (en)
 - Estonian (et)
