@@ -150,6 +150,7 @@ class FormBuilderValidators {
   /// equal to the provided length. Works with String, iterable and int types
   static FormFieldValidator<T> equalLength<T>(
     int length, {
+    bool allowEmpty = false,
     String? errorText,
   }) {
     assert(length > 0);
@@ -164,7 +165,7 @@ class FormBuilderValidators {
       if (valueCandidate is String) valueLength = valueCandidate.length;
       if (valueCandidate is Iterable) valueLength = valueCandidate.length;
 
-      return valueLength != length
+      return valueLength != length && (!allowEmpty || valueLength > 0)
           ? errorText ??
               FormBuilderLocalizations.current.equalLengthErrorText(length)
           : null;
