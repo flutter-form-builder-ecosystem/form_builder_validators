@@ -172,6 +172,48 @@ class FormBuilderValidators {
     };
   }
 
+  /// [FormFieldValidator] that requires the words count of the field's value to be
+  /// greater than or equal to the provided minimum count.
+  static FormFieldValidator<String> minWordsCount(
+    int minCount, {
+    bool allowEmpty = false,
+    String? errorText,
+  }) {
+    assert(minCount > 0);
+    return (valueCandidate) {
+      int valueWordsCount = 0;
+
+      if (valueCandidate != null) {
+        if (valueCandidate.isEmpty) {
+          valueWordsCount = 0;
+        } else {
+          valueWordsCount = valueCandidate.split(' ').length;
+        }
+      }
+
+      return valueWordsCount < minCount && (!allowEmpty || valueWordsCount > 0)
+          ? errorText ??
+              FormBuilderLocalizations.current.minWordsCountErrorText(minCount)
+          : null;
+    };
+  }
+
+  /// [FormFieldValidator] that requires the words count of the field's value to be
+  /// less than or equal to the provided maximum count.
+  static FormFieldValidator<String> maxWordsCount(
+    int maxCount, {
+    String? errorText,
+  }) {
+    assert(maxCount > 0);
+    return (valueCandidate) {
+      int valueWordsCount = valueCandidate?.split(' ').length ?? 0;
+      return null != valueCandidate && valueWordsCount > maxCount
+          ? errorText ??
+              FormBuilderLocalizations.current.maxWordsCountErrorText(maxCount)
+          : null;
+    };
+  }
+
   /// [FormFieldValidator] that requires the field's value to be a valid email address.
   static FormFieldValidator<String> email({
     String? errorText,
