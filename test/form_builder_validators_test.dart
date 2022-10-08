@@ -209,6 +209,41 @@ void main() {
           }));
 
   testWidgets(
+      'FormBuilderValidators.maxWordsCount',
+      (WidgetTester tester) => testValidations(tester, (context) {
+            final validator = FormBuilderValidators.maxWordsCount(5);
+            // Pass
+            expect(validator(null), isNull);
+            expect(validator(''), isNull);
+            expect(validator('the quick brown'), isNull);
+            expect(validator('The quick brown fox jumps'), isNull);
+            // Fail
+            expect(validator('The quick brown fox jumps over'), isNotNull);
+            expect(validator('The quick brown fox jumps over the lazy dog'),
+                isNotNull);
+          }));
+
+  testWidgets(
+      'FormBuilderValidators.minWordsCount',
+      (WidgetTester tester) => testValidations(tester, (context) {
+            final validator = FormBuilderValidators.minWordsCount(5);
+            // Pass
+            expect(validator('The quick brown fox jumps'), isNull);
+            expect(validator('The quick brown fox jumps over'), isNull);
+            expect(validator('The quick brown fox jumps over the lazy dog'),
+                isNull);
+            // Fail
+            expect(validator(null), isNotNull);
+            expect(validator(''), isNotNull);
+            expect(validator('The quick brown'), isNotNull);
+            // Advanced
+            final validatorAllowEmpty =
+                FormBuilderValidators.minWordsCount(5, allowEmpty: true);
+            expect(validatorAllowEmpty(null), isNull);
+            expect(validatorAllowEmpty(''), isNull);
+          }));
+
+  testWidgets(
       'FormBuilderValidators.email',
       (WidgetTester tester) => testValidations(tester, (context) {
             final validator = FormBuilderValidators.email();
