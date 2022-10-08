@@ -40,7 +40,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 ## Validators
 
 This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
-URL, min, max, minLength, maxLength, IP, credit card, etc., with default `errorText` messages.
+URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 Available built-in validators include:
 
@@ -53,8 +53,10 @@ Available built-in validators include:
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
 - `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum length.
+- `FormBuilderValidators.maxWordsCount()` - requires the words count of the field's value to be less than or equal to the provided maximum count.
 - `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
 - `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
+- `FormBuilderValidators.minWordsCount()` - requires the words count of the field's value to be greater than or equal to the provided minimum count.
 - `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
 - `FormBuilderValidators.required()` - requires the field have a non-empty value.
@@ -186,7 +188,7 @@ See [contribution file](https://github.com/flutter-form-builder-ecosystem/.githu
 
 We especially welcome efforts to internationalize/localize the package by translating the default validation `errorText` strings for built-in validation rules.
 
-1.  Add ARB files
+1. Add ARB files
 
 Create one ARB file inside the `lib/l10n` folder for each of the locales you need to add support. Name the files in the following way: `intl_<LOCALE_ISO_CODE>.arb`. For example: `intl_fr.arb` or `intl_fr_FR.arb`.
 
