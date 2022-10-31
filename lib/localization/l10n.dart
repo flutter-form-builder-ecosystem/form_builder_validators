@@ -5,14 +5,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'intl/messages.dart';
+import 'intl/messages_en.dart';
 
 /// The actual `Localizations` class is [FormBuilderLocalizationsImpl], this class exists only for forward compatibility purposes...
 class FormBuilderLocalizations {
   FormBuilderLocalizations._();
 
-  static FormBuilderLocalizationsImpl? of(BuildContext context) {
+  static FormBuilderLocalizationsImpl of(BuildContext context) {
     return Localizations.of<FormBuilderLocalizationsImpl>(
-        context, FormBuilderLocalizationsImpl);
+            context, FormBuilderLocalizationsImpl) ??
+        _default;
   }
 
   static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate =
@@ -29,19 +31,13 @@ class FormBuilderLocalizations {
   static const List<Locale> supportedLocales =
       FormBuilderLocalizationsImpl.supportedLocales;
 
+  static final _default = FormBuilderLocalizationsImplEn();
   static FormBuilderLocalizationsImpl? _current;
 
-  static void setCurrentInstance(FormBuilderLocalizationsImpl current) =>
+  static void setCurrentInstance(FormBuilderLocalizationsImpl? current) =>
       _current = current;
 
-  static FormBuilderLocalizationsImpl get current {
-    assert(
-        _current != null,
-        'No instance of FormBuilderLocalizations was loaded. '
-        'Try to initialize the FormBuilderLocalizations delegate or invoke FormBuilderLocalizations.setCurrentInstance(instance) '
-        'before accessing FormBuilderLocalizations.current.');
-    return _current!;
-  }
+  static FormBuilderLocalizationsImpl get current => _current ?? _default;
 }
 
 class FormBuilderLocalizationsDelegate
