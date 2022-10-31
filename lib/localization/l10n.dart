@@ -8,7 +8,7 @@ import 'intl/messages.dart';
 
 /// The actual `Localizations` class is [FormBuilderLocalizationsImpl], this class exists only for forward compatibility purposes...
 class FormBuilderLocalizations {
-  FormBuilderLocalizations._(String locale);
+  FormBuilderLocalizations._();
 
   static FormBuilderLocalizationsImpl? of(BuildContext context) {
     return Localizations.of<FormBuilderLocalizationsImpl>(
