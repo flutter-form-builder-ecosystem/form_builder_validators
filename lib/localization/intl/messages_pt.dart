@@ -1,60 +1,68 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a pt locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Portuguese (`pt`).
+class FormBuilderLocalizationsImplPt extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplPt([String locale = 'pt']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Este campo não pode ficar vazio.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'O valor deve ser maior ou igual a $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'O valor deve ter um comprimento maior ou igual a $minLength';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'pt';
+  @override
+  String maxErrorText(Object max) {
+    return 'O valor deve ser menor ou igual a $max';
+  }
 
-  static String m6(length) =>
-      "O valor deve ter um comprimento igual a ${length}";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'O valor deve ter um comprimento menor ou igual a $maxLength';
+  }
 
-  static String m1(max) => "O valor deve ser menor ou igual a ${max}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'O valor deve ter um comprimento igual a $length';
+  }
 
-  static String m2(maxLength) =>
-      "O valor deve ter um comprimento menor ou igual a ${maxLength}";
+  @override
+  String get emailErrorText => 'Este campo requer um endereço de e-mail válido.';
 
-  static String m3(min) => "O valor deve ser maior ou igual a ${min}.";
+  @override
+  String get integerErrorText => 'This field requires a valid integer.';
 
-  static String m4(minLength) =>
-      "O valor deve ter um comprimento maior ou igual a ${minLength}";
+  @override
+  String equalErrorText(Object value) {
+    return 'This field value must be equal to $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requer um número de cartão de crédito válido."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requer uma string de data válida."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requer um endereço de e-mail válido."),
-        "equalLengthErrorText": m6,
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requer um IP válido."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "O valor não corresponde ao padrão."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("O valor deve ser numérico."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo não pode ficar vazio."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requer um endereço de URL válido.")
-      };
+  @override
+  String notEqualErrorText(Object value) {
+    return 'This field value must not be equal to $value.';
+  }
+
+  @override
+  String get urlErrorText => 'Este campo requer um endereço de URL válido.';
+
+  @override
+  String get matchErrorText => 'O valor não corresponde ao padrão.';
+
+  @override
+  String get numericErrorText => 'O valor deve ser numérico.';
+
+  @override
+  String get creditCardErrorText => 'Este campo requer um número de cartão de crédito válido.';
+
+  @override
+  String get ipErrorText => 'Este campo requer um IP válido.';
+
+  @override
+  String get dateStringErrorText => 'Este campo requer uma string de data válida.';
 }

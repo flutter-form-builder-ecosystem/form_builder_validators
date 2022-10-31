@@ -1,56 +1,68 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a hu locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Hungarian (`hu`).
+class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplHu([String locale = 'hu']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Ennek a mezőnek értéket kell adni.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Az érték legyen legalább $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Az értéknel legalább $minLength karakter hosszúnak kell lennie';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'hu';
+  @override
+  String maxErrorText(Object max) {
+    return 'Az érték legyen legfeljebb $max';
+  }
 
-  static String m1(max) => "Az érték legyen legfeljebb ${max}";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Value must have a length less than or equal to $maxLength';
+  }
 
-  static String m2(maxLength) =>
-      "Value must have a length less than or equal to ${maxLength}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m3(min) => "Az érték legyen legalább ${min}.";
+  @override
+  String get emailErrorText => 'A megadott érték nem egy érvényes email cím.';
 
-  static String m4(minLength) =>
-      "Az értéknel legalább ${minLength} karakter hosszúnak kell lennie";
+  @override
+  String get integerErrorText => 'This field requires a valid integer.';
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "A megadott érték nem egy érvényes bankkártya szám."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ennek a mezőnek dátumnak kell lennie."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "A megadott érték nem egy érvényes email cím."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "A megadott érték nem egy érvényes IP cím."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "A megadott érték nem egyezik a szükséges formátummal."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "numericErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ebbe a mezőbe csak számot lehet írni."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ennek a mezőnek értéket kell adni."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "A megadott érték nem egy érvényes URL cím.")
-      };
+  @override
+  String equalErrorText(Object value) {
+    return 'This field value must be equal to $value.';
+  }
+
+  @override
+  String notEqualErrorText(Object value) {
+    return 'This field value must not be equal to $value.';
+  }
+
+  @override
+  String get urlErrorText => 'A megadott érték nem egy érvényes URL cím.';
+
+  @override
+  String get matchErrorText => 'A megadott érték nem egyezik a szükséges formátummal.';
+
+  @override
+  String get numericErrorText => 'Ebbe a mezőbe csak számot lehet írni.';
+
+  @override
+  String get creditCardErrorText => 'A megadott érték nem egy érvényes bankkártya szám.';
+
+  @override
+  String get ipErrorText => 'A megadott érték nem egy érvényes IP cím.';
+
+  @override
+  String get dateStringErrorText => 'Ennek a mezőnek dátumnak kell lennie.';
 }

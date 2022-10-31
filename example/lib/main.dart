@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Form Builder Validators Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
-      supportedLocales: [...FormBuilderLocalizations.delegate.supportedLocales],
+      supportedLocales: const [
+        ...FormBuilderLocalizations.supportedLocales,
+      ],
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
         FormBuilderLocalizations.delegate,
