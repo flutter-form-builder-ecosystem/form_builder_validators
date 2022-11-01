@@ -1,7 +1,7 @@
 {
   "@@last_modified": "2022-10-25T21:53:39.706877",
   "@@locale": "ta",
-  "requiredErrorText": "இந்தப் புலம் காலியாக இருக்கக்கூடாது.",
+  "requiredErrorText": "இந்த உள்ளீடு காலியாக இருக்கக்கூடாது.",
   "@requiredErrorText": {
     "description": "Error Text for required field",
     "type": "text",
@@ -47,19 +47,19 @@
       "length": {}
     }
   },
-  "emailErrorText": "இந்த புலத்திற்கு சரியான மின்னஞ்சல் முகவரி தேவை.",
+  "emailErrorText": "இந்த உள்ளீட்டுக்கு சரியான மின்னஞ்சல் முகவரி தேவை.",
   "@emailErrorText": {
     "description": "Error Text for email field",
     "type": "text",
     "placeholders": {}
   },
-  "integerErrorText": "இந்த புலத்திற்கு சரியான முழு எண் தேவை.",
+  "integerErrorText": "இந்த உள்ளீட்டுக்கு சரியான முழு எண் தேவை.",
   "@integerErrorText": {
     "description": "Error Text for integer validator",
     "type": "text",
     "placeholders": {}
   },
-  "equalErrorText": "இந்த புல மதிப்பு {value}க்கு சமமாக இருக்க வேண்டும்.",
+  "equalErrorText": "இந்த உள்ளீடு மதிப்பு {value}க்கு சமமாக இருக்க வேண்டும்.",
   "@equalErrorText": {
     "description": "Error Text for equal validator",
     "type": "text",
@@ -67,7 +67,7 @@
       "value": {}
     }
   },
-  "notEqualErrorText": "இந்த புல மதிப்பு {value}க்கு சமமாக இருக்கக்கூடாது.",
+  "notEqualErrorText": "இந்த உள்ளீடு மதிப்பு {value}க்கு சமமாக இருக்கக்கூடாது.",
   "@notEqualErrorText": {
     "description": "Error Text for not-equal validator",
     "type": "text",
@@ -75,7 +75,7 @@
       "value": {}
     }
   },
-  "urlErrorText": "இந்த புலத்திற்கு சரியான URL முகவரி தேவை.",
+  "urlErrorText": "இந்த உள்ளீட்டுக்கு சரியான URL முகவரி தேவை.",
   "@urlErrorText": {
     "description": "Error Text for URL field",
     "type": "text",
@@ -93,19 +93,19 @@
     "type": "text",
     "placeholders": {}
   },
-  "creditCardErrorText": "இந்த புலத்திற்கு சரியான கிரெடிட் கார்டு எண் தேவை.",
+  "creditCardErrorText": "இந்த உள்ளீட்டுக்கு சரியான கிரெடிட் கார்டு எண் தேவை.",
   "@creditCardErrorText": {
     "description": "Error Text for credit card field",
     "type": "text",
     "placeholders": {}
   },
-  "ipErrorText": "இந்த புலத்திற்கு சரியான ஐபி தேவை.",
+  "ipErrorText": "இந்த உள்ளீட்டுக்கு சரியான ஐபி தேவை.",
   "@ipErrorText": {
     "description": "Error Text for IP address field",
     "type": "text",
     "placeholders": {}
   },
-  "dateStringErrorText": "இந்த புலத்திற்கு சரியான தேதி தேவை.",
+  "dateStringErrorText": "இந்த உள்ளீட்டுக்கு சரியான தேதி தேவை.",
   "@dateStringErrorText": {
     "description": "Error Text for date string field",
     "type": "text",
