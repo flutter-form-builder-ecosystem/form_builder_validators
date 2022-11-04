@@ -12,6 +12,7 @@ class OverrideFormBuilderLocalizationsEn
 
   static const List<Locale> supportedLocales = [Locale('en')];
 
+  // Override a field and return your translation.
   @override
   String get requiredErrorText => 'override: This field cannot be empty.';
 }

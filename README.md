@@ -103,7 +103,7 @@ And you can still add your custom error messages.
 
 ### Setup
 
-To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`
+The default error message is in English. To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`
 
 ```dart
   return MaterialApp(
@@ -170,6 +170,10 @@ TextFormField(
   ]),
 ),
 ```
+
+### Modify the default error message in a specific language
+
+see [override_form_builder_localizations_en](example/lib/override_form_builder_localizations_en.dart) for more detail.
 
 ## Support
 

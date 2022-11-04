@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       ],
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
+        // Placed in front of `FormBuilderLocalizations.delegate`
         OverrideFormBuilderLocalizationsEn.delegate,
         FormBuilderLocalizations.delegate,
       ],
