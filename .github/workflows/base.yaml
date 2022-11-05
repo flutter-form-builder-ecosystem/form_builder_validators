@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Format code
-        run: flutter format --dry-run --set-exit-if-changed .
+        run: flutter format --dry-run --set-exit-if-changed $(find . -name "*.dart" -not -wholename "./lib/localization/intl/*")
       - name: Analyze static code
         run: flutter analyze
       - name: Run tests
