@@ -3,7 +3,8 @@ description: Form Builder Validators set of validators for FlutterFormBuilder. P
 version: 8.4.0
 repository: https://github.com/flutter-form-builder-ecosystem/form_builder_validators
 issue_tracker: https://github.com/flutter-form-builder-ecosystem/form_builder_validators/issues
-funding: https://opencollective.com/flutter-form-builder-ecosystem
+funding: 
+  - https://opencollective.com/flutter-form-builder-ecosystem
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
