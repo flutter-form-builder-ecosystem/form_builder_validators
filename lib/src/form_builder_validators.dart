@@ -182,6 +182,14 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid url.
+  ///
+  /// * [protocols] sets the list of allowed protocols. By default `['http', 'https', 'ftp']`
+  /// * [requireTld] sets if TLD is required. By default `true`
+  /// * [requireProtocol] is a `bool` that sets if protocol is required for validation
+  /// By default `false`
+  /// * [allowUnderscore] sets if underscores are allowed. By default `false`
+  /// * [hostWhitelist] sets the list of allowed hosts
+  /// * [hostBlacklist] sets the list of disallowed hosts
   static FormFieldValidator<String> url({
     String? errorText,
     List<String> protocols = const ['http', 'https', 'ftp'],
