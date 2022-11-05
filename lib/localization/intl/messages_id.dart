@@ -1,65 +1,68 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a id locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Indonesian (`id`).
+class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplId([String locale = 'id']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Bidang ini tidak boleh kosong.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Nilai harus lebih besar dari atau sama dengan $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Panjang karakter harus lebih besar dari atau sama dengan $minLength';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'id';
+  @override
+  String maxErrorText(Object max) {
+    return 'Nilai harus kurang dari atau sama dengan $max';
+  }
 
-  static String m0(value) => "Nilai bidang ini harus sama dengan ${value}.";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Panjang karakter harus kurang dari atau sama dengan $maxLength';
+  }
 
-  static String m1(max) => "Nilai harus kurang dari atau sama dengan ${max}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m2(maxLength) =>
-      "Panjang karakter harus kurang dari atau sama dengan ${maxLength}";
+  @override
+  String get emailErrorText => 'Alamat email tidak valid.';
 
-  static String m3(min) =>
-      "Nilai harus lebih besar dari atau sama dengan ${min}.";
+  @override
+  String get integerErrorText => 'Nilai harus berupa bilangan bulat.';
 
-  static String m4(minLength) =>
-      "Panjang karakter harus lebih besar dari atau sama dengan ${minLength}";
+  @override
+  String equalErrorText(Object value) {
+    return 'Nilai bidang ini harus sama dengan $value.';
+  }
 
-  static String m5(value) =>
-      "Nilai bidang ini tidak boleh sama dengan ${value}.";
+  @override
+  String notEqualErrorText(Object value) {
+    return 'Nilai bidang ini tidak boleh sama dengan $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Nomor kartu kredit tidak valid."),
-        "dateStringErrorText":
-            MessageLookupByLibrary.simpleMessage("Tanggal tidak valid"),
-        "emailErrorText":
-            MessageLookupByLibrary.simpleMessage("Alamat email tidak valid."),
-        "equalErrorText": m0,
-        "integerErrorText": MessageLookupByLibrary.simpleMessage(
-            "Nilai harus berupa bilangan bulat."),
-        "ipErrorText":
-            MessageLookupByLibrary.simpleMessage("Alamat IP tidak valid."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "Nilai tidak cocok dengan pola."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("Nilai harus berupa angka."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Bidang ini tidak boleh kosong."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage("URL tidak valid")
-      };
+  @override
+  String get urlErrorText => 'URL tidak valid';
+
+  @override
+  String get matchErrorText => 'Nilai tidak cocok dengan pola.';
+
+  @override
+  String get numericErrorText => 'Nilai harus berupa angka.';
+
+  @override
+  String get creditCardErrorText => 'Nomor kartu kredit tidak valid.';
+
+  @override
+  String get ipErrorText => 'Alamat IP tidak valid.';
+
+  @override
+  String get dateStringErrorText => 'Tanggal tidak valid';
 }

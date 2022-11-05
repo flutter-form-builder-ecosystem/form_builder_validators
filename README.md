@@ -103,7 +103,7 @@ And you can still add your custom error messages.
 
 ### Setup
 
-To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`
+The default error message is in English. To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`
 
 ```dart
   return MaterialApp(
@@ -171,6 +171,10 @@ TextFormField(
 ),
 ```
 
+#### Modify the default error message in a specific language
+
+see [override_form_builder_localizations_en](example/lib/override_form_builder_localizations_en.dart) for more detail.
+
 ## Support
 
 ### Contribute
@@ -193,13 +197,13 @@ Create one ARB file inside the `lib/l10n` folder for each of the locales you nee
 
 2. Translate the error messages
 
-Duplicate the contents of `intl_messages.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
+Duplicate the contents of `intl_en.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
 
 To generate boilerplate code for localization, run the generate command inside the package directory where `pubspec.yaml` file is located:
 
-`flutter pub run intl_utils:generate`
+`flutter gen-l10n`
 
 Running the command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support.
 

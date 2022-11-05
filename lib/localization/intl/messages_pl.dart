@@ -1,64 +1,68 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a pl locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Polish (`pl`).
+class FormBuilderLocalizationsImplPl extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplPl([String locale = 'pl']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'To pole nie może być puste.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Wartość musi być większa lub równa $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Wartość musi mieć co najmniej $minLength znaków.';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'pl';
+  @override
+  String maxErrorText(Object max) {
+    return 'Wartość musi być mniejsza lub równa $max.';
+  }
 
-  static String m0(value) => "Wartość tego pola musi wynosić ${value}.";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Wartość nie może mieć więcej niż $maxLength znaków.';
+  }
 
-  static String m1(max) => "Wartość musi być mniejsza lub równa ${max}.";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m2(maxLength) =>
-      "Wartość nie może mieć więcej niż ${maxLength} znaków.";
+  @override
+  String get emailErrorText => 'To pole wymaga prawidłowego adresu e-mail.';
 
-  static String m3(min) => "Wartość musi być większa lub równa ${min}.";
+  @override
+  String get integerErrorText => 'Wartość musi być liczbą całkowitą.';
 
-  static String m4(minLength) =>
-      "Wartość musi mieć co najmniej ${minLength} znaków.";
+  @override
+  String equalErrorText(Object value) {
+    return 'Wartość tego pola musi wynosić $value.';
+  }
 
-  static String m5(value) => "Wartość tego pola nie może być ${value}.";
+  @override
+  String notEqualErrorText(Object value) {
+    return 'Wartość tego pola nie może być $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "To pole wymaga podania ważnego numeru karty kredytowej."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "To pole wymaga prawidłowej daty."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "To pole wymaga prawidłowego adresu e-mail."),
-        "equalErrorText": m0,
-        "integerErrorText": MessageLookupByLibrary.simpleMessage(
-            "Wartość musi być liczbą całkowitą."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "To pole wymaga prawidłowego adresu IP."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "Wartość nie pasuje do oczekiwanego kształtu."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("Wartość musi być liczbą."),
-        "requiredErrorText":
-            MessageLookupByLibrary.simpleMessage("To pole nie może być puste."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "To pole wymaga prawidłowego adresu URL.")
-      };
+  @override
+  String get urlErrorText => 'To pole wymaga prawidłowego adresu URL.';
+
+  @override
+  String get matchErrorText => 'Wartość nie pasuje do oczekiwanego kształtu.';
+
+  @override
+  String get numericErrorText => 'Wartość musi być liczbą.';
+
+  @override
+  String get creditCardErrorText => 'To pole wymaga podania ważnego numeru karty kredytowej.';
+
+  @override
+  String get ipErrorText => 'To pole wymaga prawidłowego adresu IP.';
+
+  @override
+  String get dateStringErrorText => 'To pole wymaga prawidłowej daty.';
 }
