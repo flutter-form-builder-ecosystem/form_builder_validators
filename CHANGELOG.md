@@ -7,7 +7,8 @@
     - Bosnian and Croatian. Thanks [@abratanovic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/9)
     - Malay. Thanks [@azmilazizi](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/13)
     - Thai. Thanks [@narospol](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/19)
-    - 
+    - Tamil. Thanks [@Purus](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/26)
+    - Greek. Thanks [@nrallakis](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/27)
 
 ## 8.3.0
 
