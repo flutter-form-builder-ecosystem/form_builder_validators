@@ -93,6 +93,7 @@ Validators support default errorText messages in this languages:
 - Spanish (es)
 - Swahili (sw)
 - Ukrainian (uk)
+- Tamil(ta)
 - Thai (th)
 - Turkish (tr)
 - Malay (ms)
