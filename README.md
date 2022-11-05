@@ -77,6 +77,7 @@ Validators support default errorText messages in this languages:
 - Dutch (nl)
 - Farsi/Persian (fa)
 - French (fr)
+- Greek (el)  
 - German (de)
 - Hungarian (hu)
 - Indonesian (id)
