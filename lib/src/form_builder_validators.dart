@@ -184,10 +184,10 @@ class FormBuilderValidators {
       int valueWordsCount = 0;
 
       if (valueCandidate != null) {
-        if (valueCandidate.isEmpty) {
+        if (valueCandidate.trim().isEmpty) {
           valueWordsCount = 0;
         } else {
-          valueWordsCount = valueCandidate.split(' ').length;
+          valueWordsCount = valueCandidate.trim().split(' ').length;
         }
       }
 
@@ -206,7 +206,7 @@ class FormBuilderValidators {
   }) {
     assert(maxCount > 0);
     return (valueCandidate) {
-      int valueWordsCount = valueCandidate?.split(' ').length ?? 0;
+      int valueWordsCount = valueCandidate?.trim().split(' ').length ?? 0;
       return null != valueCandidate && valueWordsCount > maxCount
           ? errorText ??
               FormBuilderLocalizations.current.maxWordsCountErrorText(maxCount)

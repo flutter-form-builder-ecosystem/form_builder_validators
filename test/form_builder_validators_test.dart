@@ -217,6 +217,18 @@ void main() {
             expect(validator(''), isNull);
             expect(validator('the quick brown'), isNull);
             expect(validator('The quick brown fox jumps'), isNull);
+            // 1 White spaces to test the trimming of the string
+            expect(validator(' '), isNull);
+            // 5 White spaces to test the trimming of the string
+            expect(validator('     '), isNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator(' The quick brown fox'), isNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator('The quick brown fox '), isNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator(' The quick brown fox jumps'), isNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator('The quick brown fox jumps '), isNull);
             // Fail
             expect(validator('The quick brown fox jumps over'), isNotNull);
             expect(validator('The quick brown fox jumps over the lazy dog'),
@@ -236,6 +248,14 @@ void main() {
             expect(validator(null), isNotNull);
             expect(validator(''), isNotNull);
             expect(validator('The quick brown'), isNotNull);
+            // 1 White spaces to test the trimming of the string
+            expect(validator(' '), isNotNull);
+            // 5 White spaces to test the trimming of the string
+            expect(validator('     '), isNotNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator(' The quick brown fox'), isNotNull);
+            // + 1 White space to test the trimming of the string
+            expect(validator('The quick brown fox '), isNotNull);
             // Advanced
             final validatorAllowEmpty =
                 FormBuilderValidators.minWordsCount(5, allowEmpty: true);
