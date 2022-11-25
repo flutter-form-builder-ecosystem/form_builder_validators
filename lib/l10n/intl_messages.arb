@@ -38,6 +38,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Value must have a words count greater than or equal to {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for minWordsCount validator",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Value must be less than or equal to {max}",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -52,6 +60,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Value must have a words count less than or equal to {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for maxWordsCount validator",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "equalLengthErrorText": "Value must have a length equal to {length}",

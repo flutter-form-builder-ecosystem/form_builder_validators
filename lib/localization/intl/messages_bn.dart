@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "মান অবশ্যই ${maxLength} এর থেকে কম বা সমান সংখ্যা হতে হবে।";
 
-  static String m3(min) => "মান অবশ্যই ${min} এর থেকে বেশি বা সমান হতে হবে।";
+  static String m3(maxWordsCount) =>
+      "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে ${maxWordsCount} এর চেয়ে কম বা সমান";
 
-  static String m4(minLength) =>
+  static String m4(min) => "মান অবশ্যই ${min} এর থেকে বেশি বা সমান হতে হবে।";
+
+  static String m5(minLength) =>
       "মান অবশ্যই ${minLength} এর চেয়ে বেশি বা সমান সংখ্যা হতে হবে।";
 
-  static String m5(value) => "মান ${value} এর সমান হওয়া উচিত নয়।";
+  static String m6(minWordsCount) =>
+      "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে ${minWordsCount} এর চেয়ে বেশি বা সমান";
+
+  static String m7(value) => "মান ${value} এর সমান হওয়া উচিত নয়।";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "মান প্যাটার্নের সাথে মেলে না।"),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "মান অবশ্যই সংখ্যায় হতে হবে।"),
         "requiredErrorText":

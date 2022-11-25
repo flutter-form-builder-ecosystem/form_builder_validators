@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Vrednost mora imeti besede, ki so večje ali enake {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Vrednost ne sme presegati {max}.",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Vrednost mora imeti besede manj kot ali enake {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "equalLengthErrorText": "Besedilo mora biti dolgo {length} znakov.",

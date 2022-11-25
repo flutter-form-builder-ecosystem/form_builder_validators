@@ -22,19 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "This field value must be equal to ${value}.";
 
-  static String m6(length) => "Value must have a length equal to ${length}";
+  static String m8(length) => "Value must have a length equal to ${length}";
 
   static String m1(max) => "Value must be less than or equal to ${max}";
 
   static String m2(maxLength) =>
       "Value must have a length less than or equal to ${maxLength}";
 
-  static String m3(min) => "Value must be greater than or equal to ${min}.";
+  static String m3(maxWordsCount) =>
+      "Value must have a words count less than or equal to ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Value must be greater than or equal to ${min}.";
+
+  static String m5(minLength) =>
       "Value must have a length greater than or equal to ${minLength}";
 
-  static String m5(value) => "This field value must not be equal to ${value}.";
+  static String m6(minWordsCount) =>
+      "Value must have a words count greater than or equal to ${minWordsCount}";
+
+  static String m7(value) => "This field value must not be equal to ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -45,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "This field requires a valid email address."),
         "equalErrorText": m0,
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "integerErrorText": MessageLookupByLibrary.simpleMessage(
             "This field requires a valid integer."),
         "ipErrorText": MessageLookupByLibrary.simpleMessage(
@@ -54,9 +60,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Value does not match pattern."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Value must be numeric."),
         "requiredErrorText":

@@ -29,13 +29,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Valoarea trebuie să aibă o lungime mai mică sau egală cu ${maxLength}";
 
-  static String m3(min) =>
+  static String m3(maxWordsCount) =>
+      "Valoarea trebuie să aibă un număr de cuvinte mai mic sau egal cu ${maxWordsCount}";
+
+  static String m4(min) =>
       "Valoarea trebuie să fie mai mare sau egală cu ${min}.";
 
-  static String m4(minLength) =>
+  static String m5(minLength) =>
       "Valoarea trebuie să aibă o lungime mai mare sau egală cu ${minLength}";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "Valoarea trebuie să aibă un număr de cuvinte mai mare sau egal cu ${minWordsCount}";
+
+  static String m7(value) =>
       "Valoarea câmpului nu trebuie să fie egală cu ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -55,9 +61,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Valoarea nu se potrivește cu modelul."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Valoarea trebuie să fie numerică."),
         "requiredErrorText":

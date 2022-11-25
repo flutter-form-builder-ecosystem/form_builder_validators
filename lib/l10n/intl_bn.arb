@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে {minWordsCount} এর চেয়ে বেশি বা সমান",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "মান অবশ্যই {max} এর কম বা সমান হতে হবে।",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে {maxWordsCount} এর চেয়ে কম বা সমান",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "একটি বৈধ ইমেল আইডি প্রয়োজন।",

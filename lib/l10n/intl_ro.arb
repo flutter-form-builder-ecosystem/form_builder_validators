@@ -23,6 +23,14 @@
             "minLength": {}
         }
     },
+  "minWordsCountErrorText": "Valoarea trebuie să aibă un număr de cuvinte mai mare sau egal cu {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
     "maxErrorText": "Valoarea trebuie să fie mai mică sau egală cu {max}",
     "@maxErrorText": {
         "description": "Error Text for required field",
@@ -39,6 +47,14 @@
             "maxLength": {}
         }
     },
+  "maxWordsCountErrorText": "Valoarea trebuie să aibă un număr de cuvinte mai mic sau egal cu {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
+    }
+  },
     "emailErrorText": "Acest câmp necesită o adresă de e-mail validă.",
     "@emailErrorText": {
         "description": "Error Text for email field",

@@ -23,6 +23,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Waarde moet een woorden tellen groter dan of gelijk aan {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "De waarde moet kleiner zijn dan of gelijk aan {max}",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -37,6 +45,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Waarde moet een woorden hebben die minder dan of gelijk is aan {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "Een geldig e-mailadres is vereist. ",

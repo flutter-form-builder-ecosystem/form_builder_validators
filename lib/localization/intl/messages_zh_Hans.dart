@@ -26,11 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(maxLength) => "此字段的长度必须小于或等于${maxLength}";
 
-  static String m3(min) => "此字段必须大于或等于${min}";
+  static String m3(maxWordsCount) => "值必须具有小于或等于${maxWordsCount}的单词计数";
 
-  static String m4(minLength) => "此字段的长度必须大于或等于${minLength}";
+  static String m4(min) => "此字段必须大于或等于${min}";
 
-  static String m5(value) => "此字段不得等于${value}";
+  static String m5(minLength) => "此字段的长度必须大于或等于${minLength}";
+
+  static String m6(minWordsCount) => "值必须具有大于或等于${minWordsCount}的单词计数";
+
+  static String m7(value) => "此字段不得等于${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -46,9 +50,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "matchErrorText": MessageLookupByLibrary.simpleMessage("此字段与格式不匹配。"),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage("此字段必须是数字。"),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage("此字段不能为空。"),
         "urlErrorText": MessageLookupByLibrary.simpleMessage("此字段需要有效的URL地址。")

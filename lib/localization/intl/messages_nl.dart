@@ -28,13 +28,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "De waarde moet een lengte hebben die kleiner is dan of gelijk is aan ${maxLength}";
 
-  static String m3(min) =>
+  static String m3(maxWordsCount) =>
+      "Waarde moet een woorden hebben die minder dan of gelijk is aan ${maxWordsCount}";
+
+  static String m4(min) =>
       "De waarde moet groter zijn dan of gelijk aan ${min}.";
 
-  static String m4(minLength) =>
+  static String m5(minLength) =>
       "De waarde moet een lengte hebben die groter of gelijk is aan ${minLength}";
 
-  static String m5(value) => "De veldwaarde mag niet gelijk zijn aan ${value}.";
+  static String m6(minWordsCount) =>
+      "Waarde moet een woorden tellen groter dan of gelijk aan ${minWordsCount}";
+
+  static String m7(value) => "De veldwaarde mag niet gelijk zijn aan ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -53,9 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "De waarde komt niet overeen met het patroon."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "De waarde moet numeriek zijn."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

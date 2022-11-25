@@ -81,13 +81,13 @@ class FormBuilderLocalizations {
     );
   }
 
-  /// `Value must have a words count greater than or equal to {minCount}`
-  String minWordsCountErrorText(Object minCount) {
+  /// `Value must have a words count greater than or equal to {minWordsCount}`
+  String minWordsCountErrorText(Object minWordsCount) {
     return Intl.message(
-      'Value must have a words count greater than or equal to $minCount',
+      'Value must have a words count greater than or equal to $minWordsCount',
       name: 'minWordsCountErrorText',
       desc: 'Error Text for required field',
-      args: [minCount],
+      args: [minWordsCount],
     );
   }
 
@@ -111,13 +111,13 @@ class FormBuilderLocalizations {
     );
   }
 
-  /// `Value must have a words count less than or equal to {maxCount}`
-  String maxWordsCountErrorText(Object maxCount) {
+  /// `Value must have a words count less than or equal to {maxWordsCount}`
+  String maxWordsCountErrorText(Object maxWordsCount) {
     return Intl.message(
-      'Value must have a words count less than or equal to $maxCount',
+      'Value must have a words count less than or equal to $maxWordsCount',
       name: 'maxWordsCountErrorText',
       desc: 'Error Text for required field',
-      args: [maxCount],
+      args: [maxWordsCount],
     );
   }
 

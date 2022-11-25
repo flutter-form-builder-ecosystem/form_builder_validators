@@ -28,12 +28,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Thamani lazima iwe na urefu chini ya au sawa na ${maxLength}";
 
-  static String m3(min) => "Thamani lazima iwe kubwa kuliko au sawa na ${min}.";
+  static String m3(maxWordsCount) =>
+      "Thamani lazima iwe na hesabu ya maneno chini ya au sawa na ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Thamani lazima iwe kubwa kuliko au sawa na ${min}.";
+
+  static String m5(minLength) =>
       "Thamani lazima iwe na urefu mkubwa kuliko au sawa na ${minLength}.";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "Thamani lazima iwe na maneno kuhesabu kubwa kuliko au sawa na ${minWordsCount}";
+
+  static String m7(value) =>
       "Thamani hii ya sehemu haifai kuwa sawa na ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -53,9 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Thamani hailingani na muundo."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Thamani lazima iwe nambari."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

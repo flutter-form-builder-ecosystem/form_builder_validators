@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Hodnota musí mať dĺžku najviac ${maxLength} znakov.";
 
-  static String m3(min) => "Hodnota musí byť väčšia alebo rovná ako ${min}.";
+  static String m3(maxWordsCount) =>
+      "Hodnota musí mať slová, ktoré sa počítajú menšie alebo rovné ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Hodnota musí byť väčšia alebo rovná ako ${min}.";
+
+  static String m5(minLength) =>
       "Hodnota musí mať dĺžku aspoň ${minLength} znakov.";
 
-  static String m5(value) => "Hodnota tohto poľa nesmie byť ${value}.";
+  static String m6(minWordsCount) =>
+      "Hodnota musí mať počítanie slov väčšie alebo rovné ${minWordsCount}";
+
+  static String m7(value) => "Hodnota tohto poľa nesmie byť ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hodnota nevyhovuje očakávanému tvaru."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Hodnota musí byť číslo."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

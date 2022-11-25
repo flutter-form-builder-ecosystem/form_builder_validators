@@ -27,10 +27,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Der Wert muss eine Länge kleiner als oder gleich ${maxLength} haben.";
 
-  static String m3(min) => "Der Wert muss größer als oder gleich ${min} sein.";
+  static String m3(maxWordsCount) =>
+      "Der Wert muss eine Wörter weniger als oder gleich ${maxWordsCount} zählen lassen";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Der Wert muss größer als oder gleich ${min} sein.";
+
+  static String m5(minLength) =>
       "Der Wert muss eine Länge größer als oder gleich ${minLength} haben.";
+
+  static String m6(minWordsCount) =>
+      "Der Wert muss eine Wörter haben, die größer oder gleich ${minWordsCount} ist";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -49,8 +55,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Der Wert stimmt nicht mit dem Muster überein."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Der Wert muss numerisch sein."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

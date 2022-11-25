@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "值必须具有大于或等于{minWordsCount}的单词计数",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "此字段必须小于或等于{max}",
   "@maxErrorText": {
     "type": "text",
@@ -53,6 +61,14 @@
     "description": "Error Text for required field",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "值必须具有小于或等于{maxWordsCount}的单词计数",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "此字段需要有效的电子邮件地址。",

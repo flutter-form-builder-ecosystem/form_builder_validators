@@ -23,6 +23,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Hodnota musí mít počet slov větší nebo rovná {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Hodnota musí být menší než nebo rovna {max}.",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -37,6 +45,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Hodnota musí mít počet slov menší nebo rovná {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "equalLengthErrorText": "Hodnota musí mít délku rovnu {length}",

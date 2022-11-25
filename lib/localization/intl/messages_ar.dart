@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "يجب أن لا يزيد طول القيمة المدخلة عن ${maxLength}.";
 
-  static String m3(min) => "يجب أن لا تقل القيمة المدخلة عن ${min}.";
+  static String m3(maxWordsCount) =>
+      "يجب أن لا يزيد عدد الكلمات المدخلة عن ${maxWordsCount}.";
 
-  static String m4(minLength) =>
+  static String m4(min) => "يجب أن لا تقل القيمة المدخلة عن ${min}.";
+
+  static String m5(minLength) =>
       "يجب أن لا يقل طول القيمة المدخلة عن ${minLength}.";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "يجب أن لا يقل عدد الكلمات المدخلة عن ${minWordsCount}.";
+
+  static String m7(value) =>
       "يجب أن لا تكون القيمة المدخلة مساوية لـ ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -52,9 +58,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "القيمة المدخلة لا تطابق الصيغة المطلوبة."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("القيمة المدخلة ليست رقما."),
         "requiredErrorText":

@@ -22,19 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "Hodnota se musí rovnat ${value}.";
 
-  static String m6(length) => "Hodnota musí mít délku rovnu ${length}";
+  static String m8(length) => "Hodnota musí mít délku rovnu ${length}";
 
   static String m1(max) => "Hodnota musí být menší než nebo rovna ${max}.";
 
   static String m2(maxLength) =>
       "Hodnota musí mít délku menší než nebo rovnu ${maxLength}.";
 
-  static String m3(min) => "Hodnota musí být větší než nebo rovna ${min}.";
+  static String m3(maxWordsCount) =>
+      "Hodnota musí mít počet slov menší nebo rovná ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Hodnota musí být větší než nebo rovna ${min}.";
+
+  static String m5(minLength) =>
       "Hodnota musí mít délku větší než nebo rovnu ${minLength}";
 
-  static String m5(value) => "Hodnota se nesmí rovnat ${value}.";
+  static String m6(minWordsCount) =>
+      "Hodnota musí mít počet slov větší nebo rovná ${minWordsCount}";
+
+  static String m7(value) => "Hodnota se nesmí rovnat ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -45,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Pole vyžaduje platnou e-mailovou adresu."),
         "equalErrorText": m0,
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "integerErrorText": MessageLookupByLibrary.simpleMessage(
             "Hodnota musí být celé číslo."),
         "ipErrorText": MessageLookupByLibrary.simpleMessage(
@@ -54,9 +60,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hodnota neodpovídá vzoru."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Hodnota musí být číslo."),
         "requiredErrorText":

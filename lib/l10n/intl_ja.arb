@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "値は、{minWordsCount}以上の単語をカウントする必要があります",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "{max}以下にしてください。",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "値には、単語が{maxWordsCount}以下にカウントされる必要があります",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "有効なメールアドレスを入力してください。",

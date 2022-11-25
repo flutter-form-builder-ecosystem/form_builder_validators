@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "يجب أن لا يقل عدد الكلمات المدخلة عن {minWordsCount}.",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for minWordsCount validator",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "يجب أن لا تزيد القيمة المدخلة عن {max}.",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "يجب أن لا يزيد عدد الكلمات المدخلة عن {maxWordsCount}.",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for maxWordsCount validator",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "هذا الحقل يتطلب عنوان بريد إلكتروني صالح.",

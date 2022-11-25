@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "Nilai Ruangan ini wajib sama dengan ${value}.";
 
-  static String m6(length) =>
+  static String m8(length) =>
       "Nilai mesti mempunyai panjang yang sama dengan ${length}";
 
   static String m1(max) =>
@@ -31,13 +31,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Nilai mesti mempunyai panjang kurang daripada atau sama dengan ${maxLength}";
 
-  static String m3(min) =>
+  static String m3(maxWordsCount) =>
+      "Nilai mesti mempunyai kata -kata yang kurang daripada atau sama dengan ${maxWordsCount}";
+
+  static String m4(min) =>
       "Nilai wajib lebih besar daripada atau sama dengan ${min}.";
 
-  static String m4(minLength) =>
+  static String m5(minLength) =>
       "Nilai mesti mempunyai panjang lebih besar daripada atau sama dengan ${minLength}";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "Nilai mesti mempunyai kata -kata yang lebih besar daripada atau sama dengan ${minWordsCount}";
+
+  static String m7(value) =>
       "Nilai ruangan ini wajib tidak sama dengan ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -49,7 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Ruang ini memerlukan alamat e-mel yang sah."),
         "equalErrorText": m0,
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "integerErrorText": MessageLookupByLibrary.simpleMessage(
             "Ruang ini memerlukan integer yang sah."),
         "ipErrorText": MessageLookupByLibrary.simpleMessage(
@@ -58,9 +64,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nilai tidak sepadan dengan corak."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Nilai wajib dalam bentuk angka."),
         "requiredErrorText":

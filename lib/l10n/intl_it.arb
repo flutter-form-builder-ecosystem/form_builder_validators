@@ -31,6 +31,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Il valore deve avere un conteggio di parole maggiore o uguale a {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Il valore inserito deve essere minore o uguale a {max}",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -45,6 +53,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Il valore deve avere un conteggio di parole inferiore o uguale a {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "Questo campo richiede un indirizzo email valido.",

@@ -31,6 +31,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Der Wert muss eine Wörter haben, die größer oder gleich {minWordsCount} ist",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Der Wert muss kleiner als oder gleich {max} sein.",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -45,6 +53,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Der Wert muss eine Wörter weniger als oder gleich {maxWordsCount} zählen lassen",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.",

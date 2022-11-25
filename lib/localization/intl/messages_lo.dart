@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "ຄ່າໃນຟອມນີ້ຕ້ອງມີຄວາມຍາວໜ້ອຍກວ່າ ຫຼືເທົ່າກັບ ${maxLength}";
 
-  static String m3(min) => "ຄ່າໃນຟອມນີ້ຕ້ອງໃຫຍ່ກວ່າ ຫຼືເທົ່າກັບ ${min}.";
+  static String m3(maxWordsCount) =>
+      "ມູນຄ່າຕ້ອງມີຄໍາສັບຫນ້ອຍກວ່າຫຼືເທົ່າກັບ ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "ຄ່າໃນຟອມນີ້ຕ້ອງໃຫຍ່ກວ່າ ຫຼືເທົ່າກັບ ${min}.";
+
+  static String m5(minLength) =>
       "ຄ່າໃນຟອມນີ້ຕ້ອງມີຄວາມຍາວຫຼາຍກວ່າ ຫຼືເທົ່າກັບ ${minLength}";
 
-  static String m5(value) => "ຄ່າໃນຟອມນີ້ຕ້ອງບໍ່ເທົ່າກັບ ${value}.";
+  static String m6(minWordsCount) =>
+      "ມູນຄ່າຕ້ອງມີຄໍາສັບທີ່ໃຫຍ່ກວ່າຫຼືເທົ່າກັບ ${minWordsCount}";
+
+  static String m7(value) => "ຄ່າໃນຟອມນີ້ຕ້ອງບໍ່ເທົ່າກັບ ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "ຄ່າບໍ່ຖືກຕ້ອງຕາມຮູບແບບທີ່ກຳນົດ."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "ຄ່າທີ່ປ້ອນໃສ່ຕ້ອງເປັນໂຕເລກເທົ່ານັ້ນ."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

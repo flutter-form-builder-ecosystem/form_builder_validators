@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "값은 {minWordsCount}보다 큰 단어 수를 가져야합니다.",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "이 필드의 값은 반드시 {max} 이하이어야 합니다.",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "값은 {maxWordsCount}보다 작거나 같은 단어를 가져야합니다.",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "이메일 주소 형식이 올바르지 않습니다.",

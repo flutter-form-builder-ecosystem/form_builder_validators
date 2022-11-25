@@ -23,6 +23,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Значение должно иметь слов, больше или равно {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Значение должно быть меньше или равно {max}.",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -37,6 +45,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Значение должно иметь слов, что меньше или равно {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "Поле должно быть email адресом.",

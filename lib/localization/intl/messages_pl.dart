@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Wartość nie może mieć więcej niż ${maxLength} znaków.";
 
-  static String m3(min) => "Wartość musi być większa lub równa ${min}.";
+  static String m3(maxWordsCount) =>
+      "Wartość musi mieć liczbę słów mniejszych lub równych ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Wartość musi być większa lub równa ${min}.";
+
+  static String m5(minLength) =>
       "Wartość musi mieć co najmniej ${minLength} znaków.";
 
-  static String m5(value) => "Wartość tego pola nie może być ${value}.";
+  static String m6(minWordsCount) =>
+      "Wartość musi mieć liczbę słów większą lub równą ${minWordsCount}";
+
+  static String m7(value) => "Wartość tego pola nie może być ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wartość nie pasuje do oczekiwanego kształtu."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Wartość musi być liczbą."),
         "requiredErrorText":

@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt';
 
-  static String m6(length) =>
+  static String m8(length) =>
       "O valor deve ter um comprimento igual a ${length}";
 
   static String m1(max) => "O valor deve ser menor ou igual a ${max}";
@@ -28,10 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "O valor deve ter um comprimento menor ou igual a ${maxLength}";
 
-  static String m3(min) => "O valor deve ser maior ou igual a ${min}.";
+  static String m3(maxWordsCount) =>
+      "O valor deve ter uma contagem de palavras menos ou igual a ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "O valor deve ser maior ou igual a ${min}.";
+
+  static String m5(minLength) =>
       "O valor deve ter um comprimento maior ou igual a ${minLength}";
+
+  static String m6(minWordsCount) =>
+      "O valor deve ter uma contagem de palavras maiores ou igual a ${minWordsCount}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -41,15 +47,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Este campo requer uma string de data válida."),
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Este campo requer um endereço de e-mail válido."),
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "ipErrorText": MessageLookupByLibrary.simpleMessage(
             "Este campo requer um IP válido."),
         "matchErrorText": MessageLookupByLibrary.simpleMessage(
             "O valor não corresponde ao padrão."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("O valor deve ser numérico."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

@@ -25,10 +25,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "La valeur doit avoir une longueur inférieure ou égale à ${maxLength}";
 
-  static String m3(min) => "La valeur doit être supérieure ou égale à ${min}.";
+  static String m3(maxWordsCount) =>
+      "La valeur doit avoir un nombre de mots inférieur ou égal à ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "La valeur doit être supérieure ou égale à ${min}.";
+
+  static String m5(minLength) =>
       "La valeur doit avoir une longueur supérieure ou égale à ${minLength}";
+
+  static String m6(minWordsCount) =>
+      "La valeur doit avoir un nombre de mots supérieur ou égal à ${minWordsCount}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -44,8 +50,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "La valeur ne correspond pas au modèle."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "La valeur doit être numérique."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

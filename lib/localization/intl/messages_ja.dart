@@ -26,11 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(maxLength) => "${maxLength}文字以下で入力してください。";
 
-  static String m3(min) => "${min}以上にしてください。";
+  static String m3(maxWordsCount) => "値には、単語が${maxWordsCount}以下にカウントされる必要があります";
 
-  static String m4(minLength) => "${minLength}文字以上で入力してください。";
+  static String m4(min) => "${min}以上にしてください。";
 
-  static String m5(value) => "${value}と違うものにしてください。";
+  static String m5(minLength) => "${minLength}文字以上で入力してください。";
+
+  static String m6(minWordsCount) => "値は、${minWordsCount}以上の単語をカウントする必要があります";
+
+  static String m7(value) => "${value}と違うものにしてください。";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -49,9 +53,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("有効な正規表現を指定してください。"),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("半角数字で入力してください。"),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage("必須項目です。"),

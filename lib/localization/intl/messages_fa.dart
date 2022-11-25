@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "مقدار باید دارای طول بزرگتر یا برابر ${maxLength} باشد.";
 
-  static String m3(min) => "مقدار باید برابر یا بیشتر از ${min} باشد.";
+  static String m3(maxWordsCount) =>
+      "مقدار باید یک کلمات کمتر از یا مساوی با ${maxWordsCount} داشته باشد";
 
-  static String m4(minLength) =>
+  static String m4(min) => "مقدار باید برابر یا بیشتر از ${min} باشد.";
+
+  static String m5(minLength) =>
       "مقدار باید دارای طول بزرگتر یا برابر ${minLength} باشد.";
 
-  static String m5(value) => "مقدار این ورودی نباید برابر با ${value} باشد.";
+  static String m6(minWordsCount) =>
+      "مقدار باید یک کلمات بیشتر از یا مساوی با ${minWordsCount} داشته باشد";
+
+  static String m7(value) => "مقدار این ورودی نباید برابر با ${value} باشد.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("مقدار با الگو مطابقت ندارد."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("مقدار باید عددی باشد."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

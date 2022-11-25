@@ -25,10 +25,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Value must have a length less than or equal to ${maxLength}";
 
-  static String m3(min) => "Az érték legyen legalább ${min}.";
+  static String m3(maxWordsCount) =>
+      "Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél kevesebb vagy egyenlő a ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Az érték legyen legalább ${min}.";
+
+  static String m5(minLength) =>
       "Az értéknel legalább ${minLength} karakter hosszúnak kell lennie";
+
+  static String m6(minWordsCount) =>
+      "Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél nagyobb vagy egyenlő a ${minWordsCount}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -44,8 +50,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "A megadott érték nem egyezik a szükséges formátummal."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Ebbe a mezőbe csak számot lehet írni."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

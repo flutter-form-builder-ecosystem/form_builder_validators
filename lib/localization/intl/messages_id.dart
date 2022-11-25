@@ -27,13 +27,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Panjang karakter harus kurang dari atau sama dengan ${maxLength}";
 
-  static String m3(min) =>
+  static String m3(maxWordsCount) =>
+      "Nilai harus memiliki jumlah kata kurang dari atau sama dengan ${maxWordsCount}";
+
+  static String m4(min) =>
       "Nilai harus lebih besar dari atau sama dengan ${min}.";
 
-  static String m4(minLength) =>
+  static String m5(minLength) =>
       "Panjang karakter harus lebih besar dari atau sama dengan ${minLength}";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "Nilai harus memiliki kata yang diperhitungkan lebih besar dari atau sama dengan ${minWordsCount}";
+
+  static String m7(value) =>
       "Nilai bidang ini tidak boleh sama dengan ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -53,9 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nilai tidak cocok dengan pola."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Nilai harus berupa angka."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

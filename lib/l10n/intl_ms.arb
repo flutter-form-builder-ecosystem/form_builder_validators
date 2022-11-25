@@ -22,6 +22,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Nilai mesti mempunyai kata -kata yang lebih besar daripada atau sama dengan {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Nilai wajib kurang daripada atau sama dengan {max}",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -36,6 +44,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Nilai mesti mempunyai kata -kata yang kurang daripada atau sama dengan {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "equalLengthErrorText": "Nilai mesti mempunyai panjang yang sama dengan {length}",

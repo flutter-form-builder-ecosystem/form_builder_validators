@@ -26,11 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(maxLength) => "이 필드는 반드시 ${maxLength}자 이하이어야 합니다.";
 
-  static String m3(min) => "이 필드의 값은 반드시 ${min} 이상이어야 합니다.";
+  static String m3(maxWordsCount) => "값은 ${maxWordsCount}보다 작거나 같은 단어를 가져야합니다.";
 
-  static String m4(minLength) => "이 필드는 반드시 ${minLength}자 이상이어야 합니다.";
+  static String m4(min) => "이 필드의 값은 반드시 ${min} 이상이어야 합니다.";
 
-  static String m5(value) => "이 필드의 값은 반드시 ${value}와 달라야 합니다.";
+  static String m5(minLength) => "이 필드는 반드시 ${minLength}자 이상이어야 합니다.";
+
+  static String m6(minWordsCount) => "값은 ${minWordsCount}보다 큰 단어 수를 가져야합니다.";
+
+  static String m7(value) => "이 필드의 값은 반드시 ${value}와 달라야 합니다.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -48,9 +52,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("필드의 값이 패턴과 맞지 않습니다."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("숫자만 입력 가능합니다."),
         "requiredErrorText":

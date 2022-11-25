@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "El valor ha de tenir una longitud inferior o igual a ${maxLength}";
 
-  static String m3(min) => "El valor ha de ser superior o igual a ${min}.";
+  static String m3(maxWordsCount) =>
+      "El valor ha de tenir un compte de paraules inferior o igual a ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "El valor ha de ser superior o igual a ${min}.";
+
+  static String m5(minLength) =>
       "El valor ha de tenir una longitud superior o igual a ${minLength}";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "El valor ha de tenir un compte de paraules superior o igual a ${minWordsCount}";
+
+  static String m7(value) =>
       "Aquest valor de camp no ha de ser igual a ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -52,9 +58,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "El valor no coincideix amb el patró."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("El valor ha de ser numèric."),
         "requiredErrorText": MessageLookupByLibrary.simpleMessage(

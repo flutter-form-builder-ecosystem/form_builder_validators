@@ -22,19 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "Vrednost mora biti enaka ${value}.";
 
-  static String m6(length) => "Besedilo mora biti dolgo ${length} znakov.";
+  static String m8(length) => "Besedilo mora biti dolgo ${length} znakov.";
 
   static String m1(max) => "Vrednost ne sme presegati ${max}.";
 
   static String m2(maxLength) =>
       "Besedilo mora biti krajše ali enako ${maxLength} znakov.";
 
-  static String m3(min) => "Vrednost mora biti večja ali enaka ${min}.";
+  static String m3(maxWordsCount) =>
+      "Vrednost mora imeti besede manj kot ali enake ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Vrednost mora biti večja ali enaka ${min}.";
+
+  static String m5(minLength) =>
       "Besedilo mora biti daljše ali enako ${minLength} znakov.";
 
-  static String m5(value) => "Vrednost ne sme biti enaka ${value}.";
+  static String m6(minWordsCount) =>
+      "Vrednost mora imeti besede, ki so večje ali enake ${minWordsCount}";
+
+  static String m7(value) => "Vrednost ne sme biti enaka ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -45,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Vnesite veljaven e-mail naslov."),
         "equalErrorText": m0,
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "integerErrorText":
             MessageLookupByLibrary.simpleMessage("Vnesite celo število."),
         "ipErrorText":
@@ -54,9 +60,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Vrednost ne ustreza predpisanemu vzorcu."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Vrednost polja mora biti numerična."),
         "requiredErrorText":

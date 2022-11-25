@@ -23,6 +23,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "Значення повинно мати слова врахувати більше або дорівнює {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "Значення має бути менше або дорівнює {max}.",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -37,6 +45,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "Значення повинно мати слова врахувати менше або дорівнює {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "Поле має бути email адрес.",

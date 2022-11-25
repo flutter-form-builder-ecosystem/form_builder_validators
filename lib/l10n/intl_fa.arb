@@ -23,6 +23,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "مقدار باید یک کلمات بیشتر از یا مساوی با {minWordsCount} داشته باشد",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "مقدار باید برابر یا کمتر از {max} باشد.",
   "@maxErrorText": {
     "description": "Error Text for required field",
@@ -37,6 +45,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "مقدار باید یک کلمات کمتر از یا مساوی با {maxWordsCount} داشته باشد",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "این ورودی به یک آدرس ایمیل معتبر نیاز دارد.",

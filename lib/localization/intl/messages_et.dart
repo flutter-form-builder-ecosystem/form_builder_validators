@@ -26,12 +26,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(maxLength) => "Sisendi pikkus ei tohi olla üle ${maxLength}";
 
-  static String m3(min) => "Väärtus peab olema vähemalt ${min}.";
+  static String m3(maxWordsCount) =>
+      "Väärtuses peab olema sõnade arv vähem või võrdne ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Väärtus peab olema vähemalt ${min}.";
+
+  static String m5(minLength) =>
       "Sisendi pikkus peab olema vähemalt ${minLength}";
 
-  static String m5(value) => "See väärtus ei tohi olla ${value}.";
+  static String m6(minWordsCount) =>
+      "Väärtuse sõnade arv peab olema suurem kui ${minWordsCount}";
+
+  static String m7(value) => "See väärtus ei tohi olla ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -50,9 +56,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sisend ei vasta mustrile."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Sisend peab olema arv."),
         "requiredErrorText":

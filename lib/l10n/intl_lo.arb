@@ -39,6 +39,14 @@
       "minLength": {}
     }
   },
+  "minWordsCountErrorText": "ມູນຄ່າຕ້ອງມີຄໍາສັບທີ່ໃຫຍ່ກວ່າຫຼືເທົ່າກັບ {minWordsCount}",
+  "@minWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minWordsCount": {}
+    }
+  },
   "maxErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງນ້ອຍກວ່າ ຫຼືເທົ່າກັບ {max}",
   "@maxErrorText": {
     "description": "Error Text for max validator",
@@ -53,6 +61,14 @@
     "type": "text",
     "placeholders": {
       "maxLength": {}
+    }
+  },
+  "maxWordsCountErrorText": "ມູນຄ່າຕ້ອງມີຄໍາສັບຫນ້ອຍກວ່າຫຼືເທົ່າກັບ {maxWordsCount}",
+  "@maxWordsCountErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxWordsCount": {}
     }
   },
   "emailErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງ ອີເມວ໌.",

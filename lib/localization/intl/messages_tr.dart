@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(value) =>
       "Bu alanın değeri, ${value} değerine eşit olmalıdır.";
 
-  static String m6(length) =>
+  static String m8(length) =>
       "Değerin uzunluğu ${length} değerine eşit olmalıdır.";
 
   static String m1(max) => "Değer ${max} değerinden küçük veya eşit olmalıdır.";
@@ -31,12 +31,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Değerin uzunluğu ${maxLength} değerinden küçük veya eşit olmalıdır.";
 
-  static String m3(min) => "Değer ${min} değerinden büyük veya eşit olmalıdır.";
+  static String m3(maxWordsCount) =>
+      "Değer, ${maxWordsCount} \'dan daha az veya eşit bir kelimeye sahip olmalıdır";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Değer ${min} değerinden büyük veya eşit olmalıdır.";
+
+  static String m5(minLength) =>
       "Değerin uzunluğu ${minLength} değerinden büyük veya eşit olmalıdır.";
 
-  static String m5(value) =>
+  static String m6(minWordsCount) =>
+      "Değer, ${minWordsCount} \'dan daha büyük veya eşit bir kelimeye sahip olmalıdır";
+
+  static String m7(value) =>
       "Bu alanın değeri, ${value} değerine eşit olmamalıdır.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -48,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailErrorText": MessageLookupByLibrary.simpleMessage(
             "Bu alan geçerli bir e-posta adresi gerektirir."),
         "equalErrorText": m0,
-        "equalLengthErrorText": m6,
+        "equalLengthErrorText": m8,
         "integerErrorText": MessageLookupByLibrary.simpleMessage(
             "Bu alan geçerli bir tamsayı gerektirir."),
         "ipErrorText": MessageLookupByLibrary.simpleMessage(
@@ -57,9 +63,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lütfen geçerli bir değer giriniz."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText":
             MessageLookupByLibrary.simpleMessage("Değer sayısal olmalıdır."),
         "requiredErrorText":

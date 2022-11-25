@@ -27,12 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(maxLength) =>
       "Длина значения должно быть меньше или равно ${maxLength}.";
 
-  static String m3(min) => "Значение должно быть больше или равно ${min}.";
+  static String m3(maxWordsCount) =>
+      "Значение должно иметь слов, что меньше или равно ${maxWordsCount}";
 
-  static String m4(minLength) =>
+  static String m4(min) => "Значение должно быть больше или равно ${min}.";
+
+  static String m5(minLength) =>
       "Длина значения должно быть больше или равно ${minLength}.";
 
-  static String m5(value) => "Значение поля не должно быть равным ${value}.";
+  static String m6(minWordsCount) =>
+      "Значение должно иметь слов, больше или равно ${minWordsCount}";
+
+  static String m7(value) => "Значение поля не должно быть равным ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,9 +57,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Значение должно удовлетворять шаблону."),
         "maxErrorText": m1,
         "maxLengthErrorText": m2,
-        "minErrorText": m3,
-        "minLengthErrorText": m4,
-        "notEqualErrorText": m5,
+        "maxWordsCountErrorText": m3,
+        "minErrorText": m4,
+        "minLengthErrorText": m5,
+        "minWordsCountErrorText": m6,
+        "notEqualErrorText": m7,
         "numericErrorText": MessageLookupByLibrary.simpleMessage(
             "Значение должно быть числом."),
         "requiredErrorText":
