@@ -183,12 +183,8 @@ class FormBuilderValidators {
     return (valueCandidate) {
       int valueWordsCount = 0;
 
-      if (valueCandidate != null) {
-        if (valueCandidate.trim().isEmpty) {
-          valueWordsCount = 0;
-        } else {
-          valueWordsCount = valueCandidate.trim().split(' ').length;
-        }
+      if (valueCandidate != null && valueCandidate.trim().isNotEmpty) {
+        valueWordsCount = valueCandidate.trim().split(' ').length;
       }
 
       return valueWordsCount < minCount && (!allowEmpty || valueWordsCount > 0)
