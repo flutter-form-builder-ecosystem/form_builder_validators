@@ -199,7 +199,7 @@ Create one ARB file inside the `lib/l10n` folder for each of the locales you nee
 
 2. Translate the error messages
 
-Duplicate the contents of `intl_en.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
+Duplicate the contents of `intl_zh.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
 
