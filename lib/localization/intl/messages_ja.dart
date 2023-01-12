@@ -1,66 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a ja locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Japanese (`ja`).
+class FormBuilderLocalizationsImplJa extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplJa([String locale = 'ja']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => '必須項目です。';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return '$min以上にしてください。';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return '$minLength文字以上で入力してください。';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'ja';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '値は、$minWordsCount以上の単語をカウントする必要があります';
+  }
 
-  static String m0(value) => "${value}に一致していません。";
+  @override
+  String maxErrorText(Object max) {
+    return '$max以下にしてください。';
+  }
 
-  static String m1(max) => "${max}以下にしてください。";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return '$maxLength文字以下で入力してください。';
+  }
 
-  static String m2(maxLength) => "${maxLength}文字以下で入力してください。";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '値には、単語が$maxWordsCount以下にカウントされる必要があります';
+  }
 
-  static String m3(maxWordsCount) => "値には、単語が${maxWordsCount}以下にカウントされる必要があります";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m4(min) => "${min}以上にしてください。";
+  @override
+  String get emailErrorText => '有効なメールアドレスを入力してください。';
 
-  static String m5(minLength) => "${minLength}文字以上で入力してください。";
+  @override
+  String get integerErrorText => '整数で入力してください。';
 
-  static String m6(minWordsCount) => "値は、${minWordsCount}以上の単語をカウントする必要があります";
+  @override
+  String equalErrorText(Object value) {
+    return '$valueに一致していません。';
+  }
 
-  static String m7(value) => "${value}と違うものにしてください。";
+  @override
+  String notEqualErrorText(Object value) {
+    return '$valueと違うものにしてください。';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText":
-            MessageLookupByLibrary.simpleMessage("有効なクレジットカード番号を入力してください。"),
-        "dateStringErrorText":
-            MessageLookupByLibrary.simpleMessage("正しい日付を入力してください。"),
-        "emailErrorText":
-            MessageLookupByLibrary.simpleMessage("有効なメールアドレスを入力してください。"),
-        "equalErrorText": m0,
-        "integerErrorText":
-            MessageLookupByLibrary.simpleMessage("整数で入力してください。"),
-        "ipErrorText":
-            MessageLookupByLibrary.simpleMessage("有効なIPアドレスを入力してください。"),
-        "matchErrorText":
-            MessageLookupByLibrary.simpleMessage("有効な正規表現を指定してください。"),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "notEqualErrorText": m7,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("半角数字で入力してください。"),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage("必須項目です。"),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage("有効なURLを入力してください。")
-      };
+  @override
+  String get urlErrorText => '有効なURLを入力してください。';
+
+  @override
+  String get matchErrorText => '有効な正規表現を指定してください。';
+
+  @override
+  String get numericErrorText => '半角数字で入力してください。';
+
+  @override
+  String get creditCardErrorText => '有効なクレジットカード番号を入力してください。';
+
+  @override
+  String get ipErrorText => '有効なIPアドレスを入力してください。';
+
+  @override
+  String get dateStringErrorText => '正しい日付を入力してください。';
 }

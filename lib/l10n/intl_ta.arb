@@ -1,0 +1,114 @@
+{
+  "@@last_modified": "2022-10-25T21:53:39.706877",
+  "@@locale": "ta",
+  "requiredErrorText": "இந்த உள்ளீடு காலியாக இருக்கக்கூடாது.",
+  "@requiredErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "minErrorText": "மதிப்பு {min} ஐ விட அதிகமாகவோ அல்லது சமமாகவோ இருக்க வேண்டும்.",
+  "@minErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "min": {}
+    }
+  },
+  "minLengthErrorText": "மதிப்பு {minLength} ஐ விட அதிகமாக அல்லது அதற்கு சமமான நீளத்தைக் கொண்டிருக்க வேண்டும்",
+  "@minLengthErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "minLength": {}
+    }
+  },
+  "maxErrorText": "மதிப்பு {max} ஐ விட குறைவாகவோ அல்லது சமமாகவோ இருக்க வேண்டும்",
+  "@maxErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "max": {}
+    }
+  },
+  "maxLengthErrorText": "மதிப்பின் நீளம் {maxLength} ஐ விட குறைவாகவோ அல்லது சமமாகவோ இருக்க வேண்டும்",
+  "@maxLengthErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "maxLength": {}
+    }
+  },
+  "equalLengthErrorText": "மதிப்பு {length}க்கு சமமான நீளத்தைக் கொண்டிருக்க வேண்டும்",
+  "@equalLengthErrorText": {
+    "description": "Error Text for required field",
+    "type": "text",
+    "placeholders": {
+      "length": {}
+    }
+  },
+  "emailErrorText": "இந்த உள்ளீட்டுக்கு சரியான மின்னஞ்சல் முகவரி தேவை.",
+  "@emailErrorText": {
+    "description": "Error Text for email field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "integerErrorText": "இந்த உள்ளீட்டுக்கு சரியான முழு எண் தேவை.",
+  "@integerErrorText": {
+    "description": "Error Text for integer validator",
+    "type": "text",
+    "placeholders": {}
+  },
+  "equalErrorText": "இந்த உள்ளீடு மதிப்பு {value}க்கு சமமாக இருக்க வேண்டும்.",
+  "@equalErrorText": {
+    "description": "Error Text for equal validator",
+    "type": "text",
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "notEqualErrorText": "இந்த உள்ளீடு மதிப்பு {value}க்கு சமமாக இருக்கக்கூடாது.",
+  "@notEqualErrorText": {
+    "description": "Error Text for not-equal validator",
+    "type": "text",
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "urlErrorText": "இந்த உள்ளீட்டுக்கு சரியான URL முகவரி தேவை.",
+  "@urlErrorText": {
+    "description": "Error Text for URL field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "matchErrorText": "மதிப்பு முறையுடன் பொருந்தவில்லை.",
+  "@matchErrorText": {
+    "description": "Error Text for pattern field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "numericErrorText": "மதிப்பு எண்களாக இருக்க வேண்டும்.",
+  "@numericErrorText": {
+    "description": "Error Text for numeric field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "creditCardErrorText": "இந்த உள்ளீட்டுக்கு சரியான கிரெடிட் கார்டு எண் தேவை.",
+  "@creditCardErrorText": {
+    "description": "Error Text for credit card field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ipErrorText": "இந்த உள்ளீட்டுக்கு சரியான ஐபி தேவை.",
+  "@ipErrorText": {
+    "description": "Error Text for IP address field",
+    "type": "text",
+    "placeholders": {}
+  },
+  "dateStringErrorText": "இந்த உள்ளீட்டுக்கு சரியான தேதி தேவை.",
+  "@dateStringErrorText": {
+    "description": "Error Text for date string field",
+    "type": "text",
+    "placeholders": {}
+  }
+}

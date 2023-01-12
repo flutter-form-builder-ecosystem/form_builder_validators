@@ -1,68 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a es locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Spanish Castilian (`es`).
+class FormBuilderLocalizationsImplEs extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplEs([String locale = 'es']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Este campo no puede estar vacío.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'El valor debe ser mayor o igual que $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'El valor debe tener una longitud mayor o igual a $minLength';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'es';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'El valor debe tener un recuento de palabras mayor o igual a $minWordsCount';
+  }
 
-  static String m8(length) =>
-      "El valor debe tener una longitud igual a ${length}";
+  @override
+  String maxErrorText(Object max) {
+    return 'El valor debe ser menor o igual que $max.';
+  }
 
-  static String m1(max) => "El valor debe ser menor o igual que ${max}.";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'El valor debe tener una longitud menor o igual a $maxLength';
+  }
 
-  static String m2(maxLength) =>
-      "El valor debe tener una longitud menor o igual a ${maxLength}";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'El valor debe tener un recuento de palabras menos o igual a $maxWordsCount';
+  }
 
-  static String m3(maxWordsCount) =>
-      "El valor debe tener un recuento de palabras menos o igual a ${maxWordsCount}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'El valor debe tener una longitud igual a $length';
+  }
 
-  static String m4(min) => "El valor debe ser mayor o igual que ${min}.";
+  @override
+  String get emailErrorText => 'Este campo requiere una dirección de correo electrónico válida.';
 
-  static String m5(minLength) =>
-      "El valor debe tener una longitud mayor o igual a ${minLength}";
+  @override
+  String get integerErrorText => 'This field requires a valid integer.';
 
-  static String m6(minWordsCount) =>
-      "El valor debe tener un recuento de palabras mayor o igual a ${minWordsCount}";
+  @override
+  String equalErrorText(Object value) {
+    return 'This field value must be equal to $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requiere un número de tarjeta de crédito válido."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requiere una cadena de fecha válida."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requiere una dirección de correo electrónico válida."),
-        "equalLengthErrorText": m8,
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requiere una IP válida."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "El valor no coincide con el patrón requerido."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("El valor debe ser numérico."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo no puede estar vacío."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "Este campo requiere una dirección URL válida.")
-      };
+  @override
+  String notEqualErrorText(Object value) {
+    return 'This field value must not be equal to $value.';
+  }
+
+  @override
+  String get urlErrorText => 'Este campo requiere una dirección URL válida.';
+
+  @override
+  String get matchErrorText => 'El valor no coincide con el patrón requerido.';
+
+  @override
+  String get numericErrorText => 'El valor debe ser numérico.';
+
+  @override
+  String get creditCardErrorText => 'Este campo requiere un número de tarjeta de crédito válido.';
+
+  @override
+  String get ipErrorText => 'Este campo requiere una IP válida.';
+
+  @override
+  String get dateStringErrorText => 'Este campo requiere una cadena de fecha válida.';
 }

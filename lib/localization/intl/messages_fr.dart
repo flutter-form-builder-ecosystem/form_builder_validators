@@ -1,64 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a fr locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for French (`fr`).
+class FormBuilderLocalizationsImplFr extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplFr([String locale = 'fr']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Ce champ ne peut pas être vide.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'La valeur doit être supérieure ou égale à $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'La valeur doit avoir une longueur supérieure ou égale à $minLength';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'fr';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'La valeur doit avoir un nombre de mots supérieur ou égal à $minWordsCount';
+  }
 
-  static String m1(max) => "La valeur doit être inférieure ou égale à ${max}";
+  @override
+  String maxErrorText(Object max) {
+    return 'La valeur doit être inférieure ou égale à $max';
+  }
 
-  static String m2(maxLength) =>
-      "La valeur doit avoir une longueur inférieure ou égale à ${maxLength}";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'La valeur doit avoir une longueur inférieure ou égale à $maxLength';
+  }
 
-  static String m3(maxWordsCount) =>
-      "La valeur doit avoir un nombre de mots inférieur ou égal à ${maxWordsCount}";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'La valeur doit avoir un nombre de mots inférieur ou égal à $maxWordsCount';
+  }
 
-  static String m4(min) => "La valeur doit être supérieure ou égale à ${min}.";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m5(minLength) =>
-      "La valeur doit avoir une longueur supérieure ou égale à ${minLength}";
+  @override
+  String get emailErrorText => 'Ce champ nécessite une adresse e-mail valide.';
 
-  static String m6(minWordsCount) =>
-      "La valeur doit avoir un nombre de mots supérieur ou égal à ${minWordsCount}";
+  @override
+  String get integerErrorText => 'This field requires a valid integer.';
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ nécessite un numéro de carte de crédit valide."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ nécessite une chaîne de date valide."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ nécessite une adresse e-mail valide."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ nécessite une adresse IP valide."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "La valeur ne correspond pas au modèle."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "numericErrorText": MessageLookupByLibrary.simpleMessage(
-            "La valeur doit être numérique."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ ne peut pas être vide."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "Ce champ nécessite une adresse URL valide.")
-      };
+  @override
+  String equalErrorText(Object value) {
+    return 'This field value must be equal to $value.';
+  }
+
+  @override
+  String notEqualErrorText(Object value) {
+    return 'This field value must not be equal to $value.';
+  }
+
+  @override
+  String get urlErrorText => 'Ce champ nécessite une adresse URL valide.';
+
+  @override
+  String get matchErrorText => 'La valeur ne correspond pas au modèle.';
+
+  @override
+  String get numericErrorText => 'La valeur doit être numérique.';
+
+  @override
+  String get creditCardErrorText => 'Ce champ nécessite un numéro de carte de crédit valide.';
+
+  @override
+  String get ipErrorText => 'Ce champ nécessite une adresse IP valide.';
+
+  @override
+  String get dateStringErrorText => 'Ce champ nécessite une chaîne de date valide.';
 }

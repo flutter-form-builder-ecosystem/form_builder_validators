@@ -1,74 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a sw locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Swahili (`sw`).
+class FormBuilderLocalizationsImplSw extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplSw([String locale = 'sw']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Sehemu hii haiwezi kuwa tupu.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Thamani lazima iwe kubwa kuliko au sawa na $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Thamani lazima iwe na urefu mkubwa kuliko au sawa na $minLength.';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'sw';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Thamani lazima iwe na maneno kuhesabu kubwa kuliko au sawa na $minWordsCount';
+  }
 
-  static String m0(value) =>
-      "Thamani ya sehemu hii lazima iwe sawa na ${value}.";
+  @override
+  String maxErrorText(Object max) {
+    return 'Thamani lazima iwe chini ya au sawa na $max';
+  }
 
-  static String m1(max) => "Thamani lazima iwe chini ya au sawa na ${max}";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Thamani lazima iwe na urefu chini ya au sawa na $maxLength';
+  }
 
-  static String m2(maxLength) =>
-      "Thamani lazima iwe na urefu chini ya au sawa na ${maxLength}";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Thamani lazima iwe na hesabu ya maneno chini ya au sawa na $maxWordsCount';
+  }
 
-  static String m3(maxWordsCount) =>
-      "Thamani lazima iwe na hesabu ya maneno chini ya au sawa na ${maxWordsCount}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m4(min) => "Thamani lazima iwe kubwa kuliko au sawa na ${min}.";
+  @override
+  String get emailErrorText => 'Sehemu hii inahitaji barua pepe halali.';
 
-  static String m5(minLength) =>
-      "Thamani lazima iwe na urefu mkubwa kuliko au sawa na ${minLength}.";
+  @override
+  String get integerErrorText => 'Sehemu hii inahitaji nambari kamili halali.';
 
-  static String m6(minWordsCount) =>
-      "Thamani lazima iwe na maneno kuhesabu kubwa kuliko au sawa na ${minWordsCount}";
+  @override
+  String equalErrorText(Object value) {
+    return 'Thamani ya sehemu hii lazima iwe sawa na $value.';
+  }
 
-  static String m7(value) =>
-      "Thamani hii ya sehemu haifai kuwa sawa na ${value}.";
+  @override
+  String notEqualErrorText(Object value) {
+    return 'Thamani hii ya sehemu haifai kuwa sawa na $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji nambari halali ya kadi ya mkopo."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji mfuatano halali wa tarehe."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji barua pepe halali."),
-        "equalErrorText": m0,
-        "integerErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji nambari kamili halali."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji IP halali."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "Thamani hailingani na muundo."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "notEqualErrorText": m7,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("Thamani lazima iwe nambari."),
-        "requiredErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii haiwezi kuwa tupu."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "Sehemu hii inahitaji anwani sahihi ya tovuti.")
-      };
+  @override
+  String get urlErrorText => 'Sehemu hii inahitaji anwani sahihi ya tovuti.';
+
+  @override
+  String get matchErrorText => 'Thamani hailingani na muundo.';
+
+  @override
+  String get numericErrorText => 'Thamani lazima iwe nambari.';
+
+  @override
+  String get creditCardErrorText => 'Sehemu hii inahitaji nambari halali ya kadi ya mkopo.';
+
+  @override
+  String get ipErrorText => 'Sehemu hii inahitaji IP halali.';
+
+  @override
+  String get dateStringErrorText => 'Sehemu hii inahitaji mfuatano halali wa tarehe.';
 }

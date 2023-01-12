@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   HomePageState createState() => HomePageState();
@@ -42,9 +42,11 @@ class HomePageState extends State<HomePage> {
                 /// Include your own custom `FormFieldValidator` function, if you want
                 /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
                 (val) {
-                  final number = int.tryParse(val);
-                  if (number == null) return null;
-                  if (number < 0) return 'We cannot have a negative age';
+                  if (val != null) {
+                    final number = int.tryParse(val);
+                    if (number == null) return null;
+                    if (number < 0) return 'We cannot have a negative age';
+                  }
                   return null;
                 }
               ]),

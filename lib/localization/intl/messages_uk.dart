@@ -1,72 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a uk locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Ukrainian (`uk`).
+class FormBuilderLocalizationsImplUk extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplUk([String locale = 'uk']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Поле не може бути порожнім.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Значення має бути більш або дорівнює $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Довжина значеня Має бути більш або дорівнює $minLength.';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'uk';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Значення повинно мати слова врахувати більше або дорівнює $minWordsCount';
+  }
 
-  static String m0(value) => "Значення поля має дорівнювати ${value}.";
+  @override
+  String maxErrorText(Object max) {
+    return 'Значення має бути менше або дорівнює $max.';
+  }
 
-  static String m1(max) => "Значення має бути менше або дорівнює ${max}.";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Довжина значеня Має бути менше або дорівнює $maxLength.';
+  }
 
-  static String m2(maxLength) =>
-      "Довжина значеня Має бути менше або дорівнює ${maxLength}.";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Значення повинно мати слова врахувати менше або дорівнює $maxWordsCount';
+  }
 
-  static String m3(maxWordsCount) =>
-      "Значення повинно мати слова врахувати менше або дорівнює ${maxWordsCount}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m4(min) => "Значення має бути більш або дорівнює ${min}.";
+  @override
+  String get emailErrorText => 'Поле має бути email адрес.';
 
-  static String m5(minLength) =>
-      "Довжина значеня Має бути більш або дорівнює ${minLength}.";
+  @override
+  String get integerErrorText => 'Поле має бути цілим числом.';
 
-  static String m6(minWordsCount) =>
-      "Значення повинно мати слова врахувати більше або дорівнює ${minWordsCount}";
+  @override
+  String equalErrorText(Object value) {
+    return 'Значення поля має дорівнювати $value.';
+  }
 
-  static String m7(value) => "Значення поля не повинно бути рівним ${value}.";
+  @override
+  String notEqualErrorText(Object value) {
+    return 'Значення поля не повинно бути рівним $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Значення поля має бути номером кредитної картки."),
-        "dateStringErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле має бути датою."),
-        "emailErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле має бути email адрес."),
-        "equalErrorText": m0,
-        "integerErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле має бути цілим числом."),
-        "ipErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле має бути IP номером."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "Значення має задовольняти шаблоном."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "notEqualErrorText": m7,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("Значення має бути числом."),
-        "requiredErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле не може бути порожнім."),
-        "urlErrorText":
-            MessageLookupByLibrary.simpleMessage("Поле має бути URL адресою.")
-      };
+  @override
+  String get urlErrorText => 'Поле має бути URL адресою.';
+
+  @override
+  String get matchErrorText => 'Значення має задовольняти шаблоном.';
+
+  @override
+  String get numericErrorText => 'Значення має бути числом.';
+
+  @override
+  String get creditCardErrorText => 'Значення поля має бути номером кредитної картки.';
+
+  @override
+  String get ipErrorText => 'Поле має бути IP номером.';
+
+  @override
+  String get dateStringErrorText => 'Поле має бути датою.';
 }

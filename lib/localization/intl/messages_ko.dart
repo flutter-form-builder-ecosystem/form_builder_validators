@@ -1,67 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a ko locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Korean (`ko`).
+class FormBuilderLocalizationsImplKo extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplKo([String locale = 'ko']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => '이 필드는 반드시 입력해야 합니다.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return '이 필드의 값은 반드시 $min 이상이어야 합니다.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return '이 필드는 반드시 $minLength자 이상이어야 합니다.';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'ko';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '값은 $minWordsCount보다 큰 단어 수를 가져야합니다.';
+  }
 
-  static String m0(value) => "이 필드의 값은 반드시 ${value}와 같아야 합니다.";
+  @override
+  String maxErrorText(Object max) {
+    return '이 필드의 값은 반드시 $max 이하이어야 합니다.';
+  }
 
-  static String m1(max) => "이 필드의 값은 반드시 ${max} 이하이어야 합니다.";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return '이 필드는 반드시 $maxLength자 이하이어야 합니다.';
+  }
 
-  static String m2(maxLength) => "이 필드는 반드시 ${maxLength}자 이하이어야 합니다.";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '값은 $maxWordsCount보다 작거나 같은 단어를 가져야합니다.';
+  }
 
-  static String m3(maxWordsCount) => "값은 ${maxWordsCount}보다 작거나 같은 단어를 가져야합니다.";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m4(min) => "이 필드의 값은 반드시 ${min} 이상이어야 합니다.";
+  @override
+  String get emailErrorText => '이메일 주소 형식이 올바르지 않습니다.';
 
-  static String m5(minLength) => "이 필드는 반드시 ${minLength}자 이상이어야 합니다.";
+  @override
+  String get integerErrorText => '정수만 입력 가능합니다.';
 
-  static String m6(minWordsCount) => "값은 ${minWordsCount}보다 큰 단어 수를 가져야합니다.";
+  @override
+  String equalErrorText(Object value) {
+    return '이 필드의 값은 반드시 $value와 같아야 합니다.';
+  }
 
-  static String m7(value) => "이 필드의 값은 반드시 ${value}와 달라야 합니다.";
+  @override
+  String notEqualErrorText(Object value) {
+    return '이 필드의 값은 반드시 $value와 달라야 합니다.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText":
-            MessageLookupByLibrary.simpleMessage("유효한 카드 번호를 입력해 주세요."),
-        "dateStringErrorText":
-            MessageLookupByLibrary.simpleMessage("날짜 형식이 올바르지 않습니다."),
-        "emailErrorText":
-            MessageLookupByLibrary.simpleMessage("이메일 주소 형식이 올바르지 않습니다."),
-        "equalErrorText": m0,
-        "integerErrorText":
-            MessageLookupByLibrary.simpleMessage("정수만 입력 가능합니다."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage("유효한 IP를 입력해 주세요."),
-        "matchErrorText":
-            MessageLookupByLibrary.simpleMessage("필드의 값이 패턴과 맞지 않습니다."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "notEqualErrorText": m7,
-        "numericErrorText":
-            MessageLookupByLibrary.simpleMessage("숫자만 입력 가능합니다."),
-        "requiredErrorText":
-            MessageLookupByLibrary.simpleMessage("이 필드는 반드시 입력해야 합니다."),
-        "urlErrorText":
-            MessageLookupByLibrary.simpleMessage("URL 형식이 올바르지 않습니다.")
-      };
+  @override
+  String get urlErrorText => 'URL 형식이 올바르지 않습니다.';
+
+  @override
+  String get matchErrorText => '필드의 값이 패턴과 맞지 않습니다.';
+
+  @override
+  String get numericErrorText => '숫자만 입력 가능합니다.';
+
+  @override
+  String get creditCardErrorText => '유효한 카드 번호를 입력해 주세요.';
+
+  @override
+  String get ipErrorText => '유효한 IP를 입력해 주세요.';
+
+  @override
+  String get dateStringErrorText => '날짜 형식이 올바르지 않습니다.';
 }

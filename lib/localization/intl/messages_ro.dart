@@ -1,76 +1,78 @@
-// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a ro locale. All the
-// messages from the main program should be duplicated here with the same
-// function name.
+import 'messages.dart';
 
-// Ignore issues from commonly used lints in this file.
-// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
-// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
-// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+/// The translations for Romanian Moldavian Moldovan (`ro`).
+class FormBuilderLocalizationsImplRo extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplRo([String locale = 'ro']) : super(locale);
 
-import 'package:intl/intl.dart';
-import 'package:intl/message_lookup_by_library.dart';
+  @override
+  String get requiredErrorText => 'Acest câmp nu poate fi gol.';
 
-final messages = new MessageLookup();
+  @override
+  String minErrorText(Object min) {
+    return 'Valoarea trebuie să fie mai mare sau egală cu $min.';
+  }
 
-typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+  @override
+  String minLengthErrorText(Object minLength) {
+    return 'Valoarea trebuie să aibă o lungime mai mare sau egală cu $minLength';
+  }
 
-class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'ro';
+  @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Valoarea trebuie să aibă un număr de cuvinte mai mare sau egal cu $minWordsCount';
+  }
 
-  static String m0(value) =>
-      "Valoarea câmpului trebuie să fie egală cu ${value}.";
+  @override
+  String maxErrorText(Object max) {
+    return 'Valoarea trebuie să fie mai mică sau egală cu $max';
+  }
 
-  static String m1(max) =>
-      "Valoarea trebuie să fie mai mică sau egală cu ${max}";
+  @override
+  String maxLengthErrorText(Object maxLength) {
+    return 'Valoarea trebuie să aibă o lungime mai mică sau egală cu $maxLength';
+  }
 
-  static String m2(maxLength) =>
-      "Valoarea trebuie să aibă o lungime mai mică sau egală cu ${maxLength}";
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Valoarea trebuie să aibă un număr de cuvinte mai mic sau egal cu $maxWordsCount';
+  }
 
-  static String m3(maxWordsCount) =>
-      "Valoarea trebuie să aibă un număr de cuvinte mai mic sau egal cu ${maxWordsCount}";
+  @override
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
+  }
 
-  static String m4(min) =>
-      "Valoarea trebuie să fie mai mare sau egală cu ${min}.";
+  @override
+  String get emailErrorText => 'Acest câmp necesită o adresă de e-mail validă.';
 
-  static String m5(minLength) =>
-      "Valoarea trebuie să aibă o lungime mai mare sau egală cu ${minLength}";
+  @override
+  String get integerErrorText => 'Acest câmp necesită un număr întreg valid.';
 
-  static String m6(minWordsCount) =>
-      "Valoarea trebuie să aibă un număr de cuvinte mai mare sau egal cu ${minWordsCount}";
+  @override
+  String equalErrorText(Object value) {
+    return 'Valoarea câmpului trebuie să fie egală cu $value.';
+  }
 
-  static String m7(value) =>
-      "Valoarea câmpului nu trebuie să fie egală cu ${value}.";
+  @override
+  String notEqualErrorText(Object value) {
+    return 'Valoarea câmpului nu trebuie să fie egală cu $value.';
+  }
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită un număr valid de card de credit."),
-        "dateStringErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită un șir de date valid."),
-        "emailErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită o adresă de e-mail validă."),
-        "equalErrorText": m0,
-        "integerErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită un număr întreg valid."),
-        "ipErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită un IP valid."),
-        "matchErrorText": MessageLookupByLibrary.simpleMessage(
-            "Valoarea nu se potrivește cu modelul."),
-        "maxErrorText": m1,
-        "maxLengthErrorText": m2,
-        "maxWordsCountErrorText": m3,
-        "minErrorText": m4,
-        "minLengthErrorText": m5,
-        "minWordsCountErrorText": m6,
-        "notEqualErrorText": m7,
-        "numericErrorText": MessageLookupByLibrary.simpleMessage(
-            "Valoarea trebuie să fie numerică."),
-        "requiredErrorText":
-            MessageLookupByLibrary.simpleMessage("Acest câmp nu poate fi gol."),
-        "urlErrorText": MessageLookupByLibrary.simpleMessage(
-            "Acest câmp necesită o adresă URL validă.")
-      };
+  @override
+  String get urlErrorText => 'Acest câmp necesită o adresă URL validă.';
+
+  @override
+  String get matchErrorText => 'Valoarea nu se potrivește cu modelul.';
+
+  @override
+  String get numericErrorText => 'Valoarea trebuie să fie numerică.';
+
+  @override
+  String get creditCardErrorText => 'Acest câmp necesită un număr valid de card de credit.';
+
+  @override
+  String get ipErrorText => 'Acest câmp necesită un IP valid.';
+
+  @override
+  String get dateStringErrorText => 'Acest câmp necesită un șir de date valid.';
 }

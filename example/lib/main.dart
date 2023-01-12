@@ -1,3 +1,4 @@
+import 'package:example/override_form_builder_localizations_en.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -9,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,13 @@ class MyApp extends StatelessWidget {
       title: 'Form Builder Validators Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
-      supportedLocales: [...FormBuilderLocalizations.delegate.supportedLocales],
+      supportedLocales: const [
+        ...FormBuilderLocalizations.supportedLocales,
+      ],
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
+        // Placed in front of `FormBuilderLocalizations.delegate`
+        OverrideFormBuilderLocalizationsEn.delegate,
         FormBuilderLocalizations.delegate,
       ],
     );
