@@ -139,6 +139,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('ja'),
     Locale('ko'),
     Locale('lo'),
+    Locale('mn'),
     Locale('ms'),
     Locale('nl'),
     Locale('pl'),
