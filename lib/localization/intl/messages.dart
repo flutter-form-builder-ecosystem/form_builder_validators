@@ -24,6 +24,7 @@ import 'messages_it.dart';
 import 'messages_ja.dart';
 import 'messages_ko.dart';
 import 'messages_lo.dart';
+import 'messages_mn.dart';
 import 'messages_ms.dart';
 import 'messages_nl.dart';
 import 'messages_pl.dart';
@@ -263,7 +264,7 @@ class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBu
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
@@ -302,6 +303,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'ja': return FormBuilderLocalizationsImplJa();
     case 'ko': return FormBuilderLocalizationsImplKo();
     case 'lo': return FormBuilderLocalizationsImplLo();
+    case 'mn': return FormBuilderLocalizationsImplMn();
     case 'ms': return FormBuilderLocalizationsImplMs();
     case 'nl': return FormBuilderLocalizationsImplNl();
     case 'pl': return FormBuilderLocalizationsImplPl();

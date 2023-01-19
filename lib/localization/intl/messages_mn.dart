@@ -1,8 +1,8 @@
 import 'messages.dart';
 
-/// The translations for English (`en`).
-class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
-  FormBuilderLocalizationsImplEn([String locale = 'en']) : super(locale);
+/// The translations for Mongolian (`mn`).
+class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
+  FormBuilderLocalizationsImplMn([String locale = 'mn']) : super(locale);
 
   @override
   String get requiredErrorText => 'Заавал бөглөнө үү.';
@@ -19,7 +19,7 @@ class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
 
   @override
   String maxErrorText(Object max) {
-    return '$max-аас бага утга оруулна уу.';
+    return '$max-аас их утга оруулна уу.';
   }
 
   @override
@@ -29,11 +29,11 @@ class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
 
   @override
   String equalLengthErrorText(Object length) {
-    return '$length урттай утга оруулна уу.';
+    return '$length-тэй тэнцүү урттай утга оруулна уу.';
   }
 
   @override
-  String get emailErrorText => 'И-мэйл хаяг оруулна уу.';
+  String get emailErrorText => 'И-мэйл хаяг алдаатай байна.';
 
   @override
   String get integerErrorText => 'Бүхэл тоон утга оруулна уу.';
@@ -45,23 +45,23 @@ class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
 
   @override
   String notEqualErrorText(Object value) {
-    return '$value-тай тэнцүү биш утга оруулна уу.';
+    return '$value-тэй тэнцүү биш утга оруулна уу.';
   }
 
   @override
-  String get urlErrorText => 'URL хаяг оруулна уу.';
+  String get urlErrorText => 'URL хаяг алдаатай байна.';
 
   @override
-  String get matchErrorText => 'Загвартай таарахгүй байна.';
+  String get matchErrorText => 'Утга загварт таарахгүй байна.';
 
   @override
   String get numericErrorText => 'Тоон утга оруулна уу.';
 
   @override
-  String get creditCardErrorText => 'Кредит картын биш байна.';
+  String get creditCardErrorText => 'Картын дугаар алдаатай байна.';
 
   @override
-  String get ipErrorText => 'IP хаяг биш байна.';
+  String get ipErrorText => 'IP хаяг алдаатай байна.';
 
   @override
   String get dateStringErrorText => 'Огнооны загварт таарахгүй байна.';
