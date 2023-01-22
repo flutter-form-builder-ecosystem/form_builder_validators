@@ -5,66 +5,66 @@ class FormBuilderLocalizationsImplZh extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get requiredErrorText => '此字段不能为空。';
+  String get requiredErrorText => '该字段不能为空。';
 
   @override
   String minErrorText(Object min) {
-    return '此字段必须大于或等于$min';
+    return '该字段必须大于等于$min';
   }
 
   @override
   String minLengthErrorText(Object minLength) {
-    return '此字段的长度必须大于或等于$minLength';
+    return '该字段的长度必须大于等于$minLength';
   }
 
   @override
   String maxErrorText(Object max) {
-    return '此字段必须小于或等于$max';
+    return '该字段必须小于等于$max';
   }
 
   @override
   String maxLengthErrorText(Object maxLength) {
-    return '此字段的长度必须小于或等于$maxLength';
+    return '该字段的长度必须小于等于$maxLength';
   }
 
   @override
   String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+    return '该字段的长度必须等于$length';
   }
 
   @override
-  String get emailErrorText => '此字段需要有效的电子邮件地址。';
+  String get emailErrorText => '该字段必须是有效的电子邮件地址';
 
   @override
-  String get integerErrorText => '此字段需要有效的整数。';
+  String get integerErrorText => '该字段必须是整数';
 
   @override
   String equalErrorText(Object value) {
-    return '此字段必须与$value相符';
+    return '该字段必须等于$value';
   }
 
   @override
   String notEqualErrorText(Object value) {
-    return '此字段不得等于$value';
+    return '该字段不能等于$value';
   }
 
   @override
-  String get urlErrorText => '此字段需要有效的URL地址。';
+  String get urlErrorText => '该字段必须是有效的URL地址';
 
   @override
-  String get matchErrorText => '此字段与格式不匹配。';
+  String get matchErrorText => '该字段格式不正确';
 
   @override
-  String get numericErrorText => '此字段必须是数字。';
+  String get numericErrorText => '该字段必须是数字';
 
   @override
-  String get creditCardErrorText => '此字段需要有效的信用卡号码。';
+  String get creditCardErrorText => '该字段必须是有效的信用卡号';
 
   @override
-  String get ipErrorText => '此字段需要有效的IP。';
+  String get ipErrorText => '该字段必须是有效的IP';
 
   @override
-  String get dateStringErrorText => '此字段需要有效的日期字符串。';
+  String get dateStringErrorText => '该字段必须是有效的时间日期';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
