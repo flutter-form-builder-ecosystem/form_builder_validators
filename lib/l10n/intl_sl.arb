@@ -1,130 +1,21 @@
 {
-  "@@last_modified": "2020-11-13T10:38:27.938366",
   "@@locale": "sl",
   "requiredErrorText": "Polje ne sme biti prazno.",
-  "@requiredErrorText": {
-    "description": "Error Text for required validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "equalErrorText": "Vrednost mora biti enaka {value}.",
-  "@equalErrorText": {
-    "description": "Error Text for equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "notEqualErrorText": "Vrednost ne sme biti enaka {value}.",
-  "@notEqualErrorText": {
-    "description": "Error Text for not-equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "minErrorText": "Vrednost mora biti večja ali enaka {min}.",
-  "@minErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "min": {}
-    }
-  },
   "minLengthErrorText": "Besedilo mora biti daljše ali enako {minLength} znakov.",
-  "@minLengthErrorText": {
-    "description": "Error Text for minLength validator",
-    "type": "text",
-    "placeholders": {
-      "minLength": {}
-    }
-  },
   "minWordsCountErrorText": "Vrednost mora imeti besede, ki so večje ali enake {minWordsCount}",
-  "@minWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "minWordsCount": {}
-    }
-  },
   "maxErrorText": "Vrednost ne sme presegati {max}.",
-  "@maxErrorText": {
-    "description": "Error Text for max validator",
-    "type": "text",
-    "placeholders": {
-      "max": {}
-    }
-  },
   "maxLengthErrorText": "Besedilo mora biti krajše ali enako {maxLength} znakov.",
-  "@maxLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxLength": {}
-    }
-  },
   "maxWordsCountErrorText": "Vrednost mora imeti besede manj kot ali enake {maxWordsCount}",
-  "@maxWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxWordsCount": {}
-    }
-  },
   "equalLengthErrorText": "Besedilo mora biti dolgo {length} znakov.",
-  "@equalLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "length": {}
-    }
-  },
   "emailErrorText": "Vnesite veljaven e-mail naslov.",
-  "@emailErrorText": {
-    "description": "Error Text for email validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "urlErrorText": "Vnesite veljaven URL naslov.",
-  "@urlErrorText": {
-    "description": "Error Text for URL validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "matchErrorText": "Vrednost ne ustreza predpisanemu vzorcu.",
-  "@matchErrorText": {
-    "description": "Error Text for pattern validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "numericErrorText": "Vrednost polja mora biti numerična.",
-  "@numericErrorText": {
-    "description": "Error Text for numeric validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "integerErrorText": "Vnesite celo število.",
-  "@integerErrorText": {
-    "description": "Error Text for integer validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "creditCardErrorText": "Vnesite veljavno številko kreditne kartice.",
-  "@creditCardErrorText": {
-    "description": "Error Text for credit card validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "ipErrorText": "Vnesite veljaven IP naslov.",
-  "@ipErrorText": {
-    "description": "Error Text for IP address validator",
-    "type": "text",
-    "placeholders": {}
-  },
-  "dateStringErrorText": "Vnesite veljaven datum.",
-  "@dateStringErrorText": {
-    "description": "Error Text for date string validator",
-    "type": "text",
-    "placeholders": {}
-  }
+  "dateStringErrorText": "Vnesite veljaven datum."
 }

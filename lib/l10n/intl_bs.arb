@@ -1,130 +1,21 @@
 {
-  "@@last_modified": "2020-11-13T10:38:27.938366",
   "@@locale": "bs",
   "requiredErrorText": "Ovo polje ne smije biti prazno.",
-  "@requiredErrorText": {
-    "description": "Error Text for required validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "equalErrorText": "Vrijednost mora biti jednaka {value}.",
-  "@equalErrorText": {
-    "description": "Error Text for equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "notEqualErrorText": "Vrijednost ne smije biti jednaka {value}.",
-  "@notEqualErrorText": {
-    "description": "Error Text for not-equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "minErrorText": "Vrijednost mora biti veća ili jednaka {min}.",
-  "@minErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "min": {}
-    }
-  },
   "minLengthErrorText": "Vrijednost mora biti duža ili jednaka {minLength} znakova.",
-  "@minLengthErrorText": {
-    "description": "Error Text for minLength validator",
-    "type": "text",
-    "placeholders": {
-      "minLength": {}
-    }
-  },
   "minWordsCountErrorText": "Vrijednost mora imati riječi računanje veće ili jednake {minWordsCount}",
-  "@minWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "minWordsCount": {}
-    }
-  },
-  "maxErrorText": "Vrijednost mora biti manja ili jednaka {max}",
-  "@maxErrorText": {
-    "description": "Error Text for max validator",
-    "type": "text",
-    "placeholders": {
-      "max": {}
-    }
-  },
-  "maxLengthErrorText": "Vrijednost mora biti kraća ili jednaka {maxLength} znakova.",
-  "@maxLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxLength": {}
-    }
-  },
   "maxWordsCountErrorText": "Vrijednost mora imati riječi koje računaju manje ili jednake {maxWordsCount}",
-  "@maxWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxWordsCount": {}
-    }
-  },
+  "maxErrorText": "Vrijednost mora biti manja ili jednaka {max}",
+  "maxLengthErrorText": "Vrijednost mora biti kraća ili jednaka {maxLength} znakova.",
   "equalLengthErrorText": "Vrijednost mora biti duga {length} znakova.",
-  "@equalLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "length": {}
-    }
-  },
   "emailErrorText": "Unesite validnu e-mail adresu.",
-  "@emailErrorText": {
-    "description": "Error Text for email validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "urlErrorText": "Unesite validnu URL adresu.",
-  "@urlErrorText": {
-    "description": "Error Text for URL validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "matchErrorText": "Vrijednost ne odgovara uzorku.",
-  "@matchErrorText": {
-    "description": "Error Text for pattern validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "numericErrorText": "Vrijednost mora biti brojčana.",
-  "@numericErrorText": {
-    "description": "Error Text for numeric validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "integerErrorText": "Vrijednost mora biti cijeli broj.",
-  "@integerErrorText": {
-    "description": "Error Text for integer validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "creditCardErrorText": "Unesite validan broj kreditne kartice.",
-  "@creditCardErrorText": {
-    "description": "Error Text for credit card validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "ipErrorText": "Unesite validnu IP adresu.",
-  "@ipErrorText": {
-    "description": "Error Text for IP address validator",
-    "type": "text",
-    "placeholders": {}
-  },
-  "dateStringErrorText": "Unesite validan datum.",
-  "@dateStringErrorText": {
-    "description": "Error Text for date string validator",
-    "type": "text",
-    "placeholders": {}
-  }
+  "dateStringErrorText": "Unesite validan datum."
 }

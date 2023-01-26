@@ -1,130 +1,21 @@
 {
-  "@@last_modified": "2020-06-19T21:53:39.706877",
   "@@locale": "cs",
   "requiredErrorText": "Pole nemůže být prázdné.",
-  "@requiredErrorText": {
-    "description": "Error Text for required validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "minErrorText": "Hodnota musí být větší než nebo rovna {min}.",
-  "@minErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "min": {}
-    }
-  },
   "minLengthErrorText": "Hodnota musí mít délku větší než nebo rovnu {minLength}",
-  "@minLengthErrorText": {
-    "description": "Error Text for minLength validator",
-    "type": "text",
-    "placeholders": {
-      "minLength": {}
-    }
-  },
-  "minWordsCountErrorText": "Hodnota musí mít počet slov větší nebo rovná {minWordsCount}",
-  "@minWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "minWordsCount": {}
-    }
-  },
   "maxErrorText": "Hodnota musí být menší než nebo rovna {max}.",
-  "@maxErrorText": {
-    "description": "Error Text for max validator",
-    "type": "text",
-    "placeholders": {
-      "max": {}
-    }
-  },
   "maxLengthErrorText": "Hodnota musí mít délku menší než nebo rovnu {maxLength}.",
-  "@maxLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxLength": {}
-    }
-  },
+  "minWordsCountErrorText": "Hodnota musí mít počet slov větší nebo rovná {minWordsCount}",
   "maxWordsCountErrorText": "Hodnota musí mít počet slov menší nebo rovná {maxWordsCount}",
-  "@maxWordsCountErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxWordsCount": {}
-    }
-  },
   "equalLengthErrorText": "Hodnota musí mít délku rovnu {length}",
-  "@equalLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "length": {}
-    }
-  },
   "emailErrorText": "Pole vyžaduje platnou e-mailovou adresu.",
-  "@emailErrorText": {
-    "description": "Error Text for email validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "integerErrorText": "Hodnota musí být celé číslo.",
-  "@integerErrorText": {
-    "description": "Error Text for integer validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "equalErrorText": "Hodnota se musí rovnat {value}.",
-  "@equalErrorText": {
-    "description": "Error Text for equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "notEqualErrorText": "Hodnota se nesmí rovnat {value}.",
-  "@notEqualErrorText": {
-    "description": "Error Text for not-equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "urlErrorText": "Pole vyžaduje platnou adresu URL.",
-  "@urlErrorText": {
-    "description": "Error Text for URL validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "matchErrorText": "Hodnota neodpovídá vzoru.",
-  "@matchErrorText": {
-    "description": "Error Text for pattern validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "numericErrorText": "Hodnota musí být číslo.",
-  "@numericErrorText": {
-    "description": "Error Text for numeric validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "creditCardErrorText": "Pole vyžaduje platné číslo kreditní karty.",
-  "@creditCardErrorText": {
-    "description": "Error Text for credit card validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "ipErrorText": "Pole vyžaduje platnou IP adresu.",
-  "@ipErrorText": {
-    "description": "Error Text for IP address validator",
-    "type": "text",
-    "placeholders": {}
-  },
-  "dateStringErrorText": "Pole vyžaduje platný zápis data.",
-  "@dateStringErrorText": {
-    "description": "Error Text for date string validator",
-    "type": "text",
-    "placeholders": {}
-  }
+  "dateStringErrorText": "Pole vyžaduje platný zápis data."
 }

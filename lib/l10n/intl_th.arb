@@ -1,114 +1,19 @@
 {
-  "@@last_modified": "2022-10-08T21:53:39.706877",
   "@@locale": "th",
   "requiredErrorText": "กรุณาระบุข้อมูล",
-  "@requiredErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {}
-  },
   "minErrorText": "ข้อมูลนี้ต้องมีค่ามากกว่าหรือเท่ากับ {min}",
-  "@minErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "min": {}
-    }
-  },
   "minLengthErrorText": "ความยาวตัวอักษาต้องมีจำนวนมากกว่าหรือเท่ากับ {minLength}",
-  "@minLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "minLength": {}
-    }
-  },
   "maxErrorText": "ข้อมูลนี้ต้องมีค่าน้อยกว่าหรือเท่ากับ {max}",
-  "@maxErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "max": {}
-    }
-  },
   "maxLengthErrorText": "ความยาวตัวอักษาต้องมีจำนวนน้อยกว่าหรือเท่ากับ {maxLength}",
-  "@maxLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxLength": {}
-    }
-  },
   "equalLengthErrorText": "ความยาวตัวอักษาต้องมีจำนวนเท่ากับ {length}",
-  "@equalLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "length": {}
-    }
-  },
   "emailErrorText": "กรุณาระบุ email ของคุณ",
-  "@emailErrorText": {
-    "description": "Error Text for email field",
-    "type": "text",
-    "placeholders": {}
-  },
   "integerErrorText": "ข้อมูลนี้ต้องเป็นตัวเลขเท่านั้น",
-  "@integerErrorText": {
-    "description": "Error Text for integer validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "equalErrorText": "ข้อมูลนี้ต้องเท่ากับ {value} เท่านั้น",
-  "@equalErrorText": {
-    "description": "Error Text for equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "notEqualErrorText": "ข้อมูลนี้ต้องไม่เท่ากับ {value}",
-  "@notEqualErrorText": {
-    "description": "Error Text for not-equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "urlErrorText": "ข้อมูลนี้ต้องเป็น URL address เท่านั้น",
-  "@urlErrorText": {
-    "description": "Error Text for URL field",
-    "type": "text",
-    "placeholders": {}
-  },
   "matchErrorText": "ข้อมูลนี้ไม่ตรงกับรูปแบบที่ระบุไว้",
-  "@matchErrorText": {
-    "description": "Error Text for pattern field",
-    "type": "text",
-    "placeholders": {}
-  },
   "numericErrorText": "ข้อมูลนี้ต้องเป็นตัวเลขเท่านั้น",
-  "@numericErrorText": {
-    "description": "Error Text for numeric field",
-    "type": "text",
-    "placeholders": {}
-  },
   "creditCardErrorText": "ข้อมูลนี้ต้องเป็นเลขบัตรเครดิตเท่านั้น",
-  "@creditCardErrorText": {
-    "description": "Error Text for credit card field",
-    "type": "text",
-    "placeholders": {}
-  },
   "ipErrorText": "ข้อมูลนี้ต้องเป็น IP เท่านั้น",
-  "@ipErrorText": {
-    "description": "Error Text for IP address field",
-    "type": "text",
-    "placeholders": {}
-  },
-  "dateStringErrorText": "ข้อมูลนี้ต้องเป็นวันที่เท่านั้น",
-  "@dateStringErrorText": {
-    "description": "Error Text for date string field",
-    "type": "text",
-    "placeholders": {}
-  }
+  "dateStringErrorText": "ข้อมูลนี้ต้องเป็นวันที่เท่านั้น"
 }

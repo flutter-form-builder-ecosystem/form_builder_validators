@@ -1,114 +1,19 @@
 {
-  "@@last_modified": "2020-06-19T21:53:39.706877",
   "@@locale": "el",
   "requiredErrorText": "Το πεδίο δεν μπορεί να είναι κενό.",
-  "@requiredErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {}
-  },
   "minErrorText": "Η τιμή πρέπει να είναι μεγαλύτερη ή ίση με {min}.",
-  "@minErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "min": {}
-    }
-  },
   "minLengthErrorText": "Η τιμή πρέπει να έχει μήκος μεγαλύτερο ή ίσο με {minLength}.",
-  "@minLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "minLength": {}
-    }
-  },
   "maxErrorText": "Η τιμή πρέπει να είναι μικρότερη ή ίση με {max}.",
-  "@maxErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "max": {}
-    }
-  },
   "maxLengthErrorText": "Η τιμή πρέπει να έχει μήκος μικρότερο ή ίσο με {maxLength}.",
-  "@maxLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "maxLength": {}
-    }
-  },
   "equalLengthErrorText": "Η τιμή πρέπει να έχει μήκος ίσο με {length}.",
-  "@equalLengthErrorText": {
-    "description": "Error Text for required field",
-    "type": "text",
-    "placeholders": {
-      "length": {}
-    }
-  },
   "emailErrorText": "Το πεδίο πρέπει να έχει μία έγκυρη διεύθυνση email.",
-  "@emailErrorText": {
-    "description": "Error Text for email field",
-    "type": "text",
-    "placeholders": {}
-  },
   "integerErrorText": "Η τιμή πρέπει να είναι ακέραιος αριθμό.",
-  "@integerErrorText": {
-    "description": "Error Text for integer validator",
-    "type": "text",
-    "placeholders": {}
-  },
   "equalErrorText": "Η τιμή πρέπει να είναι ίση με {value}.",
-  "@equalErrorText": {
-    "description": "Error Text for equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "notEqualErrorText": "Η τιμή δεν πρέπει να είναι ίση με {value}.",
-  "@notEqualErrorText": {
-    "description": "Error Text for not-equal validator",
-    "type": "text",
-    "placeholders": {
-      "value": {}
-    }
-  },
   "urlErrorText": "Η τιμή πρέπει να είναι έγκυρη διεύθυνση URL.",
-  "@urlErrorText": {
-    "description": "Error Text for URL field",
-    "type": "text",
-    "placeholders": {}
-  },
   "matchErrorText": "Η τιμή δεν ταιριάζει με το μοτίβο.",
-  "@matchErrorText": {
-    "description": "Error Text for pattern field",
-    "type": "text",
-    "placeholders": {}
-  },
   "numericErrorText": "Η τιμή πρέπει να είναι αριθμητική.",
-  "@numericErrorText": {
-    "description": "Error Text for numeric field",
-    "type": "text",
-    "placeholders": {}
-  },
   "creditCardErrorText": "Η τιμή πρέπει να είναι έγκυρη πιστωτική κάρτα.",
-  "@creditCardErrorText": {
-    "description": "Error Text for credit card field",
-    "type": "text",
-    "placeholders": {}
-  },
   "ipErrorText": "Η τιμή πρέπει να είναι έγκυρη IP διεύθυνση.",
-  "@ipErrorText": {
-    "description": "Error Text for IP address field",
-    "type": "text",
-    "placeholders": {}
-  },
-  "dateStringErrorText": "Η τιμή πρέπει να είναι έγκυρη ημερομηνία.",
-  "@dateStringErrorText": {
-    "description": "Error Text for date string field",
-    "type": "text",
-    "placeholders": {}
-  }
+  "dateStringErrorText": "Η τιμή πρέπει να είναι έγκυρη ημερομηνία."
 }
