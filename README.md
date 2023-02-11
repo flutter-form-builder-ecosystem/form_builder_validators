@@ -64,6 +64,7 @@ Available built-in validators include:
 
 Validators support default errorText messages in this languages:
 
+- Albanian (al)
 - Arabic (ar)
 - Bangla (bn)
 - Bosnian (bs)
