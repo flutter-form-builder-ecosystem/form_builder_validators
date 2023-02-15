@@ -66,6 +66,7 @@ Available built-in validators include:
 
 Validators support default errorText messages in this languages:
 
+- Albanian (al)
 - Arabic (ar)
 - Bangla (bn)
 - Bosnian (bs)
@@ -101,6 +102,7 @@ Validators support default errorText messages in this languages:
 - Turkish (tr)
 - Malay (ms)
 - Mongolian (mn)
+- Vietnamese (vi)
 
 And you can still add your custom error messages.
 
