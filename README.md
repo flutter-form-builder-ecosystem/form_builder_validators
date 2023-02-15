@@ -100,6 +100,7 @@ Validators support default errorText messages in this languages:
 - Turkish (tr)
 - Malay (ms)
 - Mongolian (mn)
+- Vietnamese (vi)
 
 And you can still add your custom error messages.
 
