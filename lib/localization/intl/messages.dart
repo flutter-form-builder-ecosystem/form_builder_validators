@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'messages_al.dart';
 import 'messages_ar.dart';
 import 'messages_bn.dart';
 import 'messages_bs.dart';
@@ -27,9 +26,7 @@ import 'messages_ko.dart';
 import 'messages_lo.dart';
 import 'messages_mn.dart';
 import 'messages_ms.dart';
-import 'messages_my.dart';
 import 'messages_nl.dart';
-import 'messages_ne.dart';
 import 'messages_pl.dart';
 import 'messages_pt.dart';
 import 'messages_ro.dart';
@@ -41,6 +38,7 @@ import 'messages_ta.dart';
 import 'messages_th.dart';
 import 'messages_tr.dart';
 import 'messages_uk.dart';
+import 'messages_vi.dart';
 import 'messages_zh.dart';
 
 /// Callers can lookup localized strings with an instance of FormBuilderLocalizationsImpl
@@ -124,7 +122,6 @@ abstract class FormBuilderLocalizationsImpl {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('al'),
     Locale('ar'),
     Locale('bn'),
     Locale('bs'),
@@ -146,9 +143,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('lo'),
     Locale('mn'),
     Locale('ms'),
-    Locale('my'),
     Locale('nl'),
-    Locale('ne'),
     Locale('pl'),
     Locale('pt'),
     Locale('ro'),
@@ -160,6 +155,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('th'),
     Locale('tr'),
     Locale('uk'),
+    Locale('vi'),
     Locale('zh'),
     Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant')
   ];
@@ -270,7 +266,7 @@ class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBu
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['al','ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'my', 'nl', 'ne', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
@@ -290,7 +286,6 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'al': return FormBuilderLocalizationsImplAl();
     case 'ar': return FormBuilderLocalizationsImplAr();
     case 'bn': return FormBuilderLocalizationsImplBn();
     case 'bs': return FormBuilderLocalizationsImplBs();
@@ -312,9 +307,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'lo': return FormBuilderLocalizationsImplLo();
     case 'mn': return FormBuilderLocalizationsImplMn();
     case 'ms': return FormBuilderLocalizationsImplMs();
-    case 'my': return FormBuilderLocalizationsImplMy();
     case 'nl': return FormBuilderLocalizationsImplNl();
-    case 'ne': return FormBuilderLocalizationsImplNe();
     case 'pl': return FormBuilderLocalizationsImplPl();
     case 'pt': return FormBuilderLocalizationsImplPt();
     case 'ro': return FormBuilderLocalizationsImplRo();
@@ -326,6 +319,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'th': return FormBuilderLocalizationsImplTh();
     case 'tr': return FormBuilderLocalizationsImplTr();
     case 'uk': return FormBuilderLocalizationsImplUk();
+    case 'vi': return FormBuilderLocalizationsImplVi();
     case 'zh': return FormBuilderLocalizationsImplZh();
   }
 
