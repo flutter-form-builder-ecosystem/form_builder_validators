@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplHr extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Vrijednost mora imati broj riječi veći ili jednak $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Vrijednost mora biti manja ili jednaka $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplHr extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Vrijednost mora biti kraća ili jednaka $maxLength znakova.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Vrijednost mora imati riječi manje od ili jednake $maxWordsCount';
   }
 
   @override

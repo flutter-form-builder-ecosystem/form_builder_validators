@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél nagyobb vagy egyenlő a $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Az érték legyen legfeljebb $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Value must have a length less than or equal to $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél kevesebb vagy egyenlő a $maxWordsCount';
   }
 
   @override

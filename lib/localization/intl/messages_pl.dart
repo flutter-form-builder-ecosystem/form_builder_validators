@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplPl extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Wartość musi mieć liczbę słów większą lub równą $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Wartość musi być mniejsza lub równa $max.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplPl extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Wartość nie może mieć więcej niż $maxLength znaków.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Wartość musi mieć liczbę słów mniejszych lub równych $maxWordsCount';
   }
 
   @override

@@ -5,6 +5,8 @@
   "minLengthErrorText": "El valor debe tener una longitud mayor o igual a {minLength}",
   "maxErrorText": "El valor debe ser menor o igual que {max}.",
   "maxLengthErrorText": "El valor debe tener una longitud menor o igual a {maxLength}",
+  "minWordsCountErrorText": "El valor debe tener un recuento de palabras mayor o igual a {minWordsCount}",
+  "maxWordsCountErrorText": "El valor debe tener un recuento de palabras menos o igual a {maxWordsCount}",
   "equalLengthErrorText": "El valor debe tener una longitud igual a {length}",
   "emailErrorText": "Este campo requiere una dirección de correo electrónico válida.",
   "urlErrorText": "Este campo requiere una dirección URL válida.",

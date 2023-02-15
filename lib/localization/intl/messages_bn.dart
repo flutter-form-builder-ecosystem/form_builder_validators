@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplBn extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'মান অবশ্যই একটি শব্দের গণনা থাকতে হবে $minWordsCount এর চেয়ে বেশি বা সমান';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'মান অবশ্যই $max এর কম বা সমান হতে হবে।';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplBn extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'মান অবশ্যই $maxLength এর থেকে কম বা সমান সংখ্যা হতে হবে।';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'মান অবশ্যই একটি শব্দের গণনা থাকতে হবে $maxWordsCount এর চেয়ে কম বা সমান';
   }
 
   @override

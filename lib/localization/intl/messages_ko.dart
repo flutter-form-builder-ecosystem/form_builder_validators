@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplKo extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '값은 $minWordsCount보다 큰 단어 수를 가져야합니다.';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return '이 필드의 값은 반드시 $max 이하이어야 합니다.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplKo extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return '이 필드는 반드시 $maxLength자 이하이어야 합니다.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '값은 $maxWordsCount보다 작거나 같은 단어를 가져야합니다.';
   }
 
   @override

@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplSw extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Thamani lazima iwe na maneno kuhesabu kubwa kuliko au sawa na $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Thamani lazima iwe chini ya au sawa na $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplSw extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Thamani lazima iwe na urefu chini ya au sawa na $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Thamani lazima iwe na hesabu ya maneno chini ya au sawa na $maxWordsCount';
   }
 
   @override

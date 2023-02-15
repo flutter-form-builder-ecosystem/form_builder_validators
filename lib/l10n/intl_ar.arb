@@ -7,6 +7,8 @@
   "minLengthErrorText": "يجب أن لا يقل طول القيمة المدخلة عن {minLength}.",
   "maxErrorText": "يجب أن لا تزيد القيمة المدخلة عن {max}.",
   "maxLengthErrorText": "يجب أن لا يزيد طول القيمة المدخلة عن {maxLength}.",
+  "minWordsCountErrorText": "يجب أن لا يقل عدد الكلمات المدخلة عن {minWordsCount}.",
+  "maxWordsCountErrorText": "يجب أن لا يزيد عدد الكلمات المدخلة عن {maxWordsCount}.",
   "emailErrorText": "هذا الحقل يتطلب عنوان بريد إلكتروني صالح.",
   "urlErrorText": "هذا الحقل يتطلب عنوان URL صالح.",
   "matchErrorText": "القيمة المدخلة لا تطابق الصيغة المطلوبة.",

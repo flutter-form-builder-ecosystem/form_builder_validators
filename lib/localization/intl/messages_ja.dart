@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplJa extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '値は、$minWordsCount以上の単語をカウントする必要があります';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return '$max以下にしてください。';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplJa extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return '$maxLength文字以下で入力してください。';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '値には、単語が$maxWordsCount以下にカウントされる必要があります';
   }
 
   @override

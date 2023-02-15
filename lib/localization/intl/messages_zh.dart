@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplZh extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '值必须具有大于或等于$minWordsCount的单词计数';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return '该字段必须小于等于$max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplZh extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return '该字段的长度必须小于等于$maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '值必须具有小于或等于$maxWordsCount的单词计数';
   }
 
   @override
@@ -85,6 +95,11 @@ class FormBuilderLocalizationsImplZhHant extends FormBuilderLocalizationsImplZh 
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return '值必須具有大於或等於$minWordsCount的單詞計數';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return '此欄位必須小於或等於$max';
   }
@@ -92,6 +107,11 @@ class FormBuilderLocalizationsImplZhHant extends FormBuilderLocalizationsImplZh 
   @override
   String maxLengthErrorText(Object maxLength) {
     return '此欄位的長度必須小於或等於$maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return '值必須具有小於或等於$maxWordsCount的單詞計數';
   }
 
   @override

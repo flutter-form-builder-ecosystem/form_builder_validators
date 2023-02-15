@@ -5,6 +5,8 @@
   "minLengthErrorText": "Hodnota musí mít délku větší než nebo rovnu {minLength}",
   "maxErrorText": "Hodnota musí být menší než nebo rovna {max}.",
   "maxLengthErrorText": "Hodnota musí mít délku menší než nebo rovnu {maxLength}.",
+  "minWordsCountErrorText": "Hodnota musí mít počet slov větší nebo rovná {minWordsCount}",
+  "maxWordsCountErrorText": "Hodnota musí mít počet slov menší nebo rovná {maxWordsCount}",
   "equalLengthErrorText": "Hodnota musí mít délku rovnu {length}",
   "emailErrorText": "Pole vyžaduje platnou e-mailovou adresu.",
   "integerErrorText": "Hodnota musí být celé číslo.",

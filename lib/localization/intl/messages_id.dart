@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Nilai harus memiliki kata yang diperhitungkan lebih besar dari atau sama dengan $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Nilai harus kurang dari atau sama dengan $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Panjang karakter harus kurang dari atau sama dengan $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Nilai harus memiliki jumlah kata kurang dari atau sama dengan $maxWordsCount';
   }
 
   @override

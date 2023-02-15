@@ -5,6 +5,8 @@
   "notEqualErrorText": "Vrijednost ne smije biti jednaka {value}.",
   "minErrorText": "Vrijednost mora biti veća ili jednaka {min}.",
   "minLengthErrorText": "Vrijednost mora biti duža ili jednaka {minLength} znakova.",
+  "minWordsCountErrorText": "Vrijednost mora imati riječi računanje veće ili jednake {minWordsCount}",
+  "maxWordsCountErrorText": "Vrijednost mora imati riječi koje računaju manje ili jednake {maxWordsCount}",
   "maxErrorText": "Vrijednost mora biti manja ili jednaka {max}",
   "maxLengthErrorText": "Vrijednost mora biti kraća ili jednaka {maxLength} znakova.",
   "equalLengthErrorText": "Vrijednost mora biti duga {length} znakova.",

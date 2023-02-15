@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'يجب أن لا يقل عدد الكلمات المدخلة عن $minWordsCount.';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'يجب أن لا تزيد القيمة المدخلة عن $max.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'يجب أن لا يزيد طول القيمة المدخلة عن $maxLength.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'يجب أن لا يزيد عدد الكلمات المدخلة عن $maxWordsCount.';
   }
 
   @override

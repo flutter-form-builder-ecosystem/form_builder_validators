@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplIt extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Il valore deve avere un conteggio di parole maggiore o uguale a $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Il valore inserito deve essere minore o uguale a $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplIt extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Il valore inserito deve avere una lunghezza minore o uguale a $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Il valore deve avere un conteggio di parole inferiore o uguale a $maxWordsCount';
   }
 
   @override

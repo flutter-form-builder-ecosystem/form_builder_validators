@@ -7,6 +7,8 @@
   "minLengthErrorText": "মান অবশ্যই {minLength} এর চেয়ে বেশি বা সমান সংখ্যা হতে হবে।",
   "maxErrorText": "মান অবশ্যই {max} এর কম বা সমান হতে হবে।",
   "maxLengthErrorText": "মান অবশ্যই {maxLength} এর থেকে কম বা সমান সংখ্যা হতে হবে।",
+  "minWordsCountErrorText": "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে {minWordsCount} এর চেয়ে বেশি বা সমান",
+  "maxWordsCountErrorText": "মান অবশ্যই একটি শব্দের গণনা থাকতে হবে {maxWordsCount} এর চেয়ে কম বা সমান",
   "emailErrorText": "একটি বৈধ ইমেল আইডি প্রয়োজন।",
   "urlErrorText": "একটি বৈধ ওয়েব এড্রেস প্রয়োজন।",
   "matchErrorText": "মান প্যাটার্নের সাথে মেলে না।",

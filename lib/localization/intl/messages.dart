@@ -181,6 +181,12 @@ abstract class FormBuilderLocalizationsImpl {
   /// Error Text for required field
   ///
   /// In en, this message translates to:
+  /// **'Value must have a words count greater than or equal to {minWordsCount}'**
+  String minWordsCountErrorText(Object minWordsCount);
+
+  /// Error Text for required field
+  ///
+  /// In en, this message translates to:
   /// **'Value must be less than or equal to {max}'**
   String maxErrorText(Object max);
 
@@ -189,6 +195,12 @@ abstract class FormBuilderLocalizationsImpl {
   /// In en, this message translates to:
   /// **'Value must have a length less than or equal to {maxLength}'**
   String maxLengthErrorText(Object maxLength);
+
+  /// Error Text for required field
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a words count less than or equal to {maxWordsCount}'**
+  String maxWordsCountErrorText(Object maxWordsCount);
 
   /// Error Text for required field
   ///

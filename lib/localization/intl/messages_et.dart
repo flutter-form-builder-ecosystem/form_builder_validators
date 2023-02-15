@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplEt extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Väärtuse sõnade arv peab olema suurem kui $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Väärtus ei tohi olla üle $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplEt extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Sisendi pikkus ei tohi olla üle $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Väärtuses peab olema sõnade arv vähem või võrdne $maxWordsCount';
   }
 
   @override

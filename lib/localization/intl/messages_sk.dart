@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplSk extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Hodnota musí mať počítanie slov väčšie alebo rovné $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Hodnota musí byť menšia alebo rovná ako $max.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplSk extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Hodnota musí mať dĺžku najviac $maxLength znakov.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Hodnota musí mať slová, ktoré sa počítajú menšie alebo rovné $maxWordsCount';
   }
 
   @override

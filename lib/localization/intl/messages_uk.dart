@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplUk extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Значення повинно мати слова врахувати більше або дорівнює $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Значення має бути менше або дорівнює $max.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplUk extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Довжина значеня Має бути менше або дорівнює $maxLength.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Значення повинно мати слова врахувати менше або дорівнює $maxWordsCount';
   }
 
   @override

@@ -5,6 +5,8 @@
   "minLengthErrorText": "مقدار باید دارای طول بزرگتر یا برابر {minLength} باشد.",
   "maxErrorText": "مقدار باید برابر یا کمتر از {max} باشد.",
   "maxLengthErrorText": "مقدار باید دارای طول بزرگتر یا برابر {maxLength} باشد.",
+  "minWordsCountErrorText": "مقدار باید یک کلمات بیشتر از یا مساوی با {minWordsCount} داشته باشد",
+  "maxWordsCountErrorText": "مقدار باید یک کلمات کمتر از یا مساوی با {maxWordsCount} داشته باشد",
   "emailErrorText": "این ورودی به یک آدرس ایمیل معتبر نیاز دارد.",
   "integerErrorText": "این ورودی به یک عدد صحیح معتبر نیاز دارد.",
   "equalErrorText": "مقدار این ورودی باید برابر با {value} باشد.",
