@@ -65,4 +65,14 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
 
   @override
   String get dateStringErrorText => 'Огнооны загварт таарахгүй байна.';
+
+  @override
+  String maxWordsCountErrorText(Object value) {
+    return 'Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой $value.';
+  }
+
+  @override
+  String minWordsCountErrorText(Object value) {
+    return 'Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой $value.';
+  }
 }
