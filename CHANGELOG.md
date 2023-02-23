@@ -1,3 +1,14 @@
+## 8.5.0
+
+* New validators for minWordsCount & maxWordsCount
+* Simplify arb files and correct intl_zh.arb
+* Build with Flutter 3.7.5
+* Add support for more languanges
+    - Mongolian
+    - Nepali and burmese
+    - Albanian
+    - Vietnamese
+
 ## 8.4.0
 
 * Refactor l10n generator. Thanks [@ipcjs]()
