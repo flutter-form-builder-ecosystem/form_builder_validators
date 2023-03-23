@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Giá trị phải có số từ lớn hơn hoặc bằng $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Giá trị phải nhỏ hơn hoặc bằng $max';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return 'Độ dài phải nhỏ hơn hoặc bằng $maxLength';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Giá trị phải có số từ nhỏ hơn hoặc bằng $maxWordsCount';
   }
 
   @override
@@ -65,14 +75,4 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
 
   @override
   String get dateStringErrorText => 'Yêu cầu nhập đúng định dạng ngày.';
-
-  @override
-  String maxWordsCountErrorText(Object value) {
-    return 'Giá trị phải có số từ nhỏ hơn hoặc bằng $value.';
-  }
-
-  @override
-  String minWordsCountErrorText(Object value) {
-    return 'Giá trị phải có số từ lớn hơn hoặc bằng $value.';
-  }
 }

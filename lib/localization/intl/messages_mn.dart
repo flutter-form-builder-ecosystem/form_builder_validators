@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return '$max-аас их утга оруулна уу.';
   }
@@ -25,6 +30,11 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
   @override
   String maxLengthErrorText(Object maxLength) {
     return '$maxLength-аас богино утга оруулна уу.';
+  }
+
+  @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой $maxWordsCount';
   }
 
   @override
@@ -65,14 +75,4 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
 
   @override
   String get dateStringErrorText => 'Огнооны загварт таарахгүй байна.';
-
-  @override
-  String maxWordsCountErrorText(Object value) {
-    return 'Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой $value.';
-  }
-
-  @override
-  String minWordsCountErrorText(Object value) {
-    return 'Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой $value.';
-  }
 }

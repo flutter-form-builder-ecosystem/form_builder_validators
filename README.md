@@ -96,6 +96,7 @@ Validators support default errorText messages in this languages:
 - Slovenian (sl)
 - Spanish (es)
 - Swahili (sw)
+- Swedish (se)
 - Ukrainian (uk)
 - Tamil(ta)
 - Thai (th)

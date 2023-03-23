@@ -110,7 +110,7 @@
     "description": "Error Text for date string field",
     "type": "text",
     "placeholders": {}
-  }
-  "maxWordsCountErrorText": "Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой {maxWordsCount}",
+  },
+  "maxWordsCountErrorText" : "Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой {maxWordsCount}",
   "minWordsCountErrorText": "Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой {minWordsCount}"
 }
