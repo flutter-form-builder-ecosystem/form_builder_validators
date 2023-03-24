@@ -43,7 +43,7 @@ class FormBuilderLocalizationsImplEt extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get emailErrorText => 'Sellele väljale tuleb sisestada korrektne meiliaadress.';
+  String get emailErrorText => 'This field requires a valid email address.';
 
   @override
   String get integerErrorText => 'Sisend peab olema täisarv.';

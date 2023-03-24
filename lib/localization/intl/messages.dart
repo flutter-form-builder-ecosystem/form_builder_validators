@@ -31,8 +31,10 @@ import 'messages_pl.dart';
 import 'messages_pt.dart';
 import 'messages_ro.dart';
 import 'messages_ru.dart';
+import 'messages_se.dart';
 import 'messages_sk.dart';
 import 'messages_sl.dart';
+import 'messages_sq.dart';
 import 'messages_sw.dart';
 import 'messages_ta.dart';
 import 'messages_th.dart';
@@ -122,6 +124,7 @@ abstract class FormBuilderLocalizationsImpl {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('sq'),
     Locale('ar'),
     Locale('bn'),
     Locale('bs'),
@@ -148,6 +151,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('pt'),
     Locale('ro'),
     Locale('ru'),
+    Locale('se'),
     Locale('sk'),
     Locale('sl'),
     Locale('sw'),
@@ -278,7 +282,7 @@ class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBu
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['sq', 'ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
@@ -298,6 +302,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'sq': return FormBuilderLocalizationsImplSq();
     case 'ar': return FormBuilderLocalizationsImplAr();
     case 'bn': return FormBuilderLocalizationsImplBn();
     case 'bs': return FormBuilderLocalizationsImplBs();
@@ -324,6 +329,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'pt': return FormBuilderLocalizationsImplPt();
     case 'ro': return FormBuilderLocalizationsImplRo();
     case 'ru': return FormBuilderLocalizationsImplRu();
+    case 'se': return FormBuilderLocalizationsImplSe();
     case 'sk': return FormBuilderLocalizationsImplSk();
     case 'sl': return FormBuilderLocalizationsImplSl();
     case 'sw': return FormBuilderLocalizationsImplSw();
