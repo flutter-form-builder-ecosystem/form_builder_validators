@@ -140,7 +140,7 @@ TextFormField(
 ),
 ```
 
-See [pud.dev example tab](https://pub.dev/packages/form_builder_validators/example) or [github code](example/lib/main.dart) for more details
+See [pub.dev example tab](https://pub.dev/packages/form_builder_validators/example) or [github code](example/lib/main.dart) for more details
 
 ### Especific uses
 
