@@ -8,8 +8,6 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/Base?logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
 [![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_validators/)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_validators)
-[![Discord](https://img.shields.io/discord/985922433578053673?logo=discord&style=for-the-badge)](https://discord.com/invite/25KNPMJQf2)
-
 ---
 
 > ### Migrating from version 7 to 8
@@ -225,7 +223,7 @@ Submit your PR and be of help to millions of developers all over the world!
 
 ### Questions and answers
 
-You can join to [our Discord server](https://discord.gg/25KNPMJQf2) or search answers in [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
+You can question or search answers on [Github discussion](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/discussions) or on [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
 
 ### Donations
 
