@@ -1,3 +1,7 @@
+## 8.6.1
+
+* Add missed translations for some languages
+
 ## 8.6.0
 
 * Add missed translations for all languages
