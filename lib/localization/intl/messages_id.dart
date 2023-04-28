@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplId([String locale = 'id']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Bidang ini tidak boleh kosong.';
+  String get creditCardErrorText => 'Nomor kartu kredit tidak valid.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Nilai harus lebih besar dari atau sama dengan $min.';
+  String get dateStringErrorText => 'Tanggal tidak valid';
+
+  @override
+  String get emailErrorText => 'Alamat email tidak valid.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Nilai bidang ini harus sama dengan $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Panjang karakter harus lebih besar dari atau sama dengan $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'Nilai harus memiliki panjang yang sama dengan $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Nilai harus memiliki kata yang diperhitungkan lebih besar dari atau sama dengan $minWordsCount';
-  }
+  String get integerErrorText => 'Nilai harus berupa bilangan bulat.';
+
+  @override
+  String get ipErrorText => 'Alamat IP tidak valid.';
+
+  @override
+  String get matchErrorText => 'Nilai tidak cocok dengan pola.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'Nilai harus lebih besar dari atau sama dengan $min.';
   }
 
   @override
-  String get emailErrorText => 'Alamat email tidak valid.';
+  String minLengthErrorText(Object minLength) {
+    return 'Panjang karakter harus lebih besar dari atau sama dengan $minLength';
+  }
 
   @override
-  String get integerErrorText => 'Nilai harus berupa bilangan bulat.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Nilai bidang ini harus sama dengan $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Nilai harus memiliki kata yang diperhitungkan lebih besar dari atau sama dengan $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplId extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'URL tidak valid';
-
-  @override
-  String get matchErrorText => 'Nilai tidak cocok dengan pola.';
-
-  @override
   String get numericErrorText => 'Nilai harus berupa angka.';
 
   @override
-  String get creditCardErrorText => 'Nomor kartu kredit tidak valid.';
+  String get requiredErrorText => 'Bidang ini tidak boleh kosong.';
 
   @override
-  String get ipErrorText => 'Alamat IP tidak valid.';
-
-  @override
-  String get dateStringErrorText => 'Tanggal tidak valid';
+  String get urlErrorText => 'URL tidak valid';
 }

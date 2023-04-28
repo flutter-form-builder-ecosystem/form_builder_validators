@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplBn extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplBn([String locale = 'bn']) : super(locale);
 
   @override
-  String get requiredErrorText => 'খালি রাখা যাবে না।';
+  String get creditCardErrorText => 'বৈধ ক্রেডিট কার্ড নম্বর প্রয়োজন।';
 
   @override
-  String minErrorText(Object min) {
-    return 'মান অবশ্যই $min এর থেকে বেশি বা সমান হতে হবে।';
+  String get dateStringErrorText => 'একটি বৈধ তারিখ প্রয়োজন।';
+
+  @override
+  String get emailErrorText => 'একটি বৈধ ইমেল আইডি প্রয়োজন।';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'মান $value সমান হতে হবে।';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'মান অবশ্যই $minLength এর চেয়ে বেশি বা সমান সংখ্যা হতে হবে।';
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'মান অবশ্যই একটি শব্দের গণনা থাকতে হবে $minWordsCount এর চেয়ে বেশি বা সমান';
-  }
+  String get integerErrorText => 'মান অবশ্যই একটি পূর্ণসংখ্যা হতে হবে।';
+
+  @override
+  String get ipErrorText => 'একটি বৈধ আইপি এড্রেস প্রয়োজন।';
+
+  @override
+  String get matchErrorText => 'মান প্যাটার্নের সাথে মেলে না।';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplBn extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'মান অবশ্যই $min এর থেকে বেশি বা সমান হতে হবে।';
   }
 
   @override
-  String get emailErrorText => 'একটি বৈধ ইমেল আইডি প্রয়োজন।';
+  String minLengthErrorText(Object minLength) {
+    return 'মান অবশ্যই $minLength এর চেয়ে বেশি বা সমান সংখ্যা হতে হবে।';
+  }
 
   @override
-  String get integerErrorText => 'মান অবশ্যই একটি পূর্ণসংখ্যা হতে হবে।';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'মান $value সমান হতে হবে।';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'মান অবশ্যই একটি শব্দের গণনা থাকতে হবে $minWordsCount এর চেয়ে বেশি বা সমান';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplBn extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'একটি বৈধ ওয়েব এড্রেস প্রয়োজন।';
-
-  @override
-  String get matchErrorText => 'মান প্যাটার্নের সাথে মেলে না।';
-
-  @override
   String get numericErrorText => 'মান অবশ্যই সংখ্যায় হতে হবে।';
 
   @override
-  String get creditCardErrorText => 'বৈধ ক্রেডিট কার্ড নম্বর প্রয়োজন।';
+  String get requiredErrorText => 'খালি রাখা যাবে না।';
 
   @override
-  String get ipErrorText => 'একটি বৈধ আইপি এড্রেস প্রয়োজন।';
-
-  @override
-  String get dateStringErrorText => 'একটি বৈধ তারিখ প্রয়োজন।';
+  String get urlErrorText => 'একটি বৈধ ওয়েব এড্রেস প্রয়োজন।';
 }

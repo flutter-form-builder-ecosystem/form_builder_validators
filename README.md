@@ -5,7 +5,7 @@ Form Builder Validators set of validators for `FlutterFormBuilder`. Provides com
 Also included is the `l10n` / `i18n` of error text messages to multiple languages.
 
 [![Pub Version](https://img.shields.io/pub/v/form_builder_validators?logo=flutter&style=for-the-badge)](https://pub.dev/packages/form_builder_validators)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/Base?logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/base.yaml?branch=main&logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
 [![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_validators/)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_validators)
 ---
@@ -21,8 +21,12 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
   - [Setup](#setup)
   - [Basic use](#basic-use)
   - [Especific uses](#especific-uses)
+    - [Composing multiple validators](#composing-multiple-validators)
+    - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
 - [Support](#support)
   - [Contribute](#contribute)
+    - [Add new supported language](#add-new-supported-language)
+    - [Add new validator](#add-new-validator)
   - [Questions and answers](#questions-and-answers)
   - [Donations](#donations)
 - [Roadmap](#roadmap)
@@ -73,19 +77,21 @@ Validators support default errorText messages in this languages:
 - Chinese Traditional (zh_Hant)
 - Croatian (hr)
 - Czech (cs)
+- Dutch (nl)
 - English (en)
 - Estonian (et)
-- Dutch (nl)
 - Farsi/Persian (fa)
 - French (fr)
-- Greek (el)  
 - German (de)
+- Greek (el)  
 - Hungarian (hu)
 - Indonesian (id)
 - Italian (it)
 - Japanese (ja)
 - Korean (ko)
 - Lao (lo)
+- Malay (ms)
+- Mongolian (mn)
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)
@@ -95,12 +101,10 @@ Validators support default errorText messages in this languages:
 - Spanish (es)
 - Swahili (sw)
 - Swedish (se)
-- Ukrainian (uk)
 - Tamil(ta)
 - Thai (th)
 - Turkish (tr)
-- Malay (ms)
-- Mongolian (mn)
+- Ukrainian (uk)
 - Vietnamese (vi)
 
 And you can still add your custom error messages.
@@ -203,7 +207,7 @@ Create one ARB file inside the `lib/l10n` folder for each of the locales you nee
 
 2. Translate the error messages
 
-Duplicate the contents of `intl_en.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
+Copy and paste the contents of `intl_en.arb` into your newly created ARB file. Then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
 
@@ -215,11 +219,22 @@ Running the command will automatically create/update files inside the `lib/local
 
 4. Update README
 
-Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) so that everyone knows your new language is now supported!
+Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) in alphabetic order, so that everyone knows your new language is now supported!
 
 5. Submit PR
 
 Submit your PR and be of help to millions of developers all over the world!
+
+#### Add new validator
+
+1. Add method to `validators.dart` with your Dart documentation
+2. Implement tests
+3. Add to [validators](#validators) with name and description
+4. Add message error translated on all languages (yes, all languages). To accomplish this need:
+   a. Add property to all `intl_*.arb` files, on alphabetic order.
+   b. Translate message on all languages.
+   c. Run `flutter gen-l10n` command
+5. Submit PR
 
 ### Questions and answers
 

@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplSe extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSe([String locale = 'se']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Detta fält får inte vara tomt.';
+  String get creditCardErrorText => 'Detta fält kräver ett giltigt kreditkortsnummer.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Värdet måste vara större än eller lika med $min.';
+  String get dateStringErrorText => 'Detta fält kräver ett giltigt datum.';
+
+  @override
+  String get emailErrorText => 'Detta fält kräver en giltig e-postadress.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Detta fältvärde måste vara lika med $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Värdet måste ha en längd större än eller lika med $minLength.';
+  String equalLengthErrorText(Object length) {
+    return 'Värdet måste ha en längd lika med $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Värdet måste ha ett antal ord som är större än eller lika med $minWordsCount';
-  }
+  String get integerErrorText => 'Värdet måste vara ett heltal.';
+
+  @override
+  String get ipErrorText => 'Detta fält kräver en giltig IP-adress.';
+
+  @override
+  String get matchErrorText => 'Värdet matchar inte mönstret.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,41 +48,31 @@ class FormBuilderLocalizationsImplSe extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'Värdet måste vara större än eller lika med $min.';
   }
 
   @override
-  String get emailErrorText => 'Detta fält kräver en giltig e-postadress.';
+  String minLengthErrorText(Object minLength) {
+    return 'Värdet måste ha en längd större än eller lika med $minLength.';
+  }
 
   @override
-  String get integerErrorText => 'Värdet måste vara ett heltal.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Detta fältvärde måste vara lika med $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Värdet måste ha ett antal ord som är större än eller lika med $minWordsCount';
   }
 
   @override
   String notEqualErrorText(Object value) {
-    return 'This field value must not be equal to $value.';
+    return 'Detta fältvärde får inte vara lika med $value.';
   }
-
-  @override
-  String get urlErrorText => 'Detta fält kräver en giltig URL-adress.';
-
-  @override
-  String get matchErrorText => 'Värdet matchar inte mönstret.';
 
   @override
   String get numericErrorText => 'Värdet måste vara numeriskt.';
 
   @override
-  String get creditCardErrorText => 'Detta fält kräver ett giltigt kreditkortsnummer.';
+  String get requiredErrorText => 'Detta fält får inte vara tomt.';
 
   @override
-  String get ipErrorText => 'Detta fält kräver en giltig IP-adress.';
-
-  @override
-  String get dateStringErrorText => 'Detta fält kräver ett giltigt datum.';
+  String get urlErrorText => 'Detta fält kräver en giltig URL-adress.';
 }

@@ -13,6 +13,12 @@ class FormBuilderLocalizationsImplMy extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    /// TODO: Translate
+    return 'Value must have a words count greater than or equal to $minWordsCount';
+  }
+
+  @override
   String minLengthErrorText(Object minLength) {
     return 'တန်ဖိုးသည် အရှည်ထက် ကြီးသည် သို့မဟုတ် ညီမျှရပါမည်။ $minLength';
   }
@@ -28,15 +34,23 @@ class FormBuilderLocalizationsImplMy extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    /// TODO: Translate
+    return 'Value must have a words count less than or equal to $maxWordsCount';
+  }
+
+  @override
   String equalLengthErrorText(Object length) {
     return 'တန်ဖိုးနှင့် ညီမျှသော အလျားရှိရမည်။ $length';
   }
 
   @override
-  String get emailErrorText => 'ဤအကွက်တွင် မှန်ကန်သော အီးမေးလ်လိပ်စာတစ်ခု လိုအပ်ပါသည်။';
+  String get emailErrorText =>
+      'ဤအကွက်တွင် မှန်ကန်သော အီးမေးလ်လိပ်စာတစ်ခု လိုအပ်ပါသည်။';
 
   @override
-  String get integerErrorText => 'ဤအကွက်သည် မှန်ကန်သော ကိန်းပြည့်တစ်ခု လိုအပ်သည်။';
+  String get integerErrorText =>
+      'ဤအကွက်သည် မှန်ကန်သော ကိန်းပြည့်တစ်ခု လိုအပ်သည်။';
 
   @override
   String equalErrorText(Object value) {
@@ -58,11 +72,13 @@ class FormBuilderLocalizationsImplMy extends FormBuilderLocalizationsImpl {
   String get numericErrorText => 'တန်ဖိုးသည် ဂဏန်းဖြစ်ရမည်။';
 
   @override
-  String get creditCardErrorText => 'ဤအကွက်တွင် မှန်ကန်သော ခရက်ဒစ်ကတ်နံပါတ်တစ်ခု လိုအပ်သည်။';
+  String get creditCardErrorText =>
+      'ဤအကွက်တွင် မှန်ကန်သော ခရက်ဒစ်ကတ်နံပါတ်တစ်ခု လိုအပ်သည်။';
 
   @override
   String get ipErrorText => 'ဤအကွက်သည် တရားဝင် IP လိုအပ်သည်။';
 
   @override
-  String get dateStringErrorText => 'ဤအကွက်တွင် မှန်ကန်သော ရက်စွဲစာကြောင်း လိုအပ်သည်။';
+  String get dateStringErrorText =>
+      'ဤအကွက်တွင် မှန်ကန်သော ရက်စွဲစာကြောင်း လိုအပ်သည်။';
 }

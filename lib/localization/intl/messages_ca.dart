@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplCa extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplCa([String locale = 'ca']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Aquest camp no pot estar buit.';
+  String get creditCardErrorText => 'Aquest camp requereix un número de targeta de crèdit vàlid.';
 
   @override
-  String minErrorText(Object min) {
-    return 'El valor ha de ser superior o igual a $min.';
+  String get dateStringErrorText => 'Aquest camp requereix una cadena de data vàlida.';
+
+  @override
+  String get emailErrorText => 'Aquest camp requereix una adreça de correu electrònic vàlida.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Aquest valor de camp ha de ser igual a $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'El valor ha de tenir una longitud superior o igual a $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'El valor ha de tenir una longitud igual a $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'El valor ha de tenir un compte de paraules superior o igual a $minWordsCount';
-  }
+  String get integerErrorText => 'Aquest camp requereix un nombre enter vàlid.';
+
+  @override
+  String get ipErrorText => 'Aquest camp requereix una IP vàlida.';
+
+  @override
+  String get matchErrorText => 'El valor no coincideix amb el patró.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplCa extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'El valor ha de ser superior o igual a $min.';
   }
 
   @override
-  String get emailErrorText => 'Aquest camp requereix una adreça de correu electrònic vàlida.';
+  String minLengthErrorText(Object minLength) {
+    return 'El valor ha de tenir una longitud superior o igual a $minLength';
+  }
 
   @override
-  String get integerErrorText => 'Aquest camp requereix un nombre enter vàlid.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Aquest valor de camp ha de ser igual a $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'El valor ha de tenir un compte de paraules superior o igual a $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplCa extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Aquest camp requereix una adreça URL vàlida.';
-
-  @override
-  String get matchErrorText => 'El valor no coincideix amb el patró.';
-
-  @override
   String get numericErrorText => 'El valor ha de ser numèric.';
 
   @override
-  String get creditCardErrorText => 'Aquest camp requereix un número de targeta de crèdit vàlid.';
+  String get requiredErrorText => 'Aquest camp no pot estar buit.';
 
   @override
-  String get ipErrorText => 'Aquest camp requereix una IP vàlida.';
-
-  @override
-  String get dateStringErrorText => 'Aquest camp requereix una cadena de data vàlida.';
+  String get urlErrorText => 'Aquest camp requereix una adreça URL vàlida.';
 }

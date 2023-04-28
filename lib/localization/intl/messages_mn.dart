@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplMn([String locale = 'mn']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Заавал бөглөнө үү.';
+  String get creditCardErrorText => 'Картын дугаар алдаатай байна.';
 
   @override
-  String minErrorText(Object min) {
-    return '$min-аас их утга оруулна уу.';
+  String get dateStringErrorText => 'Огнооны загварт таарахгүй байна.';
+
+  @override
+  String get emailErrorText => 'И-мэйл хаяг алдаатай байна.';
+
+  @override
+  String equalErrorText(Object value) {
+    return '$value-тэй тэнцүү утга оруулна уу.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return '$minLength-аас урт утга оруулна уу.';
+  String equalLengthErrorText(Object length) {
+    return '$length-тэй тэнцүү урттай утга оруулна уу.';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой $minWordsCount';
-  }
+  String get integerErrorText => 'Бүхэл тоон утга оруулна уу.';
+
+  @override
+  String get ipErrorText => 'IP хаяг алдаатай байна.';
+
+  @override
+  String get matchErrorText => 'Утга загварт таарахгүй байна.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return '$length-тэй тэнцүү урттай утга оруулна уу.';
+  String minErrorText(Object min) {
+    return '$min-аас их утга оруулна уу.';
   }
 
   @override
-  String get emailErrorText => 'И-мэйл хаяг алдаатай байна.';
+  String minLengthErrorText(Object minLength) {
+    return '$minLength-аас урт утга оруулна уу.';
+  }
 
   @override
-  String get integerErrorText => 'Бүхэл тоон утга оруулна уу.';
-
-  @override
-  String equalErrorText(Object value) {
-    return '$value-тэй тэнцүү утга оруулна уу.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Утга нь түүнээс их буюу тэнцүү тооны үгтэй байх ёстой $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'URL хаяг алдаатай байна.';
-
-  @override
-  String get matchErrorText => 'Утга загварт таарахгүй байна.';
-
-  @override
   String get numericErrorText => 'Тоон утга оруулна уу.';
 
   @override
-  String get creditCardErrorText => 'Картын дугаар алдаатай байна.';
+  String get requiredErrorText => 'Заавал бөглөнө үү.';
 
   @override
-  String get ipErrorText => 'IP хаяг алдаатай байна.';
-
-  @override
-  String get dateStringErrorText => 'Огнооны загварт таарахгүй байна.';
+  String get urlErrorText => 'URL хаяг алдаатай байна.';
 }

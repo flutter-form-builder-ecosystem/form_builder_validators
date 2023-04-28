@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplRu extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Поле не может быть пустым.';
+  String get creditCardErrorText => 'Значение поля должно быть номером кредитной карты.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Значение должно быть больше или равно $min.';
+  String get dateStringErrorText => 'Поле должно быть датой.';
+
+  @override
+  String get emailErrorText => 'Поле должно быть email адресом.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Это значение поля должно быть равным $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Длина значения должно быть больше или равно $minLength.';
+  String equalLengthErrorText(Object length) {
+    return 'Value must have a length equal to $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Значение должно иметь слов, больше или равно $minWordsCount';
-  }
+  String get integerErrorText => 'Поле должно быть целым числом.';
+
+  @override
+  String get ipErrorText => 'Поле должно быть IP номером.';
+
+  @override
+  String get matchErrorText => 'Значение должно удовлетворять шаблону.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplRu extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'Значение должно быть больше или равно $min.';
   }
 
   @override
-  String get emailErrorText => 'Поле должно быть email адресом.';
+  String minLengthErrorText(Object minLength) {
+    return 'Длина значения должно быть больше или равно $minLength.';
+  }
 
   @override
-  String get integerErrorText => 'Поле должно быть целым числом.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Значение поля должно быть равно $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Значение должно иметь слов, больше или равно $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplRu extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Поле должно быть URL адресом.';
-
-  @override
-  String get matchErrorText => 'Значение должно удовлетворять шаблону.';
-
-  @override
   String get numericErrorText => 'Значение должно быть числом.';
 
   @override
-  String get creditCardErrorText => 'Значение поля должно быть номером кредитной карты.';
+  String get requiredErrorText => 'Поле не может быть пустым.';
 
   @override
-  String get ipErrorText => 'Поле должно быть IP номером.';
-
-  @override
-  String get dateStringErrorText => 'Поле должно быть датой.';
+  String get urlErrorText => 'Поле должно быть URL адресом.';
 }

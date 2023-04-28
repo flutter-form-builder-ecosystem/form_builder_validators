@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Không được bỏ trống.';
+  String get creditCardErrorText => 'Yêu cầu nhập đúng số thẻ tín dụng.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Giá trị phải lớn hơn hoặc bằng $min.';
+  String get dateStringErrorText => 'Yêu cầu nhập đúng định dạng ngày.';
+
+  @override
+  String get emailErrorText => 'Nhập đúng email.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Bắt buộc bằng $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Độ dài phải lớn hơn hoặc bằng $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'Độ dài phải bằng $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Giá trị phải có số từ lớn hơn hoặc bằng $minWordsCount';
-  }
+  String get integerErrorText => 'Yêu cầu nhập một số nguyên.';
+
+  @override
+  String get ipErrorText => 'Yêu cầu nhập đúng địa chỉ IP.';
+
+  @override
+  String get matchErrorText => 'Giá trị không khớp.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Độ dài phải bằng $length';
+  String minErrorText(Object min) {
+    return 'Giá trị phải lớn hơn hoặc bằng $min.';
   }
 
   @override
-  String get emailErrorText => 'Nhập đúng email.';
+  String minLengthErrorText(Object minLength) {
+    return 'Độ dài phải lớn hơn hoặc bằng $minLength';
+  }
 
   @override
-  String get integerErrorText => 'Yêu cầu nhập một số nguyên.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Bắt buộc bằng $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Giá trị phải có số từ lớn hơn hoặc bằng $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplVi extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Nhập đúng địa chỉ URL.';
-
-  @override
-  String get matchErrorText => 'Giá trị không khớp.';
-
-  @override
   String get numericErrorText => 'Yêu cầu nhập một số.';
 
   @override
-  String get creditCardErrorText => 'Yêu cầu nhập đúng số thẻ tín dụng.';
+  String get requiredErrorText => 'Không được bỏ trống.';
 
   @override
-  String get ipErrorText => 'Yêu cầu nhập đúng địa chỉ IP.';
-
-  @override
-  String get dateStringErrorText => 'Yêu cầu nhập đúng định dạng ngày.';
+  String get urlErrorText => 'Nhập đúng địa chỉ URL.';
 }

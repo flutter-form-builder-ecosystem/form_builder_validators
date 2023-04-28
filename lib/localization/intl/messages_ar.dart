@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get requiredErrorText => 'هذا الحقل يجب ملؤه.';
+  String get creditCardErrorText => 'القيمة المدخلة لا تصلح كرقم بطاقة إئتمانية.';
 
   @override
-  String minErrorText(Object min) {
-    return 'يجب أن لا تقل القيمة المدخلة عن $min.';
+  String get dateStringErrorText => 'هذا الحقل يتطلب تاريخا صالحا.';
+
+  @override
+  String get emailErrorText => 'هذا الحقل يتطلب عنوان بريد إلكتروني صالح.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'يجب أن تكون القيمة المدخلة مساوية لـ $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'يجب أن لا يقل طول القيمة المدخلة عن $minLength.';
+  String equalLengthErrorText(Object length) {
+    return 'يجب أن يكون طول القيمة يساوي $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'يجب أن لا يقل عدد الكلمات المدخلة عن $minWordsCount.';
-  }
+  String get integerErrorText => 'القيمة المدخلة ليست رقما صحيحا.';
+
+  @override
+  String get ipErrorText => 'هذا الحقل يتطلب عنوان IP صالح.';
+
+  @override
+  String get matchErrorText => 'القيمة المدخلة لا تطابق الصيغة المطلوبة.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String minErrorText(Object min) {
+    return 'يجب أن لا تقل القيمة المدخلة عن $min.';
   }
 
   @override
-  String get emailErrorText => 'هذا الحقل يتطلب عنوان بريد إلكتروني صالح.';
+  String minLengthErrorText(Object minLength) {
+    return 'يجب أن لا يقل طول القيمة المدخلة عن $minLength.';
+  }
 
   @override
-  String get integerErrorText => 'القيمة المدخلة ليست رقما صحيحا.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'يجب أن تكون القيمة المدخلة مساوية لـ $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'يجب أن لا يقل عدد الكلمات المدخلة عن $minWordsCount.';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'هذا الحقل يتطلب عنوان URL صالح.';
-
-  @override
-  String get matchErrorText => 'القيمة المدخلة لا تطابق الصيغة المطلوبة.';
-
-  @override
   String get numericErrorText => 'القيمة المدخلة ليست رقما.';
 
   @override
-  String get creditCardErrorText => 'القيمة المدخلة لا تصلح كرقم بطاقة إئتمانية.';
+  String get requiredErrorText => 'هذا الحقل يجب ملؤه.';
 
   @override
-  String get ipErrorText => 'هذا الحقل يتطلب عنوان IP صالح.';
-
-  @override
-  String get dateStringErrorText => 'هذا الحقل يتطلب تاريخا صالحا.';
+  String get urlErrorText => 'هذا الحقل يتطلب عنوان URL صالح.';
 }

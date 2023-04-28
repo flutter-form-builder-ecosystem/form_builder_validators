@@ -5,22 +5,32 @@ class FormBuilderLocalizationsImplCs extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Pole nemůže být prázdné.';
+  String get creditCardErrorText => 'Pole vyžaduje platné číslo kreditní karty.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Hodnota musí být větší než nebo rovna $min.';
+  String get dateStringErrorText => 'Pole vyžaduje platný zápis data.';
+
+  @override
+  String get emailErrorText => 'Pole vyžaduje platnou e-mailovou adresu.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Hodnota se musí rovnat $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Hodnota musí mít délku větší než nebo rovnu $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'Hodnota musí mít délku rovnu $length';
   }
 
   @override
-  String minWordsCountErrorText(Object minWordsCount) {
-    return 'Hodnota musí mít počet slov větší nebo rovná $minWordsCount';
-  }
+  String get integerErrorText => 'Hodnota musí být celé číslo.';
+
+  @override
+  String get ipErrorText => 'Pole vyžaduje platnou IP adresu.';
+
+  @override
+  String get matchErrorText => 'Hodnota neodpovídá vzoru.';
 
   @override
   String maxErrorText(Object max) {
@@ -38,19 +48,18 @@ class FormBuilderLocalizationsImplCs extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Hodnota musí mít délku rovnu $length';
+  String minErrorText(Object min) {
+    return 'Hodnota musí být větší než nebo rovna $min.';
   }
 
   @override
-  String get emailErrorText => 'Pole vyžaduje platnou e-mailovou adresu.';
+  String minLengthErrorText(Object minLength) {
+    return 'Hodnota musí mít délku větší než nebo rovnu $minLength';
+  }
 
   @override
-  String get integerErrorText => 'Hodnota musí být celé číslo.';
-
-  @override
-  String equalErrorText(Object value) {
-    return 'Hodnota se musí rovnat $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Hodnota musí mít počet slov větší nebo rovná $minWordsCount';
   }
 
   @override
@@ -59,20 +68,11 @@ class FormBuilderLocalizationsImplCs extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Pole vyžaduje platnou adresu URL.';
-
-  @override
-  String get matchErrorText => 'Hodnota neodpovídá vzoru.';
-
-  @override
   String get numericErrorText => 'Hodnota musí být číslo.';
 
   @override
-  String get creditCardErrorText => 'Pole vyžaduje platné číslo kreditní karty.';
+  String get requiredErrorText => 'Pole nemůže být prázdné.';
 
   @override
-  String get ipErrorText => 'Pole vyžaduje platnou IP adresu.';
-
-  @override
-  String get dateStringErrorText => 'Pole vyžaduje platný zápis data.';
+  String get urlErrorText => 'Pole vyžaduje platnou adresu URL.';
 }

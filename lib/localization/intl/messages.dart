@@ -164,113 +164,113 @@ abstract class FormBuilderLocalizationsImpl {
     Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant')
   ];
 
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'This field cannot be empty.'**
-  String get requiredErrorText;
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be greater than or equal to {min}.'**
-  String minErrorText(Object min);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length greater than or equal to {minLength}'**
-  String minLengthErrorText(Object minLength);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a words count greater than or equal to {minWordsCount}'**
-  String minWordsCountErrorText(Object minWordsCount);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be less than or equal to {max}'**
-  String maxErrorText(Object max);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length less than or equal to {maxLength}'**
-  String maxLengthErrorText(Object maxLength);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a words count less than or equal to {maxWordsCount}'**
-  String maxWordsCountErrorText(Object maxWordsCount);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length equal to {length}'**
-  String equalLengthErrorText(Object length);
-
-  /// Error Text for email field
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid email address.'**
-  String get emailErrorText;
-
-  /// Error Text for integer validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid integer.'**
-  String get integerErrorText;
-
-  /// Error Text for equal validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field value must be equal to {value}.'**
-  String equalErrorText(Object value);
-
-  /// Error Text for not-equal validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field value must not be equal to {value}.'**
-  String notEqualErrorText(Object value);
-
-  /// Error Text for URL field
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid URL address.'**
-  String get urlErrorText;
-
-  /// Error Text for pattern field
-  ///
-  /// In en, this message translates to:
-  /// **'Value does not match pattern.'**
-  String get matchErrorText;
-
-  /// Error Text for numeric field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be numeric.'**
-  String get numericErrorText;
-
-  /// Error Text for credit card field
+  /// No description provided for @creditCardErrorText.
   ///
   /// In en, this message translates to:
   /// **'This field requires a valid credit card number.'**
   String get creditCardErrorText;
 
-  /// Error Text for IP address field
+  /// No description provided for @dateStringErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid date string.'**
+  String get dateStringErrorText;
+
+  /// No description provided for @emailErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid email address.'**
+  String get emailErrorText;
+
+  /// No description provided for @equalErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field value must be equal to {value}.'**
+  String equalErrorText(Object value);
+
+  /// No description provided for @equalLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length equal to {length}'**
+  String equalLengthErrorText(Object length);
+
+  /// No description provided for @integerErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid integer.'**
+  String get integerErrorText;
+
+  /// No description provided for @ipErrorText.
   ///
   /// In en, this message translates to:
   /// **'This field requires a valid IP.'**
   String get ipErrorText;
 
-  /// Error Text for date string field
+  /// No description provided for @matchErrorText.
   ///
   /// In en, this message translates to:
-  /// **'This field requires a valid date string.'**
-  String get dateStringErrorText;
+  /// **'Value does not match pattern.'**
+  String get matchErrorText;
+
+  /// No description provided for @maxErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be less than or equal to {max}'**
+  String maxErrorText(Object max);
+
+  /// No description provided for @maxLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length less than or equal to {maxLength}'**
+  String maxLengthErrorText(Object maxLength);
+
+  /// No description provided for @maxWordsCountErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a words count less than or equal to {maxWordsCount}'**
+  String maxWordsCountErrorText(Object maxWordsCount);
+
+  /// No description provided for @minErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be greater than or equal to {min}.'**
+  String minErrorText(Object min);
+
+  /// No description provided for @minLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length greater than or equal to {minLength}'**
+  String minLengthErrorText(Object minLength);
+
+  /// No description provided for @minWordsCountErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a words count greater than or equal to {minWordsCount}'**
+  String minWordsCountErrorText(Object minWordsCount);
+
+  /// No description provided for @notEqualErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field value must not be equal to {value}.'**
+  String notEqualErrorText(Object value);
+
+  /// No description provided for @numericErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be numeric.'**
+  String get numericErrorText;
+
+  /// No description provided for @requiredErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field cannot be empty.'**
+  String get requiredErrorText;
+
+  /// No description provided for @urlErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid URL address.'**
+  String get urlErrorText;
 }
 
 class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {

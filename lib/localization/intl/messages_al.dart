@@ -18,6 +18,11 @@ class FormBuilderLocalizationsImplAl extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Vlera duhet të ketë një numër fjalësh më të madh ose të barabartë me $minWordsCount';
+  }
+
+  @override
   String maxErrorText(Object max) {
     return 'Vlera duhet të jetë më e vogël ose e barabartë me $max';
   }
@@ -28,15 +33,22 @@ class FormBuilderLocalizationsImplAl extends FormBuilderLocalizationsImpl {
   }
 
   @override
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Vlera duhet të ketë një numër fjalësh më të vogël ose të barabartë me $maxWordsCount';
+  }
+
+  @override
   String equalLengthErrorText(Object length) {
     return 'Vlera duhet të ketë nje gjatësi të barabartë me $length';
   }
 
   @override
-  String get emailErrorText => 'Kjo fushe kërkon një adresë e E-mail-i të vlefshëme.';
+  String get emailErrorText =>
+      'Kjo fushe kërkon një adresë e E-mail-i të vlefshëme.';
 
   @override
-  String get integerErrorText => 'Kjo fushe kërkon një numër të plotë të vlefshëm.';
+  String get integerErrorText =>
+      'Kjo fushe kërkon një numër të plotë të vlefshëm.';
 
   @override
   String equalErrorText(Object value) {
@@ -58,7 +70,8 @@ class FormBuilderLocalizationsImplAl extends FormBuilderLocalizationsImpl {
   String get numericErrorText => 'Vlera duhet të jetë numerike.';
 
   @override
-  String get creditCardErrorText => 'Kjo fushë kërkon një numër të vlefshëm per karten e kreditit.';
+  String get creditCardErrorText =>
+      'Kjo fushë kërkon një numër të vlefshëm per karten e kreditit.';
 
   @override
   String get ipErrorText => 'Kjo fushë kërkon një IP të vlefshme.';
