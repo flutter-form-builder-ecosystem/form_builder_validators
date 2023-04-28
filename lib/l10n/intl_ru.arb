@@ -4,7 +4,7 @@
   "dateStringErrorText": "Поле должно быть датой.",
   "emailErrorText": "Поле должно быть email адресом.",
   "equalErrorText": "Значение поля должно быть равно {value}.",
-  "equalErrorText": "Это значение поля должно быть равным {value}.",
+  "equalLengthErrorText": "Значение должно иметь длину, равную {length}",
   "integerErrorText": "Поле должно быть целым числом.",
   "ipErrorText": "Поле должно быть IP номером.",
   "matchErrorText": "Значение должно удовлетворять шаблону.",

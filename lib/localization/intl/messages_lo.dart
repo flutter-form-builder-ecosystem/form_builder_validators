@@ -15,12 +15,12 @@ class FormBuilderLocalizationsImplLo extends FormBuilderLocalizationsImpl {
 
   @override
   String equalErrorText(Object value) {
-    return 'ມູນຄ່າພາກສະຫນາມນີ້ຕ້ອງເທົ່າກັບ $value.';
+    return 'ຄ່າໃນຟອມນີ້ຕ້ອງເທົ່າກັບ $value.';
   }
 
   @override
   String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+    return 'ມູນຄ່າຕ້ອງມີຄວາມຍາວເທົ່າກັບ $length';
   }
 
   @override

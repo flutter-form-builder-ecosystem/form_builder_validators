@@ -15,12 +15,12 @@ class FormBuilderLocalizationsImplRu extends FormBuilderLocalizationsImpl {
 
   @override
   String equalErrorText(Object value) {
-    return 'Это значение поля должно быть равным $value.';
+    return 'Значение поля должно быть равно $value.';
   }
 
   @override
   String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+    return 'Значение должно иметь длину, равную $length';
   }
 
   @override

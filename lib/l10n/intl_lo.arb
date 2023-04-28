@@ -4,7 +4,7 @@
   "dateStringErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງວັນທີ.",
   "emailErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງ ອີເມວ໌.",
   "equalErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເທົ່າກັບ {value}.",
-  "equalErrorText": "ມູນຄ່າພາກສະຫນາມນີ້ຕ້ອງເທົ່າກັບ {value}.",
+  "equalLengthErrorText": "ມູນຄ່າຕ້ອງມີຄວາມຍາວເທົ່າກັບ {length}",
   "integerErrorText": "ຄ່າທີ່ປ້ອນໃສ່ຕ້ອງເປັນໂຕເລກຖ້ວນເທົ່ານັ້ນ.",
   "ipErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງເລກ IP.",
   "matchErrorText": "ຄ່າບໍ່ຖືກຕ້ອງຕາມຮູບແບບທີ່ກຳນົດ.",

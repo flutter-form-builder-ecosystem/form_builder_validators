@@ -1,0 +1,21 @@
+{
+  "@@locale": "ne",
+  "creditCardErrorText": "यो क्षेत्रलाई मान्य क्रेडिट कार्ड नम्बर चाहिन्छ।",
+  "dateStringErrorText": "यो क्षेत्रलाई मान्य मिति स्ट्रिंग चाहिन्छ।",
+  "emailErrorText": "यो क्षेत्रलाई मान्य इमेल ठेगाना चाहिन्छ।",
+  "equalErrorText": "यो क्षेत्रको मान {value} बराबर हुनुपर्छ। ",
+  "equalLengthErrorText": "मानको {length} बराबर लम्बाइ हुनुपर्छ।",
+  "integerErrorText": "यो क्षेत्रलाई मान्य पूर्णांक चाहिन्छ।",
+  "ipErrorText": "यो क्षेत्रलाई मान्य आईपी चाहिन्छ।",
+  "matchErrorText": "मान ढाँचासँग मेल खाँदैन।",
+  "maxErrorText": "मान {max} भन्दा कम वा बराबर हुनुपर्छ। ",
+  "maxLengthErrorText": "मान लम्बाइ {maxLength} भन्दा कम वा बराबर हुनुपर्छ। ",
+  "maxWordsCountErrorText": "मानसँग एक शब्दहरूको एक शब्दहरूमा {maxWordsCount} भन्दा कम वा बराबर गणना हुनुपर्दछ",
+  "minErrorText": "मान {min} भन्दा बढी वा बराबर हुनुपर्छ।",
+  "minLengthErrorText": "मानको लम्बाइ {minLength} भन्दा बढी वा बराबर हुनुपर्छ। ",
+  "minWordsCountErrorText": "मानसँग एक शब्दहरूको गणना गरिएको छ वा बराबर {minWordsCount}",
+  "notEqualErrorText": "यो क्षेत्रको मान {value} बराबर हुनु हुँदैन।",
+  "numericErrorText": "मान संख्यात्मक हुनुपर्छ।",
+  "requiredErrorText": "यो क्षेत्र खाली हुन सक्दैन।",
+  "urlErrorText": "यो फिल्डलाई मान्य यूआरय्ल ठेगाना चाहिन्छ।"
+}
