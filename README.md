@@ -32,7 +32,6 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
-  - [Contributors](#contributors)
 
 ## Features
 
@@ -202,15 +201,12 @@ See [contribution file](https://github.com/flutter-form-builder-ecosystem/.githu
 We especially welcome efforts to internationalize/localize the package by translating the default validation `errorText` strings for built-in validation rules.
 
 1. Add ARB files
-
 Create one ARB file inside the `lib/l10n` folder for each of the locales you need to add support. Name the files in the following way: `intl_<LOCALE_ISO_CODE>.arb`. For example: `intl_fr.arb` or `intl_fr_FR.arb`.
 
 2. Translate the error messages
-
 Copy and paste the contents of `intl_en.arb` into your newly created ARB file. Then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
-
 To generate boilerplate code for localization, run the generate command inside the package directory where `pubspec.yaml` file is located:
 
 `flutter gen-l10n`
@@ -218,11 +214,9 @@ To generate boilerplate code for localization, run the generate command inside t
 Running the command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support.
 
 4. Update README
-
 Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) in alphabetic order, so that everyone knows your new language is now supported!
 
 5. Submit PR
-
 Submit your PR and be of help to millions of developers all over the world!
 
 #### Add new validator
@@ -256,10 +250,4 @@ Take a look to [our awesome ecosystem](https://github.com/flutter-form-builder-e
 
 ## Thanks to
 
-### Contributors
-
-<a href="https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=flutter-form-builder-ecosystem/form_builder_validators" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
+[All constributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)
