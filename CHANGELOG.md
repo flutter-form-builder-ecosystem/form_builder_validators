@@ -1,6 +1,10 @@
+## 9.0.0-dev.2
+
+* Update constraints to Dart 3.0
+
 ## 9.0.0-dev.1
 
-* Migrate to Flutter 3.10
+* Update constraints to Flutter 3.10
 * Update intl to 0.18.0
 
 ## 8.6.1
