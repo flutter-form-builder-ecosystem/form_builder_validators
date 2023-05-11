@@ -1,6 +1,7 @@
-## 8.6.2
+## 9.0.0-dev.1
 
-* Migrate to Flutter 3.10.0 and Dart 3.
+* Migrate to Flutter 3.10
+* Update intl to 0.18.0
 
 ## 8.6.1
 
