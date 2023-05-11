@@ -1,3 +1,7 @@
+## 8.6.2
+
+* Migrate to Flutter 3.10.0 and Dart 3.
+
 ## 8.6.1
 
 * Add missed translations for some languages
