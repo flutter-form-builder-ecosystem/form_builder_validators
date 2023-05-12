@@ -8,7 +8,7 @@
   "integerErrorText": "Бүхэл тоон утга оруулна уу.",
   "ipErrorText": "IP хаяг алдаатай байна.",
   "matchErrorText": "Утга загварт таарахгүй байна.",
-  "maxErrorText": "{max}-аас их утга оруулна уу.",
+  "maxErrorText": "{max}-аас бага утга оруулна уу.",
   "maxLengthErrorText": "{maxLength}-аас богино утга оруулна уу.",
   "maxWordsCountErrorText" : "Утга нь түүнээс бага буюу тэнцүү тоолох үгстэй байх ёстой {maxWordsCount}",
   "minErrorText": "{min}-аас их утга оруулна уу.",
