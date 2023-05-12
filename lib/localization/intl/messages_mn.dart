@@ -34,7 +34,7 @@ class FormBuilderLocalizationsImplMn extends FormBuilderLocalizationsImpl {
 
   @override
   String maxErrorText(Object max) {
-    return '$max-аас их утга оруулна уу.';
+    return '$max-аас бага утга оруулна уу.';
   }
 
   @override
