@@ -1,0 +1,21 @@
+{
+    "@@locale": "se",
+    "creditCardErrorText": "Detta fält kräver ett giltigt kreditkortsnummer.",
+    "dateStringErrorText": "Detta fält kräver ett giltigt datum.",
+    "emailErrorText": "Detta fält kräver en giltig e-postadress.",
+    "equalErrorText": "Detta fältvärde måste vara lika med {value}.",
+    "equalLengthErrorText": "Värdet måste ha en längd lika med {length}",
+    "integerErrorText": "Värdet måste vara ett heltal.",
+    "ipErrorText": "Detta fält kräver en giltig IP-adress.",
+    "matchErrorText": "Värdet matchar inte mönstret.",
+    "maxErrorText": "Värdet måste vara mindre än eller lika med {max}.",
+    "maxLengthErrorText": "Värdet måste ha en längd mindre än eller lika med {maxLength}.",
+    "maxWordsCountErrorText": "Värdet måste ha ett antal ord som är mindre än eller lika med {maxWordsCount}",
+    "minErrorText": "Värdet måste vara större än eller lika med {min}.",
+    "minLengthErrorText": "Värdet måste ha en längd större än eller lika med {minLength}.",
+    "minWordsCountErrorText": "Värdet måste ha ett antal ord som är större än eller lika med {minWordsCount}",
+    "notEqualErrorText": "Detta fältvärde får inte vara lika med {value}.",
+    "numericErrorText": "Värdet måste vara numeriskt.",
+    "requiredErrorText": "Detta fält får inte vara tomt.",
+    "urlErrorText": "Detta fält kräver en giltig URL-adress."
+  }

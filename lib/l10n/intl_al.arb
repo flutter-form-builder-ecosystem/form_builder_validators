@@ -1,0 +1,21 @@
+{
+  "@@locale": "sq",
+  "creditCardErrorText": "Kjo fushë kërkon një numër të vlefshëm per karten e kreditit.",
+  "dateStringErrorText": "Kjo fushë kërkon një date të vlefshme.",
+  "emailErrorText": "Kjo fushe kërkon një adresë e E-mail-i të vlefshëme.",
+  "equalErrorText": "Kjo vlerë duhet të jetë e barabartë me {value}.",
+  "equalLengthErrorText": "Vlera duhet të ketë nje gjatësi të barabartë me {length}",
+  "integerErrorText": "Kjo fushe kërkon një numër të plotë të vlefshëm.",
+  "ipErrorText": "Kjo fushë kërkon një IP të vlefshme.",
+  "matchErrorText": "Vlera nuk përputhet me shabllonin.",
+  "maxErrorText": "Vlera duhet të jetë më e vogël ose e barabartë me {max}",
+  "maxLengthErrorText": "Vlera duhet të ketë një gjatësi më të vogël ose të barabartë me {maxLength}",
+  "maxWordsCountErrorText": "Vlera duhet të ketë një numër fjalësh më të vogël ose të barabartë me {maxWordsCount}",
+  "minErrorText": "Vlera duhet te jete me e madhe ose e barabarte me {min}.",
+  "minLengthErrorText": "Vlera duhet të ketë një gjatësi më të madhe ose të barabartë me {minLength}",
+  "minWordsCountErrorText": "Vlera duhet të ketë një numër fjalësh më të madh ose të barabartë me {minWordsCount}",
+  "notEqualErrorText": "Kjo vlerë nuk duhet të jetë e barabartë me {value}.",
+  "numericErrorText": "Vlera duhet të jetë numerike.",
+  "requiredErrorText": "Kjo fushë nuk mund të jetë bosh.",
+  "urlErrorText": "Kjo fushe kërkon një adresë URL të vlefshme."
+}

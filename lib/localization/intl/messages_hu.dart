@@ -5,17 +5,32 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Ennek a mezőnek értéket kell adni.';
+  String get creditCardErrorText => 'A megadott érték nem egy érvényes bankkártya szám.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Az érték legyen legalább $min.';
+  String get dateStringErrorText => 'Ennek a mezőnek dátumnak kell lennie.';
+
+  @override
+  String get emailErrorText => 'A megadott érték nem egy érvényes email cím.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Ennek a mezőértéknek meg kell egyeznie $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Az értéknel legalább $minLength karakter hosszúnak kell lennie';
+  String equalLengthErrorText(Object length) {
+    return 'Az értéknek hosszúnak kell lennie $length';
   }
+
+  @override
+  String get integerErrorText => 'Ez a mező érvényes egész számot igényel.';
+
+  @override
+  String get ipErrorText => 'A megadott érték nem egy érvényes IP cím.';
+
+  @override
+  String get matchErrorText => 'A megadott érték nem egyezik a szükséges formátummal.';
 
   @override
   String maxErrorText(Object max) {
@@ -28,41 +43,36 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél kevesebb vagy egyenlő a $maxWordsCount';
   }
 
   @override
-  String get emailErrorText => 'A megadott érték nem egy érvényes email cím.';
+  String minErrorText(Object min) {
+    return 'Az érték legyen legalább $min.';
+  }
 
   @override
-  String get integerErrorText => 'This field requires a valid integer.';
+  String minLengthErrorText(Object minLength) {
+    return 'Az értéknel legalább $minLength karakter hosszúnak kell lennie';
+  }
 
   @override
-  String equalErrorText(Object value) {
-    return 'This field value must be equal to $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Az értéknek olyan szavakkal kell rendelkeznie, amelyeknél nagyobb vagy egyenlő a $minWordsCount';
   }
 
   @override
   String notEqualErrorText(Object value) {
-    return 'This field value must not be equal to $value.';
+    return 'Ez a mezőérték nem lehet egyenlő $value.';
   }
-
-  @override
-  String get urlErrorText => 'A megadott érték nem egy érvényes URL cím.';
-
-  @override
-  String get matchErrorText => 'A megadott érték nem egyezik a szükséges formátummal.';
 
   @override
   String get numericErrorText => 'Ebbe a mezőbe csak számot lehet írni.';
 
   @override
-  String get creditCardErrorText => 'A megadott érték nem egy érvényes bankkártya szám.';
+  String get requiredErrorText => 'Ennek a mezőnek értéket kell adni.';
 
   @override
-  String get ipErrorText => 'A megadott érték nem egy érvényes IP cím.';
-
-  @override
-  String get dateStringErrorText => 'Ennek a mezőnek dátumnak kell lennie.';
+  String get urlErrorText => 'A megadott érték nem egy érvényes URL cím.';
 }

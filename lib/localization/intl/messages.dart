@@ -26,20 +26,22 @@ import 'messages_ko.dart';
 import 'messages_lo.dart';
 import 'messages_mn.dart';
 import 'messages_ms.dart';
-import 'messages_my.dart';
-import 'messages_nl.dart';
 import 'messages_ne.dart';
+import 'messages_nl.dart';
 import 'messages_pl.dart';
 import 'messages_pt.dart';
 import 'messages_ro.dart';
 import 'messages_ru.dart';
+import 'messages_se.dart';
 import 'messages_sk.dart';
 import 'messages_sl.dart';
+import 'messages_sq.dart';
 import 'messages_sw.dart';
 import 'messages_ta.dart';
 import 'messages_th.dart';
 import 'messages_tr.dart';
 import 'messages_uk.dart';
+import 'messages_vi.dart';
 import 'messages_zh.dart';
 
 /// Callers can lookup localized strings with an instance of FormBuilderLocalizationsImpl
@@ -123,6 +125,7 @@ abstract class FormBuilderLocalizationsImpl {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('sq'),
     Locale('ar'),
     Locale('bn'),
     Locale('bs'),
@@ -144,13 +147,13 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('lo'),
     Locale('mn'),
     Locale('ms'),
-    Locale('my'),
-    Locale('nl'),
     Locale('ne'),
+    Locale('nl'),
     Locale('pl'),
     Locale('pt'),
     Locale('ro'),
     Locale('ru'),
+    Locale('se'),
     Locale('sk'),
     Locale('sl'),
     Locale('sw'),
@@ -158,105 +161,118 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('th'),
     Locale('tr'),
     Locale('uk'),
+    Locale('vi'),
     Locale('zh'),
     Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant')
   ];
 
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'This field cannot be empty.'**
-  String get requiredErrorText;
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be greater than or equal to {min}.'**
-  String minErrorText(Object min);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length greater than or equal to {minLength}'**
-  String minLengthErrorText(Object minLength);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be less than or equal to {max}'**
-  String maxErrorText(Object max);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length less than or equal to {maxLength}'**
-  String maxLengthErrorText(Object maxLength);
-
-  /// Error Text for required field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must have a length equal to {length}'**
-  String equalLengthErrorText(Object length);
-
-  /// Error Text for email field
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid email address.'**
-  String get emailErrorText;
-
-  /// Error Text for integer validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid integer.'**
-  String get integerErrorText;
-
-  /// Error Text for equal validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field value must be equal to {value}.'**
-  String equalErrorText(Object value);
-
-  /// Error Text for not-equal validator
-  ///
-  /// In en, this message translates to:
-  /// **'This field value must not be equal to {value}.'**
-  String notEqualErrorText(Object value);
-
-  /// Error Text for URL field
-  ///
-  /// In en, this message translates to:
-  /// **'This field requires a valid URL address.'**
-  String get urlErrorText;
-
-  /// Error Text for pattern field
-  ///
-  /// In en, this message translates to:
-  /// **'Value does not match pattern.'**
-  String get matchErrorText;
-
-  /// Error Text for numeric field
-  ///
-  /// In en, this message translates to:
-  /// **'Value must be numeric.'**
-  String get numericErrorText;
-
-  /// Error Text for credit card field
+  /// No description provided for @creditCardErrorText.
   ///
   /// In en, this message translates to:
   /// **'This field requires a valid credit card number.'**
   String get creditCardErrorText;
 
-  /// Error Text for IP address field
+  /// No description provided for @dateStringErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid date string.'**
+  String get dateStringErrorText;
+
+  /// No description provided for @emailErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid email address.'**
+  String get emailErrorText;
+
+  /// No description provided for @equalErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field value must be equal to {value}.'**
+  String equalErrorText(Object value);
+
+  /// No description provided for @equalLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length equal to {length}'**
+  String equalLengthErrorText(Object length);
+
+  /// No description provided for @integerErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid integer.'**
+  String get integerErrorText;
+
+  /// No description provided for @ipErrorText.
   ///
   /// In en, this message translates to:
   /// **'This field requires a valid IP.'**
   String get ipErrorText;
 
-  /// Error Text for date string field
+  /// No description provided for @matchErrorText.
   ///
   /// In en, this message translates to:
-  /// **'This field requires a valid date string.'**
-  String get dateStringErrorText;
+  /// **'Value does not match pattern.'**
+  String get matchErrorText;
+
+  /// No description provided for @maxErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be less than or equal to {max}'**
+  String maxErrorText(Object max);
+
+  /// No description provided for @maxLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length less than or equal to {maxLength}'**
+  String maxLengthErrorText(Object maxLength);
+
+  /// No description provided for @maxWordsCountErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a words count less than or equal to {maxWordsCount}'**
+  String maxWordsCountErrorText(Object maxWordsCount);
+
+  /// No description provided for @minErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be greater than or equal to {min}.'**
+  String minErrorText(Object min);
+
+  /// No description provided for @minLengthErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a length greater than or equal to {minLength}'**
+  String minLengthErrorText(Object minLength);
+
+  /// No description provided for @minWordsCountErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must have a words count greater than or equal to {minWordsCount}'**
+  String minWordsCountErrorText(Object minWordsCount);
+
+  /// No description provided for @notEqualErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field value must not be equal to {value}.'**
+  String notEqualErrorText(Object value);
+
+  /// No description provided for @numericErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Value must be numeric.'**
+  String get numericErrorText;
+
+  /// No description provided for @requiredErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field cannot be empty.'**
+  String get requiredErrorText;
+
+  /// No description provided for @urlErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'This field requires a valid URL address.'**
+  String get urlErrorText;
 }
 
 class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {
@@ -268,7 +284,7 @@ class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBu
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'my', 'nl', 'ne', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['sq', 'ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'ne', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
@@ -288,6 +304,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'sq': return FormBuilderLocalizationsImplSq();
     case 'ar': return FormBuilderLocalizationsImplAr();
     case 'bn': return FormBuilderLocalizationsImplBn();
     case 'bs': return FormBuilderLocalizationsImplBs();
@@ -309,13 +326,13 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'lo': return FormBuilderLocalizationsImplLo();
     case 'mn': return FormBuilderLocalizationsImplMn();
     case 'ms': return FormBuilderLocalizationsImplMs();
-    case 'my': return FormBuilderLocalizationsImplMy();
-    case 'nl': return FormBuilderLocalizationsImplNl();
     case 'ne': return FormBuilderLocalizationsImplNe();
+    case 'nl': return FormBuilderLocalizationsImplNl();
     case 'pl': return FormBuilderLocalizationsImplPl();
     case 'pt': return FormBuilderLocalizationsImplPt();
     case 'ro': return FormBuilderLocalizationsImplRo();
     case 'ru': return FormBuilderLocalizationsImplRu();
+    case 'se': return FormBuilderLocalizationsImplSe();
     case 'sk': return FormBuilderLocalizationsImplSk();
     case 'sl': return FormBuilderLocalizationsImplSl();
     case 'sw': return FormBuilderLocalizationsImplSw();
@@ -323,6 +340,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'th': return FormBuilderLocalizationsImplTh();
     case 'tr': return FormBuilderLocalizationsImplTr();
     case 'uk': return FormBuilderLocalizationsImplUk();
+    case 'vi': return FormBuilderLocalizationsImplVi();
     case 'zh': return FormBuilderLocalizationsImplZh();
   }
 

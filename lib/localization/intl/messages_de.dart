@@ -5,17 +5,32 @@ class FormBuilderLocalizationsImplDe extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplDe([String locale = 'de']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Dieses Feld kann nicht leer sein.';
+  String get creditCardErrorText => 'Für dieses Feld ist eine gültige Kreditkartennummer erforderlich.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Der Wert muss größer als oder gleich $min sein.';
+  String get dateStringErrorText => 'Dieses Feld erfordert ein gültiges Datum.';
+
+  @override
+  String get emailErrorText => 'Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Dieser Feldwert muss $value gleich sein.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Der Wert muss eine Länge größer als oder gleich $minLength haben.';
+  String equalLengthErrorText(Object length) {
+    return 'Der Wert muss eine Länge von haben $length';
   }
+
+  @override
+  String get integerErrorText => 'Der Wert muss eine integer sein.';
+
+  @override
+  String get ipErrorText => 'Dieses Feld erfordert eine gültige IP-Adresse.';
+
+  @override
+  String get matchErrorText => 'Der Wert stimmt nicht mit dem Muster überein.';
 
   @override
   String maxErrorText(Object max) {
@@ -28,41 +43,36 @@ class FormBuilderLocalizationsImplDe extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Der Wert muss eine Wörter weniger als oder gleich $maxWordsCount zählen lassen';
   }
 
   @override
-  String get emailErrorText => 'Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.';
+  String minErrorText(Object min) {
+    return 'Der Wert muss größer als oder gleich $min sein.';
+  }
 
   @override
-  String get integerErrorText => 'Der Wert muss eine integer sein.';
+  String minLengthErrorText(Object minLength) {
+    return 'Der Wert muss eine Länge größer als oder gleich $minLength haben.';
+  }
 
   @override
-  String equalErrorText(Object value) {
-    return 'Dieser Feldwert muss $value gleich sein.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Der Wert muss eine Wörter haben, die größer oder gleich $minWordsCount ist';
   }
 
   @override
   String notEqualErrorText(Object value) {
-    return 'This field value must not be equal to $value.';
+    return 'Dieser Feldwert darf nicht gleich sein $value.';
   }
-
-  @override
-  String get urlErrorText => 'Für dieses Feld ist eine gültige URL-Adresse erforderlich.';
-
-  @override
-  String get matchErrorText => 'Der Wert stimmt nicht mit dem Muster überein.';
 
   @override
   String get numericErrorText => 'Der Wert muss numerisch sein.';
 
   @override
-  String get creditCardErrorText => 'Für dieses Feld ist eine gültige Kreditkartennummer erforderlich.';
+  String get requiredErrorText => 'Dieses Feld kann nicht leer sein.';
 
   @override
-  String get ipErrorText => 'Dieses Feld erfordert eine gültige IP-Adresse.';
-
-  @override
-  String get dateStringErrorText => 'Dieses Feld erfordert ein gültiges Datum.';
+  String get urlErrorText => 'Für dieses Feld ist eine gültige URL-Adresse erforderlich.';
 }

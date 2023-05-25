@@ -1,0 +1,21 @@
+{
+  "@@locale": "vi",
+  "creditCardErrorText": "Yêu cầu nhập đúng số thẻ tín dụng.",
+  "dateStringErrorText": "Yêu cầu nhập đúng định dạng ngày.",
+  "emailErrorText": "Nhập đúng email.",
+  "equalErrorText": "Bắt buộc bằng {value}.",
+  "equalLengthErrorText": "Độ dài phải bằng {length}",
+  "integerErrorText": "Yêu cầu nhập một số nguyên.",
+  "ipErrorText": "Yêu cầu nhập đúng địa chỉ IP.",
+  "matchErrorText": "Giá trị không khớp.",
+  "maxErrorText": "Giá trị phải nhỏ hơn hoặc bằng {max}",
+  "maxLengthErrorText": "Độ dài phải nhỏ hơn hoặc bằng {maxLength}",
+  "maxWordsCountErrorText": "Giá trị phải có số từ nhỏ hơn hoặc bằng {maxWordsCount}",
+  "minErrorText": "Giá trị phải lớn hơn hoặc bằng {min}.",
+  "minLengthErrorText": "Độ dài phải lớn hơn hoặc bằng {minLength}",
+  "minWordsCountErrorText": "Giá trị phải có số từ lớn hơn hoặc bằng {minWordsCount}",
+  "notEqualErrorText": "Bắt buộc khác {value}.",
+  "numericErrorText": "Yêu cầu nhập một số.",
+  "requiredErrorText": "Không được bỏ trống.",
+  "urlErrorText": "Nhập đúng địa chỉ URL."
+}

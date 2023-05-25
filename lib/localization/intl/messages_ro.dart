@@ -5,17 +5,32 @@ class FormBuilderLocalizationsImplRo extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Acest câmp nu poate fi gol.';
+  String get creditCardErrorText => 'Acest câmp necesită un număr valid de card de credit.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Valoarea trebuie să fie mai mare sau egală cu $min.';
+  String get dateStringErrorText => 'Acest câmp necesită un șir de date valid.';
+
+  @override
+  String get emailErrorText => 'Acest câmp necesită o adresă de e-mail validă.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Valoarea câmpului trebuie să fie egală cu $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Valoarea trebuie să aibă o lungime mai mare sau egală cu $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'Valoarea trebuie să aibă o lungime egală cu $length';
   }
+
+  @override
+  String get integerErrorText => 'Acest câmp necesită un număr întreg valid.';
+
+  @override
+  String get ipErrorText => 'Acest câmp necesită un IP valid.';
+
+  @override
+  String get matchErrorText => 'Valoarea nu se potrivește cu modelul.';
 
   @override
   String maxErrorText(Object max) {
@@ -28,19 +43,23 @@ class FormBuilderLocalizationsImplRo extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Value must have a length equal to $length';
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Valoarea trebuie să aibă un număr de cuvinte mai mic sau egal cu $maxWordsCount';
   }
 
   @override
-  String get emailErrorText => 'Acest câmp necesită o adresă de e-mail validă.';
+  String minErrorText(Object min) {
+    return 'Valoarea trebuie să fie mai mare sau egală cu $min.';
+  }
 
   @override
-  String get integerErrorText => 'Acest câmp necesită un număr întreg valid.';
+  String minLengthErrorText(Object minLength) {
+    return 'Valoarea trebuie să aibă o lungime mai mare sau egală cu $minLength';
+  }
 
   @override
-  String equalErrorText(Object value) {
-    return 'Valoarea câmpului trebuie să fie egală cu $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Valoarea trebuie să aibă un număr de cuvinte mai mare sau egal cu $minWordsCount';
   }
 
   @override
@@ -49,20 +68,11 @@ class FormBuilderLocalizationsImplRo extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Acest câmp necesită o adresă URL validă.';
-
-  @override
-  String get matchErrorText => 'Valoarea nu se potrivește cu modelul.';
-
-  @override
   String get numericErrorText => 'Valoarea trebuie să fie numerică.';
 
   @override
-  String get creditCardErrorText => 'Acest câmp necesită un număr valid de card de credit.';
+  String get requiredErrorText => 'Acest câmp nu poate fi gol.';
 
   @override
-  String get ipErrorText => 'Acest câmp necesită un IP valid.';
-
-  @override
-  String get dateStringErrorText => 'Acest câmp necesită un șir de date valid.';
+  String get urlErrorText => 'Acest câmp necesită o adresă URL validă.';
 }

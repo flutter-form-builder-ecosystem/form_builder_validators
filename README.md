@@ -5,11 +5,9 @@ Form Builder Validators set of validators for any `FormField` widget or widgets 
 Also included is the `l10n` / `i18n` of error text messages to multiple languages.
 
 [![Pub Version](https://img.shields.io/pub/v/form_builder_validators?logo=flutter&style=for-the-badge)](https://pub.dev/packages/form_builder_validators)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/Base?logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/base.yaml?branch=main&logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
 [![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_validators/)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_validators)
-[![Discord](https://img.shields.io/discord/985922433578053673?logo=discord&style=for-the-badge)](https://discord.com/invite/25KNPMJQf2)
-
 ---
 
 > ## Migrating from version 7 to 8
@@ -25,14 +23,17 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
   - [Setup](#setup)
   - [Basic use](#basic-use)
   - [Specific uses](#specific-uses)
+    - [Composing multiple validators](#composing-multiple-validators)
+    - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
 - [Support](#support)
   - [Contribute](#contribute)
+    - [Add new supported language](#add-new-supported-language)
+    - [Add new validator](#add-new-validator)
   - [Questions and answers](#questions-and-answers)
   - [Donations](#donations)
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
-  - [Contributors](#contributors)
 
 ## Features
 
@@ -43,7 +44,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 ## Validators
 
 This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
-URL, min, max, minLength, maxLength, IP, credit card, etc., with default `errorText` messages.
+URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 Available built-in validators include:
 
@@ -56,8 +57,10 @@ Available built-in validators include:
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
 - `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum size.
+- `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
 - `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
 - `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
+- `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
 - `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
 - `FormBuilderValidators.required()` - requires the field to have a non-empty value.
@@ -67,6 +70,7 @@ Available built-in validators include:
 
 Validators support default `errorText` messages in these languages:
 
+- Albanian (al)
 - Arabic (ar)
 - Bangla (bn)
 - Bosnian (bs)
@@ -75,19 +79,21 @@ Validators support default `errorText` messages in these languages:
 - Chinese Traditional (zh_Hant)
 - Croatian (hr)
 - Czech (cs)
+- Dutch (nl)
 - English (en)
 - Estonian (et)
-- Dutch (nl)
 - Farsi/Persian (fa)
 - French (fr)
-- Greek (el)
 - German (de)
+- Greek (el)  
 - Hungarian (hu)
 - Indonesian (id)
 - Italian (it)
 - Japanese (ja)
 - Korean (ko)
 - Lao (lo)
+- Malay (ms)
+- Mongolian (mn)
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)
@@ -96,12 +102,12 @@ Validators support default `errorText` messages in these languages:
 - Slovenian (sl)
 - Spanish (es)
 - Swahili (sw)
-- Ukrainian (uk)
+- Swedish (se)
 - Tamil(ta)
 - Thai (th)
 - Turkish (tr)
-- Malay (ms)
-- Mongolian (mn)
+- Ukrainian (uk)
+- Vietnamese (vi)
 
 And you can still add your custom error messages.
 
@@ -138,7 +144,7 @@ TextFormField(
 ),
 ```
 
-See [pud.dev example tab](https://pub.dev/packages/form_builder_validators/example) or [github code](example/lib/main.dart) for more details
+See [pub.dev example tab](https://pub.dev/packages/form_builder_validators/example) or [github code](example/lib/main.dart) for more details
 
 ### Specific uses
 
@@ -203,7 +209,7 @@ We welcome efforts to internationalize/localize the package by translating the d
 
 2. Translate the error messages
 
-  Duplicate the contents of `intl_en.arb` (or any other ARB file) into your newly created ARB file, then translate the error messages by overwriting the default messages.
+  Copy and paste the contents of `intl_en.arb` into your newly created ARB file. Then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
 
@@ -215,21 +221,32 @@ We welcome efforts to internationalize/localize the package by translating the d
 
 4. Update README
 
-  Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) so that everyone knows your new language is now supported!
+  Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) in alphabetic order, so that everyone knows your new language is now supported!
 
 5. Submit PR
 
   Submit your PR and be of help to millions of developers all over the world!
 
+#### Add new validator
+
+1. Add method to `validators.dart` with your Dart documentation
+2. Implement tests
+3. Add to [validators](#validators) with name and description
+4. Add message error translated on all languages (yes, all languages). To accomplish this need:
+   a. Add property to all `intl_*.arb` files, on alphabetic order.
+   b. Translate message on all languages.
+   c. Run `flutter gen-l10n` command
+5. Submit PR
+
 ### Questions and answers
 
-You can join [our Discord server](https://discord.gg/25KNPMJQf2) or search for answers in [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
+You can ask questions or search answers on [Github discussion](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/discussions) or on [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
 
 ### Donations
 
-Buy a coffe for [Danvick Miller](https://twitter.com/danvickmiller), the creator of this awesome package
+Donate or become a sponsor of Flutter Form Builder Ecosystem
 
-[![Buy me a coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg)](https://www.buymeacoffee.com/danvick)
+[![Become a Sponsor](https://opencollective.com/flutter-form-builder-ecosystem/tiers/sponsor.svg?avatarHeight=56)](https://opencollective.com/flutter-form-builder-ecosystem)
 
 ## Roadmap
 
@@ -241,10 +258,4 @@ Take a look at [our fantastic ecosystem](https://github.com/flutter-form-builder
 
 ## Thanks to
 
-### Contributors
-
-<a href="https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=flutter-form-builder-ecosystem/form_builder_validators" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
+[All constributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)

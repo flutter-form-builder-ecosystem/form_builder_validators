@@ -5,17 +5,32 @@ class FormBuilderLocalizationsImplHr extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplHr([String locale = 'hr']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Ovo polje ne smije biti prazno.';
+  String get creditCardErrorText => 'Unesite validan broj kreditne kartice.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Vrijednost mora biti veća ili jednaka $min.';
+  String get dateStringErrorText => 'Unesite validan datum.';
+
+  @override
+  String get emailErrorText => 'Unesite validnu e-mail adresu.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Vrijednost mora biti jednaka $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Vrijednost mora biti duža ili jednaka $minLength znakova.';
+  String equalLengthErrorText(Object length) {
+    return 'Vrijednost mora biti duga $length znakova.';
   }
+
+  @override
+  String get integerErrorText => 'Vrijednost mora biti cijeli broj.';
+
+  @override
+  String get ipErrorText => 'Unesite validnu IP adresu.';
+
+  @override
+  String get matchErrorText => 'Vrijednost ne odgovara uzorku.';
 
   @override
   String maxErrorText(Object max) {
@@ -28,19 +43,23 @@ class FormBuilderLocalizationsImplHr extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Vrijednost mora biti duga $length znakova.';
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Vrijednost mora imati riječi manje od ili jednake $maxWordsCount';
   }
 
   @override
-  String get emailErrorText => 'Unesite validnu e-mail adresu.';
+  String minErrorText(Object min) {
+    return 'Vrijednost mora biti veća ili jednaka $min.';
+  }
 
   @override
-  String get integerErrorText => 'Vrijednost mora biti cijeli broj.';
+  String minLengthErrorText(Object minLength) {
+    return 'Vrijednost mora biti duža ili jednaka $minLength znakova.';
+  }
 
   @override
-  String equalErrorText(Object value) {
-    return 'Vrijednost mora biti jednaka $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Vrijednost mora imati broj riječi veći ili jednak $minWordsCount';
   }
 
   @override
@@ -49,20 +68,11 @@ class FormBuilderLocalizationsImplHr extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Unesite validnu URL adresu.';
-
-  @override
-  String get matchErrorText => 'Vrijednost ne odgovara uzorku.';
-
-  @override
   String get numericErrorText => 'Vrijednost mora biti brojčana.';
 
   @override
-  String get creditCardErrorText => 'Unesite validan broj kreditne kartice.';
+  String get requiredErrorText => 'Ovo polje ne smije biti prazno.';
 
   @override
-  String get ipErrorText => 'Unesite validnu IP adresu.';
-
-  @override
-  String get dateStringErrorText => 'Unesite validan datum.';
+  String get urlErrorText => 'Unesite validnu URL adresu.';
 }

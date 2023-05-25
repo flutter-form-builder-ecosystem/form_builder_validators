@@ -5,17 +5,32 @@ class FormBuilderLocalizationsImplMs extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplMs([String locale = 'ms']) : super(locale);
 
   @override
-  String get requiredErrorText => 'Ruang ini wajib diisi.';
+  String get creditCardErrorText => 'Ruangan ini memerlukan nombor kad kredit yang sah.';
 
   @override
-  String minErrorText(Object min) {
-    return 'Nilai wajib lebih besar daripada atau sama dengan $min.';
+  String get dateStringErrorText => 'Ruangan ini memerlukan rentetan tarikh yang sah.';
+
+  @override
+  String get emailErrorText => 'Ruang ini memerlukan alamat e-mel yang sah.';
+
+  @override
+  String equalErrorText(Object value) {
+    return 'Nilai Ruangan ini wajib sama dengan $value.';
   }
 
   @override
-  String minLengthErrorText(Object minLength) {
-    return 'Nilai mesti mempunyai panjang lebih besar daripada atau sama dengan $minLength';
+  String equalLengthErrorText(Object length) {
+    return 'Nilai mesti mempunyai panjang yang sama dengan $length';
   }
+
+  @override
+  String get integerErrorText => 'Ruang ini memerlukan integer yang sah.';
+
+  @override
+  String get ipErrorText => 'Ruangan ini memerlukan IP yang sah.';
+
+  @override
+  String get matchErrorText => 'Nilai tidak sepadan dengan corak.';
 
   @override
   String maxErrorText(Object max) {
@@ -28,19 +43,23 @@ class FormBuilderLocalizationsImplMs extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String equalLengthErrorText(Object length) {
-    return 'Nilai mesti mempunyai panjang yang sama dengan $length';
+  String maxWordsCountErrorText(Object maxWordsCount) {
+    return 'Nilai mesti mempunyai kata -kata yang kurang daripada atau sama dengan $maxWordsCount';
   }
 
   @override
-  String get emailErrorText => 'Ruang ini memerlukan alamat e-mel yang sah.';
+  String minErrorText(Object min) {
+    return 'Nilai wajib lebih besar daripada atau sama dengan $min.';
+  }
 
   @override
-  String get integerErrorText => 'Ruang ini memerlukan integer yang sah.';
+  String minLengthErrorText(Object minLength) {
+    return 'Nilai mesti mempunyai panjang lebih besar daripada atau sama dengan $minLength';
+  }
 
   @override
-  String equalErrorText(Object value) {
-    return 'Nilai Ruangan ini wajib sama dengan $value.';
+  String minWordsCountErrorText(Object minWordsCount) {
+    return 'Nilai mesti mempunyai kata -kata yang lebih besar daripada atau sama dengan $minWordsCount';
   }
 
   @override
@@ -49,20 +68,11 @@ class FormBuilderLocalizationsImplMs extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get urlErrorText => 'Ruangan ini memerlukan alamat URL yang sah.';
-
-  @override
-  String get matchErrorText => 'Nilai tidak sepadan dengan corak.';
-
-  @override
   String get numericErrorText => 'Nilai wajib dalam bentuk angka.';
 
   @override
-  String get creditCardErrorText => 'Ruangan ini memerlukan nombor kad kredit yang sah.';
+  String get requiredErrorText => 'Ruang ini wajib diisi.';
 
   @override
-  String get ipErrorText => 'Ruangan ini memerlukan IP yang sah.';
-
-  @override
-  String get dateStringErrorText => 'Ruangan ini memerlukan rentetan tarikh yang sah.';
+  String get urlErrorText => 'Ruangan ini memerlukan alamat URL yang sah.';
 }

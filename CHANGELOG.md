@@ -1,14 +1,50 @@
+## 9.0.0
+
+* Update constraints to Flutter 3.10
+* Update intl to 0.18.0
+* Update constraints to Dart 3.0
+
+## 9.0.0-dev.2
+
+* Update constraints to Dart 3.0
+
+## 9.0.0-dev.1
+
+* Update constraints to Flutter 3.10
+* Update intl to 0.18.0
+
+## 8.6.1
+
+* Add missed translations for some languages
+
+## 8.6.0
+
+* Add missed translations for all languages
+* Add support for more languanges
+  * Swedish
+
+## 8.5.0
+
+* New validators for minWordsCount & maxWordsCount
+* Simplify arb files and correct intl_zh.arb
+* Build with Flutter 3.7.5
+* Add support for more languanges
+  * Mongolian
+  * Nepali and burmese
+  * Albanian
+  * Vietnamese
+
 ## 8.4.0
 
 * Refactor l10n generator. Thanks [@ipcjs]()
 * Add property to allow empty on equalLength validator. Thanks [@CircleCurve](https://github.com/CircleCurve)
 * Add support for more languanges
-    - Czech. Thanks [@edlman](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/3)
-    - Bosnian and Croatian. Thanks [@abratanovic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/9)
-    - Malay. Thanks [@azmilazizi](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/13)
-    - Thai. Thanks [@narospol](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/19)
-    - Tamil. Thanks [@Purus](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/26)
-    - Greek. Thanks [@nrallakis](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/27)
+  * Czech. Thanks [@edlman](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/3)
+  * Bosnian and Croatian. Thanks [@abratanovic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/9)
+  * Malay. Thanks [@azmilazizi](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/13)
+  * Thai. Thanks [@narospol](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/19)
+  * Tamil. Thanks [@Purus](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/26)
+  * Greek. Thanks [@nrallakis](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/27)
 
 ## 8.3.0
 
