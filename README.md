@@ -18,19 +18,19 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 
 - [Features](#features)
 - [Validators](#validators)
-  - [Supported languages](#supported-languages)
+    - [Supported languages](#supported-languages)
 - [Use](#use)
-  - [Setup](#setup)
-  - [Basic use](#basic-use)
-  - [Specific uses](#specific-uses)
-    - [Composing multiple validators](#composing-multiple-validators)
-    - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
+    - [Setup](#setup)
+    - [Basic use](#basic-use)
+    - [Specific uses](#specific-uses)
+        - [Composing multiple validators](#composing-multiple-validators)
+        - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
 - [Support](#support)
-  - [Contribute](#contribute)
-    - [Add new supported language](#add-new-supported-language)
-    - [Add new validator](#add-new-validator)
-  - [Questions and answers](#questions-and-answers)
-  - [Donations](#donations)
+    - [Contribute](#contribute)
+        - [Add new supported language](#add-new-supported-language)
+        - [Add new validator](#add-new-validator)
+    - [Questions and answers](#questions-and-answers)
+    - [Donations](#donations)
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
@@ -85,7 +85,7 @@ Validators support default `errorText` messages in these languages:
 - Farsi/Persian (fa)
 - French (fr)
 - German (de)
-- Greek (el)  
+- Greek (el)
 - Hungarian (hu)
 - Indonesian (id)
 - Italian (it)
@@ -119,28 +119,28 @@ The default error message is in English. To allow for localization of default er
 
 ```Dart
 return MaterialApp(
-  supportedLocales: [
-    Locale('de'),
-    Locale('en'),
-    Locale('es'),
-    Locale('fr'),
-    Locale('it'),
-    ...
-  ],
-  localizationsDelegates: [
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    FormBuilderLocalizations.delegate,
-  ],
+supportedLocales: [
+Locale('de'),
+Locale('en'),
+Locale('es'),
+Locale('fr'),
+Locale('it'),
+...
+],
+localizationsDelegates: [
+GlobalMaterialLocalizations.delegate,
+GlobalWidgetsLocalizations.delegate,
+FormBuilderLocalizations.delegate,
+],
 ```
 
 ### Basic use
 
 ```dart
 TextFormField(
-  decoration: InputDecoration(labelText: 'Name'),
-  autovalidateMode: AutovalidateMode.always,
-  validator: FormBuilderValidators.required(),
+decoration: InputDecoration(labelText: 'Name'),
+autovalidateMode: AutovalidateMode.always,
+validator: FormBuilderValidators.required(),
 ),
 ```
 
@@ -165,20 +165,20 @@ validator: FormBuilderValidators.compose([
 /// Makes this field required
 FormBuilderValidators.required(),
 
-    /// Ensures the value entered is numeric - with a custom error message
-    FormBuilderValidators.numeric(errorText: 'La edad debe ser numérica.'),
+/// Ensures the value entered is numeric - with a custom error message
+FormBuilderValidators.numeric(errorText: 'La edad debe ser numérica.'),
 
-    /// Sets a maximum value of 70
-    FormBuilderValidators.max(70),
+/// Sets a maximum value of 70
+FormBuilderValidators.max(70),
 
-    /// Include your own custom `FormFieldValidator` function, if you want
-    /// Ensures positive values only. We could also have used `FormBuilderValidators.min(0)` instead
-    (val) {
-      final number = int.tryParse(val);
-      if (number == null) return null;
-      if (number < 0) return 'We cannot have a negative age';
-      return null;
-    }
+/// Include your own custom `FormFieldValidator` function, if you want
+/// Ensures positive values only. We could also have used `FormBuilderValidators.min(0)` instead
+(val) {
+final number = int.tryParse(val);
+if (number == null) return null;
+if (number < 0) return 'We cannot have a negative age';
+return null;
+}
 ]),
 ),
 ```
@@ -194,7 +194,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 You have some ways to contribute to this package.
 
 - Beginner: Reporting bugs or requesting new features
-- Intermediate: Answer questions, implement new features (from issues or not) and create pull requests
+- Intermediate: Answer questions, implement new features (from issues or not), and create pull requests
 - Advanced: Join [organization](#ecosystem) like a member and help to code, manage issues, discuss new features, and other things
 
 See the [contribution file](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
@@ -205,27 +205,27 @@ We welcome efforts to internationalize/localize the package by translating the d
 
 1. Add ARB files
 
-  Create one ARB file inside the `lib/l10n` folder for each locale you need to add support. Name the files in the following way: `intl_<LOCALE_ISO_CODE>.arb`. For example: `intl_fr.arb` or `intl_fr_FR.arb`.
+Create one ARB file inside the `lib/l10n` folder for each locale you need to add support. Name the files in the following way: `intl_<LOCALE_ISO_CODE>.arb`. For example: `intl_fr.arb` or `intl_fr_FR.arb`.
 
 2. Translate the error messages
 
-  Copy and paste the contents of `intl_en.arb` into your newly created ARB file. Then translate the error messages by overwriting the default messages.
+Copy and paste the contents of `intl_en.arb` into your newly created ARB file. Then translate the error messages by overwriting the default messages.
 
 3. Generate localization code
 
-  To generate boilerplate code for localization, run the generate command inside the package directory where `pubspec.yaml` file is located:
+To generate boilerplate code for localization, run the generate command inside the package directory where `pubspec.yaml` file is located:
 
-  `flutter gen-l10n`
+`flutter gen-l10n`
 
-  The command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support.
+The command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support.
 
 4. Update README
 
-  Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) in alphabetic order, so that everyone knows your new language is now supported!
+Remember to update README, adding the new language (and language code) under [Supported languages section](#supported-languages) in alphabetic order, so that everyone knows your new language is now supported!
 
 5. Submit PR
 
-  Submit your PR and be of help to millions of developers all over the world!
+Submit your PR and be of help to millions of developers all over the world!
 
 #### Add new validator
 
@@ -233,14 +233,14 @@ We welcome efforts to internationalize/localize the package by translating the d
 2. Implement tests
 3. Add to [validators](#validators) with name and description
 4. Add message error translated on all languages (yes, all languages). To accomplish this need:
-   a. Add property to all `intl_*.arb` files, on alphabetic order.
-   b. Translate message on all languages.
+   a. Add property to all `intl_*.arb` files, in alphabetic order.
+   b. Translate message in all languages.
    c. Run `flutter gen-l10n` command
 5. Submit PR
 
 ### Questions and answers
 
-You can ask questions or search answers on [Github discussion](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/discussions) or on [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
+You can ask questions or search for answers on [Github discussion](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/discussions) or on [StackOverflow](https://stackoverflow.com/questions/tagged/flutter-form-builder)
 
 ### Donations
 
