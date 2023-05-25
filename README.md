@@ -119,28 +119,28 @@ The default error message is in English. To allow for localization of default er
 
 ```Dart
 return MaterialApp(
-supportedLocales: [
-Locale('de'),
-Locale('en'),
-Locale('es'),
-Locale('fr'),
-Locale('it'),
-...
-],
-localizationsDelegates: [
-GlobalMaterialLocalizations.delegate,
-GlobalWidgetsLocalizations.delegate,
-FormBuilderLocalizations.delegate,
-],
+    supportedLocales: [
+        Locale('de'),
+        Locale('en'),
+        Locale('es'),
+        Locale('fr'),
+        Locale('it'),
+        ...
+    ],
+    localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        FormBuilderLocalizations.delegate,
+    ],
 ```
 
 ### Basic use
 
 ```dart
 TextFormField(
-decoration: InputDecoration(labelText: 'Name'),
-autovalidateMode: AutovalidateMode.always,
-validator: FormBuilderValidators.required(),
+    decoration: InputDecoration(labelText: 'Name'),
+    autovalidateMode: AutovalidateMode.always,
+    validator: FormBuilderValidators.required(),
 ),
 ```
 
@@ -158,28 +158,28 @@ Example:
 
 ```dart
 TextFormField(
-decoration: InputDecoration(labelText: 'Age'),
-keyboardType: TextInputType.number,
-autovalidateMode: AutovalidateMode.always,
-validator: FormBuilderValidators.compose([
-/// Makes this field required
-FormBuilderValidators.required(),
-
-/// Ensures the value entered is numeric - with a custom error message
-FormBuilderValidators.numeric(errorText: 'La edad debe ser numérica.'),
-
-/// Sets a maximum value of 70
-FormBuilderValidators.max(70),
-
-/// Include your own custom `FormFieldValidator` function, if you want
-/// Ensures positive values only. We could also have used `FormBuilderValidators.min(0)` instead
-(val) {
-final number = int.tryParse(val);
-if (number == null) return null;
-if (number < 0) return 'We cannot have a negative age';
-return null;
-}
-]),
+    decoration: InputDecoration(labelText: 'Age'),
+    keyboardType: TextInputType.number,
+    autovalidateMode: AutovalidateMode.always,
+    validator: FormBuilderValidators.compose([
+        /// Makes this field required
+        FormBuilderValidators.required(),
+        
+        /// Ensures the value entered is numeric - with a custom error message
+        FormBuilderValidators.numeric(errorText: 'La edad debe ser numérica.'),
+        
+        /// Sets a maximum value of 70
+        FormBuilderValidators.max(70),
+        
+        /// Include your own custom `FormFieldValidator` function, if you want
+        /// Ensures positive values only. We could also have used `FormBuilderValidators.min(0)` instead
+        (val) {
+            final number = int.tryParse(val);
+            if (number == null) return null;
+            if (number < 0) return 'We cannot have a negative age';
+            return null;
+        }
+    ]),
 ),
 ```
 
