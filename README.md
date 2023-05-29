@@ -38,8 +38,8 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 ## Features
 
 - Ready-made validation rules
-- Multiple form inputs validators
-- Default error messages in several languages
+- Compose multiple reusable validation rules
+- Default error messages in multiple languages
 
 ## Validators
 
@@ -136,7 +136,7 @@ return MaterialApp(
 
 ### Basic use
 
-```dart
+```Dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Name'),
     autovalidateMode: AutovalidateMode.always,
@@ -156,7 +156,7 @@ On validation, each validator is run, and if any validator returns a non-null va
 
 Example:
 
-```dart
+```Dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Age'),
     keyboardType: TextInputType.number,
@@ -178,7 +178,7 @@ TextFormField(
             if (number == null) return null;
             if (number < 0) return 'We cannot have a negative age';
             return null;
-        }
+        },
     ]),
 ),
 ```
@@ -258,4 +258,4 @@ Take a look at [our fantastic ecosystem](https://github.com/flutter-form-builder
 
 ## Thanks to
 
-[All constributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)
+[All contributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)
