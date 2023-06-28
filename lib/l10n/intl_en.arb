@@ -11,7 +11,7 @@
   "maxErrorText": "Value must be less than or equal to {max}",
   "maxLengthErrorText": "Value must have a length less than or equal to {maxLength}",
   "maxWordsCountErrorText": "Value must have a words count less than or equal to {maxWordsCount}",
-  "minErrorText": "Value must be greater than or equal to {min}.",
+  "minErrorText": "Value must be greater than or equal to {min}",
   "minLengthErrorText": "Value must have a length greater than or equal to {minLength}",
   "minWordsCountErrorText": "Value must have a words count greater than or equal to {minWordsCount}",
   "notEqualErrorText": "This field value must not be equal to {value}.",
