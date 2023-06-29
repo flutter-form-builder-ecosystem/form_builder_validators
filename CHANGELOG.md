@@ -1,3 +1,7 @@
+## 9.0.1
+
+* Update intl to 0.18.1
+
 ## 9.0.0
 
 * Update constraints to Flutter 3.10
