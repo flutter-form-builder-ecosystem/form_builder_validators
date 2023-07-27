@@ -4,7 +4,7 @@ version: 9.0.0
 repository: https://github.com/flutter-form-builder-ecosystem/form_builder_validators
 issue_tracker: https://github.com/flutter-form-builder-ecosystem/form_builder_validators/issues
 homepage: https://github.com/flutter-form-builder-ecosystem
-funding: 
+funding:
   - https://opencollective.com/flutter-form-builder-ecosystem
 
 environment:
