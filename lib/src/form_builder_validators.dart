@@ -267,6 +267,15 @@ class FormBuilderValidators {
           ? errorText ?? FormBuilderLocalizations.current.matchErrorText
           : null;
 
+  /// [FormFieldValidator] that requires the field's value not to match the provided regex pattern.
+  static FormFieldValidator<String> notMatch(
+    String pattern, {
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty && RegExp(pattern).hasMatch(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.matchErrorText
+          : null;
+
   /// [FormFieldValidator] that requires the field's value to be a valid number.
   static FormFieldValidator<String> numeric({
     String? errorText,
