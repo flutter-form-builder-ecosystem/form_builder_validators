@@ -1,3 +1,11 @@
+## 9.1.0
+
+* Fix MN translation typo
+* Fix remove full stop at end of error message for max validation
+* Update intl to 0.18.1
+* Improve readme
+* Built with Flutter 3.13
+
 ## 9.0.0
 
 * Update constraints to Flutter 3.10
