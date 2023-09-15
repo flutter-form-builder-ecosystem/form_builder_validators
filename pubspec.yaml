@@ -16,10 +16,10 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
+  intl: ^0.18.1
 
 dev_dependencies:
-  flutter_lints: ^2.0.2
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
 
