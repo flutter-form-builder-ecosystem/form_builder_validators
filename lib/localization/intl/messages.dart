@@ -235,7 +235,7 @@ abstract class FormBuilderLocalizationsImpl {
   /// No description provided for @minErrorText.
   ///
   /// In en, this message translates to:
-  /// **'Value must be greater than or equal to {min}.'**
+  /// **'Value must be greater than or equal to {min}'**
   String minErrorText(Object min);
 
   /// No description provided for @minLengthErrorText.
