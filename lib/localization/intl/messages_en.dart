@@ -49,7 +49,7 @@ class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
 
   @override
   String minErrorText(Object min) {
-    return 'Value must be greater than or equal to $min.';
+    return 'Value must be greater than or equal to $min';
   }
 
   @override
