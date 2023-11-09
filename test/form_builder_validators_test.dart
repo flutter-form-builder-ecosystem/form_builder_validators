@@ -412,6 +412,11 @@ void main() {
             expect(validator('www.google.com'), isNull);
             expect(validator('google.com'), isNull);
             expect(validator('http://google.com'), isNull);
+            expect(validator('HTTPS://GOOGLE.COM'), isNull);
+            expect(validator('GOOGLE.com'), isNull);
+            expect(validator('GOOGLE.COM'), isNull);
+            expect(validator('google.com/search?q=TEST'), isNull);
+            expect(validator('google.com/search#MY_AWESOME_THING'), isNull);
             // Fail
             expect(validator('.com'), isNotNull);
             // Advanced overrides
@@ -456,4 +461,11 @@ void main() {
             expect(validator('1234'), isNotNull);
             expect(validator('ABC'), isNotNull);
           }));
+}
+
+class Test implements Comparable<Test> {
+  @override
+  int compareTo(Test other) {
+    throw UnimplementedError();
+  }
 }
