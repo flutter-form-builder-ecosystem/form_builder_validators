@@ -462,10 +462,3 @@ void main() {
             expect(validator('ABC'), isNotNull);
           }));
 }
-
-class Test implements Comparable<Test> {
-  @override
-  int compareTo(Test other) {
-    throw UnimplementedError();
-  }
-}
