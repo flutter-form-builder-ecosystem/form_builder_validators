@@ -10,6 +10,8 @@ RegExp _ipv6 =
 RegExp _creditCard = RegExp(
     r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$');
 
+int _maxUrlLength = 2083;
+
 /// check if the string [str] is an email
 bool isEmail(String str) {
   return _email.hasMatch(str.toLowerCase());
@@ -32,7 +34,7 @@ bool isURL(String? str,
     List<String> hostBlacklist = const []}) {
   if (str == null ||
       str.isEmpty ||
-      str.length > 2083 ||
+      str.length > _maxUrlLength ||
       str.startsWith('mailto:')) {
     return false;
   }
@@ -43,7 +45,7 @@ bool isURL(String? str,
   // check protocol
   var split = str.split('://');
   if (split.length > 1) {
-    protocol = shift(split);
+    protocol = shift(split)!.toLowerCase();
     if (!protocols.contains(protocol)) {
       return false;
     }
@@ -94,7 +96,7 @@ bool isURL(String? str,
   // check hostname
   hostname = split.join('@');
   split = hostname.split(':');
-  host = shift(split)!;
+  host = shift(split)!.toLowerCase();
   if (split.isNotEmpty) {
     portStr = split.join(':');
     try {
