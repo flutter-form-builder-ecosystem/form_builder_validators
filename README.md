@@ -86,6 +86,7 @@ Validators support default `errorText` messages in these languages:
 - French (fr)
 - German (de)
 - Greek (el)
+- Hebrew (he)
 - Hungarian (hu)
 - Indonesian (id)
 - Italian (it)

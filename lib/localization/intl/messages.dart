@@ -17,6 +17,7 @@ import 'messages_es.dart';
 import 'messages_et.dart';
 import 'messages_fa.dart';
 import 'messages_fr.dart';
+import 'messages_he.dart';
 import 'messages_hr.dart';
 import 'messages_hu.dart';
 import 'messages_id.dart';
@@ -138,6 +139,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('et'),
     Locale('fa'),
     Locale('fr'),
+    Locale('he'),
     Locale('hr'),
     Locale('hu'),
     Locale('id'),
@@ -284,7 +286,7 @@ class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBu
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['sq', 'ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'ne', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['sq', 'ar', 'bn', 'bs', 'ca', 'cs', 'de', 'el', 'en', 'es', 'et', 'fa', 'fr', 'he', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'ne', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
@@ -317,6 +319,7 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
     case 'et': return FormBuilderLocalizationsImplEt();
     case 'fa': return FormBuilderLocalizationsImplFa();
     case 'fr': return FormBuilderLocalizationsImplFr();
+    case 'he': return FormBuilderLocalizationsImplHe();
     case 'hr': return FormBuilderLocalizationsImplHr();
     case 'hu': return FormBuilderLocalizationsImplHu();
     case 'id': return FormBuilderLocalizationsImplId();
