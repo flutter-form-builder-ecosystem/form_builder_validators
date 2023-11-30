@@ -1,0 +1,21 @@
+{
+  "@@locale": "he",
+  "creditCardErrorText": "שדה זה דורש מספר כרטיס אשראי תקין.",
+  "dateStringErrorText": "שדה זה דורש מחרוזת תאריך תקינה.",
+  "emailErrorText": "שדה זה דורש כתובת דוא\"ל תקינה.",
+  "equalErrorText": "ערך זה חייב להיות שווה ל {value}.",
+  "equalLengthErrorText": "ערך זה חייב להיות באורך שווה ל {length}",
+  "integerErrorText": "שדה זה דורש מספר שלם תקין.",
+  "ipErrorText": "שדה זה דורש כתובת IP תקינה.",
+  "matchErrorText": "ערך זה אינו תואם לתבנית.",
+  "maxErrorText": "ערך זה חייב להיות קטן או שווה ל {max}",
+  "maxLengthErrorText": "ערך זה חייב להיות באורך קטן או שווה ל {maxLength}",
+  "maxWordsCountErrorText": "ערך זה חייב להיות באורך מילים קטן או שווה ל {maxWordsCount}",
+  "minErrorText": "ערך זה חייב להיות גדול או שווה ל {min}",
+  "minLengthErrorText": "ערך זה חייב להיות באורך גדול או שווה ל {minLength}",
+  "minWordsCountErrorText": "ערך זה חייב להיות באורך מילים גדול או שווה ל {minWordsCount}",
+  "notEqualErrorText": "ערך זה חייב להיות שונה מ {value}.",
+  "numericErrorText": "ערך זה חייב להיות מספרי.",
+  "requiredErrorText": "שדה זה אינו יכול להיות ריק.",
+  "urlErrorText": "שדה זה דורש כתובת URL תקינה."
+}
