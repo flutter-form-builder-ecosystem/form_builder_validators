@@ -82,6 +82,7 @@ Validators support default `errorText` messages in these languages:
 - Dutch (nl)
 - English (en)
 - Estonian (et)
+- Finnish (fi)
 - Farsi/Persian (fa)
 - French (fr)
 - German (de)
