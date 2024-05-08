@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplEn extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplEn([String locale = 'en']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'This field requires a valid credit card number.';
+  String get creditCardErrorText =>
+      'This field requires a valid credit card number.';
 
   @override
   String get dateStringErrorText => 'This field requires a valid date string.';

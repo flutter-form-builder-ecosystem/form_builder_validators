@@ -5,10 +5,12 @@ class FormBuilderLocalizationsImplMs extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplMs([String locale = 'ms']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Ruangan ini memerlukan nombor kad kredit yang sah.';
+  String get creditCardErrorText =>
+      'Ruangan ini memerlukan nombor kad kredit yang sah.';
 
   @override
-  String get dateStringErrorText => 'Ruangan ini memerlukan rentetan tarikh yang sah.';
+  String get dateStringErrorText =>
+      'Ruangan ini memerlukan rentetan tarikh yang sah.';
 
   @override
   String get emailErrorText => 'Ruang ini memerlukan alamat e-mel yang sah.';

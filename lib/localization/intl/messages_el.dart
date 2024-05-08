@@ -5,13 +5,15 @@ class FormBuilderLocalizationsImplEl extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplEl([String locale = 'el']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Η τιμή πρέπει να είναι έγκυρη πιστωτική κάρτα.';
+  String get creditCardErrorText =>
+      'Η τιμή πρέπει να είναι έγκυρη πιστωτική κάρτα.';
 
   @override
   String get dateStringErrorText => 'Η τιμή πρέπει να είναι έγκυρη ημερομηνία.';
 
   @override
-  String get emailErrorText => 'Το πεδίο πρέπει να έχει μία έγκυρη διεύθυνση email.';
+  String get emailErrorText =>
+      'Το πεδίο πρέπει να έχει μία έγκυρη διεύθυνση email.';
 
   @override
   String equalErrorText(Object value) {

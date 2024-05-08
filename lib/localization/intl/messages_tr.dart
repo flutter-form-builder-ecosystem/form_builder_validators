@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplTr extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Bu alan geçerli bir kredi kartı numarası gerektirir.';
+  String get creditCardErrorText =>
+      'Bu alan geçerli bir kredi kartı numarası gerektirir.';
 
   @override
   String get dateStringErrorText => 'Bu alan geçerli bir tarih gerektirir.';

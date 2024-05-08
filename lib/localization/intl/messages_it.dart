@@ -5,13 +5,15 @@ class FormBuilderLocalizationsImplIt extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplIt([String locale = 'it']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Questo campo richiede un numero di carta di credito valido.';
+  String get creditCardErrorText =>
+      'Questo campo richiede un numero di carta di credito valido.';
 
   @override
   String get dateStringErrorText => 'Questo campo richiede una data valida.';
 
   @override
-  String get emailErrorText => 'Questo campo richiede un indirizzo email valido.';
+  String get emailErrorText =>
+      'Questo campo richiede un indirizzo email valido.';
 
   @override
   String equalErrorText(Object value) {
@@ -30,7 +32,8 @@ class FormBuilderLocalizationsImplIt extends FormBuilderLocalizationsImpl {
   String get ipErrorText => 'Questo campo richiede un indirizzo IP valido.';
 
   @override
-  String get matchErrorText => 'Il valore non corrisponde al formato richiesto.';
+  String get matchErrorText =>
+      'Il valore non corrisponde al formato richiesto.';
 
   @override
   String maxErrorText(Object max) {

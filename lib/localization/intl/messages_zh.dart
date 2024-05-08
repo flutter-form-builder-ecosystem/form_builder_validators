@@ -78,8 +78,9 @@ class FormBuilderLocalizationsImplZh extends FormBuilderLocalizationsImpl {
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
-class FormBuilderLocalizationsImplZhHant extends FormBuilderLocalizationsImplZh {
-  FormBuilderLocalizationsImplZhHant(): super('zh_Hant');
+class FormBuilderLocalizationsImplZhHant
+    extends FormBuilderLocalizationsImplZh {
+  FormBuilderLocalizationsImplZhHant() : super('zh_Hant');
 
   @override
   String get creditCardErrorText => '此欄位需要有效的信用卡號碼。';

@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplRu extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Значение поля должно быть номером кредитной карты.';
+  String get creditCardErrorText =>
+      'Значение поля должно быть номером кредитной карты.';
 
   @override
   String get dateStringErrorText => 'Поле должно быть датой.';

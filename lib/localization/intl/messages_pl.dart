@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplPl extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'To pole wymaga podania ważnego numeru karty kredytowej.';
+  String get creditCardErrorText =>
+      'To pole wymaga podania ważnego numeru karty kredytowej.';
 
   @override
   String get dateStringErrorText => 'To pole wymaga prawidłowej daty.';

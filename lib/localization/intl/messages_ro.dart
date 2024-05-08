@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplRo extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Acest câmp necesită un număr valid de card de credit.';
+  String get creditCardErrorText =>
+      'Acest câmp necesită un număr valid de card de credit.';
 
   @override
   String get dateStringErrorText => 'Acest câmp necesită un șir de date valid.';

@@ -5,10 +5,12 @@ class FormBuilderLocalizationsImplNe extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplNe([String locale = 'ne']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'यो क्षेत्रलाई मान्य क्रेडिट कार्ड नम्बर चाहिन्छ।';
+  String get creditCardErrorText =>
+      'यो क्षेत्रलाई मान्य क्रेडिट कार्ड नम्बर चाहिन्छ।';
 
   @override
-  String get dateStringErrorText => 'यो क्षेत्रलाई मान्य मिति स्ट्रिंग चाहिन्छ।';
+  String get dateStringErrorText =>
+      'यो क्षेत्रलाई मान्य मिति स्ट्रिंग चाहिन्छ।';
 
   @override
   String get emailErrorText => 'यो क्षेत्रलाई मान्य इमेल ठेगाना चाहिन्छ।';

@@ -5,10 +5,12 @@ class FormBuilderLocalizationsImplEt extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplEt([String locale = 'et']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Sellele väljale tuleb sisestada korrektne krediitkaardi number.';
+  String get creditCardErrorText =>
+      'Sellele väljale tuleb sisestada korrektne krediitkaardi number.';
 
   @override
-  String get dateStringErrorText => 'Sellele väljale tuleb sisestada korrektne kuupäev.';
+  String get dateStringErrorText =>
+      'Sellele väljale tuleb sisestada korrektne kuupäev.';
 
   @override
   String get emailErrorText => 'See väli nõuab kehtivat e-posti aadressi.';
@@ -27,7 +29,8 @@ class FormBuilderLocalizationsImplEt extends FormBuilderLocalizationsImpl {
   String get integerErrorText => 'Sisend peab olema täisarv.';
 
   @override
-  String get ipErrorText => 'Sellele väljale tuleb sisestada korrektne IP-aadress.';
+  String get ipErrorText =>
+      'Sellele väljale tuleb sisestada korrektne IP-aadress.';
 
   @override
   String get matchErrorText => 'Sisend ei vasta mustrile.';

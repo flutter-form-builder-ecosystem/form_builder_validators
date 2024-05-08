@@ -5,13 +5,15 @@ class FormBuilderLocalizationsImplSq extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSq([String locale = 'sq']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Kjo fushë kërkon një numër të vlefshëm per karten e kreditit.';
+  String get creditCardErrorText =>
+      'Kjo fushë kërkon një numër të vlefshëm per karten e kreditit.';
 
   @override
   String get dateStringErrorText => 'Kjo fushë kërkon një date të vlefshme.';
 
   @override
-  String get emailErrorText => 'Kjo fushe kërkon një adresë e E-mail-i të vlefshëme.';
+  String get emailErrorText =>
+      'Kjo fushe kërkon një adresë e E-mail-i të vlefshëme.';
 
   @override
   String equalErrorText(Object value) {
@@ -24,7 +26,8 @@ class FormBuilderLocalizationsImplSq extends FormBuilderLocalizationsImpl {
   }
 
   @override
-  String get integerErrorText => 'Kjo fushe kërkon një numër të plotë të vlefshëm.';
+  String get integerErrorText =>
+      'Kjo fushe kërkon një numër të plotë të vlefshëm.';
 
   @override
   String get ipErrorText => 'Kjo fushë kërkon një IP të vlefshme.';

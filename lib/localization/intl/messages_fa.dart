@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplFa extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'این ورودی به شماره کارت اعتباری معتبر نیاز دارد.';
+  String get creditCardErrorText =>
+      'این ورودی به شماره کارت اعتباری معتبر نیاز دارد.';
 
   @override
   String get dateStringErrorText => 'این ورودی به یک تاریخ معتبر نیاز دارد.';

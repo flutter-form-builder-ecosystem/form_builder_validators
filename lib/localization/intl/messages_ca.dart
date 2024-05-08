@@ -5,13 +5,16 @@ class FormBuilderLocalizationsImplCa extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplCa([String locale = 'ca']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Aquest camp requereix un número de targeta de crèdit vàlid.';
+  String get creditCardErrorText =>
+      'Aquest camp requereix un número de targeta de crèdit vàlid.';
 
   @override
-  String get dateStringErrorText => 'Aquest camp requereix una cadena de data vàlida.';
+  String get dateStringErrorText =>
+      'Aquest camp requereix una cadena de data vàlida.';
 
   @override
-  String get emailErrorText => 'Aquest camp requereix una adreça de correu electrònic vàlida.';
+  String get emailErrorText =>
+      'Aquest camp requereix una adreça de correu electrònic vàlida.';
 
   @override
   String equalErrorText(Object value) {

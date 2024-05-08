@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplLo extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplLo([String locale = 'lo']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງເລກບັດເຄຣດິດ.';
+  String get creditCardErrorText =>
+      'ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງເລກບັດເຄຣດິດ.';
 
   @override
   String get dateStringErrorText => 'ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງວັນທີ.';
