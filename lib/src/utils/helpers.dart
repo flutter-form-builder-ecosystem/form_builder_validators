@@ -2,7 +2,7 @@
 
 T? shift<T>(List<T> l) {
   if (l.isNotEmpty) {
-    var first = l.first;
+    final first = l.first;
     l.removeAt(0);
     return first;
   }
