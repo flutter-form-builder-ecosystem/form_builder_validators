@@ -1,3 +1,10 @@
+## 9.2.0
+
+* Update intl to 0.19.0
+* Update constraints to Dart 3.3
+* Built with Flutter 3.16.6
+* Improve CI
+
 ## 9.1.0
 
 * Fix MN translation typo
