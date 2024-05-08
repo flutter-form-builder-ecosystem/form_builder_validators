@@ -9,7 +9,10 @@ on:
   pull_request:
     branches: [main]
 
-  workflow_dispatch:
+# This ensures that previous jobs for the PR are canceled when PR is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -23,10 +26,11 @@ jobs:
         with:
           paths: "**/*.md"
 
-      - name: Flutter action
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          # use the build-in cache from Subosito
+          cache: true
 
       - name: Install dependencies
         run: flutter pub get
@@ -45,7 +49,7 @@ jobs:
           flutter build ios --debug --no-codesign
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
@@ -67,6 +71,8 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          # use the build-in cache from Subosito
+          cache: true
       - name: Publish package
         run: dart pub publish -v -f
 
