@@ -79,6 +79,7 @@ Validators support default `errorText` messages in these languages:
 - Chinese Traditional (zh_Hant)
 - Croatian (hr)
 - Czech (cs)
+- Danish (da)
 - Dutch (nl)
 - English (en)
 - Estonian (et)
