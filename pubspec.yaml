@@ -8,8 +8,8 @@ funding:
   - https://opencollective.com/flutter-form-builder-ecosystem
 
 environment:
-  sdk: ^3.0.0
-  flutter: ">=3.10.0"
+  sdk: ^3.3.0
+  flutter: ">=3.22.0"
 
 dependencies:
   flutter:
