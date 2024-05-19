@@ -48,6 +48,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    namespace 'dev.danvickmiller.formbuildervalidators.example'
 }
 
 flutter {
