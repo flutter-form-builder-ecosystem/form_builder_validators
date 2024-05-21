@@ -1,8 +1,8 @@
-## 9.2.0
+## 10.0.0
 
 * Update intl to 0.19.0
-* Update constraints to Dart 3.2
-* Built with Flutter 3.16.6
+* Update constraints to Dart 3.4
+* Built with Flutter 3.22.0
 * Improve CI
 
 ## 9.1.0
