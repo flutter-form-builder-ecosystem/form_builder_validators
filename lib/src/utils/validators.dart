@@ -45,7 +45,7 @@ bool isURL(
   int port;
   String? protocol;
   String? auth;
-  String? user;
+  String user;
   String host;
   String hostname;
   String portStr;
@@ -56,7 +56,7 @@ bool isURL(
   // check protocol
   var split = str.split('://');
   if (split.length > 1) {
-    protocol = shift(split)!.toLowerCase();
+    protocol = shift(split).toLowerCase();
     if (!protocols.contains(protocol)) {
       return false;
     }
@@ -74,7 +74,7 @@ bool isURL(
   }
 
   // check query params
-  split = str!.split('?');
+  split = str.split('?');
   str = shift(split);
   query = split.join('?');
   if (query.isNotEmpty && RegExp(r'\s').hasMatch(query)) {
@@ -82,7 +82,7 @@ bool isURL(
   }
 
   // check path
-  split = str!.split('/');
+  split = str.split('/');
   str = shift(split);
   path = split.join('/');
   if (path.isNotEmpty && RegExp(r'\s').hasMatch(path)) {
@@ -90,7 +90,7 @@ bool isURL(
   }
 
   // check auth type urls
-  split = str!.split('@');
+  split = str.split('@');
   if (split.length > 1) {
     auth = shift(split);
     if (auth?.contains(':') ?? false) {
@@ -107,7 +107,7 @@ bool isURL(
   // check hostname
   hostname = split.join('@');
   split = hostname.split(':');
-  host = shift(split)!.toLowerCase();
+  host = shift(split).toLowerCase();
   if (split.isNotEmpty) {
     portStr = split.join(':');
     try {
