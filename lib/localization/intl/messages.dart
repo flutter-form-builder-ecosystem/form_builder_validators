@@ -99,15 +99,20 @@ import 'messages_zh.dart';
 /// be consistent with the languages listed in the FormBuilderLocalizationsImpl.supportedLocales
 /// property.
 abstract class FormBuilderLocalizationsImpl {
-  FormBuilderLocalizationsImpl(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  FormBuilderLocalizationsImpl(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale);
 
   final String localeName;
 
   static FormBuilderLocalizationsImpl of(BuildContext context) {
-    return Localizations.of<FormBuilderLocalizationsImpl>(context, FormBuilderLocalizationsImpl)!;
+    return Localizations.of<FormBuilderLocalizationsImpl>(
+      context,
+      FormBuilderLocalizationsImpl,
+    )!;
   }
 
-  static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate = _FormBuilderLocalizationsImplDelegate();
+  static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate =
+      _FormBuilderLocalizationsImplDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -119,7 +124,8 @@ abstract class FormBuilderLocalizationsImpl {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -169,7 +175,7 @@ abstract class FormBuilderLocalizationsImpl {
     Locale('uk'),
     Locale('vi'),
     Locale('zh'),
-    Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant')
+    Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
   ];
 
   /// No description provided for @creditCardErrorText.
@@ -281,82 +287,168 @@ abstract class FormBuilderLocalizationsImpl {
   String get urlErrorText;
 }
 
-class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {
+class _FormBuilderLocalizationsImplDelegate
+    extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {
   const _FormBuilderLocalizationsImplDelegate();
 
   @override
   Future<FormBuilderLocalizationsImpl> load(Locale locale) {
-    return SynchronousFuture<FormBuilderLocalizationsImpl>(lookupFormBuilderLocalizationsImpl(locale));
+    return SynchronousFuture<FormBuilderLocalizationsImpl>(
+      lookupFormBuilderLocalizationsImpl(locale),
+    );
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['sq', 'ar', 'bn', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'he', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lo', 'mn', 'ms', 'ne', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sw', 'ta', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'sq',
+        'ar',
+        'bn',
+        'bs',
+        'ca',
+        'cs',
+        'da',
+        'de',
+        'el',
+        'en',
+        'es',
+        'et',
+        'fa',
+        'fi',
+        'fr',
+        'he',
+        'hr',
+        'hu',
+        'id',
+        'it',
+        'ja',
+        'ko',
+        'lo',
+        'mn',
+        'ms',
+        'ne',
+        'nl',
+        'pl',
+        'pt',
+        'ro',
+        'ru',
+        'se',
+        'sk',
+        'sl',
+        'sw',
+        'ta',
+        'th',
+        'tr',
+        'uk',
+        'vi',
+        'zh',
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_FormBuilderLocalizationsImplDelegate old) => false;
 }
 
 FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
-
   // Lookup logic when language+script codes are specified.
   switch (locale.languageCode) {
-    case 'zh': {
-  switch (locale.scriptCode) {
-    case 'Hant': return FormBuilderLocalizationsImplZhHant();
-   }
-  break;
-   }
+    case 'zh':
+      {
+        switch (locale.scriptCode) {
+          case 'Hant':
+            return FormBuilderLocalizationsImplZhHant();
+        }
+        break;
+      }
   }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'sq': return FormBuilderLocalizationsImplSq();
-    case 'ar': return FormBuilderLocalizationsImplAr();
-    case 'bn': return FormBuilderLocalizationsImplBn();
-    case 'bs': return FormBuilderLocalizationsImplBs();
-    case 'ca': return FormBuilderLocalizationsImplCa();
-    case 'cs': return FormBuilderLocalizationsImplCs();
-    case 'da': return FormBuilderLocalizationsImplDa();
-    case 'de': return FormBuilderLocalizationsImplDe();
-    case 'el': return FormBuilderLocalizationsImplEl();
-    case 'en': return FormBuilderLocalizationsImplEn();
-    case 'es': return FormBuilderLocalizationsImplEs();
-    case 'et': return FormBuilderLocalizationsImplEt();
-    case 'fa': return FormBuilderLocalizationsImplFa();
-    case 'fi': return FormBuilderLocalizationsImplFi();
-    case 'fr': return FormBuilderLocalizationsImplFr();
-    case 'he': return FormBuilderLocalizationsImplHe();
-    case 'hr': return FormBuilderLocalizationsImplHr();
-    case 'hu': return FormBuilderLocalizationsImplHu();
-    case 'id': return FormBuilderLocalizationsImplId();
-    case 'it': return FormBuilderLocalizationsImplIt();
-    case 'ja': return FormBuilderLocalizationsImplJa();
-    case 'ko': return FormBuilderLocalizationsImplKo();
-    case 'lo': return FormBuilderLocalizationsImplLo();
-    case 'mn': return FormBuilderLocalizationsImplMn();
-    case 'ms': return FormBuilderLocalizationsImplMs();
-    case 'ne': return FormBuilderLocalizationsImplNe();
-    case 'nl': return FormBuilderLocalizationsImplNl();
-    case 'pl': return FormBuilderLocalizationsImplPl();
-    case 'pt': return FormBuilderLocalizationsImplPt();
-    case 'ro': return FormBuilderLocalizationsImplRo();
-    case 'ru': return FormBuilderLocalizationsImplRu();
-    case 'se': return FormBuilderLocalizationsImplSe();
-    case 'sk': return FormBuilderLocalizationsImplSk();
-    case 'sl': return FormBuilderLocalizationsImplSl();
-    case 'sw': return FormBuilderLocalizationsImplSw();
-    case 'ta': return FormBuilderLocalizationsImplTa();
-    case 'th': return FormBuilderLocalizationsImplTh();
-    case 'tr': return FormBuilderLocalizationsImplTr();
-    case 'uk': return FormBuilderLocalizationsImplUk();
-    case 'vi': return FormBuilderLocalizationsImplVi();
-    case 'zh': return FormBuilderLocalizationsImplZh();
+    case 'sq':
+      return FormBuilderLocalizationsImplSq();
+    case 'ar':
+      return FormBuilderLocalizationsImplAr();
+    case 'bn':
+      return FormBuilderLocalizationsImplBn();
+    case 'bs':
+      return FormBuilderLocalizationsImplBs();
+    case 'ca':
+      return FormBuilderLocalizationsImplCa();
+    case 'cs':
+      return FormBuilderLocalizationsImplCs();
+    case 'da':
+      return FormBuilderLocalizationsImplDa();
+    case 'de':
+      return FormBuilderLocalizationsImplDe();
+    case 'el':
+      return FormBuilderLocalizationsImplEl();
+    case 'en':
+      return FormBuilderLocalizationsImplEn();
+    case 'es':
+      return FormBuilderLocalizationsImplEs();
+    case 'et':
+      return FormBuilderLocalizationsImplEt();
+    case 'fa':
+      return FormBuilderLocalizationsImplFa();
+    case 'fi':
+      return FormBuilderLocalizationsImplFi();
+    case 'fr':
+      return FormBuilderLocalizationsImplFr();
+    case 'he':
+      return FormBuilderLocalizationsImplHe();
+    case 'hr':
+      return FormBuilderLocalizationsImplHr();
+    case 'hu':
+      return FormBuilderLocalizationsImplHu();
+    case 'id':
+      return FormBuilderLocalizationsImplId();
+    case 'it':
+      return FormBuilderLocalizationsImplIt();
+    case 'ja':
+      return FormBuilderLocalizationsImplJa();
+    case 'ko':
+      return FormBuilderLocalizationsImplKo();
+    case 'lo':
+      return FormBuilderLocalizationsImplLo();
+    case 'mn':
+      return FormBuilderLocalizationsImplMn();
+    case 'ms':
+      return FormBuilderLocalizationsImplMs();
+    case 'ne':
+      return FormBuilderLocalizationsImplNe();
+    case 'nl':
+      return FormBuilderLocalizationsImplNl();
+    case 'pl':
+      return FormBuilderLocalizationsImplPl();
+    case 'pt':
+      return FormBuilderLocalizationsImplPt();
+    case 'ro':
+      return FormBuilderLocalizationsImplRo();
+    case 'ru':
+      return FormBuilderLocalizationsImplRu();
+    case 'se':
+      return FormBuilderLocalizationsImplSe();
+    case 'sk':
+      return FormBuilderLocalizationsImplSk();
+    case 'sl':
+      return FormBuilderLocalizationsImplSl();
+    case 'sw':
+      return FormBuilderLocalizationsImplSw();
+    case 'ta':
+      return FormBuilderLocalizationsImplTa();
+    case 'th':
+      return FormBuilderLocalizationsImplTh();
+    case 'tr':
+      return FormBuilderLocalizationsImplTr();
+    case 'uk':
+      return FormBuilderLocalizationsImplUk();
+    case 'vi':
+      return FormBuilderLocalizationsImplVi();
+    case 'zh':
+      return FormBuilderLocalizationsImplZh();
   }
 
   throw FlutterError(
-    'FormBuilderLocalizationsImpl.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'FormBuilderLocalizationsImpl.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }
