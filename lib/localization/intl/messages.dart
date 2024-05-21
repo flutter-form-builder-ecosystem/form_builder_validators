@@ -99,18 +99,15 @@ import 'messages_zh.dart';
 /// be consistent with the languages listed in the FormBuilderLocalizationsImpl.supportedLocales
 /// property.
 abstract class FormBuilderLocalizationsImpl {
-  FormBuilderLocalizationsImpl(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  FormBuilderLocalizationsImpl(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static FormBuilderLocalizationsImpl? of(BuildContext context) {
-    return Localizations.of<FormBuilderLocalizationsImpl>(
-        context, FormBuilderLocalizationsImpl);
+  static FormBuilderLocalizationsImpl of(BuildContext context) {
+    return Localizations.of<FormBuilderLocalizationsImpl>(context, FormBuilderLocalizationsImpl)!;
   }
 
-  static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate =
-      _FormBuilderLocalizationsImplDelegate();
+  static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate = _FormBuilderLocalizationsImplDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -122,8 +119,7 @@ abstract class FormBuilderLocalizationsImpl {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -285,14 +281,12 @@ abstract class FormBuilderLocalizationsImpl {
   String get urlErrorText;
 }
 
-class _FormBuilderLocalizationsImplDelegate
-    extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {
+class _FormBuilderLocalizationsImplDelegate extends LocalizationsDelegate<FormBuilderLocalizationsImpl> {
   const _FormBuilderLocalizationsImplDelegate();
 
   @override
   Future<FormBuilderLocalizationsImpl> load(Locale locale) {
-    return SynchronousFuture<FormBuilderLocalizationsImpl>(
-        lookupFormBuilderLocalizationsImpl(locale));
+    return SynchronousFuture<FormBuilderLocalizationsImpl>(lookupFormBuilderLocalizationsImpl(locale));
   }
 
   @override
@@ -303,16 +297,15 @@ class _FormBuilderLocalizationsImplDelegate
 }
 
 FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
+
   // Lookup logic when language+script codes are specified.
   switch (locale.languageCode) {
-    case 'zh':
-      {
-        switch (locale.scriptCode) {
-          case 'Hant':
-            return FormBuilderLocalizationsImplZhHant();
-        }
-        break;
-      }
+    case 'zh': {
+  switch (locale.scriptCode) {
+    case 'Hant': return FormBuilderLocalizationsImplZhHant();
+   }
+  break;
+   }
   }
 
   // Lookup logic when only language code is specified.
@@ -361,8 +354,9 @@ FormBuilderLocalizationsImpl lookupFormBuilderLocalizationsImpl(Locale locale) {
   }
 
   throw FlutterError(
-      'FormBuilderLocalizationsImpl.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'FormBuilderLocalizationsImpl.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }
