@@ -4,6 +4,8 @@
 * Update constraints to Dart 3.4
 * Built with Flutter 3.22.0
 * Improve CI
+* Improve Dutch language
+* Add Norwegian
 
 ## 9.1.0
 
