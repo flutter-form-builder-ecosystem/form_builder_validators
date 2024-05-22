@@ -1,5 +1,3 @@
-library form_builder_validators;
-
 export 'localization/intl/messages.dart';
 export 'localization/intl/messages_ar.dart';
 export 'localization/intl/messages_bn.dart';

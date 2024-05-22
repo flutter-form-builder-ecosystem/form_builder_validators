@@ -6,4 +6,5 @@ synthetic-package: false
 output-dir: lib/localization/intl
 output-localization-file: messages.dart
 output-class: FormBuilderLocalizationsImpl
+nullable-getter: false
 #untranslated-messages-file: build/untranslated-messages.txt

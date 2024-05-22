@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 build/
+pubspec.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -73,3 +74,6 @@ build/
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
+
+# L10n files
+**/intl
