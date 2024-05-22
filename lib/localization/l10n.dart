@@ -13,7 +13,9 @@ class FormBuilderLocalizations {
 
   static FormBuilderLocalizationsImpl of(BuildContext context) {
     return Localizations.of<FormBuilderLocalizationsImpl>(
-            context, FormBuilderLocalizationsImpl) ??
+          context,
+          FormBuilderLocalizationsImpl,
+        ) ??
         _default;
   }
 

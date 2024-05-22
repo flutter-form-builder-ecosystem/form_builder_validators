@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import '../form_builder_validators.dart';
 
 import 'utils/validators.dart';
 
@@ -9,9 +9,10 @@ class FormBuilderValidators {
   /// Each validator is run against the [FormField] value and if any returns a
   /// non-null result validation fails, otherwise, validation passes
   static FormFieldValidator<T> compose<T>(
-      List<FormFieldValidator<T>> validators) {
+    List<FormFieldValidator<T>> validators,
+  ) {
     return (valueCandidate) {
-      for (var validator in validators) {
+      for (final validator in validators) {
         final validatorResult = validator.call(valueCandidate);
         if (validatorResult != null) {
           return validatorResult;
@@ -112,9 +113,11 @@ class FormBuilderValidators {
   }) {
     assert(minLength > 0);
     return (T? valueCandidate) {
-      assert(valueCandidate is String ||
-          valueCandidate is Iterable ||
-          valueCandidate == null);
+      assert(
+        valueCandidate is String ||
+            valueCandidate is Iterable ||
+            valueCandidate == null,
+      );
       var valueLength = 0;
       if (valueCandidate is String) valueLength = valueCandidate.length;
       if (valueCandidate is Iterable) valueLength = valueCandidate.length;
@@ -133,9 +136,11 @@ class FormBuilderValidators {
   }) {
     assert(maxLength > 0);
     return (T? valueCandidate) {
-      assert(valueCandidate is String ||
-          valueCandidate is Iterable ||
-          valueCandidate == null);
+      assert(
+        valueCandidate is String ||
+            valueCandidate is Iterable ||
+            valueCandidate == null,
+      );
       int valueLength = 0;
       if (valueCandidate is String) valueLength = valueCandidate.length;
       if (valueCandidate is Iterable) valueLength = valueCandidate.length;
@@ -155,10 +160,12 @@ class FormBuilderValidators {
   }) {
     assert(length > 0);
     return (T? valueCandidate) {
-      assert(valueCandidate is String ||
-          valueCandidate is Iterable ||
-          valueCandidate is int ||
-          valueCandidate == null);
+      assert(
+        valueCandidate is String ||
+            valueCandidate is Iterable ||
+            valueCandidate is int ||
+            valueCandidate == null,
+      );
       int valueLength = 0;
 
       if (valueCandidate is int) valueLength = valueCandidate.toString().length;
@@ -202,7 +209,7 @@ class FormBuilderValidators {
   }) {
     assert(maxCount > 0, 'The maximum words count must be greater than 0');
     return (valueCandidate) {
-      int valueWordsCount = valueCandidate?.trim().split(' ').length ?? 0;
+      final int valueWordsCount = valueCandidate?.trim().split(' ').length ?? 0;
       return null != valueCandidate && valueWordsCount > maxCount
           ? errorText ??
               FormBuilderLocalizations.current.maxWordsCountErrorText(maxCount)
@@ -238,13 +245,15 @@ class FormBuilderValidators {
     List<String> hostBlacklist = const [],
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !isURL(valueCandidate,
-                  protocols: protocols,
-                  requireTld: requireTld,
-                  requireProtocol: requireProtocol,
-                  allowUnderscore: allowUnderscore,
-                  hostWhitelist: hostWhitelist,
-                  hostBlacklist: hostBlacklist)
+              !isURL(
+                valueCandidate,
+                protocols: protocols,
+                requireTld: requireTld,
+                requireProtocol: requireProtocol,
+                allowUnderscore: allowUnderscore,
+                hostWhitelist: hostWhitelist,
+                hostBlacklist: hostBlacklist,
+              )
           ? errorText ?? FormBuilderLocalizations.current.urlErrorText
           : null;
 
@@ -293,7 +302,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isIP(valueCandidate!, version)
+          true == valueCandidate?.isNotEmpty && !isIP(valueCandidate, version)
               ? errorText ?? FormBuilderLocalizations.current.ipErrorText
               : null;
 

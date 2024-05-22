@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   HomePageState createState() => HomePageState();
@@ -14,7 +14,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Form Builder Validators')),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
             TextFormField(
@@ -34,7 +34,8 @@ class HomePageState extends State<HomePage> {
 
                 /// Ensures the value entered is numeric - with custom error message
                 FormBuilderValidators.numeric(
-                    errorText: 'La edad debe ser numérica.'),
+                  errorText: 'La edad debe ser numérica.',
+                ),
 
                 /// Sets a maximum value of 70
                 FormBuilderValidators.max(70),
