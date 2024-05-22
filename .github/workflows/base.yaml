@@ -56,7 +56,6 @@ jobs:
         run: |
           cd example
           flutter build appbundle --debug
-          flutter build ios --debug --no-codesign
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
