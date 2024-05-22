@@ -1,3 +1,20 @@
+## 10.0.0
+
+* Update intl to 0.19.0
+* Update constraints to Dart 3.4
+* Built with Flutter 3.22.0
+* Improve CI
+* Improve Dutch language
+* Add Norwegian
+
+## 9.1.0
+
+* Fix MN translation typo
+* Fix remove full stop at end of error message for max validation
+* Update intl to 0.18.1
+* Improve readme
+* Built with Flutter 3.13
+
 ## 9.0.0
 
 * Update constraints to Flutter 3.10
@@ -20,7 +37,7 @@
 ## 8.6.0
 
 * Add missed translations for all languages
-* Add support for more languanges
+* Add support for more languages
   * Swedish
 
 ## 8.5.0
@@ -28,7 +45,7 @@
 * New validators for minWordsCount & maxWordsCount
 * Simplify arb files and correct intl_zh.arb
 * Build with Flutter 3.7.5
-* Add support for more languanges
+* Add support for more languages
   * Mongolian
   * Nepali and burmese
   * Albanian
@@ -38,7 +55,7 @@
 
 * Refactor l10n generator. Thanks [@ipcjs]()
 * Add property to allow empty on equalLength validator. Thanks [@CircleCurve](https://github.com/CircleCurve)
-* Add support for more languanges
+* Add support for more languages
   * Czech. Thanks [@edlman](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/3)
   * Bosnian and Croatian. Thanks [@abratanovic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/9)
   * Malay. Thanks [@azmilazizi](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/13)

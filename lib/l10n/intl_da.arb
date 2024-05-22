@@ -1,0 +1,21 @@
+{
+  "@@locale": "da",
+  "creditCardErrorText": "Dette felt kræver et gyldigt kreditkort nummer.",
+  "dateStringErrorText": "Dette felt kræver en gyldig dato.",
+  "emailErrorText": "Dette felt kræver en gyldig e-mail adresse.",
+  "equalErrorText": "Dette felts værdi skal være lig med {value}.",
+  "equalLengthErrorText": "Værdiens længde skal være lig med {length}",
+  "integerErrorText": "Værdien skal være et heltal.",
+  "ipErrorText": "Dette felt kræver en gyldig IP.",
+  "matchErrorText": "Værdien matcher ikke mønstret.",
+  "maxErrorText": "Værdien skal være mindre eller lig med {max}",
+  "maxLengthErrorText": "Værdiens længde skal være mindre eller lig med {maxLength}",
+  "maxWordsCountErrorText": "Værdiens antal af ord skal være mindre eller lig med {maxWordsCount}",
+  "minErrorText": "Værdien skal være større end eller lig med {min}",
+  "minLengthErrorText": "Værdien skal være større end eller lig med {minLength}",
+  "minWordsCountErrorText": "Antallet af ord skal være større eller lig med {minWordsCount}",
+  "notEqualErrorText": "Feltets værdi må ikke være lig med {value}.",
+  "numericErrorText": "Værdien skal være numerisk.",
+  "requiredErrorText": "Feltet skal udfyldes.",
+  "urlErrorText": "Skal være en gyldig URL adresse."
+}

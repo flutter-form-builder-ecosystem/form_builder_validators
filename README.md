@@ -79,13 +79,16 @@ Validators support default `errorText` messages in these languages:
 - Chinese Traditional (zh_Hant)
 - Croatian (hr)
 - Czech (cs)
+- Danish (da)
 - Dutch (nl)
 - English (en)
 - Estonian (et)
+- Finnish (fi)
 - Farsi/Persian (fa)
 - French (fr)
 - German (de)
 - Greek (el)
+- Hebrew (he)
 - Hungarian (hu)
 - Indonesian (id)
 - Italian (it)
@@ -94,6 +97,7 @@ Validators support default `errorText` messages in these languages:
 - Lao (lo)
 - Malay (ms)
 - Mongolian (mn)
+- Norwegian
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)
@@ -217,7 +221,7 @@ We welcome efforts to internationalize/localize the package by translating the d
 
     `flutter gen-l10n`
 
-    The command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support.
+    The command will automatically create/update files inside the `lib/localization` directory, including your newly added locale support. The files in here are only necessary for local development and will not be committed to Github.
 
 4. Update README
 

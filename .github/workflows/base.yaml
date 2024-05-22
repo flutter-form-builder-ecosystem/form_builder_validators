@@ -1,6 +1,8 @@
 name: Base
 
 on:
+  workflow_dispatch:
+    
   push:
     branches: [main]
     tags:
@@ -9,11 +11,14 @@ on:
   pull_request:
     branches: [main]
 
-  workflow_dispatch:
+# This ensures that previous jobs for the PR are canceled when PR is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -23,29 +28,37 @@ jobs:
         with:
           paths: "**/*.md"
 
-      - name: Flutter action
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          # use the build-in cache from Subosito
+          cache: true
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run l10n
+        run: flutter gen-l10n
+
       - name: Format code
         run: dart format --set-exit-if-changed $(find . -name "*.dart" -not -wholename "./lib/localization/intl/*")
+
       - name: Analyze static code
         run: flutter analyze
+
       - name: Run tests
         run: flutter test
+
       - name: Check publish warnings
         run: dart pub publish --dry-run
+
       - name: Build example
         run: |
           cd example
           flutter build appbundle --debug
-          flutter build ios --debug --no-codesign
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
@@ -62,11 +75,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: dart-lang/setup-dart@v1
+
       - name: Flutter action
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          # use the build-in cache from Subosito
+          cache: true
+
+      - name: Run l10n
+        run: flutter gen-l10n
+
       - name: Publish package
         run: dart pub publish -v -f
 
