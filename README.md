@@ -97,6 +97,7 @@ Validators support default `errorText` messages in these languages:
 - Lao (lo)
 - Malay (ms)
 - Mongolian (mn)
+- Norwegian
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)

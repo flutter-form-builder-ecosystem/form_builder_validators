@@ -1,0 +1,21 @@
+{
+  "@@locale": "no",
+  "creditCardErrorText": "Dette feltet krever et gyldig kredittkortnummer.",
+  "dateStringErrorText": "Dette feltet krever en gyldig dato.",
+  "emailErrorText": "Dette feltet krever en gyldig e-postadresse.",
+  "equalErrorText": "Verdien i dette feltet må være lik {value}.",
+  "equalLengthErrorText": "Verdien må ha lengden {length}.",
+  "integerErrorText": "Verdien må være et heltall.",
+  "ipErrorText": "Dette feltet krever en gyldig IP-adresse.",
+  "matchErrorText": "Verdien samsvarer ikke med mønsteret.",
+  "maxErrorText": "Verdien må være mindre enn eller lik {max}.",
+  "maxLengthErrorText": "Verdien må være mindre enn eller lik {maxLength} tegn.",
+  "maxWordsCountErrorText": "Antall ord må være mindre enn eller lik {maxWordsCount}.",
+  "minErrorText": "Verdien må være større enn eller lik {min}.",
+  "minLengthErrorText": "Verdien må være større enn eller lik {minLength} tegn.",
+  "minWordsCountErrorText": "Antall ord må være større enn eller lik {minWordsCount}.",
+  "notEqualErrorText": "Verdien i feltet må ikke være lik {value}.",
+  "numericErrorText": "Verdien må være numerisk.",
+  "requiredErrorText": "Dette feltet må fylles ut.",
+  "urlErrorText": "Må være en gyldig URL-adresse."
+}
