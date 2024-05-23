@@ -1,3 +1,6 @@
+## 10.0.1
+* Fix regression (include l10n files)
+
 ## 10.0.0
 
 * Update intl to 0.19.0
