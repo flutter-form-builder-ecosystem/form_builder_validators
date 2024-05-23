@@ -28,5 +28,3 @@ dev_dependencies:
 
 flutter:
   generate: true
-  include:
-    - lib/** 
