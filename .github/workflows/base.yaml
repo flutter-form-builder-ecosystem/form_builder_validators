@@ -35,7 +35,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: dart pub get
 
       - name: Run l10n
         run: flutter gen-l10n
@@ -44,10 +44,10 @@ jobs:
         run: dart format --set-exit-if-changed $(find . -name "*.dart" -not -wholename "./lib/localization/intl/*")
 
       - name: Analyze static code
-        run: flutter analyze
+        run: dart analyze
 
       - name: Run tests
-        run: flutter test
+        run: dart test
 
       - name: Check publish warnings
         run: dart pub publish --dry-run
@@ -84,6 +84,9 @@ jobs:
           channel: 'stable'
           # use the build-in cache from Subosito
           cache: true
+
+      - name: Install dependencies
+        run: dart pub get
 
       - name: Run l10n
         run: flutter gen-l10n
