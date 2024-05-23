@@ -46,7 +46,7 @@ jobs:
           flutter gen-l10n
 
       - name: Format code
-        run: dart format --set-exit-if-changed $(find . -name "*.dart" -not -wholename "./lib/localization/intl/*")
+        run: dart format --set-exit-if-changed $(find . -name "*.dart" ! \( -wholename "./lib/localization/intl/*" -or -wholename "./example/lib/localization/intl/*" \))
 
       - name: Analyze static code
         run: dart analyze
