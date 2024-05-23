@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplSk extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSk([String locale = 'sk']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Toto pole vyžaduje platné číslo platobnej karty.';
+  String get creditCardErrorText =>
+      'Toto pole vyžaduje platné číslo platobnej karty.';
 
   @override
   String get dateStringErrorText => 'Toto pole vyžaduje platný dátum.';

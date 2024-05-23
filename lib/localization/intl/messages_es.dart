@@ -5,13 +5,16 @@ class FormBuilderLocalizationsImplEs extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplEs([String locale = 'es']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Este campo requiere un número de tarjeta de crédito válido.';
+  String get creditCardErrorText =>
+      'Este campo requiere un número de tarjeta de crédito válido.';
 
   @override
-  String get dateStringErrorText => 'Este campo requiere una cadena de fecha válida.';
+  String get dateStringErrorText =>
+      'Este campo requiere una cadena de fecha válida.';
 
   @override
-  String get emailErrorText => 'Este campo requiere una dirección de correo electrónico válida.';
+  String get emailErrorText =>
+      'Este campo requiere una dirección de correo electrónico válida.';
 
   @override
   String equalErrorText(Object value) {

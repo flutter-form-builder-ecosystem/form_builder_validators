@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplDa extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplDa([String locale = 'da']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Dette felt kræver et gyldigt kreditkort nummer.';
+  String get creditCardErrorText =>
+      'Dette felt kræver et gyldigt kreditkort nummer.';
 
   @override
   String get dateStringErrorText => 'Dette felt kræver en gyldig dato.';

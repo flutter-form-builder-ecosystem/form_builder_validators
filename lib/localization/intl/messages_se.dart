@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplSe extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSe([String locale = 'se']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Detta fält kräver ett giltigt kreditkortsnummer.';
+  String get creditCardErrorText =>
+      'Detta fält kräver ett giltigt kreditkortsnummer.';
 
   @override
   String get dateStringErrorText => 'Detta fält kräver ett giltigt datum.';

@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplNo extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplNo([String locale = 'no']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Dette feltet krever et gyldig kredittkortnummer.';
+  String get creditCardErrorText =>
+      'Dette feltet krever et gyldig kredittkortnummer.';
 
   @override
   String get dateStringErrorText => 'Dette feltet krever en gyldig dato.';

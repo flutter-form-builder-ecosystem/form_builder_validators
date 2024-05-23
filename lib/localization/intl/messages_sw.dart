@@ -5,10 +5,12 @@ class FormBuilderLocalizationsImplSw extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSw([String locale = 'sw']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Sehemu hii inahitaji nambari halali ya kadi ya mkopo.';
+  String get creditCardErrorText =>
+      'Sehemu hii inahitaji nambari halali ya kadi ya mkopo.';
 
   @override
-  String get dateStringErrorText => 'Sehemu hii inahitaji mfuatano halali wa tarehe.';
+  String get dateStringErrorText =>
+      'Sehemu hii inahitaji mfuatano halali wa tarehe.';
 
   @override
   String get emailErrorText => 'Sehemu hii inahitaji barua pepe halali.';

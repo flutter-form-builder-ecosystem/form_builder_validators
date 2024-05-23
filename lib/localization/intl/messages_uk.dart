@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplUk extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Значення поля має бути номером кредитної картки.';
+  String get creditCardErrorText =>
+      'Значення поля має бути номером кредитної картки.';
 
   @override
   String get dateStringErrorText => 'Поле має бути датою.';

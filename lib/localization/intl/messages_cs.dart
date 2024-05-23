@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplCs extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Pole vyžaduje platné číslo kreditní karty.';
+  String get creditCardErrorText =>
+      'Pole vyžaduje platné číslo kreditní karty.';
 
   @override
   String get dateStringErrorText => 'Pole vyžaduje platný zápis data.';

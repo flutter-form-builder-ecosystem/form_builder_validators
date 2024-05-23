@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplSl extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplSl([String locale = 'sl']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Vnesite veljavno številko kreditne kartice.';
+  String get creditCardErrorText =>
+      'Vnesite veljavno številko kreditne kartice.';
 
   @override
   String get dateStringErrorText => 'Vnesite veljaven datum.';

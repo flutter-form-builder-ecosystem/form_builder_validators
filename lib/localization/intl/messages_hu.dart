@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'A megadott érték nem egy érvényes bankkártya szám.';
+  String get creditCardErrorText =>
+      'A megadott érték nem egy érvényes bankkártya szám.';
 
   @override
   String get dateStringErrorText => 'Ennek a mezőnek dátumnak kell lennie.';
@@ -30,7 +31,8 @@ class FormBuilderLocalizationsImplHu extends FormBuilderLocalizationsImpl {
   String get ipErrorText => 'A megadott érték nem egy érvényes IP cím.';
 
   @override
-  String get matchErrorText => 'A megadott érték nem egyezik a szükséges formátummal.';
+  String get matchErrorText =>
+      'A megadott érték nem egyezik a szükséges formátummal.';
 
   @override
   String maxErrorText(Object max) {

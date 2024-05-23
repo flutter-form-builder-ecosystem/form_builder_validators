@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplAr extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'القيمة المدخلة لا تصلح كرقم بطاقة إئتمانية.';
+  String get creditCardErrorText =>
+      'القيمة المدخلة لا تصلح كرقم بطاقة إئتمانية.';
 
   @override
   String get dateStringErrorText => 'هذا الحقل يتطلب تاريخا صالحا.';

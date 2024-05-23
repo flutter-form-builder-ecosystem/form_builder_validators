@@ -5,13 +5,15 @@ class FormBuilderLocalizationsImplDe extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplDe([String locale = 'de']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Für dieses Feld ist eine gültige Kreditkartennummer erforderlich.';
+  String get creditCardErrorText =>
+      'Für dieses Feld ist eine gültige Kreditkartennummer erforderlich.';
 
   @override
   String get dateStringErrorText => 'Dieses Feld erfordert ein gültiges Datum.';
 
   @override
-  String get emailErrorText => 'Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.';
+  String get emailErrorText =>
+      'Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.';
 
   @override
   String equalErrorText(Object value) {
@@ -74,5 +76,6 @@ class FormBuilderLocalizationsImplDe extends FormBuilderLocalizationsImpl {
   String get requiredErrorText => 'Dieses Feld darf nicht leer sein.';
 
   @override
-  String get urlErrorText => 'Für dieses Feld ist eine gültige URL-Adresse erforderlich.';
+  String get urlErrorText =>
+      'Für dieses Feld ist eine gültige URL-Adresse erforderlich.';
 }

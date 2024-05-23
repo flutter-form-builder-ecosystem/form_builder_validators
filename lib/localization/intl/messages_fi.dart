@@ -5,7 +5,8 @@ class FormBuilderLocalizationsImplFi extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplFi([String locale = 'fi']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'Luottokortonumero on oltava oikeassa muodossa.';
+  String get creditCardErrorText =>
+      'Luottokortonumero on oltava oikeassa muodossa.';
 
   @override
   String get dateStringErrorText => 'Päivämäärä ei ole oikessa muodossa.';

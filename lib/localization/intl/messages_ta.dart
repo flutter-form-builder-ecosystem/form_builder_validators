@@ -5,13 +5,15 @@ class FormBuilderLocalizationsImplTa extends FormBuilderLocalizationsImpl {
   FormBuilderLocalizationsImplTa([String locale = 'ta']) : super(locale);
 
   @override
-  String get creditCardErrorText => 'இந்த உள்ளீட்டுக்கு சரியான கிரெடிட் கார்டு எண் தேவை.';
+  String get creditCardErrorText =>
+      'இந்த உள்ளீட்டுக்கு சரியான கிரெடிட் கார்டு எண் தேவை.';
 
   @override
   String get dateStringErrorText => 'இந்த உள்ளீட்டுக்கு சரியான தேதி தேவை.';
 
   @override
-  String get emailErrorText => 'இந்த உள்ளீட்டுக்கு சரியான மின்னஞ்சல் முகவரி தேவை.';
+  String get emailErrorText =>
+      'இந்த உள்ளீட்டுக்கு சரியான மின்னஞ்சல் முகவரி தேவை.';
 
   @override
   String equalErrorText(Object value) {
