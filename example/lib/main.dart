@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'home_page.dart';
+import 'localization/intl/app_localizations.dart';
 import 'override_form_builder_localizations_en.dart';
 
 void main() {
@@ -18,12 +19,11 @@ class MyApp extends StatelessWidget {
       title: 'Form Builder Validators Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
-      supportedLocales: const [
-        ...FormBuilderLocalizations.supportedLocales,
-      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
         // Placed in front of `FormBuilderLocalizations.delegate`
+        ...AppLocalizations.localizationsDelegates,
         OverrideFormBuilderLocalizationsEn.delegate,
         FormBuilderLocalizations.delegate,
       ],

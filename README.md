@@ -74,6 +74,7 @@ Validators support default `errorText` messages in these languages:
 - Arabic (ar)
 - Bangla (bn)
 - Bosnian (bs)
+- Bulgarian (bg)
 - Catalan (ca)
 - Chinese Simplified (zh_Hans)
 - Chinese Traditional (zh_Hant)
@@ -97,7 +98,7 @@ Validators support default `errorText` messages in these languages:
 - Lao (lo)
 - Malay (ms)
 - Mongolian (mn)
-- Norwegian
+- Norwegian (no)
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)

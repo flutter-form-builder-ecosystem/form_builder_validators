@@ -75,5 +75,3 @@ pubspec.lock
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 
-# L10n files
-**/intl
