@@ -14,6 +14,8 @@ RegExp _creditCard = RegExp(
 
 RegExp _phoneNumber = RegExp(r'^(\+?\d{0,1})?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}$'); 
 
+RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
+
 int _maxUrlLength = 2083;
 
 /// check if the string [str] is an email
@@ -240,4 +242,45 @@ bool isDate(String str) {
 /// check if the string is a valid phone number
 bool isPhoneNumber(String str) {
   return _phoneNumber.hasMatch(str);
+}
+
+/// check if the string is a valid credit card expiration date
+bool isCreditCardExpirationDate(String str) {
+  // Check if the format matches MM/YY
+  if (!_creditCardExpirationDate.hasMatch(str)) {
+    return false;
+  }
+
+  // Extract month and year from the value
+  final parts = str.split('/').map(int.parse).toList();
+  final month = parts[0];
+  final year = parts[1];
+
+  // Check for valid month (1-12)
+  if (month < 1 || month > 12) {
+    return false;
+  }
+
+  return year > 0;
+}
+
+/// check if the string is not a expired credit card date
+bool isNotExpiredCreditCardDate(String str) {
+  final parts = str.split('/').map(int.parse).toList();
+  final month = parts[0];
+  final year = parts[1];
+
+  final now = DateTime.now();
+  final currentYear = now.year % 100;
+  final currentMonth = now.month;
+
+  if (year < currentYear) {
+    return false;
+  }
+
+  if (year == currentYear && month < currentMonth) {
+    return false;
+  }
+
+  return true;
 }
