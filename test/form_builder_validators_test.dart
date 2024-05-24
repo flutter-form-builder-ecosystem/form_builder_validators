@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -488,6 +490,227 @@ void main() {
       expect(validator('1'), isNotNull);
       expect(validator('1234'), isNotNull);
       expect(validator('ABC'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.creditCard',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.creditCard();
+      // Pass
+      expect(validator('4111111111111111'), isNull);
+      // Fail
+      expect(validator('1234567812345678'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.creditCardExpirationDate',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.creditCardExpirationDate();
+      // Pass
+      expect(validator('12/23'), isNull);
+      // Fail
+      expect(validator('13/23'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.creditCardExpirationDateNotExpired',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator =
+          FormBuilderValidators.creditCardExpirationDateNotExpired();
+      // Pass
+      expect(validator('12/30'), isNull);
+      // Fail
+      expect(validator('12/20'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.creditCardCVC',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.creditCardCVC();
+      // Pass
+      expect(validator('123'), isNull);
+      expect(validator('1234'), isNull);
+      // Fail
+      expect(validator('12'), isNotNull);
+      expect(validator('12345'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.phoneNumber',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.phoneNumber();
+      // Pass
+      expect(validator('+1 800 555 5555'), isNull);
+      // Fail
+      expect(validator('123-abc-defg'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.colorCode',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.colorCode();
+      // Pass
+      expect(validator('#FFFFFF'), isNull);
+      expect(validator('rgb(255, 255, 255)'), isNull);
+      // Fail
+      expect(validator('#ZZZZZZ'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.uppercase',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.uppercase();
+      // Pass
+      expect(validator('HELLO'), isNull);
+      // Fail
+      expect(validator('Hello'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.lowercase',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.lowercase();
+      // Pass
+      expect(validator('hello'), isNull);
+      // Fail
+      expect(validator('Hello'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.fileExtension',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.fileExtension(
+        allowedExtensions: ['txt', 'pdf'],
+      );
+      // Create a temporary file
+      final file = File('test.txt')..createSync();
+      // Pass
+      expect(validator(file), isNull);
+      // Fail
+      expect(validator(File('test.doc')), isNotNull);
+      // Cleanup
+      file.deleteSync();
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.fileSize',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.fileSize(maxSize: 1024);
+      // Create a temporary file
+      final file = File('test.txt')
+        ..createSync()
+        ..writeAsBytesSync(List.filled(512, 0));
+      // Pass
+      expect(validator(file), isNull);
+      // Fail
+      file.writeAsBytesSync(List.filled(2048, 0));
+      expect(validator(file), isNotNull);
+      // Cleanup
+      file.deleteSync();
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.conditional',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.conditional(
+        (value) => value == 'test',
+        FormBuilderValidators.required(),
+      );
+      // Pass
+      expect(validator('test'), isNotNull);
+      // Fail
+      expect(validator('not_test'), isNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.range',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.range(10, 20);
+      // Pass
+      expect(validator(15), isNull);
+      // Fail
+      expect(validator(5), isNotNull);
+      expect(validator(25), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.mustBeTrue',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.mustBeTrue();
+      // Pass
+      expect(validator(true), isNull);
+      // Fail
+      expect(validator(false), isNotNull);
+      expect(validator(null), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.mustBeFalse',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.mustBeFalse();
+      // Pass
+      expect(validator(false), isNull);
+      // Fail
+      expect(validator(true), isNotNull);
+      expect(validator(null), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.hasSpecialChars',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.hasSpecialChars(atLeast: 1);
+      // Pass
+      expect(validator('hello@'), isNull);
+      // Fail
+      expect(validator('hello'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.hasUppercaseChars',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.hasUppercaseChars(atLeast: 1);
+      // Pass
+      expect(validator('Hello'), isNull);
+      // Fail
+      expect(validator('hello'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.hasLowercaseChars',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.hasLowercaseChars(atLeast: 1);
+      // Pass
+      expect(validator('hello'), isNull);
+      // Fail
+      expect(validator('HELLO'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.hasNumericChars',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.hasNumericChars(atLeast: 1);
+      // Pass
+      expect(validator('hello1'), isNull);
+      // Fail
+      expect(validator('hello'), isNotNull);
     }),
   );
 }

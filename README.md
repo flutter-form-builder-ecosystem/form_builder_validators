@@ -81,6 +81,8 @@ Available built-in validators include:
 - `FormBuilderValidators.hasUppercaseChars()` - requires the field's to contain a specified number of uppercase characters.
 - `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.
 - `FormBuilderValidators.hasNumericChars()` - requires the field's to contain a specified number of numeric characters.
+- `FormBuilderValidators.conditional()` - requires the field's to validate with another validator conditionally.
+
 ### Supported languages
 
 Validators support default `errorText` messages in these languages:
