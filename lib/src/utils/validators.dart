@@ -12,8 +12,7 @@ RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
 
-RegExp _phoneNumber =
-    RegExp(r'^(\+?\d{0,1})?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}$');
+RegExp _phoneNumber = RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
 
 RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
 
@@ -248,7 +247,7 @@ bool isDate(String str) {
 
 /// check if the string is a valid phone number
 bool isPhoneNumber(String str) {
-  return _phoneNumber.hasMatch(str);
+  return _phoneNumber.hasMatch(str.replaceAll(' ', ''));
 }
 
 /// check if the string is a valid credit card expiration date

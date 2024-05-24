@@ -624,13 +624,13 @@ void main() {
     'FormBuilderValidators.conditional',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.conditional(
-        (value) => value == 'test',
-        FormBuilderValidators.required(),
+        (value) => value != null,
+        FormBuilderValidators.hasUppercaseChars(atLeast: 3),
       );
       // Pass
-      expect(validator('test'), isNotNull);
+      expect(validator('HELLO'), isNull);
       // Fail
-      expect(validator('not_test'), isNull);
+      expect(validator('hello'), isNotNull);
     }),
   );
 

@@ -323,8 +323,8 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !isCreditCardExpirationDate(valueCandidate!) &&
-              !isNotExpiredCreditCardDate(valueCandidate)
+              !isCreditCardExpirationDate(valueCandidate!) ||
+              !isNotExpiredCreditCardDate(valueCandidate!)
           ? errorText ??
               FormBuilderLocalizations.current.creditCardExpiredErrorText
           : null;
@@ -520,10 +520,10 @@ class FormBuilderValidators {
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               specialCharLength(valueCandidate!) >= atLeast
-          ? errorText ??
+          ? null
+          : errorText ??
               FormBuilderLocalizations.current
-                  .containsSpecialCharErrorText(atLeast)
-          : null;
+                  .containsSpecialCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of uppercase characters.
   static FormFieldValidator<String> hasUppercaseChars({
@@ -532,10 +532,10 @@ class FormBuilderValidators {
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               uppercaseCharLength(valueCandidate!) >= atLeast
-          ? errorText ??
+          ? null
+          : errorText ??
               FormBuilderLocalizations.current
-                  .containsUppercaseCharErrorText(atLeast)
-          : null;
+                  .containsUppercaseCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of lowercase characters.
   static FormFieldValidator<String> hasLowercaseChars({
@@ -544,10 +544,10 @@ class FormBuilderValidators {
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               lowercaseCharLength(valueCandidate!) >= atLeast
-          ? errorText ??
+          ? null
+          : errorText ??
               FormBuilderLocalizations.current
-                  .containsLowercaseCharErrorText(atLeast)
-          : null;
+                  .containsLowercaseCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of numeric characters.
   static FormFieldValidator<String> hasNumericChars({
@@ -556,7 +556,7 @@ class FormBuilderValidators {
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               numberCharLength(valueCandidate!) >= atLeast
-          ? errorText ??
-              FormBuilderLocalizations.current.containsNumberErrorText(atLeast)
-          : null;
+          ? null
+          : errorText ??
+              FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
 }
