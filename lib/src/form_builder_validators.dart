@@ -272,7 +272,8 @@ class FormBuilderValidators {
     String pattern, {
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty && RegExp(pattern).hasMatch(valueCandidate!)
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              RegExp(pattern).hasMatch(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.matchErrorText
           : null;
 
