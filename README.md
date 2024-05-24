@@ -54,6 +54,7 @@ Available built-in validators include:
 - `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 - `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
 - `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
@@ -73,6 +74,7 @@ Available built-in validators include:
 - `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
 - `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
+- `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 
 ### Supported languages
 

@@ -25,5 +25,7 @@
   "colorCodeErrorText": "Value should be a valid {colorCode} color code.",
   "uppercaseErrorText": "Value must be uppercase.",
   "lowercaseErrorText": "Value must be lowercase.",
-  "fileExtensionErrorText": "File extension must be {extensions}"
+  "fileExtensionErrorText": "File extension must be {extensions}",
+  "fileSizeErrorText": "File size must be less than {maxSize} while it is {fileSize}",
+  "dateRangeErrorText": "Date must be in range {min} - {max}"
 }

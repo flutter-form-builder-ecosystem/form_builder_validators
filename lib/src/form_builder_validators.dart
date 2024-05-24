@@ -356,13 +356,53 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date string.
-  static FormFieldValidator<String> dateString({
+  static FormFieldValidator<String> date({
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               !isDate(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
           : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
+  static FormFieldValidator<String> dateRange({
+    required String minDate,
+    required String maxDate,
+    String? errorText,
+  }) {
+    return compose<String>(
+      [
+        minDate.isNotEmpty
+            ? date(errorText: errorText)
+            : (valueCandidate) => null,
+        maxDate.isNotEmpty
+            ? date(errorText: errorText)
+            : (valueCandidate) => null,
+        (valueCandidate) {
+          if (valueCandidate == null || valueCandidate.isEmpty) {
+            return null;
+          }
+
+          final minDateTime = DateTime.tryParse(minDate);
+          final maxDateTime = DateTime.tryParse(maxDate);
+          final valueDateTime = DateTime.tryParse(valueCandidate);
+
+          if (minDateTime != null &&
+              valueDateTime!.isBefore(minDateTime) &&
+              maxDateTime != null &&
+              valueDateTime.isAfter(maxDateTime)) {
+            return errorText ??
+                FormBuilderLocalizations.current.dateRangeErrorText(
+                  minDate,
+                  maxDate,
+                );
+          }
+
+          return null;
+        },
+      ],
+    );
+  }
 
   /// [FormFieldValidator] that requires the field's value to be a valid phone number.
   static FormFieldValidator<String> phoneNumber({
@@ -404,6 +444,7 @@ class FormBuilderValidators {
           ? errorText ?? FormBuilderLocalizations.current.lowercaseErrorText
           : null;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid file extension.
   static FormFieldValidator<File> fileExtension({
     required List<String> allowedExtensions,
     String? errorText,
@@ -416,4 +457,43 @@ class FormBuilderValidators {
                   FormBuilderLocalizations.current
                       .fileExtensionErrorText(allowedExtensions.join(', '))
               : null;
+
+  /// [FormFieldValidator] that restricts the size of an file to be less than or equal to the provided maximum size.
+  /// * [maxSize] is the maximum size in bytes.
+  static FormFieldValidator<File> fileSize({
+    required int maxSize,
+    String? errorText,
+  }) =>
+      (File? valueCandidate) => valueCandidate == null
+          ? null
+          : valueCandidate.existsSync() && valueCandidate.lengthSync() > maxSize
+              ? errorText ??
+                  FormBuilderLocalizations.current.fileSizeErrorText(
+                    formatBytes(valueCandidate.lengthSync()),
+                    formatBytes(maxSize),
+                  )
+              : null;
+
+  /// [FormFieldValidator] that applies another validator conditionally.
+  static FormFieldValidator<T> conditional<T>(
+    bool Function(T value) condition,
+    FormFieldValidator<T> validator,
+  ) =>
+      (T? valueCandidate) =>
+          condition(valueCandidate as T) ? validator(valueCandidate) : null;
+
+  /// [FormFieldValidator] that requires the field's value to be within a certain range.
+  static FormFieldValidator<T> range<T>(
+    num minValue,
+    num maxValue, {
+    bool inclusive = true,
+    String? errorText,
+  }) {
+    return compose<T>(
+      [
+        min(minValue, inclusive: inclusive, errorText: errorText),
+        max(maxValue, inclusive: inclusive, errorText: errorText),
+      ],
+    );
+  }
 }
