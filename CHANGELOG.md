@@ -8,6 +8,7 @@
 * Add uppercase
 * Add lowercase
 * Add file extension
+* Add notMatch
 
 ## 10.0.2
 * Reland generated l10n files
