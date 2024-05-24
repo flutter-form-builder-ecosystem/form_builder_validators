@@ -18,6 +18,7 @@
 * Add numeric characters
 * Add lowercase characters
 * Add uppercase characters
+* Add password
 
 ## 10.0.2
 * Reland generated l10n files

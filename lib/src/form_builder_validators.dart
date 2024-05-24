@@ -323,7 +323,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !isCreditCardExpirationDate(valueCandidate!) ||
+                  !isCreditCardExpirationDate(valueCandidate!) ||
               !isNotExpiredCreditCardDate(valueCandidate!)
           ? errorText ??
               FormBuilderLocalizations.current.creditCardExpiredErrorText
@@ -559,4 +559,37 @@ class FormBuilderValidators {
           ? null
           : errorText ??
               FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
+
+  /// [FormFieldValidator] that requires the field's value to be a valid password.
+  /// * [minLength] is the minimum length of the password. By default `8`
+  /// * [maxLength] is the maximum length of the password. By default `32`
+  /// * [uppercase] is the minimum amount of uppercase characters. By default `1`
+  /// * [lowercase] is the minimum amount of lowercase characters. By default `1`
+  /// * [number] is the minimum amount of numeric characters. By default `1`
+  /// * [specialChar] is the minimum amount of special characters. By default `1`
+  /// * [errorText] is the error message to display when the password is invalid
+  static FormFieldValidator<String> password({
+    int minLength = 8,
+    int maxLength = 32,
+    int uppercase = 1,
+    int lowercase = 1,
+    int number = 1,
+    int specialChar = 1,
+    String? errorText,
+  }) {
+    return FormBuilderValidators.compose<String>(
+      [
+        FormBuilderValidators.minLength(minLength, errorText: errorText),
+        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
+        FormBuilderValidators.hasUppercaseChars(
+            atLeast: uppercase, errorText: errorText),
+        FormBuilderValidators.hasLowercaseChars(
+            atLeast: lowercase, errorText: errorText),
+        FormBuilderValidators.hasNumericChars(
+            atLeast: number, errorText: errorText),
+        FormBuilderValidators.hasSpecialChars(
+            atLeast: specialChar, errorText: errorText),
+      ],
+    );
+  }
 }

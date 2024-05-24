@@ -713,4 +713,17 @@ void main() {
       expect(validator('hello'), isNotNull);
     }),
   );
+
+  testWidgets(
+    'FormBuilderValidators.password',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.password();
+      // Pass
+      expect(validator('Hellohello1@'), isNull);
+      // Fail
+      expect(validator('hellohello1@'), isNotNull);
+      expect(validator('Hellohello1'), isNotNull);
+      expect(validator('Hellohello@'), isNotNull);
+    }),
+  );
 }
