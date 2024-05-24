@@ -496,4 +496,20 @@ class FormBuilderValidators {
       ],
     );
   }
+
+  /// [FormFieldValidator] that requires the field's value to be a bool and true.
+  static FormFieldValidator<bool> mustBeTrue({
+    String? errorText,
+  }) =>
+      (valueCandidate) => valueCandidate != true
+          ? errorText ?? FormBuilderLocalizations.current.mustBeTrueErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a bool and false.
+  static FormFieldValidator<bool> mustBeFalse({
+    String? errorText,
+  }) =>
+      (valueCandidate) => valueCandidate != false
+          ? errorText ?? FormBuilderLocalizations.current.mustBeFalseErrorText
+          : null;
 }

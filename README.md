@@ -75,6 +75,8 @@ Available built-in validators include:
 - `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
 - `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
 - `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
+- `FormBuilderValidators.mustBeTrue()` - requires the field's to be true.
+- `FormBuilderValidators.mustBeFalse()` - requires the field's to be false.
 
 ### Supported languages
 

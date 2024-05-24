@@ -27,5 +27,7 @@
   "lowercaseErrorText": "Value must be lowercase.",
   "fileExtensionErrorText": "File extension must be {extensions}",
   "fileSizeErrorText": "File size must be less than {maxSize} while it is {fileSize}",
-  "dateRangeErrorText": "Date must be in range {min} - {max}"
+  "dateRangeErrorText": "Date must be in range {min} - {max}",
+  "mustBeTrueErrorText": "This field must be true.",
+  "mustBeFalseErrorText": "This field must be false."
 }

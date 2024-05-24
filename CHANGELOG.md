@@ -12,6 +12,8 @@
 * Add notMatch
 * Add range
 * Add date range
+* Add must be true
+* Add must be false
 
 ## 10.0.2
 * Reland generated l10n files
