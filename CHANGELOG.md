@@ -14,6 +14,10 @@
 * Add date range
 * Add must be true
 * Add must be false
+* Add special characters
+* Add numeric characters
+* Add lowercase characters
+* Add uppercase characters
 
 ## 10.0.2
 * Reland generated l10n files

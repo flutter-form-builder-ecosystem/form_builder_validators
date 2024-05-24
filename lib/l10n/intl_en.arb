@@ -29,5 +29,9 @@
   "fileSizeErrorText": "File size must be less than {maxSize} while it is {fileSize}",
   "dateRangeErrorText": "Date must be in range {min} - {max}",
   "mustBeTrueErrorText": "This field must be true.",
-  "mustBeFalseErrorText": "This field must be false."
+  "mustBeFalseErrorText": "This field must be false.",
+  "containsSpecialCharErrorText": "Value must contain at least {min} special characters.",
+  "containsUppercaseCharErrorText": "Value must contain at least {min} uppercase characters.",
+  "containsLowercaseCharErrorText": "Value must contain at least {min} lowercase characters.",
+  "containsNumberErrorText": "Value must contain at least {min} numbers."
 }

@@ -77,7 +77,10 @@ Available built-in validators include:
 - `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 - `FormBuilderValidators.mustBeTrue()` - requires the field's to be true.
 - `FormBuilderValidators.mustBeFalse()` - requires the field's to be false.
-
+- `FormBuilderValidators.hasSpecialChars()` - requires the field's to contain a specified number of special characters.
+- `FormBuilderValidators.hasUppercaseChars()` - requires the field's to contain a specified number of uppercase characters.
+- `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.
+- `FormBuilderValidators.hasNumericChars()` - requires the field's to contain a specified number of numeric characters.
 ### Supported languages
 
 Validators support default `errorText` messages in these languages:

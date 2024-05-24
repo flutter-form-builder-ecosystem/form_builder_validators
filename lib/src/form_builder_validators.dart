@@ -512,4 +512,51 @@ class FormBuilderValidators {
       (valueCandidate) => valueCandidate != false
           ? errorText ?? FormBuilderLocalizations.current.mustBeFalseErrorText
           : null;
+
+  /// [FormFieldValidator] that requires the field's value to contain an amount of special characters.
+  static FormFieldValidator<String> hasSpecialChars({
+    int atLeast = 1,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              specialCharLength(valueCandidate!) >= atLeast
+          ? errorText ??
+              FormBuilderLocalizations.current
+                  .containsSpecialCharErrorText(atLeast)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to contain an amount of uppercase characters.
+  static FormFieldValidator<String> hasUppercaseChars({
+    int atLeast = 1,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              uppercaseCharLength(valueCandidate!) >= atLeast
+          ? errorText ??
+              FormBuilderLocalizations.current
+                  .containsUppercaseCharErrorText(atLeast)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to contain an amount of lowercase characters.
+  static FormFieldValidator<String> hasLowercaseChars({
+    int atLeast = 1,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              lowercaseCharLength(valueCandidate!) >= atLeast
+          ? errorText ??
+              FormBuilderLocalizations.current
+                  .containsLowercaseCharErrorText(atLeast)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to contain an amount of numeric characters.
+  static FormFieldValidator<String> hasNumericChars({
+    int atLeast = 1,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              numberCharLength(valueCandidate!) >= atLeast
+          ? errorText ??
+              FormBuilderLocalizations.current.containsNumberErrorText(atLeast)
+          : null;
 }

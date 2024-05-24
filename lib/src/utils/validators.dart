@@ -328,3 +328,19 @@ bool isColorCode(String value,
   }
   return false;
 }
+
+int uppercaseCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^A-Z]'), '').length;
+}
+
+int lowercaseCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^a-z]'), '').length;
+}
+
+int numberCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^0-9]'), '').length;
+}
+
+int specialCharLength(String value) {
+  return value.replaceAll(RegExp(r'[A-Za-z0-9]'), '').length;
+}
