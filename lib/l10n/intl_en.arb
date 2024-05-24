@@ -22,5 +22,8 @@
   "creditCardExpirationDateErrorText": "This field requires a valid expiration date.",
   "creditCardExpiredErrorText": "This credit card has expired.",
   "creditCardCVCErrorText": "This field requires a valid CVC code.",
-  "colorCodeErrorText": "Value should be a valid {colorCode} color code."
+  "colorCodeErrorText": "Value should be a valid {colorCode} color code.",
+  "uppercaseErrorText": "Value must be uppercase.",
+  "lowercaseErrorText": "Value must be lowercase.",
+  "fileExtensionErrorText": "File extension must be {extensions}"
 }

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../form_builder_validators.dart';
 
+import 'utils/helpers.dart';
 import 'utils/validators.dart';
 
 /// For creation of [FormFieldValidator]s.
@@ -372,4 +375,35 @@ class FormBuilderValidators {
               FormBuilderLocalizations.current
                   .colorCodeErrorText(formats.join(', '))
           : null;
+
+  /// [FormFieldValidator] that requires the field's value to be uppercase.
+  static FormFieldValidator<String> uppercase({
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              valueCandidate!.toUpperCase() != valueCandidate
+          ? errorText ?? FormBuilderLocalizations.current.uppercaseErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be lowercase.
+  static FormFieldValidator<String> lowercase({
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              valueCandidate!.toLowerCase() != valueCandidate
+          ? errorText ?? FormBuilderLocalizations.current.lowercaseErrorText
+          : null;
+
+  static FormFieldValidator<File> fileExtension({
+    required List<String> allowedExtensions,
+    String? errorText,
+  }) =>
+      (File? valueCandidate) => valueCandidate == null
+          ? null
+          : !allowedExtensions.contains(
+                  fileExtensionFromPath(valueCandidate.path).toLowerCase())
+              ? errorText ??
+                  FormBuilderLocalizations.current
+                      .fileExtensionErrorText(allowedExtensions.join(', '))
+              : null;
 }

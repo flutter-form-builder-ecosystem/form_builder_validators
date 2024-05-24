@@ -1,3 +1,14 @@
+## 10.0.3
+
+* Add creditCardExpirationDate
+* Add creditCardExpirationDateNotExpired
+* Add creditCardCVC
+* Add colorCode
+* Add phoneNumber
+* Add uppercase
+* Add lowercase
+* Add file extension
+
 ## 10.0.2
 * Reland generated l10n files
 * Add Bulgarian

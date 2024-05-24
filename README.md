@@ -49,6 +49,10 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 Available built-in validators include:
 
 - `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
+- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date.
+- `FormBuilderValidators.creditCardExpirationDateNotExpired()` - requires the field's value to be aa valid credit card expiration date and not be expired.
+- `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
+- `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 - `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
 - `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
@@ -65,6 +69,9 @@ Available built-in validators include:
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
 - `FormBuilderValidators.required()` - requires the field to have a non-empty value.
 - `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
+- `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
+- `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
+- `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
 
 ### Supported languages
 

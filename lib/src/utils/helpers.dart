@@ -15,3 +15,8 @@ Map merge(Map? obj, Map? defaults) {
       ?.forEach((dynamic key, dynamic val) => obj!.putIfAbsent(key, () => val));
   return obj;
 }
+
+String fileExtensionFromPath(String path) {
+  final splitter = path.split('.');
+  return splitter.length > 1 ? splitter.last : "";
+}
