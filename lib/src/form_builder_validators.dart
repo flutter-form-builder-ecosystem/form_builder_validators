@@ -323,9 +323,11 @@ class FormBuilderValidators {
       compose<String>(
         [
           minLength(3,
-              errorText: errorText ?? FormBuilderLocalizations.current.creditCardCVCErrorText),
+              errorText: errorText ??
+                  FormBuilderLocalizations.current.creditCardCVCErrorText),
           maxLength(4,
-              errorText: errorText ?? FormBuilderLocalizations.current.creditCardCVCErrorText),
+              errorText: errorText ??
+                  FormBuilderLocalizations.current.creditCardCVCErrorText),
         ],
       );
 
