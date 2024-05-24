@@ -1,0 +1,21 @@
+{
+  "@@locale": "bg",
+  "creditCardErrorText": "Това поле изисква валиден номер на кредитна карта.",
+  "dateStringErrorText": "Това поле изисква валиден низ за дата.",
+  "emailErrorText": "Това поле изисква валиден имейл адрес.",
+  "equalErrorText": "Стойността на това поле трябва да е равна на {value}.",
+  "equalLengthErrorText": "Стойността трябва да има дължина, равна на {length}",
+  "integerErrorText": "Това поле изисква валидно цяло число.",
+  "ipErrorText": "Това поле изисква валиден IP.",
+  "matchErrorText": "Стойността не съответства на модела.",
+  "maxErrorText": "Стойността трябва да е по-малка или равна на {max}",
+  "maxLengthErrorText": "Стойността трябва да има дължина, по-малка или равна на {maxLength}",
+  "maxWordsCountErrorText": "Стойността трябва да има брой думи, по-малък или равен на {maxWordsCount}",
+  "minErrorText": "Стойността трябва да е по-голяма или равна на {min}",
+  "minLengthErrorText": "Стойността трябва да има дължина, по-голяма или равна на {minLength}",
+  "minWordsCountErrorText": "Стойността трябва да има брой думи, по-голям или равен на {minWordsCount}",
+  "notEqualErrorText": "Стойността на това поле не трябва да е равна на {value}.",
+  "numericErrorText": "Стойността трябва да е числова.",
+  "requiredErrorText": "Това поле не може да бъде празно.",
+  "urlErrorText": "Това поле изисква валиден URL адрес."
+}

@@ -1,5 +1,6 @@
 ## 10.0.2
 * Reland generated l10n files
+* Add Bulgarian
 
 ## 10.0.1
 * Fix regression (include l10n files)
