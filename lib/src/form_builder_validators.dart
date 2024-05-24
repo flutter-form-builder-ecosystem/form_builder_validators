@@ -368,6 +368,8 @@ class FormBuilderValidators {
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               !isColorCode(valueCandidate!, formats: formats)
-          ? errorText ?? FormBuilderLocalizations.current.colorCodeErrorText(formats.join(', '))
+          ? errorText ??
+              FormBuilderLocalizations.current
+                  .colorCodeErrorText(formats.join(', '))
           : null;
 }
