@@ -12,9 +12,16 @@ RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
 
-RegExp _phoneNumber = RegExp(r'^(\+?\d{0,1})?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}$'); 
+RegExp _phoneNumber =
+    RegExp(r'^(\+?\d{0,1})?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}$');
 
 RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
+
+RegExp _hexRegExp = RegExp(r'^#[0-9a-fA-F]{6}$');
+
+RegExp _rgbRegExp = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
+
+RegExp _hslRegExp = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
 
 int _maxUrlLength = 2083;
 
@@ -283,4 +290,41 @@ bool isNotExpiredCreditCardDate(String str) {
   }
 
   return true;
+}
+
+bool isColorCode(String value,
+    {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
+  if (formats.contains('hex')) {
+    if (_hexRegExp.hasMatch(value)) return true;
+  }
+  if (formats.contains('rgb')) {
+    if (_rgbRegExp.hasMatch(value)) {
+      final parts = value.substring(4, value.length - 1).split(',');
+      for (final part in parts) {
+        final int colorValue = int.tryParse(part.trim()) ?? -1;
+        if (colorValue < 0 || colorValue > 255) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+  if (formats.contains('hsl')) {
+    if (_hslRegExp.hasMatch(value)) {
+      final parts = value.substring(4, value.length - 1).split(',');
+      for (var i = 0; i < parts.length; i++) {
+        final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
+        if (i == 0) {
+          // Hue
+          if (colorValue < 0 || colorValue > 360) {
+            return false;
+          }
+        } else if (colorValue < 0 || colorValue > 100) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+  return false;
 }

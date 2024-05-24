@@ -21,5 +21,6 @@
   "phoneErrorText": "This field requires a valid phone number.",
   "creditCardExpirationDateErrorText": "This field requires a valid expiration date.",
   "creditCardExpiredErrorText": "This credit card has expired.",
-  "creditCardCVCErrorText": "This field requires a valid CVC code."
+  "creditCardCVCErrorText": "This field requires a valid CVC code.",
+  "colorCodeErrorText": "Value should be a valid {colorCode} color code."
 }

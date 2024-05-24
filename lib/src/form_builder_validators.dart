@@ -359,4 +359,15 @@ class FormBuilderValidators {
           true == valueCandidate?.isNotEmpty && !isPhoneNumber(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.phoneErrorText
               : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid color code.
+  /// * [formats] is a list of allowed color code formats (e.g., ['hex', 'rgb', 'hsl'])
+  static FormFieldValidator<String> colorCode({
+    List<String> formats = const ['hex', 'rgb', 'hsl'],
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !isColorCode(valueCandidate!, formats: formats)
+          ? errorText ?? FormBuilderLocalizations.current.colorCodeErrorText(formats.join(', '))
+          : null;
 }
