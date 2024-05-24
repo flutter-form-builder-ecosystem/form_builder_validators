@@ -55,6 +55,7 @@ Available built-in validators include:
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
 - `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
+- `FormBuilderValidators.notMatch()` - requires the field's value to not match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
 - `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum size.
 - `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
