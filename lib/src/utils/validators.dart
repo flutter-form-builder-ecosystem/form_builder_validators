@@ -12,6 +12,8 @@ RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
 
+RegExp _phoneNumber = RegExp(r'^(\+?\d{0,1})?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}$'); 
+
 int _maxUrlLength = 2083;
 
 /// check if the string [str] is an email
@@ -233,4 +235,9 @@ bool isDate(String str) {
   } catch (e) {
     return false;
   }
+}
+
+/// check if the string is a valid phone number
+bool isPhoneNumber(String str) {
+  return _phoneNumber.hasMatch(str);
 }

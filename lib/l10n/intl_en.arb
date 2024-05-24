@@ -17,5 +17,6 @@
   "notEqualErrorText": "This field value must not be equal to {value}.",
   "numericErrorText": "Value must be numeric.",
   "requiredErrorText": "This field cannot be empty.",
-  "urlErrorText": "This field requires a valid URL address."
+  "urlErrorText": "This field requires a valid URL address.",
+  "phoneErrorText": "This field requires a valid phone number."
 }
