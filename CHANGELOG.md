@@ -1,4 +1,4 @@
-## 10.0.3
+## 10.1.0
 
 * Add creditCardExpirationDate
 * Add creditCardExpirationDateNotExpired
@@ -19,9 +19,7 @@
 * Add lowercase characters
 * Add uppercase characters
 * Add password
-
-## 10.0.2
-* Reland generated l10n files
+* Re-land generated l10n files
 * Add Bulgarian
 
 ## 10.0.1
