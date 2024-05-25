@@ -17,8 +17,12 @@ Map merge(Map? obj, Map? defaults) {
 }
 
 String fileExtensionFromPath(String path) {
-  final splitter = path.split('.');
-  return splitter.length > 1 ? splitter.last : "";
+  final parts = path.split('.');
+
+  assert(parts.length > 1 && parts.last.isNotEmpty,
+      'Invalid file path format: $path. Path should contain a valid extension.');
+
+  return parts.last;
 }
 
 /// Helper function to format bytes into a human-readable string (e.g., KB, MB, GB).
