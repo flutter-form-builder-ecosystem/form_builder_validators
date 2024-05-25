@@ -356,7 +356,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date string.
-  static FormFieldValidator<String> date({
+  static FormFieldValidator<String> dateString({
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
@@ -373,10 +373,10 @@ class FormBuilderValidators {
     return compose<String>(
       [
         minDate.isNotEmpty
-            ? date(errorText: errorText)
+            ? dateString(errorText: errorText)
             : (valueCandidate) => null,
         maxDate.isNotEmpty
-            ? date(errorText: errorText)
+            ? dateString(errorText: errorText)
             : (valueCandidate) => null,
         (valueCandidate) {
           if (valueCandidate == null || valueCandidate.isEmpty) {
