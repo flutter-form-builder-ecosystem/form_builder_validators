@@ -293,37 +293,31 @@ bool isNotExpiredCreditCardDate(String str) {
 
 bool isColorCode(String value,
     {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
-  if (formats.contains('hex')) {
-    if (_hexRegExp.hasMatch(value)) return true;
-  }
-  if (formats.contains('rgb')) {
-    if (_rgbRegExp.hasMatch(value)) {
-      final parts = value.substring(4, value.length - 1).split(',');
-      for (final part in parts) {
-        final int colorValue = int.tryParse(part.trim()) ?? -1;
-        if (colorValue < 0 || colorValue > 255) {
+  if (formats.contains('hex') && _hexRegExp.hasMatch(value)) {
+    return true;
+  } else if (formats.contains('rgb') && _rgbRegExp.hasMatch(value)) {
+    final parts = value.substring(4, value.length - 1).split(',');
+    for (final part in parts) {
+      final int colorValue = int.tryParse(part.trim()) ?? -1;
+      if (colorValue < 0 || colorValue > 255) {
+        return false;
+      }
+    }
+    return true;
+  } else if (formats.contains('hsl') && _hslRegExp.hasMatch(value)) {
+    final parts = value.substring(4, value.length - 1).split(',');
+    for (var i = 0; i < parts.length; i++) {
+      final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
+      if (i == 0) {
+        // Hue
+        if (colorValue < 0 || colorValue > 360) {
           return false;
         }
+      } else if (colorValue < 0 || colorValue > 100) {
+        return false;
       }
-      return true;
     }
-  }
-  if (formats.contains('hsl')) {
-    if (_hslRegExp.hasMatch(value)) {
-      final parts = value.substring(4, value.length - 1).split(',');
-      for (var i = 0; i < parts.length; i++) {
-        final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
-        if (i == 0) {
-          // Hue
-          if (colorValue < 0 || colorValue > 360) {
-            return false;
-          }
-        } else if (colorValue < 0 || colorValue > 100) {
-          return false;
-        }
-      }
-      return true;
-    }
+    return true;
   }
   return false;
 }
