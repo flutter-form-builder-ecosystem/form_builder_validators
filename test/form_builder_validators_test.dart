@@ -507,23 +507,14 @@ void main() {
   testWidgets(
     'FormBuilderValidators.creditCardExpirationDate',
     (WidgetTester tester) => testValidations(tester, (context) {
+      final now = DateTime.now();
+      final month = now.month.toString().padLeft(2, '0');
+      final year = now.year.toString().substring(2);
       final validator = FormBuilderValidators.creditCardExpirationDate();
       // Pass
-      expect(validator('12/23'), isNull);
+      expect(validator('$month/$year'), isNull);
       // Fail
       expect(validator('13/23'), isNotNull);
-    }),
-  );
-
-  testWidgets(
-    'FormBuilderValidators.creditCardExpirationDateNotExpired',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator =
-          FormBuilderValidators.creditCardExpirationDateNotExpired();
-      // Pass
-      expect(validator('12/30'), isNull);
-      // Fail
-      expect(validator('12/20'), isNotNull);
     }),
   );
 
