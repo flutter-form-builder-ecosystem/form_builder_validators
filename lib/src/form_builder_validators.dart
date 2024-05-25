@@ -308,24 +308,17 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card expiration date.
   static FormFieldValidator<String> creditCardExpirationDate({
+    bool checkForExpiration = true,
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
               !isCreditCardExpirationDate(valueCandidate!)
           ? errorText ??
               FormBuilderLocalizations.current.creditCardExpirationDateErrorText
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid credit card expiration date and not expired.
-  static FormFieldValidator<String> creditCardExpirationDateNotExpired({
-    String? errorText,
-  }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-                  !isCreditCardExpirationDate(valueCandidate!) ||
-              !isNotExpiredCreditCardDate(valueCandidate!)
-          ? errorText ??
-              FormBuilderLocalizations.current.creditCardExpiredErrorText
-          : null;
+          : (checkForExpiration && !isNotExpiredCreditCardDate(valueCandidate!))
+              ? errorText ??
+                  FormBuilderLocalizations.current.creditCardExpiredErrorText
+              : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card CVC.
   static FormFieldValidator<String> creditCardCVC({

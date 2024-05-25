@@ -49,8 +49,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 Available built-in validators include:
 
 - `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
-- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date.
-- `FormBuilderValidators.creditCardExpirationDateNotExpired()` - requires the field's value to be aa valid credit card expiration date and not be expired.
+- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
 - `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 - `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
