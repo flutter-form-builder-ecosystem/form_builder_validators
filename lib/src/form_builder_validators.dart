@@ -581,14 +581,18 @@ class FormBuilderValidators {
       [
         FormBuilderValidators.minLength(minLength, errorText: errorText),
         FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        FormBuilderValidators.hasUppercaseChars(
-            atLeast: uppercase, errorText: errorText),
-        FormBuilderValidators.hasLowercaseChars(
-            atLeast: lowercase, errorText: errorText),
-        FormBuilderValidators.hasNumericChars(
-            atLeast: number, errorText: errorText),
-        FormBuilderValidators.hasSpecialChars(
-            atLeast: specialChar, errorText: errorText),
+        if (uppercase > 0)
+          FormBuilderValidators.hasUppercaseChars(
+              atLeast: uppercase, errorText: errorText),
+        if (lowercase > 0)
+          FormBuilderValidators.hasLowercaseChars(
+              atLeast: lowercase, errorText: errorText),
+        if (number > 0)
+          FormBuilderValidators.hasNumericChars(
+              atLeast: number, errorText: errorText),
+        if (specialChar > 0)
+          FormBuilderValidators.hasSpecialChars(
+              atLeast: specialChar, errorText: errorText),
       ],
     );
   }
