@@ -592,9 +592,9 @@ void main() {
         allowedExtensions: ['txt', 'pdf'],
       );
       // Pass
-      expect(validator(File('test.txt')), isNull);
+      expect(validator(File('test.txt').path), isNull);
       // Fail
-      expect(validator(File('test.doc')), isNotNull);
+      expect(validator(File('test.doc').path), isNotNull);
     }),
   );
 
@@ -607,10 +607,10 @@ void main() {
         ..createSync()
         ..writeAsBytesSync(List.filled(512, 0));
       // Pass
-      expect(validator(file), isNull);
+      expect(validator(file.lengthSync().toString()), isNull);
       // Fail
       file.writeAsBytesSync(List.filled(2048, 0));
-      expect(validator(file), isNotNull);
+      expect(validator(file.lengthSync().toString()), isNotNull);
       // Cleanup
       file.deleteSync();
     }),

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import '../form_builder_validators.dart';
 
@@ -445,14 +443,14 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file extension.
-  static FormFieldValidator<File> fileExtension({
+  static FormFieldValidator<String> fileExtension({
     required List<String> allowedExtensions,
     String? errorText,
   }) =>
-      (File? valueCandidate) => valueCandidate == null
+      (valueCandidate) => valueCandidate == null
           ? null
-          : !allowedExtensions.contains(
-                  fileExtensionFromPath(valueCandidate.path).toLowerCase())
+          : !allowedExtensions
+                  .contains(fileExtensionFromPath(valueCandidate).toLowerCase())
               ? errorText ??
                   FormBuilderLocalizations.current
                       .fileExtensionErrorText(allowedExtensions.join(', '))
@@ -460,16 +458,16 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that restricts the size of an file to be less than or equal to the provided maximum size.
   /// * [maxSize] is the maximum size in bytes.
-  static FormFieldValidator<File> fileSize({
+  static FormFieldValidator<String> fileSize({
     required int maxSize,
     String? errorText,
   }) =>
-      (File? valueCandidate) => valueCandidate == null
+      (valueCandidate) => valueCandidate == null
           ? null
-          : valueCandidate.existsSync() && valueCandidate.lengthSync() > maxSize
+          : int.parse(valueCandidate) > maxSize
               ? errorText ??
                   FormBuilderLocalizations.current.fileSizeErrorText(
-                    formatBytes(valueCandidate.lengthSync()),
+                    formatBytes(int.parse(valueCandidate)),
                     formatBytes(maxSize),
                   )
               : null;
