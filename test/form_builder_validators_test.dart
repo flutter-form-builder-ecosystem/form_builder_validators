@@ -591,14 +591,10 @@ void main() {
       final validator = FormBuilderValidators.fileExtension(
         allowedExtensions: ['txt', 'pdf'],
       );
-      // Create a temporary file
-      final file = File('test.txt')..createSync();
       // Pass
-      expect(validator(file), isNull);
+      expect(validator(File('test.txt')), isNull);
       // Fail
       expect(validator(File('test.doc')), isNotNull);
-      // Cleanup
-      file.deleteSync();
     }),
   );
 
