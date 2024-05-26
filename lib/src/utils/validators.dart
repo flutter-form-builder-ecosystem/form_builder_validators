@@ -413,14 +413,9 @@ bool isMACAddress(String value) {
   }
 
   for (final part in parts) {
-    if (part.length != 2) {
-      return false;
-    }
-
-    if (!_macAddress.hasMatch(part)) {
+    if (part.length != 2 || !_macAddress.hasMatch(part)) {
       return false;
     }
   }
-
   return true;
 }
