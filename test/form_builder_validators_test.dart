@@ -516,7 +516,9 @@ void main() {
       // Fail
       expect(validator('13/23'), isNotNull);
 
-      final validatorNoExpiredCheck = FormBuilderValidators.creditCardExpirationDate(checkForExpiration: false);
+      final validatorNoExpiredCheck =
+          FormBuilderValidators.creditCardExpirationDate(
+              checkForExpiration: false);
       // Pass
       expect(validatorNoExpiredCheck('12/23'), isNull);
       // Fail
@@ -717,6 +719,59 @@ void main() {
       expect(validator('hellohello1@'), isNotNull);
       expect(validator('Hellohello1'), isNotNull);
       expect(validator('Hellohello@'), isNotNull);
+
+      // Fail - only lowercase
+      expect(validator('lowercasepassword'), isNotNull);
+
+      // Fail - only uppercase
+      expect(validator('UPPERCASEPASSWORD'), isNotNull);
+
+      // Fail - only numbers
+      expect(validator('1234567890'), isNotNull);
+
+      // Fail - only special chars
+      expect(validator('~!@#%^&*'), isNotNull);
+
+      // Fail - weak password
+      expect(validator('password123'), isNotNull);
+
+      // Fail - empty password
+      expect(validator(''), isNotNull);
+
+      // Fail - whitespace only
+      expect(validator('     '), isNotNull);
+
+      // Fail - similar characters
+      expect(validator('aaaaaa1111'), isNotNull);
+
+      final customValidator = FormBuilderValidators.password(
+        minLength: 4,
+        maxLength: 16,
+        uppercase: 3,
+        lowercase: 3,
+        number: 3,
+        specialChar: 3,
+      );
+      // Pass - meets all requirements
+      expect(customValidator('PASsw0rd@123!!'), isNull);
+
+      // Fail - less than min length
+      expect(customValidator('Pass@12'), isNotNull);
+
+      // Fail - more than max length
+      expect(customValidator('ThisIsAP@ssw0rd1234'), isNotNull);
+
+      // Fail - missing uppercase chars
+      expect(customValidator('password@123'), isNotNull);
+
+      // Fail - missing lowercase chars
+      expect(customValidator('PASSWORD@123'), isNotNull);
+
+      // Fail - missing number
+      expect(customValidator('Password@abc'), isNotNull);
+
+      // Fail - missing special char
+      expect(customValidator('Password123abc'), isNotNull);
     }),
   );
 }
