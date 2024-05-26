@@ -543,10 +543,34 @@ void main() {
     'FormBuilderValidators.phoneNumber',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.phoneNumber();
-      // Pass
-      expect(validator('+1 800 555 5555'), isNull);
-      // Fail
-      expect(validator('123-abc-defg'), isNotNull);
+      
+    // Valid phone numbers from various countries
+    expect(validator('+1 800 555 5555'), isNull);  // USA
+    expect(validator('+44 20 7946 0958'), isNull); // UK
+    expect(validator('+61 2 1234 5678'), isNull);  // Australia
+    expect(validator('+49 30 123456'), isNull);    // Germany
+    expect(validator('+33 1 23 45 67 89'), isNull); // France
+    expect(validator('+81 3-1234-5678'), isNull);  // Japan
+    expect(validator('+91 98765 43210'), isNull);  // India
+    expect(validator('+86 10 1234 5678'), isNull); // China
+    expect(validator('+55 11 91234-5678'), isNull); // Brazil
+    expect(validator('+27 21 123 4567'), isNull);  // South Africa
+
+    // Invalid phone numbers
+    expect(validator('123-abc-defg'), isNotNull);        // Contains letters
+    expect(validator('+1-800-555-5555-0000'), isNotNull); // Too many digits
+    expect(validator('+1 800 555 555'), isNotNull);      // Too few digits
+    expect(validator('++1 800 555 5555'), isNotNull);    // Invalid prefix
+    expect(validator('+1 (800) 555-5555'), isNotNull);   // Invalid format
+    expect(validator('+44 20 7946 0958 ext 123'), isNotNull); // Extension included
+    expect(validator('+11234567890'), isNotNull);        // Missing spaces or dashes
+    expect(validator('1-800-555-5555'), isNotNull);      // Missing country code
+    expect(validator('+1 800 5555 5555'), isNotNull);    // Incorrect digit grouping
+    expect(validator('+44 2079460958'), isNotNull);      // No spaces
+
+    // Edge cases
+    expect(validator(''), isNotNull);                    // Empty string
+    expect(validator(null), isNotNull);                  // Null value
     }),
   );
 
