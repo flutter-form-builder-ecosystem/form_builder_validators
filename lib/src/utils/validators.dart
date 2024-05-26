@@ -368,7 +368,7 @@ bool isJSON(String value) {
 
 bool isLatitude(String value) {
   value = value.replaceAll(',', '.');
-  
+
   final double? latitude = double.tryParse(value);
   if (latitude == null) {
     return false;
@@ -378,7 +378,7 @@ bool isLatitude(String value) {
 
 bool isLongitude(String value) {
   value = value.replaceAll(',', '.');
-  
+
   final double? longitude = double.tryParse(value);
   if (longitude == null) {
     return false;
