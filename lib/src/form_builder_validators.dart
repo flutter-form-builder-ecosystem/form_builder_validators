@@ -727,10 +727,16 @@ class FormBuilderValidators {
   /// * [caseSensitive] is a `bool` that sets if the search is case sensitive. By default `true`
   static FormFieldValidator<String> contains({
     required String substring,
+    bool caseSensitive = true,
     String? errorText,
   }) =>
       (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !valueCandidate!.contains(substring)
+                  caseSensitive &&
+                  !valueCandidate!.contains(substring) ||
+              !caseSensitive &&
+                  !valueCandidate!
+                      .toLowerCase()
+                      .contains(substring.toLowerCase())
           ? errorText ??
               FormBuilderLocalizations.current.containsErrorText(substring)
           : null;
