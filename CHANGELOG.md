@@ -1,7 +1,6 @@
 ## 10.1.0
 
 * Add creditCardExpirationDate
-* Add creditCardExpirationDateNotExpired
 * Add creditCardCVC
 * Add colorCode
 * Add phoneNumber
