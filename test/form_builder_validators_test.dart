@@ -515,6 +515,12 @@ void main() {
       expect(validator('$month/$year'), isNull);
       // Fail
       expect(validator('13/23'), isNotNull);
+
+      final validatorNoExpiredCheck = FormBuilderValidators.creditCardExpirationDate(checkForExpiration: false);
+      // Pass
+      expect(validatorNoExpiredCheck('12/23'), isNull);
+      // Fail
+      expect(validatorNoExpiredCheck('13/23'), isNotNull);
     }),
   );
 
