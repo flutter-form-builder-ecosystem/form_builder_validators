@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'helpers.dart';
 
 RegExp _email = RegExp(
@@ -11,6 +13,25 @@ RegExp _ipv6 =
 RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
+
+RegExp _phoneNumber = RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
+
+RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
+
+RegExp _hexRegExp = RegExp(r'^#[0-9a-fA-F]{6}$');
+
+RegExp _rgbRegExp = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
+
+RegExp _hslRegExp = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
+
+RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
+
+RegExp _uuid = RegExp(
+    r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');
+
+RegExp _filePath = RegExp(r'^[a-zA-Z0-9_\-\/]+$');
+
+RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
 
 int _maxUrlLength = 2083;
 
@@ -233,4 +254,176 @@ bool isDate(String str) {
   } catch (e) {
     return false;
   }
+}
+
+/// check if the string is a valid phone number
+bool isPhoneNumber(String str) {
+  if (str.isEmpty) {
+    return false;
+  }
+  final phone = str.replaceAll(' ', '').replaceAll('-', '');
+  return _phoneNumber.hasMatch(phone);
+}
+
+/// check if the string is a valid credit card expiration date
+bool isCreditCardExpirationDate(String str) {
+  // Check if the format matches MM/YY
+  if (!_creditCardExpirationDate.hasMatch(str)) {
+    return false;
+  }
+
+  // Extract month and year from the value
+  final parts = str.split('/').map(int.parse).toList();
+  final month = parts[0];
+  final year = parts[1];
+
+  // Check for valid month (1-12)
+  if (month < 1 || month > 12) {
+    return false;
+  }
+
+  return year > 0;
+}
+
+/// check if the string is not a expired credit card date
+bool isNotExpiredCreditCardDate(String str) {
+  final parts = str.split('/').map(int.parse).toList();
+  final month = parts[0];
+  final year = parts[1];
+
+  final now = DateTime.now();
+  final currentYear = now.year % 100;
+  final currentMonth = now.month;
+
+  if (year < currentYear) {
+    return false;
+  }
+
+  if (year == currentYear && month < currentMonth) {
+    return false;
+  }
+
+  return true;
+}
+
+bool isColorCode(String value,
+    {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
+  if (formats.contains('hex') && _hexRegExp.hasMatch(value)) {
+    return true;
+  } else if (formats.contains('rgb') && _rgbRegExp.hasMatch(value)) {
+    final parts = value.substring(4, value.length - 1).split(',');
+    for (final part in parts) {
+      final int colorValue = int.tryParse(part.trim()) ?? -1;
+      if (colorValue < 0 || colorValue > 255) {
+        return false;
+      }
+    }
+    return true;
+  } else if (formats.contains('hsl') && _hslRegExp.hasMatch(value)) {
+    final parts = value.substring(4, value.length - 1).split(',');
+    for (var i = 0; i < parts.length; i++) {
+      final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
+      if (i == 0) {
+        // Hue
+        if (colorValue < 0 || colorValue > 360) {
+          return false;
+        }
+      } else if (colorValue < 0 || colorValue > 100) {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
+}
+
+int uppercaseCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^A-Z]'), '').length;
+}
+
+int lowercaseCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^a-z]'), '').length;
+}
+
+int numberCharLength(String value) {
+  return value.replaceAll(RegExp(r'[^0-9]'), '').length;
+}
+
+int specialCharLength(String value) {
+  return value.replaceAll(RegExp(r'[A-Za-z0-9]'), '').length;
+}
+
+bool isAlphabetical(String value) {
+  return _alphabetical.hasMatch(value);
+}
+
+bool isUUID(String value) {
+  return _uuid.hasMatch(value);
+}
+
+bool isJSON(String value) {
+  try {
+    jsonDecode(value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+bool isLatitude(String value) {
+  value = value.replaceAll(',', '.');
+
+  final double? latitude = double.tryParse(value);
+  if (latitude == null) {
+    return false;
+  }
+  return latitude >= -90 && latitude <= 90;
+}
+
+bool isLongitude(String value) {
+  value = value.replaceAll(',', '.');
+
+  final double? longitude = double.tryParse(value);
+  if (longitude == null) {
+    return false;
+  }
+  return longitude >= -180 && longitude <= 180;
+}
+
+bool isBase64(String value) {
+  try {
+    base64Decode(value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+bool isFilePath(String value) {
+  return _filePath.hasMatch(value);
+}
+
+bool isOddNumber(String value) {
+  final int number = int.tryParse(value) ?? 0;
+  return number % 2 != 0;
+}
+
+bool isEvenNumber(String value) {
+  final int number = int.tryParse(value) ?? 0;
+  return number % 2 == 0;
+}
+
+bool isMACAddress(String value) {
+  final splitChar = value.contains(':') ? ':' : '-';
+  final parts = value.split(splitChar);
+  if (parts.length != 6) {
+    return false;
+  }
+
+  for (final part in parts) {
+    if (part.length != 2 || !_macAddress.hasMatch(part)) {
+      return false;
+    }
+  }
+  return true;
 }

@@ -1,6 +1,43 @@
-## 10.0.2
-* Reland generated l10n files
+## 10.1.0
+
+* Re-land generated l10n files
 * Add Bulgarian
+* Add creditCardExpirationDate
+* Add creditCardCVC
+* Add colorCode
+* Add phoneNumber
+* Add uppercase
+* Add lowercase
+* Add file extension
+* Add max file size
+* Add notMatch
+* Add range
+* Add date range
+* Add must be true
+* Add must be false
+* Add special characters
+* Add numeric characters
+* Add lowercase characters
+* Add uppercase characters
+* Add password
+* Add alphabetical
+* Add uuid
+* Add json
+* Add latitude
+* Add longitude
+* Add base64
+* Add path
+* Add port number
+* Add mac address
+* Add startWith
+* Add endWith
+* Add contains
+* Add between
+* Add inList
+* Add transform
+* Add debounce
+* Add retry
+
 
 ## 10.0.1
 * Fix regression (include l10n files)
