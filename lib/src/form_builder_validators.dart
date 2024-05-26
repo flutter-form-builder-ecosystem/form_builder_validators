@@ -357,43 +357,23 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
   static FormFieldValidator<String> dateRange({
-    required String minDate,
-    required String maxDate,
+    required DateTime minDate,
+    required DateTime maxDate,
     String? errorText,
-  }) {
-    return compose<String>(
-      [
-        minDate.isNotEmpty
-            ? dateString(errorText: errorText)
-            : (valueCandidate) => null,
-        maxDate.isNotEmpty
-            ? dateString(errorText: errorText)
-            : (valueCandidate) => null,
-        (valueCandidate) {
-          if (valueCandidate == null || valueCandidate.isEmpty) {
-            return null;
-          }
+  }) =>
+      (String? valueCandidate) {
+        if (valueCandidate == null || !isDate(valueCandidate)) {
+          return errorText ??
+              FormBuilderLocalizations.current.dateStringErrorText;
+        }
 
-          final minDateTime = DateTime.tryParse(minDate);
-          final maxDateTime = DateTime.tryParse(maxDate);
-          final valueDateTime = DateTime.tryParse(valueCandidate);
-
-          if (minDateTime != null &&
-              valueDateTime!.isBefore(minDateTime) &&
-              maxDateTime != null &&
-              valueDateTime.isAfter(maxDateTime)) {
-            return errorText ??
-                FormBuilderLocalizations.current.dateRangeErrorText(
-                  minDate,
-                  maxDate,
-                );
-          }
-
-          return null;
-        },
-      ],
-    );
-  }
+        final DateTime date = DateTime.parse(valueCandidate);
+        return date.isBefore(minDate) || date.isAfter(maxDate)
+            ? errorText ??
+                FormBuilderLocalizations.current
+                    .dateRangeErrorText(minDate.toString(), maxDate.toString())
+            : null;
+      };
 
   /// [FormFieldValidator] that requires the field's value to be a valid phone number.
   static FormFieldValidator<String> phoneNumber({
