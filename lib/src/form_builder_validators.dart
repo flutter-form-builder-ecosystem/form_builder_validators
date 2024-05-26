@@ -567,4 +567,175 @@ class FormBuilderValidators {
       ],
     );
   }
+
+  /// [FormFieldValidator] that requires the field's value to be alphabetical.
+  static FormFieldValidator<String> alphabetical({
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !isAlphabetical(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.alphabeticalErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid uuid.
+  static FormFieldValidator<String> uuid({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isUUID(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.uuidErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be valid json.
+  static FormFieldValidator<String> json({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isJSON(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.jsonErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid latitude.
+  static FormFieldValidator<String> latitude({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isLatitude(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.latitudeErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid longitude.
+  static FormFieldValidator<String> longitude({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isLongitude(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.longitudeErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid base64 string.
+  static FormFieldValidator<String> base64({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isBase64(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.base64ErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid file or folder path.
+  static FormFieldValidator<String> path({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isFilePath(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.pathErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be an odd number.
+  static FormFieldValidator<String> oddNumber({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isOddNumber(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.oddNumberErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be an even number.
+  static FormFieldValidator<String> evenNumber({
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !isEvenNumber(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.evenNumberErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid port number.
+  static FormFieldValidator<String> portNumber({
+    int min = 0,
+    int max = 65535,
+    String? errorText,
+  }) =>
+      (valueCandidate) {
+        if (true == valueCandidate?.isNotEmpty) {
+          int? port = int.tryParse(valueCandidate!);
+          if (port == null || port < min || port > max) {
+            return errorText ??
+                FormBuilderLocalizations.current.portNumberErrorText(min, max);
+          }
+        } else {
+          return errorText ??
+              FormBuilderLocalizations.current.portNumberErrorText(min, max);
+        }
+        return null;
+      };
+
+  /// [FormFieldValidator] that requires the field's value to be a valid macAddress.
+  static FormFieldValidator<String> macAddress({
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !isMACAddress(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.macAddressErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to starts with a specific value.
+  /// * [prefix] is the value that the field's value should start with.
+  static FormFieldValidator<String> startsWith({
+    required String prefix,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !valueCandidate!.startsWith(prefix)
+          ? errorText ??
+              FormBuilderLocalizations.current.startsWithErrorText(prefix)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to ends with a specific value.
+  /// * [suffix] is the value that the field's value should end with.
+  static FormFieldValidator<String> endsWith({
+    required String suffix,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !valueCandidate!.endsWith(suffix)
+          ? errorText ??
+              FormBuilderLocalizations.current.endsWithErrorText(suffix)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to contains a specific value.
+  /// * [substring] is the value that the field's value should contain.
+  /// * [caseSensitive] is a `bool` that sets if the search is case sensitive. By default `true`
+  static FormFieldValidator<String> contains({
+    required String substring,
+    String? errorText,
+  }) =>
+      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+              !valueCandidate!.contains(substring)
+          ? errorText ??
+              FormBuilderLocalizations.current.containsErrorText(substring)
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be between two numbers.
+  /// * [min] is the minimum value that the field's value should be greater than or equal to.
+  /// * [max] is the maximum value that the field's value should be less than or equal to.
+  static FormFieldValidator<num> between({
+    required num min,
+    required num max,
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          valueCandidate == null || valueCandidate < min || valueCandidate > max
+              ? errorText ??
+                  FormBuilderLocalizations.current.betweenErrorText(min, max)
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to in a list of values.
+  /// * [values] is the list of values that the field's value should be in.
+  static FormFieldValidator<T> inList<T>(
+    List<T> values, {
+    String? errorText,
+  }) =>
+      (valueCandidate) => !values.contains(valueCandidate)
+          ? errorText ?? FormBuilderLocalizations.current.valueInListErrorText
+          : null;
 }

@@ -46,18 +46,17 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
-Available built-in validators include:
+Available built-in helper validators:
 
-- `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
-- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
-- `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
-- `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
-- `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
-- `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- `FormBuilderValidators.compose()` - runs each validator against the value provided.
+- `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
+
+Available built-in type validators include:
+
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-- `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
+- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
 - `FormBuilderValidators.notMatch()` - requires the field's value to not match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
@@ -69,11 +68,8 @@ Available built-in validators include:
 - `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
 - `FormBuilderValidators.required()` - requires the field to have a non-empty value.
-- `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
 - `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
-- `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 - `FormBuilderValidators.mustBeTrue()` - requires the field's to be true.
 - `FormBuilderValidators.mustBeFalse()` - requires the field's to be false.
 - `FormBuilderValidators.hasSpecialChars()` - requires the field's to contain a specified number of special characters.
@@ -81,7 +77,32 @@ Available built-in validators include:
 - `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.
 - `FormBuilderValidators.hasNumericChars()` - requires the field's to contain a specified number of numeric characters.
 - `FormBuilderValidators.conditional()` - requires the field's to validate with another validator conditionally.
+- `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
+- `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
+- `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
+- `FormBuilderValidators.between()` - requires the field's to be between two numbers.
+- `FormBuilderValidators.inList()` - requires the field's to be in the provided list.
+
+Available built-in use-case validators include:
+
+- `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
+- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
+- `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
+- `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
+- `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
+- `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
+- `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
+- `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 - `FormBuilderValidators.password()` - requires the field's to be a valid password that matched required conditions.
+- `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
+- `FormBuilderValidators.json()` - requires the field's to be a valid json string.
+- `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
+- `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
+- `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
+- `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
+- `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
+- `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
 
 ### Supported languages
 

@@ -1,5 +1,7 @@
 ## 10.1.0
 
+* Re-land generated l10n files
+* Add Bulgarian
 * Add creditCardExpirationDate
 * Add creditCardCVC
 * Add colorCode
@@ -18,8 +20,20 @@
 * Add lowercase characters
 * Add uppercase characters
 * Add password
-* Re-land generated l10n files
-* Add Bulgarian
+* Add alphabetical
+* Add uuid
+* Add json
+* Add latitude
+* Add longitude
+* Add base64
+* Add path
+* Add port number
+* Add mac address
+* Add startWith
+* Add endWith
+* Add contains
+* Add between
+* Add inList
 
 ## 10.0.1
 * Fix regression (include l10n files)

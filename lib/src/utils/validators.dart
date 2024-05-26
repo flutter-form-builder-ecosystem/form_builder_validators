@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'helpers.dart';
 
 RegExp _email = RegExp(
@@ -21,6 +23,15 @@ RegExp _hexRegExp = RegExp(r'^#[0-9a-fA-F]{6}$');
 RegExp _rgbRegExp = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
 
 RegExp _hslRegExp = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
+
+RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
+
+RegExp _uuid = RegExp(
+    r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');
+
+RegExp _filePath = RegExp(r'^[a-zA-Z0-9_\-\/]+$');
+
+RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
 
 int _maxUrlLength = 2083;
 
@@ -336,4 +347,80 @@ int numberCharLength(String value) {
 
 int specialCharLength(String value) {
   return value.replaceAll(RegExp(r'[A-Za-z0-9]'), '').length;
+}
+
+bool isAlphabetical(String value) {
+  return _alphabetical.hasMatch(value);
+}
+
+bool isUUID(String value) {
+  return _uuid.hasMatch(value);
+}
+
+bool isJSON(String value) {
+  try {
+    jsonDecode(value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+bool isLatitude(String value) {
+  final double? latitude = double.tryParse(value);
+  if (latitude == null) {
+    return false;
+  }
+  return latitude >= -90 && latitude <= 90;
+}
+
+bool isLongitude(String value) {
+  final double? longitude = double.tryParse(value);
+  if (longitude == null) {
+    return false;
+  }
+  return longitude >= -180 && longitude <= 180;
+}
+
+bool isBase64(String value) {
+  try {
+    base64Decode(value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+bool isFilePath(String value) {
+  return _filePath.hasMatch(value);
+}
+
+bool isOddNumber(String value) {
+  final int number = int.tryParse(value) ?? 0;
+  return number % 2 != 0;
+}
+
+bool isEvenNumber(String value) {
+  final int number = int.tryParse(value) ?? 0;
+  return number % 2 == 0;
+}
+
+bool isMACAddress(String value) {
+  final splitChar = value.contains(':') ? ':' : '-';
+  final parts = value.split(splitChar);
+  if (parts.length != 6) {
+    return false;
+  }
+
+  for (final part in parts) {
+    if (part.length != 2) {
+      return false;
+    }
+
+    if (!_macAddress.hasMatch(part)) {
+      return false;
+    }
+  }
+
+  return true;
 }
