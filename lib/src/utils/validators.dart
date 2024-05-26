@@ -258,7 +258,11 @@ bool isDate(String str) {
 
 /// check if the string is a valid phone number
 bool isPhoneNumber(String str) {
-  return _phoneNumber.hasMatch(str.replaceAll(' ', ''));
+  if (str.isEmpty) {
+    return false;
+  }
+  final phone = str.replaceAll(' ', '').replaceAll('-', '');
+  return _phoneNumber.hasMatch(phone);
 }
 
 /// check if the string is a valid credit card expiration date
