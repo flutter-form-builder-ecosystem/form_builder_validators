@@ -107,6 +107,7 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
 - `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
 - `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
+- `FormBuilderValidators.iban()` - requires the field's to be an valid IBAN.
 
 ### Supported languages
 

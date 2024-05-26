@@ -427,3 +427,31 @@ bool isMACAddress(String value) {
   }
   return true;
 }
+
+bool isValidIban(String iban) {
+  iban = iban.replaceAll(' ', '').toUpperCase();
+
+  if (iban.length < 15) {
+    return false;
+  }
+
+  String rearranged = iban.substring(4) + iban.substring(0, 4);
+  String numericIban = rearranged.split('').map((char) {
+    int charCode = char.codeUnitAt(0);
+    if (charCode >= 65 && charCode <= 90) {
+      return (charCode - 55).toString(); // A=10, B=11, ..., Z=35
+    } else {
+      return char;
+    }
+  }).join();
+
+  int remainder = int.parse(numericIban.substring(0, 9)) % 97;
+  for (int i = 9; i < numericIban.length; i += 7) {
+    remainder = int.parse(remainder.toString() +
+            numericIban.substring(
+                i, i + 7 < numericIban.length ? i + 7 : numericIban.length)) %
+        97;
+  }
+
+  return remainder == 1;
+}
