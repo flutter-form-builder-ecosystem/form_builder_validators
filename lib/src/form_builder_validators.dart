@@ -75,7 +75,6 @@ class FormBuilderValidators {
       debounceTimer = Timer(duration, () {
         result = validator(valueCandidate);
       });
-
       return result;
     };
   }

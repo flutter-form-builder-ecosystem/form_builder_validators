@@ -1001,4 +1001,111 @@ void main() {
       expect(validator('123 hello'), isNotNull);
     }),
   );
+
+  testWidgets(
+    'FormBuilderValidators.aggregate',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.aggregate<String>([
+        FormBuilderValidators.required(),
+        FormBuilderValidators.minLength(5),
+        FormBuilderValidators.maxLength(10),
+      ]);
+      // Pass
+      expect(validator('hello'), isNull);
+      // Fail
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+      expect(validator('test'), isNotNull);
+      expect(validator('this string is too long'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.debounce',
+    (WidgetTester tester) async {
+      String? validationResult;
+      final validator = FormBuilderValidators.debounce<String>(
+        duration: const Duration(milliseconds: 500),
+        validator: (value) => FormBuilderValidators.required()(value),
+      );
+
+      // Set initial result to null
+      validationResult = validator('valid');
+      // Initial pass check
+      expect(validationResult, isNull);
+
+      // Set result to not null but should still be null initially due to debounce
+      validationResult = validator('');
+      expect(validationResult, isNull);
+
+      // Advance time by 500 milliseconds to trigger debounce
+      await tester.pump(const Duration(milliseconds: 500));
+
+      // Validate again to see the actual result after debounce
+      validationResult = validator('');
+      expect(validationResult, isNotNull);
+    },
+  );
+
+  testWidgets(
+    'FormBuilderValidators.retry',
+    (WidgetTester tester) async {
+      int attempts = 0;
+      final validator = FormBuilderValidators.retry<String>(
+        times: 3,
+        duration: const Duration(milliseconds: 10),
+        validator: (value) {
+          attempts++;
+          return value != 'pass' && attempts < 3 ? 'fail' : null;
+        },
+      );
+      // Pass on retry
+      expect(validator('pass'), isNull);
+      // Fail after retries
+      expect(validator('fail'), isNotNull);
+      await Future.delayed(const Duration(milliseconds: 200));
+      expect(attempts, 3);
+    },
+  );
+
+  testWidgets(
+    'FormBuilderValidators.transform',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.transform<String>(
+        FormBuilderValidators.required(),
+        (value) => value?.trim() ?? '',
+      );
+      // Pass
+      expect(validator(' trimmed '), isNull);
+      // Fail
+      expect(validator('  '), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.skipWhen',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.skipWhen<String>(
+        (value) => value == 'skip',
+        FormBuilderValidators.required(),
+      );
+      // Pass
+      expect(validator('skip'), isNull);
+      // Fail
+      expect(validator(''), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.log',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.log<String>(
+        log: (value) => 'Logging: $value',
+      );
+      // Pass
+      expect(validator('test'), isNull);
+      // Fail
+      expect(validator(null), isNull); // Log message will be displayed
+    }),
+  );
 }
