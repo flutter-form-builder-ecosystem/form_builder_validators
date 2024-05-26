@@ -34,6 +34,10 @@
 * Add contains
 * Add between
 * Add inList
+* Add transform
+* Add debounce
+* Add retry
+
 
 ## 10.0.1
 * Fix regression (include l10n files)

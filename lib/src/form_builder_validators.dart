@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../form_builder_validators.dart';
 
@@ -40,6 +42,62 @@ class FormBuilderValidators {
         }
       }
       return errorResult;
+    };
+  }
+
+  /// [FormFieldValidator] that transforms the value before applying the validator.
+  static FormFieldValidator transform<T>(
+    FormFieldValidator<T> validator,
+    T Function(T? value) transformer,
+  ) {
+    return (valueCandidate) {
+      final transformedValue = transformer(valueCandidate);
+      return validator(transformedValue);
+    };
+  }
+
+  /// [FormFieldValidator] that debounces the validation.
+  /// * [duration] is the duration to wait before running the validation.
+  static FormFieldValidator<T> debounce<T>({
+    required Duration duration,
+    required FormFieldValidator<T> validator,
+  }) {
+    Timer? debounceTimer;
+    String? result;
+
+    return (valueCandidate) {
+      debounceTimer?.cancel();
+      debounceTimer = Timer(duration, () {
+        result = validator(valueCandidate);
+      });
+
+      return result;
+    };
+  }
+
+  /// [FormFieldValidator] that retries the validation.
+  /// * [times] is the number of times to retry the validation.
+  /// * [duration] is the duration to wait before retrying the validation.
+  static FormFieldValidator<T> retry<T>({
+    required int times,
+    required Duration duration,
+    required FormFieldValidator<T> validator,
+  }) {
+    int retries = 0;
+    String? result;
+
+    return (valueCandidate) {
+      if (retries < times) {
+        result = validator(valueCandidate);
+        if (result != null) {
+          retries++;
+          Future.delayed(duration, () {
+            result = validator(valueCandidate);
+          });
+        }
+      }
+
+      return result;
     };
   }
 

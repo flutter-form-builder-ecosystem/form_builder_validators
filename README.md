@@ -51,6 +51,9 @@ Available built-in helper validators:
 - `FormBuilderValidators.compose()` - runs each validator against the value provided.
 - `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
 - `FormBuilderValidators.or()` - runs each validator against the value provided and passes when any works.
+- `FormBuilderValidators.transform()` - transforms the value before running the validator.
+- `FormBuilderValidators.debounce()` - runs the validator after a set time.
+- `FormBuilderValidators.retry()` - runs the validator again after failing while waiting a certain time.
 
 Available built-in type validators include:
 
