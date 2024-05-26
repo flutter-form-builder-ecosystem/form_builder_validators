@@ -1,5 +1,9 @@
 // Helper functions for validator and sanitizer.
 
+import 'dart:math';
+
+import 'package:intl/intl.dart';
+
 T shift<T>(List<T> l) {
   if (l.isNotEmpty) {
     final first = l.first;
@@ -26,14 +30,18 @@ String fileExtensionFromPath(String path) {
 }
 
 /// Helper function to format bytes into a human-readable string (e.g., KB, MB, GB).
-String formatBytes(int bytes) {
-  const suffixes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  var i = 0;
-  double size = bytes.toDouble();
-  while (size > 1024 && i < suffixes.length - 1) {
-    size /= 1024;
-    i++;
-  }
-  // Truncate to 1 decimal place
-  return '${size.toStringAsFixed(1)}${suffixes[i]}';
+String formatBytes(int bytes, {bool base1024 = true}) {
+  double log10(num x) => log(x) / ln10;
+
+  if (bytes <= 0) return "0 B";
+
+  final base = base1024 ? 1024 : 1000;
+  final units = base1024
+      ? ["B", "KiB", "MiB", "GiB", "TiB"]
+      : ["B", "kB", "MB", "GB", "TB"];
+
+  int digitGroups = (log10(bytes) / log10(base)).floor();
+  double size = bytes / pow(base, digitGroups);
+
+  return "${NumberFormat("#,##0.#").format(size)} ${units[digitGroups]}";
 }
