@@ -54,6 +54,9 @@ Available built-in helper validators:
 - `FormBuilderValidators.transform()` - transforms the value before running the validator.
 - `FormBuilderValidators.debounce()` - runs the validator after a set time.
 - `FormBuilderValidators.retry()` - runs the validator again after failing while waiting a certain time.
+- `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
+- `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
+- `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
 
 Available built-in type validators include:
 

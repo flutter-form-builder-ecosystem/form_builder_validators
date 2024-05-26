@@ -107,6 +107,51 @@ class FormBuilderValidators {
     };
   }
 
+  /// [FormFieldValidator] that runs validators and collects all errors.
+  /// * [validators] is the list of validators to run.
+  static FormFieldValidator<T> aggregate<T>(
+    List<FormFieldValidator<T>> validators,
+  ) {
+    return (valueCandidate) {
+      final errors = <String>[];
+      for (final validator in validators) {
+        final error = validator(valueCandidate);
+        if (error != null) {
+          errors.add(error);
+        }
+      }
+      return errors.isNotEmpty ? errors.join('\n') : null;
+    };
+  }
+
+  /// [FormFieldValidator] that logs the value at a specific point in the validation chain
+  /// * [log] is the log message to display
+  static FormFieldValidator<T> log<T>({
+    String Function(T? value)? log,
+  }) {
+    return (valueCandidate) {
+      if (log != null) {
+        debugPrint(log(valueCandidate));
+      }
+      return null;
+    };
+  }
+
+  /// [FormFieldValidator] that skips the validation when a certain condition is met.
+  /// * [condition] is the condition to check.
+  /// * [validator] is the validator to skip.
+  static FormFieldValidator<T> skipWhen<T>(
+    bool Function(T? value) condition,
+    FormFieldValidator<T> validator,
+  ) {
+    return (valueCandidate) {
+      if (condition(valueCandidate)) {
+        return null;
+      }
+      return validator(valueCandidate);
+    };
+  }
+
   /// [FormFieldValidator] that requires the field have a non-empty value.
   /// * [errorText] is the error message to display when the value is empty
   static FormFieldValidator<T> required<T>({
