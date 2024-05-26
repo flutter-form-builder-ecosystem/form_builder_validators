@@ -965,4 +965,19 @@ void main() {
       expect(validator(4), isNotNull);
     }),
   );
+
+  testWidgets(
+    'FormBuilderValidators.or',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.or([
+        FormBuilderValidators.numeric(),
+        FormBuilderValidators.startsWith(prefix: 'Hello'),
+      ]);
+      // Pass
+      expect(validator('123'), isNull);
+      expect(validator('Hello world'), isNull);
+      // Fail
+      expect(validator('123 hello'), isNotNull);
+    }),
+  );
 }

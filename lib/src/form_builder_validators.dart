@@ -23,6 +23,26 @@ class FormBuilderValidators {
     };
   }
 
+  /// [FormFieldValidator] that is composed of other [FormFieldValidator]s.
+  /// Each validator is run against the [FormField] value and if any returns a
+  /// null result validation passes
+  static FormFieldValidator<T> or<T>(
+    List<FormFieldValidator<T>> validators,
+  ) {
+    return (valueCandidate) {
+      String? errorResult;
+      for (final validator in validators) {
+        final validatorResult = validator.call(valueCandidate);
+        if (validatorResult == null) {
+          return null;
+        } else {
+          errorResult = validatorResult;
+        }
+      }
+      return errorResult;
+    };
+  }
+
   /// [FormFieldValidator] that requires the field have a non-empty value.
   static FormFieldValidator<T> required<T>({
     String? errorText,

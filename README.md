@@ -50,6 +50,7 @@ Available built-in helper validators:
 
 - `FormBuilderValidators.compose()` - runs each validator against the value provided.
 - `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
+- `FormBuilderValidators.or()` - runs each validator against the value provided and passes when any works.
 
 Available built-in type validators include:
 
