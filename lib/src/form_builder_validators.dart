@@ -60,52 +60,6 @@ class FormBuilderValidators {
     };
   }
 
-  /// [FormFieldValidator] that debounces the validation.
-  /// * [duration] is the duration to wait before running the validation.
-  /// * [validator] is the validator to debounce.
-  static FormFieldValidator<T> debounce<T>({
-    required Duration duration,
-    required FormFieldValidator<T> validator,
-  }) {
-    Timer? debounceTimer;
-    String? result;
-
-    return (valueCandidate) {
-      debounceTimer?.cancel();
-      debounceTimer = Timer(duration, () {
-        result = validator(valueCandidate);
-      });
-      return result;
-    };
-  }
-
-  /// [FormFieldValidator] that retries the validation.
-  /// * [times] is the number of times to retry the validation.
-  /// * [duration] is the duration to wait before retrying the validation.
-  /// * [validator] is the validator to retry.
-  static FormFieldValidator<T> retry<T>({
-    required int times,
-    required Duration duration,
-    required FormFieldValidator<T> validator,
-  }) {
-    int retries = 0;
-    String? result;
-
-    return (valueCandidate) {
-      if (retries < times) {
-        result = validator(valueCandidate);
-        if (result != null) {
-          retries++;
-          Future.delayed(duration, () {
-            result = validator(valueCandidate);
-          });
-        }
-      }
-
-      return result;
-    };
-  }
-
   /// [FormFieldValidator] that runs validators and collects all errors.
   /// * [validators] is the list of validators to run.
   static FormFieldValidator<T> aggregate<T>(
