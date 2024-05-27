@@ -140,6 +140,7 @@ void main() {
       expect(validatorAllowEmpty(''), isNull);
     }),
   );
+
   testWidgets(
     'FormBuilderValidators.maxLength for Iterable',
     (WidgetTester tester) => testValidations(tester, (context) {
@@ -175,14 +176,13 @@ void main() {
       expect(validatorAllowEmpty([]), isNull);
     }),
   );
+
   testWidgets(
     'FormBuilderValidators.equalLength for Iterable',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.equalLength<Iterable<String>>(3);
-
       // Pass
       expect(validator(['a', 'b', 'c']), isNull);
-
       // Fail
       expect(validator(null), isNotNull);
       expect(validator([]), isNotNull);
@@ -190,14 +190,13 @@ void main() {
       expect(validator(['one', 'two', 'three', 'four']), isNotNull);
     }),
   );
+
   testWidgets(
     'FormBuilderValidators.equalLength for String',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.equalLength<String>(3);
-
       // Pass
       expect(validator('333'), isNull);
-
       // Fail
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
@@ -210,10 +209,8 @@ void main() {
     'FormBuilderValidators.equalLength for int',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.equalLength<int>(3);
-
       // Pass
       expect(validator(333), isNull);
-
       // Fail
       expect(validator(null), isNotNull);
       expect(validator(0), isNotNull);
@@ -292,7 +289,6 @@ void main() {
       expect(validator(null), isNull);
       expect(validator(''), isNull);
       expect(validator('john@flutter.dev'), isNull);
-
       // Fail
       expect(validator('john@flutter'), isNotNull);
       expect(validator('john@ flutter.dev'), isNotNull);
@@ -543,7 +539,6 @@ void main() {
     'FormBuilderValidators.phoneNumber',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.phoneNumber();
-
       // Valid phone numbers from various countries
       expect(validator('+1 800 555 5555'), isNull); // USA
       expect(validator('+44 20 7946 0958'), isNull); // UK
@@ -555,7 +550,6 @@ void main() {
       expect(validator('+86 10 1234 5678'), isNull); // China
       expect(validator('+55 11 91234-5678'), isNull); // Brazil
       expect(validator('+27 21 123 4567'), isNull); // South Africa
-
       // Invalid phone numbers
       expect(validator('123-abc-defg'), isNotNull); // Contains letters
       expect(validator('+1-800-555-5555-00000000000'),
@@ -564,7 +558,6 @@ void main() {
       expect(validator('+1 (800) 555-5555'), isNotNull); // Invalid format
       expect(validator('+44 20 7946 0958 ext 123'),
           isNotNull); // Extension included
-
       // Edge cases
       expect(validator(''), isNotNull); // Empty string
       expect(validator(null), isNotNull); // Null value
@@ -580,6 +573,8 @@ void main() {
       expect(validator('rgb(255, 255, 255)'), isNull);
       // Fail
       expect(validator('#ZZZZZZ'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
     }),
   );
 
@@ -592,6 +587,8 @@ void main() {
       expect(validator('LASAÑA'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
     }),
   );
 
@@ -604,6 +601,8 @@ void main() {
       expect(validator('lasaña'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
     }),
   );
 
@@ -617,6 +616,8 @@ void main() {
       expect(validator(File('test.txt').path), isNull);
       // Fail
       expect(validator(File('test.doc').path), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -635,21 +636,25 @@ void main() {
       expect(validator(file.lengthSync().toString()), isNotNull);
       // Cleanup
       file.deleteSync();
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
   testWidgets(
     'FormBuilderValidators.conditional',
     (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.conditional(
-        (value) => value != null,
-        FormBuilderValidators.hasUppercaseChars(atLeast: 3),
+      final validator = FormBuilderValidators.conditional<String>(
+        (value) => value.contains('test'),
+        FormBuilderValidators.hasUppercaseChars(atLeast: 6),
       );
       // Pass
-      expect(validator('HELLO'), isNull);
-      expect(validator('lasAÑA'), isNull);
+      expect(validator('test HELLOHELLO'), isNull);
+      expect(validator('test lasAÑA HELLO'), isNull);
       // Fail
-      expect(validator('hello'), isNotNull);
+      expect(validator('test'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
     }),
   );
 
@@ -662,6 +667,8 @@ void main() {
       // Fail
       expect(validator(5), isNotNull);
       expect(validator(25), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -697,6 +704,8 @@ void main() {
       expect(validator('hello@'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -709,6 +718,8 @@ void main() {
       expect(validator('lasaÑa'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -721,6 +732,8 @@ void main() {
       expect(validator('LASAñA'), isNull);
       // Fail
       expect(validator('HELLO'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -732,6 +745,8 @@ void main() {
       expect(validator('hello1'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -745,31 +760,22 @@ void main() {
       expect(validator('hellohello1@'), isNotNull);
       expect(validator('Hellohello1'), isNotNull);
       expect(validator('Hellohello@'), isNotNull);
-
       // Fail - only lowercase
       expect(validator('lowercasepassword'), isNotNull);
-
       // Fail - only uppercase
       expect(validator('UPPERCASEPASSWORD'), isNotNull);
-
       // Fail - only numbers
       expect(validator('1234567890'), isNotNull);
-
       // Fail - only special chars
       expect(validator('~!@#%^&*'), isNotNull);
-
       // Fail - weak password
       expect(validator('password123'), isNotNull);
-
       // Fail - empty password
       expect(validator(''), isNotNull);
-
       // Fail - whitespace only
       expect(validator('     '), isNotNull);
-
       // Fail - similar characters
       expect(validator('aaaaaa1111'), isNotNull);
-
       final customValidator = FormBuilderValidators.password(
         minLength: 4,
         maxLength: 16,
@@ -780,22 +786,16 @@ void main() {
       );
       // Pass - meets all requirements
       expect(customValidator('PASsw0rd@123!!'), isNull);
-
       // Fail - less than min length
       expect(customValidator('Pass@12'), isNotNull);
-
       // Fail - more than max length
       expect(customValidator('ThisIsAP@ssw0rd1234'), isNotNull);
-
       // Fail - missing uppercase chars
       expect(customValidator('password@123'), isNotNull);
-
       // Fail - missing lowercase chars
       expect(customValidator('PASSWORD@123'), isNotNull);
-
       // Fail - missing number
       expect(customValidator('Password@abc'), isNotNull);
-
       // Fail - missing special char
       expect(customValidator('Password123abc'), isNotNull);
     }),
@@ -812,6 +812,8 @@ void main() {
       expect(validator('Hello123'), isNotNull);
       expect(validator('123'), isNotNull);
       expect(validator('!@#'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -823,6 +825,8 @@ void main() {
       expect(validator('123e4567-e89b-12d3-a456-426614174000'), isNull);
       // Fail
       expect(validator('not-a-uuid'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -834,6 +838,8 @@ void main() {
       expect(validator('{"key": "value"}'), isNull);
       // Fail
       expect(validator('not-json'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -847,6 +853,8 @@ void main() {
       // Fail
       expect(validator('91.0'), isNotNull);
       expect(validator('latitude'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -860,6 +868,8 @@ void main() {
       // Fail
       expect(validator('181.0'), isNotNull);
       expect(validator('longitude'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -871,6 +881,8 @@ void main() {
       expect(validator('SGVsbG8gd29ybGQ='), isNull);
       // Fail
       expect(validator('not-base64'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -882,6 +894,8 @@ void main() {
       expect(validator('/path/to/file'), isNull);
       // Fail
       expect(validator('path\\to\\file'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -895,6 +909,8 @@ void main() {
       // Fail
       expect(validator('2'), isNotNull);
       expect(validator('4'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -908,6 +924,8 @@ void main() {
       // Fail
       expect(validator('3'), isNotNull);
       expect(validator('5'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -921,6 +939,8 @@ void main() {
       // Fail
       expect(validator('70000'), isNotNull);
       expect(validator('-1'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -933,6 +953,8 @@ void main() {
       expect(validator('00-1B-44-11-3A-B7'), isNull);
       // Fail
       expect(validator('invalid-mac'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -944,6 +966,8 @@ void main() {
       expect(validator('Hello world'), isNull);
       // Fail
       expect(validator('world Hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -955,6 +979,8 @@ void main() {
       expect(validator('Hello world'), isNull);
       // Fail
       expect(validator('world Hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -966,6 +992,8 @@ void main() {
       expect(validator('I love flutter'), isNull);
       // Fail
       expect(validator('I love dart'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -978,6 +1006,7 @@ void main() {
       // Fail
       expect(validator(5), isNotNull);
       expect(validator(25), isNotNull);
+      expect(validator(null), isNotNull);
     }),
   );
 
@@ -989,6 +1018,7 @@ void main() {
       expect(validator(2), isNull);
       // Fail
       expect(validator(4), isNotNull);
+      expect(validator(null), isNotNull);
     }),
   );
 
@@ -1004,6 +1034,8 @@ void main() {
       expect(validator('Hello world'), isNull);
       // Fail
       expect(validator('123 hello'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -1036,6 +1068,8 @@ void main() {
       expect(validator(' trimmed '), isNull);
       // Fail
       expect(validator('  '), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
     }),
   );
 
@@ -1050,6 +1084,7 @@ void main() {
       expect(validator('skip'), isNull);
       // Fail
       expect(validator(''), isNotNull);
+      expect(validator(null), isNotNull);
     }),
   );
 
@@ -1063,6 +1098,7 @@ void main() {
       expect(validator('test'), isNull);
       // Fail
       expect(validator(null), isNull); // Log message will be displayed
+      expect(validator(''), isNull);
     }),
   );
 
@@ -1080,7 +1116,7 @@ void main() {
           isNull); // Format with spaces
 
       // Fail
-      //expect(validator(''), isNotNull); // Empty string
+      expect(validator(''), isNotNull); // Empty string
       expect(validator('INVALIDIBAN'), isNotNull); // Invalid IBAN
       expect(validator('GB82WEST1234569876543212345'), isNotNull); // Too long
       expect(validator('GB82WEST1234'), isNotNull); // Too short

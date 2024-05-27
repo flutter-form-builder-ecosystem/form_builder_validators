@@ -548,15 +548,29 @@ class FormBuilderValidators {
   static FormFieldValidator<String> fileExtension({
     required List<String> allowedExtensions,
     String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate == null
-          ? null
-          : !allowedExtensions
-                  .contains(fileExtensionFromPath(valueCandidate).toLowerCase())
-              ? errorText ??
-                  FormBuilderLocalizations.current
-                      .fileExtensionErrorText(allowedExtensions.join(', '))
-              : null;
+  }) {
+    final allowedExtensionsLowerCase =
+        allowedExtensions.map((e) => e.toLowerCase()).toList();
+
+    return (valueCandidate) {
+      if (valueCandidate == null || valueCandidate.isEmpty) {
+        return errorText ??
+            FormBuilderLocalizations.current.fileExtensionErrorText(
+              allowedExtensions.join(', '),
+            );
+      }
+
+      final extension = fileExtensionFromPath(valueCandidate).toLowerCase();
+      if (!allowedExtensionsLowerCase.contains(extension)) {
+        return errorText ??
+            FormBuilderLocalizations.current.fileExtensionErrorText(
+              allowedExtensions.join(', '),
+            );
+      }
+
+      return null;
+    };
+  }
 
   /// [FormFieldValidator] that restricts the size of an file to be less than or equal to the provided maximum size.
   /// * [maxSize] is the maximum size in bytes.
@@ -565,15 +579,22 @@ class FormBuilderValidators {
     required int maxSize,
     String? errorText,
   }) =>
-      (valueCandidate) => valueCandidate == null
-          ? null
-          : int.parse(valueCandidate) > maxSize
-              ? errorText ??
-                  FormBuilderLocalizations.current.fileSizeErrorText(
-                    formatBytes(int.parse(valueCandidate)),
-                    formatBytes(maxSize),
-                  )
-              : null;
+      (valueCandidate) {
+        if (valueCandidate == null || valueCandidate.isEmpty) {
+          return errorText ??
+              FormBuilderLocalizations.current
+                  .fileSizeErrorText(formatBytes(0), formatBytes(maxSize));
+        }
+
+        final size = int.tryParse(valueCandidate);
+        if (size == null || size > maxSize) {
+          return errorText ??
+              FormBuilderLocalizations.current.fileSizeErrorText(
+                  formatBytes(size ?? 0), formatBytes(maxSize));
+        }
+
+        return null;
+      };
 
   /// [FormFieldValidator] that applies another validator conditionally.
   /// * [condition] is a function that determines if the validator should be applied.
@@ -582,8 +603,12 @@ class FormBuilderValidators {
     bool Function(T value) condition,
     FormFieldValidator<T> validator,
   ) =>
-      (T? valueCandidate) =>
-          condition(valueCandidate as T) ? validator(valueCandidate) : null;
+      (valueCandidate) {
+        if (valueCandidate != null && condition(valueCandidate)) {
+          return validator(valueCandidate);
+        }
+        return null;
+      };
 
   /// [FormFieldValidator] that requires the field's value to be within a certain range.
   /// * [minValue] is the minimum value that the field's value should be greater than or equal to.
@@ -596,12 +621,19 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
   }) {
-    return compose<T>(
-      [
-        min(minValue, inclusive: inclusive, errorText: errorText),
-        max(maxValue, inclusive: inclusive, errorText: errorText),
-      ],
-    );
+    return (T? valueCandidate) {
+      assert(valueCandidate is num || valueCandidate is String);
+      final number = valueCandidate is num
+          ? valueCandidate
+          : num.tryParse(valueCandidate.toString());
+
+      final minResult =
+          min(minValue, inclusive: inclusive, errorText: errorText)(number);
+      final maxResult =
+          max(maxValue, inclusive: inclusive, errorText: errorText)(number);
+
+      return errorText ?? minResult ?? maxResult;
+    };
   }
 
   /// [FormFieldValidator] that requires the field's value to be a bool and true.
