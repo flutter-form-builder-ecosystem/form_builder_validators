@@ -8,29 +8,32 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/flutter-form-builder-ecosystem/form_builder_validators/base.yaml?branch=main&logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/actions/workflows/base.yaml)
 [![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_validators/)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_validators?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_validators)
+
 ---
 
-> ## Migrating from version 7 to 8
->
-> To migrate from v7 to v8, remove `context` as a parameter to validator functions. For example, `FormBuilderValidators.required(context)` becomes `FormBuilderValidators.required()` without `context` passed in.
+## Call for Maintainers
+
+> We are looking for maintainers to contribute to the development and maintenance of Flutter Form Builder Ecosystem. Is very important to keep the project alive and growing, so we need your help to keep it up to date and with new features. You can contribute in many ways, we describe some of them in [Support](#support) section.
 
 ## Contents
 
 - [Features](#features)
 - [Validators](#validators)
-    - [Supported languages](#supported-languages)
+  - [Supported languages](#supported-languages)
 - [Use](#use)
-    - [Setup](#setup)
-    - [Basic use](#basic-use)
-    - [Specific uses](#specific-uses)
-        - [Composing multiple validators](#composing-multiple-validators)
-        - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
+  - [Setup](#setup)
+  - [Basic use](#basic-use)
+  - [Specific uses](#specific-uses)
+    - [Composing multiple validators](#composing-multiple-validators)
+    - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
+- [Migrations](#migrations)
+  - [v7 to v8](#v7-to-v8)
 - [Support](#support)
-    - [Contribute](#contribute)
-        - [Add new supported language](#add-new-supported-language)
-        - [Add new validator](#add-new-validator)
-    - [Questions and answers](#questions-and-answers)
-    - [Donations](#donations)
+  - [Contribute](#contribute)
+    - [Add new supported language](#add-new-supported-language)
+    - [Add new validator](#add-new-validator)
+  - [Questions and answers](#questions-and-answers)
+  - [Donations](#donations)
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
@@ -235,6 +238,12 @@ TextFormField(
 #### Modify the default error message in a specific language
 
 see [override_form_builder_localizations_en](example/lib/override_form_builder_localizations_en.dart) for more detail.
+
+## Migrations
+
+### v7 to v8
+
+Remove `context` as a parameter to validator functions. For example, `FormBuilderValidators.required(context)` becomes `FormBuilderValidators.required()` without `context` passed in.
 
 ## Support
 
