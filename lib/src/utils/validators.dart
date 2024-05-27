@@ -338,11 +338,11 @@ bool isColorCode(String value,
 }
 
 int uppercaseCharLength(String value) {
-  return value.replaceAll(RegExp(r'[^A-Z]'), '').length;
+  return value.replaceAll(RegExp(r'[^A-ZÑ]'), '').length;
 }
 
 int lowercaseCharLength(String value) {
-  return value.replaceAll(RegExp(r'[^a-z]'), '').length;
+  return value.replaceAll(RegExp(r'[^a-zñ]'), '').length;
 }
 
 int numberCharLength(String value) {
