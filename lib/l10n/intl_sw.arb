@@ -49,5 +49,6 @@
   "endsWithErrorText": "Thamani lazima imalizike na {value}.",
   "containsErrorText": "Thamani lazima iwe na {value}.",
   "betweenErrorText": "Thamani lazima iwe kati ya {min} na {max}.",
-  "valueInListErrorText": "Thamani lazima iwe kwenye orodha ya thamani zinazokubalika."
+  "valueInListErrorText": "Thamani lazima iwe kwenye orodha ya thamani zinazokubalika.",
+  "ibanErrorText": "Sehemu hii inahitaji IBAN halali."
 }

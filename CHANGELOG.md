@@ -35,8 +35,10 @@
 * Add between
 * Add inList
 * Add transform
-* Add debounce
-* Add retry
+* Add iban
+* Add skipWhen
+* Add log
+* Add aggregate
 
 
 ## 10.0.1

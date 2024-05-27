@@ -589,6 +589,7 @@ void main() {
       final validator = FormBuilderValidators.uppercase();
       // Pass
       expect(validator('HELLO'), isNull);
+      expect(validator('LASAÑA'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
     }),
@@ -600,6 +601,7 @@ void main() {
       final validator = FormBuilderValidators.lowercase();
       // Pass
       expect(validator('hello'), isNull);
+      expect(validator('lasaña'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
     }),
@@ -645,6 +647,7 @@ void main() {
       );
       // Pass
       expect(validator('HELLO'), isNull);
+      expect(validator('lasAÑA'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
     }),
@@ -703,6 +706,7 @@ void main() {
       final validator = FormBuilderValidators.hasUppercaseChars(atLeast: 1);
       // Pass
       expect(validator('Hello'), isNull);
+      expect(validator('lasaÑa'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
     }),
@@ -714,6 +718,7 @@ void main() {
       final validator = FormBuilderValidators.hasLowercaseChars(atLeast: 1);
       // Pass
       expect(validator('hello'), isNull);
+      expect(validator('LASAñA'), isNull);
       // Fail
       expect(validator('HELLO'), isNotNull);
     }),
@@ -999,6 +1004,86 @@ void main() {
       expect(validator('Hello world'), isNull);
       // Fail
       expect(validator('123 hello'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.aggregate',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.aggregate<String>([
+        FormBuilderValidators.required(),
+        FormBuilderValidators.minLength(5),
+        FormBuilderValidators.maxLength(10),
+      ]);
+      // Pass
+      expect(validator('hello'), isNull);
+      // Fail
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+      expect(validator('test'), isNotNull);
+      expect(validator('this string is too long'), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.transform',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.transform<String>(
+        FormBuilderValidators.required(),
+        (value) => value?.trim() ?? '',
+      );
+      // Pass
+      expect(validator(' trimmed '), isNull);
+      // Fail
+      expect(validator('  '), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.skipWhen',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.skipWhen<String>(
+        (value) => value == 'skip',
+        FormBuilderValidators.required(),
+      );
+      // Pass
+      expect(validator('skip'), isNull);
+      // Fail
+      expect(validator(''), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.log',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.log<String>(
+        log: (value) => 'Logging: $value',
+      );
+      // Pass
+      expect(validator('test'), isNull);
+      // Fail
+      expect(validator(null), isNull); // Log message will be displayed
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.iban',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.iban();
+      // Pass
+      expect(validator('GB82WEST12345698765432'), isNull); // A valid UK IBAN
+      expect(
+          validator('DE89370400440532013000'), isNull); // A valid German IBAN
+      expect(validator('FR1420041010050500013M02606'),
+          isNull); // A valid French IBAN
+      expect(validator('GB82 WEST 1234 5698 7654 32'),
+          isNull); // Format with spaces
+
+      // Fail
+      //expect(validator(''), isNotNull); // Empty string
+      expect(validator('INVALIDIBAN'), isNotNull); // Invalid IBAN
+      expect(validator('GB82WEST1234569876543212345'), isNotNull); // Too long
+      expect(validator('GB82WEST1234'), isNotNull); // Too short
     }),
   );
 }

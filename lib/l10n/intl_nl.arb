@@ -49,5 +49,6 @@
   "endsWithErrorText": "De waarde moet eindigen met {value}.",
   "containsErrorText": "De waarde moet {value} bevatten.",
   "betweenErrorText": "De waarde moet tussen {min} en {max} liggen.",
-  "valueInListErrorText": "De waarde moet in de lijst met toegestane waarden staan."
+  "valueInListErrorText": "De waarde moet in de lijst met toegestane waarden staan.",
+  "ibanErrorText": "Een geldige IBAN is vereist."
 }

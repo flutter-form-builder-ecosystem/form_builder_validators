@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import '../form_builder_validators.dart';
 
@@ -11,6 +9,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that is composed of other [FormFieldValidator]s.
   /// Each validator is run against the [FormField] value and if any returns a
   /// non-null result validation fails, otherwise, validation passes
+  /// * [validators] is the list of validators to compose
   static FormFieldValidator<T> compose<T>(
     List<FormFieldValidator<T>> validators,
   ) {
@@ -28,6 +27,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that is composed of other [FormFieldValidator]s.
   /// Each validator is run against the [FormField] value and if any returns a
   /// null result validation passes
+  /// * [validators] is the list of validators to compose
   static FormFieldValidator<T> or<T>(
     List<FormFieldValidator<T>> validators,
   ) {
@@ -46,6 +46,8 @@ class FormBuilderValidators {
   }
 
   /// [FormFieldValidator] that transforms the value before applying the validator.
+  /// * [validator] is the validator to apply.
+  /// * [transformer] is the transformer to apply.
   static FormFieldValidator transform<T>(
     FormFieldValidator<T> validator,
     T Function(T? value) transformer,
@@ -56,52 +58,53 @@ class FormBuilderValidators {
     };
   }
 
-  /// [FormFieldValidator] that debounces the validation.
-  /// * [duration] is the duration to wait before running the validation.
-  static FormFieldValidator<T> debounce<T>({
-    required Duration duration,
-    required FormFieldValidator<T> validator,
-  }) {
-    Timer? debounceTimer;
-    String? result;
-
+  /// [FormFieldValidator] that runs validators and collects all errors.
+  /// * [validators] is the list of validators to run.
+  static FormFieldValidator<T> aggregate<T>(
+    List<FormFieldValidator<T>> validators,
+  ) {
     return (valueCandidate) {
-      debounceTimer?.cancel();
-      debounceTimer = Timer(duration, () {
-        result = validator(valueCandidate);
-      });
-
-      return result;
+      final errors = <String>[];
+      for (final validator in validators) {
+        final error = validator(valueCandidate);
+        if (error != null) {
+          errors.add(error);
+        }
+      }
+      return errors.isNotEmpty ? errors.join('\n') : null;
     };
   }
 
-  /// [FormFieldValidator] that retries the validation.
-  /// * [times] is the number of times to retry the validation.
-  /// * [duration] is the duration to wait before retrying the validation.
-  static FormFieldValidator<T> retry<T>({
-    required int times,
-    required Duration duration,
-    required FormFieldValidator<T> validator,
+  /// [FormFieldValidator] that logs the value at a specific point in the validation chain
+  /// * [log] is the log message to display
+  static FormFieldValidator<T> log<T>({
+    String Function(T? value)? log,
   }) {
-    int retries = 0;
-    String? result;
-
     return (valueCandidate) {
-      if (retries < times) {
-        result = validator(valueCandidate);
-        if (result != null) {
-          retries++;
-          Future.delayed(duration, () {
-            result = validator(valueCandidate);
-          });
-        }
+      if (log != null) {
+        debugPrint(log(valueCandidate));
       }
+      return null;
+    };
+  }
 
-      return result;
+  /// [FormFieldValidator] that skips the validation when a certain condition is met.
+  /// * [condition] is the condition to check.
+  /// * [validator] is the validator to skip.
+  static FormFieldValidator<T> skipWhen<T>(
+    bool Function(T? value) condition,
+    FormFieldValidator<T> validator,
+  ) {
+    return (valueCandidate) {
+      if (condition(valueCandidate)) {
+        return null;
+      }
+      return validator(valueCandidate);
     };
   }
 
   /// [FormFieldValidator] that requires the field have a non-empty value.
+  /// * [errorText] is the error message to display when the value is empty
   static FormFieldValidator<T> required<T>({
     String? errorText,
   }) {
@@ -118,6 +121,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value be equal to the
   /// provided value.
+  /// * [errorText] is the error message to display when the value is not equal
   static FormFieldValidator<T> equal<T>(
     Object value, {
     String? errorText,
@@ -128,6 +132,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value be not equal to
   /// the provided value.
+  /// * [errorText] is the error message to display when the value is equal
   static FormFieldValidator<T> notEqual<T>(
     Object value, {
     String? errorText,
@@ -139,6 +144,9 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be greater than
   /// (or equal) to the provided number.
+  /// * [inclusive] is a `bool` that sets if the comparison is inclusive. By default `true`
+  /// * [errorText] is the error message to display when the value is invalid
+  /// * [min] is the minimum value to compare
   static FormFieldValidator<T> min<T>(
     num min, {
     bool inclusive = true,
@@ -162,6 +170,9 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be less than
   /// (or equal) to the provided number.
+  /// * [inclusive] is a `bool` that sets if the comparison is inclusive. By default `true`
+  /// * [errorText] is the error message to display when the value is invalid
+  /// * [max] is the maximum value to compare
   static FormFieldValidator<T> max<T>(
     num max, {
     bool inclusive = true,
@@ -185,6 +196,9 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the length of the field's value to be
   /// greater than or equal to the provided minimum length.
+  /// * [allowEmpty] is a `bool` that sets if the field's value can be empty. By default `false`
+  /// * [errorText] is the error message to display when the length is invalid
+  /// * [minLength] is the minimum length to compare
   static FormFieldValidator<T> minLength<T>(
     int minLength, {
     bool allowEmpty = false,
@@ -209,6 +223,8 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the length of the field's value to be
   /// less than or equal to the provided maximum length.
+  /// * [errorText] is the error message to display when the length is invalid
+  /// * [maxLength] is the maximum length to compare
   static FormFieldValidator<T> maxLength<T>(
     int maxLength, {
     String? errorText,
@@ -232,6 +248,9 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the length of the field to be
   /// equal to the provided length. Works with String, iterable and int types
+  /// * [allowEmpty] is a `bool` that sets if the field's value can be empty. By default `false`
+  /// * [errorText] is the error message to display when the length is invalid
+  /// * [length] is the length to compare
   static FormFieldValidator<T> equalLength<T>(
     int length, {
     bool allowEmpty = false,
@@ -260,6 +279,9 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the words count of the field's value to be
   /// greater than or equal to the provided minimum count.
+  /// * [allowEmpty] is a `bool` that sets if the field's value can be empty. By default `false`
+  /// * [errorText] is the error message to display when the words count is invalid
+  /// * [minCount] is the minimum words count
   static FormFieldValidator<String> minWordsCount(
     int minCount, {
     bool allowEmpty = false,
@@ -282,6 +304,8 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the words count of the field's value to be
   /// less than or equal to the provided maximum count.
+  /// * [errorText] is the error message to display when the words count is invalid
+  /// * [maxCount] is the maximum words count
   static FormFieldValidator<String> maxWordsCount(
     int maxCount, {
     String? errorText,
@@ -297,6 +321,7 @@ class FormBuilderValidators {
   }
 
   /// [FormFieldValidator] that requires the field's value to be a valid email address.
+  /// * [errorText] is the error message to display when the email is invalid
   static FormFieldValidator<String> email({
     String? errorText,
   }) =>
@@ -306,7 +331,6 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid url.
-  ///
   /// * [protocols] sets the list of allowed protocols. By default `['http', 'https', 'ftp']`
   /// * [requireTld] sets if TLD is required. By default `true`
   /// * [requireProtocol] is a `bool` that sets if protocol is required for validation
@@ -314,6 +338,7 @@ class FormBuilderValidators {
   /// * [allowUnderscore] sets if underscores are allowed. By default `false`
   /// * [hostWhitelist] sets the list of allowed hosts
   /// * [hostBlacklist] sets the list of disallowed hosts
+  /// * [errorText] is the error message to display when the url is invalid
   static FormFieldValidator<String> url({
     String? errorText,
     List<String> protocols = const ['http', 'https', 'ftp'],
@@ -337,6 +362,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to match the provided regex pattern.
+  /// * [pattern] is the regex pattern to match
+  /// * [errorText] is the error message to display when the value does not match the pattern
   static FormFieldValidator<String> match(
     String pattern, {
     String? errorText,
@@ -347,6 +374,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value not to match the provided regex pattern.
+  /// * [pattern] is the regex pattern to match
+  /// * [errorText] is the error message to display when the value matches the pattern
   static FormFieldValidator<String> notMatch(
     String pattern, {
     String? errorText,
@@ -357,6 +386,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid number.
+  /// * [errorText] is the error message to display when the number is invalid
   static FormFieldValidator<String> numeric({
     String? errorText,
   }) =>
@@ -366,6 +396,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid integer.
+  /// * [radix] is the radix to use when parsing the integer.
+  /// * [errorText] is the error message to display when the integer is invalid
   static FormFieldValidator<String> integer({
     String? errorText,
     int? radix,
@@ -376,6 +408,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card number.
+  /// * [errorText] is the error message to display when the credit card number is invalid
   static FormFieldValidator<String> creditCard({
     String? errorText,
   }) =>
@@ -385,6 +418,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card expiration date.
+  /// * [checkForExpiration] is a `bool` that sets if the expiration date should be checked. By default `true`
+  /// * [errorText] is the error message to display when the expiration date is invalid
   static FormFieldValidator<String> creditCardExpirationDate({
     bool checkForExpiration = true,
     String? errorText,
@@ -399,6 +434,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card CVC.
+  /// * [errorText] is the error message to display when the CVC is invalid
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
   }) =>
@@ -415,6 +451,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a valid IP address.
   /// * [version] is a `String` or an `int`.
+  /// * [errorText] is the error message to display when the IP address is invalid
   static FormFieldValidator<String> ip({
     int? version,
     String? errorText,
@@ -425,6 +462,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date string.
+  /// * [errorText] is the error message to display when the date is invalid
   static FormFieldValidator<String> dateString({
     String? errorText,
   }) =>
@@ -434,6 +472,9 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
+  /// * [minDate] is the minimum date that the field's value should be greater than or equal to.
+  /// * [maxDate] is the maximum date that the field's value should be less than or equal to.
+  /// * [errorText] is the error message to display when the date is not in the range
   static FormFieldValidator<String> dateRange({
     required DateTime minDate,
     required DateTime maxDate,
@@ -454,6 +495,7 @@ class FormBuilderValidators {
       };
 
   /// [FormFieldValidator] that requires the field's value to be a valid phone number.
+  /// * [errorText] is the error message to display when the phone number is invalid
   static FormFieldValidator<String> phoneNumber({
     String? errorText,
   }) =>
@@ -468,6 +510,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a valid color code.
   /// * [formats] is a list of allowed color code formats (e.g., ['hex', 'rgb', 'hsl'])
+  /// * [errorText] is the error message to display when the color code is invalid
   static FormFieldValidator<String> colorCode({
     List<String> formats = const ['hex', 'rgb', 'hsl'],
     String? errorText,
@@ -480,6 +523,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be uppercase.
+  /// * [errorText] is the error message to display when the value is not uppercase
   static FormFieldValidator<String> uppercase({
     String? errorText,
   }) =>
@@ -489,6 +533,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be lowercase.
+  /// * [errorText] is the error message to display when the value is not lowercase
   static FormFieldValidator<String> lowercase({
     String? errorText,
   }) =>
@@ -498,6 +543,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file extension.
+  /// * [allowedExtensions] is a list of allowed file extensions.
+  /// * [errorText] is the error message to display when the file extension is invalid.
   static FormFieldValidator<String> fileExtension({
     required List<String> allowedExtensions,
     String? errorText,
@@ -513,6 +560,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that restricts the size of an file to be less than or equal to the provided maximum size.
   /// * [maxSize] is the maximum size in bytes.
+  /// * [errorText] is the error message to display when the file size is greater than the maximum size.
   static FormFieldValidator<String> fileSize({
     required int maxSize,
     String? errorText,
@@ -528,6 +576,8 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that applies another validator conditionally.
+  /// * [condition] is a function that determines if the validator should be applied.
+  /// * [validator] is the validator to apply if the condition is met.
   static FormFieldValidator<T> conditional<T>(
     bool Function(T value) condition,
     FormFieldValidator<T> validator,
@@ -536,6 +586,10 @@ class FormBuilderValidators {
           condition(valueCandidate as T) ? validator(valueCandidate) : null;
 
   /// [FormFieldValidator] that requires the field's value to be within a certain range.
+  /// * [minValue] is the minimum value that the field's value should be greater than or equal to.
+  /// * [maxValue] is the maximum value that the field's value should be less than or equal to.
+  /// * [inclusive] is a `bool` that sets if the range is inclusive. By default `true`
+  /// * [errorText] is the error message to display when the value is not in the range
   static FormFieldValidator<T> range<T>(
     num minValue,
     num maxValue, {
@@ -551,6 +605,7 @@ class FormBuilderValidators {
   }
 
   /// [FormFieldValidator] that requires the field's value to be a bool and true.
+  /// * [errorText] is the error message to display when the value is not true
   static FormFieldValidator<bool> mustBeTrue({
     String? errorText,
   }) =>
@@ -559,6 +614,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a bool and false.
+  /// * [errorText] is the error message to display when the value is not false
   static FormFieldValidator<bool> mustBeFalse({
     String? errorText,
   }) =>
@@ -567,6 +623,8 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of special characters.
+  /// * [atLeast] is the minimum amount of special characters. By default `1`
+  /// * [errorText] is the error message to display when the value does not contain the required amount of special characters
   static FormFieldValidator<String> hasSpecialChars({
     int atLeast = 1,
     String? errorText,
@@ -579,6 +637,8 @@ class FormBuilderValidators {
                   .containsSpecialCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of uppercase characters.
+  /// * [atLeast] is the minimum amount of uppercase characters. By default `1`
+  /// * [errorText] is the error message to display when the value does not contain the required amount of uppercase characters
   static FormFieldValidator<String> hasUppercaseChars({
     int atLeast = 1,
     String? errorText,
@@ -591,6 +651,8 @@ class FormBuilderValidators {
                   .containsUppercaseCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of lowercase characters.
+  /// * [atLeast] is the minimum amount of lowercase characters. By default `1`
+  /// * [errorText] is the error message to display when the value does not contain the required amount of lowercase characters
   static FormFieldValidator<String> hasLowercaseChars({
     int atLeast = 1,
     String? errorText,
@@ -603,6 +665,8 @@ class FormBuilderValidators {
                   .containsLowercaseCharErrorText(atLeast);
 
   /// [FormFieldValidator] that requires the field's value to contain an amount of numeric characters.
+  /// * [atLeast] is the minimum amount of numeric characters. By default `1`
+  /// * [errorText] is the error message to display when the value does not contain the required amount of numeric characters
   static FormFieldValidator<String> hasNumericChars({
     int atLeast = 1,
     String? errorText,
@@ -651,6 +715,7 @@ class FormBuilderValidators {
   }
 
   /// [FormFieldValidator] that requires the field's value to be alphabetical.
+  /// * [errorText] is the error message to display when the value is not alphabetical
   static FormFieldValidator<String> alphabetical({
     String? errorText,
   }) =>
@@ -660,6 +725,7 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid uuid.
+  /// * [errorText] is the error message to display when the uuid is invalid
   static FormFieldValidator<String> uuid({
     String? errorText,
   }) =>
@@ -669,6 +735,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be valid json.
+  /// * [errorText] is the error message to display when the json is invalid
   static FormFieldValidator<String> json({
     String? errorText,
   }) =>
@@ -678,6 +745,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid latitude.
+  /// * [errorText] is the error message to display when the latitude is invalid
   static FormFieldValidator<String> latitude({
     String? errorText,
   }) =>
@@ -687,6 +755,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid longitude.
+  /// * [errorText] is the error message to display when the longitude is invalid
   static FormFieldValidator<String> longitude({
     String? errorText,
   }) =>
@@ -696,6 +765,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid base64 string.
+  /// * [errorText] is the error message to display when the base64 string is invalid
   static FormFieldValidator<String> base64({
     String? errorText,
   }) =>
@@ -705,6 +775,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file or folder path.
+  /// * [errorText] is the error message to display when the path is invalid
   static FormFieldValidator<String> path({
     String? errorText,
   }) =>
@@ -714,6 +785,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be an odd number.
+  /// * [errorText] is the error message to display when the value is not an odd number
   static FormFieldValidator<String> oddNumber({
     String? errorText,
   }) =>
@@ -723,6 +795,7 @@ class FormBuilderValidators {
               : null;
 
   /// [FormFieldValidator] that requires the field's value to be an even number.
+  /// * [errorText] is the error message to display when the value is not an even number
   static FormFieldValidator<String> evenNumber({
     String? errorText,
   }) =>
@@ -732,6 +805,9 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid port number.
+  /// * [min] is the minimum port number. By default `0`
+  /// * [max] is the maximum port number. By default `65535`
+  /// * [errorText] is the error message to display when the port number is invalid
   static FormFieldValidator<String> portNumber({
     int min = 0,
     int max = 65535,
@@ -752,6 +828,7 @@ class FormBuilderValidators {
       };
 
   /// [FormFieldValidator] that requires the field's value to be a valid macAddress.
+  /// * [errorText] is the error message to display when the macAddress is invalid
   static FormFieldValidator<String> macAddress({
     String? errorText,
   }) =>
@@ -762,6 +839,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to starts with a specific value.
   /// * [prefix] is the value that the field's value should start with.
+  /// * [errorText] is the error message to display when the value does not start with the prefix
   static FormFieldValidator<String> startsWith({
     required String prefix,
     String? errorText,
@@ -774,6 +852,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to ends with a specific value.
   /// * [suffix] is the value that the field's value should end with.
+  /// * [errorText] is the error message to display when the value does not end with the suffix
   static FormFieldValidator<String> endsWith({
     required String suffix,
     String? errorText,
@@ -787,6 +866,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to contains a specific value.
   /// * [substring] is the value that the field's value should contain.
   /// * [caseSensitive] is a `bool` that sets if the search is case sensitive. By default `true`
+  /// * [errorText] is the error message to display when the value does not contain the substring
   static FormFieldValidator<String> contains({
     required String substring,
     bool caseSensitive = true,
@@ -806,6 +886,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to be between two numbers.
   /// * [min] is the minimum value that the field's value should be greater than or equal to.
   /// * [max] is the maximum value that the field's value should be less than or equal to.
+  /// * [errorText] is the error message to display when the value is not in the range
   static FormFieldValidator<num> between({
     required num min,
     required num max,
@@ -819,6 +900,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to in a list of values.
   /// * [values] is the list of values that the field's value should be in.
+  /// * [errorText] is the error message to display when the value is not in the list
   static FormFieldValidator<T> inList<T>(
     List<T> values, {
     String? errorText,
@@ -826,4 +908,14 @@ class FormBuilderValidators {
       (valueCandidate) => !values.contains(valueCandidate)
           ? errorText ?? FormBuilderLocalizations.current.valueInListErrorText
           : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
+  /// * [errorText] is the error message to display when the IBAN is invalid
+  static FormFieldValidator<String> iban({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          true == valueCandidate?.isNotEmpty && !isValidIban(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.ibanErrorText
+              : null;
 }

@@ -49,5 +49,6 @@
   "endsWithErrorText": "Nilai mesti berakhir dengan {value}.",
   "containsErrorText": "Nilai mesti mengandungi {value}.",
   "betweenErrorText": "Nilai mesti antara {min} dan {max}.",
-  "valueInListErrorText": "Nilai mesti berada dalam senarai nilai yang dibenarkan."
+  "valueInListErrorText": "Nilai mesti berada dalam senarai nilai yang dibenarkan.",
+  "ibanErrorText": "Ruangan ini memerlukan IBAN yang sah."
 }

@@ -49,5 +49,6 @@
   "endsWithErrorText": "Nilai harus diakhiri dengan {value}.",
   "containsErrorText": "Nilai harus mengandung {value}.",
   "betweenErrorText": "Nilai harus antara {min} dan {max}.",
-  "valueInListErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan."
+  "valueInListErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan.",
+  "ibanErrorText": "IBAN tidak valid."
 }

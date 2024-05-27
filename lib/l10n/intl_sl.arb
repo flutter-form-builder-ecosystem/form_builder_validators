@@ -49,5 +49,6 @@
   "endsWithErrorText": "Vrednost se mora končati z {value}.",
   "containsErrorText": "Vrednost mora vsebovati {value}.",
   "betweenErrorText": "Vrednost mora biti med {min} in {max}.",
-  "valueInListErrorText": "Vrednost mora biti v seznamu dovoljenih vrednosti."
+  "valueInListErrorText": "Vrednost mora biti v seznamu dovoljenih vrednosti.",
+  "ibanErrorText": "Vnesite veljaven IBAN."
 }

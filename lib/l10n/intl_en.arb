@@ -49,5 +49,6 @@
   "endsWithErrorText": "Value must end with {value}.",
   "containsErrorText": "Value must contain {value}.",
   "betweenErrorText": "Value must be between {min} and {max}.",
-  "valueInListErrorText": "Value must be in list."
+  "valueInListErrorText": "Value must be in list.",
+  "ibanErrorText": "Value must be a valid IBAN."
 }

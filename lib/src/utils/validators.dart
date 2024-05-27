@@ -338,11 +338,11 @@ bool isColorCode(String value,
 }
 
 int uppercaseCharLength(String value) {
-  return value.replaceAll(RegExp(r'[^A-Z]'), '').length;
+  return value.replaceAll(RegExp(r'[^A-ZÑ]'), '').length;
 }
 
 int lowercaseCharLength(String value) {
-  return value.replaceAll(RegExp(r'[^a-z]'), '').length;
+  return value.replaceAll(RegExp(r'[^a-zñ]'), '').length;
 }
 
 int numberCharLength(String value) {
@@ -426,4 +426,28 @@ bool isMACAddress(String value) {
     }
   }
   return true;
+}
+
+bool isValidIban(String iban) {
+  iban = iban.replaceAll(' ', '').toUpperCase();
+
+  if (iban.length < 15) {
+    return false;
+  }
+
+  String rearranged = iban.substring(4) + iban.substring(0, 4);
+  String numericIban = rearranged.split('').map((char) {
+    int charCode = char.codeUnitAt(0);
+    return charCode >= 65 && charCode <= 90 ? (charCode - 55).toString() : char;
+  }).join();
+
+  int remainder = int.parse(numericIban.substring(0, 9)) % 97;
+  for (int i = 9; i < numericIban.length; i += 7) {
+    remainder = int.parse(remainder.toString() +
+            numericIban.substring(
+                i, i + 7 < numericIban.length ? i + 7 : numericIban.length)) %
+        97;
+  }
+
+  return remainder == 1;
 }

@@ -49,5 +49,6 @@
   "endsWithErrorText": "Стойността трябва да завършва с {value}.",
   "containsErrorText": "Стойността трябва да съдържа {value}.",
   "betweenErrorText": "Стойността трябва да е между {min} и {max}.",
-  "valueInListErrorText": "Стойността трябва да е в списъка с допустими стойности."
+  "valueInListErrorText": "Стойността трябва да е в списъка с допустими стойности.",
+  "ibanErrorText": "Това поле изисква валиден IBAN."
 }

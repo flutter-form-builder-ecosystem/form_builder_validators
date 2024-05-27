@@ -49,5 +49,6 @@
   "endsWithErrorText": "Verdien må slutte med {value}.",
   "containsErrorText": "Verdien må inneholde {value}.",
   "betweenErrorText": "Verdien må være mellom {min} og {max}.",
-  "valueInListErrorText": "Verdien må være i listen over tillatte verdier."
+  "valueInListErrorText": "Verdien må være i listen over tillatte verdier.",
+  "ibanErrorText": "Dette feltet krever en gyldig IBAN."
 }

@@ -49,5 +49,6 @@
   "endsWithErrorText": "Значение должно заканчиваться на {value}.",
   "containsErrorText": "Значение должно содержать {value}.",
   "betweenErrorText": "Значение должно быть между {min} и {max}.",
-  "valueInListErrorText": "Значение должно быть в списке допустимых значений."
+  "valueInListErrorText": "Значение должно быть в списке допустимых значений.",
+  "ibanErrorText": "Поле должно быть действительным IBAN номером."
 }

@@ -52,8 +52,9 @@ Available built-in helper validators:
 - `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
 - `FormBuilderValidators.or()` - runs each validator against the value provided and passes when any works.
 - `FormBuilderValidators.transform()` - transforms the value before running the validator.
-- `FormBuilderValidators.debounce()` - runs the validator after a set time.
-- `FormBuilderValidators.retry()` - runs the validator again after failing while waiting a certain time.
+- `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
+- `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
+- `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
 
 Available built-in type validators include:
 
@@ -107,6 +108,7 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
 - `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
 - `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
+- `FormBuilderValidators.iban()` - requires the field's to be an valid IBAN.
 
 ### Supported languages
 
