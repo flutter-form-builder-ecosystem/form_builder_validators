@@ -589,6 +589,7 @@ void main() {
       final validator = FormBuilderValidators.uppercase();
       // Pass
       expect(validator('HELLO'), isNull);
+      expect(validator('LASAÑA'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
     }),
@@ -600,6 +601,7 @@ void main() {
       final validator = FormBuilderValidators.lowercase();
       // Pass
       expect(validator('hello'), isNull);
+      expect(validator('lasaña'), isNull);
       // Fail
       expect(validator('Hello'), isNotNull);
     }),
@@ -645,6 +647,7 @@ void main() {
       );
       // Pass
       expect(validator('HELLO'), isNull);
+      expect(validator('lasAÑA'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
     }),
@@ -703,6 +706,7 @@ void main() {
       final validator = FormBuilderValidators.hasUppercaseChars(atLeast: 1);
       // Pass
       expect(validator('Hello'), isNull);
+      expect(validator('lasaÑa'), isNull);
       // Fail
       expect(validator('hello'), isNotNull);
     }),
@@ -714,6 +718,7 @@ void main() {
       final validator = FormBuilderValidators.hasLowercaseChars(atLeast: 1);
       // Pass
       expect(validator('hello'), isNull);
+      expect(validator('LASAñA'), isNull);
       // Fail
       expect(validator('HELLO'), isNotNull);
     }),
