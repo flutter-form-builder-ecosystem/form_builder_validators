@@ -438,11 +438,7 @@ bool isValidIban(String iban) {
   String rearranged = iban.substring(4) + iban.substring(0, 4);
   String numericIban = rearranged.split('').map((char) {
     int charCode = char.codeUnitAt(0);
-    if (charCode >= 65 && charCode <= 90) {
-      return (charCode - 55).toString(); // A=10, B=11, ..., Z=35
-    } else {
-      return char;
-    }
+    return charCode >= 65 && charCode <= 90 ? (charCode - 55).toString() : char;
   }).join();
 
   int remainder = int.parse(numericIban.substring(0, 9)) % 97;

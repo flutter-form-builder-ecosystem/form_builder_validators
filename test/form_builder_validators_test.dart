@@ -1108,4 +1108,25 @@ void main() {
       expect(validator(null), isNull); // Log message will be displayed
     }),
   );
+
+  testWidgets(
+    'FormBuilderValidators.iban',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.iban();
+      // Pass
+      expect(validator('GB82WEST12345698765432'), isNull); // A valid UK IBAN
+      expect(
+          validator('DE89370400440532013000'), isNull); // A valid German IBAN
+      expect(validator('FR1420041010050500013M02606'),
+          isNull); // A valid French IBAN
+      expect(validator('GB82 WEST 1234 5698 7654 32'),
+          isNull); // Format with spaces
+
+      // Fail
+      //expect(validator(''), isNotNull); // Empty string
+      expect(validator('INVALIDIBAN'), isNotNull); // Invalid IBAN
+      expect(validator('GB82WEST1234569876543212345'), isNotNull); // Too long
+      expect(validator('GB82WEST1234'), isNotNull); // Too short
+    }),
+  );
 }
