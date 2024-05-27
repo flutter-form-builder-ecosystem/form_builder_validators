@@ -49,5 +49,6 @@
   "endsWithErrorText": "مقدار باید با {value} پایان یابد.",
   "containsErrorText": "مقدار باید شامل {value} باشد.",
   "betweenErrorText": "مقدار باید بین {min} و {max} باشد.",
-  "valueInListErrorText": "مقدار باید در لیست مقادیر مجاز باشد."
+  "valueInListErrorText": "مقدار باید در لیست مقادیر مجاز باشد.",
+  "ibanErrorText": "این ورودی به شماره IBAN معتبر نیاز دارد."
 }

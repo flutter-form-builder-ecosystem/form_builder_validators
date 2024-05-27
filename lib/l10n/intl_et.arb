@@ -49,5 +49,6 @@
   "endsWithErrorText": "Väärtus peab lõppema {value}-ga.",
   "containsErrorText": "Väärtus peab sisaldama {value}.",
   "betweenErrorText": "Väärtus peab olema vahemikus {min} kuni {max}.",
-  "valueInListErrorText": "Väärtus peab olema lubatud väärtuste nimekirjas."
+  "valueInListErrorText": "Väärtus peab olema lubatud väärtuste nimekirjas.",
+  "ibanErrorText": "See väli nõuab kehtivat IBAN-i."
 }

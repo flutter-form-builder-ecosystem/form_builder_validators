@@ -49,5 +49,6 @@
   "endsWithErrorText": "मान {value} मा समाप्त हुनुपर्छ।",
   "containsErrorText": "मानले {value} समावेश गर्नुपर्छ।",
   "betweenErrorText": "मान {min} र {max} को बीचमा हुनुपर्छ।",
-  "valueInListErrorText": "मान अनुमत मानहरूको सूचीमा हुनुपर्छ।"
+  "valueInListErrorText": "मान अनुमत मानहरूको सूचीमा हुनुपर्छ।",
+  "ibanErrorText": "यो क्षेत्रलाई मान्य IBAN चाहिन्छ।"
 }

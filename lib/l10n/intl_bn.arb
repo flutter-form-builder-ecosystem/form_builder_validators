@@ -49,5 +49,6 @@
   "endsWithErrorText": "মানটি {value} দিয়ে শেষ হতে হবে।",
   "containsErrorText": "মানটি {value} ধারণ করতে হবে।",
   "betweenErrorText": "মানটি {min} এবং {max} এর মধ্যে হতে হবে।",
-  "valueInListErrorText": "মানটি অনুমোদিত তালিকার মধ্যে থাকতে হবে।"
+  "valueInListErrorText": "মানটি অনুমোদিত তালিকার মধ্যে থাকতে হবে।",
+  "ibanErrorText": "একটি বৈধ IBAN প্রয়োজন।"
 }

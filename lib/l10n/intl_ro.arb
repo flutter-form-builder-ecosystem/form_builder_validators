@@ -49,5 +49,6 @@
   "endsWithErrorText": "Valoarea trebuie să se termine cu {value}.",
   "containsErrorText": "Valoarea trebuie să conțină {value}.",
   "betweenErrorText": "Valoarea trebuie să fie între {min} și {max}.",
-  "valueInListErrorText": "Valoarea trebuie să fie în lista valorilor permise."
+  "valueInListErrorText": "Valoarea trebuie să fie în lista valorilor permise.",
+  "ibanErrorText": "Acest câmp necesită un IBAN valid."
 }

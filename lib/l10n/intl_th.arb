@@ -49,5 +49,6 @@
   "endsWithErrorText": "ข้อมูลนี้ต้องลงท้ายด้วย {value}",
   "containsErrorText": "ข้อมูลนี้ต้องประกอบด้วย {value}",
   "betweenErrorText": "ข้อมูลนี้ต้องอยู่ระหว่าง {min} และ {max}",
-  "valueInListErrorText": "ข้อมูลนี้ต้องอยู่ในรายการค่าที่อนุญาต"
+  "valueInListErrorText": "ข้อมูลนี้ต้องอยู่ในรายการค่าที่อนุญาต",
+  "ibanErrorText": "ข้อมูลนี้ต้องเป็น IBAN ที่ถูกต้อง"
 }

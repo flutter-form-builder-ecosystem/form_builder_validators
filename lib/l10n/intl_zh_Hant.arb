@@ -49,5 +49,6 @@
   "endsWithErrorText": "值必須以 {value} 結尾。",
   "containsErrorText": "值必須包含 {value}。",
   "betweenErrorText": "值必須在 {min} 和 {max} 之間。",
-  "valueInListErrorText": "值必須在允許的值列表中。"
+  "valueInListErrorText": "值必須在允許的值列表中。",
+  "ibanErrorText": "此欄位需要有效的 IBAN。"
 }

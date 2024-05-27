@@ -49,5 +49,6 @@
   "endsWithErrorText": "Hodnota musí končit na {value}.",
   "containsErrorText": "Hodnota musí obsahovat {value}.",
   "betweenErrorText": "Hodnota musí být mezi {min} a {max}.",
-  "valueInListErrorText": "Hodnota musí být v seznamu povolených hodnot."
+  "valueInListErrorText": "Hodnota musí být v seznamu povolených hodnot.",
+  "ibanErrorText": "Pole vyžaduje platné IBAN."
 }
