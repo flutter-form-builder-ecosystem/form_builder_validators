@@ -13,7 +13,7 @@
   "maxWordsCountErrorText": "ចំនួនពាក្យត្រូវតែតិចជាង ឬស្មើនឹង {maxWordsCount}។",
   "minErrorText": "ទិន្នន័យនេះត្រូវតែធំជាង ឬស្មើនឹង {min}។",
   "minLengthErrorText": "ប្រវែងតួអក្សរទិន្នន័យត្រូវតែធំជាង ឬស្មើនឹង {minLength}។",
-  "minWordsCountErrorText": "ចំនួនពាក្យត្រូវតែធំជាង ឬស្មើនឹង {maxWordsCount}។",
+  "minWordsCountErrorText": "ចំនួនពាក្យត្រូវតែធំជាង ឬស្មើនឹង {minWordsCount}។",
   "notEqualErrorText": "ទិន្នន័យនេះមិនអាចស្មើនឹង {value} នោះទេ។",
   "numericErrorText": "ទិន្នន័យ​នេះ​ត្រូវ​តែ​ជា​លេខតែប៉ុណ្ណោះ។",
   "requiredErrorText": "ទិន្នន័យនេះមិនអាចទទេបានទេ។",
