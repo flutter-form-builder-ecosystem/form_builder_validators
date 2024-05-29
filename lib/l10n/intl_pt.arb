@@ -50,5 +50,9 @@
   "containsErrorText": "O valor deve conter {value}.",
   "betweenErrorText": "O valor deve estar entre {min} e {max}.",
   "containsElementErrorText": "O valor deve estar na lista de valores permitidos.",
-  "ibanErrorText": "Este campo requer um IBAN válido."
+  "ibanErrorText": "Este campo requer um IBAN válido.",
+  "uniqueErrorText": "Este campo requer um valor único.",
+  "bicErrorText": "Este campo requer um código BIC válido.",
+  "isbnErrorText": "Este campo requer um ISBN válido.",
+  "singleLineErrorText": "Este campo deve conter apenas uma linha."
 }

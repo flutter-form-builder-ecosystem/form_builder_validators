@@ -50,5 +50,9 @@
   "containsErrorText": "Η τιμή πρέπει να περιέχει {value}.",
   "betweenErrorText": "Η τιμή πρέπει να είναι μεταξύ {min} και {max}.",
   "containsElementErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
-  "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN."
+  "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN.",
+  "uniqueErrorText": "Η τιμή πρέπει να είναι μοναδική.",
+  "bicErrorText": "Η τιμή πρέπει να είναι έγκυρος BIC.",
+  "isbnErrorText": "Η τιμή πρέπει να είναι έγκυρο ISBN.",
+  "singleLineErrorText": "Η τιμή πρέπει να είναι μία γραμμή."
 }

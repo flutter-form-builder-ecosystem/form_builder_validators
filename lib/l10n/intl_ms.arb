@@ -50,5 +50,9 @@
   "containsErrorText": "Nilai mesti mengandungi {value}.",
   "betweenErrorText": "Nilai mesti antara {min} dan {max}.",
   "containsElementErrorText": "Nilai mesti berada dalam senarai nilai yang dibenarkan.",
-  "ibanErrorText": "Ruangan ini memerlukan IBAN yang sah."
+  "ibanErrorText": "Ruangan ini memerlukan IBAN yang sah.",
+  "uniqueErrorText": "Ruangan ini memerlukan nilai yang unik.",
+  "bicErrorText": "Ruangan ini memerlukan BIC yang sah.",
+  "isbnErrorText": "Ruangan ini memerlukan ISBN yang sah.",
+  "singleLineErrorText": "Ruangan ini memerlukan rentetan tunggal."
 }

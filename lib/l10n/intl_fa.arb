@@ -50,5 +50,9 @@
   "containsErrorText": "مقدار باید شامل {value} باشد.",
   "betweenErrorText": "مقدار باید بین {min} و {max} باشد.",
   "containsElementErrorText": "مقدار باید در لیست مقادیر مجاز باشد.",
-  "ibanErrorText": "این ورودی به شماره IBAN معتبر نیاز دارد."
+  "ibanErrorText": "این ورودی به شماره IBAN معتبر نیاز دارد.",
+  "uniqueErrorText": "این ورودی باید یکتا باشد.",
+  "bicErrorText": "این ورودی به شماره BIC معتبر نیاز دارد.",
+  "isbnErrorText": "این ورودی به شماره ISBN معتبر نیاز دارد.",
+  "singleLineErrorText": "این ورودی باید یک خط باشد."
 }

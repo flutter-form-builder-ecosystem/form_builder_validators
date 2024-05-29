@@ -50,5 +50,9 @@
   "containsErrorText": "Väärtus peab sisaldama {value}.",
   "betweenErrorText": "Väärtus peab olema vahemikus {min} kuni {max}.",
   "containsElementErrorText": "Väärtus peab olema lubatud väärtuste nimekirjas.",
-  "ibanErrorText": "See väli nõuab kehtivat IBAN-i."
+  "ibanErrorText": "See väli nõuab kehtivat IBAN-i.",
+  "uniqueErrorText": "See väli peab olema unikaalne.",
+  "bicErrorText": "See väli nõuab kehtivat BIC koodi.",
+  "isbnErrorText": "See väli nõuab kehtivat ISBN koodi.",
+  "singleLineErrorText": "See väli nõuab ühekordset rida."
 }

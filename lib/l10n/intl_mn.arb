@@ -50,5 +50,9 @@
   "containsErrorText": "Утга нь {value}-г агуулсан байх ёстой.",
   "betweenErrorText": "Утга нь {min} ба {max} хооронд байх ёстой.",
   "containsElementErrorText": "Утга нь зөвшөөрөгдсөн утгуудын жагсаалтад байх ёстой.",
-  "ibanErrorText": "IBAN алдаатай байна."
+  "ibanErrorText": "IBAN алдаатай байна.",
+  "uniqueErrorText": "Утга давхардаж байна.",
+  "bicErrorText": "BIC код алдаатай байна.",
+  "isbnErrorText": "ISBN код алдаатай байна.",
+  "singleLineErrorText": "Зөвхөн нэг мөрт байх ёстой."
 }

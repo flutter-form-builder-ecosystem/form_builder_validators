@@ -50,5 +50,9 @@
   "containsErrorText": "Vrijednost mora sadržavati {value}.",
   "betweenErrorText": "Vrijednost mora biti između {min} i {max}.",
   "containsElementErrorText": "Vrijednost mora biti na listi dopuštenih vrijednosti.",
-  "ibanErrorText": "Unesite validan IBAN."
+  "ibanErrorText": "Unesite validan IBAN.",
+  "uniqueErrorText": "Vrijednost mora biti jedinstvena.",
+  "bicErrorText": "Unesite validan BIC.",
+  "isbnErrorText": "Unesite validan ISBN.",
+  "singleLineErrorText": "Vrijednost mora biti jedan redak teksta."
 }

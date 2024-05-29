@@ -50,5 +50,9 @@
   "containsErrorText": "De waarde moet {value} bevatten.",
   "betweenErrorText": "De waarde moet tussen {min} en {max} liggen.",
   "containsElementErrorText": "De waarde moet in de lijst met toegestane waarden staan.",
-  "ibanErrorText": "Een geldige IBAN is vereist."
+  "ibanErrorText": "Een geldige IBAN is vereist.",
+  "uniqueErrorText": "De waarde moet uniek zijn.",
+  "bicErrorText": "Een geldige BIC is vereist.",
+  "isbnErrorText": "Een geldige ISBN is vereist.",
+  "singleLineErrorText": "Dit veld mag geen nieuwe regels bevatten."
 }

@@ -50,5 +50,9 @@
   "containsErrorText": "Verdien må inneholde {value}.",
   "betweenErrorText": "Verdien må være mellom {min} og {max}.",
   "containsElementErrorText": "Verdien må være i listen over tillatte verdier.",
-  "ibanErrorText": "Dette feltet krever en gyldig IBAN."
+  "ibanErrorText": "Dette feltet krever en gyldig IBAN.",
+  "uniqueErrorText": "Dette feltet krever en unik verdi.",
+  "bicErrorText": "Dette feltet krever en gyldig BIC.",
+  "isbnErrorText": "Dette feltet krever en gyldig ISBN.",
+  "singleLineErrorText": "Dette feltet må være en enkelt linje."
 }

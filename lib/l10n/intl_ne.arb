@@ -50,5 +50,9 @@
   "containsErrorText": "मानले {value} समावेश गर्नुपर्छ।",
   "betweenErrorText": "मान {min} र {max} को बीचमा हुनुपर्छ।",
   "containsElementErrorText": "मान अनुमत मानहरूको सूचीमा हुनुपर्छ।",
-  "ibanErrorText": "यो क्षेत्रलाई मान्य IBAN चाहिन्छ।"
+  "ibanErrorText": "यो क्षेत्रलाई मान्य IBAN चाहिन्छ।",
+  "uniqueErrorText": "यो क्षेत्रलाई मान्य एकमात्र डाटा चाहिन्छ।",
+  "bicErrorText": "यो क्षेत्रलाई मान्य BIC कोड चाहिन्छ।",
+  "isbnErrorText": "यो क्षेत्रलाई मान्य ISBN चाहिन्छ।",
+  "singleLineErrorText": "यो क्षेत्रलाई मान्य एकल लाइन स्ट्रिंग चाहिन्छ।"
 }

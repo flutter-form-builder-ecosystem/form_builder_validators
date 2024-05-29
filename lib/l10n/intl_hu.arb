@@ -50,5 +50,9 @@
   "containsErrorText": "Az értéknek tartalmaznia kell {value}-t.",
   "betweenErrorText": "Az értéknek {min} és {max} között kell lennie.",
   "containsElementErrorText": "Az értéknek az engedélyezett értékek listájában kell lennie.",
-  "ibanErrorText": "Ez a mező érvényes IBAN számot igényel."
+  "ibanErrorText": "Ez a mező érvényes IBAN számot igényel.",
+  "uniqueErrorText": "Ez a mező egyedi értéket igényel.",
+  "bicErrorText": "Ez a mező érvényes BIC kódot igényel.",
+  "isbnErrorText": "Ez a mező érvényes ISBN számot igényel.",
+  "singleLineErrorText": "Ez a mező csak egy sorból állhat."
 }

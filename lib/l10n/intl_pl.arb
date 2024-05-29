@@ -50,5 +50,9 @@
   "containsErrorText": "Wartość musi zawierać {value}.",
   "betweenErrorText": "Wartość musi być pomiędzy {min} a {max}.",
   "containsElementErrorText": "Wartość musi być na liście dozwolonych wartości.",
-  "ibanErrorText": "To pole wymaga prawidłowego numeru IBAN."
+  "ibanErrorText": "To pole wymaga prawidłowego numeru IBAN.",
+  "uniqueErrorText": "To pole wymaga unikalnej wartości.",
+  "bicErrorText": "To pole wymaga prawidłowego numeru BIC.",
+  "isbnErrorText": "To pole wymaga prawidłowego numeru ISBN.",
+  "singleLineErrorText": "To pole wymaga pojedynczej linii tekstu."
 }

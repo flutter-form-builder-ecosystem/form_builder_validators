@@ -50,5 +50,9 @@
   "containsErrorText": "মানটি {value} ধারণ করতে হবে।",
   "betweenErrorText": "মানটি {min} এবং {max} এর মধ্যে হতে হবে।",
   "containsElementErrorText": "মানটি অনুমোদিত তালিকার মধ্যে থাকতে হবে।",
-  "ibanErrorText": "একটি বৈধ IBAN প্রয়োজন।"
+  "ibanErrorText": "একটি বৈধ IBAN প্রয়োজন।",
+  "uniqueErrorText": "মানটি অবশ্যই অনন্য মানগুলির মধ্যে অদ্বিতীয় হতে হবে।",
+  "bicErrorText": "একটি বৈধ BIC প্রয়োজন।",
+  "isbnErrorText": "একটি বৈধ ISBN প্রয়োজন।",
+  "singleLineErrorText": "এই ফিল্ডে একটি একক লাইন থাকতে হবে।"
 }

@@ -50,5 +50,9 @@
   "containsErrorText": "ຄ່າຕ້ອງປະກອບດ້ວຍ {value}.",
   "betweenErrorText": "ຄ່າຕ້ອງຢູ່ລະຫວ່າງ {min} ແລະ {max}.",
   "containsElementErrorText": "ຄ່າຕ້ອງຢູ່ໃນລາຍຊື່ຂອງມູນຄ່າທີ່ອະນຸຍາດ.",
-  "ibanErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນລະຫັດ IBAN ທີ່ຖືກຕ້ອງ."
+  "ibanErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນລະຫັດ IBAN ທີ່ຖືກຕ້ອງ.",
+  "uniqueErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງມີຄ່າທີ່ບໍ່ດີທີ່ສຸດ.",
+  "bicErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນລະຫັດ BIC ທີ່ຖືກຕ້ອງ.",
+  "isbnErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນ ISBN ທີ່ຖືກຕ້ອງ.",
+  "singleLineErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຊ່ວງທີ່ເທົ່ານັ້ນ."
 }

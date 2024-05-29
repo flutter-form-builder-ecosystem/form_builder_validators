@@ -50,5 +50,9 @@
   "containsErrorText": "Değer {value} içermelidir.",
   "betweenErrorText": "Değer {min} ile {max} arasında olmalıdır.",
   "containsElementErrorText": "Değer izin verilen değerler listesinde olmalıdır.",
-  "ibanErrorText": "Bu alan geçerli bir IBAN gerektirir."
+  "ibanErrorText": "Bu alan geçerli bir IBAN gerektirir.",
+  "uniqueErrorText": "Bu alanın değeri benzersiz olmalıdır.",
+  "bicErrorText": "Bu alan geçerli bir BIC gerektirir.",
+  "isbnErrorText": "Bu alan geçerli bir ISBN gerektirir.",
+  "singleLineErrorText": "Bu alan tek satır olmalıdır."
 }

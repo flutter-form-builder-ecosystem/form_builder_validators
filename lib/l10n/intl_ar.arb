@@ -50,5 +50,9 @@
   "containsErrorText": "القيمة يجب أن تحتوي على {value}.",
   "betweenErrorText": "القيمة يجب أن تكون بين {min} و {max}.",
   "containsElementErrorText": "القيمة يجب أن تكون ضمن القائمة المسموح بها.",
-  "ibanErrorText": "هذا الحقل يتطلب IBAN صالح."
+  "ibanErrorText": "هذا الحقل يتطلب IBAN صالح.",
+  "uniqueErrorText": "هذا الحقل يجب أن يحتوي على قيمة فريدة.",
+  "bicErrorText": "هذا الحقل يتطلب رمز BIC صالح.",
+  "isbnErrorText": "هذا الحقل يتطلب رقم ISBN صالح.",
+  "singleLineErrorText": "هذا الحقل يجب أن يحتوي على سطر واحد فقط."
 }

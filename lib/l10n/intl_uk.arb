@@ -50,5 +50,9 @@
   "containsErrorText": "Значення має містити {value}.",
   "betweenErrorText": "Значення має бути між {min} і {max}.",
   "containsElementErrorText": "Значення має бути в списку дозволених значень.",
-  "ibanErrorText": "Поле має бути дійсним IBAN номером."
+  "ibanErrorText": "Поле має бути дійсним IBAN номером.",
+  "uniqueErrorText": "Поле має бути унікальним.",
+  "bicErrorText": "Поле має бути дійсним BIC кодом.",
+  "isbnErrorText": "Поле має бути дійсним ISBN номером.",
+  "singleLineErrorText": "Поле має бути однорядковим."
 }
