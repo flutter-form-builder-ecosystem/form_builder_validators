@@ -13,8 +13,8 @@
 * Add notMatch
 * Add range
 * Add date range
-* Add must be true
-* Add must be false
+* Add is true
+* Add is false
 * Add special characters
 * Add numeric characters
 * Add lowercase characters
