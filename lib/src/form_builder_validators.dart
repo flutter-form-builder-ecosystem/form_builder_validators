@@ -348,7 +348,7 @@ class FormBuilderValidators {
     List<String> hostWhitelist = const [],
     List<String> hostBlacklist = const [],
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !isURL(
                 valueCandidate,
                 protocols: protocols,
@@ -368,7 +368,7 @@ class FormBuilderValidators {
     String pattern, {
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !RegExp(pattern).hasMatch(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.matchErrorText
           : null;
@@ -380,7 +380,7 @@ class FormBuilderValidators {
     String pattern, {
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               RegExp(pattern).hasMatch(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.matchErrorText
           : null;
@@ -390,7 +390,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> numeric({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               null == num.tryParse(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.numericErrorText
           : null;
@@ -402,7 +402,7 @@ class FormBuilderValidators {
     String? errorText,
     int? radix,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               null == int.tryParse(valueCandidate!, radix: radix)
           ? errorText ?? FormBuilderLocalizations.current.integerErrorText
           : null;
@@ -412,7 +412,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> creditCard({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !isCreditCard(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.creditCardErrorText
           : null;
@@ -424,7 +424,7 @@ class FormBuilderValidators {
     bool checkForExpiration = true,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !isCreditCardExpirationDate(valueCandidate!)
           ? errorText ??
               FormBuilderLocalizations.current.creditCardExpirationDateErrorText
@@ -457,7 +457,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isIP(valueCandidate, version)
+          valueCandidate?.isNotEmpty == true && !isIP(valueCandidate, version)
               ? errorText ?? FormBuilderLocalizations.current.ipErrorText
               : null;
 
@@ -466,7 +466,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> dateString({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !isDate(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
           : null;
@@ -515,7 +515,7 @@ class FormBuilderValidators {
     List<String> formats = const ['hex', 'rgb', 'hsl'],
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               !isColorCode(valueCandidate!, formats: formats)
           ? errorText ??
               FormBuilderLocalizations.current
@@ -527,7 +527,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> uppercase({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               valueCandidate!.toUpperCase() != valueCandidate
           ? errorText ?? FormBuilderLocalizations.current.uppercaseErrorText
           : null;
@@ -537,7 +537,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> lowercase({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               valueCandidate!.toLowerCase() != valueCandidate
           ? errorText ?? FormBuilderLocalizations.current.lowercaseErrorText
           : null;
@@ -661,7 +661,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               specialCharLength(valueCandidate!) >= atLeast
           ? null
           : errorText ??
@@ -675,7 +675,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               uppercaseCharLength(valueCandidate!) >= atLeast
           ? null
           : errorText ??
@@ -689,7 +689,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               lowercaseCharLength(valueCandidate!) >= atLeast
           ? null
           : errorText ??
@@ -703,7 +703,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
               numberCharLength(valueCandidate!) >= atLeast
           ? null
           : errorText ??
@@ -751,8 +751,9 @@ class FormBuilderValidators {
   static FormFieldValidator<String> alphabetical({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !isAlphabetical(valueCandidate!)
+      (valueCandidate) => valueCandidate == null ||
+              valueCandidate.isEmpty ||
+              !isAlphabetical(valueCandidate)
           ? errorText ?? FormBuilderLocalizations.current.alphabeticalErrorText
           : null;
 
@@ -761,10 +762,11 @@ class FormBuilderValidators {
   static FormFieldValidator<String> uuid({
     String? errorText,
   }) =>
-      (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isUUID(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.uuidErrorText
-              : null;
+      (valueCandidate) => valueCandidate == null ||
+              valueCandidate.isEmpty ||
+              !isUUID(valueCandidate)
+          ? errorText ?? FormBuilderLocalizations.current.uuidErrorText
+          : null;
 
   /// [FormFieldValidator] that requires the field's value to be valid json.
   /// * [errorText] is the error message to display when the json is invalid
@@ -772,7 +774,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isJSON(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isJSON(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.jsonErrorText
               : null;
 
@@ -782,7 +784,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isLatitude(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isLatitude(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.latitudeErrorText
               : null;
 
@@ -792,7 +794,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isLongitude(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isLongitude(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.longitudeErrorText
               : null;
 
@@ -802,7 +804,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isBase64(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isBase64(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.base64ErrorText
               : null;
 
@@ -812,7 +814,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isFilePath(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isFilePath(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.pathErrorText
               : null;
 
@@ -822,7 +824,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isOddNumber(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isOddNumber(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.oddNumberErrorText
               : null;
 
@@ -831,7 +833,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> evenNumber({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isEmpty != false ||
               !isEvenNumber(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.evenNumberErrorText
           : null;
@@ -846,7 +848,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) {
-        if (true == valueCandidate?.isNotEmpty) {
+        if (valueCandidate?.isNotEmpty == true) {
           int? port = int.tryParse(valueCandidate!);
           if (port == null || port < min || port > max) {
             return errorText ??
@@ -864,7 +866,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> macAddress({
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isEmpty != false ||
               !isMACAddress(valueCandidate!)
           ? errorText ?? FormBuilderLocalizations.current.macAddressErrorText
           : null;
@@ -876,7 +878,7 @@ class FormBuilderValidators {
     required String prefix,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
+      (valueCandidate) => valueCandidate?.isEmpty != false ||
               !valueCandidate!.startsWith(prefix)
           ? errorText ??
               FormBuilderLocalizations.current.startsWithErrorText(prefix)
@@ -889,11 +891,11 @@ class FormBuilderValidators {
     required String suffix,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-              !valueCandidate!.endsWith(suffix)
-          ? errorText ??
-              FormBuilderLocalizations.current.endsWithErrorText(suffix)
-          : null;
+      (valueCandidate) =>
+          valueCandidate?.isEmpty != false || !valueCandidate!.endsWith(suffix)
+              ? errorText ??
+                  FormBuilderLocalizations.current.endsWithErrorText(suffix)
+              : null;
 
   /// [FormFieldValidator] that requires the field's value to contains a specific value.
   /// * [substring] is the value that the field's value should contain.
@@ -904,9 +906,8 @@ class FormBuilderValidators {
     bool caseSensitive = true,
     String? errorText,
   }) =>
-      (valueCandidate) => true == valueCandidate?.isNotEmpty &&
-                  caseSensitive &&
-                  !valueCandidate!.contains(substring) ||
+      (valueCandidate) => valueCandidate?.isEmpty != false ||
+              caseSensitive && !valueCandidate!.contains(substring) ||
               !caseSensitive &&
                   !valueCandidate!
                       .toLowerCase()
@@ -947,7 +948,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          true == valueCandidate?.isNotEmpty && !isValidIban(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isValidIban(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.ibanErrorText
               : null;
 }
