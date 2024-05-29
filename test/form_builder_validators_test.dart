@@ -704,11 +704,30 @@ void main() {
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.time();
       // Pass
+      expect(validator('4:00'), isNull);
       expect(validator('12:00'), isNull);
       expect(validator('23:59'), isNull);
+
+      expect(validator('4:59:59'), isNull);
+      expect(validator('4:4:59'), isNull);
+      expect(validator('4:4:4'), isNull);
+      expect(validator('11:59:59'), isNull);
+
+      expect(validator('04:04'), isNull);
+      expect(validator('04:04:59'), isNull);
+      expect(validator('04:04:04'), isNull);
+
       expect(validator('12:00 AM'), isNull);
       expect(validator('12:00 PM'), isNull);
       expect(validator('11:59 PM'), isNull);
+
+      expect(validator('4:00:00 AM'), isNull);
+      expect(validator('12:00:00 PM'), isNull);
+      expect(validator('11:59:59 PM'), isNull);
+      expect(validator('01:01:01 AM'), isNull);
+      expect(validator('10:10:10 PM'), isNull);
+      expect(validator('12:34:56 AM'), isNull);
+
       // Fail
       expect(validator('13:00 AM'), isNotNull);
       expect(validator('25:00'), isNotNull);

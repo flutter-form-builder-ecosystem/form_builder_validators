@@ -505,6 +505,8 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a valid time string.
   /// * [errorText] is the error message to display when the time is invalid
+  /// Valid time formats are `HH:mm:ss`, `HH:mm` and `HH:mm:ss.SSS` (24-hour clock)
+  /// and `h:mm:ss a`, `h:mm a` and `h:mm:ss.SSS a` (12-hour clock)
   static FormFieldValidator<String> time({
     String? errorText,
   }) =>

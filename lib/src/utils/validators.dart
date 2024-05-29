@@ -158,7 +158,7 @@ RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 /// Examples: 23:59, 11:59 PM
 /// {@endtemplate}
 RegExp _time = RegExp(
-    r'^(?:[01]\d|2[0-3]):[0-5]\d$|^(?:0?[1-9]|1[0-2]):[0-5]\d\s?(?:[AaPp][Mm])$');
+    r'^(?:[01]?\d|2[0-3]):[0-5]?\d(?::[0-5]?\d)?$|^(?:0?[1-9]|1[0-2]):[0-5]?\d(?::[0-5]?\d)?\s?(?:[AaPp][Mm])$');
 
 /// {@template upper_case_template}
 /// This regex matches any character that is not an uppercase letter (A-Z) or Ñ.
