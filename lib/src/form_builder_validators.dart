@@ -657,7 +657,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a bool and true.
   /// * [errorText] is the error message to display when the value is not true
-  static FormFieldValidator<bool> mustBeTrue({
+  static FormFieldValidator<bool> isTrue({
     String? errorText,
   }) =>
       (valueCandidate) => valueCandidate != true
@@ -666,7 +666,7 @@ class FormBuilderValidators {
 
   /// [FormFieldValidator] that requires the field's value to be a bool and false.
   /// * [errorText] is the error message to display when the value is not false
-  static FormFieldValidator<bool> mustBeFalse({
+  static FormFieldValidator<bool> isFalse({
     String? errorText,
   }) =>
       (valueCandidate) => valueCandidate != false

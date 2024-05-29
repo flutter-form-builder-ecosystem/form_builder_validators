@@ -75,8 +75,8 @@ Available built-in type validators include:
 - `FormBuilderValidators.required()` - requires the field to have a non-empty value.
 - `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- `FormBuilderValidators.mustBeTrue()` - requires the field's to be true.
-- `FormBuilderValidators.mustBeFalse()` - requires the field's to be false.
+- `FormBuilderValidators.isTrue()` - requires the field's to be true.
+- `FormBuilderValidators.isFalse()` - requires the field's to be false.
 - `FormBuilderValidators.hasSpecialChars()` - requires the field's to contain a specified number of special characters.
 - `FormBuilderValidators.hasUppercaseChars()` - requires the field's to contain a specified number of uppercase characters.
 - `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.

@@ -677,9 +677,9 @@ void main() {
   );
 
   testWidgets(
-    'FormBuilderValidators.mustBeTrue',
+    'FormBuilderValidators.isTrue',
     (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.mustBeTrue();
+      final validator = FormBuilderValidators.isTrue();
       // Pass
       expect(validator(true), isNull);
       // Fail
@@ -689,9 +689,9 @@ void main() {
   );
 
   testWidgets(
-    'FormBuilderValidators.mustBeFalse',
+    'FormBuilderValidators.isFalse',
     (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.mustBeFalse();
+      final validator = FormBuilderValidators.isFalse();
       // Pass
       expect(validator(false), isNull);
       // Fail
