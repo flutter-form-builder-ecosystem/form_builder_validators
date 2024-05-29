@@ -1050,4 +1050,14 @@ class FormBuilderValidators {
           valueCandidate?.isEmpty != false || !isISBN(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.isbnErrorText
               : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a single line.
+  /// * [errorText] is the error message to display when the value is not a single line
+  static FormFieldValidator<String> singleLine({
+    String? errorText,
+  }) =>
+      (valueCandidate) => valueCandidate?.isEmpty != false ||
+              !isSingleLine(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.singleLineErrorText
+          : null;
 }

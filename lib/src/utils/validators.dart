@@ -508,3 +508,7 @@ bool isISBN(String isbn) {
     return false;
   }
 }
+
+bool isSingleLine(String value) {
+  return !value.contains('\n') && !value.contains('\r');
+}

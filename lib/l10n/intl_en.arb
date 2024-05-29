@@ -53,5 +53,6 @@
   "ibanErrorText": "Value must be a valid IBAN.",
   "uniqueErrorText": "Value must be unique.",
   "bicErrorText": "Value must be a valid BIC.",
-  "isbnErrorText": "Value must be a valid ISBN."
+  "isbnErrorText": "Value must be a valid ISBN.",
+  "singleLineErrorText": "Value must be a single line."
 }

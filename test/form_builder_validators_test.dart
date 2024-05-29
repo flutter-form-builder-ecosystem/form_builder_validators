@@ -1186,10 +1186,26 @@ void main() {
       expect(validator('0-306-40615-2'), isNull); // A valid ISBN-10
       // Fail
       expect(validator(null), isNotNull);
-      expect(validator(''), isNotNull); // Empty string
+      expect(validator(''), isNotNull);
       expect(validator('INVALIDISBN'), isNotNull); // Invalid ISBN
       expect(validator('978-3-16-148410-00'), isNotNull); // Too long
       expect(validator('3-16-148410-00'), isNotNull); // Too short
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.singleLine',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.singleLine();
+      // Pass
+      expect(validator('The quick brown fox jumps'), isNull);
+      // Fail
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+      expect(validator('The quick brown fox\njumps'), isNotNull);
+      expect(validator('The quick brown fox\rjumps'), isNotNull);
+      expect(validator('The quick brown fox\r\njumps'), isNotNull);
+      expect(validator('The quick brown fox\n\rjumps'), isNotNull);
     }),
   );
 }

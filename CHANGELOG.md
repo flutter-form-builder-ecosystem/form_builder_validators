@@ -42,6 +42,7 @@
 * Add aggregate
 * Add unique
 * Add ISBN
+* Add singleLine
 
 ## 10.0.1
 * Fix regression (include l10n files)

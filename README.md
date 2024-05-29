@@ -88,6 +88,7 @@ Available built-in type validators include:
 - `FormBuilderValidators.between()` - requires the field's to be between two numbers.
 - `FormBuilderValidators.containsElement()` - requires the field's to be in the provided list.
 - `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
+- `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
 Available built-in use-case validators include:
 
