@@ -33,6 +33,8 @@ Future<void> testValidations(
 }
 
 void main() {
+  const customErrorMessage = 'Custom error message';
+
   testWidgets(
     'FormBuilderValidators.required',
     (WidgetTester tester) => testValidations(tester, (context) {
@@ -1220,6 +1222,15 @@ void main() {
       // Fail
       expect(validator('123'), isNotNull);
       expect(validator(''), isNotNull);
+
+      final validatorWithError = FormBuilderValidators.defaultValue<String>(
+        'default',
+        FormBuilderValidators.alphabetical(errorText: customErrorMessage),
+      );
+      // Pass
+      expect(validatorWithError('123'), customErrorMessage);
+      // Fail
+      expect(validatorWithError('123'), isNotNull);
     }),
   );
 }
