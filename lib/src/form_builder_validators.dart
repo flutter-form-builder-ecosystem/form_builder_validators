@@ -658,7 +658,9 @@ class FormBuilderValidators {
         final maxResult =
             max(maxValue, inclusive: inclusive, errorText: errorText)(number);
 
-        return errorText ?? minResult ?? maxResult;
+        if (minResult != null || maxResult != null) {
+          return errorText ?? minResult ?? maxResult;
+        }
       }
       return null;
     };
