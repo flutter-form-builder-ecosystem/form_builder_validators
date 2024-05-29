@@ -622,17 +622,20 @@ class FormBuilderValidators {
     String? errorText,
   }) {
     return (T? valueCandidate) {
-      assert(valueCandidate is num || valueCandidate is String);
-      final number = valueCandidate is num
-          ? valueCandidate
-          : num.tryParse(valueCandidate.toString());
+      if (valueCandidate != null) {
+        assert(valueCandidate is num || valueCandidate is String);
+        final number = valueCandidate is num
+            ? valueCandidate
+            : num.tryParse(valueCandidate.toString());
 
-      final minResult =
-          min(minValue, inclusive: inclusive, errorText: errorText)(number);
-      final maxResult =
-          max(maxValue, inclusive: inclusive, errorText: errorText)(number);
+        final minResult =
+            min(minValue, inclusive: inclusive, errorText: errorText)(number);
+        final maxResult =
+            max(maxValue, inclusive: inclusive, errorText: errorText)(number);
 
-      return errorText ?? minResult ?? maxResult;
+        return errorText ?? minResult ?? maxResult;
+      }
+      return null;
     };
   }
 
