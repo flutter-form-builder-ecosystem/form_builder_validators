@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -664,11 +665,11 @@ void main() {
       final validator = FormBuilderValidators.range(10, 20);
       // Pass
       expect(validator(15), isNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
       // Fail
       expect(validator(5), isNotNull);
       expect(validator(25), isNotNull);
-      expect(validator(null), isNotNull);
-      expect(validator(''), isNotNull);
     }),
   );
 
@@ -1026,12 +1027,12 @@ void main() {
     'FormBuilderValidators.or',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.or([
-        FormBuilderValidators.numeric(),
+        FormBuilderValidators.endsWith(suffix: 'world'),
         FormBuilderValidators.startsWith(prefix: 'Hello'),
       ]);
       // Pass
-      expect(validator('123'), isNull);
       expect(validator('Hello world'), isNull);
+      expect(validator('Hello'), isNull);
       // Fail
       expect(validator('123 hello'), isNotNull);
       expect(validator(null), isNotNull);
