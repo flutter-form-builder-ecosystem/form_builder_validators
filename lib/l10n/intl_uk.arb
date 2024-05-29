@@ -54,5 +54,6 @@
   "uniqueErrorText": "Поле має бути унікальним.",
   "bicErrorText": "Поле має бути дійсним BIC кодом.",
   "isbnErrorText": "Поле має бути дійсним ISBN номером.",
-  "singleLineErrorText": "Поле має бути однорядковим."
+  "singleLineErrorText": "Поле має бути однорядковим.",
+  "timeErrorText": "Поле має бути дійсним часом."
 }

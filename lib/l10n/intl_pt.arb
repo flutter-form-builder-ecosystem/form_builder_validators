@@ -54,5 +54,6 @@
   "uniqueErrorText": "Este campo requer um valor único.",
   "bicErrorText": "Este campo requer um código BIC válido.",
   "isbnErrorText": "Este campo requer um ISBN válido.",
-  "singleLineErrorText": "Este campo deve conter apenas uma linha."
+  "singleLineErrorText": "Este campo deve conter apenas uma linha.",
+  "timeErrorText": "Este campo requer uma hora válida."
 }

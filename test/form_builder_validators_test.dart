@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -651,6 +652,96 @@ void main() {
       expect(validatorWithErrorMessage('192.168.0.1'), isNull);
       // Fail
       expect(validatorWithErrorMessage('256.168.0.1'), customErrorMessage);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.dateString',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.dateString();
+      // Pass
+      expect(validator('2023-05-29'), isNull);
+      // Fail
+      expect(validator('invalid-date'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
+
+      final validatorWithErrorMessage = FormBuilderValidators.dateString(
+        errorText: customErrorMessage,
+      );
+      // Pass
+      expect(validatorWithErrorMessage('2023-05-29'), isNull);
+      // Fail
+      expect(validatorWithErrorMessage('invalid-date'), customErrorMessage);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.time',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.time();
+      // Pass
+      expect(validator('12:00'), isNull);
+      expect(validator('23:59'), isNull);
+      // Fail
+      expect(validator('25:00'), isNotNull);
+      expect(validator('invalid-time'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+
+      final validatorWithErrorMessage = FormBuilderValidators.time(
+        errorText: customErrorMessage,
+      );
+      // Pass
+      expect(validatorWithErrorMessage('12:00'), isNull);
+      // Fail
+      expect(validatorWithErrorMessage('25:00'), customErrorMessage);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.dateTime',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.dateTime();
+      // Pass
+      expect(validator(DateTime.now()), isNull);
+      // Fail
+      expect(validator(null), isNotNull);
+
+      final validatorWithErrorMessage = FormBuilderValidators.dateTime(
+        errorText: customErrorMessage,
+      );
+      // Pass
+      expect(validatorWithErrorMessage(DateTime.now()), isNull);
+      // Fail
+      expect(validatorWithErrorMessage(null), customErrorMessage);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.dateRange',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final minDate = DateTime(2023, 01, 01);
+      final maxDate = DateTime(2023, 12, 31);
+      final validator =
+          FormBuilderValidators.dateRange(minDate: minDate, maxDate: maxDate);
+      // Pass
+      expect(validator('2023-05-29'), isNull);
+      // Fail
+      expect(validator('2022-12-31'), isNotNull);
+      expect(validator('2024-01-01'), isNotNull);
+      expect(validator('invalid-date'), isNotNull);
+      expect(validator(null), isNotNull);
+
+      final validatorWithErrorMessage = FormBuilderValidators.dateRange(
+        minDate: minDate,
+        maxDate: maxDate,
+        errorText: customErrorMessage,
+      );
+      // Pass
+      expect(validatorWithErrorMessage('2023-05-29'), isNull);
+      // Fail
+      expect(validatorWithErrorMessage('2022-12-31'), customErrorMessage);
     }),
   );
 

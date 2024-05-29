@@ -492,7 +492,26 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isDate(valueCandidate!)
+              !isDateTime(valueCandidate!)
+          ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
+          : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid time string.
+  /// * [errorText] is the error message to display when the time is invalid
+  static FormFieldValidator<String> time({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          valueCandidate?.isNotEmpty == true && !isDateTime(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.timeErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid date.
+  /// * [errorText] is the error message to display when the date is invalid
+  static FormFieldValidator<DateTime?> dateTime({
+    String? errorText,
+  }) =>
+      (valueCandidate) => valueCandidate == null
           ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
           : null;
 
@@ -506,7 +525,7 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (String? valueCandidate) {
-        if (valueCandidate == null || !isDate(valueCandidate)) {
+        if (valueCandidate == null || !isDateTime(valueCandidate)) {
           return errorText ??
               FormBuilderLocalizations.current.dateStringErrorText;
         }

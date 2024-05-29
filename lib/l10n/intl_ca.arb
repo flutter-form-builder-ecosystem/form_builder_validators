@@ -54,5 +54,6 @@
   "uniqueErrorText": "Aquest camp requereix un valor únic.",
   "bicErrorText": "Aquest camp requereix un codi BIC vàlid.",
   "isbnErrorText": "Aquest camp requereix un ISBN vàlid.",
-  "singleLineErrorText": "Aquest camp ha de ser una línia única."
+  "singleLineErrorText": "Aquest camp ha de ser una línia única.",
+  "timeErrorText": "Aquest camp requereix una hora vàlida."
 }

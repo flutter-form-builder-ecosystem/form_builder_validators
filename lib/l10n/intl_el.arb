@@ -54,5 +54,6 @@
   "uniqueErrorText": "Η τιμή πρέπει να είναι μοναδική.",
   "bicErrorText": "Η τιμή πρέπει να είναι έγκυρος BIC.",
   "isbnErrorText": "Η τιμή πρέπει να είναι έγκυρο ISBN.",
-  "singleLineErrorText": "Η τιμή πρέπει να είναι μία γραμμή."
+  "singleLineErrorText": "Η τιμή πρέπει να είναι μία γραμμή.",
+  "timeErrorText": "Η τιμή πρέπει να είναι έγκυρη ώρα."
 }

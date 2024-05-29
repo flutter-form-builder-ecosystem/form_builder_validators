@@ -54,5 +54,6 @@
   "uniqueErrorText": "Nilai harus unik.",
   "bicErrorText": "BIC tidak valid.",
   "isbnErrorText": "ISBN tidak valid.",
-  "singleLineErrorText": "Nilai harus dalam satu baris."
+  "singleLineErrorText": "Nilai harus dalam satu baris.",
+  "timeErrorText": "Waktu tidak valid."
 }

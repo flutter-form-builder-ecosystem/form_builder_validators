@@ -54,5 +54,6 @@
   "uniqueErrorText": "Ruangan ini memerlukan nilai yang unik.",
   "bicErrorText": "Ruangan ini memerlukan BIC yang sah.",
   "isbnErrorText": "Ruangan ini memerlukan ISBN yang sah.",
-  "singleLineErrorText": "Ruangan ini memerlukan rentetan tunggal."
+  "singleLineErrorText": "Ruangan ini memerlukan rentetan tunggal.",
+  "timeErrorText": "Ruangan ini memerlukan masa yang sah."
 }

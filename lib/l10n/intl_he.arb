@@ -54,5 +54,6 @@
   "uniqueErrorText": "שדה זה דורש ערך ייחודי.",
   "bicErrorText": "שדה זה דורש מזהה BIC תקין.",
   "isbnErrorText": "שדה זה דורש מספר ISBN תקין.",
-  "singleLineErrorText": "שדה זה דורש שורה יחידה."
+  "singleLineErrorText": "שדה זה דורש שורה יחידה.",
+  "timeErrorText": "שדה זה דורש שעה תקינה."
 }

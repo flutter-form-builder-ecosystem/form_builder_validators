@@ -54,5 +54,6 @@
   "uniqueErrorText": "Vrednost mora biti edinstvena.",
   "bicErrorText": "Vnesite veljaven BIC.",
   "isbnErrorText": "Vnesite veljaven ISBN.",
-  "singleLineErrorText": "Vrednost mora biti enovrstična."
+  "singleLineErrorText": "Vrednost mora biti enovrstična.",
+  "timeErrorText": "Vnesite veljavno časovno vrednost."
 }

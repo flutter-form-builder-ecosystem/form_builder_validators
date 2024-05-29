@@ -61,8 +61,10 @@ Available built-in type validators include:
 
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateString()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateTime()` - requires the field's value to be a valid date time.
 - `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
+- `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
 - `FormBuilderValidators.notMatch()` - requires the field's value to not match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.

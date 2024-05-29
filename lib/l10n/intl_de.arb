@@ -54,5 +54,6 @@
   "uniqueErrorText": "Dieses Feld erfordert einen eindeutigen Wert.",
   "bicErrorText": "Dieses Feld erfordert eine gültige BIC.",
   "isbnErrorText": "Dieses Feld erfordert eine gültige ISBN.",
-  "singleLineErrorText": "Dieses Feld darf keine Zeilenumbrüche enthalten."
+  "singleLineErrorText": "Dieses Feld darf keine Zeilenumbrüche enthalten.",
+  "timeErrorText": "Dieses Feld erfordert eine gültige Uhrzeit."
 }

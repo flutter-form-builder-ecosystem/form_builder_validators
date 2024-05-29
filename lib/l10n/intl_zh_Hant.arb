@@ -54,5 +54,6 @@
   "uniqueErrorText": "此欄位需要唯一的值。",
   "bicErrorText": "此欄位需要有效的 BIC 編碼。",
   "isbnErrorText": "此欄位需要有效的 ISBN 編碼。",
-  "singleLineErrorText": "此欄位必須只包含單行文本。"
+  "singleLineErrorText": "此欄位必須只包含單行文本。",
+  "timeErrorText": "此欄位需要有效的時間。"
 }

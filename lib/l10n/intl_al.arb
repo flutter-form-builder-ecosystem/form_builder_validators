@@ -54,5 +54,6 @@
   "uniqueErrorText": "Kjo vlerë duhet të jetë unike.",
   "bicErrorText": "Kjo fushë kërkon një kod BIC të vlefshëm.",
   "isbnErrorText": "Kjo fushë kërkon një ISBN të vlefshëm.",
-  "singleLineErrorText": "Kjo fushë kërkon një tekst me një rresht."
+  "singleLineErrorText": "Kjo fushë kërkon një tekst me një rresht.",
+  "timeErrorText": "Kjo fushë kërkon një kohë të vlefshme."
 }

@@ -54,5 +54,6 @@
   "uniqueErrorText": "Hodnota musí být jedinečná.",
   "bicErrorText": "Pole vyžaduje platný BIC kód.",
   "isbnErrorText": "Pole vyžaduje platné ISBN.",
-  "singleLineErrorText": "Pole musí obsahovat pouze jednu řádku."
+  "singleLineErrorText": "Pole musí obsahovat pouze jednu řádku.",
+  "timeErrorText": "Pole vyžaduje platný čas."
 }

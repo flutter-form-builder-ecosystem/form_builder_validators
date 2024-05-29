@@ -54,5 +54,6 @@
   "uniqueErrorText": "Toto pole vyžaduje unikátnu hodnotu.",
   "bicErrorText": "Toto pole vyžaduje platný BIC kód.",
   "isbnErrorText": "Toto pole vyžaduje platné ISBN číslo.",
-  "singleLineErrorText": "Toto pole vyžaduje jedno riadkový text."
+  "singleLineErrorText": "Toto pole vyžaduje jedno riadkový text.",
+  "timeErrorText": "Toto pole vyžaduje platný čas."
 }

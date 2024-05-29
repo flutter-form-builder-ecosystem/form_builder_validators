@@ -54,5 +54,6 @@
   "uniqueErrorText": "De waarde moet uniek zijn.",
   "bicErrorText": "Een geldige BIC is vereist.",
   "isbnErrorText": "Een geldige ISBN is vereist.",
-  "singleLineErrorText": "Dit veld mag geen nieuwe regels bevatten."
+  "singleLineErrorText": "Dit veld mag geen nieuwe regels bevatten.",
+  "timeErrorText": "Een geldige tijd is vereist."
 }

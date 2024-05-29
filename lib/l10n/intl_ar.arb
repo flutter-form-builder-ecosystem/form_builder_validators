@@ -54,5 +54,6 @@
   "uniqueErrorText": "هذا الحقل يجب أن يحتوي على قيمة فريدة.",
   "bicErrorText": "هذا الحقل يتطلب رمز BIC صالح.",
   "isbnErrorText": "هذا الحقل يتطلب رقم ISBN صالح.",
-  "singleLineErrorText": "هذا الحقل يجب أن يحتوي على سطر واحد فقط."
+  "singleLineErrorText": "هذا الحقل يجب أن يحتوي على سطر واحد فقط.",
+  "timeErrorText": "هذا الحقل يتطلب وقت صالح."
 }

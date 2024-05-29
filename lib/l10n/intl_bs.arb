@@ -54,5 +54,6 @@
   "uniqueErrorText": "Vrijednost mora biti jedinstvena.",
   "bicErrorText": "Unesite validan BIC.",
   "isbnErrorText": "Unesite validan ISBN.",
-  "singleLineErrorText": "Vrijednost mora biti jedan redak teksta."
+  "singleLineErrorText": "Vrijednost mora biti jedan redak teksta.",
+  "timeErrorText": "Unesite validno vrijeme."
 }

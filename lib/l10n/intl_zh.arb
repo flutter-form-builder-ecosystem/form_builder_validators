@@ -54,5 +54,6 @@
   "uniqueErrorText": "该字段必须是唯一的。",
   "bicErrorText": "该字段必须是有效的 BIC。",
   "isbnErrorText": "该字段必须是有效的 ISBN。",
-  "singleLineErrorText": "该字段必须是单行文本。"
+  "singleLineErrorText": "该字段必须是单行文本。",
+  "timeErrorText": "该字段必须是有效的时间。"
 }

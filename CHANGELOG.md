@@ -12,7 +12,9 @@
 * Add max file size
 * Add notMatch
 * Add range
+* Add dateTime
 * Add date range
+* Add time
 * Add is true
 * Add is false
 * Add special characters

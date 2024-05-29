@@ -54,5 +54,6 @@
   "uniqueErrorText": "Valoarea trebuie să fie unică.",
   "bicErrorText": "Acest câmp necesită un cod BIC valid.",
   "isbnErrorText": "Acest câmp necesită un număr ISBN valid.",
-  "singleLineErrorText": "Acest câmp trebuie să fie pe o singură linie."
+  "singleLineErrorText": "Acest câmp trebuie să fie pe o singură linie.",
+  "timeErrorText": "Acest câmp necesită o oră validă."
 }

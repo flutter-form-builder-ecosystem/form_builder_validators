@@ -54,5 +54,6 @@
   "uniqueErrorText": "Yêu cầu giá trị duy nhất.",
   "bicErrorText": "Yêu cầu nhập đúng mã BIC.",
   "isbnErrorText": "Yêu cầu nhập đúng số ISBN.",
-  "singleLineErrorText": "Yêu cầu nhập trên một dòng."
+  "singleLineErrorText": "Yêu cầu nhập trên một dòng.",
+  "timeErrorText": "Yêu cầu nhập đúng định dạng thời gian."
 }

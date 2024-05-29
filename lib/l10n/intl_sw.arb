@@ -54,5 +54,6 @@
   "uniqueErrorText": "Thamani lazima iwe ya kipekee.",
   "bicErrorText": "Sehemu hii inahitaji BIC halali.",
   "isbnErrorText": "Sehemu hii inahitaji ISBN halali.",
-  "singleLineErrorText": "Sehemu hii inahitaji mstari mmoja tu."
+  "singleLineErrorText": "Sehemu hii inahitaji mstari mmoja tu.",
+  "timeErrorText": "Sehemu hii inahitaji wakati halali."
 }

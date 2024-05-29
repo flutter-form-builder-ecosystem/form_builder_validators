@@ -54,6 +54,7 @@
   "uniqueErrorText": "Kentän arvon tulee olla uniikki.",
   "bicErrorText": "Vaaditaan oikean muotoinen BIC-koodi.",
   "isbnErrorText": "Vaaditaan oikean muotoinen ISBN-koodi.",
-  "singleLineErrorText": "Kentän arvon tulee olla yksirivinen."
+  "singleLineErrorText": "Kentän arvon tulee olla yksirivinen.",
+  "timeErrorText": "Vaaditaan oikean muotoinen kellonaika."
  }
  

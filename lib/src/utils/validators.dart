@@ -249,7 +249,7 @@ bool isCreditCard(String str) {
 }
 
 /// check if the string is a date
-bool isDate(String str) {
+bool isDateTime(String str) {
   try {
     DateTime.parse(str);
     return true;

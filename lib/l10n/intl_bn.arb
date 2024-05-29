@@ -54,5 +54,6 @@
   "uniqueErrorText": "মানটি অবশ্যই অনন্য মানগুলির মধ্যে অদ্বিতীয় হতে হবে।",
   "bicErrorText": "একটি বৈধ BIC প্রয়োজন।",
   "isbnErrorText": "একটি বৈধ ISBN প্রয়োজন।",
-  "singleLineErrorText": "এই ফিল্ডে একটি একক লাইন থাকতে হবে।"
+  "singleLineErrorText": "এই ফিল্ডে একটি একক লাইন থাকতে হবে।",
+  "timeErrorText": "একটি বৈধ সময় প্রয়োজন।"
 }

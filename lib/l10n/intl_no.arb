@@ -54,5 +54,6 @@
   "uniqueErrorText": "Dette feltet krever en unik verdi.",
   "bicErrorText": "Dette feltet krever en gyldig BIC.",
   "isbnErrorText": "Dette feltet krever en gyldig ISBN.",
-  "singleLineErrorText": "Dette feltet må være en enkelt linje."
+  "singleLineErrorText": "Dette feltet må være en enkelt linje.",
+  "timeErrorText": "Dette feltet krever en gyldig klokkeslett."
 }

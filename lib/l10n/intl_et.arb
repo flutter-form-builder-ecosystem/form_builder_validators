@@ -54,5 +54,6 @@
   "uniqueErrorText": "See väli peab olema unikaalne.",
   "bicErrorText": "See väli nõuab kehtivat BIC koodi.",
   "isbnErrorText": "See väli nõuab kehtivat ISBN koodi.",
-  "singleLineErrorText": "See väli nõuab ühekordset rida."
+  "singleLineErrorText": "See väli nõuab ühekordset rida.",
+  "timeErrorText": "See väli nõuab kehtivat kellaega."
 }

@@ -54,5 +54,6 @@
   "uniqueErrorText": "Detta fält kräver ett unikt värde.",
   "bicErrorText": "Detta fält kräver ett giltigt BIC-nummer.",
   "isbnErrorText": "Detta fält kräver ett giltigt ISBN-nummer.",
-  "singleLineErrorText": "Detta fält kräver en enradig text."
+  "singleLineErrorText": "Detta fält kräver en enradig text.",
+  "timeErrorText": "Detta fält kräver en giltig tid."
 }

@@ -54,5 +54,6 @@
   "uniqueErrorText": "고유해야 합니다.",
   "bicErrorText": "유효한 BIC를 입력해 주세요.",
   "isbnErrorText": "유효한 ISBN을 입력해 주세요.",
-  "singleLineErrorText": "한 줄로 입력해 주세요."
+  "singleLineErrorText": "한 줄로 입력해 주세요.",
+  "timeErrorText": "유효한 시간을 입력해 주세요."
 }

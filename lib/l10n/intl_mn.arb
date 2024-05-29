@@ -54,5 +54,6 @@
   "uniqueErrorText": "Утга давхардаж байна.",
   "bicErrorText": "BIC код алдаатай байна.",
   "isbnErrorText": "ISBN код алдаатай байна.",
-  "singleLineErrorText": "Зөвхөн нэг мөрт байх ёстой."
+  "singleLineErrorText": "Зөвхөн нэг мөрт байх ёстой.",
+  "timeErrorText": "Цаг алдаатай байна."
 }

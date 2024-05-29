@@ -54,5 +54,6 @@
   "uniqueErrorText": "値は一意である必要があります。",
   "bicErrorText": "有効なBICを入力してください。",
   "isbnErrorText": "有効なISBNを入力してください。",
-  "singleLineErrorText": "値は単一行である必要があります。"
+  "singleLineErrorText": "値は単一行である必要があります。",
+  "timeErrorText": "有効な時間を入力してください。"
 }

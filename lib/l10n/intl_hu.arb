@@ -54,5 +54,6 @@
   "uniqueErrorText": "Ez a mező egyedi értéket igényel.",
   "bicErrorText": "Ez a mező érvényes BIC kódot igényel.",
   "isbnErrorText": "Ez a mező érvényes ISBN számot igényel.",
-  "singleLineErrorText": "Ez a mező csak egy sorból állhat."
+  "singleLineErrorText": "Ez a mező csak egy sorból állhat.",
+  "timeErrorText": "Ez a mező érvényes időt igényel."
 }

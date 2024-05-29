@@ -54,5 +54,6 @@
   "uniqueErrorText": "To pole wymaga unikalnej wartości.",
   "bicErrorText": "To pole wymaga prawidłowego numeru BIC.",
   "isbnErrorText": "To pole wymaga prawidłowego numeru ISBN.",
-  "singleLineErrorText": "To pole wymaga pojedynczej linii tekstu."
+  "singleLineErrorText": "To pole wymaga pojedynczej linii tekstu.",
+  "timeErrorText": "To pole wymaga prawidłowej godziny."
 }

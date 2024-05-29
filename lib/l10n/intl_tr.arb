@@ -54,5 +54,6 @@
   "uniqueErrorText": "Bu alanın değeri benzersiz olmalıdır.",
   "bicErrorText": "Bu alan geçerli bir BIC gerektirir.",
   "isbnErrorText": "Bu alan geçerli bir ISBN gerektirir.",
-  "singleLineErrorText": "Bu alan tek satır olmalıdır."
+  "singleLineErrorText": "Bu alan tek satır olmalıdır.",
+  "timeErrorText": "Bu alan geçerli bir saat gerektirir."
 }
