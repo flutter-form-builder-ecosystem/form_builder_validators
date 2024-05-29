@@ -2,39 +2,161 @@ import 'dart:convert';
 
 import 'helpers.dart';
 
+/// {@template email_template}
+/// This regex matches an email address.
+///
+/// - It allows various characters, including letters, digits, and special characters.
+/// - It supports international characters.
+/// - It checks for the presence of an "@" symbol followed by a valid domain name.
+///
+/// Examples: user@example.com, user.name+tag@example.co.uk
+/// {@endtemplate}
 RegExp _email = RegExp(
   r"^((([a-z]|\d|[!#\$%&'*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$",
 );
 
+/// {@template ipv4_template}
+/// This regex matches an IPv4 address.
+///
+/// - It consists of four groups of one to three digits.
+/// - Each group is separated by a dot.
+/// - Each group can range from 0 to 255.
+///
+/// Examples: 192.168.1.1, 10.0.0.1
+/// {@endtemplate}
 RegExp _ipv4Maybe = RegExp(r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$');
+
+/// {@template ipv6_template}
+/// This regex matches an IPv6 address.
+///
+/// - It supports various valid IPv6 notations.
+/// - It allows the use of "::" for consecutive zero blocks.
+/// - It allows hexadecimal digits and colons.
+///
+/// Examples: ::1, 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+/// {@endtemplate}
 RegExp _ipv6 =
     RegExp(r'^::|^::1|^([a-fA-F0-9]{1,4}::?){1,7}([a-fA-F0-9]{1,4})$');
 
+/// {@template credit_card_template}
+/// This regex matches credit card numbers from major brands.
+///
+/// - It supports Visa, MasterCard, American Express, Diners Club, Discover, and JCB cards.
+/// - It validates the number of digits and prefixes for each card type.
+///
+/// Examples: 4111111111111111, 5500000000000004, 340000000000009
+/// {@endtemplate}
 RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
 
+/// {@template phone_number_template}
+/// This regex matches international phone numbers.
+///
+/// - It supports optional country codes.
+/// - It allows spaces, dashes, and dots as separators.
+/// - It validates the number of digits in the phone number.
+///
+/// Examples: +1-800-555-5555, 1234567890
+/// {@endtemplate}
 RegExp _phoneNumber = RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
 
+/// {@template credit_card_expiration_template}
+/// This regex matches credit card expiration dates.
+///
+/// - It checks for a valid month (01-12).
+/// - It checks for a valid year (two digits).
+///
+/// Examples: 01/23, 12/25
+/// {@endtemplate}
 RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
 
+/// {@template hex_template}
+/// This regex matches hexadecimal color codes.
+///
+/// - It starts with a # character.
+/// - It is followed by exactly six characters, each of which is a hexadecimal digit (0-9, a-f, or A-F).
+///
+/// Examples: #1a2b3c, #ABCDEF
+/// {@endtemplate}
 RegExp _hex = RegExp(r'^#[0-9a-fA-F]{6}$');
 
+/// {@template rgb_template}
+/// This regex matches RGB color values.
+///
+/// - It checks for the rgb() format.
+/// - It allows up to three digits for each color value (0-255).
+///
+/// Examples: rgb(255, 0, 0), rgb(123, 123, 123)
+/// {@endtemplate}
 RegExp _rgb = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
 
+/// {@template hsl_template}
+/// This regex matches HSL color values.
+///
+/// - It checks for the hsl() format.
+/// - It allows integers for hue and percentages for saturation and lightness.
+///
+/// Examples: hsl(360, 100%, 50%), hsl(120, 75%, 25%)
+/// {@endtemplate}
 RegExp _hsl = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
 
+/// {@template alphabetical_template}
+/// This regex matches only alphabetical characters.
+///
+/// - It allows both uppercase and lowercase letters.
+///
+/// Examples: abcdef, XYZ
+/// {@endtemplate}
 RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
 
+/// {@template uuid_template}
+/// This regex matches UUIDs (version 4).
+///
+/// - It validates the format of a UUID, including hyphens.
+///
+/// Examples: 123e4567-e89b-12d3-a456-426614174000
+/// {@endtemplate}
 RegExp _uuid = RegExp(
     r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');
 
+/// {@template file_path_template}
+/// This regex matches file paths.
+///
+/// - It allows letters, digits, underscores, hyphens, and forward slashes.
+///
+/// Examples: /path/to/file, C:/Users/Name/Documents
+/// {@endtemplate}
 RegExp _filePath = RegExp(r'^[a-zA-Z0-9_\-\/]+$');
 
+/// {@template mac_address_template}
+/// This regex matches MAC addresses.
+///
+/// - It consists of pairs of hexadecimal digits.
+/// - Each pair is separated by colons or hyphens.
+///
+/// Examples: 00:1A:2B:3C:4D:5E, 00-1A-2B-3C-4D-5E
+/// {@endtemplate}
 RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
 
+/// {@template bic_template}
+/// This regex matches BIC (Bank Identifier Code).
+///
+/// - It consists of 8 or 11 characters.
+/// - It starts with four letters (bank code), followed by two letters (country code), two characters (location code), and optionally three characters (branch code).
+///
+/// Examples: DEUTDEFF, NEDSZAJJXXX
+/// {@endtemplate}
 RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 
+/// {@template time_template}
+/// This regex matches time in 24-hour or 12-hour format.
+///
+/// - It allows hours and minutes, with optional AM/PM for 12-hour format.
+/// - It supports leading zeros for single-digit hours.
+///
+/// Examples: 23:59, 11:59 PM
+/// {@endtemplate}
 RegExp _time = RegExp(
     r'^(?:[01]\d|2[0-3]):[0-5]\d$|^(?:0?[1-9]|1[0-2]):[0-5]\d\s?(?:[AaPp][Mm])$');
 
