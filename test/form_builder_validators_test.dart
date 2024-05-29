@@ -1209,10 +1209,11 @@ void main() {
     }),
   );
 
-    testWidgets(
+  testWidgets(
     'FormBuilderValidators.defaultValue',
     (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.defaultValue<String>('default', FormBuilderValidators.alphabetical());
+      final validator = FormBuilderValidators.defaultValue<String>(
+          'default', FormBuilderValidators.alphabetical());
       // Pass
       expect(validator(null), isNull);
       expect(validator('hello'), isNull);
