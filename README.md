@@ -116,6 +116,18 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.bic()` - requires the field's to be an valid BIC.
 - `FormBuilderValidators.isbn()` - requires the field's to be an valid ISBN.
 
+Available extension methods used for chaining validators:
+
+- `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
+- `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
+- `FormBuilderValidator.not()` - Negates the current validator.
+- `FormBuilderValidator.when()` - Adds a condition to apply the validator only if the condition is met.
+- `FormBuilderValidator.unless()` - Adds a condition to apply the validator only if the condition is not met.
+- `FormBuilderValidator.transform()` - Transforms the value before applying the validator.
+- `FormBuilderValidator.skipWhen()` - Skips the validator if the condition is met.
+- `FormBuilderValidator.log()` - Logs the value during the validation process.
+- `FormBuilderValidator.withMessage()` - Overrides the error message of the current validator.
+
 ### Supported languages
 
 Validators support default `errorText` messages in these languages:

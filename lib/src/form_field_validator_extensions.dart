@@ -12,7 +12,7 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
     return FormBuilderValidators.or([this, other]);
   }
 
-  /// Combines the current validator with another validator using logical XOR.
+  /// Negates the current validator.
   FormFieldValidator<T> not() {
     return FormBuilderValidators.notEqual(this);
   }
