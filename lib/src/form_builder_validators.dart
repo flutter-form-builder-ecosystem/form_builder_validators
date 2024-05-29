@@ -462,17 +462,24 @@ class FormBuilderValidators {
   /// * [errorText] is the error message to display when the CVC is invalid
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
-  }) =>
-      compose<String>(
-        [
-          minLength(3,
-              errorText: errorText ??
-                  FormBuilderLocalizations.current.creditCardCVCErrorText),
-          maxLength(4,
-              errorText: errorText ??
-                  FormBuilderLocalizations.current.creditCardCVCErrorText),
-        ],
-      );
+  }) {
+    return (valueCandidate) {
+      if (valueCandidate == null || valueCandidate.isEmpty) {
+        return errorText ??
+            FormBuilderLocalizations.current.creditCardCVCErrorText;
+      } else {
+        final cvc = int.tryParse(valueCandidate);
+        if (cvc == null ||
+            valueCandidate.length < 3 ||
+            valueCandidate.length > 4) {
+          return errorText ??
+              FormBuilderLocalizations.current.creditCardCVCErrorText;
+        } else {
+          return null;
+        }
+      }
+    };
+  }
 
   /// [FormFieldValidator] that requires the field's value to be a valid IP address.
   /// * [version] is a `String` or an `int`.
@@ -501,10 +508,11 @@ class FormBuilderValidators {
   static FormFieldValidator<String> time({
     String? errorText,
   }) =>
-      (valueCandidate) =>
-          valueCandidate?.isNotEmpty == true && !isDateTime(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.timeErrorText
-              : null;
+      (valueCandidate) => valueCandidate == null ||
+              valueCandidate.isEmpty ||
+              !isTime(valueCandidate)
+          ? errorText ?? FormBuilderLocalizations.current.timeErrorText
+          : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date.
   /// * [errorText] is the error message to display when the date is invalid

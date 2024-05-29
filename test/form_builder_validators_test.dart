@@ -592,6 +592,30 @@ void main() {
   );
 
   testWidgets(
+    'FormBuilderValidators.notMatch',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.notMatch(r'^A[0-9]$');
+      // Pass
+      expect(validator('B1'), isNull);
+      expect(validator('C2'), isNull);
+      // Fail
+      expect(validator('A1'), isNotNull);
+      expect(validator('A9'), isNotNull);
+      expect(validator(null), isNull);
+      expect(validator(''), isNull);
+
+      final validatorWithErrorMessage = FormBuilderValidators.notMatch(
+        r'^A[0-9]$',
+        errorText: customErrorMessage,
+      );
+      // Pass
+      expect(validatorWithErrorMessage('B1'), isNull);
+      // Fail
+      expect(validatorWithErrorMessage('A1'), customErrorMessage);
+    }),
+  );
+
+  testWidgets(
     'FormBuilderValidators.url',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.url();
@@ -683,7 +707,11 @@ void main() {
       // Pass
       expect(validator('12:00'), isNull);
       expect(validator('23:59'), isNull);
+      expect(validator('12:00 AM'), isNull);
+      expect(validator('12:00 PM'), isNull);
+      expect(validator('11:59 PM'), isNull);
       // Fail
+      expect(validator('13:00 AM'), isNotNull);
       expect(validator('25:00'), isNotNull);
       expect(validator('invalid-time'), isNotNull);
       expect(validator(null), isNotNull);
@@ -833,7 +861,7 @@ void main() {
       // Pass
       expect(validatorWithErrorMessage('123'), isNull);
       // Fail
-      expect(validator('12'), customErrorMessage);
+      expect(validatorWithErrorMessage('12'), customErrorMessage);
     }),
   );
 
