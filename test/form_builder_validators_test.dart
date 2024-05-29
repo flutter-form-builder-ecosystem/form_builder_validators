@@ -1097,7 +1097,7 @@ void main() {
       // Pass
       expect(validator('test'), isNull);
       // Fail
-      expect(validator(null), isNull); // Log message will be displayed
+      expect(validator(null), isNull);
       expect(validator(''), isNull);
     }),
   );
