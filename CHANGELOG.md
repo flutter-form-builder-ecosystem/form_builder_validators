@@ -43,6 +43,7 @@
 * Add unique
 * Add ISBN
 * Add singleLine
+* Add defaultValue
 
 ## 10.0.1
 * Fix regression (include l10n files)

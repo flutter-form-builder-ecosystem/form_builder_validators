@@ -55,6 +55,7 @@ Available built-in helper validators:
 - `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
 - `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
 - `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
+- `FormBuilderValidators.defaultValue()` - runs the validator using the default value when the provided value is null.
 
 Available built-in type validators include:
 

@@ -119,6 +119,14 @@ class FormBuilderValidators {
     };
   }
 
+  /// [FormFieldValidator] that transforms the value to a default if it's null or empty before running the validator.
+  /// * [defaultValue] is the default value to transform to.
+  /// * [validator] is the validator to apply.
+  static FormFieldValidator<T> defaultValue<T>(
+    T defaultValue,
+    FormFieldValidator<T> validator,
+  ) => (valueCandidate) => validator(valueCandidate ?? defaultValue);
+
   /// [FormFieldValidator] that requires the field have a non-empty value.
   /// * [errorText] is the error message to display when the value is empty
   static FormFieldValidator<T> required<T>({
