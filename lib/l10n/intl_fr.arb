@@ -49,6 +49,6 @@
   "endsWithErrorText": "La valeur doit se terminer par {value}.",
   "containsErrorText": "La valeur doit contenir {value}.",
   "betweenErrorText": "La valeur doit être comprise entre {min} et {max}.",
-  "valueInListErrorText": "La valeur doit être dans la liste des valeurs autorisées.",
+  "containsElementErrorText": "La valeur doit être dans la liste des valeurs autorisées.",
   "ibanErrorText": "Ce champ nécessite un IBAN valide."
 }

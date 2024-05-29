@@ -103,6 +103,22 @@ class FormBuilderValidators {
     };
   }
 
+  /// [FormFieldValidator] that checks if the value is unique in a list of values.
+  /// * [values] is the list of values to check against.
+  /// * [errorText] is the error message to display when the value is not unique.
+  static FormFieldValidator<T> unique<T>(
+    List<T> values, {
+    String? errorText,
+  }) {
+    return (valueCandidate) {
+      if (valueCandidate == null ||
+          values.where((element) => element == valueCandidate).length != 1) {
+        return errorText ?? FormBuilderLocalizations.current.uniqueErrorText;
+      }
+      return null;
+    };
+  }
+
   /// [FormFieldValidator] that requires the field have a non-empty value.
   /// * [errorText] is the error message to display when the value is empty
   static FormFieldValidator<T> required<T>({
@@ -712,6 +728,65 @@ class FormBuilderValidators {
           : errorText ??
               FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
 
+  /// [FormFieldValidator] that requires the field's value to be a valid username.
+  /// * [minLength] is the minimum length of the username. By default `3`
+  /// * [maxLength] is the maximum length of the username. By default `32`
+  /// * [errorText] is the error message to display when the username is invalid
+  /// * [allowNumbers] is a `bool` that sets if digits are allowed. By default `true`
+  /// * [allowUnderscore] is a `bool` that sets if underscores are allowed. By default `false`
+  /// * [allowDots] is a `bool` that sets if dots are allowed. By default `false`
+  /// * [allowDash] is a `bool` that sets if dashes are allowed. By default `false`
+  /// * [allowSpace] is a `bool` that sets if spaces are allowed. By default `false`
+  /// * [allowSpecialChar] is a `bool` that sets if special characters are allowed. By default `false`
+  static FormFieldValidator<String> username({
+    int minLength = 3,
+    int maxLength = 32,
+    String? errorText,
+    bool allowNumbers = true,
+    bool allowUnderscore = false,
+    bool allowDots = false,
+    bool allowDash = false,
+    bool allowSpace = false,
+    bool allowSpecialChar = false,
+  }) {
+    return FormBuilderValidators.compose<String>(
+      [
+        FormBuilderValidators.minLength(minLength, errorText: errorText),
+        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
+        if (!allowNumbers)
+          FormBuilderValidators.notMatch(
+            r'[0-9]',
+            errorText: errorText,
+          ),
+        if (!allowUnderscore)
+          FormBuilderValidators.notMatch(
+            r'_',
+            errorText: errorText,
+          ),
+        if (!allowDots)
+          FormBuilderValidators.notMatch(
+            r'\.',
+            errorText: errorText,
+          ),
+        if (!allowDash)
+          FormBuilderValidators.notMatch(
+            r'-',
+            errorText: errorText,
+          ),
+        if (!allowSpace)
+          FormBuilderValidators.notMatch(
+            r'\s',
+            errorText: errorText,
+          ),
+        if (!allowSpecialChar)
+          FormBuilderValidators.notMatch(
+            r'[!@#\$%^&*(),.?":{}|<>]',
+            errorText: errorText,
+          ),
+      ],
+    );
+  }
+
   /// [FormFieldValidator] that requires the field's value to be a valid password.
   /// * [minLength] is the minimum length of the password. By default `8`
   /// * [maxLength] is the maximum length of the password. By default `32`
@@ -937,12 +1012,12 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to in a list of values.
   /// * [values] is the list of values that the field's value should be in.
   /// * [errorText] is the error message to display when the value is not in the list
-  static FormFieldValidator<T> inList<T>(
+  static FormFieldValidator<T> containsElement<T>(
     List<T> values, {
     String? errorText,
   }) =>
       (valueCandidate) => !values.contains(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.valueInListErrorText
+          ? errorText ?? FormBuilderLocalizations.current.containsElementErrorText
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
@@ -951,7 +1026,28 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isValidIban(valueCandidate!)
+          valueCandidate?.isEmpty != false || !isIBAN(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.ibanErrorText
               : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid BIC.
+  /// * [errorText] is the error message to display when the BIC is invalid
+  static FormFieldValidator<String> bic({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          valueCandidate?.isEmpty != false || !isBIC(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.bicErrorText
+              : null;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
+  /// * [errorText] is the error message to display when the ISBN is invalid
+  static FormFieldValidator<String> isbn({
+    String? errorText,
+  }) =>
+      (valueCandidate) =>
+          valueCandidate?.isEmpty != false || !isISBN(valueCandidate!)
+              ? errorText ?? FormBuilderLocalizations.current.isbnErrorText
+              : null;
+
 }

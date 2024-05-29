@@ -49,6 +49,6 @@
   "endsWithErrorText": "Giá trị phải kết thúc bằng {value}.",
   "containsErrorText": "Giá trị phải chứa {value}.",
   "betweenErrorText": "Giá trị phải nằm trong khoảng từ {min} đến {max}.",
-  "valueInListErrorText": "Giá trị phải nằm trong danh sách các giá trị hợp lệ.",
+  "containsElementErrorText": "Giá trị phải nằm trong danh sách các giá trị hợp lệ.",
   "ibanErrorText": "Yêu cầu nhập đúng số IBAN."
 }

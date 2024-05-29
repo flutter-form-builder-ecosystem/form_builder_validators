@@ -49,6 +49,6 @@
   "endsWithErrorText": "値は{value}で終わる必要があります。",
   "containsErrorText": "値は{value}を含む必要があります。",
   "betweenErrorText": "値は{min}から{max}の間である必要があります。",
-  "valueInListErrorText": "値は許可された値のリストに含まれている必要があります。",
+  "containsElementErrorText": "値は許可された値のリストに含まれている必要があります。",
   "ibanErrorText": "有効なIBANを入力してください。"
 }

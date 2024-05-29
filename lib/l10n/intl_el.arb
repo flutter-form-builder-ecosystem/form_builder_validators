@@ -49,6 +49,6 @@
   "endsWithErrorText": "Η τιμή πρέπει να τελειώνει με {value}.",
   "containsErrorText": "Η τιμή πρέπει να περιέχει {value}.",
   "betweenErrorText": "Η τιμή πρέπει να είναι μεταξύ {min} και {max}.",
-  "valueInListErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
+  "containsElementErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
   "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN."
 }

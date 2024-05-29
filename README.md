@@ -86,7 +86,8 @@ Available built-in type validators include:
 - `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
 - `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
 - `FormBuilderValidators.between()` - requires the field's to be between two numbers.
-- `FormBuilderValidators.inList()` - requires the field's to be in the provided list.
+- `FormBuilderValidators.containsElement()` - requires the field's to be in the provided list.
+- `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
 
 Available built-in use-case validators include:
 
@@ -109,6 +110,8 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
 - `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
 - `FormBuilderValidators.iban()` - requires the field's to be an valid IBAN.
+- `FormBuilderValidators.bic()` - requires the field's to be an valid BIC.
+- `FormBuilderValidators.isbn()` - requires the field's to be an valid ISBN.
 
 ### Supported languages
 

@@ -49,6 +49,6 @@
   "endsWithErrorText": "ຄ່າຕ້ອງສິ້ນສຸດດ້ວຍ {value}.",
   "containsErrorText": "ຄ່າຕ້ອງປະກອບດ້ວຍ {value}.",
   "betweenErrorText": "ຄ່າຕ້ອງຢູ່ລະຫວ່າງ {min} ແລະ {max}.",
-  "valueInListErrorText": "ຄ່າຕ້ອງຢູ່ໃນລາຍຊື່ຂອງມູນຄ່າທີ່ອະນຸຍາດ.",
+  "containsElementErrorText": "ຄ່າຕ້ອງຢູ່ໃນລາຍຊື່ຂອງມູນຄ່າທີ່ອະນຸຍາດ.",
   "ibanErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນລະຫັດ IBAN ທີ່ຖືກຕ້ອງ."
 }

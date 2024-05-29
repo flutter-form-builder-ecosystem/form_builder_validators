@@ -454,7 +454,7 @@ void main() {
   );
 
   testWidgets(
-    'FormBuilderValidators.IP',
+    'FormBuilderValidators.ip',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.ip();
       // Pass
@@ -465,6 +465,10 @@ void main() {
       expect(validator('256.168.0.1'), isNotNull);
       expect(validator('256.168.0.'), isNotNull);
       expect(validator('255.168.0.'), isNotNull);
+
+      final validatorWrongVersion = FormBuilderValidators.ip(version: 5);
+      // Fail
+      expect(validatorWrongVersion('192.168.0.5'), isNotNull);
     }),
   );
 
@@ -751,6 +755,21 @@ void main() {
   );
 
   testWidgets(
+    'FormBuilderValidators.username',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.username();
+      // Pass
+      expect(validator('hello'), isNull);
+      expect(validator('hello12345'), isNull);
+      // Fail
+      expect(validator('hello@'), isNotNull);
+      expect(validator('he'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+    }),
+  );
+
+  testWidgets(
     'FormBuilderValidators.password',
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.password();
@@ -1011,9 +1030,9 @@ void main() {
   );
 
   testWidgets(
-    'FormBuilderValidators.inList',
+    'FormBuilderValidators.containsElement',
     (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.inList([1, 2, 3]);
+      final validator = FormBuilderValidators.containsElement([1, 2, 3]);
       // Pass
       expect(validator(2), isNull);
       // Fail
@@ -1120,6 +1139,57 @@ void main() {
       expect(validator('INVALIDIBAN'), isNotNull); // Invalid IBAN
       expect(validator('GB82WEST1234569876543212345'), isNotNull); // Too long
       expect(validator('GB82WEST1234'), isNotNull); // Too short
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.unique',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.unique([
+        'test1',
+        'test2',
+        'test3',
+        'test3',
+      ]);
+      // Pass
+      expect(validator('test1'), isNull);
+      // Fail
+      expect(validator('test3'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.bic',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.bic();
+      // Pass
+      expect(validator('DEUTDEFF'), isNull); // A valid German BIC
+      expect(
+          validator('DEUTDEFF500'), isNull); // A valid German BIC with branch
+      // Fail
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull); // Empty string
+      expect(validator('INVALIDBIC'), isNotNull); // Invalid BIC
+      expect(validator('DEUTDEFF5000'), isNotNull); // Too long
+      expect(validator('DEUTDEFF5'), isNotNull); // Too short
+    }),
+  );
+
+  testWidgets(
+    'FormBuilderValidators.isbn',
+    (WidgetTester tester) => testValidations(tester, (context) {
+      final validator = FormBuilderValidators.isbn();
+      // Pass
+      expect(validator('978-3-16-148410-0'), isNull); // A valid ISBN-13
+      expect(validator('0-306-40615-2'), isNull); // A valid ISBN-10
+      // Fail
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull); // Empty string
+      expect(validator('INVALIDISBN'), isNotNull); // Invalid ISBN
+      expect(validator('978-3-16-148410-00'), isNotNull); // Too long
+      expect(validator('3-16-148410-00'), isNotNull); // Too short
     }),
   );
 }

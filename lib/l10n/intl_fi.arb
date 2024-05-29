@@ -49,7 +49,7 @@
    "endsWithErrorText": "Arvon on loputtava merkkiin {value}.",
    "containsErrorText": "Arvon on sisällettävä {value}.",
    "betweenErrorText": "Arvon on oltava välillä {min} ja {max}.",
-   "valueInListErrorText": "Arvon on oltava sallittujen arvojen luettelossa.",
+   "containsElementErrorText": "Arvon on oltava sallittujen arvojen luettelossa.",
    "ibanErrorText": "Vaaditaan oikean muotoinen IBAN-tilinumero."
  }
  

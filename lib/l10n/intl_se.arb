@@ -49,6 +49,6 @@
   "endsWithErrorText": "Värdet måste sluta med {value}.",
   "containsErrorText": "Värdet måste innehålla {value}.",
   "betweenErrorText": "Värdet måste vara mellan {min} och {max}.",
-  "valueInListErrorText": "Värdet måste vara med i listan över tillåtna värden.",
+  "containsElementErrorText": "Värdet måste vara med i listan över tillåtna värden.",
   "ibanErrorText": "Detta fält kräver ett giltigt IBAN-nummer."
 }

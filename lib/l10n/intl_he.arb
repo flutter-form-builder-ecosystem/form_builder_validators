@@ -49,6 +49,6 @@
   "endsWithErrorText": "הערך חייב להסתיים עם {value}.",
   "containsErrorText": "הערך חייב להכיל את {value}.",
   "betweenErrorText": "הערך חייב להיות בין {min} לבין {max}.",
-  "valueInListErrorText": "הערך חייב להיות ברשימת הערכים המותרים.",
+  "containsElementErrorText": "הערך חייב להיות ברשימת הערכים המותרים.",
   "ibanErrorText": "שדה זה דורש מספר IBAN תקין."
 }

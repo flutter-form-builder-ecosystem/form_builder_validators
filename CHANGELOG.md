@@ -33,13 +33,15 @@
 * Add endWith
 * Add contains
 * Add between
-* Add inList
+* Add containsElement
 * Add transform
-* Add iban
+* Add IBAN
+* Add BIC
 * Add skipWhen
 * Add log
 * Add aggregate
-
+* Add unique
+* Add ISBN
 
 ## 10.0.1
 * Fix regression (include l10n files)

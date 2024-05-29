@@ -49,6 +49,6 @@
   "endsWithErrorText": "Vlera duhet të përfundojë me {value}.",
   "containsErrorText": "Vlera duhet të përmbajë {value}.",
   "betweenErrorText": "Vlera duhet të jetë ndërmjet {min} dhe {max}.",
-  "valueInListErrorText": "Vlera duhet të jetë në listën e vlefshme.",
+  "containsElementErrorText": "Vlera duhet të jetë në listën e vlefshme.",
   "ibanErrorText": "Kjo fushë kërkon një IBAN të vlefshëm."
 }

@@ -49,6 +49,6 @@
   "endsWithErrorText": "Утга нь {value}-ээр төгсөх ёстой.",
   "containsErrorText": "Утга нь {value}-г агуулсан байх ёстой.",
   "betweenErrorText": "Утга нь {min} ба {max} хооронд байх ёстой.",
-  "valueInListErrorText": "Утга нь зөвшөөрөгдсөн утгуудын жагсаалтад байх ёстой.",
+  "containsElementErrorText": "Утга нь зөвшөөрөгдсөн утгуудын жагсаалтад байх ёстой.",
   "ibanErrorText": "IBAN алдаатай байна."
 }

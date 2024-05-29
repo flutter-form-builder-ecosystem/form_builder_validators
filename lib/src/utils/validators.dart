@@ -18,11 +18,11 @@ RegExp _phoneNumber = RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
 
 RegExp _creditCardExpirationDate = RegExp(r'^[0-1][0-9]/\d{2}$');
 
-RegExp _hexRegExp = RegExp(r'^#[0-9a-fA-F]{6}$');
+RegExp _hex = RegExp(r'^#[0-9a-fA-F]{6}$');
 
-RegExp _rgbRegExp = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
+RegExp _rgb = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
 
-RegExp _hslRegExp = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
+RegExp _hsl = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
 
 RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
 
@@ -32,6 +32,8 @@ RegExp _uuid = RegExp(
 RegExp _filePath = RegExp(r'^[a-zA-Z0-9_\-\/]+$');
 
 RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
+
+RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 
 int _maxUrlLength = 2083;
 
@@ -308,9 +310,9 @@ bool isNotExpiredCreditCardDate(String str) {
 
 bool isColorCode(String value,
     {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
-  if (formats.contains('hex') && _hexRegExp.hasMatch(value)) {
+  if (formats.contains('hex') && _hex.hasMatch(value)) {
     return true;
-  } else if (formats.contains('rgb') && _rgbRegExp.hasMatch(value)) {
+  } else if (formats.contains('rgb') && _rgb.hasMatch(value)) {
     final parts = value.substring(4, value.length - 1).split(',');
     for (final part in parts) {
       final int colorValue = int.tryParse(part.trim()) ?? -1;
@@ -319,7 +321,7 @@ bool isColorCode(String value,
       }
     }
     return true;
-  } else if (formats.contains('hsl') && _hslRegExp.hasMatch(value)) {
+  } else if (formats.contains('hsl') && _hsl.hasMatch(value)) {
     final parts = value.substring(4, value.length - 1).split(',');
     for (var i = 0; i < parts.length; i++) {
       final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
@@ -428,7 +430,7 @@ bool isMACAddress(String value) {
   return true;
 }
 
-bool isValidIban(String iban) {
+bool isIBAN(String iban) {
   iban = iban.replaceAll(' ', '').toUpperCase();
 
   if (iban.length < 15) {
@@ -450,4 +452,47 @@ bool isValidIban(String iban) {
   }
 
   return remainder == 1;
+}
+
+bool isBIC(String bic) {
+  bic = bic.replaceAll(' ', '').toUpperCase();
+
+  if (bic.length != 8 && bic.length != 11) {
+    return false;
+  }
+
+  return _bic.hasMatch(bic);
+}
+
+bool isISBN(String isbn) {
+  isbn = isbn.replaceAll('-', '').replaceAll(' ', ''); // Remove hyphens and spaces
+  
+  if (isbn.length == 10) {
+    if (!RegExp(r'^\d{9}[\dX]$').hasMatch(isbn)) return false;
+
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+      sum += (int.parse(isbn[i]) * (10 - i));
+    }
+
+    int checkDigit = (isbn[9] == 'X') ? 10 : int.parse(isbn[9]);
+    sum += checkDigit;
+
+    return sum % 11 == 0;
+  } else if (isbn.length == 13) {
+    if (!RegExp(r'^\d{13}$').hasMatch(isbn)) return false;
+
+    int sum = 0;
+    for (int i = 0; i < 12; i++) {
+      int digit = int.parse(isbn[i]);
+      sum += (i % 2 == 0) ? digit : digit * 3;
+    }
+
+    int checkDigit = int.parse(isbn[12]);
+    int calculatedCheckDigit = (10 - (sum % 10)) % 10;
+
+    return checkDigit == calculatedCheckDigit;
+  } else {
+    return false;
+  }
 }
