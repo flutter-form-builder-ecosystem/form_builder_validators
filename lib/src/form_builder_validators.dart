@@ -504,9 +504,34 @@ class FormBuilderValidators {
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid time string.
-  /// * [errorText] is the error message to display when the time is invalid
-  /// Valid time formats are `HH:mm:ss`, `HH:mm` and `HH:mm:ss.SSS` (24-hour clock)
-  /// and `h:mm:ss a`, `h:mm a` and `h:mm:ss.SSS a` (12-hour clock)
+  ///
+  /// The validator supports various time formats, both 24-hour and 12-hour clocks.
+  ///
+  /// ## Valid 24-hour time formats:
+  /// - `HH:mm`: Hours and minutes, e.g., `23:59`
+  /// - `HH:mm:ss`: Hours, minutes, and seconds, e.g., `23:59:59`
+  /// - `HH:mm:ss.SSS`: Hours, minutes, seconds, and milliseconds, e.g., `23:59:59.999`
+  ///
+  /// ## Valid 12-hour time formats:
+  /// - `h:mm a`: Hours and minutes with AM/PM, e.g., `11:59 PM`
+  /// - `h:mm:ss a`: Hours, minutes, and seconds with AM/PM, e.g., `11:59:59 PM`
+  /// - `h:mm:ss.SSS a`: Hours, minutes, seconds, and milliseconds with AM/PM, e.g., `11:59:59.999 PM`
+  ///
+  /// ## Parameters:
+  /// - [errorText] (optional): The error message to display when the time is invalid.
+  ///
+  /// ## Returns:
+  /// A validator that checks if the field's value is a valid time string. If the value is null, empty, or not a valid time, it returns the [errorText] or a default error message.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// FormBuilderTextField(
+  ///   name: 'time',
+  ///   validator: FormBuilderValidators.time(errorText: 'Invalid time format'),
+  /// )
+  /// ```
+  ///
+  /// If the [errorText] parameter is not provided, a default error message is used.
   static FormFieldValidator<String> time({
     String? errorText,
   }) =>
