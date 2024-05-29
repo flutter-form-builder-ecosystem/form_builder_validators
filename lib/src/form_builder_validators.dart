@@ -1017,7 +1017,8 @@ class FormBuilderValidators {
     String? errorText,
   }) =>
       (valueCandidate) => !values.contains(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.containsElementErrorText
+          ? errorText ??
+              FormBuilderLocalizations.current.containsElementErrorText
           : null;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
@@ -1049,5 +1050,4 @@ class FormBuilderValidators {
           valueCandidate?.isEmpty != false || !isISBN(valueCandidate!)
               ? errorText ?? FormBuilderLocalizations.current.isbnErrorText
               : null;
-
 }

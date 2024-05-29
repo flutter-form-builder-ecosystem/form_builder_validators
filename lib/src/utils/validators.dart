@@ -308,6 +308,8 @@ bool isNotExpiredCreditCardDate(String str) {
   return true;
 }
 
+/// check if the string is a color
+/// * [formats] is a list of color formats to check
 bool isColorCode(String value,
     {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
   if (formats.contains('hex') && _hex.hasMatch(value)) {
@@ -359,10 +361,12 @@ bool isAlphabetical(String value) {
   return _alphabetical.hasMatch(value);
 }
 
+/// check if the string is a valid UUID
 bool isUUID(String value) {
   return _uuid.hasMatch(value);
 }
 
+/// check if the string is valid JSON
 bool isJSON(String value) {
   try {
     jsonDecode(value);
@@ -372,6 +376,7 @@ bool isJSON(String value) {
   }
 }
 
+/// check if the string is a valid latitude
 bool isLatitude(String value) {
   value = value.replaceAll(',', '.');
 
@@ -382,6 +387,7 @@ bool isLatitude(String value) {
   return latitude >= -90 && latitude <= 90;
 }
 
+/// check if the string is a valid longitude
 bool isLongitude(String value) {
   value = value.replaceAll(',', '.');
 
@@ -392,6 +398,7 @@ bool isLongitude(String value) {
   return longitude >= -180 && longitude <= 180;
 }
 
+/// check if the string is a valid base64 string
 bool isBase64(String value) {
   try {
     base64Decode(value);
@@ -401,6 +408,7 @@ bool isBase64(String value) {
   }
 }
 
+/// check if the string is a valid file path
 bool isFilePath(String value) {
   return _filePath.hasMatch(value);
 }
@@ -415,6 +423,7 @@ bool isEvenNumber(String value) {
   return number % 2 == 0;
 }
 
+/// check if the string is a valid MAC address
 bool isMACAddress(String value) {
   final splitChar = value.contains(':') ? ':' : '-';
   final parts = value.split(splitChar);
@@ -430,6 +439,7 @@ bool isMACAddress(String value) {
   return true;
 }
 
+/// check if the string is a valid IBAN
 bool isIBAN(String iban) {
   iban = iban.replaceAll(' ', '').toUpperCase();
 
@@ -454,6 +464,7 @@ bool isIBAN(String iban) {
   return remainder == 1;
 }
 
+/// check if the string is a valid BIC
 bool isBIC(String bic) {
   bic = bic.replaceAll(' ', '').toUpperCase();
 
@@ -464,9 +475,10 @@ bool isBIC(String bic) {
   return _bic.hasMatch(bic);
 }
 
+/// check if the string is a valid ISBN
 bool isISBN(String isbn) {
-  isbn = isbn.replaceAll('-', '').replaceAll(' ', ''); // Remove hyphens and spaces
-  
+  isbn = isbn.replaceAll('-', '').replaceAll(' ', '');
+
   if (isbn.length == 10) {
     if (!RegExp(r'^\d{9}[\dX]$').hasMatch(isbn)) return false;
 
