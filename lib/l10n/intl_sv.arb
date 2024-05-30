@@ -1,5 +1,5 @@
 {
-  "@@locale": "se",
+  "@@locale": "sv",
   "creditCardErrorText": "Detta fält kräver ett giltigt kreditkortsnummer.",
   "dateStringErrorText": "Detta fält kräver ett giltigt datum.",
   "emailErrorText": "Detta fält kräver en giltig e-postadress.",
