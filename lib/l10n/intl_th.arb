@@ -49,6 +49,11 @@
   "endsWithErrorText": "ข้อมูลนี้ต้องลงท้ายด้วย {value}",
   "containsErrorText": "ข้อมูลนี้ต้องประกอบด้วย {value}",
   "betweenErrorText": "ข้อมูลนี้ต้องอยู่ระหว่าง {min} และ {max}",
-  "valueInListErrorText": "ข้อมูลนี้ต้องอยู่ในรายการค่าที่อนุญาต",
-  "ibanErrorText": "ข้อมูลนี้ต้องเป็น IBAN ที่ถูกต้อง"
+  "containsElementErrorText": "ข้อมูลนี้ต้องอยู่ในรายการค่าที่อนุญาต",
+  "ibanErrorText": "ข้อมูลนี้ต้องเป็น IBAN ที่ถูกต้อง",
+  "uniqueErrorText": "ข้อมูลนี้ต้องเป็นค่าที่ไม่ซ้ำกัน",
+  "bicErrorText": "ข้อมูลนี้ต้องเป็นรหัส BIC ที่ถูกต้อง",
+  "isbnErrorText": "ข้อมูลนี้ต้องเป็น ISBN ที่ถูกต้อง",
+  "singleLineErrorText": "ข้อมูลนี้ต้องเป็นข้อความในบรรทัดเดียว",
+  "timeErrorText": "ข้อมูลนี้ต้องเป็นเวลาที่ถูกต้อง"
 }

@@ -56,13 +56,16 @@ Available built-in helper validators:
 - `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
 - `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
 - `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
+- `FormBuilderValidators.defaultValue()` - runs the validator using the default value when the provided value is null.
 
 Available built-in type validators include:
 
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateString()` - requires the field's value to be a valid date string.
+- `FormBuilderValidators.dateTime()` - requires the field's value to be a valid date time.
 - `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
+- `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
 - `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
 - `FormBuilderValidators.notMatch()` - requires the field's value to not match the provided regex pattern.
 - `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
@@ -76,18 +79,19 @@ Available built-in type validators include:
 - `FormBuilderValidators.required()` - requires the field to have a non-empty value.
 - `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- `FormBuilderValidators.mustBeTrue()` - requires the field's to be true.
-- `FormBuilderValidators.mustBeFalse()` - requires the field's to be false.
+- `FormBuilderValidators.isTrue()` - requires the field's to be true.
+- `FormBuilderValidators.isFalse()` - requires the field's to be false.
 - `FormBuilderValidators.hasSpecialChars()` - requires the field's to contain a specified number of special characters.
 - `FormBuilderValidators.hasUppercaseChars()` - requires the field's to contain a specified number of uppercase characters.
 - `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.
 - `FormBuilderValidators.hasNumericChars()` - requires the field's to contain a specified number of numeric characters.
-- `FormBuilderValidators.conditional()` - requires the field's to validate with another validator conditionally.
 - `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
 - `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
 - `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
 - `FormBuilderValidators.between()` - requires the field's to be between two numbers.
-- `FormBuilderValidators.inList()` - requires the field's to be in the provided list.
+- `FormBuilderValidators.containsElement()` - requires the field's to be in the provided list.
+- `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
+- `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
 Available built-in use-case validators include:
 
@@ -110,6 +114,20 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
 - `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
 - `FormBuilderValidators.iban()` - requires the field's to be an valid IBAN.
+- `FormBuilderValidators.bic()` - requires the field's to be an valid BIC.
+- `FormBuilderValidators.isbn()` - requires the field's to be an valid ISBN.
+
+Available extension methods used for chaining validators:
+
+- `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
+- `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
+- `FormBuilderValidator.not()` - Negates the current validator.
+- `FormBuilderValidator.when()` - Adds a condition to apply the validator only if the condition is met.
+- `FormBuilderValidator.unless()` - Adds a condition to apply the validator only if the condition is not met.
+- `FormBuilderValidator.transform()` - Transforms the value before applying the validator.
+- `FormBuilderValidator.skipWhen()` - Skips the validator if the condition is met.
+- `FormBuilderValidator.log()` - Logs the value during the validation process.
+- `FormBuilderValidator.withMessage()` - Overrides the error message of the current validator.
 
 ### Supported languages
 

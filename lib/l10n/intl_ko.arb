@@ -49,6 +49,11 @@
   "endsWithErrorText": "값은 {value}로 끝나야 합니다.",
   "containsErrorText": "값은 {value}를 포함해야 합니다.",
   "betweenErrorText": "값은 {min}와 {max} 사이여야 합니다.",
-  "valueInListErrorText": "값은 허용된 값 목록에 있어야 합니다.",
-  "ibanErrorText": "유효한 IBAN을 입력해 주세요."
+  "containsElementErrorText": "값은 허용된 값 목록에 있어야 합니다.",
+  "ibanErrorText": "유효한 IBAN을 입력해 주세요.",
+  "uniqueErrorText": "고유해야 합니다.",
+  "bicErrorText": "유효한 BIC를 입력해 주세요.",
+  "isbnErrorText": "유효한 ISBN을 입력해 주세요.",
+  "singleLineErrorText": "한 줄로 입력해 주세요.",
+  "timeErrorText": "유효한 시간을 입력해 주세요."
 }

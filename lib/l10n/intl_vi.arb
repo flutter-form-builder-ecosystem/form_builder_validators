@@ -49,6 +49,11 @@
   "endsWithErrorText": "Giá trị phải kết thúc bằng {value}.",
   "containsErrorText": "Giá trị phải chứa {value}.",
   "betweenErrorText": "Giá trị phải nằm trong khoảng từ {min} đến {max}.",
-  "valueInListErrorText": "Giá trị phải nằm trong danh sách các giá trị hợp lệ.",
-  "ibanErrorText": "Yêu cầu nhập đúng số IBAN."
+  "containsElementErrorText": "Giá trị phải nằm trong danh sách các giá trị hợp lệ.",
+  "ibanErrorText": "Yêu cầu nhập đúng số IBAN.",
+  "uniqueErrorText": "Yêu cầu giá trị duy nhất.",
+  "bicErrorText": "Yêu cầu nhập đúng mã BIC.",
+  "isbnErrorText": "Yêu cầu nhập đúng số ISBN.",
+  "singleLineErrorText": "Yêu cầu nhập trên một dòng.",
+  "timeErrorText": "Yêu cầu nhập đúng định dạng thời gian."
 }

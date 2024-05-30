@@ -49,6 +49,11 @@
   "endsWithErrorText": "Η τιμή πρέπει να τελειώνει με {value}.",
   "containsErrorText": "Η τιμή πρέπει να περιέχει {value}.",
   "betweenErrorText": "Η τιμή πρέπει να είναι μεταξύ {min} και {max}.",
-  "valueInListErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
-  "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN."
+  "containsElementErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
+  "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN.",
+  "uniqueErrorText": "Η τιμή πρέπει να είναι μοναδική.",
+  "bicErrorText": "Η τιμή πρέπει να είναι έγκυρος BIC.",
+  "isbnErrorText": "Η τιμή πρέπει να είναι έγκυρο ISBN.",
+  "singleLineErrorText": "Η τιμή πρέπει να είναι μία γραμμή.",
+  "timeErrorText": "Η τιμή πρέπει να είναι έγκυρη ώρα."
 }

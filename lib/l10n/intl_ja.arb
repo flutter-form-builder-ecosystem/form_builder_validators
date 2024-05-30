@@ -49,6 +49,11 @@
   "endsWithErrorText": "値は{value}で終わる必要があります。",
   "containsErrorText": "値は{value}を含む必要があります。",
   "betweenErrorText": "値は{min}から{max}の間である必要があります。",
-  "valueInListErrorText": "値は許可された値のリストに含まれている必要があります。",
-  "ibanErrorText": "有効なIBANを入力してください。"
+  "containsElementErrorText": "値は許可された値のリストに含まれている必要があります。",
+  "ibanErrorText": "有効なIBANを入力してください。",
+  "uniqueErrorText": "値は一意である必要があります。",
+  "bicErrorText": "有効なBICを入力してください。",
+  "isbnErrorText": "有効なISBNを入力してください。",
+  "singleLineErrorText": "値は単一行である必要があります。",
+  "timeErrorText": "有効な時間を入力してください。"
 }

@@ -49,6 +49,11 @@
   "endsWithErrorText": "Hodnota musí končit na {value}.",
   "containsErrorText": "Hodnota musí obsahovat {value}.",
   "betweenErrorText": "Hodnota musí být mezi {min} a {max}.",
-  "valueInListErrorText": "Hodnota musí být v seznamu povolených hodnot.",
-  "ibanErrorText": "Pole vyžaduje platné IBAN."
+  "containsElementErrorText": "Hodnota musí být v seznamu povolených hodnot.",
+  "ibanErrorText": "Pole vyžaduje platné IBAN.",
+  "uniqueErrorText": "Hodnota musí být jedinečná.",
+  "bicErrorText": "Pole vyžaduje platný BIC kód.",
+  "isbnErrorText": "Pole vyžaduje platné ISBN.",
+  "singleLineErrorText": "Pole musí obsahovat pouze jednu řádku.",
+  "timeErrorText": "Pole vyžaduje platný čas."
 }

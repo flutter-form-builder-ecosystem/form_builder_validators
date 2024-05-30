@@ -49,6 +49,11 @@
   "endsWithErrorText": "Værdien skal slutte med {value}.",
   "containsErrorText": "Værdien skal indeholde {value}.",
   "betweenErrorText": "Værdien skal være mellem {min} og {max}.",
-  "valueInListErrorText": "Værdien skal være på listen over tilladte værdier.",
-  "ibanErrorText": "Dette felt kræver en gyldig IBAN."
+  "containsElementErrorText": "Værdien skal være på listen over tilladte værdier.",
+  "ibanErrorText": "Dette felt kræver en gyldig IBAN.",
+  "uniqueErrorText": "Dette felt skal være unikt.",
+  "bicErrorText": "Dette felt kræver en gyldig BIC.",
+  "isbnErrorText": "Dette felt kræver et gyldigt ISBN-nummer.",
+  "singleLineErrorText": "Dette felt skal være en enkelt linje.",
+  "timeErrorText": "Dette felt kræver en gyldig tid."
 }
