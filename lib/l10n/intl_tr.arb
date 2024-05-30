@@ -49,6 +49,11 @@
   "endsWithErrorText": "Değer {value} ile bitmelidir.",
   "containsErrorText": "Değer {value} içermelidir.",
   "betweenErrorText": "Değer {min} ile {max} arasında olmalıdır.",
-  "valueInListErrorText": "Değer izin verilen değerler listesinde olmalıdır.",
-  "ibanErrorText": "Bu alan geçerli bir IBAN gerektirir."
+  "containsElementErrorText": "Değer izin verilen değerler listesinde olmalıdır.",
+  "ibanErrorText": "Bu alan geçerli bir IBAN gerektirir.",
+  "uniqueErrorText": "Bu alanın değeri benzersiz olmalıdır.",
+  "bicErrorText": "Bu alan geçerli bir BIC gerektirir.",
+  "isbnErrorText": "Bu alan geçerli bir ISBN gerektirir.",
+  "singleLineErrorText": "Bu alan tek satır olmalıdır.",
+  "timeErrorText": "Bu alan geçerli bir saat gerektirir."
 }

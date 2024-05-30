@@ -49,6 +49,11 @@
   "endsWithErrorText": "Der Wert muss mit {value} enden.",
   "containsErrorText": "Der Wert muss {value} enthalten.",
   "betweenErrorText": "Der Wert muss zwischen {min} und {max} liegen.",
-  "valueInListErrorText": "Der Wert muss in der Liste der zulässigen Werte sein.",
-  "ibanErrorText": "Dieses Feld erfordert eine gültige IBAN."
+  "containsElementErrorText": "Der Wert muss in der Liste der zulässigen Werte sein.",
+  "ibanErrorText": "Dieses Feld erfordert eine gültige IBAN.",
+  "uniqueErrorText": "Dieses Feld erfordert einen eindeutigen Wert.",
+  "bicErrorText": "Dieses Feld erfordert eine gültige BIC.",
+  "isbnErrorText": "Dieses Feld erfordert eine gültige ISBN.",
+  "singleLineErrorText": "Dieses Feld darf keine Zeilenumbrüche enthalten.",
+  "timeErrorText": "Dieses Feld erfordert eine gültige Uhrzeit."
 }

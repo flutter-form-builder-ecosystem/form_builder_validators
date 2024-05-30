@@ -49,6 +49,11 @@
   "endsWithErrorText": "הערך חייב להסתיים עם {value}.",
   "containsErrorText": "הערך חייב להכיל את {value}.",
   "betweenErrorText": "הערך חייב להיות בין {min} לבין {max}.",
-  "valueInListErrorText": "הערך חייב להיות ברשימת הערכים המותרים.",
-  "ibanErrorText": "שדה זה דורש מספר IBAN תקין."
+  "containsElementErrorText": "הערך חייב להיות ברשימת הערכים המותרים.",
+  "ibanErrorText": "שדה זה דורש מספר IBAN תקין.",
+  "uniqueErrorText": "שדה זה דורש ערך ייחודי.",
+  "bicErrorText": "שדה זה דורש מזהה BIC תקין.",
+  "isbnErrorText": "שדה זה דורש מספר ISBN תקין.",
+  "singleLineErrorText": "שדה זה דורש שורה יחידה.",
+  "timeErrorText": "שדה זה דורש שעה תקינה."
 }

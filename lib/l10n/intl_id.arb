@@ -49,6 +49,11 @@
   "endsWithErrorText": "Nilai harus diakhiri dengan {value}.",
   "containsErrorText": "Nilai harus mengandung {value}.",
   "betweenErrorText": "Nilai harus antara {min} dan {max}.",
-  "valueInListErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan.",
-  "ibanErrorText": "IBAN tidak valid."
+  "containsElementErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan.",
+  "ibanErrorText": "IBAN tidak valid.",
+  "uniqueErrorText": "Nilai harus unik.",
+  "bicErrorText": "BIC tidak valid.",
+  "isbnErrorText": "ISBN tidak valid.",
+  "singleLineErrorText": "Nilai harus dalam satu baris.",
+  "timeErrorText": "Waktu tidak valid."
 }

@@ -49,7 +49,12 @@
    "endsWithErrorText": "Arvon on loputtava merkkiin {value}.",
    "containsErrorText": "Arvon on sisällettävä {value}.",
    "betweenErrorText": "Arvon on oltava välillä {min} ja {max}.",
-   "valueInListErrorText": "Arvon on oltava sallittujen arvojen luettelossa.",
-   "ibanErrorText": "Vaaditaan oikean muotoinen IBAN-tilinumero."
+   "containsElementErrorText": "Arvon on oltava sallittujen arvojen luettelossa.",
+   "ibanErrorText": "Vaaditaan oikean muotoinen IBAN-tilinumero.",
+  "uniqueErrorText": "Kentän arvon tulee olla uniikki.",
+  "bicErrorText": "Vaaditaan oikean muotoinen BIC-koodi.",
+  "isbnErrorText": "Vaaditaan oikean muotoinen ISBN-koodi.",
+  "singleLineErrorText": "Kentän arvon tulee olla yksirivinen.",
+  "timeErrorText": "Vaaditaan oikean muotoinen kellonaika."
  }
  
