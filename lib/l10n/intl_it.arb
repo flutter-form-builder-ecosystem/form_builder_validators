@@ -49,6 +49,11 @@
   "endsWithErrorText": "Il valore deve terminare con {value}.",
   "containsErrorText": "Il valore deve contenere {value}.",
   "betweenErrorText": "Il valore deve essere compreso tra {min} e {max}.",
-  "valueInListErrorText": "Il valore deve essere presente nell'elenco dei valori consentiti.",
-  "ibanErrorText": "Questo campo richiede un IBAN valido."
+  "containsElementErrorText": "Il valore deve essere presente nell'elenco dei valori consentiti.",
+  "ibanErrorText": "Questo campo richiede un IBAN valido.",
+  "uniqueErrorText": "Questo campo richiede un valore unico.",
+  "bicErrorText": "Questo campo richiede un codice BIC valido.",
+  "isbnErrorText": "Questo campo richiede un ISBN valido.",
+  "singleLineErrorText": "Questo campo richiede un testo su una sola riga.",
+  "timeErrorText": "Questo campo richiede un orario valido."
 }

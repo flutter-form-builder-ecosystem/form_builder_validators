@@ -49,6 +49,11 @@
   "endsWithErrorText": "Thamani lazima imalizike na {value}.",
   "containsErrorText": "Thamani lazima iwe na {value}.",
   "betweenErrorText": "Thamani lazima iwe kati ya {min} na {max}.",
-  "valueInListErrorText": "Thamani lazima iwe kwenye orodha ya thamani zinazokubalika.",
-  "ibanErrorText": "Sehemu hii inahitaji IBAN halali."
+  "containsElementErrorText": "Thamani lazima iwe kwenye orodha ya thamani zinazokubalika.",
+  "ibanErrorText": "Sehemu hii inahitaji IBAN halali.",
+  "uniqueErrorText": "Thamani lazima iwe ya kipekee.",
+  "bicErrorText": "Sehemu hii inahitaji BIC halali.",
+  "isbnErrorText": "Sehemu hii inahitaji ISBN halali.",
+  "singleLineErrorText": "Sehemu hii inahitaji mstari mmoja tu.",
+  "timeErrorText": "Sehemu hii inahitaji wakati halali."
 }

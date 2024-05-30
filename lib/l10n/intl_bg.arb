@@ -49,6 +49,11 @@
   "endsWithErrorText": "Стойността трябва да завършва с {value}.",
   "containsErrorText": "Стойността трябва да съдържа {value}.",
   "betweenErrorText": "Стойността трябва да е между {min} и {max}.",
-  "valueInListErrorText": "Стойността трябва да е в списъка с допустими стойности.",
-  "ibanErrorText": "Това поле изисква валиден IBAN."
+  "containsElementErrorText": "Стойността трябва да е в списъка с допустими стойности.",
+  "ibanErrorText": "Това поле изисква валиден IBAN.",
+  "uniqueErrorText": "Това поле изисква уникална стойност.",
+  "bicErrorText": "Това поле изисква валиден BIC код.",
+  "isbnErrorText": "Това поле изисква валиден ISBN номер.",
+  "singleLineErrorText": "Това поле трябва да съдържа само един ред.",
+  "timeErrorText": "Това поле изисква валидно време."
 }

@@ -49,6 +49,11 @@
   "endsWithErrorText": "值必须以 {value} 结尾。",
   "containsErrorText": "值必须包含 {value}。",
   "betweenErrorText": "值必须在 {min} 和 {max} 之间。",
-  "valueInListErrorText": "值必须在允许的值列表中。",
-  "ibanErrorText": "该字段必须是有效的 IBAN。"
+  "containsElementErrorText": "值必须在允许的值列表中。",
+  "ibanErrorText": "该字段必须是有效的 IBAN。",
+  "uniqueErrorText": "该字段必须是唯一的。",
+  "bicErrorText": "该字段必须是有效的 BIC。",
+  "isbnErrorText": "该字段必须是有效的 ISBN。",
+  "singleLineErrorText": "该字段必须是单行文本。",
+  "timeErrorText": "该字段必须是有效的时间。"
 }

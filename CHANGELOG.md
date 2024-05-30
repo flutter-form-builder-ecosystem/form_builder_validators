@@ -12,9 +12,11 @@
 * Add max file size
 * Add notMatch
 * Add range
+* Add dateTime
 * Add date range
-* Add must be true
-* Add must be false
+* Add time
+* Add is true
+* Add is false
 * Add special characters
 * Add numeric characters
 * Add lowercase characters
@@ -33,13 +35,17 @@
 * Add endWith
 * Add contains
 * Add between
-* Add inList
+* Add containsElement
 * Add transform
-* Add iban
+* Add IBAN
+* Add BIC
 * Add skipWhen
 * Add log
 * Add aggregate
-
+* Add unique
+* Add ISBN
+* Add singleLine
+* Add defaultValue
 
 ## 10.0.1
 * Fix regression (include l10n files)

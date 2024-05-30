@@ -49,6 +49,11 @@
   "endsWithErrorText": "Значення має закінчуватися на {value}.",
   "containsErrorText": "Значення має містити {value}.",
   "betweenErrorText": "Значення має бути між {min} і {max}.",
-  "valueInListErrorText": "Значення має бути в списку дозволених значень.",
-  "ibanErrorText": "Поле має бути дійсним IBAN номером."
+  "containsElementErrorText": "Значення має бути в списку дозволених значень.",
+  "ibanErrorText": "Поле має бути дійсним IBAN номером.",
+  "uniqueErrorText": "Поле має бути унікальним.",
+  "bicErrorText": "Поле має бути дійсним BIC кодом.",
+  "isbnErrorText": "Поле має бути дійсним ISBN номером.",
+  "singleLineErrorText": "Поле має бути однорядковим.",
+  "timeErrorText": "Поле має бути дійсним часом."
 }
