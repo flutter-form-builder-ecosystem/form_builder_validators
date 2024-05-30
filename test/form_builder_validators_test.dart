@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -33,6 +34,7 @@ Future<void> testValidations(
 }
 
 void main() {
+  final faker = Faker.instance;
   const customErrorMessage = 'Custom error message';
 
   testWidgets(
@@ -61,8 +63,8 @@ void main() {
       // Pass
       expect(validatorDouble(0), isNull);
       expect(validatorDouble(0.1), isNull);
-      expect(validatorDouble(1.234), isNull);
-      expect(validatorDouble(-4.567), isNull);
+      expect(validatorDouble(faker.datatype.float()), isNull);
+      expect(validatorDouble(-faker.datatype.float()), isNull);
       // Fail
       expect(validatorDouble(null), isNotNull);
 
@@ -141,20 +143,25 @@ void main() {
       // Pass
       expect(validator(null), isNull);
       expect(validator(''), isNull);
-      expect(validator('two'), isNull);
-      expect(validator('12345'), isNull);
+      expect(validator(faker.lorem.word(length: 1)), isNull);
+      expect(validator(faker.lorem.word(length: 2)), isNull);
+      expect(validator(faker.lorem.word(length: 3)), isNull);
+      expect(validator(faker.lorem.word(length: 4)), isNull);
+      expect(validator(faker.lorem.word(length: 5)), isNull);
       // Fail
-      expect(validator('something long'), isNotNull);
-      expect(validator('123456'), isNotNull);
+      expect(validator(faker.lorem.word(length: 6)), isNotNull);
+      expect(validator(faker.lorem.word(length: 10)), isNotNull);
+      expect(validator(faker.lorem.sentence()), isNotNull);
 
       final validatorWithErrorMessage = FormBuilderValidators.maxLength<String>(
         5,
         errorText: customErrorMessage,
       );
       // Pass
-      expect(validatorWithErrorMessage('12345'), isNull);
+      expect(validatorWithErrorMessage(faker.lorem.word(length: 5)), isNull);
       // Fail
-      expect(validatorWithErrorMessage('123456'), customErrorMessage);
+      expect(validatorWithErrorMessage(faker.lorem.word(length: 6)),
+          customErrorMessage);
     }),
   );
 
@@ -163,9 +170,9 @@ void main() {
     (WidgetTester tester) => testValidations(tester, (context) {
       final validator = FormBuilderValidators.minLength<String>(5);
       // Pass
-      expect(validator('12345'), isNull);
-      expect(validator('123456'), isNull);
-      expect(validator('something long'), isNull);
+      expect(validator(faker.lorem.word(length: 5)), isNull);
+      expect(validator(faker.lorem.word(length: 6)), isNull);
+      expect(validator(faker.lorem.sentence()), isNull);
       // Fail
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
