@@ -77,3 +77,4 @@ pubspec.lock
 
 # L10n files
 **/intl
+coverage/lcov.info
