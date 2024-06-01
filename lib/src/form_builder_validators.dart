@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import '../form_builder_validators.dart';
+import 'package:flutter/widgets.dart';
 
+import '../form_builder_validators.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
 
