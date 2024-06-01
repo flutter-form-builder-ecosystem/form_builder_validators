@@ -389,19 +389,17 @@ class FormBuilderValidators {
   }
 
   /// [FormFieldValidator] that requires the field's value to be a valid email address.
-  /// This validator checks if the field's value is a valid email address.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the email is invalid.
   ///
   /// {@macro email_template}
+  /// {@macro email_regex_template}
   static FormFieldValidator<String> email({
     String? errorText,
+    RegExp? emailRegex,
   }) =>
-      (valueCandidate) =>
-          (valueCandidate?.isNotEmpty ?? false) && !isEmail(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.emailErrorText
-              : null;
+      EmailValidator(
+        errorText: errorText ?? FormBuilderLocalizations.current.emailErrorText,
+        emailRegex: emailRegex,
+      ).call;
 
   /// [FormFieldValidator] that requires the field's value to be a valid URL.
   /// This validator checks if the field's value is a valid URL.
