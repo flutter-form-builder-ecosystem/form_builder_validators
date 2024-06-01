@@ -32,3 +32,4 @@ export 'localization/intl/messages_uk.dart';
 export 'localization/intl/messages_zh.dart';
 export 'localization/l10n.dart';
 export 'src/form_builder_validators.dart';
+export 'src/form_field_validator_extensions.dart';

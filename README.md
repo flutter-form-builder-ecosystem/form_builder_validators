@@ -49,7 +49,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
-Available built-in helper validators:
+### Helper validators
 
 - `FormBuilderValidators.compose()` - runs each validator against the value provided.
 - `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
@@ -60,7 +60,7 @@ Available built-in helper validators:
 - `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
 - `FormBuilderValidators.defaultValue()` - runs the validator using the default value when the provided value is null.
 
-Available built-in type validators include:
+### Type validators
 
 - `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
 - `FormBuilderValidators.integer()` - requires the field's value to be an integer.
@@ -95,7 +95,7 @@ Available built-in type validators include:
 - `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
 - `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
-Available built-in use-case validators include:
+### Use-case validators
 
 - `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
 - `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
@@ -119,7 +119,7 @@ Available built-in use-case validators include:
 - `FormBuilderValidators.bic()` - requires the field's to be an valid BIC.
 - `FormBuilderValidators.isbn()` - requires the field's to be an valid ISBN.
 
-Available extension methods used for chaining validators:
+## Extension methods used for chaining validators
 
 - `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
 - `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
