@@ -49,7 +49,7 @@
   "endsWithErrorText": "نرخ دەبێت کۆتایی پێببە بە {value}.",
   "containsErrorText": "نرخ دەبێت تێبکەوێت {value}.",
   "betweenErrorText": "نرخ دەبێت لە نێوان {min} و {max} بێت.",
-  "valueInListErrorText": "نرخ دەبێت لە لیست بێت.",
+  "containsElementErrorText": "نرخ دەبێت لە لیست بێت.",
   "ibanErrorText": "نرخ دەبێت IBAN-ێکی دروست بێت.",
   "uniqueErrorText": "نرخ دەبێت یەکتر بێت.",
   "bicErrorText": "نرخ دەبێت BIC-ێکی دروست بێت.",
