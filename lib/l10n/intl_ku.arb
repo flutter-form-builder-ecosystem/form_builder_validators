@@ -50,5 +50,10 @@
   "containsErrorText": "نرخ دەبێت تێبکەوێت {value}.",
   "betweenErrorText": "نرخ دەبێت لە نێوان {min} و {max} بێت.",
   "valueInListErrorText": "نرخ دەبێت لە لیست بێت.",
-  "ibanErrorText": "نرخ دەبێت IBAN-ێکی دروست بێت."
+  "ibanErrorText": "نرخ دەبێت IBAN-ێکی دروست بێت.",
+  "uniqueErrorText": "نرخ دەبێت یەکتر بێت.",
+  "bicErrorText": "نرخ دەبێت BIC-ێکی دروست بێت.",
+  "isbnErrorText": "نرخ دەبێت ISBN-ێکی دروست بێت.",
+  "singleLineErrorText": "نرخ دەبێت خطەکەی تەنها بێت.",
+  "timeErrorText": "نرخ دەبێت کاتێکی دروست بێت."
 }
