@@ -402,12 +402,12 @@ class FormBuilderValidators {
               errorText:
                   errorText ?? FormBuilderLocalizations.current.emailErrorText,
               emailRegex: emailRegex,
-            ).validate
+            ).call
           : EmailValidator(
               errorText:
                   errorText ?? FormBuilderLocalizations.current.emailErrorText,
               emailRegex: emailRegex,
-            ).call;
+            ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid URL.
   /// This validator checks if the field's value is a valid URL.
