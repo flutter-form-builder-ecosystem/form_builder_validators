@@ -395,11 +395,19 @@ class FormBuilderValidators {
   static FormFieldValidator<String> email({
     String? errorText,
     RegExp? emailRegex,
+    bool invalidNullAndEmpty = false,
   }) =>
-      EmailValidator(
-        errorText: errorText ?? FormBuilderLocalizations.current.emailErrorText,
-        emailRegex: emailRegex,
-      ).call;
+      invalidNullAndEmpty
+          ? EmailValidator(
+              errorText:
+                  errorText ?? FormBuilderLocalizations.current.emailErrorText,
+              emailRegex: emailRegex,
+            ).validate
+          : EmailValidator(
+              errorText:
+                  errorText ?? FormBuilderLocalizations.current.emailErrorText,
+              emailRegex: emailRegex,
+            ).call;
 
   /// [FormFieldValidator] that requires the field's value to be a valid URL.
   /// This validator checks if the field's value is a valid URL.
