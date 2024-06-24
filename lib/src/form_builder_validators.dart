@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:form_builder_validators/src/collection/contains_element_validator.dart';
 
 import '../form_builder_validators.dart';
+import 'collection/equal_length_validator.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
 
@@ -319,27 +321,14 @@ class FormBuilderValidators {
     int length, {
     bool allowEmpty = false,
     String? errorText,
-  }) {
-    assert(length > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate is int ||
-            valueCandidate == null,
-      );
-      int valueLength = 0;
-
-      if (valueCandidate is int) valueLength = valueCandidate.toString().length;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-
-      return valueLength != length && (!allowEmpty || valueLength > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.equalLengthErrorText(length)
-          : null;
-    };
-  }
+    bool checkNullOrEmpty = true,
+  }) =>
+      EqualLengthValidator(
+        length,
+        allowEmpty: allowEmpty,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the word count of the field's value to be greater than or equal to the provided minimum count.
   /// This validator checks if the word count of the field's value meets the minimum count requirement.
@@ -393,21 +382,15 @@ class FormBuilderValidators {
   /// {@macro email_template}
   /// {@macro email_regex_template}
   static FormFieldValidator<String> email({
-    String? errorText,
     RegExp? emailRegex,
-    bool invalidNullAndEmpty = false,
+    String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      invalidNullAndEmpty
-          ? EmailValidator(
-              errorText:
-                  errorText ?? FormBuilderLocalizations.current.emailErrorText,
-              emailRegex: emailRegex,
-            ).call
-          : EmailValidator(
-              errorText:
-                  errorText ?? FormBuilderLocalizations.current.emailErrorText,
-              emailRegex: emailRegex,
-            ).validate;
+      EmailValidator(
+        emailRegex: emailRegex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid URL.
   /// This validator checks if the field's value is a valid URL.
@@ -785,7 +768,9 @@ class FormBuilderValidators {
         if (size == null || size > maxSize) {
           return errorText ??
               FormBuilderLocalizations.current.fileSizeErrorText(
-                  formatBytes(size ?? 0), formatBytes(maxSize));
+                formatBytes(size ?? 0),
+                formatBytes(maxSize),
+              );
         }
 
         return null;
@@ -1021,16 +1006,24 @@ class FormBuilderValidators {
         FormBuilderValidators.maxLength(maxLength, errorText: errorText),
         if (uppercase > 0)
           FormBuilderValidators.hasUppercaseChars(
-              atLeast: uppercase, errorText: errorText),
+            atLeast: uppercase,
+            errorText: errorText,
+          ),
         if (lowercase > 0)
           FormBuilderValidators.hasLowercaseChars(
-              atLeast: lowercase, errorText: errorText),
+            atLeast: lowercase,
+            errorText: errorText,
+          ),
         if (number > 0)
           FormBuilderValidators.hasNumericChars(
-              atLeast: number, errorText: errorText),
+            atLeast: number,
+            errorText: errorText,
+          ),
         if (specialChar > 0)
           FormBuilderValidators.hasSpecialChars(
-              atLeast: specialChar, errorText: errorText),
+            atLeast: specialChar,
+            errorText: errorText,
+          ),
       ],
     );
   }
@@ -1282,11 +1275,13 @@ class FormBuilderValidators {
   static FormFieldValidator<T> containsElement<T>(
     List<T> values, {
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => !values.contains(valueCandidate)
-          ? errorText ??
-              FormBuilderLocalizations.current.containsElementErrorText
-          : null;
+      ContainsElementValidator<T>(
+        values,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
   /// This validator checks if the field's value is a valid IBAN.

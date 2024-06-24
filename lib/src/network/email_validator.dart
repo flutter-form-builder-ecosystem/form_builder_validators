@@ -1,3 +1,4 @@
+import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 /// {@template email_regex_template}
@@ -29,15 +30,17 @@ class EmailValidator extends BaseValidator<String> {
   final RegExp emailRegex;
 
   EmailValidator({
-    /// {@macro base_validator_error_text}
-    required super.errorText,
     RegExp? emailRegex,
+
+    /// {@macro base_validator_error_text}
+    super.errorText,
+    super.checkNullOrEmpty,
   }) : emailRegex = emailRegex ?? _emailRegex;
 
   @override
-  String? validate(String? valueCandidate) {
+  String? validateValue(String? valueCandidate) {
     return emailRegex.hasMatch(valueCandidate!.toLowerCase())
         ? null
-        : errorText;
+        : errorText ?? FormBuilderLocalizations.current.emailErrorText;
   }
 }
