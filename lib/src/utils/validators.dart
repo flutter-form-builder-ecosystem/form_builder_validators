@@ -160,46 +160,6 @@ RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 RegExp _time = RegExp(
     r'^(?:[01]?\d|2[0-3]):[0-5]?\d(?::[0-5]?\d)?$|^(?:0?[1-9]|1[0-2]):[0-5]?\d(?::[0-5]?\d)?\s?(?:[AaPp][Mm])$');
 
-/// {@template upper_case_template}
-/// This regex matches any character that is not an uppercase letter (A-Z) or Ñ.
-///
-/// - It includes special characters, digits, and lowercase letters.
-/// - It can be used to find non-uppercase characters.
-///
-/// Examples: a, 1, @
-/// {@endtemplate}
-RegExp _upperCase = RegExp(r'[^A-ZÑ]');
-
-/// {@template lower_case_template}
-/// This regex matches any character that is not a lowercase letter (a-z) or ñ.
-///
-/// - It includes special characters, digits, and uppercase letters.
-/// - It can be used to find non-lowercase characters.
-///
-/// Examples: A, 1, @
-/// {@endtemplate}
-RegExp _lowerCase = RegExp(r'[^a-zñ]');
-
-/// {@template number_template}
-/// This regex matches any character that is not a digit (0-9).
-///
-/// - It includes special characters, letters, and other non-numeric characters.
-/// - It can be used to find non-digit characters.
-///
-/// Examples: a, A, @
-/// {@endtemplate}
-RegExp _number = RegExp(r'[^0-9]');
-
-/// {@template special_char_template}
-/// This regex matches any character that is not a letter (A-Z, a-z) or a digit (0-9).
-///
-/// - It includes special characters and symbols.
-/// - It can be used to find non-alphanumeric characters.
-///
-/// Examples: @, #, %
-/// {@endtemplate}
-RegExp _specialChar = RegExp(r'[A-Za-z0-9]');
-
 int _maxUrlLength = 2083;
 
 /// check if the string [str] is an email
@@ -508,22 +468,6 @@ bool isColorCode(String value,
     return true;
   }
   return false;
-}
-
-int uppercaseCharLength(String value) {
-  return value.replaceAll(_upperCase, '').length;
-}
-
-int lowercaseCharLength(String value) {
-  return value.replaceAll(_lowerCase, '').length;
-}
-
-int numberCharLength(String value) {
-  return value.replaceAll(_number, '').length;
-}
-
-int specialCharLength(String value) {
-  return value.replaceAll(_specialChar, '').length;
 }
 
 bool isAlphabetical(String value) {

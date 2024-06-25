@@ -1,9 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:form_builder_validators/src/collection/contains_element_validator.dart';
 
 import '../form_builder_validators.dart';
+import 'bool/bool.dart';
 import 'collection/collection.dart';
-import 'collection/equal_length_validator.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
 
@@ -373,12 +372,12 @@ class FormBuilderValidators {
   /// {@macro email_template}
   /// {@macro email_regex_template}
   static FormFieldValidator<String> email({
-    RegExp? emailRegex,
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       EmailValidator(
-        emailRegex: emailRegex,
+        regex: regex,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
@@ -850,14 +849,15 @@ class FormBuilderValidators {
   /// - [errorText] The error message to display when the value does not contain the required number of special characters.
   static FormFieldValidator<String> hasSpecialChars({
     int atLeast = 1,
+    RegExp? regex,
     String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              specialCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsSpecialCharErrorText(atLeast);
+    bool checkNullOrEmpty = true,
+  }) => HasSpecialCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum number of uppercase characters.
   /// This validator checks if the field's value contains the specified number of uppercase characters.
@@ -867,14 +867,15 @@ class FormBuilderValidators {
   /// - [errorText] The error message to display when the value does not contain the required number of uppercase characters.
   static FormFieldValidator<String> hasUppercaseChars({
     int atLeast = 1,
+    RegExp? regex,
     String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              uppercaseCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsUppercaseCharErrorText(atLeast);
+    bool checkNullOrEmpty = true,
+  }) => HasUppercaseCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum number of lowercase characters.
   /// This validator checks if the field's value contains the specified number of lowercase characters.
@@ -884,14 +885,16 @@ class FormBuilderValidators {
   /// - [errorText] The error message to display when the value does not contain the required number of lowercase characters.
   static FormFieldValidator<String> hasLowercaseChars({
     int atLeast = 1,
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              lowercaseCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsLowercaseCharErrorText(atLeast);
+      HasLowercaseCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum number of numeric characters.
   /// This validator checks if the field's value contains the specified number of numeric characters.
@@ -901,13 +904,15 @@ class FormBuilderValidators {
   /// - [errorText] The error message to display when the value does not contain the required number of numeric characters.
   static FormFieldValidator<String> hasNumericChars({
     int atLeast = 1,
+    RegExp? regex,
     String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              numberCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
+    bool checkNullOrEmpty = true,
+  }) => HasNumericCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid username.
   /// This validator checks if the field's value meets the criteria for a valid username.

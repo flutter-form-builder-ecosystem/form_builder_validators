@@ -10,7 +10,9 @@ abstract class BaseValidator<T> {
   /// {@endtemplate}
   final String? errorText;
 
+  /// {@template base_validator_null_check}
   /// Whether to check if the value is null or empty.
+  /// {@endtemplate}
   final bool checkNullOrEmpty;
   
   /// Validates the value and checks if it is null or empty.
