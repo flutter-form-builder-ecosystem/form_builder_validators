@@ -13,11 +13,12 @@ void main() {
       const String validEmail = 'user@example.com';
 
       // Act
-      final result = validator(validEmail);
+      final String? result = validator.validate(validEmail);
 
       // Assert
       expect(result, isNull);
     });
+
     test('should return null if the email address is valid generated email',
         () {
       // Arrange
@@ -26,7 +27,7 @@ void main() {
       final String validEmail = faker.internet.email();
 
       // Act
-      final result = validator(validEmail);
+      final String? result = validator.validate(validEmail);
 
       // Assert
       expect(result, isNull);
@@ -39,7 +40,7 @@ void main() {
       const String invalidEmail = 'invalid-email';
 
       // Act
-      final result = validator(invalidEmail);
+      final String? result = validator.validate(invalidEmail);
 
       // Assert
       expect(result, customErrorMessage);
@@ -52,7 +53,7 @@ void main() {
       const String emptyEmail = '';
 
       // Act
-      final result = validator(emptyEmail);
+      final String? result = validator.validate(emptyEmail);
 
       // Assert
       expect(result, customErrorMessage);
@@ -62,10 +63,10 @@ void main() {
       // Arrange
       final EmailValidator validator =
           EmailValidator(errorText: customErrorMessage);
-      const nullEmail = null;
+      const String? nullEmail = null;
 
       // Act
-      final result = validator(nullEmail);
+      final String? result = validator.validate(nullEmail);
 
       // Assert
       expect(result, customErrorMessage);
@@ -79,7 +80,7 @@ void main() {
       const String whitespaceEmail = ' ';
 
       // Act
-      final result = validator(whitespaceEmail);
+      final String? result = validator.validate(whitespaceEmail);
 
       // Assert
       expect(result, customErrorMessage);

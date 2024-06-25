@@ -5,7 +5,11 @@ class EqualLengthValidator<T> extends BaseValidator<T> {
   EqualLengthValidator(
     this.length, {
     this.allowEmpty = false,
+
+    /// {@macro base_validator_error_text}
     super.errorText,
+
+    /// {@macro base_validator_null_check}
     super.checkNullOrEmpty,
   });
 
@@ -21,13 +25,9 @@ class EqualLengthValidator<T> extends BaseValidator<T> {
   String? validateValue(T? valueCandidate) {
     int valueLength = 0;
 
-    if (valueCandidate is String) {
-      valueLength = valueCandidate.length;
-    } else if (valueCandidate is Iterable) {
-      valueLength = valueCandidate.length;
-    } else if (valueCandidate is Map) {
-      valueLength = valueCandidate.length;
-    }
+    if (valueCandidate is String) valueLength = valueCandidate.length;
+    if (valueCandidate is Iterable) valueLength = valueCandidate.length;
+    if (valueCandidate is Map) valueLength = valueCandidate.length;
 
     return valueLength != length && (!allowEmpty || valueLength > 0)
         ? errorText

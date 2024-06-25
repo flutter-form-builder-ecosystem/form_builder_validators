@@ -129,15 +129,12 @@ class FormBuilderValidators {
     List<T> values, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (valueCandidate) {
-      if (valueCandidate == null ||
-          values.where((element) => element == valueCandidate).length != 1) {
-        return errorText ?? FormBuilderLocalizations.current.uniqueErrorText;
-      }
-      return null;
-    };
-  }
+  }) =>
+      UniqueValidator<T>(
+        values,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that transforms the value to a default if it's null or empty before running the validator.
   /// This validator uses a default value if the provided value is null or empty, and then applies the validator.
@@ -265,30 +262,17 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [minLength] The minimum length to compare.
-  /// - [allowEmpty] Whether the field's value can be empty (default: false).
   /// - [errorText] The error message to display when the length is invalid.
   static FormFieldValidator<T> minLength<T>(
     int minLength, {
-    bool allowEmpty = false,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    assert(minLength > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate == null,
-      );
-      int valueLength = 0;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-      return valueLength < minLength && (!allowEmpty || valueLength > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)
-          : null;
-    };
-  }
+  }) =>
+      MinLengthValidator<T>(
+        minLength,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the length of the field's value to be less than or equal to the provided maximum length.
   /// This validator checks if the length of the field's value meets the maximum length requirement.
@@ -332,28 +316,17 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [minCount] The minimum word count.
-  /// - [allowEmpty] Whether the field's value can be empty (default: false).
   /// - [errorText] The error message to display when the word count is invalid.
   static FormFieldValidator<String> minWordsCount(
     int minCount, {
-    bool allowEmpty = false,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    assert(minCount > 0, 'The minimum words count must be greater than 0');
-    return (String? valueCandidate) {
-      int valueWordsCount = 0;
-
-      if (valueCandidate != null && valueCandidate.trim().isNotEmpty) {
-        valueWordsCount = valueCandidate.trim().split(' ').length;
-      }
-
-      return valueWordsCount < minCount && (!allowEmpty || valueWordsCount > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.minWordsCountErrorText(minCount)
-          : null;
-    };
-  }
+  }) =>
+      MinWordsCountValidator(
+        minCount,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the word count of the field's value to be less than or equal to the provided maximum count.
   /// This validator checks if the word count of the field's value meets the maximum count requirement.
@@ -362,19 +335,15 @@ class FormBuilderValidators {
   /// - [maxCount] The maximum word count.
   /// - [errorText] The error message to display when the word count is invalid.
   static FormFieldValidator<String> maxWordsCount(
-    int maxCount, {
+    int maxWordsCount, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    assert(maxCount > 0, 'The maximum words count must be greater than 0');
-    return (String? valueCandidate) {
-      final int valueWordsCount = valueCandidate?.trim().split(' ').length ?? 0;
-      return null != valueCandidate && valueWordsCount > maxCount
-          ? errorText ??
-              FormBuilderLocalizations.current.maxWordsCountErrorText(maxCount)
-          : null;
-    };
-  }
+  }) =>
+      MaxWordsCountValidator(
+        maxWordsCount,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid email address.
   ///
