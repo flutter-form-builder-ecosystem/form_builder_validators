@@ -148,7 +148,7 @@ class HomePage extends StatelessWidget {
                   labelText: 'Contains "test"',
                   prefixIcon: Icon(Icons.search),
                 ),
-                validator: FormBuilderValidators.contains(substring: 'test'),
+                validator: FormBuilderValidators.contains('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -158,7 +158,8 @@ class HomePage extends StatelessWidget {
                   labelText: 'Match Pattern',
                   prefixIcon: Icon(Icons.pattern),
                 ),
-                validator: FormBuilderValidators.match(r'^[a-zA-Z0-9]+$'),
+                validator:
+                    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),

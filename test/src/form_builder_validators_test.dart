@@ -193,7 +193,7 @@ void main() {
       // Pass
       expect(validator(null), isNull);
       expect(validator(<String>[]), isNull);
-      final List<String> list = List.generate(
+      final List<String> list = List<String>.generate(
         faker.datatype.number(min: 1, max: 3),
         (int index) => faker.datatype.string(),
       );
@@ -659,7 +659,7 @@ void main() {
     'FormBuilderValidators.match',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.match(r'^A[0-9]$');
+          FormBuilderValidators.match(RegExp(r'^A[0-9]$'));
       // Pass
       expect(validator(null), isNull);
       expect(validator(''), isNull);
@@ -672,7 +672,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.match(
-        r'^A[0-9]$',
+        RegExp(r'^A[0-9]$'),
         errorText: customErrorMessage,
       );
       // Pass
@@ -686,7 +686,7 @@ void main() {
     'FormBuilderValidators.notMatch',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.notMatch(r'^A[0-9]$');
+          FormBuilderValidators.notMatch(RegExp(r'^A[0-9]$'));
       // Pass
       expect(validator('B1'), isNull);
       expect(validator('C2'), isNull);
@@ -698,7 +698,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.notMatch(
-        r'^A[0-9]$',
+        RegExp(r'^A[0-9]$'),
         errorText: customErrorMessage,
       );
       // Pass
@@ -749,7 +749,7 @@ void main() {
   testWidgets(
     'FormBuilderValidators.dateString',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
-      final validator = FormBuilderValidators.dateString();
+      final FormFieldValidator<String> validator = FormBuilderValidators.date();
       // Pass
       expect(validator('2023-05-29'), isNull);
       // Fail
@@ -757,7 +757,8 @@ void main() {
       expect(validator(null), isNull);
       expect(validator(''), isNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.dateString(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.date(
         errorText: customErrorMessage,
       );
       // Pass
@@ -841,7 +842,7 @@ void main() {
       final DateTime minDate = DateTime(2023);
       final DateTime maxDate = DateTime(2023, 12, 31);
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.dateRange(minDate: minDate, maxDate: maxDate);
+          FormBuilderValidators.dateRange(minDate, maxDate);
       // Pass
       expect(validator('2023-05-29'), isNull);
       // Fail
@@ -852,8 +853,8 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.dateRange(
-        minDate: minDate,
-        maxDate: maxDate,
+        minDate,
+        maxDate,
         errorText: customErrorMessage,
       );
       // Pass
@@ -1077,7 +1078,7 @@ void main() {
     'FormBuilderValidators.startsWith',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.startsWith(prefix: 'Hello');
+          FormBuilderValidators.startsWith('Hello');
       // Pass
       expect(validator('Hello world'), isNull);
       // Fail
@@ -1087,7 +1088,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.startsWith(
-        prefix: 'Hello',
+        'Hello',
         errorText: customErrorMessage,
       );
       // Pass
@@ -1101,7 +1102,7 @@ void main() {
     'FormBuilderValidators.endsWith',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.endsWith(suffix: 'world');
+          FormBuilderValidators.endsWith('world');
       // Pass
       expect(validator('Hello world'), isNull);
       // Fail
@@ -1111,7 +1112,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.endsWith(
-        suffix: 'world',
+        'world',
         errorText: customErrorMessage,
       );
       // Pass
@@ -1125,7 +1126,7 @@ void main() {
     'FormBuilderValidators.contains',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.contains(substring: 'flutter');
+          FormBuilderValidators.contains('flutter');
       // Pass
       expect(validator('I love flutter'), isNull);
       // Fail
@@ -1135,7 +1136,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.contains(
-        substring: 'flutter',
+        'flutter',
         errorText: customErrorMessage,
       );
       // Pass
@@ -1149,7 +1150,7 @@ void main() {
     'FormBuilderValidators.between',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<num> validator =
-          FormBuilderValidators.between(min: 10, max: 20);
+          FormBuilderValidators.between(10, 20);
       // Pass
       expect(validator(15), isNull);
       // Fail
@@ -1159,8 +1160,8 @@ void main() {
 
       final FormFieldValidator<num> validatorWithErrorMessage =
           FormBuilderValidators.between(
-        min: 10,
-        max: 20,
+        10,
+        20,
         errorText: customErrorMessage,
       );
       // Pass

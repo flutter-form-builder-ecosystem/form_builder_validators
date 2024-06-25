@@ -532,12 +532,12 @@ bool isFilePath(String value) {
 
 bool isOddNumber(String value) {
   final int number = int.tryParse(value) ?? 0;
-  return number % 2 != 0;
+  return number.isOdd;
 }
 
 bool isEvenNumber(String value) {
   final int number = int.tryParse(value) ?? 0;
-  return number % 2 == 0;
+  return number.isEven;
 }
 
 /// check if the string is a valid MAC address

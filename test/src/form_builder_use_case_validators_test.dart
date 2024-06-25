@@ -188,9 +188,7 @@ void main() {
     'FormBuilderValidators.fileExtension',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.fileExtension(
-        allowedExtensions: <String>['txt', 'pdf'],
-      );
+          FormBuilderValidators.fileExtension(<String>['txt', 'pdf']);
       // Pass
       expect(validator(File('test.txt').path), isNull);
       // Fail
@@ -200,7 +198,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.fileExtension(
-        allowedExtensions: <String>['txt', 'pdf'],
+        <String>['txt', 'pdf'],
         errorText: customErrorMessage,
       );
       // Pass
@@ -217,7 +215,7 @@ void main() {
     'FormBuilderValidators.fileSize',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.fileSize(maxSize: 1024);
+          FormBuilderValidators.fileSize(1024);
       // Create a temporary file
       final File file = File('test.txt')
         ..createSync()
@@ -234,7 +232,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.fileSize(
-        maxSize: 1024,
+        1024,
         errorText: customErrorMessage,
       );
       // Pass

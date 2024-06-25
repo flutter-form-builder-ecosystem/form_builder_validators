@@ -10,7 +10,12 @@ class EqualLengthValidator<T> extends BaseValidator<T> {
   });
 
   final int length;
+
   final bool allowEmpty;
+
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.equalLengthErrorText(length);
 
   @override
   String? validateValue(T? valueCandidate) {
@@ -25,8 +30,7 @@ class EqualLengthValidator<T> extends BaseValidator<T> {
     }
 
     return valueLength != length && (!allowEmpty || valueLength > 0)
-        ? errorText ??
-            FormBuilderLocalizations.current.equalLengthErrorText(length)
+        ? errorText
         : null;
   }
 }

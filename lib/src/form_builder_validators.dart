@@ -16,7 +16,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> compose<T>(
     List<FormFieldValidator<T>> validators,
   ) {
-    return (valueCandidate) {
+    return (T? valueCandidate) {
       for (final FormFieldValidator<T> validator in validators) {
         final String? validatorResult = validator.call(valueCandidate);
         if (validatorResult != null) {
@@ -981,32 +981,32 @@ class FormBuilderValidators {
         FormBuilderValidators.maxLength(maxLength, errorText: errorText),
         if (!allowNumbers)
           FormBuilderValidators.notMatch(
-            '[0-9]',
+            RegExp('[0-9]'),
             errorText: errorText,
           ),
         if (!allowUnderscore)
           FormBuilderValidators.notMatch(
-            '_',
+            RegExp('_'),
             errorText: errorText,
           ),
         if (!allowDots)
           FormBuilderValidators.notMatch(
-            r'\.',
+            RegExp(r'\.'),
             errorText: errorText,
           ),
         if (!allowDash)
           FormBuilderValidators.notMatch(
-            '-',
+            RegExp('-'),
             errorText: errorText,
           ),
         if (!allowSpace)
           FormBuilderValidators.notMatch(
-            r'\s',
+            RegExp(r'\s'),
             errorText: errorText,
           ),
         if (!allowSpecialChar)
           FormBuilderValidators.notMatch(
-            r'[!@#\$%^&*(),.?":{}|<>]',
+            RegExp(r'[!@#\$%^&*(),.?":{}|<>]'),
             errorText: errorText,
           ),
       ],

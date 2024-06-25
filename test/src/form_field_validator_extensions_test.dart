@@ -189,7 +189,7 @@ void main() {
           final FormFieldValidator validator = FormBuilderValidators.required();
           const String errorMessage = 'This field is required';
           final FormFieldValidator validatorWithMessage =
-              validator.withMessage(errorMessage);
+              validator.withErrorMessage(errorMessage);
 
           // Pass
           expect(validatorWithMessage(null), errorMessage);
