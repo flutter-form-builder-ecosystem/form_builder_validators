@@ -33,7 +33,8 @@ class FormBuilderLocalizations {
   static const List<Locale> supportedLocales =
       FormBuilderLocalizationsImpl.supportedLocales;
 
-  static final _default = FormBuilderLocalizationsImplEn();
+  static final FormBuilderLocalizationsImplEn _default =
+      FormBuilderLocalizationsImplEn();
   static FormBuilderLocalizationsImpl? _current;
 
   static void setCurrentInstance(FormBuilderLocalizationsImpl? current) =>
@@ -48,7 +49,8 @@ class FormBuilderLocalizationsDelegate
 
   @override
   Future<FormBuilderLocalizationsImpl> load(Locale locale) {
-    final instance = lookupFormBuilderLocalizationsImpl(locale);
+    final FormBuilderLocalizationsImpl instance =
+        lookupFormBuilderLocalizationsImpl(locale);
     FormBuilderLocalizations.setCurrentInstance(instance);
     return SynchronousFuture<FormBuilderLocalizationsImpl>(instance);
   }
@@ -56,7 +58,7 @@ class FormBuilderLocalizationsDelegate
   @override
   bool isSupported(Locale locale) =>
       FormBuilderLocalizationsImpl.supportedLocales
-          .map((e) => e.languageCode)
+          .map((Locale e) => e.languageCode)
           .contains(locale.languageCode);
 
   @override

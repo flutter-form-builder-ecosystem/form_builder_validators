@@ -1,21 +1,27 @@
 import 'package:faker_dart/faker_dart.dart';
+import 'package:flutter/src/widgets/form.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../tests_helper.dart';
 
 void main() {
-  final faker = Faker.instance;
-  final customErrorMessage = faker.lorem.sentence();
+  final Faker faker = Faker.instance;
+  final String customErrorMessage = faker.lorem.sentence();
   group(
-    "Helper validators",
+    'Helper validators',
     () {
       testWidgets(
         'FormFieldValidatorExtensions.and',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator1 = FormBuilderValidators.required();
-          final validator2 = FormBuilderValidators.minLength(5);
-          final combinedValidator = validator1.and(validator2);
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator validator1 =
+              FormBuilderValidators.required();
+          final FormFieldValidator validator2 =
+              FormBuilderValidators.minLength(5);
+          final FormFieldValidator combinedValidator =
+              validator1.and(validator2);
 
           // Pass
           expect(combinedValidator('hello'), isNull);
@@ -29,8 +35,10 @@ void main() {
 
       testWidgets(
         'FormBuilderValidators.or',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.or([
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.or(<String? Function(String? value)>[
             FormBuilderValidators.endsWith(suffix: 'world'),
             FormBuilderValidators.startsWith(prefix: 'Hello'),
           ]);
@@ -46,9 +54,11 @@ void main() {
 
       testWidgets(
         'FormFieldValidatorExtensions.not',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.required<String>();
-          final negatedValidator = validator.not();
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.required<String>();
+          final FormFieldValidator<String> negatedValidator = validator.not();
 
           // Pass
           expect(negatedValidator(null), isNull);
@@ -62,10 +72,13 @@ void main() {
 
       testWidgets(
         'FormFieldValidatorExtensions.when',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.required<String>();
-          condition(String? value) => value != null && value.isNotEmpty;
-          final conditionalValidator = validator.when(condition);
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.required<String>();
+          bool condition(String? value) => value != null && value.isNotEmpty;
+          final FormFieldValidator<String> conditionalValidator =
+              validator.when(condition);
 
           // Pass
           expect(conditionalValidator('test'), isNull);
@@ -78,9 +91,11 @@ void main() {
 
       testWidgets(
         'FormFieldValidatorExtensions.unless',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.required<String>();
-          final conditionalValidator = validator
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.required<String>();
+          final FormFieldValidator<String> conditionalValidator = validator
               .unless((String? value) => value != null && value.isNotEmpty);
 
           // Pass
@@ -96,10 +111,12 @@ void main() {
 
       testWidgets(
         'FormBuilderValidators.transform',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.transform<String>(
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.transform<String>(
             FormBuilderValidators.required(),
-            (value) => value?.trim() ?? '',
+            (String? value) => value?.trim() ?? '',
           );
           // Pass
           expect(validator(' trimmed '), isNull);
@@ -108,10 +125,10 @@ void main() {
           expect(validator(null), isNotNull);
           expect(validator(''), isNotNull);
 
-          final validatorWithErrorMessage =
+          final FormFieldValidator<String> validatorWithErrorMessage =
               FormBuilderValidators.transform<String>(
             FormBuilderValidators.required(errorText: customErrorMessage),
-            (value) => value?.trim() ?? '',
+            (String? value) => value?.trim() ?? '',
           );
           // Pass
           expect(validatorWithErrorMessage(' trimmed '), isNull);
@@ -122,9 +139,11 @@ void main() {
 
       testWidgets(
         'FormBuilderValidators.skipWhen',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.skipWhen<String>(
-            (value) => value == 'skip',
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.skipWhen<String>(
+            (String? value) => value == 'skip',
             FormBuilderValidators.required(),
           );
           // Pass
@@ -133,9 +152,9 @@ void main() {
           expect(validator(''), isNotNull);
           expect(validator(null), isNotNull);
 
-          final validatorWithErrorMessage =
+          final FormFieldValidator<String> validatorWithErrorMessage =
               FormBuilderValidators.skipWhen<String>(
-            (value) => value == 'skip',
+            (String? value) => value == 'skip',
             FormBuilderValidators.required(errorText: customErrorMessage),
           );
           // Pass
@@ -147,9 +166,11 @@ void main() {
 
       testWidgets(
         'FormBuilderValidators.log',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.log<String>(
-            log: (value) => 'Logging: $value',
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.log<String>(
+            log: (String? value) => 'Logging: $value',
           );
           // Pass
           expect(validator('test'), isNull);
@@ -163,10 +184,12 @@ void main() {
 
       testWidgets(
         'FormFieldValidatorExtensions.withMessage',
-        (WidgetTester tester) => testValidations(tester, (context) {
-          final validator = FormBuilderValidators.required();
-          const errorMessage = 'This field is required';
-          final validatorWithMessage = validator.withMessage(errorMessage);
+        (WidgetTester tester) =>
+            testValidations(tester, (BuildContext context) {
+          final FormFieldValidator validator = FormBuilderValidators.required();
+          const String errorMessage = 'This field is required';
+          final FormFieldValidator validatorWithMessage =
+              validator.withMessage(errorMessage);
 
           // Pass
           expect(validatorWithMessage(null), errorMessage);

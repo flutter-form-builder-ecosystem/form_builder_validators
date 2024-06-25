@@ -1,18 +1,20 @@
 import 'dart:io';
 
 import 'package:faker_dart/faker_dart.dart';
+import 'package:flutter/src/widgets/form.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../tests_helper.dart';
 
 void main() {
-  final faker = Faker.instance;
-  final customErrorMessage = faker.lorem.sentence();
+  final Faker faker = Faker.instance;
+  final String customErrorMessage = faker.lorem.sentence();
   testWidgets(
     'FormBuilderValidators.ip',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.ip();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.ip();
       // Pass
       expect(validator(null), isNull);
       expect(validator(''), isNull);
@@ -22,11 +24,13 @@ void main() {
       expect(validator('256.168.0.'), isNotNull);
       expect(validator('255.168.0.'), isNotNull);
 
-      final validatorWrongVersion = FormBuilderValidators.ip(version: 5);
+      final FormFieldValidator<String> validatorWrongVersion =
+          FormBuilderValidators.ip(version: 5);
       // Fail
       expect(validatorWrongVersion('192.168.0.5'), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.ip(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.ip(
         errorText: customErrorMessage,
       );
       // Pass
@@ -38,14 +42,16 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.creditCard',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.creditCard();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.creditCard();
       // Pass
       expect(validator('4111111111111111'), isNull);
       // Fail
       expect(validator('1234567812345678'), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.creditCard(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.creditCard(
         errorText: customErrorMessage,
       );
       // Pass
@@ -57,25 +63,27 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.creditCardExpirationDate',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final now = DateTime.now();
-      final month = now.month.toString().padLeft(2, '0');
-      final year = now.year.toString().substring(2);
-      final validator = FormBuilderValidators.creditCardExpirationDate();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final DateTime now = DateTime.now();
+      final String month = now.month.toString().padLeft(2, '0');
+      final String year = now.year.toString().substring(2);
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.creditCardExpirationDate();
       // Pass
       expect(validator('$month/$year'), isNull);
       // Fail
       expect(validator('13/23'), isNotNull);
 
-      final validatorNoExpiredCheck =
+      final FormFieldValidator<String> validatorNoExpiredCheck =
           FormBuilderValidators.creditCardExpirationDate(
-              checkForExpiration: false);
+        checkForExpiration: false,
+      );
       // Pass
       expect(validatorNoExpiredCheck('12/23'), isNull);
       // Fail
       expect(validatorNoExpiredCheck('13/23'), isNotNull);
 
-      final validatorWithErrorMessage =
+      final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.creditCardExpirationDate(
         errorText: customErrorMessage,
       );
@@ -88,8 +96,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.creditCardCVC',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.creditCardCVC();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.creditCardCVC();
       // Pass
       expect(validator('123'), isNull);
       expect(validator('1234'), isNull);
@@ -97,7 +106,8 @@ void main() {
       expect(validator('12'), isNotNull);
       expect(validator('12345'), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.creditCardCVC(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.creditCardCVC(
         errorText: customErrorMessage,
       );
       // Pass
@@ -109,8 +119,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.phoneNumber',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.phoneNumber();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.phoneNumber();
       // Valid phone numbers from various countries
       expect(validator('+1 800 555 5555'), isNull); // USA
       expect(validator('+44 20 7946 0958'), isNull); // UK
@@ -124,17 +135,22 @@ void main() {
       expect(validator('+27 21 123 4567'), isNull); // South Africa
       // Invalid phone numbers
       expect(validator('123-abc-defg'), isNotNull); // Contains letters
-      expect(validator('+1-800-555-5555-00000000000'),
-          isNotNull); // Too many digits
+      expect(
+        validator('+1-800-555-5555-00000000000'),
+        isNotNull,
+      ); // Too many digits
       expect(validator('++1 800 555 5555'), isNotNull); // Invalid prefix
       expect(validator('+1 (800) 555-5555'), isNotNull); // Invalid format
-      expect(validator('+44 20 7946 0958 ext 123'),
-          isNotNull); // Extension included
+      expect(
+        validator('+44 20 7946 0958 ext 123'),
+        isNotNull,
+      ); // Extension included
       // Edge cases
       expect(validator(''), isNotNull); // Empty string
       expect(validator(null), isNotNull); // Null value
 
-      final validatorWithErrorMessage = FormBuilderValidators.phoneNumber(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.phoneNumber(
         errorText: customErrorMessage,
       );
       // Pass
@@ -146,8 +162,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.colorCode',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.colorCode();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.colorCode();
       // Pass
       expect(validator('#FFFFFF'), isNull);
       expect(validator('rgb(255, 255, 255)'), isNull);
@@ -156,7 +173,8 @@ void main() {
       expect(validator(null), isNull);
       expect(validator(''), isNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.colorCode(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.colorCode(
         errorText: customErrorMessage,
       );
       // Pass
@@ -168,9 +186,10 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.fileExtension',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.fileExtension(
-        allowedExtensions: ['txt', 'pdf'],
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.fileExtension(
+        allowedExtensions: <String>['txt', 'pdf'],
       );
       // Pass
       expect(validator(File('test.txt').path), isNull);
@@ -179,24 +198,28 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.fileExtension(
-        allowedExtensions: ['txt', 'pdf'],
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.fileExtension(
+        allowedExtensions: <String>['txt', 'pdf'],
         errorText: customErrorMessage,
       );
       // Pass
       expect(validatorWithErrorMessage(File('test.txt').path), isNull);
       // Fail
       expect(
-          validatorWithErrorMessage(File('test.doc').path), customErrorMessage);
+        validatorWithErrorMessage(File('test.doc').path),
+        customErrorMessage,
+      );
     }),
   );
 
   testWidgets(
     'FormBuilderValidators.fileSize',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.fileSize(maxSize: 1024);
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.fileSize(maxSize: 1024);
       // Create a temporary file
-      final file = File('test.txt')
+      final File file = File('test.txt')
         ..createSync()
         ..writeAsBytesSync(List.filled(512, 0));
       // Pass
@@ -209,7 +232,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.fileSize(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.fileSize(
         maxSize: 1024,
         errorText: customErrorMessage,
       );
@@ -222,8 +246,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.username',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.username();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.username();
       // Pass
       expect(validator('hello'), isNull);
       expect(validator('hello12345'), isNull);
@@ -233,7 +258,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.username(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.username(
         errorText: customErrorMessage,
       );
       // Pass
@@ -245,8 +271,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.password',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.password();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.password();
       // Pass
       expect(validator('Hellohello1@'), isNull);
       // Fail
@@ -270,7 +297,8 @@ void main() {
       // Fail - similar characters
       expect(validator('aaaaaa1111'), isNotNull);
 
-      final customValidator = FormBuilderValidators.password(
+      final FormFieldValidator<String> customValidator =
+          FormBuilderValidators.password(
         minLength: 4,
         maxLength: 16,
         uppercase: 3,
@@ -293,7 +321,8 @@ void main() {
       // Fail - missing special char
       expect(customValidator('Password123abc'), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.password(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.password(
         errorText: customErrorMessage,
       );
       // Pass
@@ -305,8 +334,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.alphabetical',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.alphabetical();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.alphabetical();
       // Pass
       expect(validator('Hello'), isNull);
       expect(validator('world'), isNull);
@@ -317,7 +347,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.alphabetical(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.alphabetical(
         errorText: customErrorMessage,
       );
       // Pass
@@ -329,8 +360,8 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.uuid',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.uuid();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.uuid();
       // Pass
       expect(validator('123e4567-e89b-12d3-a456-426614174000'), isNull);
       // Fail
@@ -338,7 +369,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.uuid(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.uuid(
         errorText: customErrorMessage,
       );
       // Pass
@@ -353,8 +385,8 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.json',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.json();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.json();
       // Pass
       expect(validator('{"key": "value"}'), isNull);
       // Fail
@@ -362,7 +394,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.json(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.json(
         errorText: customErrorMessage,
       );
       // Pass
@@ -374,8 +407,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.latitude',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.latitude();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.latitude();
       // Pass
       expect(validator('45.0'), isNull);
       expect(validator('-90.0'), isNull);
@@ -385,7 +419,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.latitude(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.latitude(
         errorText: customErrorMessage,
       );
       // Pass
@@ -397,8 +432,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.longitude',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.longitude();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.longitude();
       // Pass
       expect(validator('90.0'), isNull);
       expect(validator('-180.0'), isNull);
@@ -408,7 +444,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.longitude(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.longitude(
         errorText: customErrorMessage,
       );
       // Pass
@@ -420,8 +457,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.base64',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.base64();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.base64();
       // Pass
       expect(validator('SGVsbG8gd29ybGQ='), isNull);
       // Fail
@@ -429,7 +467,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.base64(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.base64(
         errorText: customErrorMessage,
       );
       // Pass
@@ -441,29 +480,31 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.path',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.path();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.path();
       // Pass
       expect(validator('/path/to/file'), isNull);
       // Fail
-      expect(validator('path\\to\\file'), isNotNull);
+      expect(validator(r'path\to\file'), isNotNull);
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.path(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.path(
         errorText: customErrorMessage,
       );
       // Pass
       expect(validatorWithErrorMessage('/path/to/file'), isNull);
       // Fail
-      expect(validatorWithErrorMessage('path\\to\\file'), customErrorMessage);
+      expect(validatorWithErrorMessage(r'path\to\file'), customErrorMessage);
     }),
   );
 
   testWidgets(
     'FormBuilderValidators.oddNumber',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.oddNumber();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.oddNumber();
       // Pass
       expect(validator('3'), isNull);
       expect(validator('5'), isNull);
@@ -473,7 +514,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.oddNumber(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.oddNumber(
         errorText: customErrorMessage,
       );
       // Pass
@@ -485,8 +527,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.evenNumber',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.evenNumber();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.evenNumber();
       // Pass
       expect(validator('2'), isNull);
       expect(validator('4'), isNull);
@@ -496,7 +539,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.evenNumber(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.evenNumber(
         errorText: customErrorMessage,
       );
       // Pass
@@ -508,8 +552,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.portNumber',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.portNumber();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.portNumber();
       // Pass
       expect(validator('8080'), isNull);
       expect(validator('80'), isNull);
@@ -519,7 +564,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.portNumber(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.portNumber(
         errorText: customErrorMessage,
       );
       // Pass
@@ -531,8 +577,9 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.macAddress',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.macAddress();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.macAddress();
       // Pass
       expect(validator('00:1B:44:11:3A:B7'), isNull);
       expect(validator('00-1B-44-11-3A-B7'), isNull);
@@ -541,7 +588,8 @@ void main() {
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull);
 
-      final validatorWithErrorMessage = FormBuilderValidators.macAddress(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.macAddress(
         errorText: customErrorMessage,
       );
       // Pass
@@ -553,16 +601,22 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.iban',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.iban();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.iban();
       // Pass
       expect(validator('GB82WEST12345698765432'), isNull); // A valid UK IBAN
       expect(
-          validator('DE89370400440532013000'), isNull); // A valid German IBAN
-      expect(validator('FR1420041010050500013M02606'),
-          isNull); // A valid French IBAN
-      expect(validator('GB82 WEST 1234 5698 7654 32'),
-          isNull); // Format with spaces
+        validator('DE89370400440532013000'),
+        isNull,
+      ); // A valid German IBAN
+      expect(
+        validator('FR1420041010050500013M02606'),
+        isNull,
+      ); // A valid French IBAN
+      expect(
+        validator('GB82 WEST 1234 5698 7654 32'),
+        isNull,
+      ); // Format with spaces
 
       // Fail
       expect(validator(''), isNotNull); // Empty string
@@ -570,7 +624,8 @@ void main() {
       expect(validator('GB82WEST1234569876543212345'), isNotNull); // Too long
       expect(validator('GB82WEST1234'), isNotNull); // Too short
 
-      final validatorWithErrorMessage = FormBuilderValidators.iban(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.iban(
         errorText: customErrorMessage,
       );
       // Pass
@@ -581,12 +636,14 @@ void main() {
   );
   testWidgets(
     'FormBuilderValidators.bic',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.bic();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.bic();
       // Pass
       expect(validator('DEUTDEFF'), isNull); // A valid German BIC
       expect(
-          validator('DEUTDEFF500'), isNull); // A valid German BIC with branch
+        validator('DEUTDEFF500'),
+        isNull,
+      ); // A valid German BIC with branch
       // Fail
       expect(validator(null), isNotNull);
       expect(validator(''), isNotNull); // Empty string
@@ -594,7 +651,8 @@ void main() {
       expect(validator('DEUTDEFF5000'), isNotNull); // Too long
       expect(validator('DEUTDEFF5'), isNotNull); // Too short
 
-      final validatorWithErrorMessage = FormBuilderValidators.bic(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.bic(
         errorText: customErrorMessage,
       );
       // Pass
@@ -606,16 +664,20 @@ void main() {
 
   testWidgets(
     'FormBuilderValidators.isbn',
-    (WidgetTester tester) => testValidations(tester, (context) {
-      final validator = FormBuilderValidators.isbn();
+    (WidgetTester tester) => testValidations(tester, (BuildContext context) {
+      final FormFieldValidator<String> validator = FormBuilderValidators.isbn();
       // Pass
       expect(validator('978-3-16-148410-0'), isNull); // A valid ISBN-13
       expect(validator('0-306-40615-2'), isNull); // A valid ISBN-10
       expect(
-          validator('9783161484100'), isNull); // A valid ISBN-13 without dashes
+        validator('9783161484100'),
+        isNull,
+      ); // A valid ISBN-13 without dashes
       expect(validator('0306406152'), isNull); // A valid ISBN-10 without dashes
-      expect(validator('3-16-148410-X'),
-          isNull); // A valid ISBN-10 with X as check digit
+      expect(
+        validator('3-16-148410-X'),
+        isNull,
+      ); // A valid ISBN-10 with X as check digit
 
       // Fail
       expect(validator(null), isNotNull); // Null value
@@ -623,25 +685,36 @@ void main() {
       expect(validator('INVALIDISBN'), isNotNull); // Invalid ISBN string
       expect(validator('978-3-16-148410-00'), isNotNull); // Too long
       expect(validator('3-16-148410-00'), isNotNull); // Too short
-      expect(validator('978-3-16-14841X-0'),
-          isNotNull); // Invalid character in ISBN-13
-      expect(validator('0-306-40615-X'),
-          isNotNull); // Invalid character in ISBN-10
-      expect(validator('978-3-16-148410-1'),
-          isNotNull); // Invalid check digit for ISBN-13
-      expect(validator('0-306-40615-1'),
-          isNotNull); // Invalid check digit for ISBN-10
+      expect(
+        validator('978-3-16-14841X-0'),
+        isNotNull,
+      ); // Invalid character in ISBN-13
+      expect(
+        validator('0-306-40615-X'),
+        isNotNull,
+      ); // Invalid character in ISBN-10
+      expect(
+        validator('978-3-16-148410-1'),
+        isNotNull,
+      ); // Invalid check digit for ISBN-13
+      expect(
+        validator('0-306-40615-1'),
+        isNotNull,
+      ); // Invalid check digit for ISBN-10
       expect(validator('1234567890123'), isNotNull); // Random invalid ISBN-13
       expect(validator('1234567890'), isNotNull); // Random invalid ISBN-10
       expect(validator('978316148410'), isNotNull); // ISBN-13 too short
       expect(validator('030640615'), isNotNull); // ISBN-10 too short
       expect(
-          validator('978-3-16-1484100-0'), isNotNull); // Extra digit in ISBN-13
+        validator('978-3-16-1484100-0'),
+        isNotNull,
+      ); // Extra digit in ISBN-13
       expect(validator('0-306-40615-22'), isNotNull); // Extra digit in ISBN-10
       expect(validator('978-3-16-14'), isNotNull); // Incomplete ISBN-13
       expect(validator('0-306'), isNotNull); // Incomplete ISBN-10
 
-      final validatorWithErrorMessage = FormBuilderValidators.isbn(
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.isbn(
         errorText: customErrorMessage,
       );
       // Pass

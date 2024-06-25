@@ -21,10 +21,12 @@ Map merge(Map? obj, Map? defaults) {
 }
 
 String fileExtensionFromPath(String path) {
-  final parts = path.split('.');
+  final List<String> parts = path.split('.');
 
-  assert(parts.length > 1 && parts.last.isNotEmpty,
-      'Invalid file path format: $path. Path should contain a valid extension.');
+  assert(
+    parts.length > 1 && parts.last.isNotEmpty,
+    'Invalid file path format: $path. Path should contain a valid extension.',
+  );
 
   return parts.last;
 }
@@ -33,15 +35,15 @@ String fileExtensionFromPath(String path) {
 String formatBytes(int bytes, {bool base1024 = true}) {
   double log10(num x) => log(x) / ln10;
 
-  if (bytes <= 0) return "0 B";
+  if (bytes <= 0) return '0 B';
 
-  final base = base1024 ? 1024 : 1000;
-  final units = base1024
-      ? ["B", "KiB", "MiB", "GiB", "TiB"]
-      : ["B", "kB", "MB", "GB", "TB"];
+  final int base = base1024 ? 1024 : 1000;
+  final List<String> units = base1024
+      ? <String>['B', 'KiB', 'MiB', 'GiB', 'TiB']
+      : <String>['B', 'kB', 'MB', 'GB', 'TB'];
 
-  int digitGroups = (log10(bytes) / log10(base)).floor();
-  double size = bytes / pow(base, digitGroups);
+  final int digitGroups = (log10(bytes) / log10(base)).floor();
+  final double size = bytes / pow(base, digitGroups);
 
   return "${NumberFormat("#,##0.#").format(size)} ${units[digitGroups]}";
 }

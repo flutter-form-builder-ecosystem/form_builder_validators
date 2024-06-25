@@ -18,7 +18,8 @@ class HomePage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator: FormBuilderValidators.compose([
+                validator:
+                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   /// Makes this field required
                   FormBuilderValidators.required(),
 
@@ -32,9 +33,9 @@ class HomePage extends StatelessWidget {
 
                   /// Include your own custom `FormFieldValidator` function, if you want
                   /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
-                  (val) {
+                  (String? val) {
                     if (val != null) {
-                      final number = int.tryParse(val);
+                      final int? number = int.tryParse(val);
                       if (number == null) return null;
                       if (number < 0) return 'We cannot have a negative age';
                     }
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.star),
                 ),
                 validator: FormBuilderValidators.required(),
-                autofillHints: const [AutofillHints.name],
+                autofillHints: const <String>[AutofillHints.name],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: FormBuilderValidators.numeric(),
-                autofillHints: const [AutofillHints.oneTimeCode],
+                autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -73,7 +74,7 @@ class HomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 validator: FormBuilderValidators.email(),
-                autofillHints: const [AutofillHints.email],
+                autofillHints: const <String>[AutofillHints.email],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -85,7 +86,7 @@ class HomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.url,
                 validator: FormBuilderValidators.url(),
-                autofillHints: const [AutofillHints.url],
+                autofillHints: const <String>[AutofillHints.url],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -190,7 +191,7 @@ class HomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: FormBuilderValidators.creditCard(),
-                autofillHints: const [AutofillHints.creditCardNumber],
+                autofillHints: const <String>[AutofillHints.creditCardNumber],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -202,7 +203,7 @@ class HomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.phone,
                 validator: FormBuilderValidators.phoneNumber(),
-                autofillHints: const [AutofillHints.telephoneNumber],
+                autofillHints: const <String>[AutofillHints.telephoneNumber],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -214,7 +215,7 @@ class HomePage extends StatelessWidget {
                 ),
                 obscureText: true,
                 validator: FormBuilderValidators.password(),
-                autofillHints: const [AutofillHints.password],
+                autofillHints: const <String>[AutofillHints.password],
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -225,7 +226,8 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.calendar_today),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.compose([
+                validator:
+                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   FormBuilderValidators.required(),
                   FormBuilderValidators.numeric(),
                   FormBuilderValidators.min(0),

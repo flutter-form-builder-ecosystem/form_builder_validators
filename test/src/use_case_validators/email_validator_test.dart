@@ -3,13 +3,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
-  final faker = Faker.instance;
-  final customErrorMessage = faker.lorem.sentence();
+  final Faker faker = Faker.instance;
+  final String customErrorMessage = faker.lorem.sentence();
   group('EmailValidator -', () {
     test('should return null if the email address is valid', () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
-      const validEmail = 'user@example.com';
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
+      const String validEmail = 'user@example.com';
 
       // Act
       final result = validator(validEmail);
@@ -20,8 +21,9 @@ void main() {
     test('should return null if the email address is valid generated email',
         () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
-      final validEmail = faker.internet.email();
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
+      final String validEmail = faker.internet.email();
 
       // Act
       final result = validator(validEmail);
@@ -32,8 +34,9 @@ void main() {
 
     test('should return the error text if the email address is invalid', () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
-      const invalidEmail = 'invalid-email';
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
+      const String invalidEmail = 'invalid-email';
 
       // Act
       final result = validator(invalidEmail);
@@ -44,8 +47,9 @@ void main() {
 
     test('should return the error text if the email address is empty', () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
-      const emptyEmail = '';
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
+      const String emptyEmail = '';
 
       // Act
       final result = validator(emptyEmail);
@@ -56,7 +60,8 @@ void main() {
 
     test('should return the error text if the email address is null', () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
       const nullEmail = null;
 
       // Act
@@ -69,8 +74,9 @@ void main() {
     test('should return the error text if the email address is a whitespace',
         () {
       // Arrange
-      final validator = EmailValidator(errorText: customErrorMessage);
-      const whitespaceEmail = ' ';
+      final EmailValidator validator =
+          EmailValidator(errorText: customErrorMessage);
+      const String whitespaceEmail = ' ';
 
       // Act
       final result = validator(whitespaceEmail);

@@ -118,7 +118,8 @@ RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
 /// Examples: 123e4567-e89b-12d3-a456-426614174000
 /// {@endtemplate}
 RegExp _uuid = RegExp(
-    r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');
+  r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
+);
 
 /// {@template file_path_template}
 /// This regex matches file paths.
@@ -158,7 +159,8 @@ RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 /// Examples: 23:59, 11:59 PM
 /// {@endtemplate}
 RegExp _time = RegExp(
-    r'^(?:[01]?\d|2[0-3]):[0-5]?\d(?::[0-5]?\d)?$|^(?:0?[1-9]|1[0-2]):[0-5]?\d(?::[0-5]?\d)?\s?(?:[AaPp][Mm])$');
+  r'^(?:[01]?\d|2[0-3]):[0-5]?\d(?::[0-5]?\d)?$|^(?:0?[1-9]|1[0-2]):[0-5]?\d(?::[0-5]?\d)?\s?(?:[AaPp][Mm])$',
+);
 
 int _maxUrlLength = 2083;
 
@@ -177,12 +179,12 @@ bool isEmail(String str) {
 /// * [hostBlacklist] sets the list of disallowed hosts
 bool isURL(
   String? str, {
-  List<String?> protocols = const ['http', 'https', 'ftp'],
+  List<String?> protocols = const <String?>['http', 'https', 'ftp'],
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
-  List<String> hostWhitelist = const [],
-  List<String> hostBlacklist = const [],
+  List<String> hostWhitelist = const <String>[],
+  List<String> hostBlacklist = const <String>[],
 }) {
   if (str == null ||
       str.isEmpty ||
@@ -202,7 +204,7 @@ bool isURL(
   String hash;
 
   // check protocol
-  var split = str.split('://');
+  List<String> split = str.split('://');
   if (split.length > 1) {
     protocol = shift(split).toLowerCase();
     if (!protocols.contains(protocol)) {
@@ -299,8 +301,8 @@ bool isIP(String? str, int? version) {
     if (!_ipv4Maybe.hasMatch(str!)) {
       return false;
     }
-    final parts = str.split('.');
-    parts.sort((a, b) => int.parse(a) - int.parse(b));
+    final List<String> parts = str.split('.');
+    parts.sort((String a, String b) => int.parse(a) - int.parse(b));
     return int.parse(parts[3]) <= 255;
   }
   return version == 6 && _ipv6.hasMatch(str!);
@@ -315,15 +317,15 @@ bool isFQDN(
   bool requireTld = true,
   bool allowUnderscores = false,
 }) {
-  final parts = str.split('.');
+  final List<String> parts = str.split('.');
   if (requireTld) {
-    final tld = parts.removeLast();
+    final String tld = parts.removeLast();
     if (parts.isEmpty || !RegExp(r'^[a-z]{2,}$').hasMatch(tld)) {
       return false;
     }
   }
 
-  for (final part in parts) {
+  for (final String part in parts) {
     if (allowUnderscores) {
       if (part.contains('__')) {
         return false;
@@ -343,19 +345,19 @@ bool isFQDN(
 
 /// check if the string is a credit card
 bool isCreditCard(String str) {
-  final sanitized = str.replaceAll(RegExp('[^0-9]+'), '');
+  final String sanitized = str.replaceAll(RegExp('[^0-9]+'), '');
   if (!_creditCard.hasMatch(sanitized)) {
     return false;
   }
 
   // Luhn algorithm
-  var sum = 0;
+  int sum = 0;
   String digit;
-  var shouldDouble = false;
+  bool shouldDouble = false;
 
-  for (var i = sanitized.length - 1; i >= 0; i--) {
+  for (int i = sanitized.length - 1; i >= 0; i--) {
     digit = sanitized.substring(i, i + 1);
-    var tmpNum = int.parse(digit);
+    int tmpNum = int.parse(digit);
 
     if (shouldDouble == true) {
       tmpNum *= 2;
@@ -392,7 +394,7 @@ bool isPhoneNumber(String str) {
   if (str.isEmpty) {
     return false;
   }
-  final phone = str.replaceAll(' ', '').replaceAll('-', '');
+  final String phone = str.replaceAll(' ', '').replaceAll('-', '');
   return _phoneNumber.hasMatch(phone);
 }
 
@@ -404,9 +406,9 @@ bool isCreditCardExpirationDate(String str) {
   }
 
   // Extract month and year from the value
-  final parts = str.split('/').map(int.parse).toList();
-  final month = parts[0];
-  final year = parts[1];
+  final List<int> parts = str.split('/').map(int.parse).toList();
+  final int month = parts[0];
+  final int year = parts[1];
 
   // Check for valid month (1-12)
   if (month < 1 || month > 12) {
@@ -418,13 +420,13 @@ bool isCreditCardExpirationDate(String str) {
 
 /// check if the string is not a expired credit card date
 bool isNotExpiredCreditCardDate(String str) {
-  final parts = str.split('/').map(int.parse).toList();
-  final month = parts[0];
-  final year = parts[1];
+  final List<int> parts = str.split('/').map(int.parse).toList();
+  final int month = parts[0];
+  final int year = parts[1];
 
-  final now = DateTime.now();
-  final currentYear = now.year % 100;
-  final currentMonth = now.month;
+  final DateTime now = DateTime.now();
+  final int currentYear = now.year % 100;
+  final int currentMonth = now.month;
 
   if (year < currentYear) {
     return false;
@@ -439,13 +441,15 @@ bool isNotExpiredCreditCardDate(String str) {
 
 /// check if the string is a color
 /// * [formats] is a list of color formats to check
-bool isColorCode(String value,
-    {List<String> formats = const ['hex', 'rgb', 'hsl']}) {
+bool isColorCode(
+  String value, {
+  List<String> formats = const <String>['hex', 'rgb', 'hsl'],
+}) {
   if (formats.contains('hex') && _hex.hasMatch(value)) {
     return true;
   } else if (formats.contains('rgb') && _rgb.hasMatch(value)) {
-    final parts = value.substring(4, value.length - 1).split(',');
-    for (final part in parts) {
+    final List<String> parts = value.substring(4, value.length - 1).split(',');
+    for (final String part in parts) {
       final int colorValue = int.tryParse(part.trim()) ?? -1;
       if (colorValue < 0 || colorValue > 255) {
         return false;
@@ -453,8 +457,8 @@ bool isColorCode(String value,
     }
     return true;
   } else if (formats.contains('hsl') && _hsl.hasMatch(value)) {
-    final parts = value.substring(4, value.length - 1).split(',');
-    for (var i = 0; i < parts.length; i++) {
+    final List<String> parts = value.substring(4, value.length - 1).split(',');
+    for (int i = 0; i < parts.length; i++) {
       final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
       if (i == 0) {
         // Hue
@@ -538,13 +542,13 @@ bool isEvenNumber(String value) {
 
 /// check if the string is a valid MAC address
 bool isMACAddress(String value) {
-  final splitChar = value.contains(':') ? ':' : '-';
-  final parts = value.split(splitChar);
+  final String splitChar = value.contains(':') ? ':' : '-';
+  final List<String> parts = value.split(splitChar);
   if (parts.length != 6) {
     return false;
   }
 
-  for (final part in parts) {
+  for (final String part in parts) {
     if (part.length != 2 || !_macAddress.hasMatch(part)) {
       return false;
     }
@@ -560,17 +564,21 @@ bool isIBAN(String iban) {
     return false;
   }
 
-  String rearranged = iban.substring(4) + iban.substring(0, 4);
-  String numericIban = rearranged.split('').map((char) {
-    int charCode = char.codeUnitAt(0);
+  final String rearranged = iban.substring(4) + iban.substring(0, 4);
+  final String numericIban = rearranged.split('').map((String char) {
+    final int charCode = char.codeUnitAt(0);
     return charCode >= 65 && charCode <= 90 ? (charCode - 55).toString() : char;
   }).join();
 
   int remainder = int.parse(numericIban.substring(0, 9)) % 97;
   for (int i = 9; i < numericIban.length; i += 7) {
-    remainder = int.parse(remainder.toString() +
-            numericIban.substring(
-                i, i + 7 < numericIban.length ? i + 7 : numericIban.length)) %
+    remainder = int.parse(
+          remainder.toString() +
+              numericIban.substring(
+                i,
+                i + 7 < numericIban.length ? i + 7 : numericIban.length,
+              ),
+        ) %
         97;
   }
 
@@ -597,10 +605,10 @@ bool isISBN(String isbn) {
 
     int sum = 0;
     for (int i = 0; i < 9; i++) {
-      sum += (int.parse(isbn[i]) * (10 - i));
+      sum += int.parse(isbn[i]) * (10 - i);
     }
 
-    int checkDigit = (isbn[9] == 'X') ? 10 : int.parse(isbn[9]);
+    final int checkDigit = (isbn[9] == 'X') ? 10 : int.parse(isbn[9]);
     sum += checkDigit;
 
     return sum % 11 == 0;
@@ -609,12 +617,12 @@ bool isISBN(String isbn) {
 
     int sum = 0;
     for (int i = 0; i < 12; i++) {
-      int digit = int.parse(isbn[i]);
+      final int digit = int.parse(isbn[i]);
       sum += (i % 2 == 0) ? digit : digit * 3;
     }
 
-    int checkDigit = int.parse(isbn[12]);
-    int calculatedCheckDigit = (10 - (sum % 10)) % 10;
+    final int checkDigit = int.parse(isbn[12]);
+    final int calculatedCheckDigit = (10 - (sum % 10)) % 10;
 
     return checkDigit == calculatedCheckDigit;
   } else {
