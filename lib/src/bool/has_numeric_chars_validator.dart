@@ -17,6 +17,10 @@ class HasNumericCharsValidator extends BaseValidator<String> {
 
   RegExp? regex;
 
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
+
   /// {@template number_template}
   /// This regex matches any character that is not a digit (0-9).
   ///
@@ -29,10 +33,7 @@ class HasNumericCharsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String? valueCandidate) {
-    return numberCharLength(valueCandidate!) >= atLeast
-        ? null
-        : errorText ??
-            FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
+    return numberCharLength(valueCandidate!) >= atLeast ? null : errorText;
   }
 
   int numberCharLength(String value) {

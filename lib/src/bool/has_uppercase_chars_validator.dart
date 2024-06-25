@@ -17,6 +17,10 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
 
   RegExp? regex;
 
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.containsUppercaseCharErrorText(atLeast);
+
   /// {@template upper_case_template}
   /// This regex matches any character that is not an uppercase letter (A-Z) or Ñ.
   ///
@@ -29,11 +33,7 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String? valueCandidate) {
-    return uppercaseCharLength(valueCandidate!) >= 1
-        ? null
-        : errorText ??
-            FormBuilderLocalizations.current
-                .containsUppercaseCharErrorText(atLeast);
+    return uppercaseCharLength(valueCandidate!) >= 1 ? null : errorText;
   }
 
   int uppercaseCharLength(String value) {

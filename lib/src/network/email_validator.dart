@@ -23,6 +23,10 @@ class EmailValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _emailRegex;
 
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.emailErrorText;
+
   /// {@template email_regex_template}
   /// The default regex matches an email address.
   ///
@@ -41,8 +45,6 @@ class EmailValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String? valueCandidate) {
-    return regex.hasMatch(valueCandidate!.toLowerCase())
-        ? null
-        : errorText ?? FormBuilderLocalizations.current.emailErrorText;
+    return regex.hasMatch(valueCandidate!.toLowerCase()) ? null : errorText;
   }
 }

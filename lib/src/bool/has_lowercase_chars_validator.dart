@@ -17,6 +17,10 @@ class HasLowercaseCharsValidator extends BaseValidator<String> {
 
   RegExp? regex;
 
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.containsLowercaseCharErrorText(atLeast);
+
   /// {@template lower_case_template}
   /// This regex matches any character that is not a lowercase letter (a-z) or ñ.
   ///
@@ -29,11 +33,7 @@ class HasLowercaseCharsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String? valueCandidate) {
-    return lowercaseCharLength(valueCandidate!) >= atLeast
-        ? null
-        : errorText ??
-            FormBuilderLocalizations.current
-                .containsLowercaseCharErrorText(atLeast);
+    return lowercaseCharLength(valueCandidate!) >= atLeast ? null : errorText;
   }
 
   int lowercaseCharLength(String value) {

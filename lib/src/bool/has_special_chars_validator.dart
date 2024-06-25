@@ -17,6 +17,10 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
 
   RegExp? regex;
 
+  @override
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.containsSpecialCharErrorText(atLeast);
+
   /// {@template special_char_template}
   /// This regex matches any character that is not a letter (A-Z, a-z) or a digit (0-9).
   ///
@@ -29,11 +33,7 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String? valueCandidate) {
-    return specialCharLength(valueCandidate!) >= atLeast
-        ? null
-        : errorText ??
-            FormBuilderLocalizations.current
-                .containsSpecialCharErrorText(atLeast);
+    return specialCharLength(valueCandidate!) >= atLeast ? null : errorText;
   }
 
   int specialCharLength(String value) {

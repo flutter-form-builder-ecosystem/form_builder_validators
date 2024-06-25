@@ -1,24 +1,29 @@
-import '../localization/l10n.dart';
-
 /// Base class for all validators.
 abstract class BaseValidator<T> {
   /// Creates a new instance of the validator.
-  const BaseValidator({this.errorText, this.checkNullOrEmpty = true});
+  const BaseValidator({String? errorText, this.checkNullOrEmpty = true})
+      : _errorText = errorText;
+
+  /// Backing field for [errorText].
+  final String? _errorText;
 
   /// {@template base_validator_error_text}
   /// The error message returned if the value is invalid.
   /// {@endtemplate}
-  final String? errorText;
+  String get errorText => _errorText ?? translatedErrorText;
+
+  /// The translated error message returned if the value is invalid.
+  String get translatedErrorText;
 
   /// {@template base_validator_null_check}
   /// Whether to check if the value is null or empty.
   /// {@endtemplate}
   final bool checkNullOrEmpty;
-  
+
   /// Validates the value and checks if it is null or empty.
   String? validate(T? valueCandidate) {
     if (checkNullOrEmpty && isNullOrEmpty(valueCandidate)) {
-      return errorText ?? FormBuilderLocalizations.current.requiredErrorText;
+      return errorText;
     }
     return validateValue(valueCandidate);
   }
