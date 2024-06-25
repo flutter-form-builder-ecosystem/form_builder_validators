@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:form_builder_validators/src/collection/contains_element_validator.dart';
 
 import '../form_builder_validators.dart';
+import 'collection/collection.dart';
 import 'collection/equal_length_validator.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
@@ -292,23 +293,13 @@ class FormBuilderValidators {
   static FormFieldValidator<T> maxLength<T>(
     int maxLength, {
     String? errorText,
-  }) {
-    assert(maxLength > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate == null,
-      );
-      int valueLength = 0;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-      return null != valueCandidate && valueLength > maxLength
-          ? errorText ??
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)
-          : null;
-    };
-  }
+    bool checkNullOrEmpty = true,
+  }) =>
+      MaxLengthValidator<T>(
+        maxLength,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the length of the field to be equal to the provided length. Works with String, iterable, and int types.
   /// This validator checks if the length of the field's value is equal to the given length.
