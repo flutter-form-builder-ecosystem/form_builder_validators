@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class IsFalseValidator extends BaseValidator<bool> {
-  IsFalseValidator({
+  const IsFalseValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
 

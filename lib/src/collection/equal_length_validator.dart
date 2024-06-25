@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class EqualLengthValidator<T> extends BaseValidator<T> {
-  EqualLengthValidator(
+  const EqualLengthValidator(
     this.length, {
     this.allowEmpty = false,
 

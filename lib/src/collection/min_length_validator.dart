@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class MinLengthValidator<T> extends BaseValidator<T> {
-  MinLengthValidator(
+  const MinLengthValidator(
     this.minLength, {
     /// {@macro base_validator_error_text}
     super.errorText,

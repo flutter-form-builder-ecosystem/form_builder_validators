@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class UniqueValidator<T> extends BaseValidator<T> {
-  UniqueValidator(
+  const UniqueValidator(
     this.values, {
     /// {@macro base_validator_error_text}
     super.errorText,
@@ -11,7 +11,7 @@ class UniqueValidator<T> extends BaseValidator<T> {
     super.checkNullOrEmpty,
   });
 
-  List<T> values;
+  final List<T> values;
 
   @override
   String get translatedErrorText =>

@@ -15,7 +15,7 @@ class HasNumericCharsValidator extends BaseValidator<String> {
 
   final int atLeast;
 
-  RegExp? regex;
+  final RegExp? regex;
 
   @override
   String get translatedErrorText =>

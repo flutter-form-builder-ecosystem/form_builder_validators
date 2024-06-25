@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 T shift<T>(List<T> l) {
   if (l.isNotEmpty) {
-    final first = l.first;
+    final T first = l.first;
     l.removeAt(0);
     return first;
   }

@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class MaxWordsCountValidator extends BaseValidator<String> {
-  MaxWordsCountValidator(
+  const MaxWordsCountValidator(
     this.maxWordsCount, {
     /// {@macro base_validator_error_text}
     super.errorText,

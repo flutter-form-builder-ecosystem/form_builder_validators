@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class MaxLengthValidator<T> extends BaseValidator<T> {
-  MaxLengthValidator(
+  const MaxLengthValidator(
     this.maxLength, {
     /// {@macro base_validator_error_text}
     super.errorText,
