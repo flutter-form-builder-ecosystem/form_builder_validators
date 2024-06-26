@@ -18,14 +18,14 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
   }
 
   /// Adds a condition to apply the validator only if the condition is met.
-  FormFieldValidator<T> when(bool Function(T value) condition) {
+  FormFieldValidator<T> when(bool Function(T? value) condition) {
     return FormBuilderValidators.conditional(condition, this);
   }
 
   /// Adds a condition to apply the validator only if the condition is not met.
-  FormFieldValidator<T> unless(bool Function(T value) condition) {
+  FormFieldValidator<T> unless(bool Function(T? value) condition) {
     return FormBuilderValidators.conditional(
-      (T value) => !condition(value),
+      (T? value) => !condition(value),
       this,
     );
   }

@@ -16,11 +16,11 @@ void main() {
         'FormFieldValidatorExtensions.and',
         (WidgetTester tester) =>
             testValidations(tester, (BuildContext context) {
-          final FormFieldValidator validator1 =
+          final FormFieldValidator<String> validator1 =
               FormBuilderValidators.required();
-          final FormFieldValidator validator2 =
+          final FormFieldValidator<String> validator2 =
               FormBuilderValidators.minLength(5);
-          final FormFieldValidator combinedValidator =
+          final FormFieldValidator<String> combinedValidator =
               validator1.and(validator2);
 
           // Pass
@@ -39,8 +39,8 @@ void main() {
             testValidations(tester, (BuildContext context) {
           final FormFieldValidator<String> validator =
               FormBuilderValidators.or(<String? Function(String? value)>[
-            FormBuilderValidators.endsWith(suffix: 'world'),
-            FormBuilderValidators.startsWith(prefix: 'Hello'),
+            FormBuilderValidators.endsWith('world'),
+            FormBuilderValidators.startsWith('Hello'),
           ]);
           // Pass
           expect(validator('Hello world'), isNull);
@@ -186,9 +186,10 @@ void main() {
         'FormFieldValidatorExtensions.withMessage',
         (WidgetTester tester) =>
             testValidations(tester, (BuildContext context) {
-          final FormFieldValidator validator = FormBuilderValidators.required();
+          final FormFieldValidator<String> validator =
+              FormBuilderValidators.required();
           const String errorMessage = 'This field is required';
-          final FormFieldValidator validatorWithMessage =
+          final FormFieldValidator<String> validatorWithMessage =
               validator.withErrorMessage(errorMessage);
 
           // Pass

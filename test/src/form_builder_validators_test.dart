@@ -169,7 +169,7 @@ void main() {
       expect(validator(faker.datatype.string(length: length)), isNotNull);
       // Advanced
       final FormFieldValidator<String> validatorAllowEmpty =
-          FormBuilderValidators.minLength<String>(5, allowEmpty: true);
+          FormBuilderValidators.minLength<String>(5);
       expect(validatorAllowEmpty(null), isNull);
       expect(validatorAllowEmpty(''), isNull);
 
@@ -252,7 +252,6 @@ void main() {
       final FormFieldValidator<Iterable<String>> validatorAllowEmpty =
           FormBuilderValidators.minLength<Iterable<String>>(
         3,
-        allowEmpty: true,
       );
       expect(validatorAllowEmpty(null), isNull);
       expect(validatorAllowEmpty(<String>[]), isNull);
@@ -441,7 +440,7 @@ void main() {
       expect(validator('The quick brown fox '), isNotNull);
       // Advanced
       final FormFieldValidator<String> validatorAllowEmpty =
-          FormBuilderValidators.minWordsCount(5, allowEmpty: true);
+          FormBuilderValidators.minWordsCount(5);
       expect(validatorAllowEmpty(null), isNull);
       expect(validatorAllowEmpty(''), isNull);
 
@@ -915,7 +914,8 @@ void main() {
   testWidgets(
     'FormBuilderValidators.range',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
-      final FormFieldValidator validator = FormBuilderValidators.range(10, 20);
+      final FormFieldValidator<dynamic> validator =
+          FormBuilderValidators.range(10, 20);
       // Pass
       expect(validator(15), isNull);
       expect(validator(null), isNull);
@@ -924,7 +924,7 @@ void main() {
       expect(validator(5), isNotNull);
       expect(validator(25), isNotNull);
 
-      final FormFieldValidator validatorWithErrorMessage =
+      final FormFieldValidator<dynamic> validatorWithErrorMessage =
           FormBuilderValidators.range(
         10,
         20,
@@ -1277,7 +1277,7 @@ void main() {
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
           FormBuilderValidators.conditional<String>(
-        (String value) => value.contains('test'),
+        (String? value) => value!.contains('test'),
         FormBuilderValidators.hasUppercaseChars(atLeast: 6),
       );
       // Pass
@@ -1290,7 +1290,7 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.conditional<String>(
-        (String value) => value.contains('test'),
+        (String? value) => value!.contains('test'),
         FormBuilderValidators.hasUppercaseChars(
           atLeast: 6,
           errorText: customErrorMessage,

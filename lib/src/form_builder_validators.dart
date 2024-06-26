@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../localization/l10n.dart';
 import 'bool/bool.dart';
 import 'collection/collection.dart';
+import 'core/core.dart';
 import 'network/network.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
@@ -16,17 +17,8 @@ class FormBuilderValidators {
   /// - [validators] The list of validators to compose.
   static FormFieldValidator<T> compose<T>(
     List<FormFieldValidator<T>> validators,
-  ) {
-    return (T? valueCandidate) {
-      for (final FormFieldValidator<T> validator in validators) {
-        final String? validatorResult = validator.call(valueCandidate);
-        if (validatorResult != null) {
-          return validatorResult;
-        }
-      }
-      return null;
-    };
-  }
+  ) =>
+      ComposeValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that combines multiple validators, passing validation if any return null.
   /// This validator applies each provided validator sequentially, and passes if any of them return a null result.
@@ -73,18 +65,8 @@ class FormBuilderValidators {
   /// - [validators] The list of validators to run.
   static FormFieldValidator<T> aggregate<T>(
     List<FormFieldValidator<T>> validators,
-  ) {
-    return (valueCandidate) {
-      final List<String> errors = <String>[];
-      for (final FormFieldValidator<T> validator in validators) {
-        final String? error = validator(valueCandidate);
-        if (error != null) {
-          errors.add(error);
-        }
-      }
-      return errors.isNotEmpty ? errors.join('\n') : null;
-    };
-  }
+  ) =>
+      AggregateValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that logs the value at a specific point in the validation chain.
   /// This validator logs the value being validated and always returns null.
@@ -147,7 +129,7 @@ class FormBuilderValidators {
     T defaultValue,
     FormFieldValidator<T> validator,
   ) =>
-      (valueCandidate) => validator(valueCandidate ?? defaultValue);
+      DefaultValueValidator<T>(defaultValue, validator).validate;
 
   /// [FormFieldValidator] that requires the field have a non-empty value.
   /// This validator checks if the field's value is not empty.
@@ -180,9 +162,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate != value
-          ? errorText ?? FormBuilderLocalizations.current.equalErrorText(value)
-          : null;
+      EqualValidator<T>(
+        value,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value be not equal to the provided value.
   /// This validator checks if the field's value is not equal to the given value.
@@ -195,10 +179,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate == value
-          ? errorText ??
-              FormBuilderLocalizations.current.notEqualErrorText(value)
-          : null;
+      NotEqualValidator<T>(
+        value,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be greater than (or equal) to the provided number.
   /// This validator checks if the field's value is greater than or equal to the given minimum value.
@@ -771,15 +756,10 @@ class FormBuilderValidators {
   /// - [condition] A function that determines if the validator should be applied.
   /// - [validator] The validator to apply if the condition is met.
   static FormFieldValidator<T> conditional<T>(
-    bool Function(T value) condition,
+    bool Function(T? value) condition,
     FormFieldValidator<T> validator,
   ) =>
-      (valueCandidate) {
-        if (valueCandidate != null && condition(valueCandidate)) {
-          return validator(valueCandidate);
-        }
-        return null;
-      };
+      ConditionalValidator<T>(condition, validator).validate;
 
   /// [FormFieldValidator] that requires the field's value to be within a certain range.
   /// This validator checks if the field's value is within the specified numerical range.
