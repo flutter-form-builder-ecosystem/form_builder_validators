@@ -15,7 +15,7 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
 
   final int atLeast;
 
-  final RegExp? regex;
+  final RegExp regex;
 
   @override
   String get translatedErrorText =>
@@ -37,6 +37,6 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
   }
 
   int uppercaseCharLength(String value) {
-    return value.replaceAll(_upperCase, '').length;
+    return value.replaceAll(regex, '').length;
   }
 }

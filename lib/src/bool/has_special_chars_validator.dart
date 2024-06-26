@@ -15,7 +15,7 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
 
   final int atLeast;
 
-  final RegExp? regex;
+  final RegExp regex;
 
   @override
   String get translatedErrorText =>
@@ -37,6 +37,6 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
   }
 
   int specialCharLength(String value) {
-    return value.replaceAll(_specialChar, '').length;
+    return value.replaceAll(regex, '').length;
   }
 }
