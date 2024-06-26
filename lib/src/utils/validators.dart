@@ -150,18 +150,6 @@ RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
 /// {@endtemplate}
 RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 
-/// {@template time_template}
-/// This regex matches time in 24-hour or 12-hour format.
-///
-/// - It allows hours and minutes, with optional AM/PM for 12-hour format.
-/// - It supports leading zeros for single-digit hours.
-///
-/// Examples: 23:59, 11:59 PM
-/// {@endtemplate}
-RegExp _time = RegExp(
-  r'^(?:[01]?\d|2[0-3]):[0-5]?\d(?::[0-5]?\d)?$|^(?:0?[1-9]|1[0-2]):[0-5]?\d(?::[0-5]?\d)?\s?(?:[AaPp][Mm])$',
-);
-
 int _maxUrlLength = 2083;
 
 /// check if the string [str] is an email
@@ -373,20 +361,6 @@ bool isCreditCard(String str) {
   }
 
   return (sum % 10 == 0);
-}
-
-/// check if the string is a date
-bool isDateTime(String str) {
-  try {
-    DateTime.parse(str);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-bool isTime(String str) {
-  return _time.hasMatch(str);
 }
 
 /// check if the string is a valid phone number

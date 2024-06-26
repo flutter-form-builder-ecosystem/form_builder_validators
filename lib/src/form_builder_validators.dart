@@ -4,6 +4,7 @@ import '../localization/l10n.dart';
 import 'bool/bool.dart';
 import 'collection/collection.dart';
 import 'core/core.dart';
+import 'datetime/datetime.dart';
 import 'network/network.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
@@ -507,10 +508,38 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isDateTime(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
-          : null;
+      DateValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid date in the future.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the date is not in the future.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<String> dateFuture({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      DateFutureValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid time in the past.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the time is not in the past.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<String> datePast({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      DatePastValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid time string.
   /// This validator checks if the field's value is a valid time string.
@@ -538,11 +567,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isTime(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.timeErrorText
-          : null;
+      TimeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date.
   /// This validator checks if the field's value is a valid date.
@@ -553,9 +581,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (DateTime? valueCandidate) => valueCandidate == null
-          ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
-          : null;
+      DateTimeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
   /// This validator checks if the field's value is a date within the given range.
@@ -570,19 +599,12 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) {
-        if (valueCandidate == null || !isDateTime(valueCandidate)) {
-          return errorText ??
-              FormBuilderLocalizations.current.dateStringErrorText;
-        }
-
-        final DateTime date = DateTime.parse(valueCandidate);
-        return date.isBefore(minDate) || date.isAfter(maxDate)
-            ? errorText ??
-                FormBuilderLocalizations.current
-                    .dateRangeErrorText(minDate.toString(), maxDate.toString())
-            : null;
-      };
+      DateRangeValidator(
+        minDate,
+        maxDate,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid phone number.
   /// This validator checks if the field's value is a valid phone number.

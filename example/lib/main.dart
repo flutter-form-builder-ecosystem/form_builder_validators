@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
       supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: const <LocalizationsDelegate>[
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         ...GlobalMaterialLocalizations.delegates,
         // Placed in front of `FormBuilderLocalizations.delegate`
         ...AppLocalizations.localizationsDelegates,

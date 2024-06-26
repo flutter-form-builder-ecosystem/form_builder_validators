@@ -19,7 +19,7 @@ class TransformValidator<T> extends BaseValidator<T> {
 
   @override
   String? validateValue(T? valueCandidate) {
-    final transformedValue = transformer(valueCandidate);
+    final T transformedValue = transformer(valueCandidate);
     return validator(transformedValue);
   }
 }
