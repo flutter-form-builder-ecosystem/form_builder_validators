@@ -57,5 +57,6 @@
   "singleLineErrorText": "Value must be a single line.",
   "timeErrorText": "Value must be a valid time.",
   "dateMustBeInTheFutureErrorText": "Date must be in the future.",
-  "dateMustBeInThePastErrorText": "Date must be in the past."
+  "dateMustBeInThePastErrorText": "Date must be in the past.",
+  "fileNameErrorText": "Value must be a valid file name."
 }

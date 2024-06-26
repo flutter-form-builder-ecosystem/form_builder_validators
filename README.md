@@ -90,6 +90,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
 - `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
 - `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
+- `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
 
 ### Network validators
 

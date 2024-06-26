@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class DateRangeValidator extends BaseValidator<String> {
-  DateRangeValidator(
+  const DateRangeValidator(
     this.minDate,
     this.maxDate, {
     /// {@macro base_validator_error_text}

@@ -1,14 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
-import '../localization/l10n.dart';
-import 'bool/bool.dart';
-import 'collection/collection.dart';
-import 'core/core.dart';
-import 'datetime/datetime.dart';
-import 'file/file.dart';
-import 'network/network.dart';
-import 'utils/helpers.dart';
 import 'utils/validators.dart';
 
 /// Provides utility methods for creating various [FormFieldValidator]s.
@@ -708,24 +700,25 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) {
-        if (valueCandidate == null || valueCandidate.isEmpty) {
-          return errorText ??
-              FormBuilderLocalizations.current
-                  .fileSizeErrorText(formatBytes(0), formatBytes(maxSize));
-        }
+      FileSizeValidator(
+        maxSize,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-        final int? size = int.tryParse(valueCandidate);
-        if (size == null || size > maxSize) {
-          return errorText ??
-              FormBuilderLocalizations.current.fileSizeErrorText(
-                formatBytes(size ?? 0),
-                formatBytes(maxSize),
-              );
-        }
-
-        return null;
-      };
+  /// [FormFieldValidator] that requires the field's value to be a valid file name.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the file name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<String> fileName({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FileNameValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that applies another validator conditionally.
   /// This validator applies a provided validator based on the specified condition.
@@ -1091,10 +1084,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isFilePath(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.pathErrorText
-              : null;
+      PathValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an odd number.
   /// This validator checks if the field's value is an odd number.

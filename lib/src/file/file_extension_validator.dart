@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class FileExtensionValidator extends BaseValidator<String> {
-  FileExtensionValidator(
+  const FileExtensionValidator(
     List<String> this.allowedExtensions, {
     /// {@macro base_validator_error_text}
     super.errorText,

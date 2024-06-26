@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class DateValidator extends BaseValidator<String> {
-  DateValidator({
+  const DateValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
 

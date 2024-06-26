@@ -56,6 +56,7 @@
 - Add datePast
 - Add dateFuture
 - Add SSN (Social Security Number (USA))
+- Add fileName
 
 ## 10.0.1
 

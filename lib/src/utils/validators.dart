@@ -121,15 +121,6 @@ RegExp _uuid = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
 );
 
-/// {@template file_path_template}
-/// This regex matches file paths.
-///
-/// - It allows letters, digits, underscores, hyphens, and forward slashes.
-///
-/// Examples: /path/to/file, C:/Users/Name/Documents
-/// {@endtemplate}
-RegExp _filePath = RegExp(r'^[a-zA-Z0-9_\-\/]+$');
-
 /// {@template mac_address_template}
 /// This regex matches MAC addresses.
 ///
@@ -497,11 +488,6 @@ bool isBase64(String value) {
   } catch (e) {
     return false;
   }
-}
-
-/// check if the string is a valid file path
-bool isFilePath(String value) {
-  return _filePath.hasMatch(value);
 }
 
 bool isOddNumber(String value) {

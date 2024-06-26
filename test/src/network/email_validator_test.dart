@@ -5,7 +5,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
-  group('EmailValidator -', () {
+  group('Email -', () {
     test('should return null if the email address is valid', () {
       // Arrange
       final EmailValidator validator =
