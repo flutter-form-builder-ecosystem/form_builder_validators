@@ -27,36 +27,20 @@ class FormBuilderValidators {
   /// - [validators] The list of validators to compose.
   static FormFieldValidator<T> or<T>(
     List<FormFieldValidator<T>> validators,
-  ) {
-    return (valueCandidate) {
-      String? errorResult;
-      for (final FormFieldValidator<T> validator in validators) {
-        final String? validatorResult = validator.call(valueCandidate);
-        if (validatorResult == null) {
-          return null;
-        } else {
-          errorResult = validatorResult;
-        }
-      }
-      return errorResult;
-    };
-  }
+  ) =>
+      OrValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that transforms the value before applying the validator.
   /// This validator applies a transformer to the value before running the actual validator.
   ///
   /// ## Parameters:
-  /// - [validator] The validator to apply.
   /// - [transformer] The transformer to apply.
+  /// - [validator] The validator to apply.
   static FormFieldValidator<T> transform<T>(
-    FormFieldValidator<T> validator,
     T Function(T? value) transformer,
-  ) {
-    return (valueCandidate) {
-      final transformedValue = transformer(valueCandidate);
-      return validator(transformedValue);
-    };
-  }
+    FormFieldValidator<T> validator,
+  ) =>
+      TransformValidator<T>(transformer, validator).validate;
 
   /// [FormFieldValidator] that runs validators and collects all error messages.
   /// This validator runs all provided validators and concatenates any error messages into a single string.
@@ -73,16 +57,16 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [log] The log message to display.
-  static FormFieldValidator<T> log<T>({
-    String Function(T? value)? log,
-  }) {
-    return (valueCandidate) {
-      if (log != null) {
-        debugPrint(log(valueCandidate));
-      }
-      return null;
-    };
-  }
+  static FormFieldValidator<T> log<T>(
+    String Function(T? value)? log, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LogValidator<T>(
+        log,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that skips the validation when a certain condition is met.
   /// This validator skips the provided validator if the condition is true.
@@ -93,14 +77,8 @@ class FormBuilderValidators {
   static FormFieldValidator<T> skipWhen<T>(
     bool Function(T? value) condition,
     FormFieldValidator<T> validator,
-  ) {
-    return (valueCandidate) {
-      if (condition(valueCandidate)) {
-        return null;
-      }
-      return validator(valueCandidate);
-    };
-  }
+  ) =>
+      SkipWhenValidator<T>(condition, validator).validate;
 
   /// [FormFieldValidator] that checks if the value is unique in a list of values.
   /// This validator ensures the value is unique within the provided list.
@@ -139,17 +117,11 @@ class FormBuilderValidators {
   static FormFieldValidator<T> required<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate == null ||
-          (valueCandidate is String && valueCandidate.trim().isEmpty) ||
-          (valueCandidate is Iterable && valueCandidate.isEmpty) ||
-          (valueCandidate is Map && valueCandidate.isEmpty)) {
-        return errorText ?? FormBuilderLocalizations.current.requiredErrorText;
-      }
-      return null;
-    };
-  }
+  }) =>
+      RequiredValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value be equal to the provided value.
   /// This validator checks if the field's value is equal to the given value.

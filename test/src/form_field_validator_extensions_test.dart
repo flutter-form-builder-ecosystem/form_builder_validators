@@ -115,8 +115,8 @@ void main() {
             testValidations(tester, (BuildContext context) {
           final FormFieldValidator<String> validator =
               FormBuilderValidators.transform<String>(
-            FormBuilderValidators.required(),
             (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(),
           );
           // Pass
           expect(validator(' trimmed '), isNull);
@@ -127,8 +127,8 @@ void main() {
 
           final FormFieldValidator<String> validatorWithErrorMessage =
               FormBuilderValidators.transform<String>(
-            FormBuilderValidators.required(errorText: customErrorMessage),
             (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(errorText: customErrorMessage),
           );
           // Pass
           expect(validatorWithErrorMessage(' trimmed '), isNull);
@@ -170,7 +170,7 @@ void main() {
             testValidations(tester, (BuildContext context) {
           final FormFieldValidator<String> validator =
               FormBuilderValidators.log<String>(
-            log: (String? value) => 'Logging: $value',
+            (String? value) => 'Logging: $value',
           );
           // Pass
           expect(validator('test'), isNull);

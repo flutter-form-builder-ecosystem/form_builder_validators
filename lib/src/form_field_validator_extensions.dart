@@ -32,7 +32,7 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
 
   /// Transforms the value before applying the validator.
   FormFieldValidator<T> transform(T Function(T? value) transformer) {
-    return FormBuilderValidators.transform(this, transformer);
+    return FormBuilderValidators.transform(transformer, this);
   }
 
   /// Skips the validator if the condition is met.
@@ -42,7 +42,7 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
 
   /// Logs the value during the validation process.
   FormFieldValidator<T> log({String Function(T? value)? log}) {
-    return FormBuilderValidators.log(log: log);
+    return FormBuilderValidators.log(log);
   }
 
   /// Overrides the error message of the current validator.

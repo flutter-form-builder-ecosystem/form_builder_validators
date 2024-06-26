@@ -15,12 +15,10 @@ class EqualValidator<T> extends BaseValidator<T> {
 
   @override
   String get translatedErrorText =>
-      FormBuilderLocalizations.current.equalErrorText(value)
+      FormBuilderLocalizations.current.equalErrorText(value);
 
   @override
   String? validateValue(T? valueCandidate) {
-    return  valueCandidate != value
-          ? errorText
-          : null;
+    return valueCandidate != value ? errorText : null;
   }
 }
