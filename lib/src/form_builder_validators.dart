@@ -1,10 +1,12 @@
 import 'package:flutter/widgets.dart';
 
+import '../form_builder_validators.dart';
 import '../localization/l10n.dart';
 import 'bool/bool.dart';
 import 'collection/collection.dart';
 import 'core/core.dart';
 import 'datetime/datetime.dart';
+import 'file/file.dart';
 import 'network/network.dart';
 import 'utils/helpers.dart';
 import 'utils/validators.dart';
@@ -688,30 +690,12 @@ class FormBuilderValidators {
     List<String> allowedExtensions, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    final List<String> allowedExtensionsLowerCase =
-        allowedExtensions.map((String e) => e.toLowerCase()).toList();
-
-    return (String? valueCandidate) {
-      if (valueCandidate == null || valueCandidate.isEmpty) {
-        return errorText ??
-            FormBuilderLocalizations.current.fileExtensionErrorText(
-              allowedExtensions.join(', '),
-            );
-      }
-
-      final String extension =
-          fileExtensionFromPath(valueCandidate).toLowerCase();
-      if (!allowedExtensionsLowerCase.contains(extension)) {
-        return errorText ??
-            FormBuilderLocalizations.current.fileExtensionErrorText(
-              allowedExtensions.join(', '),
-            );
-      }
-
-      return null;
-    };
-  }
+  }) =>
+      FileExtensionValidator(
+        allowedExtensions,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that restricts the size of a file to be less than or equal to the provided maximum size.
   /// This validator checks if the file size is within the given limit.
@@ -1315,10 +1299,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isISBN(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.isbnErrorText
-              : null;
+      IsbnValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a single line.
   /// This validator checks if the field's value is a single line.

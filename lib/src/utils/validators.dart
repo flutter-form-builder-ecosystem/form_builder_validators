@@ -570,40 +570,6 @@ bool isBIC(String bic) {
   return _bic.hasMatch(bic);
 }
 
-/// check if the string is a valid ISBN
-bool isISBN(String isbn) {
-  isbn = isbn.replaceAll('-', '').replaceAll(' ', '');
-
-  if (isbn.length == 10) {
-    if (!RegExp(r'^\d{9}[\dX]$').hasMatch(isbn)) return false;
-
-    int sum = 0;
-    for (int i = 0; i < 9; i++) {
-      sum += int.parse(isbn[i]) * (10 - i);
-    }
-
-    final int checkDigit = (isbn[9] == 'X') ? 10 : int.parse(isbn[9]);
-    sum += checkDigit;
-
-    return sum % 11 == 0;
-  } else if (isbn.length == 13) {
-    if (!RegExp(r'^\d{13}$').hasMatch(isbn)) return false;
-
-    int sum = 0;
-    for (int i = 0; i < 12; i++) {
-      final int digit = int.parse(isbn[i]);
-      sum += (i % 2 == 0) ? digit : digit * 3;
-    }
-
-    final int checkDigit = int.parse(isbn[12]);
-    final int calculatedCheckDigit = (10 - (sum % 10)) % 10;
-
-    return checkDigit == calculatedCheckDigit;
-  } else {
-    return false;
-  }
-}
-
 bool isSingleLine(String value) {
   return !value.contains('\n') && !value.contains('\r');
 }
