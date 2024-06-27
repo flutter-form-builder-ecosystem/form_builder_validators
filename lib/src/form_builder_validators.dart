@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
-import 'utils/validators.dart';
 
 /// Provides utility methods for creating various [FormFieldValidator]s.
 class FormBuilderValidators {
@@ -292,15 +291,15 @@ class FormBuilderValidators {
   /// This validator checks if the word count of the field's value meets the minimum count requirement.
   ///
   /// ## Parameters:
-  /// - [minCount] The minimum word count.
+  /// - [minWordCount] The minimum word count.
   /// - [errorText] The error message to display when the word count is invalid.
   static FormFieldValidator<String> minWordsCount(
-    int minCount, {
+    int minWordsCount, {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       MinWordsCountValidator(
-        minCount,
+        minWordsCount,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
@@ -309,7 +308,7 @@ class FormBuilderValidators {
   /// This validator checks if the word count of the field's value meets the maximum count requirement.
   ///
   /// ## Parameters:
-  /// - [maxCount] The maximum word count.
+  /// - [maxWordsCount] The maximum word count.
   /// - [errorText] The error message to display when the word count is invalid.
   static FormFieldValidator<String> maxWordsCount(
     int maxWordsCount, {
@@ -447,10 +446,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isCreditCard(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.creditCardErrorText
-          : null;
+      CreditCardValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card expiration date.
   /// This validator checks if the field's value is a valid credit card expiration date.
@@ -462,16 +461,14 @@ class FormBuilderValidators {
   /// {@macro credit_card_expiration_template}
   static FormFieldValidator<String> creditCardExpirationDate({
     bool checkForExpiration = true,
+    RegExp? regex,
     String? errorText,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isCreditCardExpirationDate(valueCandidate!)
-          ? errorText ??
-              FormBuilderLocalizations.current.creditCardExpirationDateErrorText
-          : (checkForExpiration && !isNotExpiredCreditCardDate(valueCandidate!))
-              ? errorText ??
-                  FormBuilderLocalizations.current.creditCardExpiredErrorText
-              : null;
+      CreditCardExpirationDateValidator(
+        checkForExpiration: checkForExpiration,
+        regex: regex,
+        errorText: errorText,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card CVC.
   /// This validator checks if the field's value is a valid credit card CVC.
@@ -481,24 +478,11 @@ class FormBuilderValidators {
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (String? valueCandidate) {
-      if (valueCandidate == null || valueCandidate.isEmpty) {
-        return errorText ??
-            FormBuilderLocalizations.current.creditCardCVCErrorText;
-      } else {
-        final int? cvc = int.tryParse(valueCandidate);
-        if (cvc == null ||
-            valueCandidate.length < 3 ||
-            valueCandidate.length > 4) {
-          return errorText ??
-              FormBuilderLocalizations.current.creditCardCVCErrorText;
-        } else {
-          return null;
-        }
-      }
-    };
-  }
+  }) =>
+      CreditCardCvcValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IP address.
   /// This validator checks if the field's value is a valid IP address.
@@ -665,12 +649,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isColorCode(valueCandidate!, formats: formats)
-          ? errorText ??
-              FormBuilderLocalizations.current
-                  .colorCodeErrorText(formats.join(', '))
-          : null;
+      ColorCodeValidator(
+        formats: formats,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be uppercase.
   /// This validator checks if the field's value is uppercase.
@@ -911,44 +894,19 @@ class FormBuilderValidators {
     bool allowSpecialChar = false,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return FormBuilderValidators.compose<String>(
-      <FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (!allowNumbers)
-          FormBuilderValidators.matchNot(
-            RegExp('[0-9]'),
-            errorText: errorText,
-          ),
-        if (!allowUnderscore)
-          FormBuilderValidators.matchNot(
-            RegExp('_'),
-            errorText: errorText,
-          ),
-        if (!allowDots)
-          FormBuilderValidators.matchNot(
-            RegExp(r'\.'),
-            errorText: errorText,
-          ),
-        if (!allowDash)
-          FormBuilderValidators.matchNot(
-            RegExp('-'),
-            errorText: errorText,
-          ),
-        if (!allowSpace)
-          FormBuilderValidators.matchNot(
-            RegExp(r'\s'),
-            errorText: errorText,
-          ),
-        if (!allowSpecialChar)
-          FormBuilderValidators.matchNot(
-            RegExp(r'[!@#\$%^&*(),.?":{}|<>]'),
-            errorText: errorText,
-          ),
-      ],
-    );
-  }
+  }) =>
+      UsernameValidator(
+        minLength: minLength,
+        maxLength: maxLength,
+        allowNumbers: allowNumbers,
+        allowUnderscore: allowUnderscore,
+        allowDots: allowDots,
+        allowDash: allowDash,
+        allowSpace: allowSpace,
+        allowSpecialChar: allowSpecialChar,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid password.
   /// This validator checks if the field's value meets the criteria for a valid password.
@@ -970,34 +928,17 @@ class FormBuilderValidators {
     int specialChar = 1,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return FormBuilderValidators.compose<String>(
-      <FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (uppercase > 0)
-          FormBuilderValidators.hasUppercaseChars(
-            atLeast: uppercase,
-            errorText: errorText,
-          ),
-        if (lowercase > 0)
-          FormBuilderValidators.hasLowercaseChars(
-            atLeast: lowercase,
-            errorText: errorText,
-          ),
-        if (number > 0)
-          FormBuilderValidators.hasNumericChars(
-            atLeast: number,
-            errorText: errorText,
-          ),
-        if (specialChar > 0)
-          FormBuilderValidators.hasSpecialChars(
-            atLeast: specialChar,
-            errorText: errorText,
-          ),
-      ],
-    );
-  }
+  }) =>
+      PasswordValidator(
+        minLength: minLength,
+        maxLength: maxLength,
+        uppercase: uppercase,
+        lowercase: lowercase,
+        number: number,
+        specialChar: specialChar,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be alphabetical.
   /// This validator checks if the field's value contains only alphabetical characters.
@@ -1028,11 +969,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isUUID(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.uuidErrorText
-          : null;
+      UuidValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be valid JSON.
   /// This validator checks if the field's value is valid JSON.
@@ -1043,10 +983,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isJSON(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.jsonErrorText
-              : null;
+      JsonValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid latitude.
   /// This validator checks if the field's value is a valid latitude.
@@ -1057,10 +997,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isLatitude(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.latitudeErrorText
-              : null;
+      LatitudeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid longitude.
   /// This validator checks if the field's value is a valid longitude.
@@ -1071,10 +1011,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isLongitude(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.longitudeErrorText
-              : null;
+      LongitudeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid base64 string.
   /// This validator checks if the field's value is a valid base64 string.
@@ -1085,10 +1025,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isBase64(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.base64ErrorText
-              : null;
+      Base64Validator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file or folder path.
   /// This validator checks if the field's value is a valid file or folder path.
@@ -1269,13 +1209,15 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [errorText] The error message to display when the IBAN is invalid.
   static FormFieldValidator<String> iban({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isIBAN(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.ibanErrorText
-              : null;
+      IbanValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid BIC.
   /// This validator checks if the field's value is a valid BIC.
@@ -1285,13 +1227,15 @@ class FormBuilderValidators {
   ///
   /// {@macro bic_template}
   static FormFieldValidator<String> bic({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isBIC(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.bicErrorText
-              : null;
+      BicValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
   /// This validator checks if the field's value is a valid ISBN.
@@ -1317,6 +1261,20 @@ class FormBuilderValidators {
     bool checkNullOrEmpty = true,
   }) =>
       SingleLineValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid zip code.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the zip code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<String> zipCode({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      ZipCodeValidator(
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;

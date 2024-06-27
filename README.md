@@ -99,6 +99,8 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
 - `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
 - `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
+- `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
+- `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
 
 ### Numeric validators
 
@@ -137,14 +139,10 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
 - `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-
 - `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
 - `FormBuilderValidators.json()` - requires the field's to be a valid json string.
-
 - `FormBuilderValidators.password()` - requires the field's to be a valid password that matched required conditions.
-
-- `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
-- `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
+- `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
 
 ## Extension methods used for chaining validators
 

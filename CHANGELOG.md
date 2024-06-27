@@ -60,6 +60,7 @@
 - Add negative number
 - Add positive number
 - Add not zero number
+- Add zip code
 
 ## 10.0.1
 
