@@ -14,6 +14,7 @@ import '../base_validator.dart';
 /// {@endtemplate}
 class EmailValidator extends BaseValidator<String> {
   EmailValidator({
+    /// {@macro email_regex_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}

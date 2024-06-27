@@ -3,6 +3,7 @@ import '../base_validator.dart';
 
 class TimeValidator extends BaseValidator<String> {
   TimeValidator({
+    /// {@macro time_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}

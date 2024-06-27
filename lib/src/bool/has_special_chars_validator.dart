@@ -4,6 +4,8 @@ import '../base_validator.dart';
 class HasSpecialCharsValidator extends BaseValidator<String> {
   HasSpecialCharsValidator({
     this.atLeast = 1,
+
+    /// {@macro special_chars_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}
@@ -21,7 +23,7 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
   String get translatedErrorText =>
       FormBuilderLocalizations.current.containsSpecialCharErrorText(atLeast);
 
-  /// {@template special_char_template}
+  /// {@template special_chars_template}
   /// This regex matches any character that is not a letter (A-Z, a-z) or a digit (0-9).
   ///
   /// - It includes special characters and symbols.

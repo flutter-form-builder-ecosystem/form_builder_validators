@@ -331,21 +331,21 @@ class FormBuilderValidators {
     bool allowUnderscore = false,
     List<String> hostWhitelist = const <String>[],
     List<String> hostBlacklist = const <String>[],
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isURL(
-                valueCandidate,
-                protocols: protocols,
-                requireTld: requireTld,
-                requireProtocol: requireProtocol,
-                allowUnderscore: allowUnderscore,
-                hostWhitelist: hostWhitelist,
-                hostBlacklist: hostBlacklist,
-              )
-          ? errorText ?? FormBuilderLocalizations.current.urlErrorText
-          : null;
+      UrlValidator(
+        protocols: protocols,
+        requireTld: requireTld,
+        requireProtocol: requireProtocol,
+        allowUnderscore: allowUnderscore,
+        hostWhitelist: hostWhitelist,
+        hostBlacklist: hostBlacklist,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to match the provided regex pattern.
   /// This validator checks if the field's value matches the given regex pattern.
@@ -611,17 +611,15 @@ class FormBuilderValidators {
   ///
   /// {@macro phone_number_template}
   static FormFieldValidator<String> phoneNumber({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) {
-        if (valueCandidate == null || valueCandidate.isEmpty) {
-          return errorText ?? FormBuilderLocalizations.current.phoneErrorText;
-        }
-        return !isPhoneNumber(valueCandidate)
-            ? errorText ?? FormBuilderLocalizations.current.phoneErrorText
-            : null;
-      };
+      PhoneNumberValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid color code.
   /// This validator checks if the field's value is a valid color code.
@@ -1155,13 +1153,15 @@ class FormBuilderValidators {
   ///
   /// {@macro mac_address_template}
   static FormFieldValidator<String> macAddress({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isMACAddress(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.macAddressErrorText
-          : null;
+      MacAddressValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to start with a specific value.
   /// This validator checks if the field's value starts with the given prefix.

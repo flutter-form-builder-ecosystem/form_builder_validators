@@ -4,6 +4,8 @@ import '../base_validator.dart';
 class HasNumericCharsValidator extends BaseValidator<String> {
   HasNumericCharsValidator({
     this.atLeast = 1,
+
+    /// {@macro numeric_chars_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}
@@ -21,7 +23,7 @@ class HasNumericCharsValidator extends BaseValidator<String> {
   String get translatedErrorText =>
       FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
 
-  /// {@template number_template}
+  /// {@template numeric_chars_template}
   /// This regex matches any character that is not a digit (0-9).
   ///
   /// - It includes special characters, letters, and other non-numeric characters.

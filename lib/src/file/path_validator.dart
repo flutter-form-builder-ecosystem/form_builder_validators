@@ -3,6 +3,7 @@ import '../base_validator.dart';
 
 class PathValidator extends BaseValidator<String?> {
   PathValidator({
+    /// {@macro file_path_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}

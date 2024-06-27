@@ -27,17 +27,6 @@ RegExp _creditCard = RegExp(
   r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
 );
 
-/// {@template phone_number_template}
-/// This regex matches international phone numbers.
-///
-/// - It supports optional country codes.
-/// - It allows spaces, dashes, and dots as separators.
-/// - It validates the number of digits in the phone number.
-///
-/// Examples: +1-800-555-5555, 1234567890
-/// {@endtemplate}
-RegExp _phoneNumber = RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
-
 /// {@template credit_card_expiration_template}
 /// This regex matches credit card expiration dates.
 ///
@@ -98,16 +87,6 @@ RegExp _uuid = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
 );
 
-/// {@template mac_address_template}
-/// This regex matches MAC addresses.
-///
-/// - It consists of pairs of hexadecimal digits.
-/// - Each pair is separated by colons or hyphens.
-///
-/// Examples: 00:1A:2B:3C:4D:5E, 00-1A-2B-3C-4D-5E
-/// {@endtemplate}
-RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
-
 /// {@template bic_template}
 /// This regex matches BIC (Bank Identifier Code).
 ///
@@ -118,168 +97,9 @@ RegExp _macAddress = RegExp(r'^[0-9A-Fa-f]{2}$');
 /// {@endtemplate}
 RegExp _bic = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
 
-int _maxUrlLength = 2083;
-
 /// check if the string [str] is an email
 bool isEmail(String str) {
   return _email.hasMatch(str.toLowerCase());
-}
-
-/// check if the string [str] is a URL
-///
-/// * [protocols] sets the list of allowed protocols
-/// * [requireTld] sets if TLD is required
-/// * [requireProtocol] is a `bool` that sets if protocol is required for validation
-/// * [allowUnderscore] sets if underscores are allowed
-/// * [hostWhitelist] sets the list of allowed hosts
-/// * [hostBlacklist] sets the list of disallowed hosts
-bool isURL(
-  String? str, {
-  List<String?> protocols = const <String?>['http', 'https', 'ftp'],
-  bool requireTld = true,
-  bool requireProtocol = false,
-  bool allowUnderscore = false,
-  List<String> hostWhitelist = const <String>[],
-  List<String> hostBlacklist = const <String>[],
-}) {
-  if (str == null ||
-      str.isEmpty ||
-      str.length > _maxUrlLength ||
-      str.startsWith('mailto:')) {
-    return false;
-  }
-  int port;
-  String? protocol;
-  String? auth;
-  String user;
-  String host;
-  String hostname;
-  String portStr;
-  String path;
-  String query;
-  String hash;
-
-  // check protocol
-  List<String> split = str.split('://');
-  if (split.length > 1) {
-    protocol = shift(split).toLowerCase();
-    if (!protocols.contains(protocol)) {
-      return false;
-    }
-  } else if (requireProtocol == true) {
-    return false;
-  }
-  str = split.join('://');
-
-  // check hash
-  split = str.split('#');
-  str = shift(split);
-  hash = split.join('#');
-  if (hash.isNotEmpty && RegExp(r'\s').hasMatch(hash)) {
-    return false;
-  }
-
-  // check query params
-  split = str.split('?');
-  str = shift(split);
-  query = split.join('?');
-  if (query.isNotEmpty && RegExp(r'\s').hasMatch(query)) {
-    return false;
-  }
-
-  // check path
-  split = str.split('/');
-  str = shift(split);
-  path = split.join('/');
-  if (path.isNotEmpty && RegExp(r'\s').hasMatch(path)) {
-    return false;
-  }
-
-  // check auth type urls
-  split = str.split('@');
-  if (split.length > 1) {
-    auth = shift(split);
-    if (auth?.contains(':') ?? false) {
-      user = shift(auth!.split(':'));
-      if (!RegExp(r'^\S+$').hasMatch(user)) {
-        return false;
-      }
-      if (!RegExp(r'^\S*$').hasMatch(user)) {
-        return false;
-      }
-    }
-  }
-
-  // check hostname
-  hostname = split.join('@');
-  split = hostname.split(':');
-  host = shift(split).toLowerCase();
-  if (split.isNotEmpty) {
-    portStr = split.join(':');
-    try {
-      port = int.parse(portStr, radix: 10);
-    } catch (e) {
-      return false;
-    }
-    if (!RegExp(r'^[0-9]+$').hasMatch(portStr) || port <= 0 || port > 65535) {
-      return false;
-    }
-  }
-
-  if (!isIP(host, null) &&
-      !isFQDN(
-        host,
-        requireTld: requireTld,
-        allowUnderscores: allowUnderscore,
-      ) &&
-      host != 'localhost') {
-    return false;
-  }
-
-  if (hostWhitelist.isNotEmpty && !hostWhitelist.contains(host)) {
-    return false;
-  }
-
-  if (hostBlacklist.isNotEmpty && hostBlacklist.contains(host)) {
-    return false;
-  }
-
-  return true;
-}
-
-/// check if the string [str] is a fully qualified domain name (e.g. domain.com).
-///
-/// * [requireTld] sets if TLD is required
-/// * [allowUnderscore] sets if underscores are allowed
-bool isFQDN(
-  String str, {
-  bool requireTld = true,
-  bool allowUnderscores = false,
-}) {
-  final List<String> parts = str.split('.');
-  if (requireTld) {
-    final String tld = parts.removeLast();
-    if (parts.isEmpty || !RegExp(r'^[a-z]{2,}$').hasMatch(tld)) {
-      return false;
-    }
-  }
-
-  for (final String part in parts) {
-    if (allowUnderscores) {
-      if (part.contains('__')) {
-        return false;
-      }
-    }
-    if (!RegExp(r'^[a-z\\u00a1-\\uffff0-9-]+$').hasMatch(part)) {
-      return false;
-    }
-    if (part[0] == '-' ||
-        part[part.length - 1] == '-' ||
-        part.contains('---')) {
-      return false;
-    }
-  }
-  return true;
 }
 
 /// check if the string is a credit card
@@ -312,15 +132,6 @@ bool isCreditCard(String str) {
   }
 
   return (sum % 10 == 0);
-}
-
-/// check if the string is a valid phone number
-bool isPhoneNumber(String str) {
-  if (str.isEmpty) {
-    return false;
-  }
-  final String phone = str.replaceAll(' ', '').replaceAll('-', '');
-  return _phoneNumber.hasMatch(phone);
 }
 
 /// check if the string is a valid credit card expiration date
@@ -458,22 +269,6 @@ bool isOddNumber(String value) {
 bool isEvenNumber(String value) {
   final int number = int.tryParse(value) ?? 0;
   return number.isEven;
-}
-
-/// check if the string is a valid MAC address
-bool isMACAddress(String value) {
-  final String splitChar = value.contains(':') ? ':' : '-';
-  final List<String> parts = value.split(splitChar);
-  if (parts.length != 6) {
-    return false;
-  }
-
-  for (final String part in parts) {
-    if (part.length != 2 || !_macAddress.hasMatch(part)) {
-      return false;
-    }
-  }
-  return true;
 }
 
 /// check if the string is a valid IBAN

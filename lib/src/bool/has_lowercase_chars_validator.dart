@@ -4,6 +4,8 @@ import '../base_validator.dart';
 class HasLowercaseCharsValidator extends BaseValidator<String> {
   HasLowercaseCharsValidator({
     this.atLeast = 1,
+
+    /// {@macro lower_case_template}
     RegExp? regex,
 
     /// {@macro base_validator_error_text}
