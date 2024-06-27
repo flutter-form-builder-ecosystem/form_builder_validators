@@ -5,6 +5,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 /// Created by ipcjs on 2022/10/31.
 class OverrideFormBuilderLocalizationsEn
     extends FormBuilderLocalizationsImplEn {
+  /// Constructor for the override class.
   OverrideFormBuilderLocalizationsEn();
 
   static const LocalizationsDelegate<FormBuilderLocalizationsImpl> delegate =
