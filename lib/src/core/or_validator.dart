@@ -20,7 +20,7 @@ class OrValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     String? errorResult;
     for (final FormFieldValidator<T> validator in validators) {
       final String? validatorResult = validator.call(valueCandidate);

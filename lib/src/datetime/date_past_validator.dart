@@ -15,8 +15,8 @@ class DatePastValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.dateMustBeInThePastErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final DateTime? date = DateTime.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final DateTime? date = DateTime.tryParse(valueCandidate);
     return date != null && date.isBefore(DateTime.now()) ? null : errorText;
   }
 }

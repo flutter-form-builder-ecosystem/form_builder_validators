@@ -18,7 +18,7 @@ class ContainsElementValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.containsElementErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     return values.contains(valueCandidate) ? null : errorText;
   }
 }

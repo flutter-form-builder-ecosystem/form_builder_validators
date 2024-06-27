@@ -15,8 +15,8 @@ class IsbnValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.isbnErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isISBN(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isISBN(valueCandidate) ? null : errorText;
   }
 
   bool isISBN(String valueCandidate) {

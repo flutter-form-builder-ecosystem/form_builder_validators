@@ -15,8 +15,8 @@ class DateValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.dateStringErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final DateTime? date = DateTime.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final DateTime? date = DateTime.tryParse(valueCandidate);
     if (date == null) {
       return errorText;
     }

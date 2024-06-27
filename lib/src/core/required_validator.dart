@@ -15,7 +15,7 @@ class RequiredValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     // BaseValidator<T> will already check for null values
     return null;
   }

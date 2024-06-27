@@ -22,7 +22,7 @@ class MinValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.minErrorText(min);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final num value;
     switch (T) {
       case String:

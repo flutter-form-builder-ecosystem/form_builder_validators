@@ -22,7 +22,7 @@ class EqualLengthValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.equalLengthErrorText(length);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     int valueLength = 0;
 
     if (valueCandidate is String) valueLength = valueCandidate.length;

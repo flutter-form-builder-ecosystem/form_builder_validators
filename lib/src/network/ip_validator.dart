@@ -1,7 +1,7 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
-class IpValidator extends BaseValidator<String?> {
+class IpValidator extends BaseValidator<String> {
   IpValidator({
     this.version = 4,
 
@@ -49,7 +49,7 @@ class IpValidator extends BaseValidator<String?> {
       FormBuilderLocalizations.current.ipErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
+  String? validateValue(String valueCandidate) {
     return !isIP(valueCandidate, version) ? errorText : null;
   }
 

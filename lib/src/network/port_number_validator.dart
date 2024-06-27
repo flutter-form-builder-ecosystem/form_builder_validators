@@ -22,8 +22,8 @@ class PortNumberValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.portNumberErrorText(min, max);
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int? port = int.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final int? port = int.tryParse(valueCandidate);
     if (port == null || port < min || port > max) {
       return errorText;
     }

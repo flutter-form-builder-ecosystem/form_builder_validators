@@ -15,8 +15,8 @@ class LatitudeValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.longitudeErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isLatitude(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isLatitude(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is a valid latitude

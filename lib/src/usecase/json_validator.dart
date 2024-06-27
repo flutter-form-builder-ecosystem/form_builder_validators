@@ -17,8 +17,8 @@ class JsonValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.jsonErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isJSON(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isJSON(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is valid JSON

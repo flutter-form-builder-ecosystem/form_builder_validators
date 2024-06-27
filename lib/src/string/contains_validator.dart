@@ -22,11 +22,11 @@ class ContainsValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.containsErrorText(substring);
 
   @override
-  String? validateValue(String? valueCandidate) {
+  String? validateValue(String valueCandidate) {
     if (caseSensitive) {
-      return valueCandidate!.contains(substring) ? null : errorText;
+      return valueCandidate.contains(substring) ? null : errorText;
     } else {
-      return valueCandidate!.toLowerCase().contains(substring.toLowerCase())
+      return valueCandidate.toLowerCase().contains(substring.toLowerCase())
           ? null
           : errorText;
     }

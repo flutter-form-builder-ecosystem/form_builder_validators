@@ -15,8 +15,8 @@ class DateFutureValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final DateTime? date = DateTime.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final DateTime? date = DateTime.tryParse(valueCandidate);
     return date != null && date.isAfter(DateTime.now()) ? null : errorText;
   }
 }

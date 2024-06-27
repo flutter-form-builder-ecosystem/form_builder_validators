@@ -18,7 +18,7 @@ class UniqueValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.uniqueErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     return values.where((T element) => element == valueCandidate).length != 1
         ? errorText
         : null;

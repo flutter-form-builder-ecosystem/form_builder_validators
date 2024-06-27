@@ -18,7 +18,7 @@ class TransformValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final T transformedValue = transformer(valueCandidate);
     return validator(transformedValue);
   }

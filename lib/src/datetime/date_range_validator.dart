@@ -21,8 +21,8 @@ class DateRangeValidator extends BaseValidator<String> {
       .dateRangeErrorText(minDate.toString(), maxDate.toString());
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final DateTime? date = DateTime.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final DateTime? date = DateTime.tryParse(valueCandidate);
     if (date == null || date.isBefore(minDate) || date.isAfter(maxDate)) {
       return errorText;
     }

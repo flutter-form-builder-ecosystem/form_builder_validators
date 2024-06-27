@@ -15,8 +15,8 @@ class OddNumberValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.oddNumberErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int? number = int.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final int? number = int.tryParse(valueCandidate);
     if (number == null || number.isEven) {
       return errorText;
     }

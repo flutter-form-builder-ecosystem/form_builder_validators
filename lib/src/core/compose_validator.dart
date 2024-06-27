@@ -13,7 +13,7 @@ class ComposeValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     for (final FormFieldValidator<T> validator in validators) {
       final String? validatorResult = validator.call(valueCandidate);
       if (validatorResult != null) {

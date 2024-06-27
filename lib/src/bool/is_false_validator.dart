@@ -15,7 +15,7 @@ class IsFalseValidator extends BaseValidator<bool> {
       FormBuilderLocalizations.current.mustBeFalseErrorText;
 
   @override
-  String? validateValue(bool? valueCandidate) {
-    return valueCandidate ?? false ? null : errorText;
+  String? validateValue(bool valueCandidate) {
+    return valueCandidate == false ? null : errorText;
   }
 }

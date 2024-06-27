@@ -36,7 +36,7 @@ class PasswordValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
+  String? validateValue(String valueCandidate) {
     return FormBuilderValidators.compose<String>(
       <FormFieldValidator<String>>[
         FormBuilderValidators.minLength(minLength, errorText: errorText),

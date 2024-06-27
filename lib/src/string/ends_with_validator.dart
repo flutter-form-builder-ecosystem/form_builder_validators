@@ -18,7 +18,7 @@ class EndsWithValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.endsWithErrorText(suffix);
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return valueCandidate!.endsWith(suffix) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return valueCandidate.endsWith(suffix) ? null : errorText;
   }
 }

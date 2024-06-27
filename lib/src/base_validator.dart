@@ -22,10 +22,15 @@ abstract class BaseValidator<T> {
 
   /// Validates the value and checks if it is null or empty.
   String? validate(T? valueCandidate) {
-    if (checkNullOrEmpty && isNullOrEmpty(valueCandidate)) {
+    final bool isNullOrEmpty = this.isNullOrEmpty(valueCandidate);
+
+    if (checkNullOrEmpty && isNullOrEmpty) {
       return errorText;
+    } else if (!checkNullOrEmpty && isNullOrEmpty) {
+      return null;
+    } else {
+      return validateValue(valueCandidate as T);
     }
-    return validateValue(valueCandidate);
   }
 
   /// Checks if the value is null or empty.
@@ -43,5 +48,5 @@ abstract class BaseValidator<T> {
 
   /// Validates the value.
   /// Returns `null` if the value is valid, otherwise an error message.
-  String? validateValue(T? valueCandidate);
+  String? validateValue(T valueCandidate);
 }

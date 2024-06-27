@@ -18,8 +18,8 @@ class MaxWordsCountValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.maxWordsCountErrorText(maxWordsCount);
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int wordsCount = valueCandidate?.trim().split(' ').length ?? 0;
+  String? validateValue(String valueCandidate) {
+    final int wordsCount = valueCandidate.trim().split(' ').length ?? 0;
 
     return wordsCount > maxWordsCount ? errorText : null;
   }

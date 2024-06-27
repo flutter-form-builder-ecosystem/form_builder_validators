@@ -27,7 +27,7 @@ class ZipCodeValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.zipCodeErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return regex.hasMatch(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return regex.hasMatch(valueCandidate) ? null : errorText;
   }
 }

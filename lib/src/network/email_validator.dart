@@ -45,7 +45,7 @@ class EmailValidator extends BaseValidator<String> {
   final RegExp regex;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return regex.hasMatch(valueCandidate!.toLowerCase()) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return regex.hasMatch(valueCandidate.toLowerCase()) ? null : errorText;
   }
 }

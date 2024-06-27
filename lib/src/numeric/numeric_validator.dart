@@ -15,7 +15,7 @@ class NumericValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.numericErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final num? value;
     switch (T) {
       case String:

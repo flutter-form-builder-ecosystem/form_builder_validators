@@ -1,7 +1,7 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
-class PhoneNumberValidator extends BaseValidator<String?> {
+class PhoneNumberValidator extends BaseValidator<String> {
   PhoneNumberValidator({
     /// {@macro phone_number_template}
     RegExp? regex,
@@ -32,9 +32,9 @@ class PhoneNumberValidator extends BaseValidator<String?> {
       FormBuilderLocalizations.current.phoneErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
+  String? validateValue(String valueCandidate) {
     final String phoneNumber =
-        valueCandidate!.replaceAll(' ', '').replaceAll('-', '');
+        valueCandidate.replaceAll(' ', '').replaceAll('-', '');
 
     if (!regex.hasMatch(phoneNumber)) {
       return errorText;

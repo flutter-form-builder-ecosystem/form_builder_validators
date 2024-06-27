@@ -15,7 +15,7 @@ class UppercaseValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.uppercaseErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return valueCandidate!.toUpperCase() == valueCandidate ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return valueCandidate.toUpperCase() == valueCandidate ? null : errorText;
   }
 }

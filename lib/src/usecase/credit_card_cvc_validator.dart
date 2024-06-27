@@ -15,8 +15,8 @@ class CreditCardCvcValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.creditCardCVCErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int? cvc = int.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final int? cvc = int.tryParse(valueCandidate);
     if (cvc == null || valueCandidate.length < 3 || valueCandidate.length > 4) {
       return errorText;
     }

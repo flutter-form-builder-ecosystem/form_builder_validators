@@ -20,7 +20,7 @@ class LogValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     if (log != null) {
       debugPrint(log!(valueCandidate));
     } else if (valueCandidate != null) {

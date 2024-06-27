@@ -19,8 +19,8 @@ class IntegerValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.integerErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int? number = int.tryParse(valueCandidate!, radix: radix);
+  String? validateValue(String valueCandidate) {
+    final int? number = int.tryParse(valueCandidate, radix: radix);
     if (number == null) {
       return errorText;
     }

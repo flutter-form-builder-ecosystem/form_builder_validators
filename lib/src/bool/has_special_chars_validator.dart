@@ -34,8 +34,8 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
   static final RegExp _specialChar = RegExp('[A-Za-z0-9]');
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return specialCharLength(valueCandidate!) >= atLeast ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return specialCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
   int specialCharLength(String value) {

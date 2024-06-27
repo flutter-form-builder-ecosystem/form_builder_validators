@@ -15,8 +15,8 @@ class SingleLineValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.singleLineErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return !valueCandidate!.contains('\n') && !valueCandidate.contains('\r')
+  String? validateValue(String valueCandidate) {
+    return !valueCandidate.contains('\n') && !valueCandidate.contains('\r')
         ? errorText
         : null;
   }

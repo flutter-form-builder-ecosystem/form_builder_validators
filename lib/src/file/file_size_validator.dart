@@ -22,8 +22,8 @@ class FileSizeValidator extends BaseValidator<String> {
       .fileSizeErrorText(formatBytes(0), formatBytes(maxSize));
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int? size = int.tryParse(valueCandidate!);
+  String? validateValue(String valueCandidate) {
+    final int? size = int.tryParse(valueCandidate);
     if (size == null || size > maxSize) {
       return errorText;
     }

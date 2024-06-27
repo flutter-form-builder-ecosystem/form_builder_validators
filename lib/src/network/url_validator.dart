@@ -1,7 +1,7 @@
 import '../../form_builder_validators.dart';
 import '../base_validator.dart';
 
-class UrlValidator extends BaseValidator<String?> {
+class UrlValidator extends BaseValidator<String> {
   UrlValidator({
     this.protocols = const <String>['http', 'https', 'ftp'],
     this.requireTld = true,
@@ -41,8 +41,8 @@ class UrlValidator extends BaseValidator<String?> {
       FormBuilderLocalizations.current.urlErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return (regex != null && !regex!.hasMatch(valueCandidate!)) ||
+  String? validateValue(String valueCandidate) {
+    return (regex != null && !regex!.hasMatch(valueCandidate)) ||
             !isURL(
               valueCandidate,
               protocols: protocols,

@@ -1,7 +1,7 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
-class MacAddressValidator extends BaseValidator<String?> {
+class MacAddressValidator extends BaseValidator<String> {
   MacAddressValidator({
     /// {@macro mac_address_template}
     RegExp? regex,
@@ -31,8 +31,8 @@ class MacAddressValidator extends BaseValidator<String?> {
       FormBuilderLocalizations.current.macAddressErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return !isMACAddress(valueCandidate!) ? errorText : null;
+  String? validateValue(String valueCandidate) {
+    return !isMACAddress(valueCandidate) ? errorText : null;
   }
 
   /// check if the string is a valid MAC address

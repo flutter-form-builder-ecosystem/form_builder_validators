@@ -34,8 +34,8 @@ class HasLowercaseCharsValidator extends BaseValidator<String> {
   static final RegExp _lowerCase = RegExp('[^a-zñ]');
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return lowercaseCharLength(valueCandidate!) >= atLeast ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return lowercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
   int lowercaseCharLength(String value) {

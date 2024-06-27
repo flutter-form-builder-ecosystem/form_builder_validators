@@ -18,7 +18,7 @@ class SkipWhenValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     if (condition(valueCandidate)) {
       return null;
     }

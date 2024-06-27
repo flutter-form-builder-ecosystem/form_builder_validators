@@ -56,8 +56,8 @@ class ColorCodeValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.colorCodeErrorText(formats.join(', '));
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return !isColorCode(valueCandidate!, formats: formats) ? errorText : null;
+  String? validateValue(String valueCandidate) {
+    return !isColorCode(valueCandidate, formats: formats) ? errorText : null;
   }
 
   /// check if the string is a color

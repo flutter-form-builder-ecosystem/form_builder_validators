@@ -13,7 +13,7 @@ class AggregateValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final List<String> errors = <String>[];
     for (final FormFieldValidator<T> validator in validators) {
       final String? error = validator(valueCandidate);

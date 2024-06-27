@@ -18,8 +18,8 @@ class MinWordsCountValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.minWordsCountErrorText(minWordsCount);
 
   @override
-  String? validateValue(String? valueCandidate) {
-    final int wordsCount = valueCandidate?.trim().split(' ').length ?? 0;
+  String? validateValue(String valueCandidate) {
+    final int wordsCount = valueCandidate.trim().split(' ').length ?? 0;
 
     return wordsCount < minWordsCount ? errorText : null;
   }

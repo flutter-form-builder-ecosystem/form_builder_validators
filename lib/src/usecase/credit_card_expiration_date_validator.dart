@@ -34,8 +34,8 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.creditCardExpirationDateErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    if (!isCreditCardExpirationDate(valueCandidate!)) {
+  String? validateValue(String valueCandidate) {
+    if (!isCreditCardExpirationDate(valueCandidate)) {
       return errorText;
     }
 

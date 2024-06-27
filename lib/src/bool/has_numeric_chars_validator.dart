@@ -34,8 +34,8 @@ class HasNumericCharsValidator extends BaseValidator<String> {
   static final RegExp _number = RegExp('[^0-9]');
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return numberCharLength(valueCandidate!) >= atLeast ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return numberCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
   int numberCharLength(String value) {

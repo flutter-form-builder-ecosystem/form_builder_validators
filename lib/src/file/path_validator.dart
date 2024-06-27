@@ -1,7 +1,7 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
-class PathValidator extends BaseValidator<String?> {
+class PathValidator extends BaseValidator<String> {
   PathValidator({
     /// {@macro file_path_template}
     RegExp? regex,
@@ -29,8 +29,8 @@ class PathValidator extends BaseValidator<String?> {
       FormBuilderLocalizations.current.pathErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    if (!regex.hasMatch(valueCandidate!)) {
+  String? validateValue(String valueCandidate) {
+    if (!regex.hasMatch(valueCandidate)) {
       return errorText;
     }
     return null;

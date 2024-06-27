@@ -31,7 +31,7 @@ class UuidValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.uuidErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return _uuid.hasMatch(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return _uuid.hasMatch(valueCandidate) ? null : errorText;
   }
 }

@@ -30,8 +30,8 @@ class IbanValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.ibanErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isIBAN(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isIBAN(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is a valid IBAN

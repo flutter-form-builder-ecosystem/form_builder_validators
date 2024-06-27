@@ -20,8 +20,8 @@ class BetweenValidator extends BaseValidator<num> {
       FormBuilderLocalizations.current.betweenErrorText(min, max);
 
   @override
-  String? validateValue(num? valueCandidate) {
-    final num value = valueCandidate!;
+  String? validateValue(num valueCandidate) {
+    final num value = valueCandidate;
     if (value < min || value > max) {
       return errorText;
     }

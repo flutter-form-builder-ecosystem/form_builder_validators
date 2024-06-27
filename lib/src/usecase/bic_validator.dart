@@ -30,8 +30,8 @@ class BicValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.bicErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isBIC(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isBIC(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is a valid BIC string

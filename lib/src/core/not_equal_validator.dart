@@ -18,7 +18,7 @@ class NotEqualValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.notEqualErrorText(value);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     return valueCandidate == value ? errorText : null;
   }
 }

@@ -18,7 +18,7 @@ class StartsWithValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.startsWithErrorText(prefix);
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return valueCandidate!.startsWith(prefix) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return valueCandidate.startsWith(prefix) ? null : errorText;
   }
 }

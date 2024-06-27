@@ -15,7 +15,7 @@ class NegativeNumberValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.negativeNumberErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final num value;
     switch (T) {
       case String:

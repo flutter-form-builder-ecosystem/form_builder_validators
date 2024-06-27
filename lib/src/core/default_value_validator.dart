@@ -14,7 +14,7 @@ class DefaultValueValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     return validator.call(valueCandidate ?? defaultValue);
   }
 }

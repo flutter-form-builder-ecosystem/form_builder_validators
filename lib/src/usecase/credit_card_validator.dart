@@ -32,8 +32,8 @@ class CreditCardValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.creditCardErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isCreditCard(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isCreditCard(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is a credit card

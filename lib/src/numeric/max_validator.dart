@@ -22,7 +22,7 @@ class MaxValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.maxErrorText(max);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final num value;
     switch (T) {
       case String:

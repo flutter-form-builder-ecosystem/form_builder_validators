@@ -54,7 +54,7 @@ class RangeValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.betweenErrorText(min, max);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     final String? minResult = _minValidator.validate(valueCandidate);
     final String? maxResult = _maxValidator.validate(valueCandidate);
     final String? minLengthResult =

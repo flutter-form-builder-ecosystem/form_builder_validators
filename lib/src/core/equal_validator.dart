@@ -18,7 +18,7 @@ class EqualValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.equalErrorText(value);
 
   @override
-  String? validateValue(T? valueCandidate) {
+  String? validateValue(T valueCandidate) {
     return valueCandidate != value ? errorText : null;
   }
 }

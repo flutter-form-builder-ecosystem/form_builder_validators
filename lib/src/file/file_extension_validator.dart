@@ -23,9 +23,9 @@ class FileExtensionValidator extends BaseValidator<String> {
       );
 
   @override
-  String? validateValue(String? valueCandidate) {
+  String? validateValue(String valueCandidate) {
     final String extension =
-        fileExtensionFromPath(valueCandidate!).toLowerCase();
+        fileExtensionFromPath(valueCandidate).toLowerCase();
 
     if (!_allowedExtensionsLowerCase.contains(extension)) {
       return errorText;

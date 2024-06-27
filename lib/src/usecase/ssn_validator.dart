@@ -28,8 +28,8 @@ class SsnValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.ssnErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isSSN(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isSSN(valueCandidate) ? null : errorText;
   }
 
   /// check if the string is a valid SSN string

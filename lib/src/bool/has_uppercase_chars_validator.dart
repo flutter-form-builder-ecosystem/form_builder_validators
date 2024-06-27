@@ -34,8 +34,8 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
   static final RegExp _upperCase = RegExp('[^A-ZÑ]');
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return uppercaseCharLength(valueCandidate!) >= 1 ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return uppercaseCharLength(valueCandidate) >= 1 ? null : errorText;
   }
 
   int uppercaseCharLength(String value) {

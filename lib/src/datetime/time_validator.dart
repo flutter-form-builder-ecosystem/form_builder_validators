@@ -32,8 +32,8 @@ class TimeValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.timeErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    if (regex.hasMatch(valueCandidate!) ||
+  String? validateValue(String valueCandidate) {
+    if (regex.hasMatch(valueCandidate) ||
         DateTime.tryParse(valueCandidate) != null) {
       return null;
     }

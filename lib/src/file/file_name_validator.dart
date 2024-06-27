@@ -15,8 +15,8 @@ class FileNameValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.fileNameErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return isFileName(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return isFileName(valueCandidate) ? null : errorText;
   }
 
   bool isFileName(String valueCandidate) {

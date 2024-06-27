@@ -18,7 +18,7 @@ class MatchNotValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.matchErrorText;
 
   @override
-  String? validateValue(String? valueCandidate) {
-    return regex.hasMatch(valueCandidate!) ? null : errorText;
+  String? validateValue(String valueCandidate) {
+    return regex.hasMatch(valueCandidate) ? null : errorText;
   }
 }
