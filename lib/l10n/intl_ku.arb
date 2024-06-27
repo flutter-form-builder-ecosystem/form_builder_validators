@@ -55,5 +55,13 @@
   "bicErrorText": "نرخ دەبێت BIC-ێکی دروست بێت.",
   "isbnErrorText": "نرخ دەبێت ISBN-ێکی دروست بێت.",
   "singleLineErrorText": "نرخ دەبێت خطەکەی تەنها بێت.",
-  "timeErrorText": "نرخ دەبێت کاتێکی دروست بێت."
+  "timeErrorText": "نرخ دەبێت کاتێکی دروست بێت.",
+  "dateMustBeInTheFutureErrorText": "بەروارەکە دەبێت لە ئامادەی داڕایەوە.",
+  "dateMustBeInThePastErrorText": "بەروارەکە دەبێت لە گێڕاندنەوەی داڕایەوە.",
+  "fileNameErrorText": "گۆڕانکاری دەبێت تاقیبەتی ناونیشانی پەڕگەیە.",
+  "negativeNumberErrorText": "گۆڕانکاری دەبێت ژمارەییەکی منفی بێت.",
+  "positiveNumberErrorText": "گۆڕانکاری دەبێت ژمارەییەکی موجود بێت.",
+  "notZeroNumberErrorText": "گۆڕانکاری دەبێت ژمارەییەکی ناکەوە.",
+  "ssnErrorText": "گۆڕانکاری دەبێت ژمارەییەکی ژێر سندوقی ئەمنی بێت.",
+  "zipCodeErrorText": "گۆڕانکاری دەبێت کۆدی ZIP یەکێکی تاقیبت بێت."
 }
