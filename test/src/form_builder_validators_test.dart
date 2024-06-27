@@ -685,7 +685,7 @@ void main() {
     'FormBuilderValidators.notMatch',
     (WidgetTester tester) => testValidations(tester, (BuildContext context) {
       final FormFieldValidator<String> validator =
-          FormBuilderValidators.notMatch(RegExp(r'^A[0-9]$'));
+          FormBuilderValidators.matchNot(RegExp(r'^A[0-9]$'));
       // Pass
       expect(validator('B1'), isNull);
       expect(validator('C2'), isNull);
@@ -696,7 +696,7 @@ void main() {
       expect(validator(''), isNull);
 
       final FormFieldValidator<String> validatorWithErrorMessage =
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
         RegExp(r'^A[0-9]$'),
         errorText: customErrorMessage,
       );

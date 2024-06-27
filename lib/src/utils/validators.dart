@@ -285,7 +285,3 @@ bool isBIC(String bic) {
 
   return _bic.hasMatch(bic);
 }
-
-bool isSingleLine(String value) {
-  return !value.contains('\n') && !value.contains('\r');
-}

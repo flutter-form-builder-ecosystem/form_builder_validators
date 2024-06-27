@@ -382,10 +382,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isNotEmpty == true && !regex.hasMatch(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.matchErrorText
-              : null;
+      MatchValidator(
+        regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value not to match the provided regex pattern.
   /// This validator checks if the field's value does not match the given regex pattern.
@@ -393,15 +394,16 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [regex] The regex pattern to match.
   /// - [errorText] The error message to display when the value matches the pattern.
-  static FormFieldValidator<String> notMatch(
+  static FormFieldValidator<String> matchNot(
     RegExp regex, {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isNotEmpty == true && regex.hasMatch(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.matchErrorText
-              : null;
+      MatchNotValidator(
+        regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid number.
   /// This validator checks if the field's value is a valid number.
@@ -915,32 +917,32 @@ class FormBuilderValidators {
         FormBuilderValidators.minLength(minLength, errorText: errorText),
         FormBuilderValidators.maxLength(maxLength, errorText: errorText),
         if (!allowNumbers)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp('[0-9]'),
             errorText: errorText,
           ),
         if (!allowUnderscore)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp('_'),
             errorText: errorText,
           ),
         if (!allowDots)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp(r'\.'),
             errorText: errorText,
           ),
         if (!allowDash)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp('-'),
             errorText: errorText,
           ),
         if (!allowSpace)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp(r'\s'),
             errorText: errorText,
           ),
         if (!allowSpecialChar)
-          FormBuilderValidators.notMatch(
+          FormBuilderValidators.matchNot(
             RegExp(r'[!@#\$%^&*(),.?":{}|<>]'),
             errorText: errorText,
           ),
@@ -1314,8 +1316,8 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isSingleLine(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.singleLineErrorText
-          : null;
+      SingleLineValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 }
