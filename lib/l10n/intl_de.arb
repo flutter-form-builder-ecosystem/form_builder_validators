@@ -55,5 +55,13 @@
   "bicErrorText": "Dieses Feld erfordert eine gültige BIC.",
   "isbnErrorText": "Dieses Feld erfordert eine gültige ISBN.",
   "singleLineErrorText": "Dieses Feld darf keine Zeilenumbrüche enthalten.",
-  "timeErrorText": "Dieses Feld erfordert eine gültige Uhrzeit."
+  "timeErrorText": "Dieses Feld erfordert eine gültige Uhrzeit.",
+  "dateMustBeInTheFutureErrorText": "Datum muss in der Zukunft liegen.",
+  "dateMustBeInThePastErrorText": "Datum muss in der Vergangenheit liegen.",
+  "fileNameErrorText": "Wert muss ein gültiger Dateiname sein.",
+  "negativeNumberErrorText": "Wert muss eine negative Zahl sein.",
+  "positiveNumberErrorText": "Wert muss eine positive Zahl sein.",
+  "notZeroNumberErrorText": "Wert darf nicht null sein.",
+  "ssnErrorText": "Wert muss eine gültige Sozialversicherungsnummer sein.",
+  "zipCodeErrorText": "Wert muss eine gültige Postleitzahl sein."
 }

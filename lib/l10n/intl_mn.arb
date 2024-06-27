@@ -55,5 +55,13 @@
   "bicErrorText": "BIC код алдаатай байна.",
   "isbnErrorText": "ISBN код алдаатай байна.",
   "singleLineErrorText": "Зөвхөн нэг мөрт байх ёстой.",
-  "timeErrorText": "Цаг алдаатай байна."
+  "timeErrorText": "Цаг алдаатай байна.",
+  "dateMustBeInTheFutureErrorText": "Огноо нь ирэх өмнө байх ёстой.",
+  "dateMustBeInThePastErrorText": "Огноо нь өмнө байх ёстой.",
+  "fileNameErrorText": "Утга нь баталгаажсан файлын нэр байх ёстой.",
+  "negativeNumberErrorText": "Утга нь сөрөг тоо байх ёстой.",
+  "positiveNumberErrorText": "Утга нь эерэг тоо байх ёстой.",
+  "notZeroNumberErrorText": "Утга нь нэг биш байх ёстой.",
+  "ssnErrorText": "Утга нь баталгаажсан нийгмийн дугаар байх ёстой.",
+  "zipCodeErrorText": "Утга нь баталгаажсан ZIP код байх ёстой."
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "هذا الحقل يتطلب رمز BIC صالح.",
   "isbnErrorText": "هذا الحقل يتطلب رقم ISBN صالح.",
   "singleLineErrorText": "هذا الحقل يجب أن يحتوي على سطر واحد فقط.",
-  "timeErrorText": "هذا الحقل يتطلب وقت صالح."
+  "timeErrorText": "هذا الحقل يتطلب وقت صالح.",
+  "dateMustBeInTheFutureErrorText": "يجب أن يكون التاريخ في المستقبل.",
+  "dateMustBeInThePastErrorText": "يجب أن يكون التاريخ في الماضي.",
+  "fileNameErrorText": "يجب أن تكون القيمة اسم ملف صحيح.",
+  "negativeNumberErrorText": "يجب أن تكون القيمة عددًا سالبًا.",
+  "positiveNumberErrorText": "يجب أن تكون القيمة عددًا موجبًا.",
+  "notZeroNumberErrorText": "يجب ألا تكون القيمة صفراً.",
+  "ssnErrorText": "يجب أن تكون القيمة رقم تأمين اجتماعي صحيح.",
+  "zipCodeErrorText": "يجب أن تكون القيمة رمز بريدي صحيح."
 }

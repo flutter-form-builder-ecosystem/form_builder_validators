@@ -55,5 +55,13 @@
   "bicErrorText": "ទិន្នន័យនេះត្រូវតែជា BIC តែប៉ុណ្ណោះ។",
   "isbnErrorText": "ទិន្នន័យនេះត្រូវតែជា ISBN តែប៉ុណ្ណោះ។",
   "singleLineErrorText": "ទិន្នន័យនេះត្រូវតែជា​បន្ទាត់​តែប៉ុណ្ណោះ។",
-  "timeErrorText": "ទិន្នន័យនេះត្រូវតែជាពេលវេលាតែប៉ុណ្ណោះ។"
+  "timeErrorText": "ទិន្នន័យនេះត្រូវតែជាពេលវេលាតែប៉ុណ្ណោះ។",
+  "dateMustBeInTheFutureErrorText": "កាលបរិបនេះ​ត្រូវ​ត្រូវ​នៅ​ក្នុង​អនុញ្ញាត",
+  "dateMustBeInThePastErrorText": "កាល​បរិបនេះ​ត្រូវ​ត្រូវ​នៅ​ពី​កន្លះ",
+  "fileNameErrorText": "តម្រូវ​ត្រូវ​ជា​ឈ្មោះ​ឯកសារ​ត្រូវ​បាន​ភ្ជាប់",
+  "negativeNumberErrorText": "តម្លៃ​ត្រូវ​ត្រូវ​ជា​លេខ​អវិជ្ជមាត្រ",
+  "positiveNumberErrorText": "តម្លៃ​ត្រូវ​ត្រូវ​ជា​លេខ​វិជ្ជមា​វេ",
+  "notZeroNumberErrorText": "តម្លៃ​មិន​ត្រូវ​ជា​សូន្យ",
+  "ssnErrorText": "តម្លៃ​ត្រូវ​ត្រូវ​ជា​លេខ​សម្ពាធ​សង្ខេប​ត្រូវ​បាន",
+  "zipCodeErrorText": "តម្រូវ​ត្រូវ​ជា​លេខ ZIP​ ដូចជា​ស្រេច"
 }

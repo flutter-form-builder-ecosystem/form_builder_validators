@@ -55,5 +55,13 @@
   "bicErrorText": "Unesite validan BIC.",
   "isbnErrorText": "Unesite validan ISBN.",
   "singleLineErrorText": "Vrijednost mora biti jedan redak teksta.",
-  "timeErrorText": "Unesite validno vrijeme."
+  "timeErrorText": "Unesite validno vrijeme.",
+  "dateMustBeInTheFutureErrorText": "Datum mora biti u budućnosti.",
+  "dateMustBeInThePastErrorText": "Datum mora biti u prošlosti.",
+  "fileNameErrorText": "Vrijednost mora biti validno ime datoteke.",
+  "negativeNumberErrorText": "Vrijednost mora biti negativan broj.",
+  "positiveNumberErrorText": "Vrijednost mora biti pozitivan broj.",
+  "notZeroNumberErrorText": "Vrijednost ne smije biti nula.",
+  "ssnErrorText": "Vrijednost mora biti validan broj Socijalnog osiguranja.",
+  "zipCodeErrorText": "Vrijednost mora biti validan poštanski broj."
 }

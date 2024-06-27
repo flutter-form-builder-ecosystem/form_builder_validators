@@ -55,5 +55,13 @@
   "bicErrorText": "该字段必须是有效的 BIC。",
   "isbnErrorText": "该字段必须是有效的 ISBN。",
   "singleLineErrorText": "该字段必须是单行文本。",
-  "timeErrorText": "该字段必须是有效的时间。"
+  "timeErrorText": "该字段必须是有效的时间。",
+  "dateMustBeInTheFutureErrorText": "日期必须是将来的日期。",
+  "dateMustBeInThePastErrorText": "日期必须是过去的日期。",
+  "fileNameErrorText": "值必须是一个有效的文件名。",
+  "negativeNumberErrorText": "值必须是一个负数。",
+  "positiveNumberErrorText": "值必须是一个正数。",
+  "notZeroNumberErrorText": "值不能为零。",
+  "ssnErrorText": "值必须是一个有效的社会保险号码。",
+  "zipCodeErrorText": "值必须是一个有效的邮政编码。"
 }

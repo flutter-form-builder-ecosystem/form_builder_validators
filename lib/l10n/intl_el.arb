@@ -55,5 +55,13 @@
   "bicErrorText": "Η τιμή πρέπει να είναι έγκυρος BIC.",
   "isbnErrorText": "Η τιμή πρέπει να είναι έγκυρο ISBN.",
   "singleLineErrorText": "Η τιμή πρέπει να είναι μία γραμμή.",
-  "timeErrorText": "Η τιμή πρέπει να είναι έγκυρη ώρα."
+  "timeErrorText": "Η τιμή πρέπει να είναι έγκυρη ώρα.",
+  "dateMustBeInTheFutureErrorText": "Η ημερομηνία πρέπει να είναι στο μέλλον.",
+  "dateMustBeInThePastErrorText": "Η ημερομηνία πρέπει να είναι στο παρελθόν.",
+  "fileNameErrorText": "Η τιμή πρέπει να είναι έγκυρο όνομα αρχείου.",
+  "negativeNumberErrorText": "Η τιμή πρέπει να είναι αρνητικός αριθμός.",
+  "positiveNumberErrorText": "Η τιμή πρέπει να είναι θετικός αριθμός.",
+  "notZeroNumberErrorText": "Η τιμή δεν πρέπει να είναι μηδέν.",
+  "ssnErrorText": "Η τιμή πρέπει να είναι έγκυρος Αριθμός Κοινωνικής Ασφάλισης.",
+  "zipCodeErrorText": "Η τιμή πρέπει να είναι έγκυρος ταχυδρομικός κωδικός."
 }

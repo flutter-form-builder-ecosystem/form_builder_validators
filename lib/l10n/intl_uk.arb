@@ -55,5 +55,13 @@
   "bicErrorText": "Поле має бути дійсним BIC кодом.",
   "isbnErrorText": "Поле має бути дійсним ISBN номером.",
   "singleLineErrorText": "Поле має бути однорядковим.",
-  "timeErrorText": "Поле має бути дійсним часом."
+  "timeErrorText": "Поле має бути дійсним часом.",
+  "dateMustBeInTheFutureErrorText": "Дата повинна бути у майбутньому.",
+  "dateMustBeInThePastErrorText": "Дата повинна бути в минулому.",
+  "fileNameErrorText": "Значення повинно бути дійсним ім'ям файлу.",
+  "negativeNumberErrorText": "Значення повинно бути від'ємним числом.",
+  "positiveNumberErrorText": "Значення повинно бути позитивним числом.",
+  "notZeroNumberErrorText": "Значення не повинно бути нулем.",
+  "ssnErrorText": "Значення повинно бути дійсним номером соціального страхування.",
+  "zipCodeErrorText": "Значення повинно бути дійсним поштовим індексом."
 }

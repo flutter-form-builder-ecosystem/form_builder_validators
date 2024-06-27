@@ -55,5 +55,13 @@
   "bicErrorText": "Sehemu hii inahitaji BIC halali.",
   "isbnErrorText": "Sehemu hii inahitaji ISBN halali.",
   "singleLineErrorText": "Sehemu hii inahitaji mstari mmoja tu.",
-  "timeErrorText": "Sehemu hii inahitaji wakati halali."
+  "timeErrorText": "Sehemu hii inahitaji wakati halali.",
+  "dateMustBeInTheFutureErrorText": "Date ilo fure.",
+  "dateMustBeInThePastErrorText": "Date du laaynaa.",
+  "fileNameErrorText": "Teel  xool mu araal file.",
+  "negativeNumberErrorText": "Deffee bu xam xam.",
+  "positiveNumberErrorText": "Deffee bu xam xam.",
+  "notZeroNumberErrorText": "Deffee waa 0 loo xanbaareeyo.",
+  "ssnErrorText": "Deffee waa nambarka xidhiidhka bulshada ee saxda ah.",
+  "zipCodeErrorText": "Deffee waa lambarka Zip ee saxda ah."
 }

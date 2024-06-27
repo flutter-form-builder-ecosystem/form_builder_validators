@@ -55,5 +55,13 @@
   "bicErrorText": "Een geldige BIC is vereist.",
   "isbnErrorText": "Een geldige ISBN is vereist.",
   "singleLineErrorText": "Dit veld mag geen nieuwe regels bevatten.",
-  "timeErrorText": "Een geldige tijd is vereist."
+  "timeErrorText": "Een geldige tijd is vereist.",
+  "dateMustBeInTheFutureErrorText": "Datum moet in de toekomst liggen.",
+  "dateMustBeInThePastErrorText": "Datum moet in het verleden liggen.",
+  "fileNameErrorText": "Waarde moet een geldige bestandsnaam zijn.",
+  "negativeNumberErrorText": "Waarde moet een negatief getal zijn.",
+  "positiveNumberErrorText": "Waarde moet een positief getal zijn.",
+  "notZeroNumberErrorText": "Waarde mag niet nul zijn.",
+  "ssnErrorText": "Waarde moet een geldig burgerservicenummer zijn.",
+  "zipCodeErrorText": "Waarde moet een geldige postcode zijn."
 }

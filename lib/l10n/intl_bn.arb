@@ -55,5 +55,13 @@
   "bicErrorText": "একটি বৈধ BIC প্রয়োজন।",
   "isbnErrorText": "একটি বৈধ ISBN প্রয়োজন।",
   "singleLineErrorText": "এই ফিল্ডে একটি একক লাইন থাকতে হবে।",
-  "timeErrorText": "একটি বৈধ সময় প্রয়োজন।"
+  "timeErrorText": "একটি বৈধ সময় প্রয়োজন।",
+  "dateMustBeInTheFutureErrorText": "তারিখ ভবিষ্যতে থাকতে হবে।",
+  "dateMustBeInThePastErrorText": "তারিখ অতীতে থাকতে হবে।",
+  "fileNameErrorText": "মানটি একটি বৈধ ফাইল নাম হতে হবে।",
+  "negativeNumberErrorText": "মানটি একটি নেতিবাচক সংখ্যা হতে হবে।",
+  "positiveNumberErrorText": "মানটি একটি ধনাত্মক সংখ্যা হতে হবে।",
+  "notZeroNumberErrorText": "মানটি শূন্য না হতে হবে।",
+  "ssnErrorText": "মানটি একটি বৈধ সোশ্যাল সিকিউরিটি নম্বর হতে হবে।",
+  "zipCodeErrorText": "মানটি একটি বৈধ জিপ কোড হতে হবে।"
 }

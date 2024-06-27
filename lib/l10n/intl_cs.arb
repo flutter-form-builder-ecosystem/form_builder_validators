@@ -55,5 +55,13 @@
   "bicErrorText": "Pole vyžaduje platný BIC kód.",
   "isbnErrorText": "Pole vyžaduje platné ISBN.",
   "singleLineErrorText": "Pole musí obsahovat pouze jednu řádku.",
-  "timeErrorText": "Pole vyžaduje platný čas."
+  "timeErrorText": "Pole vyžaduje platný čas.",
+  "dateMustBeInTheFutureErrorText": "Datum musí být v budoucnosti.",
+  "dateMustBeInThePastErrorText": "Datum musí být v minulosti.",
+  "fileNameErrorText": "Hodnota musí být platným názvem souboru.",
+  "negativeNumberErrorText": "Hodnota musí být záporné číslo.",
+  "positiveNumberErrorText": "Hodnota musí být kladné číslo.",
+  "notZeroNumberErrorText": "Hodnota nesmí být nula.",
+  "ssnErrorText": "Hodnota musí být platné číslo sociálního zabezpečení.",
+  "zipCodeErrorText": "Hodnota musí být platné PSČ."
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "Acest câmp necesită un cod BIC valid.",
   "isbnErrorText": "Acest câmp necesită un număr ISBN valid.",
   "singleLineErrorText": "Acest câmp trebuie să fie pe o singură linie.",
-  "timeErrorText": "Acest câmp necesită o oră validă."
+  "timeErrorText": "Acest câmp necesită o oră validă.",
+  "dateMustBeInTheFutureErrorText": "Data trebuie să fie în viitor.",
+  "dateMustBeInThePastErrorText": "Data trebuie să fie în trecut.",
+  "fileNameErrorText": "Valoarea trebuie să fie un nume de fișier valid.",
+  "negativeNumberErrorText": "Valoarea trebuie să fie un număr negativ.",
+  "positiveNumberErrorText": "Valoarea trebuie să fie un număr pozitiv.",
+  "notZeroNumberErrorText": "Valoarea nu trebuie să fie zero.",
+  "ssnErrorText": "Valoarea trebuie să fie un Număr de Asigurare Socială valid.",
+  "zipCodeErrorText": "Valoarea trebuie să fie un cod ZIP valid."
 }

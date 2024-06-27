@@ -55,5 +55,13 @@
   "bicErrorText": "Detta fält kräver ett giltigt BIC-nummer.",
   "isbnErrorText": "Detta fält kräver ett giltigt ISBN-nummer.",
   "singleLineErrorText": "Detta fält kräver en enradig text.",
-  "timeErrorText": "Detta fält kräver en giltig tid."
+  "timeErrorText": "Detta fält kräver en giltig tid.",
+  "dateMustBeInTheFutureErrorText": "Datumet måste vara i framtiden.",
+  "dateMustBeInThePastErrorText": "Datumet måste vara i det förflutna.",
+  "fileNameErrorText": "Värdet måste vara ett giltigt filnamn.",
+  "negativeNumberErrorText": "Värdet måste vara ett negativt tal.",
+  "positiveNumberErrorText": "Värdet måste vara ett positivt tal.",
+  "notZeroNumberErrorText": "Värdet får inte vara noll.",
+  "ssnErrorText": "Värdet måste vara ett giltigt personnummer.",
+  "zipCodeErrorText": "Värdet måste vara en giltig postnummer."
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "این ورودی به شماره BIC معتبر نیاز دارد.",
   "isbnErrorText": "این ورودی به شماره ISBN معتبر نیاز دارد.",
   "singleLineErrorText": "این ورودی باید یک خط باشد.",
-  "timeErrorText": "این ورودی به زمان معتبر نیاز دارد."
+  "timeErrorText": "این ورودی به زمان معتبر نیاز دارد.",
+  "dateMustBeInTheFutureErrorText": "تاریخ باید در آینده باشد.",
+  "dateMustBeInThePastErrorText": "تاریخ باید در گذشته باشد.",
+  "fileNameErrorText": "مقدار باید یک نام فایل معتبر باشد.",
+  "negativeNumberErrorText": "مقدار باید یک عدد منفی باشد.",
+  "positiveNumberErrorText": "مقدار باید یک عدد مثبت باشد.",
+  "notZeroNumberErrorText": "مقدار نباید صفر باشد.",
+  "ssnErrorText": "مقدار باید یک شماره تأمین اجتماعی معتبر باشد.",
+  "zipCodeErrorText": "مقدار باید یک کد پستی معتبر باشد."
 }

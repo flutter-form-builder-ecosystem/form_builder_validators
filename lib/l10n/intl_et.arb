@@ -55,5 +55,13 @@
   "bicErrorText": "See väli nõuab kehtivat BIC koodi.",
   "isbnErrorText": "See väli nõuab kehtivat ISBN koodi.",
   "singleLineErrorText": "See väli nõuab ühekordset rida.",
-  "timeErrorText": "See väli nõuab kehtivat kellaega."
+  "timeErrorText": "See väli nõuab kehtivat kellaega.",
+  "dateMustBeInTheFutureErrorText": "Kuupäev peab olema tulevikus.",
+  "dateMustBeInThePastErrorText": "Kuupäev peab olema minevikus.",
+  "fileNameErrorText": "Väärtus peab olema kehtiv failinimi.",
+  "negativeNumberErrorText": "Väärtus peab olema negatiivne number.",
+  "positiveNumberErrorText": "Väärtus peab olema positiivne number.",
+  "notZeroNumberErrorText": "Väärtus ei tohi olla null.",
+  "ssnErrorText": "Väärtus peab olema kehtiv sotsiaalkindlustuse number.",
+  "zipCodeErrorText": "Väärtus peab olema kehtiv postiindeks."
 }

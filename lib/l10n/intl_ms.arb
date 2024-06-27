@@ -55,5 +55,13 @@
   "bicErrorText": "Ruangan ini memerlukan BIC yang sah.",
   "isbnErrorText": "Ruangan ini memerlukan ISBN yang sah.",
   "singleLineErrorText": "Ruangan ini memerlukan rentetan tunggal.",
-  "timeErrorText": "Ruangan ini memerlukan masa yang sah."
+  "timeErrorText": "Ruangan ini memerlukan masa yang sah.",
+  "dateMustBeInTheFutureErrorText": "Tarikh harus dalam masa depan.",
+  "dateMustBeInThePastErrorText": "Tarikh harus dalam masa lampau.",
+  "fileNameErrorText": "Nilai harus menjadi nama fail yang sah.",
+  "negativeNumberErrorText": "Nilai harus menjadi nombor negatif.",
+  "positiveNumberErrorText": "Nilai harus menjadi nombor positif.",
+  "notZeroNumberErrorText": "Nilai tidak boleh menjadi sifar.",
+  "ssnErrorText": "Nilai harus menjadi Nombor Keselamatan Sosial yang sah.",
+  "zipCodeErrorText": "Nilai harus menjadi kod ZIP yang sah."
 }

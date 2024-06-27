@@ -55,5 +55,13 @@
   "bicErrorText": "यो क्षेत्रलाई मान्य BIC कोड चाहिन्छ।",
   "isbnErrorText": "यो क्षेत्रलाई मान्य ISBN चाहिन्छ।",
   "singleLineErrorText": "यो क्षेत्रलाई मान्य एकल लाइन स्ट्रिंग चाहिन्छ।",
-  "timeErrorText": "यो क्षेत्रलाई मान्य समय चाहिन्छ।"
+  "timeErrorText": "यो क्षेत्रलाई मान्य समय चाहिन्छ।",
+  "dateMustBeInTheFutureErrorText": "मिति भविष्यमा हुनुपर्छ।",
+  "dateMustBeInThePastErrorText": "मिति अतितमा हुनुपर्छ।",
+  "fileNameErrorText": "मान्य फाइल नाम हुनुपर्छ।",
+  "negativeNumberErrorText": "मान्य नकारात्मक संख्या हुनुपर्छ।",
+  "positiveNumberErrorText": "मान्य सकारात्मक संख्या हुनुपर्छ।",
+  "notZeroNumberErrorText": "मान्य शून्य हुनुपर्छ।",
+  "ssnErrorText": "मान्य सामाजिक सुरक्षा संख्या हुनुपर्छ।",
+  "zipCodeErrorText": "मान्य ZIP कोड हुनुपर्छ।"
 }
