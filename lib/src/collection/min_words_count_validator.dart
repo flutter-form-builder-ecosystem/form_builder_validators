@@ -19,7 +19,7 @@ class MinWordsCountValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    final int wordsCount = valueCandidate.trim().split(' ').length ?? 0;
+    final int wordsCount = valueCandidate.trim().split(' ').length;
 
     return wordsCount < minWordsCount ? errorText : null;
   }

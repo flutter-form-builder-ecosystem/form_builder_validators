@@ -48,5 +48,6 @@ abstract class BaseValidator<T> {
 
   /// Validates the value.
   /// Returns `null` if the value is valid, otherwise an error message.
+  /// Call validate() instead of this method when using the validator.
   String? validateValue(T valueCandidate);
 }
