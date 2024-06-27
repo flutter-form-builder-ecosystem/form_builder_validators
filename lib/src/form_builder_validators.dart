@@ -485,13 +485,16 @@ class FormBuilderValidators {
   /// {@macro ipv6_template}
   static FormFieldValidator<String> ip({
     int version = 4,
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isNotEmpty == true && !isIP(valueCandidate, version)
-              ? errorText ?? FormBuilderLocalizations.current.ipErrorText
-              : null;
+      IpValidator(
+        version: version,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date string.
   /// This validator checks if the field's value is a valid date string.

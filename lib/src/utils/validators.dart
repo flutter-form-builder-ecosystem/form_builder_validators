@@ -15,29 +15,6 @@ RegExp _email = RegExp(
   r"^((([a-z]|\d|[!#\$%&'*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$",
 );
 
-/// {@template ipv4_template}
-/// This regex matches an IPv4 address.
-///
-/// - It consists of four groups of one to three digits.
-/// - Each group is separated by a dot.
-/// - Each group can range from 0 to 255.
-///
-/// Examples: 192.168.1.1, 10.0.0.1
-/// {@endtemplate}
-RegExp _ipv4Maybe = RegExp(r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$');
-
-/// {@template ipv6_template}
-/// This regex matches an IPv6 address.
-///
-/// - It supports various valid IPv6 notations.
-/// - It allows the use of "::" for consecutive zero blocks.
-/// - It allows hexadecimal digits and colons.
-///
-/// Examples: ::1, 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-/// {@endtemplate}
-RegExp _ipv6 =
-    RegExp(r'^::|^::1|^([a-fA-F0-9]{1,4}::?){1,7}([a-fA-F0-9]{1,4})$');
-
 /// {@template credit_card_template}
 /// This regex matches credit card numbers from major brands.
 ///
@@ -268,23 +245,6 @@ bool isURL(
   }
 
   return true;
-}
-
-/// check if the string [str] is IP [version] 4 or 6
-///
-/// * [version] is a String or an `int`.
-bool isIP(String? str, int? version) {
-  if (version == null) {
-    return isIP(str, 4) || isIP(str, 6);
-  } else if (version == 4) {
-    if (!_ipv4Maybe.hasMatch(str!)) {
-      return false;
-    }
-    final List<String> parts = str.split('.');
-    parts.sort((String a, String b) => int.parse(a) - int.parse(b));
-    return int.parse(parts[3]) <= 255;
-  }
-  return version == 6 && _ipv6.hasMatch(str!);
 }
 
 /// check if the string [str] is a fully qualified domain name (e.g. domain.com).
