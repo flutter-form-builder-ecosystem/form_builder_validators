@@ -164,22 +164,13 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final num? number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
-
-        if (number != null && (inclusive ? number < min : number <= min)) {
-          return errorText ??
-              FormBuilderLocalizations.current.minErrorText(min);
-        }
-      }
-      return null;
-    };
-  }
+  }) =>
+      MinValidator<T>(
+        min,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be less than (or equal) to the provided number.
   /// This validator checks if the field's value is less than or equal to the given maximum value.
@@ -193,22 +184,55 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final num? number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
+  }) =>
+      MaxValidator<T>(
+        max,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-        if (number != null && (inclusive ? number > max : number >= max)) {
-          return errorText ??
-              FormBuilderLocalizations.current.maxErrorText(max);
-        }
-      }
-      return null;
-    };
-  }
+  /// [FormFieldValidator] that requires the field's value to be a positive number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the value is not positive.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<T> positiveNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PositiveNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a negative number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the value is not negative.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<T> negativeNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      NegativeNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a number that is not zero.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message to display when the value is zero.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values (default: true).
+  static FormFieldValidator<T> notZeroNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      NotZeroNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the length of the field's value to be greater than or equal to the provided minimum length.
   /// This validator checks if the length of the field's value meets the minimum length requirement.
@@ -384,14 +408,14 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [errorText] The error message to display when the number is invalid.
-  static FormFieldValidator<String> numeric({
+  static FormFieldValidator<T> numeric<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              null == num.tryParse(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.numericErrorText
-          : null;
+      NumericValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid integer.
   /// This validator checks if the field's value is a valid integer.
@@ -404,10 +428,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              null == int.tryParse(valueCandidate!, radix: radix)
-          ? errorText ?? FormBuilderLocalizations.current.integerErrorText
-          : null;
+      IntegerValidator(
+        radix: radix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid credit card number.
   /// This validator checks if the field's value is a valid credit card number.
@@ -737,36 +762,24 @@ class FormBuilderValidators {
   /// This validator checks if the field's value is within the specified numerical range.
   ///
   /// ## Parameters:
-  /// - [minValue] The minimum value that the field's value should be greater than or equal to.
-  /// - [maxValue] The maximum value that the field's value should be less than or equal to.
+  /// - [min] The minimum value that the field's value should be greater than or equal to.
+  /// - [max] The maximum value that the field's value should be less than or equal to.
   /// - [inclusive] Whether the range is inclusive (default: true).
   /// - [errorText] The error message to display when the value is not in the range.
   static FormFieldValidator<T> range<T>(
-    num minValue,
-    num maxValue, {
+    num min,
+    num max, {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final num? number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
-
-        final String? minResult =
-            min(minValue, inclusive: inclusive, errorText: errorText)(number);
-        final String? maxResult =
-            max(maxValue, inclusive: inclusive, errorText: errorText)(number);
-
-        if (minResult != null || maxResult != null) {
-          return errorText ?? minResult ?? maxResult;
-        }
-      }
-      return null;
-    };
-  }
+  }) =>
+      RangeValidator<T>(
+        min,
+        max,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a bool and true.
   /// This validator checks if the field's value is true.
@@ -1099,10 +1112,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isOddNumber(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.oddNumberErrorText
-              : null;
+      OddNumberValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an even number.
   /// This validator checks if the field's value is an even number.
@@ -1113,10 +1126,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isEvenNumber(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.evenNumberErrorText
-          : null;
+      EvenNumberValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid port number.
   /// This validator checks if the field's value is a valid port number.
@@ -1131,19 +1144,12 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) {
-        if (valueCandidate?.isNotEmpty == true) {
-          final int? port = int.tryParse(valueCandidate!);
-          if (port == null || port < min || port > max) {
-            return errorText ??
-                FormBuilderLocalizations.current.portNumberErrorText(min, max);
-          }
-        } else {
-          return errorText ??
-              FormBuilderLocalizations.current.portNumberErrorText(min, max);
-        }
-        return null;
-      };
+      PortNumberValidator(
+        min: min,
+        max: max,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid MAC address.
   /// This validator checks if the field's value is a valid MAC address.
@@ -1233,11 +1239,12 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (num? valueCandidate) =>
-          valueCandidate == null || valueCandidate < min || valueCandidate > max
-              ? errorText ??
-                  FormBuilderLocalizations.current.betweenErrorText(min, max)
-              : null;
+      BetweenValidator(
+        min,
+        max,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be in a list of values.
   /// This validator checks if the field's value is in the given list of values.

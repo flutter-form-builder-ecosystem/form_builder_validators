@@ -58,5 +58,8 @@
   "timeErrorText": "Value must be a valid time.",
   "dateMustBeInTheFutureErrorText": "Date must be in the future.",
   "dateMustBeInThePastErrorText": "Date must be in the past.",
-  "fileNameErrorText": "Value must be a valid file name."
+  "fileNameErrorText": "Value must be a valid file name.",
+  "negativeNumberErrorText": "Value must be a negative number.",
+  "positiveNumberErrorText": "Value must be a positive number.",
+  "notZeroNumberErrorText": "Value must not be zero."
 }

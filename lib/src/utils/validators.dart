@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'helpers.dart';
-
 /// {@template email_template}
 /// This regex matches an email address.
 ///
@@ -259,16 +257,6 @@ bool isBase64(String value) {
   } catch (e) {
     return false;
   }
-}
-
-bool isOddNumber(String value) {
-  final int number = int.tryParse(value) ?? 0;
-  return number.isOdd;
-}
-
-bool isEvenNumber(String value) {
-  final int number = int.tryParse(value) ?? 0;
-  return number.isEven;
 }
 
 /// check if the string is a valid IBAN

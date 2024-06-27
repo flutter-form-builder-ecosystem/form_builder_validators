@@ -7,6 +7,5 @@ export 'negative_number_validator.dart';
 export 'not_zero_number_validator.dart';
 export 'numeric_validator.dart';
 export 'odd_number_validator.dart';
-export 'port_number_validator.dart';
 export 'positive_number_validator.dart';
 export 'range_validator.dart';

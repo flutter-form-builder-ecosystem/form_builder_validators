@@ -57,6 +57,9 @@
 - Add dateFuture
 - Add SSN (Social Security Number (USA))
 - Add fileName
+- Add negative number
+- Add positive number
+- Add not zero number
 
 ## 10.0.1
 

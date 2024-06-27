@@ -97,8 +97,8 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
 - `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
 - `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
-- `FormBuilderValidators.portNumber()` - requires the field's to be an valid port number.
-- `FormBuilderValidators.macAddress()` - requires the field's to be an valid MAC address.
+- `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
+- `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 
 ### Numeric validators
 
@@ -114,6 +114,9 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
 - `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
+- `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
+- `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
+- `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
 
 ### String validators
 
@@ -129,9 +132,9 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
 - `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
 - `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
-- `FormBuilderValidators.iban()` - requires the field's to be an valid IBAN.
-- `FormBuilderValidators.bic()` - requires the field's to be an valid BIC.
-- `FormBuilderValidators.isbn()` - requires the field's to be an valid ISBN.
+- `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
+- `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
+- `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
 - `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 
