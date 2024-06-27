@@ -3,7 +3,7 @@ import '../base_validator.dart';
 
 class FileExtensionValidator extends BaseValidator<String> {
   const FileExtensionValidator(
-    List<String> this.allowedExtensions, {
+    this.allowedExtensions, {
     /// {@macro base_validator_error_text}
     super.errorText,
 

@@ -13,6 +13,7 @@ class DateRangeValidator extends BaseValidator<String> {
   });
 
   final DateTime minDate;
+
   final DateTime maxDate;
 
   @override

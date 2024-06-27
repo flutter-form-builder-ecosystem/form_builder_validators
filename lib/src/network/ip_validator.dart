@@ -3,11 +3,11 @@ import '../base_validator.dart';
 
 class IpValidator extends BaseValidator<String?> {
   IpValidator({
-    int this.version = 4,
+    this.version = 4,
 
     /// {@macro ipv4_template}
     /// {@macro ipv6_template}
-    RegExp? this.regex,
+    this.regex,
 
     /// {@macro base_validator_error_text}
     super.errorText,

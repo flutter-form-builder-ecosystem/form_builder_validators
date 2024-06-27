@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../../form_builder_validators.dart';
-import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class UsernameValidator extends BaseValidator<String> {

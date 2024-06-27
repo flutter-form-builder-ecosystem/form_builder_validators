@@ -10,7 +10,9 @@ void main() {
   runApp(const MyApp());
 }
 
+/// The main application widget.
 class MyApp extends StatelessWidget {
+  /// The main application widget constructor.
   const MyApp({super.key});
 
   @override

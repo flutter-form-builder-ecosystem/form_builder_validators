@@ -5,7 +5,7 @@ import '../base_validator.dart';
 
 class LogValidator<T> extends BaseValidator<T> {
   const LogValidator(
-    String Function(T? value)? this.log, {
+    this.log, {
     /// {@macro base_validator_error_text}
     super.errorText,
 

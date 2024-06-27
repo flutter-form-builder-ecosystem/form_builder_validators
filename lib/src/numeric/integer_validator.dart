@@ -3,7 +3,7 @@ import '../base_validator.dart';
 
 class IntegerValidator extends BaseValidator<String> {
   IntegerValidator({
-    int? this.radix,
+    this.radix,
 
     /// {@macro base_validator_error_text}
     super.errorText,
