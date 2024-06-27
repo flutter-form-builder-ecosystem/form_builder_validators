@@ -55,5 +55,13 @@
   "bicErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນລະຫັດ BIC ທີ່ຖືກຕ້ອງ.",
   "isbnErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນ ISBN ທີ່ຖືກຕ້ອງ.",
   "singleLineErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຊ່ວງທີ່ເທົ່ານັ້ນ.",
-  "timeErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນເວລາທີ່ຖືກຕ້ອງ."
+  "timeErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງເປັນເວລາທີ່ຖືກຕ້ອງ.",
+  "dateMustBeInTheFutureErrorText": "ວັນທີຕ້ອງຢູ່ໃນອະນາຄົດ.",
+  "dateMustBeInThePastErrorText": "ວັນທີຕ້ອງຢູ່ໃນອດີດ.",
+  "fileNameErrorText": "ຄ່າຕ້ອງເປັນຊື່ໄຟລ໌ທີ່ຖືກຕ້ອງ.",
+  "negativeNumberErrorText": "ຄ່າຕ້ອງເປັນເລກລົບ.",
+  "positiveNumberErrorText": "ຄ່າຕ້ອງເປັນເລກບວກ.",
+  "notZeroNumberErrorText": "ຄ່າຕ້ອງບໍ່ເປັນສູນ.",
+  "ssnErrorText": "ຄ່າຕ້ອງເປັນເລກປະຊາຊົນທີ່ຖືກຕ້ອງ.",
+  "zipCodeErrorText": "ຄ່າຕ້ອງເປັນລະຫັດໄປສະນີທີ່ຖືກຕ້ອງ."
 }
