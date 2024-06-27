@@ -679,10 +679,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              valueCandidate!.toUpperCase() != valueCandidate
-          ? errorText ?? FormBuilderLocalizations.current.uppercaseErrorText
-          : null;
+      UppercaseValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be lowercase.
   /// This validator checks if the field's value is lowercase.
@@ -693,10 +693,10 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              valueCandidate!.toLowerCase() != valueCandidate
-          ? errorText ?? FormBuilderLocalizations.current.lowercaseErrorText
-          : null;
+      LowercaseValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file extension.
   /// This validator checks if the field's value is a valid file extension.
@@ -1005,14 +1005,15 @@ class FormBuilderValidators {
   ///
   /// {@macro alphabetical_template}
   static FormFieldValidator<String> alphabetical({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isAlphabetical(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.alphabeticalErrorText
-          : null;
+      AlphabeticalValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid UUID.
   /// This validator checks if the field's value is a valid UUID.
@@ -1180,11 +1181,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isEmpty != false ||
-              !valueCandidate!.startsWith(prefix)
-          ? errorText ??
-              FormBuilderLocalizations.current.startsWithErrorText(prefix)
-          : null;
+      StartsWithValidator(
+        prefix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to end with a specific value.
   /// This validator checks if the field's value ends with the given suffix.
@@ -1197,11 +1198,11 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) =>
-          valueCandidate?.isEmpty != false || !valueCandidate!.endsWith(suffix)
-              ? errorText ??
-                  FormBuilderLocalizations.current.endsWithErrorText(suffix)
-              : null;
+      EndsWithValidator(
+        suffix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a specific value.
   /// This validator checks if the field's value contains the given substring.
@@ -1216,15 +1217,12 @@ class FormBuilderValidators {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      (String? valueCandidate) => valueCandidate?.isEmpty != false ||
-              caseSensitive && !valueCandidate!.contains(substring) ||
-              !caseSensitive &&
-                  !valueCandidate!
-                      .toLowerCase()
-                      .contains(substring.toLowerCase())
-          ? errorText ??
-              FormBuilderLocalizations.current.containsErrorText(substring)
-          : null;
+      ContainsValidator(
+        substring,
+        caseSensitive: caseSensitive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be between two numbers.
   /// This validator checks if the field's value is between the given minimum and maximum values.

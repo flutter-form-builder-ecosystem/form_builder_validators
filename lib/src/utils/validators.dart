@@ -65,15 +65,6 @@ RegExp _rgb = RegExp(r'^rgb\(\d{1,3},\s*\d{1,3},\s*\d{1,3}\)$');
 /// {@endtemplate}
 RegExp _hsl = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
 
-/// {@template alphabetical_template}
-/// This regex matches only alphabetical characters.
-///
-/// - It allows both uppercase and lowercase letters.
-///
-/// Examples: abcdef, XYZ
-/// {@endtemplate}
-RegExp _alphabetical = RegExp(r'^[a-zA-Z]+$');
-
 /// {@template uuid_template}
 /// This regex matches UUIDs (version 4).
 ///
@@ -206,10 +197,6 @@ bool isColorCode(
     return true;
   }
   return false;
-}
-
-bool isAlphabetical(String value) {
-  return _alphabetical.hasMatch(value);
 }
 
 /// check if the string is a valid UUID
