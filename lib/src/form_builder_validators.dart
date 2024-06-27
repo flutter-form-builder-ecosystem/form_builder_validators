@@ -52,7 +52,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [log] The log message to display.
-  /// - [errorText] The error message to display when the value is invalid.
+  /// - [errorText] The error message when the value is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> log<T>(
     String Function(T? value)? log, {
@@ -82,7 +82,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [values] The list of values to check against.
-  /// - [errorText] The error message to display when the value is not unique.
+  /// - [errorText] The error message when the value is not unique.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> unique<T>(
     List<T> values, {
@@ -110,7 +110,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field have a non-empty value.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is empty.
+  /// - [errorText] The error message when the value is empty.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> required<T>({
     String? errorText,
@@ -126,7 +126,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [value] The value to compare with.
-  /// - [errorText] The error message to display when the value is not equal.
+  /// - [errorText] The error message when the value is not equal.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> equal<T>(
     Object value, {
@@ -144,7 +144,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [value] The value to compare with.
-  /// - [errorText] The error message to display when the value is equal.
+  /// - [errorText] The error message when the value is equal.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> notEqual<T>(
     Object value, {
@@ -163,7 +163,7 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [min] The minimum value to compare.
   /// - [inclusive] Whether the comparison is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is invalid.
+  /// - [errorText] The error message when the value is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> min<T>(
     num min, {
@@ -184,7 +184,7 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [max] The maximum value to compare.
   /// - [inclusive] Whether the comparison is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is invalid.
+  /// - [errorText] The error message when the value is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> max<T>(
     num max, {
@@ -203,7 +203,7 @@ class FormBuilderValidators {
   /// positive number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not positive.
+  /// - [errorText] The error message when the value is not positive.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> positiveNumber<T>({
     String? errorText,
@@ -218,7 +218,7 @@ class FormBuilderValidators {
   /// negative number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not negative.
+  /// - [errorText] The error message when the value is not negative.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> negativeNumber<T>({
     String? errorText,
@@ -233,7 +233,7 @@ class FormBuilderValidators {
   /// is not zero.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is zero.
+  /// - [errorText] The error message when the value is zero.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> notZeroNumber<T>({
     String? errorText,
@@ -249,7 +249,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [minLength] The minimum length to compare.
-  /// - [errorText] The error message to display when the length is invalid.
+  /// - [errorText] The error message when the length is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> minLength<T>(
     int minLength, {
@@ -267,7 +267,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [maxLength] The maximum length to compare.
-  /// - [errorText] The error message to display when the length is invalid.
+  /// - [errorText] The error message when the length is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> maxLength<T>(
     int maxLength, {
@@ -286,7 +286,7 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [length] The length to compare.
   /// - [allowEmpty] Whether the field's value can be empty (default: false).
-  /// - [errorText] The error message to display when the length is invalid.
+  /// - [errorText] The error message when the length is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> equalLength<T>(
     int length, {
@@ -306,7 +306,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [minWordsCount] The minimum word count.
-  /// - [errorText] The error message to display when the word count is invalid.
+  /// - [errorText] The error message when the word count is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> minWordsCount(
     int minWordsCount, {
@@ -324,7 +324,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [maxWordsCount] The maximum word count.
-  /// - [errorText] The error message to display when the word count is invalid.
+  /// - [errorText] The error message when the word count is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> maxWordsCount(
     int maxWordsCount, {
@@ -340,12 +340,12 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid email address.
   ///
-  /// {@macro email_template}
-  /// {@macro email_regex_template}
   /// ## Parameters:
   /// - [regex] The regex pattern to match.
-  /// - [errorText] The error message to display when the email is invalid.
+  /// - [errorText] The error message when the email is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro email_regex_template}
   static FormFieldValidator<String> email({
     RegExp? regex,
     String? errorText,
@@ -368,8 +368,10 @@ class FormBuilderValidators {
   /// - [hostWhitelist] The list of allowed hosts.
   /// - [hostBlacklist] The list of disallowed hosts.
   /// - [regex] The regex pattern to match.
-  /// - [errorText] The error message to display when the URL is invalid.
+  /// - [errorText] The error message when the URL is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro url_template}
   static FormFieldValidator<String> url({
     List<String> protocols = const <String>['http', 'https', 'ftp'],
     bool requireTld = true,
@@ -398,7 +400,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [regex] The regex pattern to match.
-  /// - [errorText] The error message to display when the value does not
+  /// - [errorText] The error message when the value does not
   /// match the pattern.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> match(
@@ -417,7 +419,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [regex] The regex pattern to match.
-  /// - [errorText] The error message to display when the value
+  /// - [errorText] The error message when the value
   /// matches the pattern.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> matchNot(
@@ -434,7 +436,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to be a valid number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the number is invalid.
+  /// - [errorText] The error message when the number is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> numeric<T>({
     String? errorText,
@@ -449,7 +451,7 @@ class FormBuilderValidators {
   ///
   /// ## Parameters:
   /// - [radix] The radix to use when parsing the integer.
-  /// - [errorText] The error message to display when the integer is invalid.
+  /// - [errorText] The error message when the integer is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> integer({
     int? radix,
@@ -466,7 +468,7 @@ class FormBuilderValidators {
   /// valid credit card number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the credit card number
+  /// - [errorText] The error message when the credit card number
   /// is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
@@ -484,9 +486,10 @@ class FormBuilderValidators {
   /// valid credit card expiration date.
   ///
   /// ## Parameters:
-  /// - [checkForExpiration] Whether the expiration date should be checked (default: true).
+  /// - [checkForExpiration] Whether the expiration date should be checked
   /// - [regex] The regex pattern to match.
-  /// - [errorText] The error message to display when the expiration date is invalid.
+  /// - [errorText] The error message when the expiration
+  /// date is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro credit_card_expiration_template}
@@ -494,18 +497,21 @@ class FormBuilderValidators {
     bool checkForExpiration = true,
     RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
       CreditCardExpirationDateValidator(
         checkForExpiration: checkForExpiration,
         regex: regex,
         errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid credit card CVC.
-  /// This validator checks if the field's value is a valid credit card CVC.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// credit card CVC.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the CVC is invalid.
+  /// - [errorText] The error message when the CVC is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -515,12 +521,14 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid IP address.
-  /// This validator checks if the field's value is a valid IP address.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// IP address.
   ///
   /// ## Parameters:
   /// - [version] The IP version (4 or 6).
-  /// - [errorText] The error message to display when the IP address is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the IP address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro ipv4_template}
   ///
@@ -538,11 +546,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid date string.
-  /// This validator checks if the field's value is a valid date string.
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid date string.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the date is invalid.
+  /// - [errorText] The error message when the date is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> date({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -552,10 +561,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid date in the future.
+  /// [FormFieldValidator] that requires the field's value to be a valid date
+  /// in the future.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the date is not in the future.
+  /// - [errorText] The error message when the date is not
+  /// in the future.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> dateFuture({
     String? errorText,
@@ -566,10 +577,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid time in the past.
+  /// [FormFieldValidator] that requires the field's value to be a valid time
+  /// in the past.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the time is not in the past.
+  /// - [errorText] The error message when the time is not
+  /// in the past.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> datePast({
     String? errorText,
@@ -580,26 +593,30 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid time string.
-  /// This validator checks if the field's value is a valid time string.
+  /// [FormFieldValidator] that requires the field's value to be a valid time.
   ///
-  /// The validator supports various time formats, both 24-hour and 12-hour clocks.
+  /// It supports various time formats, both 24-hour and 12-hour formats.
   ///
   /// ## Valid 24-hour time formats:
-  /// - `HH:mm`: Hours and minutes, e.g., `23:59`
-  /// - `HH:mm:ss`: Hours, minutes, and seconds, e.g., `23:59:59`
-  /// - `HH:mm:ss.SSS`: Hours, minutes, seconds, and milliseconds, e.g., `23:59:59.999`
+  /// - `HH:mm`: Hours and minutes,
+  /// e.g., `23:59`
+  /// - `HH:mm:ss`: Hours, minutes, and seconds,
+  /// e.g., `23:59:59`
+  /// - `HH:mm:ss.SSS`: Hours, minutes, seconds, and milliseconds,
+  /// e.g., `23:59:59.999`
   ///
   /// ## Valid 12-hour time formats:
-  /// - `h:mm a`: Hours and minutes with AM/PM, e.g., `11:59 PM`
-  /// - `h:mm:ss a`: Hours, minutes, and seconds with AM/PM, e.g., `11:59:59 PM`
-  /// - `h:mm:ss.SSS a`: Hours, minutes, seconds, and milliseconds with AM/PM, e.g., `11:59:59.999 PM`
+  /// - `h:mm a`: Hours and minutes with AM/PM,
+  /// e.g., `11:59 PM`
+  /// - `h:mm:ss a`: Hours, minutes, and seconds with AM/PM,
+  /// e.g., `11:59:59 PM`
+  /// - `h:mm:ss.SSS a`: Hours, minutes, seconds, and milliseconds with AM/PM,
+  /// e.g., `11:59:59.999 PM`
   ///
   /// ## Parameters:
-  /// - [errorText] (optional): The error message to display when the time is invalid.
-  ///
-  /// ## Returns:
-  /// If the value is null, empty, or not a valid time, it returns the [errorText] or a default error message.
+  /// - [errorText] (optional): The error message when the time
+  /// is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro time_template}
   static FormFieldValidator<String> time({
@@ -612,10 +629,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date.
-  /// This validator checks if the field's value is a valid date.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the date is invalid.
+  /// - [errorText] The error message when the date is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<DateTime?> dateTime({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -625,13 +642,17 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
-  /// This validator checks if the field's value is a date within the given range.
+  /// [FormFieldValidator] that requires the field's value to be a date within
+  /// a certain range.
   ///
   /// ## Parameters:
-  /// - [minDate] The minimum date that the field's value should be greater than or equal to.
-  /// - [maxDate] The maximum date that the field's value should be less than or equal to.
-  /// - [errorText] The error message to display when the date is not in the range.
+  /// - [minDate] The minimum date that the field's value should be greater
+  /// than or equal to.
+  /// - [maxDate] The maximum date that the field's value should be less
+  /// than or equal to.
+  /// - [errorText] The error message when the date is not
+  /// in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> dateRange(
     DateTime minDate,
     DateTime maxDate, {
@@ -645,11 +666,14 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid phone number.
-  /// This validator checks if the field's value is a valid phone number.
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid phone number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the phone number is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the phone number
+  /// is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro phone_number_template}
   static FormFieldValidator<String> phoneNumber({
@@ -663,12 +687,15 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid color code.
-  /// This validator checks if the field's value is a valid color code.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// color code.
   ///
   /// ## Parameters:
-  /// - [formats] The list of allowed color code formats (e.g., ['hex', 'rgb', 'hsl']).
-  /// - [errorText] The error message to display when the color code is invalid.
+  /// - [formats] The list of allowed color code formats
+  /// (e.g., ['hex', 'rgb', 'hsl']).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the color code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro hex_template}
   ///
@@ -677,20 +704,22 @@ class FormBuilderValidators {
   /// {@macro hsl_template}
   static FormFieldValidator<String> colorCode({
     List<String> formats = const <String>['hex', 'rgb', 'hsl'],
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       ColorCodeValidator(
         formats: formats,
+        regex: regex,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be uppercase.
-  /// This validator checks if the field's value is uppercase.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not uppercase.
+  /// - [errorText] The error message when the value is not uppercase.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> uppercase({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -701,10 +730,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be lowercase.
-  /// This validator checks if the field's value is lowercase.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not lowercase.
+  /// - [errorText] The error message when the value is not lowercase.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> lowercase({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -714,12 +743,13 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid file extension.
-  /// This validator checks if the field's value is a valid file extension.
+  /// [FormFieldValidator] that requires the field's value to be
+  /// a valid file extension.
   ///
   /// ## Parameters:
   /// - [allowedExtensions] The list of allowed file extensions.
-  /// - [errorText] The error message to display when the file extension is invalid.
+  /// - [errorText] The error message when the file extension is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> fileExtension(
     List<String> allowedExtensions, {
     String? errorText,
@@ -731,12 +761,13 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that restricts the size of a file to be less than or equal to the provided maximum size.
-  /// This validator checks if the file size is within the given limit.
+  /// [FormFieldValidator] that restricts the size of a file to be less than or
+  /// equal to the provided maximum size.
   ///
   /// ## Parameters:
   /// - [maxSize] The maximum size in bytes.
-  /// - [errorText] The error message to display when the file size exceeds the limit.
+  /// - [errorText] The error message when the file size exceeds the limit.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> fileSize(
     int maxSize, {
     String? errorText,
@@ -748,10 +779,11 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid file name.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// file name.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the file name is invalid.
+  /// - [errorText] The error message when the file name is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> fileName({
     String? errorText,
@@ -763,10 +795,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that applies another validator conditionally.
-  /// This validator applies a provided validator based on the specified condition.
   ///
   /// ## Parameters:
-  /// - [condition] A function that determines if the validator should be applied.
+  /// - [condition] A function that determines if the validator should be
+  /// applied.
   /// - [validator] The validator to apply if the condition is met.
   static FormFieldValidator<T> conditional<T>(
     bool Function(T? value) condition,
@@ -774,14 +806,15 @@ class FormBuilderValidators {
   ) =>
       ConditionalValidator<T>(condition, validator).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be within a certain range.
-  /// This validator checks if the field's value is within the specified numerical range.
+  /// [FormFieldValidator] that requires the field's value to be within
+  /// a certain range.
   ///
   /// ## Parameters:
-  /// - [min] The minimum value that the field's value should be greater than or equal to.
-  /// - [max] The maximum value that the field's value should be less than or equal to.
+  /// - [min] The minimum value should be greater than or equal to.
+  /// - [max] The maximum value should be less than or equal to.
   /// - [inclusive] Whether the range is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is not in the range.
+  /// - [errorText] The error message when the value is not in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> range<T>(
     num min,
     num max, {
@@ -797,11 +830,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a bool and true.
-  /// This validator checks if the field's value is true.
+  /// [FormFieldValidator] that requires the field's value to be a bool and
+  /// true.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not true.
+  /// - [errorText] The error message when the value is not true.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<bool> isTrue({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -811,11 +845,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a bool and false.
-  /// This validator checks if the field's value is false.
+  /// [FormFieldValidator] that requires the field's value to be a bool and
+  /// false.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not false.
+  /// - [errorText] The error message when the value is not false.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<bool> isFalse({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -825,12 +860,17 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of special characters.
-  /// This validator checks if the field's value contains the specified number of special characters.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of special characters.
   ///
   /// ## Parameters:
   /// - [atLeast] The minimum number of special characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of special characters.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of special characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro special_chars_template}
   static FormFieldValidator<String> hasSpecialChars({
     int atLeast = 1,
     RegExp? regex,
@@ -844,12 +884,17 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of uppercase characters.
-  /// This validator checks if the field's value contains the specified number of uppercase characters.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of uppercase characters.
   ///
   /// ## Parameters:
   /// - [atLeast] The minimum number of uppercase characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of uppercase characters.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of uppercase characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro uppercase_chars_template}
   static FormFieldValidator<String> hasUppercaseChars({
     int atLeast = 1,
     RegExp? regex,
@@ -863,12 +908,17 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of lowercase characters.
-  /// This validator checks if the field's value contains the specified number of lowercase characters.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of lowercase characters.
   ///
   /// ## Parameters:
   /// - [atLeast] The minimum number of lowercase characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of lowercase characters.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of lowercase characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro lowercase_chars_template}
   static FormFieldValidator<String> hasLowercaseChars({
     int atLeast = 1,
     RegExp? regex,
@@ -882,12 +932,17 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of numeric characters.
-  /// This validator checks if the field's value contains the specified number of numeric characters.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  ///  number of numeric characters.
   ///
   /// ## Parameters:
   /// - [atLeast] The minimum number of numeric characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of numeric characters.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of numeric characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro numeric_chars_template}
   static FormFieldValidator<String> hasNumericChars({
     int atLeast = 1,
     RegExp? regex,
@@ -901,19 +956,21 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid username.
-  /// This validator checks if the field's value meets the criteria for a valid username.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// username.
   ///
   /// ## Parameters:
   /// - [minLength] The minimum length of the username (default: 3).
   /// - [maxLength] The maximum length of the username (default: 32).
-  /// - [errorText] The error message to display when the username is invalid.
   /// - [allowNumbers] Whether digits are allowed (default: true).
   /// - [allowUnderscore] Whether underscores are allowed (default: false).
   /// - [allowDots] Whether dots are allowed (default: false).
   /// - [allowDash] Whether dashes are allowed (default: false).
   /// - [allowSpace] Whether spaces are allowed (default: false).
-  /// - [allowSpecialChar] Whether special characters are allowed (default: false).
+  /// - [allowSpecialChar] Whether special characters are allowed
+  /// (default: false).
+  /// - [errorText] The error message when the username is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> username({
     int minLength = 3,
     int maxLength = 32,
@@ -939,8 +996,8 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid password.
-  /// This validator checks if the field's value meets the criteria for a valid password.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// password.
   ///
   /// ## Parameters:
   /// - [minLength] The minimum length of the password (default: 8).
@@ -949,7 +1006,8 @@ class FormBuilderValidators {
   /// - [lowercase] The minimum number of lowercase characters (default: 1).
   /// - [number] The minimum number of numeric characters (default: 1).
   /// - [specialChar] The minimum number of special characters (default: 1).
-  /// - [errorText] The error message to display when the password is invalid.
+  /// - [errorText] The error message when the password is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> password({
     int minLength = 8,
     int maxLength = 32,
@@ -972,10 +1030,11 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be alphabetical.
-  /// This validator checks if the field's value contains only alphabetical characters.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not alphabetical.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value is not alphabetical.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro alphabetical_template}
   static FormFieldValidator<String> alphabetical({
@@ -990,10 +1049,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid UUID.
-  /// This validator checks if the field's value is a valid UUID.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the UUID is invalid.
+  /// - [errorText] The error message when the UUID is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro uuid_template}
   static FormFieldValidator<String> uuid({
@@ -1006,10 +1065,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be valid JSON.
-  /// This validator checks if the field's value is valid JSON.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the JSON is invalid.
+  /// - [errorText] The error message when the JSON is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> json({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1019,11 +1078,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid latitude.
-  /// This validator checks if the field's value is a valid latitude.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// latitude.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the latitude is invalid.
+  /// - [errorText] The error message when the latitude is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> latitude({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1033,11 +1093,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid longitude.
-  /// This validator checks if the field's value is a valid longitude.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// longitude.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the longitude is invalid.
+  /// - [errorText] The error message when the longitude is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> longitude({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1047,11 +1108,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid base64 string.
-  /// This validator checks if the field's value is a valid base64 string.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// base64 string.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the base64 string is invalid.
+  /// - [errorText] The error message when the base64 string is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> base64({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1061,11 +1123,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid file or folder path.
-  /// This validator checks if the field's value is a valid file or folder path.
+  /// [FormFieldValidator] that requires the field's value to be a valid file
+  /// or folder path.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the path is invalid.
+  /// - [errorText] The error message when the path is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro file_path_template}
   static FormFieldValidator<String> path({
@@ -1078,10 +1141,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an odd number.
-  /// This validator checks if the field's value is an odd number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not an odd number.
+  /// - [errorText] The error message when the value is not an odd number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> oddNumber({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1092,10 +1155,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an even number.
-  /// This validator checks if the field's value is an even number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not an even number.
+  /// - [errorText] The error message when the value is not an even number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> evenNumber({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1105,13 +1168,14 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid port number.
-  /// This validator checks if the field's value is a valid port number.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// port number.
   ///
   /// ## Parameters:
   /// - [min] The minimum port number (default: 0).
   /// - [max] The maximum port number (default: 65535).
-  /// - [errorText] The error message to display when the port number is invalid.
+  /// - [errorText] The error message when the port number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> portNumber({
     int min = 0,
     int max = 65535,
@@ -1125,11 +1189,12 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid MAC address.
-  /// This validator checks if the field's value is a valid MAC address.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// MAC address.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the MAC address is invalid.
+  /// - [errorText] The error message when the MAC address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro mac_address_template}
   static FormFieldValidator<String> macAddress({
@@ -1143,12 +1208,14 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to start with a specific value.
-  /// This validator checks if the field's value starts with the given prefix.
+  /// [FormFieldValidator] that requires the field's value to start with
+  /// a specific value.
   ///
   /// ## Parameters:
   /// - [prefix] The value that the field's value should start with.
-  /// - [errorText] The error message to display when the value does not start with the prefix.
+  /// - [errorText] The error message when the value does not start with
+  /// the prefix.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> startsWith(
     String prefix, {
     String? errorText,
@@ -1160,12 +1227,14 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to end with a specific value.
-  /// This validator checks if the field's value ends with the given suffix.
+  /// [FormFieldValidator] that requires the field's value to end with
+  /// a specific value.
   ///
   /// ## Parameters:
   /// - [suffix] The value that the field's value should end with.
-  /// - [errorText] The error message to display when the value does not end with the suffix.
+  /// - [errorText] The error message when the value does not end with
+  /// the suffix.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> endsWith(
     String suffix, {
     String? errorText,
@@ -1177,13 +1246,15 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a specific value.
-  /// This validator checks if the field's value contains the given substring.
+  /// [FormFieldValidator] that requires the field's value to contain a
+  /// specific value.
   ///
   /// ## Parameters:
   /// - [substring] The value that the field's value should contain.
   /// - [caseSensitive] Whether the search is case-sensitive (default: true).
-  /// - [errorText] The error message to display when the value does not contain the substring.
+  /// - [errorText] The error message when the value does not contain the
+  /// substring.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> contains(
     String substring, {
     bool caseSensitive = true,
@@ -1197,13 +1268,16 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be between two numbers.
-  /// This validator checks if the field's value is between the given minimum and maximum values.
+  /// [FormFieldValidator] that requires the field's value to be between
+  /// two numbers.
   ///
   /// ## Parameters:
-  /// - [min] The minimum value that the field's value should be greater than or equal to.
-  /// - [max] The maximum value that the field's value should be less than or equal to.
-  /// - [errorText] The error message to display when the value is not in the range.
+  /// - [min] The minimum value that the field's value should be greater than
+  /// or equal to.
+  /// - [max] The maximum value that the field's value should be less than
+  /// or equal to.
+  /// - [errorText] The error message when the value is not in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<num> between(
     num min,
     num max, {
@@ -1217,12 +1291,13 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be in a list of values.
-  /// This validator checks if the field's value is in the given list of values.
+  /// [FormFieldValidator] that requires the field's value to be in a
+  /// list of values.
   ///
   /// ## Parameters:
   /// - [values] The list of values that the field's value should be in.
-  /// - [errorText] The error message to display when the value is not in the list.
+  /// - [errorText] The error message when the value is not in the list.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> containsElement<T>(
     List<T> values, {
     String? errorText,
@@ -1235,10 +1310,13 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
-  /// This validator checks if the field's value is a valid IBAN.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the IBAN is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the IBAN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro iban_template}
   static FormFieldValidator<String> iban({
     RegExp? regex,
     String? errorText,
@@ -1251,10 +1329,11 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid BIC.
-  /// This validator checks if the field's value is a valid BIC.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the BIC is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the BIC is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro bic_template}
   static FormFieldValidator<String> bic({
@@ -1269,10 +1348,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
-  /// This validator checks if the field's value is a valid ISBN.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the ISBN is invalid.
+  /// - [errorText] The error message when the ISBN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> isbn({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1283,10 +1362,10 @@ class FormBuilderValidators {
       ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a single line.
-  /// This validator checks if the field's value is a single line.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not a single line.
+  /// - [errorText] The error message when the value is not a single line.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> singleLine({
     String? errorText,
     bool checkNullOrEmpty = true,
@@ -1299,7 +1378,7 @@ class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to be a valid zip code.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the zip code is invalid.
+  /// - [errorText] The error message when the zip code is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> zipCode({
     String? errorText,
