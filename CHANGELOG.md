@@ -1,3 +1,5 @@
+# Changelog
+
 ## 11.0.0
 
 - Split up validators into smaller pieces
@@ -7,7 +9,7 @@
 - Re-land generated l10n files
 - Add Bulgarian
 
-* New validators:
+### New validators
 
 - Add creditCardExpirationDate
 - Add creditCardCVC
@@ -206,7 +208,7 @@
 
 ## 7.0.0
 
-- New Package 🎉🎊 - Split from and no dependency on flutter_form_builder(https://pub.dev/packages/flutter_form_builder)
+- New Package 🎉🎊 - Split from and no dependency on flutter_form_builder(<https://pub.dev/packages/flutter_form_builder>)
 - Added Arabic and Persian/Farsi support
 - Use `intl_utils` package for localization
 - Minor type fixes

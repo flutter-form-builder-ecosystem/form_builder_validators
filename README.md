@@ -181,6 +181,7 @@ Validators support default `errorText` messages in these languages:
 - Greek (el)
 - Hebrew (he)
 - Hungarian (hu)
+- Hindi (hi)
 - Indonesian (id)
 - Italian (it)
 - Japanese (ja)
