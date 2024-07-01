@@ -55,5 +55,13 @@
   "bicErrorText": "Kjo fushë kërkon një kod BIC të vlefshëm.",
   "isbnErrorText": "Kjo fushë kërkon një ISBN të vlefshëm.",
   "singleLineErrorText": "Kjo fushë kërkon një tekst me një rresht.",
-  "timeErrorText": "Kjo fushë kërkon një kohë të vlefshme."
+  "timeErrorText": "Kjo fushë kërkon një kohë të vlefshme.",
+  "dateMustBeInTheFutureErrorText": "Data duhet të jetë në të ardhmen.",
+  "dateMustBeInThePastErrorText": "Data duhet të jetë në të kaluarën.",
+  "fileNameErrorText": "Vlera duhet të jetë një emër skedari i vlefshëm.",
+  "negativeNumberErrorText": "Vlera duhet të jetë një numër negativ.",
+  "positiveNumberErrorText": "Vlera duhet të jetë një numër pozitiv.",
+  "notZeroNumberErrorText": "Vlera nuk duhet të jetë zero.",
+  "ssnErrorText": "Vlera duhet të jetë një numër Social Security i vlefshëm.",
+  "zipCodeErrorText": "Vlera duhet të jetë një kod ZIP i vlefshëm."
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "இந்த உள்ளீட்டுக்கு சரியான BIC குறியீடு தேவை.",
   "isbnErrorText": "இந்த உள்ளீட்டுக்கு சரியான ISBN எண் தேவை.",
   "singleLineErrorText": "இந்த உள்ளீட்டு ஒரு வரிசையாக இருக்க வேண்டும்.",
-  "timeErrorText": "இந்த உள்ளீட்டுக்கு சரியான நேரம் தேவை."
+  "timeErrorText": "இந்த உள்ளீட்டுக்கு சரியான நேரம் தேவை.",
+  "dateMustBeInTheFutureErrorText": "தேதி எதிர்காலத்தில் இருக்க வேண்டும்.",
+  "dateMustBeInThePastErrorText": "தேதி கடந்த காலத்தில் இருக்க வேண்டும்.",
+  "fileNameErrorText": "மதிப்பை சரியான கோப்பு பெயராக இருக்க வேண்டும்.",
+  "negativeNumberErrorText": "மதிப்பு எதிர்காலமாக இருக்க வேண்டும்.",
+  "positiveNumberErrorText": "மதிப்பு ஒரு இருக்க வேண்டும்.",
+  "notZeroNumberErrorText": "மதிப்பு பூஜ்யமாக இருக்க வேண்டில்லை.",
+  "ssnErrorText": "மதிப்பு சமூக காப்பொலி எண் இருக்க வேண்டும்.",
+  "zipCodeErrorText": "மதிப்பு சரியான ஜிப் குறியீடு இருக்க வேண்டும்."
 }

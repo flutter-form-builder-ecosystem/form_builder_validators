@@ -55,5 +55,13 @@
   "bicErrorText": "Este campo requer um código BIC válido.",
   "isbnErrorText": "Este campo requer um ISBN válido.",
   "singleLineErrorText": "Este campo deve conter apenas uma linha.",
-  "timeErrorText": "Este campo requer uma hora válida."
+  "timeErrorText": "Este campo requer uma hora válida.",
+  "dateMustBeInTheFutureErrorText": "Data deve estar no futuro.",
+  "dateMustBeInThePastErrorText": "Data deve estar no passado.",
+  "fileNameErrorText": "O valor deve ser um nome de arquivo válido.",
+  "negativeNumberErrorText": "O valor deve ser um número negativo.",
+  "positiveNumberErrorText": "O valor deve ser um número positivo.",
+  "notZeroNumberErrorText": "O valor não pode ser zero.",
+  "ssnErrorText": "O valor deve ser um Número de Seguro Social válido.",
+  "zipCodeErrorText": "O valor deve ser um código postal válido."
 }

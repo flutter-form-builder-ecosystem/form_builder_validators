@@ -10,7 +10,9 @@ void main() {
   runApp(const MyApp());
 }
 
+/// The main application widget.
 class MyApp extends StatelessWidget {
+  /// The main application widget constructor.
   const MyApp({super.key});
 
   @override
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
       supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: const [
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         ...GlobalMaterialLocalizations.delegates,
         // Placed in front of `FormBuilderLocalizations.delegate`
         ...AppLocalizations.localizationsDelegates,

@@ -55,5 +55,13 @@
   "bicErrorText": "ข้อมูลนี้ต้องเป็นรหัส BIC ที่ถูกต้อง",
   "isbnErrorText": "ข้อมูลนี้ต้องเป็น ISBN ที่ถูกต้อง",
   "singleLineErrorText": "ข้อมูลนี้ต้องเป็นข้อความในบรรทัดเดียว",
-  "timeErrorText": "ข้อมูลนี้ต้องเป็นเวลาที่ถูกต้อง"
+  "timeErrorText": "ข้อมูลนี้ต้องเป็นเวลาที่ถูกต้อง",
+  "dateMustBeInTheFutureErrorText": "วันที่ต้องอยู่ในอนาคต",
+  "dateMustBeInThePastErrorText": "วันที่ต้องอยู่ในอดีต",
+  "fileNameErrorText": "ค่าต้องเป็นชื่อไฟล์ที่ถูกต้อง",
+  "negativeNumberErrorText": "ค่าต้องเป็นจำนวนติดลบ",
+  "positiveNumberErrorText": "ค่าต้องเป็นจำนวนบวก",
+  "notZeroNumberErrorText": "ค่าต้องไม่เป็นศูนย์",
+  "ssnErrorText": "ค่าต้องเป็นหมายเลขประจำตัวประชาชนที่ถูกต้อง",
+  "zipCodeErrorText": "ค่าต้องเป็นรหัสไปรษณีย์ที่ถูกต้อง"
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "To pole wymaga prawidłowego numeru BIC.",
   "isbnErrorText": "To pole wymaga prawidłowego numeru ISBN.",
   "singleLineErrorText": "To pole wymaga pojedynczej linii tekstu.",
-  "timeErrorText": "To pole wymaga prawidłowej godziny."
+  "timeErrorText": "To pole wymaga prawidłowej godziny.",
+  "dateMustBeInTheFutureErrorText": "Data musi być w przyszłości.",
+  "dateMustBeInThePastErrorText": "Data musi być w przeszłości.",
+  "fileNameErrorText": "Wartość musi być prawidłową nazwą pliku.",
+  "negativeNumberErrorText": "Wartość musi być liczbą ujemną.",
+  "positiveNumberErrorText": "Wartość musi być liczbą dodatnią.",
+  "notZeroNumberErrorText": "Wartość nie może być zerem.",
+  "ssnErrorText": "Wartość musi być prawidłowym numerem ubezpieczenia społecznego.",
+  "zipCodeErrorText": "Wartość musi być prawidłowym kodem pocztowym."
 }

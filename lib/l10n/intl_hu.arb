@@ -55,5 +55,13 @@
   "bicErrorText": "Ez a mező érvényes BIC kódot igényel.",
   "isbnErrorText": "Ez a mező érvényes ISBN számot igényel.",
   "singleLineErrorText": "Ez a mező csak egy sorból állhat.",
-  "timeErrorText": "Ez a mező érvényes időt igényel."
+  "timeErrorText": "Ez a mező érvényes időt igényel.",
+  "dateMustBeInTheFutureErrorText": "A dátumnak a jövőben kell lennie.",
+  "dateMustBeInThePastErrorText": "A dátumnak a múltban kell lennie.",
+  "fileNameErrorText": "Az értéknek érvényes fájlnévnek kell lennie.",
+  "negativeNumberErrorText": "Az értéknek negatívnak kell lennie.",
+  "positiveNumberErrorText": "Az értéknek pozitívnak kell lennie.",
+  "notZeroNumberErrorText": "Az érték nem lehet nulla.",
+  "ssnErrorText": "Az értéknek érvényes TAJ számnak kell lennie.",
+  "zipCodeErrorText": "Az értéknek érvényes irányítószámnak kell lennie."
 }

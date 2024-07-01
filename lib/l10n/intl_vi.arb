@@ -55,5 +55,13 @@
   "bicErrorText": "Yêu cầu nhập đúng mã BIC.",
   "isbnErrorText": "Yêu cầu nhập đúng số ISBN.",
   "singleLineErrorText": "Yêu cầu nhập trên một dòng.",
-  "timeErrorText": "Yêu cầu nhập đúng định dạng thời gian."
+  "timeErrorText": "Yêu cầu nhập đúng định dạng thời gian.",
+  "dateMustBeInTheFutureErrorText": "Ngày phải ở trong tương lai.",
+  "dateMustBeInThePastErrorText": "Ngày phải ở trong quá khứ.",
+  "fileNameErrorText": "Giá trị phải là tên tệp hợp lệ.",
+  "negativeNumberErrorText": "Giá trị phải là số âm.",
+  "positiveNumberErrorText": "Giá trị phải là số dương.",
+  "notZeroNumberErrorText": "Giá trị không được là số không.",
+  "ssnErrorText": "Giá trị phải là số An Sinh Xã Hội hợp lệ.",
+  "zipCodeErrorText": "Giá trị phải là mã ZIP hợp lệ."
 }

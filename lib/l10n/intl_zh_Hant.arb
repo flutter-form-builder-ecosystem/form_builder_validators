@@ -55,5 +55,13 @@
   "bicErrorText": "此欄位需要有效的 BIC 編碼。",
   "isbnErrorText": "此欄位需要有效的 ISBN 編碼。",
   "singleLineErrorText": "此欄位必須只包含單行文本。",
-  "timeErrorText": "此欄位需要有效的時間。"
+  "timeErrorText": "此欄位需要有效的時間。",
+  "dateMustBeInTheFutureErrorText": "日期必須在未來。",
+  "dateMustBeInThePastErrorText": "日期必須在過去。",
+  "fileNameErrorText": "值必須是有效的檔案名稱。",
+  "negativeNumberErrorText": "值必須是負數。",
+  "positiveNumberErrorText": "值必須是正數。",
+  "notZeroNumberErrorText": "值不能為零。",
+  "ssnErrorText": "值必須是有效的社會安全號碼。",
+  "zipCodeErrorText": "值必須是有效的郵政編碼。"
 }

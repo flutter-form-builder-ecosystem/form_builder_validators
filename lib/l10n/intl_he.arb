@@ -55,5 +55,13 @@
   "bicErrorText": "שדה זה דורש מזהה BIC תקין.",
   "isbnErrorText": "שדה זה דורש מספר ISBN תקין.",
   "singleLineErrorText": "שדה זה דורש שורה יחידה.",
-  "timeErrorText": "שדה זה דורש שעה תקינה."
+  "timeErrorText": "שדה זה דורש שעה תקינה.",
+  "dateMustBeInTheFutureErrorText": "התאריך חייב להיות בעתיד.",
+  "dateMustBeInThePastErrorText": "התאריך חייב להיות בעבר.",
+  "fileNameErrorText": "הערך חייב להיות שם קובץ תקין.",
+  "negativeNumberErrorText": "הערך חייב להיות מספר שלילי.",
+  "positiveNumberErrorText": "הערך חייב להיות מספר חיובי.",
+  "notZeroNumberErrorText": "הערך לא יכול להיות אפס.",
+  "ssnErrorText": "הערך חייב להיות מספר סודי חברתי תקין.",
+  "zipCodeErrorText": "הערך חייב להיות מיקוד תקין."
 }

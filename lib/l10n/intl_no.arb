@@ -55,5 +55,13 @@
   "bicErrorText": "Dette feltet krever en gyldig BIC.",
   "isbnErrorText": "Dette feltet krever en gyldig ISBN.",
   "singleLineErrorText": "Dette feltet må være en enkelt linje.",
-  "timeErrorText": "Dette feltet krever en gyldig klokkeslett."
+  "timeErrorText": "Dette feltet krever en gyldig klokkeslett.",
+  "dateMustBeInTheFutureErrorText": "Datoen må være i fremtiden.",
+  "dateMustBeInThePastErrorText": "Datoen må være i fortiden.",
+  "fileNameErrorText": "Verdien må være et gyldig filnavn.",
+  "negativeNumberErrorText": "Verdien må være et negativt tall.",
+  "positiveNumberErrorText": "Verdien må være et positivt tall.",
+  "notZeroNumberErrorText": "Verdien kan ikke være null.",
+  "ssnErrorText": "Verdien må være et gyldig personnummer.",
+  "zipCodeErrorText": "Verdien må være en gyldig postnummer."
 }

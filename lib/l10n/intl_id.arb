@@ -55,5 +55,13 @@
   "bicErrorText": "BIC tidak valid.",
   "isbnErrorText": "ISBN tidak valid.",
   "singleLineErrorText": "Nilai harus dalam satu baris.",
-  "timeErrorText": "Waktu tidak valid."
+  "timeErrorText": "Waktu tidak valid.",
+  "dateMustBeInTheFutureErrorText": "Tanggal harus di masa depan.",
+  "dateMustBeInThePastErrorText": "Tanggal harus di masa lalu.",
+  "fileNameErrorText": "Nilai harus merupakan nama file yang valid.",
+  "negativeNumberErrorText": "Nilai harus merupakan angka negatif.",
+  "positiveNumberErrorText": "Nilai harus merupakan angka positif.",
+  "notZeroNumberErrorText": "Nilai tidak boleh nol.",
+  "ssnErrorText": "Nilai harus merupakan Nomor Asuransi Sosial yang valid.",
+  "zipCodeErrorText": "Nilai harus merupakan kode ZIP yang valid."
 }

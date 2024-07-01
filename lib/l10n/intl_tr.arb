@@ -55,5 +55,13 @@
   "bicErrorText": "Bu alan geçerli bir BIC gerektirir.",
   "isbnErrorText": "Bu alan geçerli bir ISBN gerektirir.",
   "singleLineErrorText": "Bu alan tek satır olmalıdır.",
-  "timeErrorText": "Bu alan geçerli bir saat gerektirir."
+  "timeErrorText": "Bu alan geçerli bir saat gerektirir.",
+  "dateMustBeInTheFutureErrorText": "Tarih gelecekte olmalı.",
+  "dateMustBeInThePastErrorText": "Tarih geçmişte olmalı.",
+  "fileNameErrorText": "Değer geçerli bir dosya adı olmalıdır.",
+  "negativeNumberErrorText": "Değer negatif bir sayı olmalıdır.",
+  "positiveNumberErrorText": "Değer pozitif bir sayı olmalıdır.",
+  "notZeroNumberErrorText": "Değer sıfır olmamalıdır.",
+  "ssnErrorText": "Değer geçerli bir Sosyal Güvenlik Numarası olmalıdır.",
+  "zipCodeErrorText": "Değer geçerli bir Posta Kodu olmalıdır."
 }

@@ -55,5 +55,13 @@
   "bicErrorText": "유효한 BIC를 입력해 주세요.",
   "isbnErrorText": "유효한 ISBN을 입력해 주세요.",
   "singleLineErrorText": "한 줄로 입력해 주세요.",
-  "timeErrorText": "유효한 시간을 입력해 주세요."
+  "timeErrorText": "유효한 시간을 입력해 주세요.",
+  "dateMustBeInTheFutureErrorText": "날짜는 미래여야 합니다.",
+  "dateMustBeInThePastErrorText": "날짜는 과거여야 합니다.",
+  "fileNameErrorText": "값은 유효한 파일 이름이어야 합니다.",
+  "negativeNumberErrorText": "값은 음수여야 합니다.",
+  "positiveNumberErrorText": "값은 양수여야 합니다.",
+  "notZeroNumberErrorText": "값은 0이 아니어야 합니다.",
+  "ssnErrorText": "값은 유효한 주민등록번호여야 합니다.",
+  "zipCodeErrorText": "값은 유효한 우편번호여야 합니다."
 }

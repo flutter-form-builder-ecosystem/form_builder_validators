@@ -55,5 +55,13 @@
   "bicErrorText": "Aquest camp requereix un codi BIC vàlid.",
   "isbnErrorText": "Aquest camp requereix un ISBN vàlid.",
   "singleLineErrorText": "Aquest camp ha de ser una línia única.",
-  "timeErrorText": "Aquest camp requereix una hora vàlida."
+  "timeErrorText": "Aquest camp requereix una hora vàlida.",
+  "dateMustBeInTheFutureErrorText": "La data ha de ser al futur.",
+  "dateMustBeInThePastErrorText": "La data ha de ser al passat.",
+  "fileNameErrorText": "El valor ha de ser un nom de fitxer vàlid.",
+  "negativeNumberErrorText": "El valor ha de ser un nombre negatiu.",
+  "positiveNumberErrorText": "El valor ha de ser un nombre positiu.",
+  "notZeroNumberErrorText": "El valor no pot ser zero.",
+  "ssnErrorText": "El valor ha de ser un Número de Seguretat Social vàlid.",
+  "zipCodeErrorText": "El valor ha de ser un codi postal vàlid."
 }

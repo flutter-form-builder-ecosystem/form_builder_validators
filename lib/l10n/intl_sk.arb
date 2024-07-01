@@ -55,5 +55,13 @@
   "bicErrorText": "Toto pole vyžaduje platný BIC kód.",
   "isbnErrorText": "Toto pole vyžaduje platné ISBN číslo.",
   "singleLineErrorText": "Toto pole vyžaduje jedno riadkový text.",
-  "timeErrorText": "Toto pole vyžaduje platný čas."
+  "timeErrorText": "Toto pole vyžaduje platný čas.",
+  "dateMustBeInTheFutureErrorText": "Dátum musí byť v budúcnosti.",
+  "dateMustBeInThePastErrorText": "Dátum musí byť v minulosti.",
+  "fileNameErrorText": "Hodnota musí byť platným názvom súboru.",
+  "negativeNumberErrorText": "Hodnota musí byť záporné číslo.",
+  "positiveNumberErrorText": "Hodnota musí byť kladné číslo.",
+  "notZeroNumberErrorText": "Hodnota nemôže byť nula.",
+  "ssnErrorText": "Hodnota musí byť platné číslo sociálneho zabezpečenia.",
+  "zipCodeErrorText": "Hodnota musí byť platným PSČ."
 }
