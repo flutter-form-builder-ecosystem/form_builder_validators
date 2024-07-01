@@ -16,7 +16,7 @@ class SingleLineValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return !valueCandidate.contains('\n') && !valueCandidate.contains('\r')
+    return valueCandidate.contains('\n') || valueCandidate.contains('\r')
         ? errorText
         : null;
   }

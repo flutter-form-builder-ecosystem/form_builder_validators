@@ -49,7 +49,9 @@ class ColorCodeValidator extends BaseValidator<String> {
   ///
   /// Examples: hsl(360, 100%, 50%), hsl(120, 75%, 25%)
   /// {@endtemplate}
-  static final RegExp _hsl = RegExp(r'^hsl\(\d+,\s*\d+%,\s*\d+%\)$');
+  static final RegExp _hsl = RegExp(
+    r'^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$',
+  );
 
   @override
   String get translatedErrorText =>
@@ -57,7 +59,10 @@ class ColorCodeValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return !isColorCode(valueCandidate, formats: formats) ? errorText : null;
+    if (regex != null && regex!.hasMatch(valueCandidate)) {
+      return null;
+    }
+    return isColorCode(valueCandidate, formats: formats) ? null : errorText;
   }
 
   /// check if the string is a color
@@ -66,38 +71,35 @@ class ColorCodeValidator extends BaseValidator<String> {
     String value, {
     List<String> formats = const <String>['hex', 'rgb', 'hsl'],
   }) {
-    if (formats.contains('hex') && (regex != null && regex!.hasMatch(value)) ||
-        _hex.hasMatch(value)) {
-      return true;
-    } else if (formats.contains('rgb') &&
-            (regex != null && regex!.hasMatch(value)) ||
-        _rgb.hasMatch(value)) {
-      final List<String> parts =
-          value.substring(4, value.length - 1).split(',');
-      for (final String part in parts) {
-        final int colorValue = int.tryParse(part.trim()) ?? -1;
-        if (colorValue < 0 || colorValue > 255) {
-          return false;
-        }
-      }
-      return true;
-    } else if (formats.contains('hsl') &&
-            (regex != null && regex!.hasMatch(value)) ||
-        _hsl.hasMatch(value)) {
-      final List<String> parts =
-          value.substring(4, value.length - 1).split(',');
-      for (int i = 0; i < parts.length; i++) {
-        final int colorValue = int.tryParse(parts[i].trim()) ?? -1;
-        if (i == 0) {
-          // Hue
-          if (colorValue < 0 || colorValue > 360) {
+    for (final String format in formats) {
+      if (format == 'hex' && _hex.hasMatch(value)) {
+        return true;
+      } else if (format == 'rgb' && _rgb.hasMatch(value)) {
+        final List<String> parts =
+            value.substring(4, value.length - 1).split(',');
+        for (final String part in parts) {
+          final int colorValue = int.tryParse(part.trim()) ?? -1;
+          if (colorValue < 0 || colorValue > 255) {
             return false;
           }
-        } else if (colorValue < 0 || colorValue > 100) {
+        }
+        return true;
+      } else if (format == 'hsl' && _hsl.hasMatch(value)) {
+        final List<String?> parts =
+            _hsl.firstMatch(value)!.groups(<int>[1, 2, 3]);
+        final int hue = int.tryParse(parts[0]!) ?? -1;
+        final int saturation = int.tryParse(parts[1]!) ?? -1;
+        final int lightness = int.tryParse(parts[2]!) ?? -1;
+        if (hue < 0 ||
+            hue > 360 ||
+            saturation < 0 ||
+            saturation > 100 ||
+            lightness < 0 ||
+            lightness > 100) {
           return false;
         }
+        return true;
       }
-      return true;
     }
     return false;
   }

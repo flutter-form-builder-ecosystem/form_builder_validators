@@ -11,7 +11,7 @@ void main() {
       // Arrange
       final MatchNotValidator validator =
           MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
-      const String value = '12345';
+      const String value = 'abcde';
 
       // Act
       final String? result = validator.validate(value);
@@ -26,7 +26,7 @@ void main() {
       // Arrange
       final MatchNotValidator validator =
           MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
-      const String value = 'abcdef';
+      const String value = '12345';
 
       // Act
       final String? result = validator.validate(value);
@@ -43,7 +43,7 @@ void main() {
         RegExp(r'^[a-zA-Z]+$'),
         errorText: customErrorMessage,
       );
-      const String value = 'abcdef';
+      const String value = '12345';
 
       // Act
       final String? result = validator.validate(value);

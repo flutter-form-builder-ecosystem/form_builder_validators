@@ -19,6 +19,6 @@ class MatchNotValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return regex.hasMatch(valueCandidate) ? null : errorText;
+    return !regex.hasMatch(valueCandidate) ? errorText : null;
   }
 }

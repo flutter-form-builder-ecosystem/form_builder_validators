@@ -18,10 +18,13 @@ class SsnValidator extends BaseValidator<String> {
   /// {@template ssn_template}
   /// This regex matches SSN (Social Security Number).
   /// - It consists of 9 characters.
-  /// - It starts with three digits, followed by a hyphen, two digits, another hyphen, and four digits.
+  /// - It starts with three digits, followed by a hyphen, two digits,
+  /// another hyphen, and four digits.
   /// Examples: 123-45-6789
   /// {@endtemplate}
   static final RegExp _ssn = RegExp(r'^\d{3}-\d{2}-\d{4}$');
+
+  static final RegExp _ssnCleaned = RegExp(r'^\d{9}$');
 
   @override
   String get translatedErrorText =>
@@ -40,6 +43,8 @@ class SsnValidator extends BaseValidator<String> {
       return false;
     }
 
-    return regex.hasMatch(ssn);
+    return regex == _ssn
+        ? regex.hasMatch(value) || _ssnCleaned.hasMatch(ssn)
+        : regex.hasMatch(value) || regex.hasMatch(ssn);
   }
 }

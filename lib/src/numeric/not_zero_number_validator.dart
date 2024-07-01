@@ -16,14 +16,17 @@ class NotZeroNumberValidator<T> extends BaseValidator<T> {
 
   @override
   String? validateValue(T valueCandidate) {
-    final num value;
-    switch (T) {
-      case String:
-        value = num.tryParse(valueCandidate! as String)!;
-      case num:
-        value = valueCandidate! as num;
-      default:
-        return errorText;
+    final num? value;
+    if (valueCandidate is String) {
+      value = num.tryParse(valueCandidate);
+    } else if (valueCandidate is num) {
+      value = valueCandidate;
+    } else {
+      return errorText;
+    }
+
+    if (value == null) {
+      return errorText;
     }
 
     if (value == 0) {

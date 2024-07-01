@@ -61,17 +61,11 @@ class RangeValidator<T> extends BaseValidator<T> {
     final String? maxLengthResult =
         _maxLengthValidator.validate(valueCandidate);
 
-    if (minResult == null &&
-        maxResult == null &&
-        minLengthResult == null &&
-        maxLengthResult == null) {
+    if ((minResult == null && maxResult == null) ||
+        (minLengthResult == null && maxLengthResult == null)) {
       return null;
     } else {
-      return minResult ??
-          maxResult ??
-          minLengthResult ??
-          maxLengthResult ??
-          errorText;
+      return errorText;
     }
   }
 }

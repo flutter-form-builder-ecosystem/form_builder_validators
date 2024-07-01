@@ -45,19 +45,6 @@ void main() {
       expect(result, customErrorMessage);
     });
 
-    test('should return error if the SSN has invalid format', () {
-      // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
-      const String invalidFormatSsn = '123456789';
-
-      // Act
-      final String? result = validator.validate(invalidFormatSsn);
-
-      // Assert
-      expect(result, customErrorMessage);
-    });
-
     test('should return error if the SSN has letters', () {
       // Arrange
       final SsnValidator validator =

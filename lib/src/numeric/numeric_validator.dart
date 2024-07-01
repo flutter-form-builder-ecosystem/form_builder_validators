@@ -17,13 +17,12 @@ class NumericValidator<T> extends BaseValidator<T> {
   @override
   String? validateValue(T valueCandidate) {
     final num? value;
-    switch (T) {
-      case String:
-        value = num.tryParse(valueCandidate! as String);
-      case num:
-        value = valueCandidate! as num;
-      default:
-        return errorText;
+    if (valueCandidate is String) {
+      value = num.tryParse(valueCandidate);
+    } else if (valueCandidate is num) {
+      value = valueCandidate;
+    } else {
+      return errorText;
     }
 
     return value == null ? errorText : null;
