@@ -5,6 +5,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
+
   group('Is false -', () {
     test('should return null when the value is false', () {
       // Arrange
@@ -18,7 +19,7 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the error message when the value is true', () {
+    test('should return the custom error message when the value is true', () {
       // Arrange
       final IsFalseValidator validator =
           IsFalseValidator(errorText: customErrorMessage);
@@ -29,6 +30,32 @@ void main() {
 
       // Assert
       expect(result, equals(customErrorMessage));
+    });
+
+    test('should return the custom error message when the value is null', () {
+      // Arrange
+      final IsFalseValidator validator =
+          IsFalseValidator(errorText: customErrorMessage);
+      const bool? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(customErrorMessage));
+    });
+
+    test('should return null when not checking for null', () {
+      // Arrange
+      const IsFalseValidator validator =
+          IsFalseValidator(checkNullOrEmpty: false);
+      const bool? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
     });
   });
 }

@@ -31,7 +31,7 @@ class HasNumericCharsValidator extends BaseValidator<String> {
   ///
   /// Examples: a, A, @
   /// {@endtemplate}
-  static final RegExp _number = RegExp('[^0-9]');
+  static final RegExp _number = RegExp('[0-9]');
 
   @override
   String? validateValue(String valueCandidate) {
@@ -39,6 +39,6 @@ class HasNumericCharsValidator extends BaseValidator<String> {
   }
 
   int numberCharLength(String value) {
-    return value.replaceAll(regex, '').length;
+    return regex.allMatches(value).length;
   }
 }

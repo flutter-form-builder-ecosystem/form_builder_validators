@@ -24,21 +24,23 @@ class HasLowercaseCharsValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.containsLowercaseCharErrorText(atLeast);
 
   /// {@template lower_case_template}
-  /// This regex matches any character that is not a lowercase letter (a-z) or ñ.
+  /// This regex matches any character that is not a lowercase letter (a-z).
   ///
   /// - It includes special characters, digits, and uppercase letters.
   /// - It can be used to find non-lowercase characters.
   ///
   /// Examples: A, 1, @
   /// {@endtemplate}
-  static final RegExp _lowerCase = RegExp('[^a-zñ]');
+  static final RegExp _lowerCase = RegExp('[a-z]');
 
   @override
   String? validateValue(String valueCandidate) {
+    final int length = lowercaseCharLength(valueCandidate);
+
     return lowercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
   int lowercaseCharLength(String value) {
-    return value.replaceAll(regex, '').length;
+    return regex.allMatches(value).length;
   }
 }

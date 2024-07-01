@@ -31,7 +31,7 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
   ///
   /// Examples: @, #, %
   /// {@endtemplate}
-  static final RegExp _specialChar = RegExp('[A-Za-z0-9]');
+  static final RegExp _specialChar = RegExp('[^A-Za-z0-9]');
 
   @override
   String? validateValue(String valueCandidate) {
@@ -39,6 +39,6 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
   }
 
   int specialCharLength(String value) {
-    return value.replaceAll(regex, '').length;
+    return regex.allMatches(value).length;
   }
 }

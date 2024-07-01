@@ -24,21 +24,21 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.containsUppercaseCharErrorText(atLeast);
 
   /// {@template upper_case_template}
-  /// This regex matches any character that is not an uppercase letter (A-Z) or Ñ.
+  /// This regex matches any character that is not an uppercase letter (A-Z).
   ///
   /// - It includes special characters, digits, and lowercase letters.
   /// - It can be used to find non-uppercase characters.
   ///
   /// Examples: a, 1, @
   /// {@endtemplate}
-  static final RegExp _upperCase = RegExp('[^A-ZÑ]');
+  static final RegExp _upperCase = RegExp('[A-Z]');
 
   @override
   String? validateValue(String valueCandidate) {
-    return uppercaseCharLength(valueCandidate) >= 1 ? null : errorText;
+    return uppercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
   int uppercaseCharLength(String value) {
-    return value.replaceAll(regex, '').length;
+    return regex.allMatches(value).length;
   }
 }
