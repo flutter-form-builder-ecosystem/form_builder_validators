@@ -102,8 +102,10 @@ void main() {
       final String? result = validator.validate(value);
 
       // Assert
-      expect(result,
-          FormBuilderLocalizations.current.containsSpecialCharErrorText(1));
+      expect(
+        result,
+        FormBuilderLocalizations.current.containsSpecialCharErrorText(1),
+      );
     });
 
     test('should return null when the value is an empty string', () {
@@ -150,7 +152,9 @@ void main() {
         () {
       // Arrange
       final HasSpecialCharsValidator validator = HasSpecialCharsValidator(
-          regex: RegExp('[^A-Za-z0-9]'), errorText: customErrorMessage);
+        regex: RegExp('[^A-Za-z0-9]'),
+        errorText: customErrorMessage,
+      );
       const String value = 'abc123';
 
       // Act

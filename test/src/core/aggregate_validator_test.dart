@@ -9,10 +9,12 @@ void main() {
   group('Aggregate -', () {
     test('should return null when all validators return null', () {
       // Arrange
-      const AggregateValidator validator = AggregateValidator(validators: <IsTrueValidator>[
-        IsTrueValidator(),
-        IsTrueValidator(),
-      ],);
+      const AggregateValidator validator = AggregateValidator(
+        validators: <IsTrueValidator>[
+          IsTrueValidator(),
+          IsTrueValidator(),
+        ],
+      );
       const bool value = true;
 
       // Act

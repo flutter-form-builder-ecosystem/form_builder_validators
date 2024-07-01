@@ -122,7 +122,9 @@ void main() {
         () {
       // Arrange
       final HasNumericCharsValidator validator = HasNumericCharsValidator(
-          regex: RegExp('[0-9]'), errorText: customErrorMessage);
+        regex: RegExp('[0-9]'),
+        errorText: customErrorMessage,
+      );
       const String value = 'abc';
 
       // Act

@@ -6,7 +6,7 @@ void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
 
-  group('Max length - String', () {
+  group('MaxLengthValidator - String', () {
     test('should return null when the value has the exact maximum length', () {
       // Arrange
       const int maxLength = 5;
@@ -51,9 +51,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
 
     test(
@@ -100,9 +102,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
 
     test(
@@ -136,19 +140,21 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
   });
 
-  group('Max length - List', () {
+  group('MaxLengthValidator - List', () {
     test('should return null when the list has the exact maximum length', () {
       // Arrange
       const int maxLength = 3;
       const MaxLengthValidator<List<String>> validator =
           MaxLengthValidator<List<String>>(maxLength);
-      const List<String> value = ['a', 'b', 'c'];
+      const List<String> value = <String>['a', 'b', 'c'];
 
       // Act
       final String? result = validator.validate(value);
@@ -163,7 +169,7 @@ void main() {
       const int maxLength = 3;
       const MaxLengthValidator<List<String>> validator =
           MaxLengthValidator<List<String>>(maxLength);
-      const List<String> value = ['a', 'b'];
+      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);
@@ -179,7 +185,7 @@ void main() {
       const int maxLength = 3;
       const MaxLengthValidator<List<String>> validator =
           MaxLengthValidator<List<String>>(maxLength);
-      const List<String> value = ['a', 'b', 'c', 'd'];
+      const List<String> value = <String>['a', 'b', 'c', 'd'];
 
       // Act
       final String? result = validator.validate(value);
@@ -187,9 +193,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
 
     test(
@@ -198,9 +206,11 @@ void main() {
       // Arrange
       const int maxLength = 3;
       final MaxLengthValidator<List<String>> validator =
-          MaxLengthValidator<List<String>>(maxLength,
-              errorText: customErrorMessage);
-      const List<String> value = ['a', 'b', 'c', 'd'];
+          MaxLengthValidator<List<String>>(
+        maxLength,
+        errorText: customErrorMessage,
+      );
+      const List<String> value = <String>['a', 'b', 'c', 'd'];
 
       // Act
       final String? result = validator.validate(value);
@@ -237,9 +247,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
 
     test('should return null when the list is empty and null check is disabled',
@@ -248,7 +260,7 @@ void main() {
       const int maxLength = 3;
       const MaxLengthValidator<List<String>> validator =
           MaxLengthValidator<List<String>>(maxLength, checkNullOrEmpty: false);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
@@ -262,7 +274,7 @@ void main() {
       const int maxLength = 3;
       const MaxLengthValidator<List<String>> validator =
           MaxLengthValidator<List<String>>(maxLength);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
@@ -270,9 +282,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+        ),
+      );
     });
   });
 }

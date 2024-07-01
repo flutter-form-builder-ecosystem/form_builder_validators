@@ -15,7 +15,7 @@ class MaxLengthValidator<T> extends BaseValidator<T> {
 
   @override
   String get translatedErrorText =>
-      FormBuilderLocalizations.current.equalLengthErrorText(maxLength);
+      FormBuilderLocalizations.current.maxLengthErrorText(maxLength);
 
   @override
   String? validateValue(T valueCandidate) {

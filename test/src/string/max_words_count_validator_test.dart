@@ -41,7 +41,9 @@ void main() {
         () {
       // Arrange
       final MaxWordsCountValidator validator = MaxWordsCountValidator(
-          maxWordsCount: 3, errorText: customErrorMessage,);
+        maxWordsCount: 3,
+        errorText: customErrorMessage,
+      );
       const String value = 'abcd efgh ijkl';
 
       // Act

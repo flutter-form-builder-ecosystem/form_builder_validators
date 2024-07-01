@@ -60,10 +60,13 @@ void main() {
         'should return the custom error message when the value is not valid for any validator',
         () {
       // Arrange
-      final OrValidator validator = OrValidator(<FormFieldValidator>[
-        const EqualValidator('a'),
-        const EqualValidator('b'),
-      ], errorText: customErrorMessage,);
+      final OrValidator validator = OrValidator(
+        <FormFieldValidator>[
+          const EqualValidator('a'),
+          const EqualValidator('b'),
+        ],
+        errorText: customErrorMessage,
+      );
       const String value = 'c';
 
       // Act

@@ -161,7 +161,7 @@ void main() {
       const int length = 3;
       const EqualLengthValidator<List<String>> validator =
           EqualLengthValidator<List<String>>(length);
-      const List<String> value = ['a', 'b', 'c'];
+      const List<String> value = <String>['a', 'b', 'c'];
 
       // Act
       final String? result = validator.validate(value);
@@ -177,7 +177,7 @@ void main() {
       const int length = 3;
       const EqualLengthValidator<List<String>> validator =
           EqualLengthValidator<List<String>>(length);
-      const List<String> value = ['a', 'b'];
+      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);
@@ -199,7 +199,7 @@ void main() {
       const int length = 3;
       const EqualLengthValidator<List<String>> validator =
           EqualLengthValidator<List<String>>(length);
-      const List<String> value = ['a', 'b', 'c', 'd'];
+      const List<String> value = <String>['a', 'b', 'c', 'd'];
 
       // Act
       final String? result = validator.validate(value);
@@ -224,7 +224,7 @@ void main() {
         length,
         errorText: customErrorMessage,
       );
-      const List<String> value = ['a', 'b'];
+      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);
@@ -274,7 +274,7 @@ void main() {
       const int length = 3;
       const EqualLengthValidator<List<String>> validator =
           EqualLengthValidator<List<String>>(length, checkNullOrEmpty: false);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
@@ -288,7 +288,7 @@ void main() {
       const int length = 3;
       const EqualLengthValidator<List<String>> validator =
           EqualLengthValidator<List<String>>(length);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
