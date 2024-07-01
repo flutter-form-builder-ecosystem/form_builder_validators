@@ -5,11 +5,14 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
-  group('File size -', () {
-    test('should return null when the value is not null', () {
+
+  group('FileSizeValidator -', () {
+    test('should return null when the file size is equal to the maximum size',
+        () {
       // Arrange
-      const FileSizeValidator validator = FileSizeValidator();
-      const String value = 'abc';
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = '1024';
 
       // Act
       final String? result = validator.validate(value);
@@ -18,11 +21,169 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the error message when the value is null', () {
+    test('should return null when the file size is less than the maximum size',
+        () {
       // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = '512';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test(
+        'should return the default error message when the file size is greater than the maximum size',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = '2048';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNotNull);
+      expect(
+        result,
+        equals(
+          FormBuilderLocalizations.current.fileSizeErrorText('0 B', '1 KiB'),
+        ),
+      );
+    });
+
+    test(
+        'should return the custom error message when the file size is greater than the maximum size',
+        () {
+      // Arrange
+      const int maxSize = 1024;
       final FileSizeValidator validator =
-          FileSizeValidator(errorText: customErrorMessage);
+          FileSizeValidator(maxSize, errorText: customErrorMessage);
+      const String value = '2048';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(customErrorMessage));
+    });
+
+    test('should return null when the value is null and null check is disabled',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator =
+          FileSizeValidator(maxSize, checkNullOrEmpty: false);
       const String? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test('should return the default error message when the value is null', () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNotNull);
+      expect(
+        result,
+        equals(
+          FormBuilderLocalizations.current.fileSizeErrorText('0 B', '1 KiB'),
+        ),
+      );
+    });
+
+    test(
+        'should return null when the value is an empty string and null check is disabled',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator =
+          FileSizeValidator(maxSize, checkNullOrEmpty: false);
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test(
+        'should return the default error message when the value is an empty string',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNotNull);
+      expect(
+        result,
+        equals(
+          FormBuilderLocalizations.current.fileSizeErrorText('0 B', '1 KiB'),
+        ),
+      );
+    });
+
+    test('should return null for a valid file size within the allowed range',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = '512';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test('should return the default error message for invalid file size format',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      const FileSizeValidator validator = FileSizeValidator(maxSize);
+      const String value = 'invalid-size';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNotNull);
+      expect(
+        result,
+        equals(
+          FormBuilderLocalizations.current.fileSizeErrorText('0 B', '1 KiB'),
+        ),
+      );
+    });
+
+    test('should return the custom error message for invalid file size format',
+        () {
+      // Arrange
+      const int maxSize = 1024;
+      final FileSizeValidator validator =
+          FileSizeValidator(maxSize, errorText: customErrorMessage);
+      const String value = 'invalid-size';
 
       // Act
       final String? result = validator.validate(value);

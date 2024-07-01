@@ -51,9 +51,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
 
     test(
@@ -100,9 +102,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
 
     test(
@@ -136,9 +140,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
   });
 
@@ -148,7 +154,7 @@ void main() {
       const int minLength = 3;
       const MinLengthValidator<List<String>> validator =
           MinLengthValidator<List<String>>(minLength);
-      const List<String> value = ['a', 'b', 'c'];
+      const List<String> value = <String>['a', 'b', 'c'];
 
       // Act
       final String? result = validator.validate(value);
@@ -163,7 +169,7 @@ void main() {
       const int minLength = 3;
       const MinLengthValidator<List<String>> validator =
           MinLengthValidator<List<String>>(minLength);
-      const List<String> value = ['a', 'b', 'c', 'd'];
+      const List<String> value = <String>['a', 'b', 'c', 'd'];
 
       // Act
       final String? result = validator.validate(value);
@@ -179,7 +185,7 @@ void main() {
       const int minLength = 3;
       const MinLengthValidator<List<String>> validator =
           MinLengthValidator<List<String>>(minLength);
-      const List<String> value = ['a', 'b'];
+      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);
@@ -187,9 +193,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
 
     test(
@@ -198,9 +206,11 @@ void main() {
       // Arrange
       const int minLength = 3;
       final MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(minLength,
-              errorText: customErrorMessage);
-      const List<String> value = ['a', 'b'];
+          MinLengthValidator<List<String>>(
+        minLength,
+        errorText: customErrorMessage,
+      );
+      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);
@@ -237,9 +247,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
 
     test('should return null when the list is empty and null check is disabled',
@@ -248,7 +260,7 @@ void main() {
       const int minLength = 3;
       const MinLengthValidator<List<String>> validator =
           MinLengthValidator<List<String>>(minLength, checkNullOrEmpty: false);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
@@ -262,7 +274,7 @@ void main() {
       const int minLength = 3;
       const MinLengthValidator<List<String>> validator =
           MinLengthValidator<List<String>>(minLength);
-      const List<String> value = [];
+      const List<String> value = <String>[];
 
       // Act
       final String? result = validator.validate(value);
@@ -270,9 +282,11 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(
-          result,
-          equals(
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)));
+        result,
+        equals(
+          FormBuilderLocalizations.current.minLengthErrorText(minLength),
+        ),
+      );
     });
   });
 }

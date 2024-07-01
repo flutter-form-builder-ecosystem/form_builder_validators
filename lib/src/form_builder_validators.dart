@@ -786,10 +786,12 @@ class FormBuilderValidators {
   /// - [errorText] The error message when the file name is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> fileName({
+    RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       FileNameValidator(
+        regex: regex,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
