@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class MinValidator<T> extends BaseValidator<T> {
-  MinValidator(
+  const MinValidator(
     this.min, {
     this.inclusive = true,
 

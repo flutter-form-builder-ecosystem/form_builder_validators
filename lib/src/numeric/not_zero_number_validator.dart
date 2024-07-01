@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class NotZeroNumberValidator<T> extends BaseValidator<T> {
-  NotZeroNumberValidator({
+  const NotZeroNumberValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
 

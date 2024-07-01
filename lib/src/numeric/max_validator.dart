@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class MaxValidator<T> extends BaseValidator<T> {
-  MaxValidator(
+  const MaxValidator(
     this.max, {
     this.inclusive = true,
 

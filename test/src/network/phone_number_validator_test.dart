@@ -5,30 +5,181 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
-  group('Phone Number -', () {
-    test('should return null when the value is not null', () {
+
+  group('PhoneNumberValidator -', () {
+    test('should return null for valid phone numbers', () {
       // Arrange
       final PhoneNumberValidator validator = PhoneNumberValidator();
-      const String value = 'abc';
+      final String phoneNumber = faker.phoneNumber.phoneNumber();
+      final List<String> validPhoneNumbers = <String>[
+        phoneNumber,
+        '+1-800-555-5555',
+        '1234567890',
+        '+44 7911 123456',
+        '07911 123456',
+        '+91-9876543210',
+        '9876543210',
+        '123-456-7890',
+        '123.456.7890',
+        '+49 123 456 7890',
+      ];
+
+      // Act & Assert
+      for (final String value in validPhoneNumbers) {
+        expect(validator.validate(value), isNull);
+      }
+    });
+
+    test('should return the default error message for invalid phone numbers',
+        () {
+      // Arrange
+      final PhoneNumberValidator validator = PhoneNumberValidator();
+      const List<String> invalidPhoneNumbers = <String>[
+        '123',
+        '+123456',
+        'phone123',
+        '123-abc-7890',
+        '+1-800-5555-5555-5555',
+        '+1-800-555-55--555',
+      ];
+
+      // Act & Assert
+      for (final String value in invalidPhoneNumbers) {
+        final String? result = validator.validate(value);
+        expect(result, isNotNull);
+        expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
+      }
+    });
+
+    test('should return the custom error message for invalid phone numbers',
+        () {
+      // Arrange
+      final PhoneNumberValidator validator =
+          PhoneNumberValidator(errorText: customErrorMessage);
+      const List<String> invalidPhoneNumbers = <String>[
+        '123',
+        '+123456',
+        'phone123',
+        '123-abc-7890',
+        '+1-800-5555-5555-5555',
+        '+1-800-555-55--555',
+      ];
+
+      // Act & Assert
+      for (final String value in invalidPhoneNumbers) {
+        final String? result = validator.validate(value);
+        expect(result, equals(customErrorMessage));
+      }
+    });
+
+    test(
+        'should return null when the phone number is null and null check is disabled',
+        () {
+      // Arrange
+      final PhoneNumberValidator validator =
+          PhoneNumberValidator(checkNullOrEmpty: false);
+      const String? nullPhoneNumber = null;
 
       // Act
-      final String? result = validator.validate(value);
+      final String? result = validator.validate(nullPhoneNumber);
 
       // Assert
       expect(result, isNull);
     });
 
-    test('should return the error message when the value is null', () {
+    test(
+        'should return the default error message when the phone number is null',
+        () {
       // Arrange
-      final PhoneNumberValidator validator =
-          PhoneNumberValidator(errorText: customErrorMessage);
-      const String? value = null;
+      final PhoneNumberValidator validator = PhoneNumberValidator();
+      const String? nullPhoneNumber = null;
 
       // Act
-      final String? result = validator.validate(value);
+      final String? result = validator.validate(nullPhoneNumber);
 
       // Assert
-      expect(result, equals(customErrorMessage));
+      expect(result, isNotNull);
+      expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
+    });
+
+    test(
+        'should return null when the phone number is an empty string and null check is disabled',
+        () {
+      // Arrange
+      final PhoneNumberValidator validator =
+          PhoneNumberValidator(checkNullOrEmpty: false);
+      const String emptyPhoneNumber = '';
+
+      // Act
+      final String? result = validator.validate(emptyPhoneNumber);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test(
+        'should return the default error message when the phone number is an empty string',
+        () {
+      // Arrange
+      final PhoneNumberValidator validator = PhoneNumberValidator();
+      const String emptyPhoneNumber = '';
+
+      // Act
+      final String? result = validator.validate(emptyPhoneNumber);
+
+      // Assert
+      expect(result, isNotNull);
+      expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
+    });
+
+    test('should return null for valid phone numbers with custom regex', () {
+      // Arrange
+      final RegExp customRegex =
+          RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
+      final PhoneNumberValidator validator =
+          PhoneNumberValidator(regex: customRegex);
+      const List<String> validPhoneNumbers = <String>[
+        '+1-800-555-5555',
+        '1234567890',
+        '+44 7911 123456',
+        '07911 123456',
+        '+91-9876543210',
+        '9876543210',
+        '123-456-7890',
+        '123.456.7890',
+        '+49 123 456 7890',
+      ];
+
+      // Act & Assert
+      for (final String value in validPhoneNumbers) {
+        expect(validator.validate(value), isNull);
+      }
+    });
+
+    test(
+        'should return the custom error message for invalid phone numbers with custom regex',
+        () {
+      // Arrange
+      final RegExp customRegex =
+          RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
+      final PhoneNumberValidator validator = PhoneNumberValidator(
+        regex: customRegex,
+        errorText: customErrorMessage,
+      );
+      const List<String> invalidPhoneNumbers = <String>[
+        '123',
+        '+123456',
+        'phone123',
+        '123-abc-7890',
+        '+1-800-5555-5555-5555',
+        '+1-800-555-55--555',
+      ];
+
+      // Act & Assert
+      for (final String value in invalidPhoneNumbers) {
+        final String? result = validator.validate(value);
+        expect(result, equals(customErrorMessage));
+      }
     });
   });
 }

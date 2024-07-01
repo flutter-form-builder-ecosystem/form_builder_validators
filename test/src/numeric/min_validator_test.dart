@@ -8,7 +8,7 @@ void main() {
   group('Min -', () {
     test('should return null when the value is not null', () {
       // Arrange
-      final MinValidator validator = MinValidator();
+      const MinValidator validator = MinValidator();
       const String value = 'abc';
 
       // Act

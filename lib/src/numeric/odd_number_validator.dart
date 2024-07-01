@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class OddNumberValidator extends BaseValidator<String> {
-  OddNumberValidator({
+  const OddNumberValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
 

@@ -8,7 +8,7 @@ void main() {
   group('Numeric -', () {
     test('should return null when the value is not null', () {
       // Arrange
-      final NumericValidator validator = NumericValidator();
+      const NumericValidator validator = NumericValidator();
       const String value = 'abc';
 
       // Act

@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class IntegerValidator extends BaseValidator<String> {
-  IntegerValidator({
+  const IntegerValidator({
     this.radix,
 
     /// {@macro base_validator_error_text}
@@ -12,7 +12,7 @@ class IntegerValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   });
 
-  int? radix;
+  final int? radix;
 
   @override
   String get translatedErrorText =>

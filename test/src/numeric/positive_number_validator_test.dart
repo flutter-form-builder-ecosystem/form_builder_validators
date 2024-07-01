@@ -8,7 +8,7 @@ void main() {
   group('Positive number -', () {
     test('should return null when the value is not null', () {
       // Arrange
-      final PositiveNumberValidator validator = PositiveNumberValidator();
+      const PositiveNumberValidator validator = PositiveNumberValidator();
       const String value = 'abc';
 
       // Act

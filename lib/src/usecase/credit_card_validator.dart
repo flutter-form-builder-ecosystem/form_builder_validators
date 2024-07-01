@@ -39,7 +39,7 @@ class CreditCardValidator extends BaseValidator<String> {
   /// check if the string is a credit card
   bool isCreditCard(String str) {
     final String sanitized = str.replaceAll(RegExp('[^0-9]+'), '');
-    if (!_creditCard.hasMatch(sanitized)) {
+    if (!regex.hasMatch(sanitized)) {
       return false;
     }
 

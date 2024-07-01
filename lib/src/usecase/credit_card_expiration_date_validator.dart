@@ -49,7 +49,7 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
   /// check if the string is a valid credit card expiration date
   bool isCreditCardExpirationDate(String str) {
     // Check if the format matches MM/YY
-    if (!_creditCardExpirationDate.hasMatch(str)) {
+    if (!regex.hasMatch(str)) {
       return false;
     }
 

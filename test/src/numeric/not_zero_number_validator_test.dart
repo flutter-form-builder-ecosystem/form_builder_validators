@@ -8,7 +8,7 @@ void main() {
   group('Not zero number -', () {
     test('should return null when the value is not null', () {
       // Arrange
-      final NotZeroNumberValidator validator = NotZeroNumberValidator();
+      const NotZeroNumberValidator validator = NotZeroNumberValidator();
       const String value = 'abc';
 
       // Act

@@ -8,7 +8,7 @@ void main() {
   group('Odd number-', () {
     test('should return null when the value is not null', () {
       // Arrange
-      final OddNumberValidator validator = OddNumberValidator();
+      const OddNumberValidator validator = OddNumberValidator();
       const String value = 'abc';
 
       // Act

@@ -32,6 +32,6 @@ class UuidValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return _uuid.hasMatch(valueCandidate) ? null : errorText;
+    return regex.hasMatch(valueCandidate) ? null : errorText;
   }
 }

@@ -2,7 +2,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class NegativeNumberValidator<T> extends BaseValidator<T> {
-  NegativeNumberValidator({
+  const NegativeNumberValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
 
