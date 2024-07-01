@@ -5,11 +5,15 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
-  group('Skip when -', () {
-    test('should return null when the value is not null', () {
+
+  group('SkipWhenValidator -', () {
+    test('should return null if the condition is met', () {
       // Arrange
-      const SkipWhenValidator validator = SkipWhenValidator();
-      const String value = 'abc';
+      final SkipWhenValidator<String> validator = SkipWhenValidator<String>(
+        (String? value) => value == 'skip',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+      const String value = 'skip';
 
       // Act
       final String? result = validator.validate(value);
@@ -18,17 +22,103 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the error message when the value is null', () {
+    test(
+        'should return error if the condition is not met and the value is invalid',
+        () {
       // Arrange
-      final SkipWhenValidator validator =
-          SkipWhenValidator(errorText: customErrorMessage);
+      final SkipWhenValidator<String> validator = SkipWhenValidator<String>(
+        (String? value) => value != 'validate',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, customErrorMessage);
+    });
+
+    test(
+        'should return null if the condition is not met and the value is valid',
+        () {
+      // Arrange
+      final SkipWhenValidator<String> validator = SkipWhenValidator<String>(
+        (String? value) => value != 'validate',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+      const String value = 'validate';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test(
+        'should return error if the condition is not met for non-string type and the value is invalid',
+        () {
+      // Arrange
+      final SkipWhenValidator<int> validator = SkipWhenValidator<int>(
+        (int? value) => value == 0,
+        (int? value) => value != null && value > 0 ? null : customErrorMessage,
+      );
+      const int value = -1;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, customErrorMessage);
+    });
+
+    test('should return null if the condition is met for non-string type', () {
+      // Arrange
+      final SkipWhenValidator<int> validator = SkipWhenValidator<int>(
+        (int? value) => value == 0,
+        (int? value) => value != null && value > 0 ? null : customErrorMessage,
+      );
+      const int value = 0;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test('should return null if the value is null and condition is not met',
+        () {
+      // Arrange
+      final SkipWhenValidator<String?> validator = SkipWhenValidator<String?>(
+        (String? value) => value == 'skip',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
       const String? value = null;
 
       // Act
       final String? result = validator.validate(value);
 
       // Assert
-      expect(result, equals(customErrorMessage));
+      expect(result, customErrorMessage);
+    });
+
+    test(
+        'should return error if the condition is not met and validator returns error',
+        () {
+      // Arrange
+      final SkipWhenValidator<String> validator = SkipWhenValidator<String>(
+        (String? value) => value == 'skip',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, customErrorMessage);
     });
   });
 }

@@ -1,5 +1,4 @@
 import '../../form_builder_validators.dart';
-import '../base_validator.dart';
 
 class UrlValidator extends BaseValidator<String> {
   UrlValidator({

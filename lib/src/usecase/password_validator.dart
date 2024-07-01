@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../../form_builder_validators.dart';
-import '../base_validator.dart';
 
 class PasswordValidator extends BaseValidator<String> {
   const PasswordValidator({

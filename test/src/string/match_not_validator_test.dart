@@ -5,11 +5,13 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
-  group('Match not -', () {
-    test('should return null when the value is not null', () {
+
+  group('MatchNotValidator -', () {
+    test('should return null if the value does not match the regex', () {
       // Arrange
-      const MatchNotValidator validator = MatchNotValidator();
-      const String value = 'abc';
+      final MatchNotValidator validator =
+          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      const String value = '12345';
 
       // Act
       final String? result = validator.validate(value);
@@ -18,17 +20,97 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the error message when the value is null', () {
+    test(
+        'should return the default error message if the value matches the regex',
+        () {
       // Arrange
       final MatchNotValidator validator =
-          MatchNotValidator(errorText: customErrorMessage);
-      const String? value = null;
+          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      const String value = 'abcdef';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
+    });
+
+    test(
+        'should return the custom error message if the value matches the regex',
+        () {
+      // Arrange
+      final MatchNotValidator validator = MatchNotValidator(
+        RegExp(r'^[a-zA-Z]+$'),
+        errorText: customErrorMessage,
+      );
+      const String value = 'abcdef';
 
       // Act
       final String? result = validator.validate(value);
 
       // Assert
       expect(result, equals(customErrorMessage));
+    });
+
+    test('should return null if the value is null and null check is disabled',
+        () {
+      // Arrange
+      final MatchNotValidator validator = MatchNotValidator(
+        RegExp(r'^[a-zA-Z]+$'),
+        checkNullOrEmpty: false,
+      );
+      const String? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test('should return the default error message if the value is null', () {
+      // Arrange
+      final MatchNotValidator validator =
+          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      const String? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
+    });
+
+    test(
+        'should return null if the value is an empty string and null check is disabled',
+        () {
+      // Arrange
+      final MatchNotValidator validator = MatchNotValidator(
+        RegExp(r'^[a-zA-Z]+$'),
+        checkNullOrEmpty: false,
+      );
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test(
+        'should return the default error message if the value is an empty string',
+        () {
+      // Arrange
+      final MatchNotValidator validator =
+          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
     });
   });
 }
