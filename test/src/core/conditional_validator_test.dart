@@ -79,7 +79,7 @@ void main() {
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
         (String? value) => value == 'check',
-        FormBuilderValidators.required(errorText: customErrorMessage),
+        FormBuilderValidators.minLength(6, errorText: customErrorMessage),
       );
 
       // Act

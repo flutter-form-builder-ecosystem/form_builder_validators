@@ -35,8 +35,6 @@ class HasLowercaseCharsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    final int length = lowercaseCharLength(valueCandidate);
-
     return lowercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 

@@ -7,9 +7,9 @@ class TransformValidator<T> extends BaseValidator<T> {
   const TransformValidator(
     this.transformer,
     this.validator,
-  );
+  ) : super(checkNullOrEmpty: false);
 
-  final T Function(T? value) transformer;
+  final T? Function(T? value) transformer;
 
   final FormFieldValidator<T> validator;
 
@@ -18,8 +18,13 @@ class TransformValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T valueCandidate) {
-    final T transformedValue = transformer(valueCandidate);
+  String? validate(T? valueCandidate) {
+    return validateValue(valueCandidate);
+  }
+
+  @override
+  String? validateValue(T? valueCandidate) {
+    final T? transformedValue = transformer(valueCandidate);
     return validator(transformedValue);
   }
 }

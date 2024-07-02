@@ -152,12 +152,12 @@ void main() {
         'should return errorText if the list value is equal to the specified value',
         () {
       // Arrange
+      const List<String> value = <String>['a', 'b'];
       final NotEqualValidator<List<String>> validator =
           NotEqualValidator<List<String>>(
-        <String>['a', 'b'],
+        value,
         errorText: customErrorMessage,
       );
-      const List<String> value = <String>['a', 'b'];
 
       // Act
       final String? result = validator.validate(value);

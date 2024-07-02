@@ -4,7 +4,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class ComposeValidator<T> extends BaseValidator<T> {
-  const ComposeValidator(this.validators);
+  const ComposeValidator(this.validators) : super(checkNullOrEmpty: false);
 
   final List<FormFieldValidator<T>> validators;
 
@@ -13,7 +13,12 @@ class ComposeValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T valueCandidate) {
+  String? validate(T? valueCandidate) {
+    return validateValue(valueCandidate);
+  }
+
+  @override
+  String? validateValue(T? valueCandidate) {
     for (final FormFieldValidator<T> validator in validators) {
       final String? validatorResult = validator.call(valueCandidate);
       if (validatorResult != null) {

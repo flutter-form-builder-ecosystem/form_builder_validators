@@ -53,16 +53,13 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [log] The log message to display.
   /// - [errorText] The error message when the value is invalid.
-  /// - [checkNullOrEmpty] Whether to check for null or empty values.
-  static FormFieldValidator<T> log<T>(
-    String Function(T? value)? log, {
+  static FormFieldValidator<T> log<T>({
+    String Function(T? value)? log,
     String? errorText,
-    bool checkNullOrEmpty = true,
   }) =>
       LogValidator<T>(
-        log,
+        log: log,
         errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
   /// [FormFieldValidator] that skips the validation when a certain

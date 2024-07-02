@@ -4,14 +4,12 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class LogValidator<T> extends BaseValidator<T> {
-  const LogValidator(
-    this.log, {
+  const LogValidator({
+    this.log,
+
     /// {@macro base_validator_error_text}
     super.errorText,
-
-    /// {@macro base_validator_null_check}
-    super.checkNullOrEmpty,
-  });
+  }) : super(checkNullOrEmpty: false);
 
   final String Function(T? value)? log;
 
@@ -20,7 +18,12 @@ class LogValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T valueCandidate) {
+  String? validate(T? valueCandidate) {
+    return validateValue(valueCandidate);
+  }
+
+  @override
+  String? validateValue(T? valueCandidate) {
     if (log != null) {
       debugPrint(log!(valueCandidate));
     } else if (valueCandidate != null) {

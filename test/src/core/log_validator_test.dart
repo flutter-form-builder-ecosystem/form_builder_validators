@@ -9,7 +9,7 @@ void main() {
   group('LogValidator -', () {
     test('should log the valueCandidate if log function is null', () {
       // Arrange
-      const LogValidator<String> validator = LogValidator<String>(null);
+      const LogValidator<String> validator = LogValidator<String>();
       const String value = 'test';
 
       // Act & Assert
@@ -19,7 +19,7 @@ void main() {
     test('should log the custom message from log function', () {
       // Arrange
       final LogValidator<String> validator = LogValidator<String>(
-        (String? value) => 'Custom log: $value',
+        log: (String? value) => 'Custom log: $value',
       );
       const String value = 'test';
 
@@ -30,7 +30,6 @@ void main() {
     test('should log the errorText if valueCandidate is null', () {
       // Arrange
       final LogValidator<String> validator = LogValidator<String>(
-        null,
         errorText: customErrorMessage,
       );
       const String? value = null;
@@ -43,7 +42,7 @@ void main() {
         'should log valueCandidate.toString() if log function is null and valueCandidate is not null',
         () {
       // Arrange
-      const LogValidator<int> validator = LogValidator<int>(null);
+      const LogValidator<int> validator = LogValidator<int>();
       const int value = 123;
 
       // Act & Assert
@@ -54,7 +53,7 @@ void main() {
         () {
       // Arrange
       final LogValidator<int> validator = LogValidator<int>(
-        (int? value) => 'Custom log: $value',
+        log: (int? value) => 'Custom log: $value',
       );
       const int value = 123;
 
@@ -67,7 +66,6 @@ void main() {
         () {
       // Arrange
       final LogValidator<int> validator = LogValidator<int>(
-        null,
         errorText: customErrorMessage,
       );
       const int? value = null;

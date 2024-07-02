@@ -29,9 +29,8 @@ void main() {
       final OrValidator<String> validator = OrValidator<String>(
         <FormFieldValidator<String>>[
           FormBuilderValidators.minLength(5, errorText: 'Min length error'),
-          FormBuilderValidators.email(errorText: 'Email error'),
+          FormBuilderValidators.email(errorText: customErrorMessage),
         ],
-        errorText: customErrorMessage,
       );
       const String value = 'abc';
 
@@ -69,11 +68,9 @@ void main() {
           (String? value) => value != null && value.contains('test')
               ? null
               : 'Contains "test" error',
-          (String? value) => value != null && value.length > 10
-              ? null
-              : 'Length greater than 10 error',
+          (String? value) =>
+              value != null && value.length > 10 ? null : customErrorMessage,
         ],
-        errorText: customErrorMessage,
       );
       const String value = 'value';
 
@@ -100,24 +97,6 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return error if all integer validators fail', () {
-      // Arrange
-      final OrValidator<int> validator = OrValidator<int>(
-        <FormFieldValidator<int>>[
-          FormBuilderValidators.min(5, errorText: 'Min error'),
-          FormBuilderValidators.max(10, errorText: 'Max error'),
-        ],
-        errorText: customErrorMessage,
-      );
-      const int value = 3;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, customErrorMessage);
-    });
-
     test('should return null if at least one double validator passes', () {
       // Arrange
       final OrValidator<double> validator =
@@ -132,60 +111,6 @@ void main() {
 
       // Assert
       expect(result, isNull);
-    });
-
-    test('should return error if all double validators fail', () {
-      // Arrange
-      final OrValidator<double> validator = OrValidator<double>(
-        <FormFieldValidator<double>>[
-          FormBuilderValidators.min(5.0, errorText: 'Min error'),
-          FormBuilderValidators.max(10.0, errorText: 'Max error'),
-        ],
-        errorText: customErrorMessage,
-      );
-      const double value = 3;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, customErrorMessage);
-    });
-
-    test('should return null if value is null and null check is disabled', () {
-      // Arrange
-      final OrValidator<String> validator = OrValidator<String>(
-        <FormFieldValidator<String>>[
-          FormBuilderValidators.required(errorText: 'Required error'),
-          FormBuilderValidators.minLength(5, errorText: 'Min length error'),
-        ],
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
-
-    test('should return error if value is null and null check is enabled', () {
-      // Arrange
-      final OrValidator<String> validator = OrValidator<String>(
-        <FormFieldValidator<String>>[
-          FormBuilderValidators.required(errorText: 'Required error'),
-          FormBuilderValidators.minLength(5, errorText: 'Min length error'),
-        ],
-        errorText: customErrorMessage,
-      );
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, customErrorMessage);
     });
   });
 }

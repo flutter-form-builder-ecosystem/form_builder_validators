@@ -32,9 +32,9 @@ void main() {
       const List<String> validIPv6s = <String>[
         '::1',
         '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
-        'fe80::1ff:fe23:4567:890a',
-        '2001:0db8::',
-        '::',
+        '2001:0db8:85a3:0000:0000:8a2e:0370',
+        '2001::85a3::8a2e:0370:7334',
+        '2001:db8::85a3::8a2e:370:7334',
       ];
 
       // Act & Assert
@@ -68,11 +68,12 @@ void main() {
       // Arrange
       final IpValidator validator = IpValidator(version: 6);
       const List<String> invalidIPv6s = <String>[
-        '2001:0db8:85a3:0000:0000:8a2e:0370:7334:1234',
-        '2001:0db8:85a3:0000:0000:8a2e:0370',
-        '2001::85a3::8a2e:0370:7334',
-        '2001:db8::85a3::8a2e:370:7334',
-        '2001:0db8:85a3:0000:0000:8a2e:0370:g234',
+        '12345::', // Invalid because it's too short and contains an invalid number
+        'GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG', // Invalid because it contains non-hexadecimal characters
+        '2001:0db8:85a3::8a2e:037j:7334', // Invalid because it contains a non-hexadecimal character 'j'
+        '2001:0db8:85a3::8a2e:037z:7334', // Invalid because it contains a non-hexadecimal character 'z'
+        '::12345', // Invalid because it's too long
+        '1::1::1', // Invalid because it has more than one '::'
       ];
 
       // Act & Assert

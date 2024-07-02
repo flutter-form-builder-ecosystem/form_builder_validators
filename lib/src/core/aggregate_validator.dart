@@ -4,7 +4,7 @@ import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 class AggregateValidator<T> extends BaseValidator<T> {
-  const AggregateValidator(this.validators);
+  const AggregateValidator(this.validators) : super(checkNullOrEmpty: false);
 
   final List<FormFieldValidator<T>> validators;
 
@@ -13,9 +13,14 @@ class AggregateValidator<T> extends BaseValidator<T> {
       FormBuilderLocalizations.current.requiredErrorText;
 
   @override
-  String? validateValue(T valueCandidate) {
+  String? validate(T? valueCandidate) {
+    return validateValue(valueCandidate);
+  }
+
+  @override
+  String? validateValue(T? valueCandidate) {
     final List<String> errors = <String>[];
-    for (final FormFieldValidator<T> validator in validators) {
+    for (final FormFieldValidator<T?> validator in validators) {
       final String? error = validator(valueCandidate);
       if (error != null) {
         errors.add(error);

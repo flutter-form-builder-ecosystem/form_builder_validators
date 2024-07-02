@@ -42,7 +42,7 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
 
   /// Logs the value during the validation process.
   FormFieldValidator<T> log({String Function(T? value)? log}) {
-    return FormBuilderValidators.log(log);
+    return FormBuilderValidators.log(log: log);
   }
 
   /// Overrides the error message of the current validator.

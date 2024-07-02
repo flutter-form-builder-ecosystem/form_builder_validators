@@ -170,7 +170,7 @@ void main() {
             testValidations(tester, (BuildContext context) {
           final FormFieldValidator<String> validator =
               FormBuilderValidators.log<String>(
-            (String? value) => 'Logging: $value',
+            log: (String? value) => 'Logging: $value',
           );
           // Pass
           expect(validator('test'), isNull);

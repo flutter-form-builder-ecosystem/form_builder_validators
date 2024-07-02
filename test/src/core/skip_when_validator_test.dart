@@ -27,7 +27,7 @@ void main() {
         () {
       // Arrange
       final SkipWhenValidator<String> validator = SkipWhenValidator<String>(
-        (String? value) => value != 'validate',
+        (String? value) => value == 'validate',
         FormBuilderValidators.required(errorText: customErrorMessage),
       );
       const String value = '';
