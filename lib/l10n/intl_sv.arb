@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Värdet måste vara ett positivt tal.",
   "notZeroNumberErrorText": "Värdet får inte vara noll.",
   "ssnErrorText": "Värdet måste vara ett giltigt personnummer.",
-  "zipCodeErrorText": "Värdet måste vara en giltig postnummer."
+  "zipCodeErrorText": "Värdet måste vara en giltig postnummer.",
+  "usernameErrorText": "Värdet måste vara ett giltigt användarnamn.",
+  "usernameCannotContainNumbersErrorText": "Användarnamnet får inte innehålla siffror.",
+  "usernameCannotContainUnderscoreErrorText": "Användarnamnet får inte innehålla understreck.",
+  "usernameCannotContainSpecialCharErrorText": "Användarnamnet får inte innehålla specialtecken.",
+  "usernameCannotContainSpacesErrorText": "Användarnamnet får inte innehålla mellanslag.",
+  "usernameCannotContainDotsErrorText": "Användarnamnet får inte innehålla punkter.",
+  "usernameCannotContainDashesErrorText": "Användarnamnet får inte innehålla bindestreck."
 }

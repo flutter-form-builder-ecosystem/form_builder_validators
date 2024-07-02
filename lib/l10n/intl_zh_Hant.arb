@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "值必須是正數。",
   "notZeroNumberErrorText": "值不能為零。",
   "ssnErrorText": "值必須是有效的社會安全號碼。",
-  "zipCodeErrorText": "值必須是有效的郵政編碼。"
+  "zipCodeErrorText": "值必須是有效的郵政編碼。",
+  "usernameErrorText": "值必須是有效的用戶名。",
+  "usernameCannotContainNumbersErrorText": "用戶名不能包含數字。",
+  "usernameCannotContainUnderscoreErrorText": "用戶名不能包含底線。",
+  "usernameCannotContainSpecialCharErrorText": "用戶名不能包含特殊字符。",
+  "usernameCannotContainSpacesErrorText": "用戶名不能包含空格。",
+  "usernameCannotContainDotsErrorText": "用戶名不能包含點。",
+  "usernameCannotContainDashesErrorText": "用戶名不能包含破折號。"
 }

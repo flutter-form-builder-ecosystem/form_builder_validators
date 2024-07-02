@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "மதிப்பு ஒரு இருக்க வேண்டும்.",
   "notZeroNumberErrorText": "மதிப்பு பூஜ்யமாக இருக்க வேண்டில்லை.",
   "ssnErrorText": "மதிப்பு சமூக காப்பொலி எண் இருக்க வேண்டும்.",
-  "zipCodeErrorText": "மதிப்பு சரியான ஜிப் குறியீடு இருக்க வேண்டும்."
+  "zipCodeErrorText": "மதிப்பு சரியான ஜிப் குறியீடு இருக்க வேண்டும்.",
+  "usernameErrorText": "விலைமை சரியான பயனர் பெயராக இருக்க வேண்டும்.",
+  "usernameCannotContainNumbersErrorText": "பயனர் பெயரில் எண்கள் இருக்கக் கூடாது.",
+  "usernameCannotContainUnderscoreErrorText": "பயனர் பெயரில் அடிக்கோடு இருக்கக் கூடாது.",
+  "usernameCannotContainSpecialCharErrorText": "பயனர் பெயரில் சிறப்பு எழுத்துக்கள் இருக்கக் கூடாது.",
+  "usernameCannotContainSpacesErrorText": "பயனர் பெயரில் இடைவெளிகள் இருக்கக் கூடாது.",
+  "usernameCannotContainDotsErrorText": "பயனர் பெயரில் புள்ளிகள் இருக்கக் கூடாது.",
+  "usernameCannotContainDashesErrorText": "பயனர் பெயரில் கோடுகள் இருக்கக் கூடாது."
 }

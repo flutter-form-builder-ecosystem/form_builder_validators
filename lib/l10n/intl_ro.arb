@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Valoarea trebuie să fie un număr pozitiv.",
   "notZeroNumberErrorText": "Valoarea nu trebuie să fie zero.",
   "ssnErrorText": "Valoarea trebuie să fie un Număr de Asigurare Socială valid.",
-  "zipCodeErrorText": "Valoarea trebuie să fie un cod ZIP valid."
+  "zipCodeErrorText": "Valoarea trebuie să fie un cod ZIP valid.",
+  "usernameErrorText": "Valoarea trebuie să fie un nume de utilizator valid.",
+  "usernameCannotContainNumbersErrorText": "Numele de utilizator nu poate conţine cifre.",
+  "usernameCannotContainUnderscoreErrorText": "Numele de utilizator nu poate conţine caractere de subliniere.",
+  "usernameCannotContainSpecialCharErrorText": "Numele de utilizator nu poate conţine caractere speciale.",
+  "usernameCannotContainSpacesErrorText": "Numele de utilizator nu poate conţine spaţii.",
+  "usernameCannotContainDotsErrorText": "Numele de utilizator nu poate conţine puncte.",
+  "usernameCannotContainDashesErrorText": "Numele de utilizator nu poate conţine cratime."
 }

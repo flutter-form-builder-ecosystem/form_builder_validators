@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "ค่าต้องเป็นจำนวนบวก",
   "notZeroNumberErrorText": "ค่าต้องไม่เป็นศูนย์",
   "ssnErrorText": "ค่าต้องเป็นหมายเลขประจำตัวประชาชนที่ถูกต้อง",
-  "zipCodeErrorText": "ค่าต้องเป็นรหัสไปรษณีย์ที่ถูกต้อง"
+  "zipCodeErrorText": "ค่าต้องเป็นรหัสไปรษณีย์ที่ถูกต้อง",
+  "usernameErrorText": "ค่าต้องเป็นชื่อผู้ใช้ที่ถูกต้อง",
+  "usernameCannotContainNumbersErrorText": "ชื่อผู้ใช้ต้องไม่มีตัวเลข",
+  "usernameCannotContainUnderscoreErrorText": "ชื่อผู้ใช้ต้องไม่มีขีดเส้นใต้",
+  "usernameCannotContainSpecialCharErrorText": "ชื่อผู้ใช้ต้องไม่มีอักขระพิเศษ",
+  "usernameCannotContainSpacesErrorText": "ชื่อผู้ใช้ต้องไม่มีช่องว่าง",
+  "usernameCannotContainDotsErrorText": "ชื่อผู้ใช้ต้องไม่มีจุด",
+  "usernameCannotContainDashesErrorText": "ชื่อผู้ใช้ต้องไม่มีขีดกลาง"
 }

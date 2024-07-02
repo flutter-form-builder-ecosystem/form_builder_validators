@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "मान्य सकारात्मक संख्या हुनुपर्छ।",
   "notZeroNumberErrorText": "मान्य शून्य हुनुपर्छ।",
   "ssnErrorText": "मान्य सामाजिक सुरक्षा संख्या हुनुपर्छ।",
-  "zipCodeErrorText": "मान्य ZIP कोड हुनुपर्छ।"
+  "zipCodeErrorText": "मान्य ZIP कोड हुनुपर्छ।",
+  "usernameErrorText": "मान्य प्रयोगकर्ता नाम हुनु पर्छ।",
+  "usernameCannotContainNumbersErrorText": "प्रयोगकर्ता नाममा संख्या समावेश गर्नु हुँदैन।",
+  "usernameCannotContainUnderscoreErrorText": "प्रयोगकर्ता नाममा अन्डरस्कोर समावेश गर्नु हुँदैन।",
+  "usernameCannotContainSpecialCharErrorText": "प्रयोगकर्ता नाममा विशेष वर्णहरू समावेश गर्नु हुँदैन।",
+  "usernameCannotContainSpacesErrorText": "प्रयोगकर्ता नाममा खाली ठाउँहरू समावेश गर्नु हुँदैन।",
+  "usernameCannotContainDotsErrorText": "प्रयोगकर्ता नाममा डटहरू समावेश गर्नु हुँदैन।",
+  "usernameCannotContainDashesErrorText": "प्रयोगकर्ता नाममा ड्यासहरू समावेश गर्नु हुँदैन।"
 }

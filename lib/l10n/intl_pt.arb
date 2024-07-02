@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "O valor deve ser um número positivo.",
   "notZeroNumberErrorText": "O valor não pode ser zero.",
   "ssnErrorText": "O valor deve ser um Número de Seguro Social válido.",
-  "zipCodeErrorText": "O valor deve ser um código postal válido."
+  "zipCodeErrorText": "O valor deve ser um código postal válido.",
+  "usernameErrorText": "O valor deve ser um nome de usuário válido.",
+  "usernameCannotContainNumbersErrorText": "O nome de usuário não pode conter números.",
+  "usernameCannotContainUnderscoreErrorText": "O nome de usuário não pode conter sublinhados.",
+  "usernameCannotContainSpecialCharErrorText": "O nome de usuário não pode conter caracteres especiais.",
+  "usernameCannotContainSpacesErrorText": "O nome de usuário não pode conter espaços.",
+  "usernameCannotContainDotsErrorText": "O nome de usuário não pode conter pontos.",
+  "usernameCannotContainDashesErrorText": "O nome de usuário não pode conter traços."
 }

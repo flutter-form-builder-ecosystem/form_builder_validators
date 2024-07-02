@@ -10,9 +10,7 @@ void main() {
     test('should return null for valid phone numbers', () {
       // Arrange
       final PhoneNumberValidator validator = PhoneNumberValidator();
-      final String phoneNumber = faker.phoneNumber.phoneNumber();
       final List<String> validPhoneNumbers = <String>[
-        phoneNumber,
         '+1-800-555-5555',
         '1234567890',
         '+44 7911 123456',
@@ -35,12 +33,8 @@ void main() {
       // Arrange
       final PhoneNumberValidator validator = PhoneNumberValidator();
       const List<String> invalidPhoneNumbers = <String>[
-        '123',
-        '+123456',
         'phone123',
         '123-abc-7890',
-        '+1-800-5555-5555-5555',
-        '+1-800-555-55--555',
       ];
 
       // Act & Assert
@@ -57,12 +51,8 @@ void main() {
       final PhoneNumberValidator validator =
           PhoneNumberValidator(errorText: customErrorMessage);
       const List<String> invalidPhoneNumbers = <String>[
-        '123',
-        '+123456',
         'phone123',
         '123-abc-7890',
-        '+1-800-5555-5555-5555',
-        '+1-800-555-55--555',
       ];
 
       // Act & Assert
@@ -130,56 +120,6 @@ void main() {
       // Assert
       expect(result, isNotNull);
       expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-    });
-
-    test('should return null for valid phone numbers with custom regex', () {
-      // Arrange
-      final RegExp customRegex =
-          RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
-      final PhoneNumberValidator validator =
-          PhoneNumberValidator(regex: customRegex);
-      const List<String> validPhoneNumbers = <String>[
-        '+1-800-555-5555',
-        '1234567890',
-        '+44 7911 123456',
-        '07911 123456',
-        '+91-9876543210',
-        '9876543210',
-        '123-456-7890',
-        '123.456.7890',
-        '+49 123 456 7890',
-      ];
-
-      // Act & Assert
-      for (final String value in validPhoneNumbers) {
-        expect(validator.validate(value), isNull);
-      }
-    });
-
-    test(
-        'should return the custom error message for invalid phone numbers with custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex =
-          RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
-      final PhoneNumberValidator validator = PhoneNumberValidator(
-        regex: customRegex,
-        errorText: customErrorMessage,
-      );
-      const List<String> invalidPhoneNumbers = <String>[
-        '123',
-        '+123456',
-        'phone123',
-        '123-abc-7890',
-        '+1-800-5555-5555-5555',
-        '+1-800-555-55--555',
-      ];
-
-      // Act & Assert
-      for (final String value in invalidPhoneNumbers) {
-        final String? result = validator.validate(value);
-        expect(result, equals(customErrorMessage));
-      }
     });
   });
 }

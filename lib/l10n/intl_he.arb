@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "הערך חייב להיות מספר חיובי.",
   "notZeroNumberErrorText": "הערך לא יכול להיות אפס.",
   "ssnErrorText": "הערך חייב להיות מספר סודי חברתי תקין.",
-  "zipCodeErrorText": "הערך חייב להיות מיקוד תקין."
+  "zipCodeErrorText": "הערך חייב להיות מיקוד תקין.",
+  "usernameErrorText": "הערך חייב להיות שם משתמש תקין.",
+  "usernameCannotContainNumbersErrorText": "שם המשתמש לא יכול להכיל מספרים.",
+  "usernameCannotContainUnderscoreErrorText": "שם המשתמש לא יכול להכיל קו תחתון.",
+  "usernameCannotContainSpecialCharErrorText": "שם המשתמש לא יכול להכיל תווים מיוחדים.",
+  "usernameCannotContainSpacesErrorText": "שם המשתמש לא יכול להכיל רווחים.",
+  "usernameCannotContainDotsErrorText": "שם המשתמש לא יכול להכיל נקודות.",
+  "usernameCannotContainDashesErrorText": "שם המשתמש לא יכול להכיל מקפים."
 }

@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Value must be a positive number.",
   "notZeroNumberErrorText": "Value must not be zero.",
   "ssnErrorText": "Value must be a valid Social Security Number.",
-  "zipCodeErrorText": "Value must be a valid ZIP code."
+  "zipCodeErrorText": "Value must be a valid ZIP code.",
+  "usernameErrorText": "Value must be a valid username.",
+  "usernameCannotContainNumbersErrorText": "Username cannot contain numbers.",
+  "usernameCannotContainUnderscoreErrorText": "Username cannot contain underscore.",
+  "usernameCannotContainSpecialCharErrorText": "Username cannot contain special characters.",
+  "usernameCannotContainSpacesErrorText": "Username cannot contain spaces.",
+  "usernameCannotContainDotsErrorText": "Username cannot contain dots.",
+  "usernameCannotContainDashesErrorText": "Username cannot contain dashes."
 }

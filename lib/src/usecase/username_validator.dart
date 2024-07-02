@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 import '../../form_builder_validators.dart';
 
 class UsernameValidator extends BaseValidator<String> {
@@ -38,45 +36,64 @@ class UsernameValidator extends BaseValidator<String> {
 
   @override
   String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
+      FormBuilderLocalizations.current.usernameErrorText;
 
   @override
   String? validateValue(String valueCandidate) {
-    return FormBuilderValidators.compose<String>(
-      <FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (!allowNumbers)
-          FormBuilderValidators.matchNot(
-            RegExp('[0-9]'),
-            errorText: errorText,
-          ),
-        if (!allowUnderscore)
-          FormBuilderValidators.matchNot(
-            RegExp('_'),
-            errorText: errorText,
-          ),
-        if (!allowDots)
-          FormBuilderValidators.matchNot(
-            RegExp(r'\.'),
-            errorText: errorText,
-          ),
-        if (!allowDash)
-          FormBuilderValidators.matchNot(
-            RegExp('-'),
-            errorText: errorText,
-          ),
-        if (!allowSpace)
-          FormBuilderValidators.matchNot(
-            RegExp(r'\s'),
-            errorText: errorText,
-          ),
-        if (!allowSpecialChar)
-          FormBuilderValidators.matchNot(
-            RegExp(r'[!@#\$%^&*(),.?":{}|<>]'),
-            errorText: errorText,
-          ),
-      ],
-    ).call(valueCandidate);
+    if (valueCandidate.length < minLength) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations.current.minLengthErrorText(minLength);
+    }
+
+    if (valueCandidate.length > maxLength) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations.current.maxLengthErrorText(maxLength);
+    }
+
+    if (!allowNumbers && RegExp('[0-9]').hasMatch(valueCandidate)) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations
+              .current.usernameCannotContainNumbersErrorText;
+    }
+
+    if (!allowUnderscore && valueCandidate.contains('_')) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations
+              .current.usernameCannotContainUnderscoreErrorText;
+    }
+
+    if (!allowDots && valueCandidate.contains('.')) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations.current.usernameCannotContainDotsErrorText;
+    }
+
+    if (!allowDash && valueCandidate.contains('-')) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations
+              .current.usernameCannotContainDashesErrorText;
+    }
+
+    if (!allowSpace && valueCandidate.contains(' ')) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations
+              .current.usernameCannotContainSpacesErrorText;
+    }
+
+    if (!allowSpecialChar &&
+        RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]').hasMatch(valueCandidate)) {
+      return errorText != FormBuilderLocalizations.current.usernameErrorText
+          ? errorText
+          : FormBuilderLocalizations
+              .current.usernameCannotContainSpecialCharErrorText;
+    }
+
+    return null;
   }
 }

@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Giá trị phải là số dương.",
   "notZeroNumberErrorText": "Giá trị không được là số không.",
   "ssnErrorText": "Giá trị phải là số An Sinh Xã Hội hợp lệ.",
-  "zipCodeErrorText": "Giá trị phải là mã ZIP hợp lệ."
+  "zipCodeErrorText": "Giá trị phải là mã ZIP hợp lệ.",
+  "usernameErrorText": "Giá trị phải là tên người dùng hợp lệ.",
+  "usernameCannotContainNumbersErrorText": "Tên người dùng không được chứa số.",
+  "usernameCannotContainUnderscoreErrorText": "Tên người dùng không được chứa dấu gạch dưới.",
+  "usernameCannotContainSpecialCharErrorText": "Tên người dùng không được chứa ký tự đặc biệt.",
+  "usernameCannotContainSpacesErrorText": "Tên người dùng không được chứa khoảng trắng.",
+  "usernameCannotContainDotsErrorText": "Tên người dùng không được chứa dấu chấm.",
+  "usernameCannotContainDashesErrorText": "Tên người dùng không được chứa dấu gạch ngang."
 }

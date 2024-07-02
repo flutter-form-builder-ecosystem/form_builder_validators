@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "مقدار باید یک عدد مثبت باشد.",
   "notZeroNumberErrorText": "مقدار نباید صفر باشد.",
   "ssnErrorText": "مقدار باید یک شماره تأمین اجتماعی معتبر باشد.",
-  "zipCodeErrorText": "مقدار باید یک کد پستی معتبر باشد."
+  "zipCodeErrorText": "مقدار باید یک کد پستی معتبر باشد.",
+  "usernameErrorText": "مقدار باید یک نام کاربری معتبر باشد.",
+  "usernameCannotContainNumbersErrorText": "نام کاربری نمی‌تواند شامل اعداد باشد.",
+  "usernameCannotContainUnderscoreErrorText": "نام کاربری نمی‌تواند شامل زیر خط باشد.",
+  "usernameCannotContainSpecialCharErrorText": "نام کاربری نمی‌تواند شامل کاراکترهای خاص باشد.",
+  "usernameCannotContainSpacesErrorText": "نام کاربری نمی‌تواند شامل فاصله باشد.",
+  "usernameCannotContainDotsErrorText": "نام کاربری نمی‌تواند شامل نقطه باشد.",
+  "usernameCannotContainDashesErrorText": "نام کاربری نمی‌تواند شامل خط پیوند باشد."
 }

@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "मान को सकारात्मक संख्या होनी चाहिए।",
   "notZeroNumberErrorText": "मान शून्य नहीं होनी चाहिए।",
   "ssnErrorText": "मान को वैध सोशल सिक्योरिटी नंबर होना चाहिए।",
-  "zipCodeErrorText": "मान को वैध ज़िप कोड होना चाहिए।"
+  "zipCodeErrorText": "मान को वैध ज़िप कोड होना चाहिए।",
+  "usernameErrorText": "मान्य उपयोगकर्ता नाम होना चाहिए।",
+  "usernameCannotContainNumbersErrorText": "उपयोगकर्ता नाम में संख्याएँ नहीं हो सकतीं।",
+  "usernameCannotContainUnderscoreErrorText": "उपयोगकर्ता नाम में अंडरस्कोर नहीं हो सकता।",
+  "usernameCannotContainSpecialCharErrorText": "उपयोगकर्ता नाम में विशेष वर्ण नहीं हो सकते।",
+  "usernameCannotContainSpacesErrorText": "उपयोगकर्ता नाम में रिक्त स्थान नहीं हो सकते।",
+  "usernameCannotContainDotsErrorText": "उपयोगकर्ता नाम में बिंदु नहीं हो सकते।",
+  "usernameCannotContainDashesErrorText": "उपयोगकर्ता नाम में डैश नहीं हो सकते।"
 }

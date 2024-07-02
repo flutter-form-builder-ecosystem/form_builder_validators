@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "মানটি একটি ধনাত্মক সংখ্যা হতে হবে।",
   "notZeroNumberErrorText": "মানটি শূন্য না হতে হবে।",
   "ssnErrorText": "মানটি একটি বৈধ সোশ্যাল সিকিউরিটি নম্বর হতে হবে।",
-  "zipCodeErrorText": "মানটি একটি বৈধ জিপ কোড হতে হবে।"
+  "zipCodeErrorText": "মানটি একটি বৈধ জিপ কোড হতে হবে।",
+  "usernameErrorText": "মানটি একটি বৈধ ব্যবহারকারীর নাম হতে হবে।",
+  "usernameCannotContainNumbersErrorText": "ব্যবহারকারীর নামের মধ্যে সংখ্যা থাকতে পারবে না।",
+  "usernameCannotContainUnderscoreErrorText": "ব্যবহারকারীর নামের মধ্যে আন্ডারস্কোর থাকতে পারবে না।",
+  "usernameCannotContainSpecialCharErrorText": "ব্যবহারকারীর নামের মধ্যে বিশেষ অক্ষর থাকতে পারবে না।",
+  "usernameCannotContainSpacesErrorText": "ব্যবহারকারীর নামের মধ্যে স্পেস থাকতে পারবে না।",
+  "usernameCannotContainDotsErrorText": "ব্যবহারকারীর নামের মধ্যে বিন্দু থাকতে পারবে না।",
+  "usernameCannotContainDashesErrorText": "ব্যবহারকারীর নামের মধ্যে ড্যাশ থাকতে পারবে না।"
 }

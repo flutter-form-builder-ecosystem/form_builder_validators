@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Deffee bu xam xam.",
   "notZeroNumberErrorText": "Deffee waa 0 loo xanbaareeyo.",
   "ssnErrorText": "Deffee waa nambarka xidhiidhka bulshada ee saxda ah.",
-  "zipCodeErrorText": "Deffee waa lambarka Zip ee saxda ah."
+  "zipCodeErrorText": "Deffee waa lambarka Zip ee saxda ah.",
+  "usernameErrorText": "Thamani lazima iwe jina la mtumiaji halali.",
+  "usernameCannotContainNumbersErrorText": "Jina la mtumiaji haliwezi kuwa na nambari.",
+  "usernameCannotContainUnderscoreErrorText": "Jina la mtumiaji haliwezi kuwa na alama ya underscore.",
+  "usernameCannotContainSpecialCharErrorText": "Jina la mtumiaji haliwezi kuwa na herufi maalum.",
+  "usernameCannotContainSpacesErrorText": "Jina la mtumiaji haliwezi kuwa na nafasi.",
+  "usernameCannotContainDotsErrorText": "Jina la mtumiaji haliwezi kuwa na nukta.",
+  "usernameCannotContainDashesErrorText": "Jina la mtumiaji haliwezi kuwa na mistari ya usawa."
 }

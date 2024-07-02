@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Значення повинно бути позитивним числом.",
   "notZeroNumberErrorText": "Значення не повинно бути нулем.",
   "ssnErrorText": "Значення повинно бути дійсним номером соціального страхування.",
-  "zipCodeErrorText": "Значення повинно бути дійсним поштовим індексом."
+  "zipCodeErrorText": "Значення повинно бути дійсним поштовим індексом.",
+  "usernameErrorText": "Значення має бути дійсним ім'ям користувача.",
+  "usernameCannotContainNumbersErrorText": "Ім'я користувача не може містити цифри.",
+  "usernameCannotContainUnderscoreErrorText": "Ім'я користувача не може містити символ підкреслення.",
+  "usernameCannotContainSpecialCharErrorText": "Ім'я користувача не може містити спеціальні символи.",
+  "usernameCannotContainSpacesErrorText": "Ім'я користувача не може містити пробіли.",
+  "usernameCannotContainDotsErrorText": "Ім'я користувача не може містити крапки.",
+  "usernameCannotContainDashesErrorText": "Ім'я користувача не може містити дефіси."
 }

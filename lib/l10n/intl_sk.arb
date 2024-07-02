@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Hodnota musí byť kladné číslo.",
   "notZeroNumberErrorText": "Hodnota nemôže byť nula.",
   "ssnErrorText": "Hodnota musí byť platné číslo sociálneho zabezpečenia.",
-  "zipCodeErrorText": "Hodnota musí byť platným PSČ."
+  "zipCodeErrorText": "Hodnota musí byť platným PSČ.",
+  "usernameErrorText": "Hodnota musí byť platné používateľské meno.",
+  "usernameCannotContainNumbersErrorText": "Používateľské meno nemôže obsahovať čísla.",
+  "usernameCannotContainUnderscoreErrorText": "Používateľské meno nemôže obsahovať podtržník.",
+  "usernameCannotContainSpecialCharErrorText": "Používateľské meno nemôže obsahovať špeciálne znaky.",
+  "usernameCannotContainSpacesErrorText": "Používateľské meno nemôže obsahovať medzery.",
+  "usernameCannotContainDotsErrorText": "Používateľské meno nemôže obsahovať bodky.",
+  "usernameCannotContainDashesErrorText": "Používateľské meno nemôže obsahovať pomlčky."
 }

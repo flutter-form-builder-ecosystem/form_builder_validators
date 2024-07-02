@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "値は正の数である必要があります。",
   "notZeroNumberErrorText": "値はゼロであってはいけません。",
   "ssnErrorText": "値は有効な社会保障番号である必要があります。",
-  "zipCodeErrorText": "値は有効な郵便番号である必要があります。"
+  "zipCodeErrorText": "値は有効な郵便番号である必要があります。",
+  "usernameErrorText": "値は有効なユーザー名でなければなりません。",
+  "usernameCannotContainNumbersErrorText": "ユーザー名に数字を含めることはできません。",
+  "usernameCannotContainUnderscoreErrorText": "ユーザー名にアンダースコアを含めることはできません。",
+  "usernameCannotContainSpecialCharErrorText": "ユーザー名に特殊文字を含めることはできません。",
+  "usernameCannotContainSpacesErrorText": "ユーザー名にスペースを含めることはできません。",
+  "usernameCannotContainDotsErrorText": "ユーザー名にドットを含めることはできません。",
+  "usernameCannotContainDashesErrorText": "ユーザー名にダッシュを含めることはできません。"
 }

@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Утга нь эерэг тоо байх ёстой.",
   "notZeroNumberErrorText": "Утга нь нэг биш байх ёстой.",
   "ssnErrorText": "Утга нь баталгаажсан нийгмийн дугаар байх ёстой.",
-  "zipCodeErrorText": "Утга нь баталгаажсан ZIP код байх ёстой."
+  "zipCodeErrorText": "Утга нь баталгаажсан ZIP код байх ёстой.",
+  "usernameErrorText": "Утга нь хүчин төгөлдөр хэрэглэгчийн нэр байх ёстой.",
+  "usernameCannotContainNumbersErrorText": "Хэрэглэгчийн нэр тоо агуулж болохгүй.",
+  "usernameCannotContainUnderscoreErrorText": "Хэрэглэгчийн нэр доогуур зураас агуулж болохгүй.",
+  "usernameCannotContainSpecialCharErrorText": "Хэрэглэгчийн нэр тусгай тэмдэгт агуулж болохгүй.",
+  "usernameCannotContainSpacesErrorText": "Хэрэглэгчийн нэр хоосон зай агуулж болохгүй.",
+  "usernameCannotContainDotsErrorText": "Хэрэглэгчийн нэр цэг агуулж болохгүй.",
+  "usernameCannotContainDashesErrorText": "Хэрэглэгчийн нэр зураас агуулж болохгүй."
 }

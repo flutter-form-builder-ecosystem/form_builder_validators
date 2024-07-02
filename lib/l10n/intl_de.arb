@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Wert muss eine positive Zahl sein.",
   "notZeroNumberErrorText": "Wert darf nicht null sein.",
   "ssnErrorText": "Wert muss eine gültige Sozialversicherungsnummer sein.",
-  "zipCodeErrorText": "Wert muss eine gültige Postleitzahl sein."
+  "zipCodeErrorText": "Wert muss eine gültige Postleitzahl sein.",
+  "usernameErrorText": "Der Wert muss ein gültiger Benutzername sein.",
+  "usernameCannotContainNumbersErrorText": "Der Benutzername darf keine Zahlen enthalten.",
+  "usernameCannotContainUnderscoreErrorText": "Der Benutzername darf keinen Unterstrich enthalten.",
+  "usernameCannotContainSpecialCharErrorText": "Der Benutzername darf keine Sonderzeichen enthalten.",
+  "usernameCannotContainSpacesErrorText": "Der Benutzername darf keine Leerzeichen enthalten.",
+  "usernameCannotContainDotsErrorText": "Der Benutzername darf keine Punkte enthalten.",
+  "usernameCannotContainDashesErrorText": "Der Benutzername darf keine Bindestriche enthalten."
 }

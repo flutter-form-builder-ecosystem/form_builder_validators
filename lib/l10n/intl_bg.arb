@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Стойността трябва да бъде положително число.",
   "notZeroNumberErrorText": "Стойността не трябва да бъде нула.",
   "ssnErrorText": "Стойността трябва да бъде валиден номер за социално осигуряване.",
-  "zipCodeErrorText": "Стойността трябва да бъде валиден пощенски код."
+  "zipCodeErrorText": "Стойността трябва да бъде валиден пощенски код.",
+  "usernameErrorText": "Стойността трябва да бъде валидно потребителско име.",
+  "usernameCannotContainNumbersErrorText": "Потребителското име не може да съдържа цифри.",
+  "usernameCannotContainUnderscoreErrorText": "Потребителското име не може да съдържа долна черта.",
+  "usernameCannotContainSpecialCharErrorText": "Потребителското име не може да съдържа специални символи.",
+  "usernameCannotContainSpacesErrorText": "Потребителското име не може да съдържа интервали.",
+  "usernameCannotContainDotsErrorText": "Потребителското име не може да съдържа точки.",
+  "usernameCannotContainDashesErrorText": "Потребителското име не може да съдържа тирета."
 }

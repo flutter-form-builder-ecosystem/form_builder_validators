@@ -6,10 +6,10 @@ class PasswordValidator extends BaseValidator<String> {
   const PasswordValidator({
     this.minLength = 8,
     this.maxLength = 32,
-    this.uppercase = 1,
-    this.lowercase = 1,
-    this.number = 1,
-    this.specialChar = 1,
+    this.minUppercaseCount = 1,
+    this.minLowercaseCount = 1,
+    this.minNumberCount = 1,
+    this.minSpecialCharCount = 1,
 
     /// {@macro password_validator_error_text}
     super.errorText,
@@ -22,45 +22,41 @@ class PasswordValidator extends BaseValidator<String> {
 
   final int maxLength;
 
-  final int uppercase;
+  final int minUppercaseCount;
 
-  final int lowercase;
+  final int minLowercaseCount;
 
-  final int number;
+  final int minNumberCount;
 
-  final int specialChar;
+  final int minSpecialCharCount;
 
   @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
+  String get translatedErrorText => '';
 
   @override
   String? validateValue(String valueCandidate) {
-    return FormBuilderValidators.compose<String>(
+    final String? result = FormBuilderValidators.compose<String>(
       <FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (uppercase > 0)
+        FormBuilderValidators.minLength(minLength),
+        FormBuilderValidators.maxLength(maxLength),
+        if (minUppercaseCount > 0)
           FormBuilderValidators.hasUppercaseChars(
-            atLeast: uppercase,
-            errorText: errorText,
+            atLeast: minUppercaseCount,
           ),
-        if (lowercase > 0)
+        if (minLowercaseCount > 0)
           FormBuilderValidators.hasLowercaseChars(
-            atLeast: lowercase,
-            errorText: errorText,
+            atLeast: minLowercaseCount,
           ),
-        if (number > 0)
+        if (minNumberCount > 0)
           FormBuilderValidators.hasNumericChars(
-            atLeast: number,
-            errorText: errorText,
+            atLeast: minNumberCount,
           ),
-        if (specialChar > 0)
+        if (minSpecialCharCount > 0)
           FormBuilderValidators.hasSpecialChars(
-            atLeast: specialChar,
-            errorText: errorText,
+            atLeast: minSpecialCharCount,
           ),
       ],
     ).call(valueCandidate);
+    return result != null && errorText != '' ? errorText : result;
   }
 }

@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "گۆڕانکاری دەبێت ژمارەییەکی موجود بێت.",
   "notZeroNumberErrorText": "گۆڕانکاری دەبێت ژمارەییەکی ناکەوە.",
   "ssnErrorText": "گۆڕانکاری دەبێت ژمارەییەکی ژێر سندوقی ئەمنی بێت.",
-  "zipCodeErrorText": "گۆڕانکاری دەبێت کۆدی ZIP یەکێکی تاقیبت بێت."
+  "zipCodeErrorText": "گۆڕانکاری دەبێت کۆدی ZIP یەکێکی تاقیبت بێت.",
+  "usernameErrorText": "تێکستی بەکارهێنەر دەبێت ناوێکی دروست بێت.",
+  "usernameCannotContainNumbersErrorText": "ناوی بەکارهێنەر نابێت ژمارە پێوی بگرێت.",
+  "usernameCannotContainUnderscoreErrorText": "ناوی بەکارهێنەر نابێت ھەرفەی ژێر نابەڕە بگرێت.",
+  "usernameCannotContainSpecialCharErrorText": "ناوی بەکارهێنەر نابێت پیت و نووسە تایبەتی بگرێت.",
+  "usernameCannotContainSpacesErrorText": "ناوی بەکارهێنەر نابێت بەش ب بەش بێت.",
+  "usernameCannotContainDotsErrorText": "ناوی بەکارهێنەر نابێت نوکتەکان ب گرێت.",
+  "usernameCannotContainDashesErrorText": "ناوی بەکارهێنەر نابێت تیرە خال ب گرێت."
 }

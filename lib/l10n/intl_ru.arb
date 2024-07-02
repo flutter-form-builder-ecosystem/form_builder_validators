@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Значение должно быть положительным числом.",
   "notZeroNumberErrorText": "Значение не должно быть нулевым.",
   "ssnErrorText": "Значение должно быть действительным номером социального страхования.",
-  "zipCodeErrorText": "Значение должно быть допустимым почтовым индексом."
+  "zipCodeErrorText": "Значение должно быть допустимым почтовым индексом.",
+  "usernameErrorText": "Значение должно быть допустимым именем пользователя.",
+  "usernameCannotContainNumbersErrorText": "Имя пользователя не может содержать цифры.",
+  "usernameCannotContainUnderscoreErrorText": "Имя пользователя не может содержать символ подчеркивания.",
+  "usernameCannotContainSpecialCharErrorText": "Имя пользователя не может содержать специальные символы.",
+  "usernameCannotContainSpacesErrorText": "Имя пользователя не может содержать пробелы.",
+  "usernameCannotContainDotsErrorText": "Имя пользователя не может содержать точки.",
+  "usernameCannotContainDashesErrorText": "Имя пользователя не может содержать дефисы."
 }

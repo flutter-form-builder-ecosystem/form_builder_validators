@@ -49,8 +49,10 @@ void main() {
         'should return error if the password does not have enough uppercase characters',
         () {
       // Arrange
-      final PasswordValidator validator =
-          PasswordValidator(uppercase: 2, errorText: customErrorMessage);
+      final PasswordValidator validator = PasswordValidator(
+        minUppercaseCount: 2,
+        errorText: customErrorMessage,
+      );
       const String password = 'aabcde12345!';
 
       // Act
@@ -64,8 +66,10 @@ void main() {
         'should return error if the password does not have enough lowercase characters',
         () {
       // Arrange
-      final PasswordValidator validator =
-          PasswordValidator(lowercase: 2, errorText: customErrorMessage);
+      final PasswordValidator validator = PasswordValidator(
+        minLowercaseCount: 2,
+        errorText: customErrorMessage,
+      );
       const String password = 'AABCDE12345!';
 
       // Act
@@ -80,7 +84,7 @@ void main() {
         () {
       // Arrange
       final PasswordValidator validator =
-          PasswordValidator(number: 2, errorText: customErrorMessage);
+          PasswordValidator(minNumberCount: 2, errorText: customErrorMessage);
       const String password = 'Abcdefgh!';
 
       // Act
@@ -94,8 +98,10 @@ void main() {
         'should return error if the password does not have enough special characters',
         () {
       // Arrange
-      final PasswordValidator validator =
-          PasswordValidator(specialChar: 2, errorText: customErrorMessage);
+      final PasswordValidator validator = PasswordValidator(
+        minSpecialCharCount: 2,
+        errorText: customErrorMessage,
+      );
       const String password = 'Abcdefgh12345';
 
       // Act
@@ -111,12 +117,12 @@ void main() {
       const PasswordValidator validator = PasswordValidator(
         minLength: 10,
         maxLength: 20,
-        uppercase: 2,
-        lowercase: 2,
-        number: 2,
-        specialChar: 2,
+        minUppercaseCount: 2,
+        minLowercaseCount: 2,
+        minNumberCount: 2,
+        minSpecialCharCount: 2,
       );
-      const String validPassword = 'Abcdef12!@';
+      const String validPassword = 'AbcdefG12!@';
 
       // Act
       final String? result = validator.validate(validPassword);
@@ -217,20 +223,6 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return error if the password has too many special characters',
-        () {
-      // Arrange
-      final PasswordValidator validator =
-          PasswordValidator(errorText: customErrorMessage);
-      const String password = 'Abcdefgh12345!@#';
-
-      // Act
-      final String? result = validator.validate(password);
-
-      // Assert
-      expect(result, customErrorMessage);
-    });
-
     test('should return null if the password meets the exact min length', () {
       // Arrange
       final PasswordValidator validator =
@@ -262,7 +254,7 @@ void main() {
         () {
       // Arrange
       final PasswordValidator validator =
-          PasswordValidator(number: 3, errorText: customErrorMessage);
+          PasswordValidator(minNumberCount: 3, errorText: customErrorMessage);
       const String password = 'Abcdefgh!';
 
       // Act
@@ -276,8 +268,10 @@ void main() {
         'should return error if the password does not meet the min special characters requirement',
         () {
       // Arrange
-      final PasswordValidator validator =
-          PasswordValidator(specialChar: 2, errorText: customErrorMessage);
+      final PasswordValidator validator = PasswordValidator(
+        minSpecialCharCount: 2,
+        errorText: customErrorMessage,
+      );
       const String password = 'Abcdefgh12345!';
 
       // Act

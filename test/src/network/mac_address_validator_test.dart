@@ -11,7 +11,7 @@ void main() {
       // Arrange
       final MacAddressValidator validator = MacAddressValidator();
       const List<String> validMacAddresses = <String>[
-        '00:1A:2B:3C:4D:5E',
+        '00:1B:44:11:3A:B7',
         '00:1a:2b:3c:4d:5e',
         '00-1A-2B-3C-4D-5E',
         '00-1a-2b-3c-4d-5e',

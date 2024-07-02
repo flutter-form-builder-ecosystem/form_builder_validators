@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Η τιμή πρέπει να είναι θετικός αριθμός.",
   "notZeroNumberErrorText": "Η τιμή δεν πρέπει να είναι μηδέν.",
   "ssnErrorText": "Η τιμή πρέπει να είναι έγκυρος Αριθμός Κοινωνικής Ασφάλισης.",
-  "zipCodeErrorText": "Η τιμή πρέπει να είναι έγκυρος ταχυδρομικός κωδικός."
+  "zipCodeErrorText": "Η τιμή πρέπει να είναι έγκυρος ταχυδρομικός κωδικός.",
+  "usernameErrorText": "Η τιμή πρέπει να είναι ένα έγκυρο όνομα χρήστη.",
+  "usernameCannotContainNumbersErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει αριθμούς.",
+  "usernameCannotContainUnderscoreErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει κάτω παύλα.",
+  "usernameCannotContainSpecialCharErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει ειδικούς χαρακτήρες.",
+  "usernameCannotContainSpacesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει κενά.",
+  "usernameCannotContainDotsErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει τελείες.",
+  "usernameCannotContainDashesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει παύλες."
 }

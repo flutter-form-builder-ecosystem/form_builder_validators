@@ -1004,29 +1004,29 @@ class FormBuilderValidators {
   /// ## Parameters:
   /// - [minLength] The minimum length of the password (default: 8).
   /// - [maxLength] The maximum length of the password (default: 32).
-  /// - [uppercase] The minimum number of uppercase characters (default: 1).
-  /// - [lowercase] The minimum number of lowercase characters (default: 1).
-  /// - [number] The minimum number of numeric characters (default: 1).
-  /// - [specialChar] The minimum number of special characters (default: 1).
+  /// - [minUppercaseCount] The minimum number of uppercase characters (default: 1).
+  /// - [minLowercaseCount] The minimum number of lowercase characters (default: 1).
+  /// - [minNumberCount] The minimum number of numeric characters (default: 1).
+  /// - [minSpecialCharCount] The minimum number of special characters (default: 1).
   /// - [errorText] The error message when the password is invalid.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> password({
     int minLength = 8,
     int maxLength = 32,
-    int uppercase = 1,
-    int lowercase = 1,
-    int number = 1,
-    int specialChar = 1,
+    int minUppercaseCount = 1,
+    int minLowercaseCount = 1,
+    int minNumberCount = 1,
+    int minSpecialCharCount = 1,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       PasswordValidator(
         minLength: minLength,
         maxLength: maxLength,
-        uppercase: uppercase,
-        lowercase: lowercase,
-        number: number,
-        specialChar: specialChar,
+        minUppercaseCount: minUppercaseCount,
+        minLowercaseCount: minLowercaseCount,
+        minNumberCount: minNumberCount,
+        minSpecialCharCount: minSpecialCharCount,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;

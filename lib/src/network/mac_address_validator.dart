@@ -23,8 +23,9 @@ class MacAddressValidator extends BaseValidator<String> {
   ///
   /// Examples: 00:1A:2B:3C:4D:5E, 00:1A:2B:3C:4D:5E
   /// {@endtemplate}
-  static final RegExp _macAddress =
-      RegExp(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$');
+  static final RegExp _macAddress = RegExp(
+    r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$|^([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})$',
+  );
 
   @override
   String get translatedErrorText =>
@@ -32,22 +33,6 @@ class MacAddressValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return !isMACAddress(valueCandidate) ? errorText : null;
-  }
-
-  /// check if the string is a valid MAC address
-  bool isMACAddress(String value) {
-    final String splitChar = value.contains(':') ? ':' : '-';
-    final List<String> parts = value.split(splitChar);
-    if (parts.length != 6) {
-      return false;
-    }
-
-    for (final String part in parts) {
-      if (part.length != 2 || !regex.hasMatch(part)) {
-        return false;
-      }
-    }
-    return true;
+    return regex.hasMatch(valueCandidate) ? null : errorText;
   }
 }

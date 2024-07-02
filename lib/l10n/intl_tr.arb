@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Değer pozitif bir sayı olmalıdır.",
   "notZeroNumberErrorText": "Değer sıfır olmamalıdır.",
   "ssnErrorText": "Değer geçerli bir Sosyal Güvenlik Numarası olmalıdır.",
-  "zipCodeErrorText": "Değer geçerli bir Posta Kodu olmalıdır."
+  "zipCodeErrorText": "Değer geçerli bir Posta Kodu olmalıdır.",
+  "usernameErrorText": "Değer geçerli bir kullanıcı adı olmalıdır.",
+  "usernameCannotContainNumbersErrorText": "Kullanıcı adı sayı içeremez.",
+  "usernameCannotContainUnderscoreErrorText": "Kullanıcı adı alt çizgi içeremez.",
+  "usernameCannotContainSpecialCharErrorText": "Kullanıcı adı özel karakter içeremez.",
+  "usernameCannotContainSpacesErrorText": "Kullanıcı adı boşluk içeremez.",
+  "usernameCannotContainDotsErrorText": "Kullanıcı adı nokta içeremez.",
+  "usernameCannotContainDashesErrorText": "Kullanıcı adı tire içeremez."
 }

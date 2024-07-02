@@ -299,10 +299,10 @@ void main() {
           FormBuilderValidators.password(
         minLength: 4,
         maxLength: 16,
-        uppercase: 3,
-        lowercase: 3,
-        number: 3,
-        specialChar: 3,
+        minUppercaseCount: 3,
+        minLowercaseCount: 3,
+        minNumberCount: 3,
+        minSpecialCharCount: 3,
       );
       // Pass - meets all requirements
       expect(customValidator('PASsw0rd@123!!'), isNull);

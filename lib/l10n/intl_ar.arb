@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "يجب أن تكون القيمة عددًا موجبًا.",
   "notZeroNumberErrorText": "يجب ألا تكون القيمة صفراً.",
   "ssnErrorText": "يجب أن تكون القيمة رقم تأمين اجتماعي صحيح.",
-  "zipCodeErrorText": "يجب أن تكون القيمة رمز بريدي صحيح."
+  "zipCodeErrorText": "يجب أن تكون القيمة رمز بريدي صحيح.",
+  "usernameErrorText": "يجب أن تكون القيمة اسم مستخدم صالح.",
+  "usernameCannotContainNumbersErrorText": "لا يمكن لاسم المستخدم أن يحتوي على أرقام.",
+  "usernameCannotContainUnderscoreErrorText": "لا يمكن لاسم المستخدم أن يحتوي على شرطة سفلية.",
+  "usernameCannotContainSpecialCharErrorText": "لا يمكن لاسم المستخدم أن يحتوي على أحرف خاصة.",
+  "usernameCannotContainSpacesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على مسافات.",
+  "usernameCannotContainDotsErrorText": "لا يمكن لاسم المستخدم أن يحتوي على نقاط.",
+  "usernameCannotContainDashesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على شرطات."
 }

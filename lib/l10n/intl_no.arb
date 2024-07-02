@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Verdien må være et positivt tall.",
   "notZeroNumberErrorText": "Verdien kan ikke være null.",
   "ssnErrorText": "Verdien må være et gyldig personnummer.",
-  "zipCodeErrorText": "Verdien må være en gyldig postnummer."
+  "zipCodeErrorText": "Verdien må være en gyldig postnummer.",
+  "usernameErrorText": "Verdien må være et gyldig brukernavn.",
+  "usernameCannotContainNumbersErrorText": "Brukernavn kan ikke inneholde tall.",
+  "usernameCannotContainUnderscoreErrorText": "Brukernavn kan ikke inneholde understrek.",
+  "usernameCannotContainSpecialCharErrorText": "Brukernavn kan ikke inneholde spesialtegn.",
+  "usernameCannotContainSpacesErrorText": "Brukernavn kan ikke inneholde mellomrom.",
+  "usernameCannotContainDotsErrorText": "Brukernavn kan ikke inneholde prikker.",
+  "usernameCannotContainDashesErrorText": "Brukernavn kan ikke inneholde bindestreker."
 }

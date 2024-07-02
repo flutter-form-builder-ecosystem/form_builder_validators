@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "El valor ha de ser un nombre positiu.",
   "notZeroNumberErrorText": "El valor no pot ser zero.",
   "ssnErrorText": "El valor ha de ser un Número de Seguretat Social vàlid.",
-  "zipCodeErrorText": "El valor ha de ser un codi postal vàlid."
+  "zipCodeErrorText": "El valor ha de ser un codi postal vàlid.",
+  "usernameErrorText": "El valor ha de ser un nom d'usuari vàlid.",
+  "usernameCannotContainNumbersErrorText": "El nom d'usuari no pot contenir números.",
+  "usernameCannotContainUnderscoreErrorText": "El nom d'usuari no pot contenir subratllats.",
+  "usernameCannotContainSpecialCharErrorText": "El nom d'usuari no pot contenir caràcters especials.",
+  "usernameCannotContainSpacesErrorText": "El nom d'usuari no pot contenir espais.",
+  "usernameCannotContainDotsErrorText": "El nom d'usuari no pot contenir punts.",
+  "usernameCannotContainDashesErrorText": "El nom d'usuari no pot contenir guions."
 }

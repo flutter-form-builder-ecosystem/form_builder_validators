@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Vlera duhet të jetë një numër pozitiv.",
   "notZeroNumberErrorText": "Vlera nuk duhet të jetë zero.",
   "ssnErrorText": "Vlera duhet të jetë një numër Social Security i vlefshëm.",
-  "zipCodeErrorText": "Vlera duhet të jetë një kod ZIP i vlefshëm."
+  "zipCodeErrorText": "Vlera duhet të jetë një kod ZIP i vlefshëm.",
+  "usernameErrorText": "Vlera duhet të jetë një emër përdoruesi i vlefshëm.",
+  "usernameCannotContainNumbersErrorText": "Emri i përdoruesit nuk mund të përmbajë numra.",
+  "usernameCannotContainUnderscoreErrorText": "Emri i përdoruesit nuk mund të përmbajë vijë të poshtme.",
+  "usernameCannotContainSpecialCharErrorText": "Emri i përdoruesit nuk mund të përmbajë karaktere speciale.",
+  "usernameCannotContainSpacesErrorText": "Emri i përdoruesit nuk mund të përmbajë hapësira.",
+  "usernameCannotContainDotsErrorText": "Emri i përdoruesit nuk mund të përmbajë pika.",
+  "usernameCannotContainDashesErrorText": "Emri i përdoruesit nuk mund të përmbajë vija."
 }

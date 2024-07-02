@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Nilai harus menjadi nombor positif.",
   "notZeroNumberErrorText": "Nilai tidak boleh menjadi sifar.",
   "ssnErrorText": "Nilai harus menjadi Nombor Keselamatan Sosial yang sah.",
-  "zipCodeErrorText": "Nilai harus menjadi kod ZIP yang sah."
+  "zipCodeErrorText": "Nilai harus menjadi kod ZIP yang sah.",
+  "usernameErrorText": "Nilai mesti username yang sah.",
+  "usernameCannotContainNumbersErrorText": "Nama pengguna tidak boleh mengandungi nombor.",
+  "usernameCannotContainUnderscoreErrorText": "Nama pengguna tidak boleh mengandungi garis bawah.",
+  "usernameCannotContainSpecialCharErrorText": "Nama pengguna tidak boleh mengandungi aksara khas.",
+  "usernameCannotContainSpacesErrorText": "Nama pengguna tidak boleh mengandungi ruang.",
+  "usernameCannotContainDotsErrorText": "Nama pengguna tidak boleh mengandungi titik.",
+  "usernameCannotContainDashesErrorText": "Nama pengguna tidak boleh mengandungi sengkang."
 }

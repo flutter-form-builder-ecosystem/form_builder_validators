@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Väärtus peab olema positiivne number.",
   "notZeroNumberErrorText": "Väärtus ei tohi olla null.",
   "ssnErrorText": "Väärtus peab olema kehtiv sotsiaalkindlustuse number.",
-  "zipCodeErrorText": "Väärtus peab olema kehtiv postiindeks."
+  "zipCodeErrorText": "Väärtus peab olema kehtiv postiindeks.",
+  "usernameErrorText": "Väärtus peab olema kehtiv kasutajanimi.",
+  "usernameCannotContainNumbersErrorText": "Kasutajanimi ei tohi sisaldada numbreid.",
+  "usernameCannotContainUnderscoreErrorText": "Kasutajanimi ei tohi sisaldada alakriipse.",
+  "usernameCannotContainSpecialCharErrorText": "Kasutajanimi ei tohi sisaldada erimärke.",
+  "usernameCannotContainSpacesErrorText": "Kasutajanimi ei tohi sisaldada tühikuid.",
+  "usernameCannotContainDotsErrorText": "Kasutajanimi ei tohi sisaldada punkte.",
+  "usernameCannotContainDashesErrorText": "Kasutajanimi ei tohi sisaldada kriipse."
 }

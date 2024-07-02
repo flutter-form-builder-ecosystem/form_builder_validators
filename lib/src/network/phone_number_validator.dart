@@ -24,8 +24,9 @@ class PhoneNumberValidator extends BaseValidator<String> {
   ///
   /// Examples: +1-800-555-5555, 1234567890
   /// {@endtemplate}
-  static final RegExp _phoneNumber =
-      RegExp(r'^\+?(\d{1,4}[\s-])?(?!0+\s+,?$)\d{1,15}$');
+  static final RegExp _phoneNumber = RegExp(
+    r'^\+?(\d{1,4}[\s.-]?)?(\(?\d{1,4}\)?[\s.-]?)?(\d{1,4}[\s.-]?)?(\d{1,4}[\s.-]?)?(\d{1,9})$',
+  );
 
   @override
   String get translatedErrorText =>

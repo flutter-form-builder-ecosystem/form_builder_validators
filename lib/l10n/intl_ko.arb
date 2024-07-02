@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "값은 양수여야 합니다.",
   "notZeroNumberErrorText": "값은 0이 아니어야 합니다.",
   "ssnErrorText": "값은 유효한 주민등록번호여야 합니다.",
-  "zipCodeErrorText": "값은 유효한 우편번호여야 합니다."
+  "zipCodeErrorText": "값은 유효한 우편번호여야 합니다.",
+  "usernameErrorText": "값이 유효한 사용자 이름이어야 합니다.",
+  "usernameCannotContainNumbersErrorText": "사용자 이름에는 숫자가 포함될 수 없습니다.",
+  "usernameCannotContainUnderscoreErrorText": "사용자 이름에는 밑줄이 포함될 수 없습니다.",
+  "usernameCannotContainSpecialCharErrorText": "사용자 이름에는 특수 문자가 포함될 수 없습니다.",
+  "usernameCannotContainSpacesErrorText": "사용자 이름에는 공백이 포함될 수 없습니다.",
+  "usernameCannotContainDotsErrorText": "사용자 이름에는 점이 포함될 수 없습니다.",
+  "usernameCannotContainDashesErrorText": "사용자 이름에는 대시가 포함될 수 없습니다."
 }

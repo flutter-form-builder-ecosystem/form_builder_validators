@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "Vrijednost mora biti pozitivan broj.",
   "notZeroNumberErrorText": "Vrijednost ne smije biti nula.",
   "ssnErrorText": "Vrijednost mora biti validan broj Socijalnog osiguranja.",
-  "zipCodeErrorText": "Vrijednost mora biti validan poštanski broj."
+  "zipCodeErrorText": "Vrijednost mora biti validan poštanski broj.",
+  "usernameErrorText": "Vrijednost mora biti važeće korisničko ime.",
+  "usernameCannotContainNumbersErrorText": "Korisničko ime ne može sadržavati brojeve.",
+  "usernameCannotContainUnderscoreErrorText": "Korisničko ime ne može sadržavati donje crte.",
+  "usernameCannotContainSpecialCharErrorText": "Korisničko ime ne može sadržavati posebne znakove.",
+  "usernameCannotContainSpacesErrorText": "Korisničko ime ne može sadržavati razmake.",
+  "usernameCannotContainDotsErrorText": "Korisničko ime ne može sadržavati tačke.",
+  "usernameCannotContainDashesErrorText": "Korisničko ime ne može sadržavati crte."
 }

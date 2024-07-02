@@ -63,5 +63,12 @@
   "positiveNumberErrorText": "ຄ່າຕ້ອງເປັນເລກບວກ.",
   "notZeroNumberErrorText": "ຄ່າຕ້ອງບໍ່ເປັນສູນ.",
   "ssnErrorText": "ຄ່າຕ້ອງເປັນເລກປະຊາຊົນທີ່ຖືກຕ້ອງ.",
-  "zipCodeErrorText": "ຄ່າຕ້ອງເປັນລະຫັດໄປສະນີທີ່ຖືກຕ້ອງ."
+  "zipCodeErrorText": "ຄ່າຕ້ອງເປັນລະຫັດໄປສະນີທີ່ຖືກຕ້ອງ.",
+  "usernameErrorText": "ຄ່າຕ້ອງເປັນຊື່ຜູ້ໃຊ້ທີ່ຖືກຕ້ອງ.",
+  "usernameCannotContainNumbersErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີໂຕເລກ.",
+  "usernameCannotContainUnderscoreErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຂີດໃຕ້.",
+  "usernameCannotContainSpecialCharErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີອັກສອນພິເສດ.",
+  "usernameCannotContainSpacesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຊ່ອງຫວ່າງ.",
+  "usernameCannotContainDotsErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຈຸດ.",
+  "usernameCannotContainDashesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຂີດ."
 }
