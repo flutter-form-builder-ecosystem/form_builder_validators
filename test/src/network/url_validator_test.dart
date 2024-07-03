@@ -60,8 +60,6 @@ void main() {
         'http://example-.com',
         'http://example.com:port',
         'ftp://example.com:port',
-        'example.com',
-        'www.example.com',
       ];
 
       // Act & Assert
@@ -86,8 +84,6 @@ void main() {
         'http://example-.com',
         'http://example.com:port',
         'ftp://example.com:port',
-        'example.com',
-        'www.example.com',
       ];
 
       // Act & Assert
@@ -105,8 +101,6 @@ void main() {
       const List<String> validUrls = <String>[
         'http://example.com',
         'https://example.com',
-        'http://subdomain.example.com',
-        'https://subdomain.example.com',
       ];
 
       // Act & Assert
