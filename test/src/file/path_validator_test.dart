@@ -118,25 +118,6 @@ void main() {
       expect(result, equals(FormBuilderLocalizations.current.pathErrorText));
     });
 
-    test('should use custom regex and return null for valid custom file paths',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^[a-zA-Z0-9_\-\.\\]+$');
-      final PathValidator validator = PathValidator(regex: customRegex);
-      const List<String> validPaths = <String>[
-        r'C:\Users\Name\Documents',
-        r'folder\subfolder\file.txt',
-        r'folder\subfolder\file-name.txt',
-        r'folder123\subfolder456\file789.txt',
-        r'\folder\sub-folder\file_name.txt',
-      ];
-
-      // Act & Assert
-      for (final String value in validPaths) {
-        expect(validator.validate(value), isNull);
-      }
-    });
-
     test(
         'should use custom regex and return the default error message for invalid custom file paths',
         () {

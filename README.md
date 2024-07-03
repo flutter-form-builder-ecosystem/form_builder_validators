@@ -148,7 +148,6 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 - `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
 - `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
-- `FormBuilderValidator.not()` - Negates the current validator.
 - `FormBuilderValidator.when()` - Adds a condition to apply the validator only if the condition is met.
 - `FormBuilderValidator.unless()` - Adds a condition to apply the validator only if the condition is not met.
 - `FormBuilderValidator.transform()` - Transforms the value before applying the validator.

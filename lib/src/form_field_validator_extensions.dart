@@ -12,11 +12,6 @@ extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
     return FormBuilderValidators.or(<FormFieldValidator<T>>[this, other]);
   }
 
-  /// Negates the current validator.
-  FormFieldValidator<T> not() {
-    return FormBuilderValidators.notEqual(this);
-  }
-
   /// Adds a condition to apply the validator only if the condition is met.
   FormFieldValidator<T> when(bool Function(T? value) condition) {
     return FormBuilderValidators.conditional(condition, this);
