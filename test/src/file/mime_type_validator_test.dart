@@ -35,7 +35,7 @@ void main() {
         () {
       // Arrange
       final MimeTypeValidator validator = MimeTypeValidator();
-      const String value = 'invalid/mimetype';
+      const String value = 'invalid*235/mimetype';
 
       // Act
       final String? result = validator.validate(value);
@@ -52,7 +52,7 @@ void main() {
       // Arrange
       final MimeTypeValidator validator =
           MimeTypeValidator(errorText: customErrorMessage);
-      const String value = 'invalid/mimetype';
+      const String value = 'invalid/test/mimetype';
 
       // Act
       final String? result = validator.validate(value);
