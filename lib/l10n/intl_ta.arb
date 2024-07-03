@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "பயனர் பெயரில் சிறப்பு எழுத்துக்கள் இருக்கக் கூடாது.",
   "usernameCannotContainSpacesErrorText": "பயனர் பெயரில் இடைவெளிகள் இருக்கக் கூடாது.",
   "usernameCannotContainDotsErrorText": "பயனர் பெயரில் புள்ளிகள் இருக்கக் கூடாது.",
-  "usernameCannotContainDashesErrorText": "பயனர் பெயரில் கோடுகள் இருக்கக் கூடாது."
+  "usernameCannotContainDashesErrorText": "பயனர் பெயரில் கோடுகள் இருக்கக் கூடாது.",
+  "invalidMimeTypeErrorText": "செல்லுபடியாகாத மைம் வகை."
 }

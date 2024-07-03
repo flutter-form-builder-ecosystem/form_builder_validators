@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានតួអក្សរពិសេសបានឡើយ។",
   "usernameCannotContainSpacesErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានចន្លោះបានឡើយ។",
   "usernameCannotContainDotsErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានចំណុចបានឡើយ។",
-  "usernameCannotContainDashesErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានសញ្ញានិកបានឡើយ។"
+  "usernameCannotContainDashesErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានសញ្ញានិកបានឡើយ។",
+  "invalidMimeTypeErrorText": "ប្រភេទ MIME មិនត្រឹមត្រូវ។"
 }

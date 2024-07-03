@@ -29,7 +29,8 @@ void main() {
 
     test('FormFieldValidatorExtensions.or', () {
       // Arrange
-      final FormFieldValidator<String> validator = FormBuilderValidators.or([
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.or(<FormFieldValidator<String>>[
         FormBuilderValidators.endsWith('world'),
         FormBuilderValidators.startsWith('Hello'),
       ]);

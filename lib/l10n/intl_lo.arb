@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີອັກສອນພິເສດ.",
   "usernameCannotContainSpacesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຊ່ອງຫວ່າງ.",
   "usernameCannotContainDotsErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຈຸດ.",
-  "usernameCannotContainDashesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຂີດ."
+  "usernameCannotContainDashesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຂີດ.",
+  "invalidMimeTypeErrorText": "ປະເພດໄຟລທີ່ບໍ່ຖືກຕ້ອງ."
 }

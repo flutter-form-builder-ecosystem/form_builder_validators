@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Der Benutzername darf keine Sonderzeichen enthalten.",
   "usernameCannotContainSpacesErrorText": "Der Benutzername darf keine Leerzeichen enthalten.",
   "usernameCannotContainDotsErrorText": "Der Benutzername darf keine Punkte enthalten.",
-  "usernameCannotContainDashesErrorText": "Der Benutzername darf keine Bindestriche enthalten."
+  "usernameCannotContainDashesErrorText": "Der Benutzername darf keine Bindestriche enthalten.",
+  "invalidMimeTypeErrorText": "Ungültiger MIME-Typ."
 }

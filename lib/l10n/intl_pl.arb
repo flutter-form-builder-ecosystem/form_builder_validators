@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Nazwa użytkownika nie może zawierać znaków specjalnych.",
   "usernameCannotContainSpacesErrorText": "Nazwa użytkownika nie może zawierać spacji.",
   "usernameCannotContainDotsErrorText": "Nazwa użytkownika nie może zawierać kropek.",
-  "usernameCannotContainDashesErrorText": "Nazwa użytkownika nie może zawierać myślników."
+  "usernameCannotContainDashesErrorText": "Nazwa użytkownika nie może zawierać myślników.",
+  "invalidMimeTypeErrorText": "Nieprawidłowy typ MIME."
 }

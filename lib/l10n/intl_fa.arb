@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "نام کاربری نمی‌تواند شامل کاراکترهای خاص باشد.",
   "usernameCannotContainSpacesErrorText": "نام کاربری نمی‌تواند شامل فاصله باشد.",
   "usernameCannotContainDotsErrorText": "نام کاربری نمی‌تواند شامل نقطه باشد.",
-  "usernameCannotContainDashesErrorText": "نام کاربری نمی‌تواند شامل خط پیوند باشد."
+  "usernameCannotContainDashesErrorText": "نام کاربری نمی‌تواند شامل خط پیوند باشد.",
+  "invalidMimeTypeErrorText": "نوع MIME نامعتبر است."
 }

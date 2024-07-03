@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "لا يمكن لاسم المستخدم أن يحتوي على أحرف خاصة.",
   "usernameCannotContainSpacesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على مسافات.",
   "usernameCannotContainDotsErrorText": "لا يمكن لاسم المستخدم أن يحتوي على نقاط.",
-  "usernameCannotContainDashesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على شرطات."
+  "usernameCannotContainDashesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على شرطات.",
+  "invalidMimeTypeErrorText": "نوع الميم غير صالح"
 }

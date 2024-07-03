@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "El nombre de usuario no puede contener caracteres especiales.",
   "usernameCannotContainSpacesErrorText": "El nombre de usuario no puede contener espacios.",
   "usernameCannotContainDotsErrorText": "El nombre de usuario no puede contener puntos.",
-  "usernameCannotContainDashesErrorText": "El nombre de usuario no puede contener guiones."
+  "usernameCannotContainDashesErrorText": "El nombre de usuario no puede contener guiones.",
+  "invalidMimeTypeErrorText": "Tipo MIME inválido."
 }

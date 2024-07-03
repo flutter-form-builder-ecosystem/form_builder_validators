@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Numele de utilizator nu poate conţine caractere speciale.",
   "usernameCannotContainSpacesErrorText": "Numele de utilizator nu poate conţine spaţii.",
   "usernameCannotContainDotsErrorText": "Numele de utilizator nu poate conţine puncte.",
-  "usernameCannotContainDashesErrorText": "Numele de utilizator nu poate conţine cratime."
+  "usernameCannotContainDashesErrorText": "Numele de utilizator nu poate conţine cratime.",
+  "invalidMimeTypeErrorText": "Tip mime invalid."
 }

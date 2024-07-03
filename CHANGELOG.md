@@ -63,6 +63,7 @@
 - Add positive number
 - Add not zero number
 - Add zip code
+- Add MIME type
 
 ## 10.0.1
 

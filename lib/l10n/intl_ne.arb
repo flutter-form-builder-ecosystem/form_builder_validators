@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "प्रयोगकर्ता नाममा विशेष वर्णहरू समावेश गर्नु हुँदैन।",
   "usernameCannotContainSpacesErrorText": "प्रयोगकर्ता नाममा खाली ठाउँहरू समावेश गर्नु हुँदैन।",
   "usernameCannotContainDotsErrorText": "प्रयोगकर्ता नाममा डटहरू समावेश गर्नु हुँदैन।",
-  "usernameCannotContainDashesErrorText": "प्रयोगकर्ता नाममा ड्यासहरू समावेश गर्नु हुँदैन।"
+  "usernameCannotContainDashesErrorText": "प्रयोगकर्ता नाममा ड्यासहरू समावेश गर्नु हुँदैन।",
+  "invalidMimeTypeErrorText": "अवैध माइम प्रकार।"
 }

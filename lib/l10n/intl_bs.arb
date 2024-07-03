@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Korisničko ime ne može sadržavati posebne znakove.",
   "usernameCannotContainSpacesErrorText": "Korisničko ime ne može sadržavati razmake.",
   "usernameCannotContainDotsErrorText": "Korisničko ime ne može sadržavati tačke.",
-  "usernameCannotContainDashesErrorText": "Korisničko ime ne može sadržavati crte."
+  "usernameCannotContainDashesErrorText": "Korisničko ime ne može sadržavati crte.",
+  "invalidMimeTypeErrorText": "Nevažeći MIME tip."
 }

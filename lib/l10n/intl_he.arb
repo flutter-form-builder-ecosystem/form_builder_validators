@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "שם המשתמש לא יכול להכיל תווים מיוחדים.",
   "usernameCannotContainSpacesErrorText": "שם המשתמש לא יכול להכיל רווחים.",
   "usernameCannotContainDotsErrorText": "שם המשתמש לא יכול להכיל נקודות.",
-  "usernameCannotContainDashesErrorText": "שם המשתמש לא יכול להכיל מקפים."
+  "usernameCannotContainDashesErrorText": "שם המשתמש לא יכול להכיל מקפים.",
+  "invalidMimeTypeErrorText": "סוג MIME לא חוקי."
 }

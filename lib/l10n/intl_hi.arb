@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "उपयोगकर्ता नाम में विशेष वर्ण नहीं हो सकते।",
   "usernameCannotContainSpacesErrorText": "उपयोगकर्ता नाम में रिक्त स्थान नहीं हो सकते।",
   "usernameCannotContainDotsErrorText": "उपयोगकर्ता नाम में बिंदु नहीं हो सकते।",
-  "usernameCannotContainDashesErrorText": "उपयोगकर्ता नाम में डैश नहीं हो सकते।"
+  "usernameCannotContainDashesErrorText": "उपयोगकर्ता नाम में डैश नहीं हो सकते।",
+  "invalidMimeTypeErrorText": "अमान्य MIME प्रकार।"
 }

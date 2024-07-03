@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "사용자 이름에는 특수 문자가 포함될 수 없습니다.",
   "usernameCannotContainSpacesErrorText": "사용자 이름에는 공백이 포함될 수 없습니다.",
   "usernameCannotContainDotsErrorText": "사용자 이름에는 점이 포함될 수 없습니다.",
-  "usernameCannotContainDashesErrorText": "사용자 이름에는 대시가 포함될 수 없습니다."
+  "usernameCannotContainDashesErrorText": "사용자 이름에는 대시가 포함될 수 없습니다.",
+  "invalidMimeTypeErrorText": "잘못된 MIME 유형입니다."
 }

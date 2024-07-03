@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Kasutajanimi ei tohi sisaldada erimärke.",
   "usernameCannotContainSpacesErrorText": "Kasutajanimi ei tohi sisaldada tühikuid.",
   "usernameCannotContainDotsErrorText": "Kasutajanimi ei tohi sisaldada punkte.",
-  "usernameCannotContainDashesErrorText": "Kasutajanimi ei tohi sisaldada kriipse."
+  "usernameCannotContainDashesErrorText": "Kasutajanimi ei tohi sisaldada kriipse.",
+  "invalidMimeTypeErrorText": "Vigane MIME tüüp."
 }

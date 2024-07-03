@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Gebruikersnaam mag geen speciale tekens bevatten.",
   "usernameCannotContainSpacesErrorText": "Gebruikersnaam mag geen spaties bevatten.",
   "usernameCannotContainDotsErrorText": "Gebruikersnaam mag geen punten bevatten.",
-  "usernameCannotContainDashesErrorText": "Gebruikersnaam mag geen streepjes bevatten."
+  "usernameCannotContainDashesErrorText": "Gebruikersnaam mag geen streepjes bevatten.",
+  "invalidMimeTypeErrorText": "Ongeldig MIME-type."
 }

@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Uživatelské jméno nesmí obsahovat speciální znaky.",
   "usernameCannotContainSpacesErrorText": "Uživatelské jméno nesmí obsahovat mezery.",
   "usernameCannotContainDotsErrorText": "Uživatelské jméno nesmí obsahovat tečky.",
-  "usernameCannotContainDashesErrorText": "Uživatelské jméno nesmí obsahovat pomlčky."
+  "usernameCannotContainDashesErrorText": "Uživatelské jméno nesmí obsahovat pomlčky.",
+  "invalidMimeTypeErrorText": "Neplatný typ MIME."
 }

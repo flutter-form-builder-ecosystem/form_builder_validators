@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "A felhasználónév nem tartalmazhat speciális karaktereket.",
   "usernameCannotContainSpacesErrorText": "A felhasználónév nem tartalmazhat szóközöket.",
   "usernameCannotContainDotsErrorText": "A felhasználónév nem tartalmazhat pontokat.",
-  "usernameCannotContainDashesErrorText": "A felhasználónév nem tartalmazhat kötőjeleket."
+  "usernameCannotContainDashesErrorText": "A felhasználónév nem tartalmazhat kötőjeleket.",
+  "invalidMimeTypeErrorText": "Érvénytelen MIME-típus."
 }

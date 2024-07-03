@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Emri i përdoruesit nuk mund të përmbajë karaktere speciale.",
   "usernameCannotContainSpacesErrorText": "Emri i përdoruesit nuk mund të përmbajë hapësira.",
   "usernameCannotContainDotsErrorText": "Emri i përdoruesit nuk mund të përmbajë pika.",
-  "usernameCannotContainDashesErrorText": "Emri i përdoruesit nuk mund të përmbajë vija."
+  "usernameCannotContainDashesErrorText": "Emri i përdoruesit nuk mund të përmbajë vija.",
+  "invalidMimeTypeErrorText": "Lloji mime i pavlefshëm."
 }

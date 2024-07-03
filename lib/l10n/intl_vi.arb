@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Tên người dùng không được chứa ký tự đặc biệt.",
   "usernameCannotContainSpacesErrorText": "Tên người dùng không được chứa khoảng trắng.",
   "usernameCannotContainDotsErrorText": "Tên người dùng không được chứa dấu chấm.",
-  "usernameCannotContainDashesErrorText": "Tên người dùng không được chứa dấu gạch ngang."
+  "usernameCannotContainDashesErrorText": "Tên người dùng không được chứa dấu gạch ngang.",
+  "invalidMimeTypeErrorText": "Loại mime không hợp lệ."
 }

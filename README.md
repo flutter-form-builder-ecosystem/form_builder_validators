@@ -95,6 +95,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
 - `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
 - `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
+- `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
 - `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
 
 ### Finance validators

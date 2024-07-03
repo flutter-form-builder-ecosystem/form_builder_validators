@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Хэрэглэгчийн нэр тусгай тэмдэгт агуулж болохгүй.",
   "usernameCannotContainSpacesErrorText": "Хэрэглэгчийн нэр хоосон зай агуулж болохгүй.",
   "usernameCannotContainDotsErrorText": "Хэрэглэгчийн нэр цэг агуулж болохгүй.",
-  "usernameCannotContainDashesErrorText": "Хэрэглэгчийн нэр зураас агуулж болохгүй."
+  "usernameCannotContainDashesErrorText": "Хэрэглэгчийн нэр зураас агуулж болохгүй.",
+  "invalidMimeTypeErrorText": "Буруу mime төрөл."
 }

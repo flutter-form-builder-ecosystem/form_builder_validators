@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Användarnamnet får inte innehålla specialtecken.",
   "usernameCannotContainSpacesErrorText": "Användarnamnet får inte innehålla mellanslag.",
   "usernameCannotContainDotsErrorText": "Användarnamnet får inte innehålla punkter.",
-  "usernameCannotContainDashesErrorText": "Användarnamnet får inte innehålla bindestreck."
+  "usernameCannotContainDashesErrorText": "Användarnamnet får inte innehålla bindestreck.",
+  "invalidMimeTypeErrorText": "Ogiltig MIME-typ."
 }

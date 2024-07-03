@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Kullanıcı adı özel karakter içeremez.",
   "usernameCannotContainSpacesErrorText": "Kullanıcı adı boşluk içeremez.",
   "usernameCannotContainDotsErrorText": "Kullanıcı adı nokta içeremez.",
-  "usernameCannotContainDashesErrorText": "Kullanıcı adı tire içeremez."
+  "usernameCannotContainDashesErrorText": "Kullanıcı adı tire içeremez.",
+  "invalidMimeTypeErrorText": "Geçersiz mime türü."
 }

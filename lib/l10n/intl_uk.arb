@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Ім'я користувача не може містити спеціальні символи.",
   "usernameCannotContainSpacesErrorText": "Ім'я користувача не може містити пробіли.",
   "usernameCannotContainDotsErrorText": "Ім'я користувача не може містити крапки.",
-  "usernameCannotContainDashesErrorText": "Ім'я користувача не може містити дефіси."
+  "usernameCannotContainDashesErrorText": "Ім'я користувача не може містити дефіси.",
+  "invalidMimeTypeErrorText": "Недійсний MIME тип."
 }

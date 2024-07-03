@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "用户名不能包含特殊字符。",
   "usernameCannotContainSpacesErrorText": "用户名不能包含空格。",
   "usernameCannotContainDotsErrorText": "用户名不能包含点。",
-  "usernameCannotContainDashesErrorText": "用户名不能包含破折号。"
+  "usernameCannotContainDashesErrorText": "用户名不能包含破折号。",
+  "invalidMimeTypeErrorText": "无效的 MIME 类型。"
 }

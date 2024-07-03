@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Nama pengguna tidak boleh mengandung karakter khusus.",
   "usernameCannotContainSpacesErrorText": "Nama pengguna tidak boleh mengandung spasi.",
   "usernameCannotContainDotsErrorText": "Nama pengguna tidak boleh mengandung titik.",
-  "usernameCannotContainDashesErrorText": "Nama pengguna tidak boleh mengandung tanda hubung."
+  "usernameCannotContainDashesErrorText": "Nama pengguna tidak boleh mengandung tanda hubung.",
+  "invalidMimeTypeErrorText": "Tipe mime tidak valid."
 }

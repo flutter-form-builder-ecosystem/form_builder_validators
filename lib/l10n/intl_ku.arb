@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ناوی بەکارهێنەر نابێت پیت و نووسە تایبەتی بگرێت.",
   "usernameCannotContainSpacesErrorText": "ناوی بەکارهێنەر نابێت بەش ب بەش بێت.",
   "usernameCannotContainDotsErrorText": "ناوی بەکارهێنەر نابێت نوکتەکان ب گرێت.",
-  "usernameCannotContainDashesErrorText": "ناوی بەکارهێنەر نابێت تیرە خال ب گرێت."
+  "usernameCannotContainDashesErrorText": "ناوی بەکارهێنەر نابێت تیرە خال ب گرێت.",
+  "invalidMimeTypeErrorText": "Mînka têkeve nîne."
 }

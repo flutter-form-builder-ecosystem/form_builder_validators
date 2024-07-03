@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ユーザー名に特殊文字を含めることはできません。",
   "usernameCannotContainSpacesErrorText": "ユーザー名にスペースを含めることはできません。",
   "usernameCannotContainDotsErrorText": "ユーザー名にドットを含めることはできません。",
-  "usernameCannotContainDashesErrorText": "ユーザー名にダッシュを含めることはできません。"
+  "usernameCannotContainDashesErrorText": "ユーザー名にダッシュを含めることはできません。",
+  "invalidMimeTypeErrorText": "無効な MIME タイプです。"
 }

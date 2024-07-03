@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Brukernavn kan ikke inneholde spesialtegn.",
   "usernameCannotContainSpacesErrorText": "Brukernavn kan ikke inneholde mellomrom.",
   "usernameCannotContainDotsErrorText": "Brukernavn kan ikke inneholde prikker.",
-  "usernameCannotContainDashesErrorText": "Brukernavn kan ikke inneholde bindestreker."
+  "usernameCannotContainDashesErrorText": "Brukernavn kan ikke inneholde bindestreker.",
+  "invalidMimeTypeErrorText": "Ugyldig mime-type."
 }

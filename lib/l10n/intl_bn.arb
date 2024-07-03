@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ব্যবহারকারীর নামের মধ্যে বিশেষ অক্ষর থাকতে পারবে না।",
   "usernameCannotContainSpacesErrorText": "ব্যবহারকারীর নামের মধ্যে স্পেস থাকতে পারবে না।",
   "usernameCannotContainDotsErrorText": "ব্যবহারকারীর নামের মধ্যে বিন্দু থাকতে পারবে না।",
-  "usernameCannotContainDashesErrorText": "ব্যবহারকারীর নামের মধ্যে ড্যাশ থাকতে পারবে না।"
+  "usernameCannotContainDashesErrorText": "ব্যবহারকারীর নামের মধ্যে ড্যাশ থাকতে পারবে না।",
+  "invalidMimeTypeErrorText": "অবৈধ মাইম টাইপ।"
 }

@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Uporabniško ime ne sme vsebovati posebnih znakov.",
   "usernameCannotContainSpacesErrorText": "Uporabniško ime ne sme vsebovati presledkov.",
   "usernameCannotContainDotsErrorText": "Uporabniško ime ne sme vsebovati pik.",
-  "usernameCannotContainDashesErrorText": "Uporabniško ime ne sme vsebovati vezajev."
+  "usernameCannotContainDashesErrorText": "Uporabniško ime ne sme vsebovati vezajev.",
+  "invalidMimeTypeErrorText": "Neveljavna vrsta MIME."
 }

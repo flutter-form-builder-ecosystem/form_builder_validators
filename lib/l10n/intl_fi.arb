@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Käyttäjänimi ei saa sisältää erikoismerkkejä.",
   "usernameCannotContainSpacesErrorText": "Käyttäjänimi ei saa sisältää välilyöntejä.",
   "usernameCannotContainDotsErrorText": "Käyttäjänimi ei saa sisältää pisteitä.",
-  "usernameCannotContainDashesErrorText": "Käyttäjänimi ei saa sisältää viivoja."
+  "usernameCannotContainDashesErrorText": "Käyttäjänimi ei saa sisältää viivoja.",
+  "invalidMimeTypeErrorText": "Virheellinen MIME-tyyppi."
 }

@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Потребителското име не може да съдържа специални символи.",
   "usernameCannotContainSpacesErrorText": "Потребителското име не може да съдържа интервали.",
   "usernameCannotContainDotsErrorText": "Потребителското име не може да съдържа точки.",
-  "usernameCannotContainDashesErrorText": "Потребителското име не може да съдържа тирета."
+  "usernameCannotContainDashesErrorText": "Потребителското име не може да съдържа тирета.",
+  "invalidMimeTypeErrorText": "Невалиден MIME тип."
 }

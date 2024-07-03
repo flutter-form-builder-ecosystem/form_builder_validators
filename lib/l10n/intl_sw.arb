@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Jina la mtumiaji haliwezi kuwa na herufi maalum.",
   "usernameCannotContainSpacesErrorText": "Jina la mtumiaji haliwezi kuwa na nafasi.",
   "usernameCannotContainDotsErrorText": "Jina la mtumiaji haliwezi kuwa na nukta.",
-  "usernameCannotContainDashesErrorText": "Jina la mtumiaji haliwezi kuwa na mistari ya usawa."
+  "usernameCannotContainDashesErrorText": "Jina la mtumiaji haliwezi kuwa na mistari ya usawa.",
+  "invalidMimeTypeErrorText": "Aina batili ya mime."
 }

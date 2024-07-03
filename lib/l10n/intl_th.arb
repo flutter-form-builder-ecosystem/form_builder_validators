@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "ชื่อผู้ใช้ต้องไม่มีอักขระพิเศษ",
   "usernameCannotContainSpacesErrorText": "ชื่อผู้ใช้ต้องไม่มีช่องว่าง",
   "usernameCannotContainDotsErrorText": "ชื่อผู้ใช้ต้องไม่มีจุด",
-  "usernameCannotContainDashesErrorText": "ชื่อผู้ใช้ต้องไม่มีขีดกลาง"
+  "usernameCannotContainDashesErrorText": "ชื่อผู้ใช้ต้องไม่มีขีดกลาง",
+  "invalidMimeTypeErrorText": "ประเภท mime ไม่ถูกต้อง"
 }

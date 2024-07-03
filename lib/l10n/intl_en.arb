@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Username cannot contain special characters.",
   "usernameCannotContainSpacesErrorText": "Username cannot contain spaces.",
   "usernameCannotContainDotsErrorText": "Username cannot contain dots.",
-  "usernameCannotContainDashesErrorText": "Username cannot contain dashes."
+  "usernameCannotContainDashesErrorText": "Username cannot contain dashes.",
+  "invalidMimeTypeErrorText": "Invalid mime type."
 }

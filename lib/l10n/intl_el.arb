@@ -70,5 +70,6 @@
   "usernameCannotContainSpecialCharErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει ειδικούς χαρακτήρες.",
   "usernameCannotContainSpacesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει κενά.",
   "usernameCannotContainDotsErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει τελείες.",
-  "usernameCannotContainDashesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει παύλες."
+  "usernameCannotContainDashesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει παύλες.",
+  "invalidMimeTypeErrorText": "Μη έγκυρος τύπος MIME."
 }
