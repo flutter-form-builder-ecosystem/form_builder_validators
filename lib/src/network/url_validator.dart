@@ -99,34 +99,34 @@ class UrlValidator extends BaseValidator<String> {
     } else if (requireProtocol == true) {
       return false;
     }
-    str = split.join('://');
+    final String str1 = split.join('://');
 
     // check hash
-    split = str.split('#');
-    str = shift(split);
+    split = str1.split('#');
+    final String str2 = shift(split);
     hash = split.join('#');
     if (hash.isNotEmpty && RegExp(r'\s').hasMatch(hash)) {
       return false;
     }
 
     // check query params
-    split = str.split('?');
-    str = shift(split);
+    split = str2.split('?');
+    final String str3 = shift(split);
     query = split.join('?');
     if (query.isNotEmpty && RegExp(r'\s').hasMatch(query)) {
       return false;
     }
 
     // check path
-    split = str.split('/');
-    str = shift(split);
+    split = str3.split('/');
+    final String str4 = shift(split);
     path = split.join('/');
     if (path.isNotEmpty && RegExp(r'\s').hasMatch(path)) {
       return false;
     }
 
     // check auth type urls
-    split = str.split('@');
+    split = str4.split('@');
     if (split.length > 1) {
       auth = shift(split);
       if (auth?.contains(':') ?? false) {
