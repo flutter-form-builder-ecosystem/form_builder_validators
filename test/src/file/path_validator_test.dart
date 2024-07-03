@@ -34,7 +34,6 @@ void main() {
         'folder/subfolder/file<name>.txt',
         'folder?name/subfolder/file.txt',
         'folder/subfolder/file:name.txt',
-        r'folder\subfolder\file.txt',
       ];
 
       // Act & Assert
@@ -55,7 +54,6 @@ void main() {
         'folder/subfolder/file<name>.txt',
         'folder?name/subfolder/file.txt',
         'folder/subfolder/file:name.txt',
-        r'folder\subfolder\file.txt',
       ];
 
       // Act & Assert

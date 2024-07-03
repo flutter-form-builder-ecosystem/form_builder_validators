@@ -194,18 +194,18 @@ class UrlValidator extends BaseValidator<String> {
       }
     }
 
+    final String partPattern = allowUnderscores
+        ? r'^[a-z\u00a1-\uffff0-9-_]+$'
+        : r'^[a-z\u00a1-\uffff0-9-]+$';
+
     for (final String part in parts) {
-      if (allowUnderscores) {
-        if (part.contains('__')) {
-          return false;
-        }
-      }
-      if (!RegExp(r'^[a-z\\u00a1-\\uffff0-9-]+$').hasMatch(part)) {
+      if (!RegExp(partPattern).hasMatch(part)) {
         return false;
       }
       if (part[0] == '-' ||
           part[part.length - 1] == '-' ||
-          part.contains('---')) {
+          part.contains('---') ||
+          (allowUnderscores && part.contains('__'))) {
         return false;
       }
     }
