@@ -794,6 +794,24 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid MIME type.
+  /// The MIME type should be in the format `type/subtype`.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the file name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> mimeType({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MimeTypeValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that applies another validator conditionally.
   ///
   /// ## Parameters:
