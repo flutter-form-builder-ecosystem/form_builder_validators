@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει κενά.",
   "usernameCannotContainDotsErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει τελείες.",
   "usernameCannotContainDashesErrorText": "Το όνομα χρήστη δεν μπορεί να περιέχει παύλες.",
-  "invalidMimeTypeErrorText": "Μη έγκυρος τύπος MIME."
+  "invalidMimeTypeErrorText": "Μη έγκυρος τύπος MIME.",
+  "timezoneErrorText": "Η τιμή πρέπει να είναι μια έγκυρη ζώνη ώρας.",
+  "cityErrorText": "Η τιμή πρέπει να είναι ένα έγκυρο όνομα πόλης.",
+  "countryErrorText": "Η τιμή πρέπει να είναι μια έγκυρη χώρα.",
+  "stateErrorText": "Η τιμή πρέπει να είναι μια έγκυρη πολιτεία.",
+  "streetErrorText": "Η τιμή πρέπει να είναι ένα έγκυρο όνομα οδού.",
+  "firstNameErrorText": "Η τιμή πρέπει να είναι ένα έγκυρο όνομα.",
+  "lastNameErrorText": "Η τιμή πρέπει να είναι ένα έγκυρο επώνυμο.",
+  "passportNumberErrorText": "Η τιμή πρέπει να είναι ένας έγκυρος αριθμός διαβατηρίου.",
+  "primeNumberErrorText": "Η τιμή πρέπει να είναι ένας πρώτος αριθμός.",
+  "dunsErrorText": "Η τιμή πρέπει να είναι ένας έγκυρος αριθμός DUNS.",
+  "licensePlateErrorText": "Η τιμή πρέπει να είναι μια έγκυρη πινακίδα κυκλοφορίας.",
+  "vinErrorText": "Η τιμή πρέπει να είναι ένας έγκυρος αριθμός VIN.",
+  "languageCodeErrorText": "Η τιμή πρέπει να είναι ένας έγκυρος κωδικός γλώσσας."
 }

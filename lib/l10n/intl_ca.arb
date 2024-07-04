@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "El nom d'usuari no pot contenir espais.",
   "usernameCannotContainDotsErrorText": "El nom d'usuari no pot contenir punts.",
   "usernameCannotContainDashesErrorText": "El nom d'usuari no pot contenir guions.",
-  "invalidMimeTypeErrorText": "Tipus MIME no vàlid."
+  "invalidMimeTypeErrorText": "Tipus MIME no vàlid.",
+  "timezoneErrorText": "El valor ha de ser una zona horària vàlida.",
+  "cityErrorText": "El valor ha de ser un nom de ciutat vàlid.",
+  "countryErrorText": "El valor ha de ser un país vàlid.",
+  "stateErrorText": "El valor ha de ser un estat vàlid.",
+  "streetErrorText": "El valor ha de ser un nom de carrer vàlid.",
+  "firstNameErrorText": "El valor ha de ser un nom de pila vàlid.",
+  "lastNameErrorText": "El valor ha de ser un cognom vàlid.",
+  "passportNumberErrorText": "El valor ha de ser un número de passaport vàlid.",
+  "primeNumberErrorText": "El valor ha de ser un nombre primer.",
+  "dunsErrorText": "El valor ha de ser un número DUNS vàlid.",
+  "licensePlateErrorText": "El valor ha de ser una matrícula vàlida.",
+  "vinErrorText": "El valor ha de ser un VIN vàlid.",
+  "languageCodeErrorText": "El valor ha de ser un codi de llengua vàlid."
 }

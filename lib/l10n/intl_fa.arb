@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "نام کاربری نمی‌تواند شامل فاصله باشد.",
   "usernameCannotContainDotsErrorText": "نام کاربری نمی‌تواند شامل نقطه باشد.",
   "usernameCannotContainDashesErrorText": "نام کاربری نمی‌تواند شامل خط پیوند باشد.",
-  "invalidMimeTypeErrorText": "نوع MIME نامعتبر است."
+  "invalidMimeTypeErrorText": "نوع MIME نامعتبر است.",
+  "timezoneErrorText": "مقدار باید یک منطقه زمانی معتبر باشد.",
+  "cityErrorText": "مقدار باید یک نام شهر معتبر باشد.",
+  "countryErrorText": "مقدار باید یک کشور معتبر باشد.",
+  "stateErrorText": "مقدار باید یک ایالت معتبر باشد.",
+  "streetErrorText": "مقدار باید یک نام خیابان معتبر باشد.",
+  "firstNameErrorText": "مقدار باید یک نام معتبر باشد.",
+  "lastNameErrorText": "مقدار باید یک نام خانوادگی معتبر باشد.",
+  "passportNumberErrorText": "مقدار باید یک شماره پاسپورت معتبر باشد.",
+  "primeNumberErrorText": "مقدار باید یک عدد اول باشد.",
+  "dunsErrorText": "مقدار باید یک شماره DUNS معتبر باشد.",
+  "licensePlateErrorText": "مقدار باید یک شماره پلاک معتبر باشد.",
+  "vinErrorText": "مقدار باید یک شماره VIN معتبر باشد.",
+  "languageCodeErrorText": "مقدار باید یک کد زبان معتبر باشد."
 }

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Nazwa użytkownika nie może zawierać spacji.",
   "usernameCannotContainDotsErrorText": "Nazwa użytkownika nie może zawierać kropek.",
   "usernameCannotContainDashesErrorText": "Nazwa użytkownika nie może zawierać myślników.",
-  "invalidMimeTypeErrorText": "Nieprawidłowy typ MIME."
+  "invalidMimeTypeErrorText": "Nieprawidłowy typ MIME.",
+  "timezoneErrorText": "Wartość musi być prawidłową strefą czasową.",
+  "cityErrorText": "Wartość musi być prawidłową nazwą miasta.",
+  "countryErrorText": "Wartość musi być prawidłowym krajem.",
+  "stateErrorText": "Wartość musi być prawidłowym stanem.",
+  "streetErrorText": "Wartość musi być prawidłową nazwą ulicy.",
+  "firstNameErrorText": "Wartość musi być prawidłowym imieniem.",
+  "lastNameErrorText": "Wartość musi być prawidłowym nazwiskiem.",
+  "passportNumberErrorText": "Wartość musi być prawidłowym numerem paszportu.",
+  "primeNumberErrorText": "Wartość musi być liczbą pierwszą.",
+  "dunsErrorText": "Wartość musi być prawidłowym numerem DUNS.",
+  "licensePlateErrorText": "Wartość musi być prawidłowym numerem tablicy rejestracyjnej.",
+  "vinErrorText": "Wartość musi być prawidłowym numerem VIN.",
+  "languageCodeErrorText": "Wartość musi być prawidłowym kodem języka."
 }

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "A felhasználónév nem tartalmazhat szóközöket.",
   "usernameCannotContainDotsErrorText": "A felhasználónév nem tartalmazhat pontokat.",
   "usernameCannotContainDashesErrorText": "A felhasználónév nem tartalmazhat kötőjeleket.",
-  "invalidMimeTypeErrorText": "Érvénytelen MIME-típus."
+  "invalidMimeTypeErrorText": "Érvénytelen MIME-típus.",
+  "timezoneErrorText": "Az értéknek egy érvényes időzónának kell lennie.",
+  "cityErrorText": "Az értéknek egy érvényes városnévnek kell lennie.",
+  "countryErrorText": "Az értéknek egy érvényes országnevet kell lennie.",
+  "stateErrorText": "Az értéknek egy érvényes államnak kell lennie.",
+  "streetErrorText": "Az értéknek egy érvényes utcanévnek kell lennie.",
+  "firstNameErrorText": "Az értéknek egy érvényes keresztnévnek kell lennie.",
+  "lastNameErrorText": "Az értéknek egy érvényes vezetéknévnek kell lennie.",
+  "passportNumberErrorText": "Az értéknek egy érvényes útlevélszámnak kell lennie.",
+  "primeNumberErrorText": "Az értéknek egy prímszámnak kell lennie.",
+  "dunsErrorText": "Az értéknek egy érvényes DUNS számnak kell lennie.",
+  "licensePlateErrorText": "Az értéknek egy érvényes rendszámnak kell lennie.",
+  "vinErrorText": "Az értéknek egy érvényes járműazonosító számnak kell lennie.",
+  "languageCodeErrorText": "Az értéknek egy érvényes nyelvkódnak kell lennie."
 }

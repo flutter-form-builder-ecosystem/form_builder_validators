@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Потребителското име не може да съдържа интервали.",
   "usernameCannotContainDotsErrorText": "Потребителското име не може да съдържа точки.",
   "usernameCannotContainDashesErrorText": "Потребителското име не може да съдържа тирета.",
-  "invalidMimeTypeErrorText": "Невалиден MIME тип."
+  "invalidMimeTypeErrorText": "Невалиден MIME тип.",
+  "timezoneErrorText": "Стойността трябва да бъде валидна часова зона.",
+  "cityErrorText": "Стойността трябва да бъде валидно име на град.",
+  "countryErrorText": "Стойността трябва да бъде валидна държава.",
+  "stateErrorText": "Стойността трябва да бъде валиден щат.",
+  "streetErrorText": "Стойността трябва да бъде валидно име на улица.",
+  "firstNameErrorText": "Стойността трябва да бъде валидно собствено име.",
+  "lastNameErrorText": "Стойността трябва да бъде валидно фамилно име.",
+  "passportNumberErrorText": "Стойността трябва да бъде валиден номер на паспорт.",
+  "primeNumberErrorText": "Стойността трябва да бъде просто число.",
+  "dunsErrorText": "Стойността трябва да бъде валиден DUNS номер.",
+  "licensePlateErrorText": "Стойността трябва да бъде валиден регистрационен номер.",
+  "vinErrorText": "Стойността трябва да бъде валиден VIN.",
+  "languageCodeErrorText": "Стойността трябва да бъде валиден езиков код."
 }

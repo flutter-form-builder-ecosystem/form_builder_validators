@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ชื่อผู้ใช้ต้องไม่มีช่องว่าง",
   "usernameCannotContainDotsErrorText": "ชื่อผู้ใช้ต้องไม่มีจุด",
   "usernameCannotContainDashesErrorText": "ชื่อผู้ใช้ต้องไม่มีขีดกลาง",
-  "invalidMimeTypeErrorText": "ประเภท mime ไม่ถูกต้อง"
+  "invalidMimeTypeErrorText": "ประเภท mime ไม่ถูกต้อง",
+  "timezoneErrorText": "ค่าต้องเป็นเขตเวลาที่ถูกต้อง",
+  "cityErrorText": "ค่าต้องเป็นชื่อเมืองที่ถูกต้อง",
+  "countryErrorText": "ค่าต้องเป็นประเทศที่ถูกต้อง",
+  "stateErrorText": "ค่าต้องเป็นรัฐที่ถูกต้อง",
+  "streetErrorText": "ค่าต้องเป็นชื่อถนนที่ถูกต้อง",
+  "firstNameErrorText": "ค่าต้องเป็นชื่อจริงที่ถูกต้อง",
+  "lastNameErrorText": "ค่าต้องเป็นนามสกุลที่ถูกต้อง",
+  "passportNumberErrorText": "ค่าต้องเป็นหมายเลขหนังสือเดินทางที่ถูกต้อง",
+  "primeNumberErrorText": "ค่าต้องเป็นเลขเฉพาะที่ถูกต้อง",
+  "dunsErrorText": "ค่าต้องเป็นเลข DUNS ที่ถูกต้อง",
+  "licensePlateErrorText": "ค่าต้องเป็นเลขทะเบียนรถที่ถูกต้อง",
+  "vinErrorText": "ค่าต้องเป็นหมายเลข VIN ที่ถูกต้อง",
+  "languageCodeErrorText": "ค่าต้องเป็นรหัสภาษาที่ถูกต้อง"
 }

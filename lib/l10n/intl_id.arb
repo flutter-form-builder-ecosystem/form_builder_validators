@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Nama pengguna tidak boleh mengandung spasi.",
   "usernameCannotContainDotsErrorText": "Nama pengguna tidak boleh mengandung titik.",
   "usernameCannotContainDashesErrorText": "Nama pengguna tidak boleh mengandung tanda hubung.",
-  "invalidMimeTypeErrorText": "Tipe mime tidak valid."
+  "invalidMimeTypeErrorText": "Tipe mime tidak valid.",
+  "timezoneErrorText": "Nilai harus berupa zona waktu yang valid.",
+  "cityErrorText": "Nilai harus berupa nama kota yang valid.",
+  "countryErrorText": "Nilai harus berupa negara yang valid.",
+  "stateErrorText": "Nilai harus berupa provinsi yang valid.",
+  "streetErrorText": "Nilai harus berupa nama jalan yang valid.",
+  "firstNameErrorText": "Nilai harus berupa nama depan yang valid.",
+  "lastNameErrorText": "Nilai harus berupa nama belakang yang valid.",
+  "passportNumberErrorText": "Nilai harus berupa nomor paspor yang valid.",
+  "primeNumberErrorText": "Nilai harus berupa bilangan prima.",
+  "dunsErrorText": "Nilai harus berupa nomor DUNS yang valid.",
+  "licensePlateErrorText": "Nilai harus berupa pelat nomor yang valid.",
+  "vinErrorText": "Nilai harus berupa VIN yang valid.",
+  "languageCodeErrorText": "Nilai harus berupa kode bahasa yang valid."
 }

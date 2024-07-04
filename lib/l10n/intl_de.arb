@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Der Benutzername darf keine Leerzeichen enthalten.",
   "usernameCannotContainDotsErrorText": "Der Benutzername darf keine Punkte enthalten.",
   "usernameCannotContainDashesErrorText": "Der Benutzername darf keine Bindestriche enthalten.",
-  "invalidMimeTypeErrorText": "Ungültiger MIME-Typ."
+  "invalidMimeTypeErrorText": "Ungültiger MIME-Typ.",
+  "timezoneErrorText": "Der Wert muss eine gültige Zeitzone sein.",
+  "cityErrorText": "Der Wert muss ein gültiger Stadtname sein.",
+  "countryErrorText": "Der Wert muss ein gültiges Land sein.",
+  "stateErrorText": "Der Wert muss ein gültiger Bundesstaat sein.",
+  "streetErrorText": "Der Wert muss ein gültiger Straßenname sein.",
+  "firstNameErrorText": "Der Wert muss ein gültiger Vorname sein.",
+  "lastNameErrorText": "Der Wert muss ein gültiger Nachname sein.",
+  "passportNumberErrorText": "Der Wert muss eine gültige Passnummer sein.",
+  "primeNumberErrorText": "Der Wert muss eine Primzahl sein.",
+  "dunsErrorText": "Der Wert muss eine gültige DUNS-Nummer sein.",
+  "licensePlateErrorText": "Der Wert muss ein gültiges Nummernschild sein.",
+  "vinErrorText": "Der Wert muss eine gültige Fahrzeug-Identifizierungsnummer (VIN) sein.",
+  "languageCodeErrorText": "Der Wert muss ein gültiger Sprachcode sein."
 }

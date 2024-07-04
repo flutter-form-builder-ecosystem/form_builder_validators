@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "שם המשתמש לא יכול להכיל רווחים.",
   "usernameCannotContainDotsErrorText": "שם המשתמש לא יכול להכיל נקודות.",
   "usernameCannotContainDashesErrorText": "שם המשתמש לא יכול להכיל מקפים.",
-  "invalidMimeTypeErrorText": "סוג MIME לא חוקי."
+  "invalidMimeTypeErrorText": "סוג MIME לא חוקי.",
+  "timezoneErrorText": "הערך חייב להיות אזור זמן חוקי.",
+  "cityErrorText": "הערך חייב להיות שם עיר חוקי.",
+  "countryErrorText": "הערך חייב להיות מדינה חוקית.",
+  "stateErrorText": "הערך חייב להיות מדינה חוקית.",
+  "streetErrorText": "הערך חייב להיות שם רחוב חוקי.",
+  "firstNameErrorText": "הערך חייב להיות שם פרטי חוקי.",
+  "lastNameErrorText": "הערך חייב להיות שם משפחה חוקי.",
+  "passportNumberErrorText": "הערך חייב להיות מספר דרכון חוקי.",
+  "primeNumberErrorText": "הערך חייב להיות מספר ראשוני.",
+  "dunsErrorText": "הערך חייב להיות מספר DUNS חוקי.",
+  "licensePlateErrorText": "הערך חייב להיות מספר רכב חוקי.",
+  "vinErrorText": "הערך חייב להיות מספר VIN חוקי.",
+  "languageCodeErrorText": "הערך חייב להיות קוד שפה חוקי."
 }

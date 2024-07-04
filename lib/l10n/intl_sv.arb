@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Användarnamnet får inte innehålla mellanslag.",
   "usernameCannotContainDotsErrorText": "Användarnamnet får inte innehålla punkter.",
   "usernameCannotContainDashesErrorText": "Användarnamnet får inte innehålla bindestreck.",
-  "invalidMimeTypeErrorText": "Ogiltig MIME-typ."
+  "invalidMimeTypeErrorText": "Ogiltig MIME-typ.",
+  "timezoneErrorText": "Värdet måste vara en giltig tidszon.",
+  "cityErrorText": "Värdet måste vara ett giltigt stadsnamn.",
+  "countryErrorText": "Värdet måste vara ett giltigt land.",
+  "stateErrorText": "Värdet måste vara en giltig stat.",
+  "streetErrorText": "Värdet måste vara ett giltigt gatunamn.",
+  "firstNameErrorText": "Värdet måste vara ett giltigt förnamn.",
+  "lastNameErrorText": "Värdet måste vara ett giltigt efternamn.",
+  "passportNumberErrorText": "Värdet måste vara ett giltigt passnummer.",
+  "primeNumberErrorText": "Värdet måste vara ett primtal.",
+  "dunsErrorText": "Värdet måste vara ett giltigt DUNS-nummer.",
+  "licensePlateErrorText": "Värdet måste vara en giltig registreringsskylt.",
+  "vinErrorText": "Värdet måste vara ett giltigt VIN.",
+  "languageCodeErrorText": "Värdet måste vara en giltig språkkod."
 }

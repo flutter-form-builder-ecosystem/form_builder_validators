@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "प्रयोगकर्ता नाममा खाली ठाउँहरू समावेश गर्नु हुँदैन।",
   "usernameCannotContainDotsErrorText": "प्रयोगकर्ता नाममा डटहरू समावेश गर्नु हुँदैन।",
   "usernameCannotContainDashesErrorText": "प्रयोगकर्ता नाममा ड्यासहरू समावेश गर्नु हुँदैन।",
-  "invalidMimeTypeErrorText": "अवैध माइम प्रकार।"
+  "invalidMimeTypeErrorText": "अवैध माइम प्रकार।",
+  "timezoneErrorText": "मान मान्य समयक्षेत्र हुनुपर्छ।",
+  "cityErrorText": "मान मान्य शहरको नाम हुनुपर्छ।",
+  "countryErrorText": "मान मान्य देश हुनुपर्छ।",
+  "stateErrorText": "मान मान्य राज्य हुनुपर्छ।",
+  "streetErrorText": "मान मान्य सडकको नाम हुनुपर्छ।",
+  "firstNameErrorText": "मान मान्य पहिलो नाम हुनुपर्छ।",
+  "lastNameErrorText": "मान मान्य थर हुनुपर्छ।",
+  "passportNumberErrorText": "मान मान्य पासपोर्ट नम्बर हुनुपर्छ।",
+  "primeNumberErrorText": "मान अभाज्य संख्या हुनुपर्छ।",
+  "dunsErrorText": "मान मान्य DUNS नम्बर हुनुपर्छ।",
+  "licensePlateErrorText": "मान मान्य नम्बर प्लेट हुनुपर्छ।",
+  "vinErrorText": "मान मान्य VIN हुनुपर्छ।",
+  "languageCodeErrorText": "मान मान्य भाषाको कोड हुनुपर्छ।"
 }

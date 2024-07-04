@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Gebruikersnaam mag geen spaties bevatten.",
   "usernameCannotContainDotsErrorText": "Gebruikersnaam mag geen punten bevatten.",
   "usernameCannotContainDashesErrorText": "Gebruikersnaam mag geen streepjes bevatten.",
-  "invalidMimeTypeErrorText": "Ongeldig MIME-type."
+  "invalidMimeTypeErrorText": "Ongeldig MIME-type.",
+  "timezoneErrorText": "Waarde moet een geldige tijdzone zijn.",
+  "cityErrorText": "Waarde moet een geldige plaatsnaam zijn.",
+  "countryErrorText": "Waarde moet een geldig land zijn.",
+  "stateErrorText": "Waarde moet een geldige staat zijn.",
+  "streetErrorText": "Waarde moet een geldige straatnaam zijn.",
+  "firstNameErrorText": "Waarde moet een geldige voornaam zijn.",
+  "lastNameErrorText": "Waarde moet een geldige achternaam zijn.",
+  "passportNumberErrorText": "Waarde moet een geldig paspoortnummer zijn.",
+  "primeNumberErrorText": "Waarde moet een priemgetal zijn.",
+  "dunsErrorText": "Waarde moet een geldig DUNS-nummer zijn.",
+  "licensePlateErrorText": "Waarde moet een geldige kentekenplaat zijn.",
+  "vinErrorText": "Waarde moet een geldig VIN zijn.",
+  "languageCodeErrorText": "Waarde moet een geldige taalcode zijn."
 }

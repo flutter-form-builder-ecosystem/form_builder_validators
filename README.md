@@ -89,6 +89,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.dateTime()` - requires the field's value to be a valid date time.
 - `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
 - `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
+- `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
 
 ### File validators
 
@@ -108,8 +109,15 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Identity validators
 
+- `FormBuilderValidators.city()` - requires the field's value to be a valid city name.
+- `FormBuilderValidators.country()` - requires the field's value to be a valid country name.
+- `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
+- `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
+- `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
 - `FormBuilderValidators.password()` - requires the field's to be a valid password that matched required conditions.
 - `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
+- `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
+- `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
 - `FormBuilderValidators.username()` - requires the field's to be a valid username that matched required conditions.
 - `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
 
@@ -136,6 +144,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
 - `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
 - `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
+- `FormBuilderValidators.prime()` - requires the field's to be a prime number.
 
 ### String validators
 
@@ -155,9 +164,13 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 - `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
+- `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
 - `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
 - `FormBuilderValidators.json()` - requires the field's to be a valid json string.
+- `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
+- `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
 - `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
+- `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
 
 ## Extension methods used for chaining validators
 

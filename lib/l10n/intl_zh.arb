@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "用户名不能包含空格。",
   "usernameCannotContainDotsErrorText": "用户名不能包含点。",
   "usernameCannotContainDashesErrorText": "用户名不能包含破折号。",
-  "invalidMimeTypeErrorText": "无效的 MIME 类型。"
+  "invalidMimeTypeErrorText": "无效的 MIME 类型。",
+  "timezoneErrorText": "值必须是有效的时区。",
+  "cityErrorText": "值必须是有效的城市名称。",
+  "countryErrorText": "值必须是有效的国家。",
+  "stateErrorText": "值必须是有效的州。",
+  "streetErrorText": "值必须是有效的街道名称。",
+  "firstNameErrorText": "值必须是有效的名字。",
+  "lastNameErrorText": "值必须是有效的姓氏。",
+  "passportNumberErrorText": "值必须是有效的护照号码。",
+  "primeNumberErrorText": "值必须是质数。",
+  "dunsErrorText": "值必须是有效的DUNS编号。",
+  "licensePlateErrorText": "值必须是有效的车牌号。",
+  "vinErrorText": "值必须是有效的车辆识别码（VIN）。",
+  "languageCodeErrorText": "值必须是有效的语言代码。"
 }

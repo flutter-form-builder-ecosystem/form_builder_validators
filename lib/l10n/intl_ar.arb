@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على مسافات.",
   "usernameCannotContainDotsErrorText": "لا يمكن لاسم المستخدم أن يحتوي على نقاط.",
   "usernameCannotContainDashesErrorText": "لا يمكن لاسم المستخدم أن يحتوي على شرطات.",
-  "invalidMimeTypeErrorText": "نوع الميم غير صالح"
+  "invalidMimeTypeErrorText": "نوع الميم غير صالح",
+  "timezoneErrorText": "يجب أن تكون القيمة منطقة زمنية صالحة.",
+  "cityErrorText": "يجب أن تكون القيمة اسم مدينة صالح.",
+  "countryErrorText": "يجب أن تكون القيمة بلد صالح.",
+  "stateErrorText": "يجب أن تكون القيمة ولاية صالحة.",
+  "streetErrorText": "يجب أن تكون القيمة اسم شارع صالح.",
+  "firstNameErrorText": "يجب أن تكون القيمة اسمًا أول صالحًا.",
+  "lastNameErrorText": "يجب أن تكون القيمة اسم عائلة صالحًا.",
+  "passportNumberErrorText": "يجب أن تكون القيمة رقم جواز سفر صالح.",
+  "primeNumberErrorText": "يجب أن تكون القيمة عدد أولي.",
+  "dunsErrorText": "يجب أن تكون القيمة رقم DUNS صالح.",
+  "licensePlateErrorText": "يجب أن تكون القيمة لوحة ترخيص صالحة.",
+  "vinErrorText": "يجب أن تكون القيمة رقم VIN صالح.",
+  "languageCodeErrorText": "يجب أن تكون القيمة رمز لغة صالح."
 }

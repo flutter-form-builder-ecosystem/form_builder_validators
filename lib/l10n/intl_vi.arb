@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Tên người dùng không được chứa khoảng trắng.",
   "usernameCannotContainDotsErrorText": "Tên người dùng không được chứa dấu chấm.",
   "usernameCannotContainDashesErrorText": "Tên người dùng không được chứa dấu gạch ngang.",
-  "invalidMimeTypeErrorText": "Loại mime không hợp lệ."
+  "invalidMimeTypeErrorText": "Loại mime không hợp lệ.",
+  "timezoneErrorText": "Giá trị phải là một múi giờ hợp lệ.",
+  "cityErrorText": "Giá trị phải là tên thành phố hợp lệ.",
+  "countryErrorText": "Giá trị phải là quốc gia hợp lệ.",
+  "stateErrorText": "Giá trị phải là bang hợp lệ.",
+  "streetErrorText": "Giá trị phải là tên đường hợp lệ.",
+  "firstNameErrorText": "Giá trị phải là tên hợp lệ.",
+  "lastNameErrorText": "Giá trị phải là họ hợp lệ.",
+  "passportNumberErrorText": "Giá trị phải là số hộ chiếu hợp lệ.",
+  "primeNumberErrorText": "Giá trị phải là số nguyên tố.",
+  "dunsErrorText": "Giá trị phải là số DUNS hợp lệ.",
+  "licensePlateErrorText": "Giá trị phải là biển số xe hợp lệ.",
+  "vinErrorText": "Giá trị phải là số VIN hợp lệ.",
+  "languageCodeErrorText": "Giá trị phải là mã ngôn ngữ hợp lệ."
 }

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Brugernavn må ikke indeholde mellemrum.",
   "usernameCannotContainDotsErrorText": "Brugernavn må ikke indeholde prikker.",
   "usernameCannotContainDashesErrorText": "Brugernavn må ikke indeholde bindestreger.",
-  "invalidMimeTypeErrorText": "Ugyldig MIME-type."
+  "invalidMimeTypeErrorText": "Ugyldig MIME-type.",
+  "timezoneErrorText": "Værdien skal være en gyldig tidszone.",
+  "cityErrorText": "Værdien skal være et gyldigt bynavn.",
+  "countryErrorText": "Værdien skal være et gyldigt land.",
+  "stateErrorText": "Værdien skal være en gyldig stat.",
+  "streetErrorText": "Værdien skal være et gyldigt gadenavn.",
+  "firstNameErrorText": "Værdien skal være et gyldigt fornavn.",
+  "lastNameErrorText": "Værdien skal være et gyldigt efternavn.",
+  "passportNumberErrorText": "Værdien skal være et gyldigt pasnummer.",
+  "primeNumberErrorText": "Værdien skal være et primtal.",
+  "dunsErrorText": "Værdien skal være et gyldigt DUNS-nummer.",
+  "licensePlateErrorText": "Værdien skal være en gyldig nummerplade.",
+  "vinErrorText": "Værdien skal være en gyldig VIN.",
+  "languageCodeErrorText": "Værdien skal være en gyldig sprogkode."
 }

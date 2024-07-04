@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Emri i përdoruesit nuk mund të përmbajë hapësira.",
   "usernameCannotContainDotsErrorText": "Emri i përdoruesit nuk mund të përmbajë pika.",
   "usernameCannotContainDashesErrorText": "Emri i përdoruesit nuk mund të përmbajë vija.",
-  "invalidMimeTypeErrorText": "Lloji mime i pavlefshëm."
+  "invalidMimeTypeErrorText": "Lloji mime i pavlefshëm.",
+  "timezoneErrorText": "Vlera duhet të jetë një zonë kohore e vlefshme.",
+  "cityErrorText": "Vlera duhet të jetë një emër qyteti i vlefshëm.",
+  "countryErrorText": "Vlera duhet të jetë një shtet i vlefshëm.",
+  "stateErrorText": "Vlera duhet të jetë një shtet i vlefshëm.",
+  "streetErrorText": "Vlera duhet të jetë një emër rrugë e vlefshme.",
+  "firstNameErrorText": "Vlera duhet të jetë një emër i parë i vlefshëm.",
+  "lastNameErrorText": "Vlera duhet të jetë një mbiemër i vlefshëm.",
+  "passportNumberErrorText": "Vlera duhet të jetë një numër pasaporte i vlefshëm.",
+  "primeNumberErrorText": "Vlera duhet të jetë një numër kryesor i vlefshëm.",
+  "dunsErrorText": "Vlera duhet të jetë një numër DUNS i vlefshëm.",
+  "licensePlateErrorText": "Vlera duhet të jetë një targë makine e vlefshme.",
+  "vinErrorText": "Vlera duhet të jetë një VIN i vlefshëm.",
+  "languageCodeErrorText": "Vlera duhet të jetë një kod gjuhe i vlefshëm."
 }

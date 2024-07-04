@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានចន្លោះបានឡើយ។",
   "usernameCannotContainDotsErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានចំណុចបានឡើយ។",
   "usernameCannotContainDashesErrorText": "ឈ្មោះអ្នកប្រើពុំអាចមានសញ្ញានិកបានឡើយ។",
-  "invalidMimeTypeErrorText": "ប្រភេទ MIME មិនត្រឹមត្រូវ។"
+  "invalidMimeTypeErrorText": "ប្រភេទ MIME មិនត្រឹមត្រូវ។",
+  "timezoneErrorText": "តម្លៃត្រូវតែជាតំបន់ពេលវេលាដែលត្រឹមត្រូវ។",
+  "cityErrorText": "តម្លៃត្រូវតែជាឈ្មោះទីក្រុងដែលត្រឹមត្រូវ。",
+  "countryErrorText": "តម្លៃត្រូវតែជាប្រទេសដែលត្រឹមត្រូវ។",
+  "stateErrorText": "តម្លៃត្រូវតែជារាជធានីដែលត្រឹមត្រូវ។",
+  "streetErrorText": "តម្លៃត្រូវតែជាឈ្មោះផ្លូវដែលត្រឹមត្រូវ។",
+  "firstNameErrorText": "តម្លៃត្រូវតែជាឈ្មោះដំបូងដែលត្រឹមត្រូវ។",
+  "lastNameErrorText": "តម្លៃត្រូវតែជាគោត្តនាមដែលត្រឹមត្រូវ។",
+  "passportNumberErrorText": "តម្លៃត្រូវតែជាលេខលិខិតឆ្លងដែនដែលត្រឹមត្រូវ។",
+  "primeNumberErrorText": "តម្លៃត្រូវតែជាលេខសឺរលេខ។",
+  "dunsErrorText": "តម្លៃត្រូវតែជាលេខ DUNS ដែលត្រឹមត្រូវ។",
+  "licensePlateErrorText": "តម្លៃត្រូវតែជាបណ្ណកាតសម្លេង។",
+  "vinErrorText": "តម្លៃត្រូវតែជាលេខ VIN ដែលត្រឹមត្រូវ។",
+  "languageCodeErrorText": "តម្លៃត្រូវតែជាកូដភាសាដែលត្រឹមត្រូវ។"
 }

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ব্যবহারকারীর নামের মধ্যে স্পেস থাকতে পারবে না।",
   "usernameCannotContainDotsErrorText": "ব্যবহারকারীর নামের মধ্যে বিন্দু থাকতে পারবে না।",
   "usernameCannotContainDashesErrorText": "ব্যবহারকারীর নামের মধ্যে ড্যাশ থাকতে পারবে না।",
-  "invalidMimeTypeErrorText": "অবৈধ মাইম টাইপ।"
+  "invalidMimeTypeErrorText": "অবৈধ মাইম টাইপ।",
+  "timezoneErrorText": "মানটি একটি বৈধ সময় অঞ্চল হতে হবে।",
+  "cityErrorText": "মানটি একটি বৈধ শহরের নাম হতে হবে।",
+  "countryErrorText": "মানটি একটি বৈধ দেশের হতে হবে।",
+  "stateErrorText": "মানটি একটি বৈধ রাজ্যের হতে হবে।",
+  "streetErrorText": "মানটি একটি বৈধ রাস্তার নাম হতে হবে।",
+  "firstNameErrorText": "মানটি একটি বৈধ প্রথম নাম হতে হবে।",
+  "lastNameErrorText": "মানটি একটি বৈধ শেষ নাম হতে হবে।",
+  "passportNumberErrorText": "মানটি একটি বৈধ পাসপোর্ট নম্বর হতে হবে।",
+  "primeNumberErrorText": "মানটি একটি মৌলিক সংখ্যা হতে হবে।",
+  "dunsErrorText": "মানটি একটি বৈধ DUNS নম্বর হতে হবে।",
+  "licensePlateErrorText": "মানটি একটি বৈধ লাইসেন্স প্লেট হতে হবে।",
+  "vinErrorText": "মানটি একটি বৈধ VIN হতে হবে।",
+  "languageCodeErrorText": "মানটি একটি বৈধ ভাষা কোড হতে হবে।"
 }

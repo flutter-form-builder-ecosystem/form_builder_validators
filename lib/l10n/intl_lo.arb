@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຊ່ອງຫວ່າງ.",
   "usernameCannotContainDotsErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຈຸດ.",
   "usernameCannotContainDashesErrorText": "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດມີຂີດ.",
-  "invalidMimeTypeErrorText": "ປະເພດໄຟລທີ່ບໍ່ຖືກຕ້ອງ."
+  "invalidMimeTypeErrorText": "ປະເພດໄຟລທີ່ບໍ່ຖືກຕ້ອງ.",
+  "timezoneErrorText": "ຄ່າຕ້ອງເປັນເວລາເມືອງທີ່ຖືກຕ້ອງ.",
+  "cityErrorText": "ຄ່າຕ້ອງເປັນຊື່ເມືອງທີ່ຖືກຕ້ອງ.",
+  "countryErrorText": "ຄ່າຕ້ອງເປັນຊື່ປະເທດທີ່ຖືກຕ້ອງ.",
+  "stateErrorText": "ຄ່າຕ້ອງເປັນຊື່ລັດທີ່ຖືກຕ້ອງ.",
+  "streetErrorText": "ຄ່າຕ້ອງເປັນຊື່ຖນົນທີ່ຖືກຕ້ອງ.",
+  "firstNameErrorText": "ຄ່າຕ້ອງເປັນຊື່ຫຼັກທີ່ຖືກຕ້ອງ.",
+  "lastNameErrorText": "ຄ່າຕ້ອງເປັນນາມສະກຸນທີ່ຖືກຕ້ອງ.",
+  "passportNumberErrorText": "ຄ່າຕ້ອງເປັນໝາຍເລກພາສະປອດທີ່ຖືກຕ້ອງ.",
+  "primeNumberErrorText": "ຍໍ້ຄ່າຕ້ອງເປັນໝາຍເລກທີ່ຖືກຕ້ອງ.",
+  "dunsErrorText": "ຄ່າຕ້ອງເປັນໝາຍເລກ DUNS ທີ່ຖືກຕ້ອງ.",
+  "licensePlateErrorText": "ຄ່າຕ້ອງເປັນໝາຍເລກປ້າຍທີ່ຖືກຕ້ອງ.",
+  "vinErrorText": "ຄ່າຕ້ອງເປັນ VIN ທີ່ຖືກຕ້ອງ.",
+  "languageCodeErrorText": "ຄ່າຕ້ອງເປັນໄລຄໂລດພາສາທີ່ຖືກຕ້ອງ."
 }

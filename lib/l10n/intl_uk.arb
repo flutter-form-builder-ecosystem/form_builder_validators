@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Ім'я користувача не може містити пробіли.",
   "usernameCannotContainDotsErrorText": "Ім'я користувача не може містити крапки.",
   "usernameCannotContainDashesErrorText": "Ім'я користувача не може містити дефіси.",
-  "invalidMimeTypeErrorText": "Недійсний MIME тип."
+  "invalidMimeTypeErrorText": "Недійсний MIME тип.",
+  "timezoneErrorText": "Значення повинно бути дійсним часовим поясом.",
+  "cityErrorText": "Значення повинно бути дійсним назвою міста.",
+  "countryErrorText": "Значення повинно бути дійсною країною.",
+  "stateErrorText": "Значення повинно бути дійсним штатом.",
+  "streetErrorText": "Значення повинно бути дійсною назвою вулиці.",
+  "firstNameErrorText": "Значення повинно бути дійсним ім'ям.",
+  "lastNameErrorText": "Значення повинно бути дійсним прізвищем.",
+  "passportNumberErrorText": "Значення повинно бути дійсним номером паспорта.",
+  "primeNumberErrorText": "Значення повинно бути простим числом.",
+  "dunsErrorText": "Значення повинно бути дійсним номером DUNS.",
+  "licensePlateErrorText": "Значення повинно бути дійсним номерним знаком автомобіля.",
+  "vinErrorText": "Значення повинно бути дійсним VIN.",
+  "languageCodeErrorText": "Значення повинно бути дійсним кодом мови."
 }

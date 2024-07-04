@@ -64,6 +64,19 @@
 - Add not zero number
 - Add zip code
 - Add MIME type
+- Add timezone
+- Add city
+- Add country
+- Add first name
+- Add last name
+- Add passport number
+- Add state
+- Add street
+- Add prime number
+- Add DUNS
+- Add language code
+- Add license plate
+- Add VIN number
 
 ## 10.0.1
 

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Uživatelské jméno nesmí obsahovat mezery.",
   "usernameCannotContainDotsErrorText": "Uživatelské jméno nesmí obsahovat tečky.",
   "usernameCannotContainDashesErrorText": "Uživatelské jméno nesmí obsahovat pomlčky.",
-  "invalidMimeTypeErrorText": "Neplatný typ MIME."
+  "invalidMimeTypeErrorText": "Neplatný typ MIME.",
+  "timezoneErrorText": "Hodnota musí být platné časové pásmo.",
+  "cityErrorText": "Hodnota musí být platný název města.",
+  "countryErrorText": "Hodnota musí být platná země.",
+  "stateErrorText": "Hodnota musí být platný název státu.",
+  "streetErrorText": "Hodnota musí být platný název ulice.",
+  "firstNameErrorText": "Hodnota musí být platné jméno.",
+  "lastNameErrorText": "Hodnota musí být platné příjmení.",
+  "passportNumberErrorText": "Hodnota musí být platné číslo pasu.",
+  "primeNumberErrorText": "Hodnota musí být prvočíslo.",
+  "dunsErrorText": "Hodnota musí být platné číslo DUNS.",
+  "licensePlateErrorText": "Hodnota musí být platná poznávací značka.",
+  "vinErrorText": "Hodnota musí být platný VIN.",
+  "languageCodeErrorText": "Hodnota musí být platný kód jazyka."
 }

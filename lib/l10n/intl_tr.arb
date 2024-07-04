@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Kullanıcı adı boşluk içeremez.",
   "usernameCannotContainDotsErrorText": "Kullanıcı adı nokta içeremez.",
   "usernameCannotContainDashesErrorText": "Kullanıcı adı tire içeremez.",
-  "invalidMimeTypeErrorText": "Geçersiz mime türü."
+  "invalidMimeTypeErrorText": "Geçersiz mime türü.",
+  "timezoneErrorText": "Değer geçerli bir saat dilimi olmalıdır.",
+  "cityErrorText": "Değer geçerli bir şehir adı olmalıdır.",
+  "countryErrorText": "Değer geçerli bir ülke olmalıdır.",
+  "stateErrorText": "Değer geçerli bir eyalet olmalıdır.",
+  "streetErrorText": "Değer geçerli bir sokak adı olmalıdır.",
+  "firstNameErrorText": "Değer geçerli bir ad olmalıdır.",
+  "lastNameErrorText": "Değer geçerli bir soyadı olmalıdır.",
+  "passportNumberErrorText": "Değer geçerli bir pasaport numarası olmalıdır.",
+  "primeNumberErrorText": "Değer bir asal sayı olmalıdır.",
+  "dunsErrorText": "Değer geçerli bir DUNS numarası olmalıdır.",
+  "licensePlateErrorText": "Değer geçerli bir plaka olmalıdır.",
+  "vinErrorText": "Değer geçerli bir VIN numarası olmalıdır.",
+  "languageCodeErrorText": "Değer geçerli bir dil kodu olmalıdır."
 }

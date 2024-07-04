@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "उपयोगकर्ता नाम में रिक्त स्थान नहीं हो सकते।",
   "usernameCannotContainDotsErrorText": "उपयोगकर्ता नाम में बिंदु नहीं हो सकते।",
   "usernameCannotContainDashesErrorText": "उपयोगकर्ता नाम में डैश नहीं हो सकते।",
-  "invalidMimeTypeErrorText": "अमान्य MIME प्रकार।"
+  "invalidMimeTypeErrorText": "अमान्य MIME प्रकार।",
+  "timezoneErrorText": "मान मान्य समय क्षेत्र होना चाहिए।",
+  "cityErrorText": "मान मान्य शहर का नाम होना चाहिए।",
+  "countryErrorText": "मान मान्य देश होना चाहिए।",
+  "stateErrorText": "मान मान्य राज्य होना चाहिए।",
+  "streetErrorText": "मान मान्य सड़क का नाम होना चाहिए।",
+  "firstNameErrorText": "मान मान्य प्रथम नाम होना चाहिए।",
+  "lastNameErrorText": "मान मान्य उपनाम होना चाहिए।",
+  "passportNumberErrorText": "मान मान्य पासपोर्ट नंबर होना चाहिए।",
+  "primeNumberErrorText": "मान एक अभाज्य संख्या होनी चाहिए।",
+  "dunsErrorText": "मान मान्य DUNS नंबर होना चाहिए।",
+  "licensePlateErrorText": "मान मान्य लाइसेंस प्लेट होना चाहिए।",
+  "vinErrorText": "मान मान्य VIN होना चाहिए।",
+  "languageCodeErrorText": "मान मान्य भाषा कोड होना चाहिए।"
 }

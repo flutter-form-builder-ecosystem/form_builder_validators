@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Jina la mtumiaji haliwezi kuwa na nafasi.",
   "usernameCannotContainDotsErrorText": "Jina la mtumiaji haliwezi kuwa na nukta.",
   "usernameCannotContainDashesErrorText": "Jina la mtumiaji haliwezi kuwa na mistari ya usawa.",
-  "invalidMimeTypeErrorText": "Aina batili ya mime."
+  "invalidMimeTypeErrorText": "Aina batili ya mime.",
+  "timezoneErrorText": "Thamani lazima iwe sauti halali ya muda.",
+  "cityErrorText": "Thamani lazima iwe jina halali la jiji.",
+  "countryErrorText": "Thamani lazima iwe nchi halali.",
+  "stateErrorText": "Thamani lazima iwe jimbo halali.",
+  "streetErrorText": "Thamani lazima iwe jina halali la barabara.",
+  "firstNameErrorText": "Thamani lazima iwe jina halali la kwanza.",
+  "lastNameErrorText": "Thamani lazima iwe jina halali la mwisho.",
+  "passportNumberErrorText": "Thamani lazima iwe nambari halali ya pasi.",
+  "primeNumberErrorText": "Thamani lazima iwe nambari tambuzi.",
+  "dunsErrorText": "Thamani lazima iwe nambari halali ya DUNS.",
+  "licensePlateErrorText": "Thamani lazima iwe nambari sahihi ya leseni.",
+  "vinErrorText": "Thamani lazima iwe VIN halali.",
+  "languageCodeErrorText": "Thamani lazima iwe msimbo halali wa lugha."
 }

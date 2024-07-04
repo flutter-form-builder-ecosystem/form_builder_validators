@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Имя пользователя не может содержать пробелы.",
   "usernameCannotContainDotsErrorText": "Имя пользователя не может содержать точки.",
   "usernameCannotContainDashesErrorText": "Имя пользователя не может содержать дефисы.",
-  "invalidMimeTypeErrorText": "Неверный MIME-тип."
+  "invalidMimeTypeErrorText": "Неверный MIME-тип.",
+  "timezoneErrorText": "Значение должно быть действительным часовым поясом.",
+  "cityErrorText": "Значение должно быть действительным названием города.",
+  "countryErrorText": "Значение должно быть действительным названием страны.",
+  "stateErrorText": "Значение должно быть действительным названием штата.",
+  "streetErrorText": "Значение должно быть действительным названием улицы.",
+  "firstNameErrorText": "Значение должно быть действительным именем.",
+  "lastNameErrorText": "Значение должно быть действительной фамилией.",
+  "passportNumberErrorText": "Значение должно быть действительным номером паспорта.",
+  "primeNumberErrorText": "Значение должно быть простым числом.",
+  "dunsErrorText": "Значение должно быть действительным номером DUNS.",
+  "licensePlateErrorText": "Значение должно быть действительным номером номерного знака.",
+  "vinErrorText": "Значение должно быть действительным VIN.",
+  "languageCodeErrorText": "Значение должно быть действительным кодом языка."
 }

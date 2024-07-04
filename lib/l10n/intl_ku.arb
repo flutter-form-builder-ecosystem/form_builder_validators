@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ناوی بەکارهێنەر نابێت بەش ب بەش بێت.",
   "usernameCannotContainDotsErrorText": "ناوی بەکارهێنەر نابێت نوکتەکان ب گرێت.",
   "usernameCannotContainDashesErrorText": "ناوی بەکارهێنەر نابێت تیرە خال ب گرێت.",
-  "invalidMimeTypeErrorText": "Mînka têkeve nîne."
+  "invalidMimeTypeErrorText": "Mînka têkeve nîne.",
+  "timezoneErrorText": "Nirxî divê yekem saet derbasdar be.",
+  "cityErrorText": "Nirxî divê yekem navê bajarê derbasdar be.",
+  "countryErrorText": "Nirxî divê yekem navê welatê derbasdar be.",
+  "stateErrorText": "Nirxî divê yekem navê dewleta herêmê derbasdar be.",
+  "streetErrorText": "Nirxî divê yekem navê kolanê derbasdar be.",
+  "firstNameErrorText": "Nirxî divê yekem navê pêşî derbasdar be.",
+  "lastNameErrorText": "Nirxî divê yekem navê paşîn derbasdar be.",
+  "passportNumberErrorText": "Nirxî divê yekem hejmarê pasportê derbasdar be.",
+  "primeNumberErrorText": "Nirxî divê yekem hejmarê binpê derbasdar be.",
+  "dunsErrorText": "Nirxî divê yekem hejmarê DUNS derbasdar be.",
+  "licensePlateErrorText": "Nirxî divê yekem pelka prezantiyê ya derbasdar be.",
+  "vinErrorText": "Nirxî divê yekem hejmarê VIN derbasdar be.",
+  "languageCodeErrorText": "Nirxî divê yekem kodê zimanê derbasdar be."
 }

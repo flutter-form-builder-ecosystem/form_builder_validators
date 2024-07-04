@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "ユーザー名にスペースを含めることはできません。",
   "usernameCannotContainDotsErrorText": "ユーザー名にドットを含めることはできません。",
   "usernameCannotContainDashesErrorText": "ユーザー名にダッシュを含めることはできません。",
-  "invalidMimeTypeErrorText": "無効な MIME タイプです。"
+  "invalidMimeTypeErrorText": "無効な MIME タイプです。",
+  "timezoneErrorText": "値は有効なタイムゾーンでなければなりません。",
+  "cityErrorText": "値は有効な市の名前でなければなりません。",
+  "countryErrorText": "値は有効な国でなければなりません。",
+  "stateErrorText": "値は有効な州でなければなりません。",
+  "streetErrorText": "値は有効な通り名でなければなりません。",
+  "firstNameErrorText": "値は有効な名でなければなりません。",
+  "lastNameErrorText": "値は有効な姓でなければなりません。",
+  "passportNumberErrorText": "値は有効なパスポート番号でなければなりません。",
+  "primeNumberErrorText": "値は素数でなければなりません。",
+  "dunsErrorText": "値は有効なDUNS番号でなければなりません。",
+  "licensePlateErrorText": "値は有効なナンバープレートでなければなりません。",
+  "vinErrorText": "値は有効なVINでなければなりません。",
+  "languageCodeErrorText": "値は有効な言語コードでなければなりません。"
 }

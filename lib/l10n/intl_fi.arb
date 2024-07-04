@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Käyttäjänimi ei saa sisältää välilyöntejä.",
   "usernameCannotContainDotsErrorText": "Käyttäjänimi ei saa sisältää pisteitä.",
   "usernameCannotContainDashesErrorText": "Käyttäjänimi ei saa sisältää viivoja.",
-  "invalidMimeTypeErrorText": "Virheellinen MIME-tyyppi."
+  "invalidMimeTypeErrorText": "Virheellinen MIME-tyyppi.",
+  "timezoneErrorText": "Arvon on oltava kelvollinen aikavyöhyke.",
+  "cityErrorText": "Arvon on oltava kelvollinen kaupungin nimi.",
+  "countryErrorText": "Arvon on oltava kelvollinen maa.",
+  "stateErrorText": "Arvon on oltava kelvollinen osavaltio.",
+  "streetErrorText": "Arvon on oltava kelvollinen kadunnimi.",
+  "firstNameErrorText": "Arvon on oltava kelvollinen etunimi.",
+  "lastNameErrorText": "Arvon on oltava kelvollinen sukunimi.",
+  "passportNumberErrorText": "Arvon on oltava kelvollinen passinumero.",
+  "primeNumberErrorText": "Arvon on oltava alkuluku.",
+  "dunsErrorText": "Arvon on oltava kelvollinen DUNS-numero.",
+  "licensePlateErrorText": "Arvon on oltava kelvollinen rekisterinumero.",
+  "vinErrorText": "Arvon on oltava kelvollinen VIN.",
+  "languageCodeErrorText": "Arvon on oltava kelvollinen kielikoodi."
 }

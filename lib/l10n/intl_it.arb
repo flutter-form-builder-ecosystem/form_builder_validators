@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Il nome utente non può contenere spazi.",
   "usernameCannotContainDotsErrorText": "Il nome utente non può contenere punti.",
   "usernameCannotContainDashesErrorText": "Il nome utente non può contenere trattini.",
-  "invalidMimeTypeErrorText": "Tipo mime non valido."
+  "invalidMimeTypeErrorText": "Tipo mime non valido.",
+  "timezoneErrorText": "Il valore deve essere un fuso orario valido.",
+  "cityErrorText": "Il valore deve essere un nome di città valido.",
+  "countryErrorText": "Il valore deve essere un paese valido.",
+  "stateErrorText": "Il valore deve essere uno stato valido.",
+  "streetErrorText": "Il valore deve essere un nome di via valido.",
+  "firstNameErrorText": "Il valore deve essere un nome valido.",
+  "lastNameErrorText": "Il valore deve essere un cognome valido.",
+  "passportNumberErrorText": "Il valore deve essere un numero di passaporto valido.",
+  "primeNumberErrorText": "Il valore deve essere un numero primo.",
+  "dunsErrorText": "Il valore deve essere un numero DUNS valido.",
+  "licensePlateErrorText": "Il valore deve essere una targa valida.",
+  "vinErrorText": "Il valore deve essere un VIN valido.",
+  "languageCodeErrorText": "Il valore deve essere un codice lingua valido."
 }

@@ -71,5 +71,18 @@
   "usernameCannotContainSpacesErrorText": "Numele de utilizator nu poate conţine spaţii.",
   "usernameCannotContainDotsErrorText": "Numele de utilizator nu poate conţine puncte.",
   "usernameCannotContainDashesErrorText": "Numele de utilizator nu poate conţine cratime.",
-  "invalidMimeTypeErrorText": "Tip mime invalid."
+  "invalidMimeTypeErrorText": "Tip mime invalid.",
+  "timezoneErrorText": "Valoarea trebuie să fie un fus orar valid.",
+  "cityErrorText": "Valoarea trebuie să fie un nume de oraș valid.",
+  "countryErrorText": "Valoarea trebuie să fie o țară validă.",
+  "stateErrorText": "Valoarea trebuie să fie un stat valid.",
+  "streetErrorText": "Valoarea trebuie să fie un nume de stradă valid.",
+  "firstNameErrorText": "Valoarea trebuie să fie un prenume valid.",
+  "lastNameErrorText": "Valoarea trebuie să fie un nume de familie valid.",
+  "passportNumberErrorText": "Valoarea trebuie să fie un număr de pașaport valid.",
+  "primeNumberErrorText": "Valoarea trebuie să fie un număr prim.",
+  "dunsErrorText": "Valoarea trebuie să fie un număr DUNS valid.",
+  "licensePlateErrorText": "Valoarea trebuie să fie un număr de înmatriculare valid.",
+  "vinErrorText": "Valoarea trebuie să fie un VIN valid.",
+  "languageCodeErrorText": "Valoarea trebuie să fie un cod de limbă valid."
 }
