@@ -1,7 +1,21 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template ip_validator_template}
+/// [IpValidator] extends [BaseValidator] to validate if a string represents a valid IPv4 or IPv6 address.
+///
+/// This validator checks if the IP address matches the specified regex pattern for either IPv4 or IPv6.
+///
+/// ## Parameters:
+///
+/// - [version] The IP version to validate (either 4 or 6). Defaults to 4.
+/// - [regex] The regular expression used to validate the IP address format. Defaults to standard IPv4 or IPv6 regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class IpValidator extends BaseValidator<String> {
+  /// Constructor for the IP address validator.
   IpValidator({
     this.version = 4,
 
@@ -16,8 +30,10 @@ class IpValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   });
 
+  /// The IP version to validate (either 4 or 6).
   final int version;
 
+  /// The regular expression used to validate the IP address format.
   final RegExp? regex;
 
   /// {@template ipv4_template}
@@ -54,7 +70,7 @@ class IpValidator extends BaseValidator<String> {
     return !isIP(valueCandidate, version) ? errorText : null;
   }
 
-  /// check if the string [str] is IP [version] 4 or 6
+  /// Check if the string [str] is IP [version] 4 or 6.
   ///
   /// * [version] is a String or an `int`.
   bool isIP(String? str, int version) {
