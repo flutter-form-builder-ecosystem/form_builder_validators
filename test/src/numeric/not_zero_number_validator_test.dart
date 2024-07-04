@@ -165,7 +165,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.notZeroNumberErrorText,
+          validator.errorText,
         ),
       );
     });

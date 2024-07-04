@@ -245,7 +245,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.maxErrorText(max),
+          validator.errorText,
         ),
       );
     });

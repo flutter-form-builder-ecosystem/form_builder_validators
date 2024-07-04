@@ -97,5 +97,18 @@ void main() {
       // Assert
       expect(result, customErrorMessage);
     });
+
+    test('should return the default error message if no custom message is set',
+        () {
+      // Arrange
+      final UuidValidator validator = UuidValidator();
+      const String invalidUuid = 'invalid-uuid';
+
+      // Act
+      final String? result = validator.validate(invalidUuid);
+
+      // Assert
+      expect(result, equals(FormBuilderLocalizations.current.uuidErrorText));
+    });
   });
 }

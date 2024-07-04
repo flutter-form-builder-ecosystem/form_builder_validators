@@ -302,5 +302,23 @@ void main() {
         expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
       }
     });
+
+    test('should return null for valid URLs with user authentication', () {
+      // Arrange
+      final UrlValidator validator = UrlValidator();
+      const List<String> validUrls = <String>[
+        'http://user@example.com',
+        'https://user:password@example.com',
+        'ftp://user:password@example.com',
+        'http://user@www.example.com',
+        'https://user:password@www.example.com',
+        'ftp://user:password@www.example.com',
+      ];
+
+      // Act & Assert
+      for (final String value in validUrls) {
+        expect(validator.validate(value), isNull);
+      }
+    });
   });
 }

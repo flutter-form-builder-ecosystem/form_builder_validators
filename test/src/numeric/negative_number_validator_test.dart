@@ -233,7 +233,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.negativeNumberErrorText,
+          validator.errorText,
         ),
       );
     });

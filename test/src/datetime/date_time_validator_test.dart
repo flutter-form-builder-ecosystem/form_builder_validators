@@ -106,7 +106,7 @@ void main() {
       // Assert
       expect(
         result,
-        equals(FormBuilderLocalizations.current.dateStringErrorText),
+        equals(validator.errorText),
       );
     });
 

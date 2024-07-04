@@ -245,7 +245,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.minErrorText(min),
+          validator.errorText,
         ),
       );
     });

@@ -260,7 +260,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.positiveNumberErrorText,
+          validator.errorText,
         ),
       );
     });
