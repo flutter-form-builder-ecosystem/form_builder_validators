@@ -57,5 +57,22 @@ void main() {
       // Assert
       expect(result, isNull);
     });
+
+    test(
+        'should return the default error message if the value is true and no custom message is set',
+        () {
+      // Arrange
+      const IsTrueValidator validator = IsTrueValidator();
+      const bool value = false;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(
+        result,
+        equals(FormBuilderLocalizations.current.mustBeTrueErrorText),
+      );
+    });
   });
 }
