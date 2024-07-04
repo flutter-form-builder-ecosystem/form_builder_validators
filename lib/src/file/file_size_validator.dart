@@ -5,7 +5,21 @@ import 'package:intl/intl.dart';
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template file_size_validator_template}
+/// [FileSizeValidator] extends [BaseValidator] to validate if a file size string is within a specified maximum size.
+///
+/// This validator checks if the file size, parsed from the string, does not exceed the maximum size limit.
+///
+/// ## Parameters:
+///
+/// - [maxSize] The maximum allowed file size in bytes.
+/// - [base1024Conversion] Whether to use base 1024 (true) or base 1000 (false) for the conversion.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class FileSizeValidator extends BaseValidator<String> {
+  /// Constructor for the file size validator.
   const FileSizeValidator(
     this.maxSize, {
     this.base1024Conversion = true,
@@ -17,6 +31,7 @@ class FileSizeValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   });
 
+  /// The maximum allowed file size in bytes.
   final int maxSize;
 
   /// Whether to use base 1024 (true) or base 1000 (false) for the conversion.
@@ -36,6 +51,12 @@ class FileSizeValidator extends BaseValidator<String> {
   }
 
   /// Helper function to format bytes into a human-readable string (e.g., KB, MB, GB).
+  ///
+  /// ## Parameters:
+  /// - [bytes] The size in bytes to be formatted.
+  ///
+  /// ## Returns:
+  /// A formatted string representing the size in human-readable units.
   String formatBytes(int bytes) {
     double log10(num x) => log(x) / ln10;
 

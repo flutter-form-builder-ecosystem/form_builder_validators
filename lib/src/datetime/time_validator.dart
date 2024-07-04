@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template time_validator_template}
+/// [TimeValidator] extends [BaseValidator] to validate if a string represents a valid time in 24-hour or 12-hour format.
+///
+/// This validator checks if the string matches the time format or can be parsed into a valid time.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the time format. Defaults to a standard time regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class TimeValidator extends BaseValidator<String> {
+  /// Constructor for the time string validator.
   TimeValidator({
     /// {@macro time_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class TimeValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _time;
 
+  /// The regular expression used to validate the time format.
   final RegExp regex;
 
   /// {@template time_template}
@@ -37,7 +51,6 @@ class TimeValidator extends BaseValidator<String> {
         DateTime.tryParse(valueCandidate) != null) {
       return null;
     }
-
     return errorText;
   }
 }

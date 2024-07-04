@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template ssn_validator_template}
+/// [SsnValidator] extends [BaseValidator] to validate if a string represents a valid SSN (Social Security Number).
+///
+/// This validator checks if the SSN matches the specified regex pattern.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the SSN format. Defaults to a standard SSN regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class SsnValidator extends BaseValidator<String> {
+  /// Constructor for the SSN validator.
   SsnValidator({
     /// {@macro ssn_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class SsnValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _ssn;
 
+  /// The regular expression used to validate the SSN format.
   final RegExp regex;
 
   /// {@template ssn_template}
@@ -35,7 +49,7 @@ class SsnValidator extends BaseValidator<String> {
     return isSSN(valueCandidate) ? null : errorText;
   }
 
-  /// check if the string is a valid SSN string
+  /// Check if the string is a valid SSN string.
   bool isSSN(String value) {
     final String ssn = value.replaceAll('-', '').replaceAll(' ', '');
 

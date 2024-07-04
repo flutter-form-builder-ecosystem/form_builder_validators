@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template has_uppercase_chars_template}
+/// [HasUppercaseCharsValidator] extends [BaseValidator] to validate if a string
+/// contains a specified minimum number of uppercase characters.
+///
+/// ## Parameters:
+///
+/// - [atLeast] The minimum number of uppercase characters required.
+/// - [regex] The regular expression used to identify uppercase characters.
+/// - [errorText] The error message returned if the validation fails.
+///
+/// {@macro upper_case_template}
+/// {@endtemplate}
 class HasUppercaseCharsValidator extends BaseValidator<String> {
+  /// Constructor for the uppercase characters validator.
   HasUppercaseCharsValidator({
     this.atLeast = 1,
 
@@ -15,8 +28,10 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _upperCase;
 
+  /// The minimum number of uppercase characters required.
   final int atLeast;
 
+  /// The regular expression used to identify uppercase characters.
   final RegExp regex;
 
   @override
@@ -24,12 +39,12 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
       FormBuilderLocalizations.current.containsUppercaseCharErrorText(atLeast);
 
   /// {@template upper_case_template}
-  /// This regex matches any character that is not an uppercase letter (A-Z).
+  /// This regex matches any character that is an uppercase letter (A-Z).
   ///
-  /// - It includes special characters, digits, and lowercase letters.
-  /// - It can be used to find non-uppercase characters.
+  /// - It includes all uppercase letters.
+  /// - It can be used to find uppercase characters.
   ///
-  /// Examples: a, 1, @
+  /// Examples: A, B, C
   /// {@endtemplate}
   static final RegExp _upperCase = RegExp('[A-Z]');
 
@@ -38,6 +53,13 @@ class HasUppercaseCharsValidator extends BaseValidator<String> {
     return uppercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
+  /// Calculates the number of uppercase characters in the given value.
+  ///
+  /// ## Parameters:
+  /// - [value] The string to be evaluated.
+  ///
+  /// ## Returns:
+  /// The count of uppercase characters in the string.
   int uppercaseCharLength(String value) {
     return regex.allMatches(value).length;
   }

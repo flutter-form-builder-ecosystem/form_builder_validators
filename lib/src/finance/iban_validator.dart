@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template iban_validator_template}
+/// [IbanValidator] extends [BaseValidator] to validate if a string represents a valid IBAN (International Bank Account Number).
+///
+/// This validator checks if the IBAN matches the specified regex pattern and performs a checksum validation.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the IBAN format. Defaults to a standard IBAN regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class IbanValidator extends BaseValidator<String> {
+  /// Constructor for the IBAN validator.
   IbanValidator({
     /// {@macro iban_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class IbanValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _iban;
 
+  /// The regular expression used to validate the IBAN format.
   final RegExp regex;
 
   /// {@template iban_template}
@@ -34,7 +48,7 @@ class IbanValidator extends BaseValidator<String> {
     return isIBAN(valueCandidate) ? null : errorText;
   }
 
-  /// check if the string is a valid IBAN
+  /// Check if the string is a valid IBAN.
   bool isIBAN(String value) {
     final String iban = value.replaceAll(' ', '').toUpperCase();
 

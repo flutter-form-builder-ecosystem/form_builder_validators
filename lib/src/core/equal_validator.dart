@@ -1,7 +1,18 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template equal_validator_template}
+/// [EqualValidator] extends [BaseValidator] to validate if a value is equal to a specified value.
+///
+/// ## Parameters:
+///
+/// - [value] The value to compare against.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class EqualValidator<T> extends BaseValidator<T> {
+  /// Constructor for the equal value validator.
   const EqualValidator(
     this.value, {
     /// {@macro base_validator_error_text}
@@ -11,6 +22,7 @@ class EqualValidator<T> extends BaseValidator<T> {
     super.checkNullOrEmpty,
   });
 
+  /// The value to compare against.
   final Object value;
 
   @override

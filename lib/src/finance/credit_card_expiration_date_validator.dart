@@ -1,7 +1,21 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template credit_card_expiration_date_validator_template}
+/// [CreditCardExpirationDateValidator] extends [BaseValidator] to validate if a string represents a valid credit card expiration date.
+///
+/// This validator checks if the expiration date is in the format MM/YY, and optionally if the date is not expired.
+///
+/// ## Parameters:
+///
+/// - [checkForExpiration] Whether to check if the date is not expired. Defaults to true.
+/// - [regex] The regular expression used to validate the expiration date format. Defaults to a standard expiration date regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class CreditCardExpirationDateValidator extends BaseValidator<String> {
+  /// Constructor for the credit card expiration date validator.
   CreditCardExpirationDateValidator({
     this.checkForExpiration = true,
 
@@ -15,8 +29,10 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _creditCardExpirationDate;
 
+  /// Whether to check if the date is not expired.
   final bool checkForExpiration;
 
+  /// The regular expression used to validate the expiration date format.
   final RegExp regex;
 
   /// {@template credit_card_expiration_template}
@@ -46,7 +62,7 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
     return null;
   }
 
-  /// check if the string is a valid credit card expiration date
+  /// Check if the string is a valid credit card expiration date.
   bool isCreditCardExpirationDate(String str) {
     // Check if the format matches MM/YY
     if (!regex.hasMatch(str)) {
@@ -66,7 +82,7 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
     return year > 0;
   }
 
-  /// check if the string is not a expired credit card date
+  /// Check if the string is not an expired credit card date.
   bool isNotExpiredCreditCardDate(String str) {
     final List<int> parts = str.split('/').map(int.parse).toList();
     final int month = parts[0];

@@ -1,7 +1,23 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template street_validator_template}
+/// [StreetValidator] extends [BaseValidator] to validate if a string represents a valid street name.
+///
+/// This validator checks if the street name matches a specified regex pattern and is not in a blacklist,
+/// and optionally checks if it is in a whitelist.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the street name format. Defaults to a standard street name regex.
+/// - [streetWhitelist] A list of valid street names that are explicitly allowed.
+/// - [streetBlacklist] A list of invalid street names that are explicitly disallowed.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class StreetValidator extends BaseValidator<String> {
+  /// Constructor for the street name validator.
   StreetValidator({
     /// {@macro street_template}
     RegExp? regex,
@@ -11,10 +27,13 @@ class StreetValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _street;
 
+  /// The regular expression used to validate the street name format.
   final RegExp regex;
 
+  /// A list of valid street names that are explicitly allowed.
   final List<String> streetWhitelist;
 
+  /// A list of invalid street names that are explicitly disallowed.
   final List<String> streetBlacklist;
 
   /// {@template street_template}

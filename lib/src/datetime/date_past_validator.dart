@@ -1,7 +1,19 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template date_past_validator_template}
+/// [DatePastValidator] extends [BaseValidator] to validate if a date string represents a past date.
+///
+/// This validator checks if the date parsed from the string is before the current date and time.
+///
+/// ## Parameters:
+///
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class DatePastValidator extends BaseValidator<String> {
+  /// Constructor for the past date validator.
   const DatePastValidator({
     /// {@macro base_validator_error_text}
     super.errorText,

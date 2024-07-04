@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template credit_card_validator_template}
+/// [CreditCardValidator] extends [BaseValidator] to validate if a string represents a valid credit card number.
+///
+/// This validator checks if the credit card number matches the specified regex pattern and passes the Luhn algorithm.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the credit card number format. Defaults to a standard credit card regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class CreditCardValidator extends BaseValidator<String> {
+  /// Constructor for the credit card number validator.
   CreditCardValidator({
     /// {@macro credit_card_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class CreditCardValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _creditCard;
 
+  /// The regular expression used to validate the credit card number format.
   final RegExp regex;
 
   /// {@template credit_card_template}
@@ -36,7 +50,7 @@ class CreditCardValidator extends BaseValidator<String> {
     return isCreditCard(valueCandidate) ? null : errorText;
   }
 
-  /// check if the string is a credit card
+  /// Check if the string is a credit card number.
   bool isCreditCard(String str) {
     final String sanitized = str.replaceAll(RegExp('[^0-9]+'), '');
     if (!regex.hasMatch(sanitized)) {
@@ -52,7 +66,7 @@ class CreditCardValidator extends BaseValidator<String> {
       digit = sanitized.substring(i, i + 1);
       int tmpNum = int.parse(digit);
 
-      if (shouldDouble == true) {
+      if (shouldDouble) {
         tmpNum *= 2;
         if (tmpNum >= 10) {
           sum += (tmpNum % 10) + 1;

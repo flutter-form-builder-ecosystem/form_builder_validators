@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template has_special_chars_template}
+/// [HasSpecialCharsValidator] extends [BaseValidator] to validate if a string
+/// contains a specified minimum number of special characters.
+///
+/// ## Parameters:
+///
+/// - [atLeast] The minimum number of special characters required.
+/// - [regex] The regular expression used to identify special characters.
+/// - [errorText] The error message returned if the validation fails.
+///
+/// {@macro special_chars_template}
+/// {@endtemplate}
 class HasSpecialCharsValidator extends BaseValidator<String> {
+  /// Constructor for the special characters validator.
   HasSpecialCharsValidator({
     this.atLeast = 1,
 
@@ -15,8 +28,10 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _specialChar;
 
+  /// The minimum number of special characters required.
   final int atLeast;
 
+  /// The regular expression used to identify special characters.
   final RegExp regex;
 
   @override
@@ -38,6 +53,13 @@ class HasSpecialCharsValidator extends BaseValidator<String> {
     return specialCharLength(valueCandidate) >= atLeast ? null : errorText;
   }
 
+  /// Calculates the number of special characters in the given value.
+  ///
+  /// ## Parameters:
+  /// - [value] The string to be evaluated.
+  ///
+  /// ## Returns:
+  /// The count of special characters in the string.
   int specialCharLength(String value) {
     return regex.allMatches(value).length;
   }

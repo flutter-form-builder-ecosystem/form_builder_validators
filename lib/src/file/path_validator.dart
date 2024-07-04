@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template path_validator_template}
+/// [PathValidator] extends [BaseValidator] to validate if a string represents a valid file path.
+///
+/// This validator checks if the string matches the specified regex pattern for valid file paths.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the file path format. Defaults to a standard file path regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class PathValidator extends BaseValidator<String> {
+  /// Constructor for the file path validator.
   PathValidator({
     /// {@macro file_path_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class PathValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _filePath;
 
+  /// The regular expression used to validate the file path format.
   final RegExp regex;
 
   /// {@template file_path_template}

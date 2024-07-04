@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template max_length_validator_template}
+/// [MaxLengthValidator] extends [BaseValidator] to validate if a value does not exceed a specified maximum length.
+///
+/// This validator works with various types, including String, Iterable, and Map.
+///
+/// ## Parameters:
+///
+/// - [maxLength] The maximum length the value is allowed to have.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class MaxLengthValidator<T> extends BaseValidator<T> {
+  /// Constructor for the maximum length validator.
   const MaxLengthValidator(
     this.maxLength, {
     /// {@macro base_validator_error_text}
@@ -11,6 +24,7 @@ class MaxLengthValidator<T> extends BaseValidator<T> {
     super.checkNullOrEmpty,
   });
 
+  /// The maximum length the value is allowed to have.
   final int maxLength;
 
   @override

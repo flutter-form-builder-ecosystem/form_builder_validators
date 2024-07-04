@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template bic_validator_template}
+/// [BicValidator] extends [BaseValidator] to validate if a string represents a valid BIC (Bank Identifier Code).
+///
+/// This validator checks if the string matches the specified regex pattern for valid BICs.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the BIC format. Defaults to a standard BIC regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class BicValidator extends BaseValidator<String> {
+  /// Constructor for the BIC validator.
   BicValidator({
     /// {@macro bic_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class BicValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _bic;
 
+  /// The regular expression used to validate the BIC format.
   final RegExp regex;
 
   /// {@template bic_template}
@@ -34,7 +48,13 @@ class BicValidator extends BaseValidator<String> {
     return isBIC(valueCandidate) ? null : errorText;
   }
 
-  /// check if the string is a valid BIC string
+  /// Check if the string is a valid BIC string.
+  ///
+  /// ## Parameters:
+  /// - [value] The string to be evaluated.
+  ///
+  /// ## Returns:
+  /// A boolean indicating whether the value is a valid BIC.
   bool isBIC(String value) {
     final String bic = value.replaceAll(' ', '').toUpperCase();
 

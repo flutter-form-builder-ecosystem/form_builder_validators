@@ -1,7 +1,22 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template country_validator_template}
+/// [CountryValidator] extends [BaseValidator] to validate if a string represents a valid country name.
+///
+/// This validator checks if the country name is not in a blacklist,
+/// and optionally checks if it is in a whitelist.
+///
+/// ## Parameters:
+///
+/// - [countryWhitelist] A list of valid country names that are explicitly allowed.
+/// - [countryBlacklist] A list of invalid country names that are explicitly disallowed.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class CountryValidator extends BaseValidator<String> {
+  /// Constructor for the country name validator.
   CountryValidator({
     List<String>? countryWhitelist,
     List<String>? countryBlacklist,
@@ -14,8 +29,10 @@ class CountryValidator extends BaseValidator<String> {
   })  : countryWhitelist = countryWhitelist ?? <String>[],
         countryBlacklist = countryBlacklist ?? <String>[];
 
+  /// A list of valid country names that are explicitly allowed.
   final List<String> countryWhitelist;
 
+  /// A list of invalid country names that are explicitly disallowed.
   final List<String> countryBlacklist;
 
   @override
@@ -28,7 +45,7 @@ class CountryValidator extends BaseValidator<String> {
       return errorText;
     }
 
-    if (countryWhitelist.contains(valueCandidate)) {
+    if (countryWhitelist.isEmpty || countryWhitelist.contains(valueCandidate)) {
       return null;
     }
 

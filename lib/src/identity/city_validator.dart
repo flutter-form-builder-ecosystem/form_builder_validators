@@ -1,7 +1,23 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template city_validator_template}
+/// [CityValidator] extends [BaseValidator] to validate if a string represents a valid city name.
+///
+/// This validator checks if the city name matches a specified regex pattern and is not in a blacklist,
+/// and optionally checks if it is in a whitelist.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the city name format. Defaults to a standard city name regex.
+/// - [citiesWhitelist] A list of valid city names that are explicitly allowed.
+/// - [citiesBlacklist] A list of invalid city names that are explicitly disallowed.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class CityValidator extends BaseValidator<String> {
+  /// Constructor for the city name validator.
   CityValidator({
     /// {@macro city_template}
     RegExp? regex,
@@ -11,11 +27,14 @@ class CityValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _cities;
 
+  /// The regular expression used to validate the city name format.
   final RegExp regex;
 
-  List<String> citiesWhitelist;
+  /// A list of valid city names that are explicitly allowed.
+  final List<String> citiesWhitelist;
 
-  List<String> citiesBlacklist;
+  /// A list of invalid city names that are explicitly disallowed.
+  final List<String> citiesBlacklist;
 
   /// {@template city_template}
   /// This regex matches a valid city name format.
@@ -41,7 +60,7 @@ class CityValidator extends BaseValidator<String> {
       return errorText;
     }
 
-    if (citiesWhitelist.contains(valueCandidate)) {
+    if (citiesWhitelist.isEmpty || citiesWhitelist.contains(valueCandidate)) {
       return null;
     }
 

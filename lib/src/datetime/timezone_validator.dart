@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template time_zone_validator_template}
+/// [TimeZoneValidator] extends [BaseValidator] to validate if a string represents a valid time zone identifier.
+///
+/// This validator checks if the string is in the list of valid time zone identifiers.
+///
+/// ## Parameters:
+///
+/// - [validTimeZones] The list of valid time zone identifiers. Defaults to a standard list of common time zones.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class TimeZoneValidator extends BaseValidator<String> {
+  /// Constructor for the time zone string validator.
   TimeZoneValidator({
     List<String>? validTimeZones,
 
@@ -12,6 +25,7 @@ class TimeZoneValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : validTimeZones = validTimeZones ?? timeZones;
 
+  /// The list of valid time zone identifiers.
   final List<String> validTimeZones;
 
   /// A list of valid time zone identifiers.
