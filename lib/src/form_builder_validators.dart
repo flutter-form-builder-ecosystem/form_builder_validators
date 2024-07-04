@@ -768,11 +768,13 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> fileSize(
     int maxSize, {
+    bool base1024Conversion = true,
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
       FileSizeValidator(
         maxSize,
+        base1024Conversion: base1024Conversion,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;

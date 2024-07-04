@@ -128,7 +128,7 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current.numericErrorText,
+          validator.errorText,
         ),
       );
     });
