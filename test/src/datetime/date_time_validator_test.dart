@@ -32,6 +32,7 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.dateStringErrorText),
       );
+      expect(result, validator.errorText);
     });
 
     test('should return the custom error message when the value is null', () {
@@ -106,7 +107,7 @@ void main() {
       // Assert
       expect(
         result,
-        equals(validator.errorText),
+        equals(FormBuilderLocalizations.current.dateStringErrorText),
       );
     });
 
