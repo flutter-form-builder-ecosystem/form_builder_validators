@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+/// Represents the home page of the application.
 class HomePage extends StatelessWidget {
+  /// Constructs a new instance of the [HomePage] class.
   const HomePage({super.key});
 
   @override
