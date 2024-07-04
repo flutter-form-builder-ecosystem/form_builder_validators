@@ -1,4 +1,4 @@
-include: package:very_good_analysis/analysis_options.6.0.0.yaml
+include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - lib/localization/intl/**
@@ -10,3 +10,4 @@ linter:
     always_use_package_imports: false
     always_specify_types: true
     omit_local_variable_types: false
+    public_member_api_docs: true

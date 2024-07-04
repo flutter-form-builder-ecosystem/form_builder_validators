@@ -23,10 +23,9 @@ dependencies:
 
 dev_dependencies:
   faker_dart: ^0.2.2
-  
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^6.0.0
 
 flutter:
   generate: true
