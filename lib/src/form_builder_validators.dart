@@ -511,6 +511,23 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid time zone.
+
+  /// ## Parameters:
+  /// - [errorText] The error message when the time zone is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro time_zone_template}
+  static FormFieldValidator<String> timeZone({
+    List<String>? validTimeZones,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      TimeZoneValidator(
+        validTimeZones: validTimeZones,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the field's value to a valid file extension.
   ///
   /// ## Parameters:
@@ -691,6 +708,164 @@ class FormBuilderValidators {
   }) =>
       IbanValidator(
         regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid city.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [citiesWhitelist] The list of allowed cities.
+  /// - [citiesBlacklist] The list of disallowed cities.
+  /// - [errorText] The error message when the city is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> city({
+    RegExp? regex,
+    List<String> citiesWhitelist = const <String>[],
+    List<String> citiesBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      CityValidator(
+        regex: regex,
+        citiesWhitelist: citiesWhitelist,
+        citiesBlacklist: citiesBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid country.
+  ///
+  /// ## Parameters:
+  /// - [countryWhitelist] The list of allowed countries.
+  /// - [countryBlacklist] The list of disallowed countries.
+  /// - [errorText] The error message when the country is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> country({
+    List<String> countryWhitelist = const <String>[],
+    List<String> countryBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      CountryValidator(
+        countryWhitelist: countryWhitelist,
+        countryBlacklist: countryBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid first name.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [firstNameWhitelist] The list of allowed first names.
+  /// - [firstNameBlacklist] The list of disallowed first names.
+  /// - [errorText] The error message when the first name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> firstName({
+    RegExp? regex,
+    List<String> firstNameWhitelist = const <String>[],
+    List<String> firstNameBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FirstNameValidator(
+        regex: regex,
+        firstNameWhitelist: firstNameWhitelist,
+        firstNameBlacklist: firstNameBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid last name.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [lastNameWhitelist] The list of allowed last names.
+  /// - [lastNameBlacklist] The list of disallowed last names.
+  /// - [errorText] The error message when the last name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> lastName({
+    RegExp? regex,
+    List<String> lastNameWhitelist = const <String>[],
+    List<String> lastNameBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LastNameValidator(
+        regex: regex,
+        lastNameWhitelist: lastNameWhitelist,
+        lastNameBlacklist: lastNameBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid passport number.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [passportNumberWhitelist] The list of allowed passport numbers.
+  /// - [passportNumberBlacklist] The list of disallowed passport numbers.
+  /// - [errorText] The error message when the passport number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> passport({
+    RegExp? regex,
+    List<String> passportNumberWhitelist = const <String>[],
+    List<String> passportNumberBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PassportNumberValidator(
+        regex: regex,
+        passportNumberWhitelist: passportNumberWhitelist,
+        passportNumberBlacklist: passportNumberBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid state.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [stateWhitelist] The list of allowed states.
+  /// - [stateBlacklist] The list of disallowed states.
+  /// - [errorText] The error message when the state is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> state({
+    RegExp? regex,
+    List<String> stateWhitelist = const <String>[],
+    List<String> stateBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      StateValidator(
+        regex: regex,
+        stateWhitelist: stateWhitelist,
+        stateBlacklist: stateBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid street address.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [streetWhitelist] The list of allowed street addresses.
+  /// - [streetBlacklist] The list of disallowed street addresses.
+  /// - [errorText] The error message when the street address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> street({
+    RegExp? regex,
+    List<String> streetWhitelist = const <String>[],
+    List<String> streetBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      StreetValidator(
+        regex: regex,
+        streetWhitelist: streetWhitelist,
+        streetBlacklist: streetBlacklist,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
@@ -1139,6 +1314,21 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid prime number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not a prime number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro prime_number_template}
+  static FormFieldValidator<T> primeNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PrimeNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the field's value to contain only alphabetical characters.
   ///
   /// ## Parameters:
@@ -1377,6 +1567,24 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid DUNS number.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the DUNS number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro duns_template}
+  static FormFieldValidator<String> duns({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      DunsValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
   ///
   /// ## Parameters:
@@ -1405,6 +1613,54 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid language code.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [languageCodeWhitelist] The list of allowed language codes.
+  /// - [languageCodeBlacklist] The list of disallowed language codes.
+  /// - [errorText] The error message when the language code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro language_code_template}
+  static FormFieldValidator<String> languageCode({
+    RegExp? regex,
+    List<String> languageCodeWhitelist = const <String>[],
+    List<String> languageCodeBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LanguageCodeValidator(
+        regex: regex,
+        languageCodeWhitelist: languageCodeWhitelist,
+        languageCodeBlacklist: languageCodeBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid license plate.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [licensePlateWhitelist] The list of allowed license plates.
+  /// - [licensePlateBlacklist] The list of disallowed license plates.
+  /// - [errorText] The error message when the license plate is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro license_plate_template}
+  static FormFieldValidator<String> licensePlate({
+    RegExp? regex,
+    List<String> licensePlateWhitelist = const <String>[],
+    List<String> licensePlateBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LicensePlateValidator(
+        regex: regex,
+        licensePlateWhitelist: licensePlateWhitelist,
+        licensePlateBlacklist: licensePlateBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// UUID.
   ///
@@ -1418,6 +1674,30 @@ class FormBuilderValidators {
     bool checkNullOrEmpty = true,
   }) =>
       UuidValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid VIN.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [vinWhitelist] The list of allowed VINs.
+  /// - [vinBlacklist] The list of disallowed VINs.
+  /// - [errorText] The error message when the VIN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro vin_template}
+  static FormFieldValidator<String> vin({
+    RegExp? regex,
+    List<String> vinWhitelist = const <String>[],
+    List<String> vinBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      VinValidator(
+        regex: regex,
+        vinWhitelist: vinWhitelist,
+        vinBlacklist: vinBlacklist,
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;

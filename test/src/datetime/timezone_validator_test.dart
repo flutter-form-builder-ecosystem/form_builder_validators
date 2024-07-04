@@ -9,7 +9,7 @@ void main() {
   group('Timezone -', () {
     test('should return null for valid timezone strings', () {
       // Arrange
-      final TimezoneValidator validator = TimezoneValidator();
+      final TimeZoneValidator validator = TimeZoneValidator();
 
       // Act & Assert
       expect(validator.validate('UTC'), isNull);
@@ -21,7 +21,7 @@ void main() {
     test('should return the default error message for invalid timezone strings',
         () {
       // Arrange
-      final TimezoneValidator validator = TimezoneValidator();
+      final TimeZoneValidator validator = TimeZoneValidator();
 
       // Act & Assert
       expect(
@@ -45,8 +45,8 @@ void main() {
     test('should return the custom error message for invalid timezone strings',
         () {
       // Arrange
-      final TimezoneValidator validator =
-          TimezoneValidator(errorText: customErrorMessage);
+      final TimeZoneValidator validator =
+          TimeZoneValidator(errorText: customErrorMessage);
 
       // Act & Assert
       expect(
@@ -62,8 +62,8 @@ void main() {
         'should return null when the value is an empty string and null check is disabled',
         () {
       // Arrange
-      final TimezoneValidator validator =
-          TimezoneValidator(checkNullOrEmpty: false);
+      final TimeZoneValidator validator =
+          TimeZoneValidator(checkNullOrEmpty: false);
       const String value = '';
 
       // Act & Assert
@@ -74,8 +74,8 @@ void main() {
     test('should return null when the value is null and null check is disabled',
         () {
       // Arrange
-      final TimezoneValidator validator =
-          TimezoneValidator(checkNullOrEmpty: false);
+      final TimeZoneValidator validator =
+          TimeZoneValidator(checkNullOrEmpty: false);
       const String? value = null;
 
       // Act & Assert

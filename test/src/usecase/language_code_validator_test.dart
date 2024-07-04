@@ -10,7 +10,7 @@ void main() {
     'fr',
     'es',
     'de',
-    'it'
+    'it',
   ];
   final List<String> languageCodeBlacklist = <String>['xx', 'yy'];
 

@@ -1,8 +1,8 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
-class TimezoneValidator extends BaseValidator<String> {
-  TimezoneValidator({
+class TimeZoneValidator extends BaseValidator<String> {
+  TimeZoneValidator({
     List<String>? validTimeZones,
 
     /// {@macro base_validator_error_text}
