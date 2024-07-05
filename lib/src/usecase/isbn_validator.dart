@@ -1,7 +1,19 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template isbn_validator_template}
+/// [IsbnValidator] extends [BaseValidator] to validate if a string is a valid ISBN (International Standard Book Number).
+///
+/// This validator checks if the value is a valid ISBN-10 or ISBN-13 format.
+///
+/// ## Parameters:
+///
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class IsbnValidator extends BaseValidator<String> {
+  /// Constructor for the ISBN validator.
   const IsbnValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
@@ -19,6 +31,13 @@ class IsbnValidator extends BaseValidator<String> {
     return isISBN(valueCandidate) ? null : errorText;
   }
 
+  /// Checks if the string is a valid ISBN (either ISBN-10 or ISBN-13).
+  ///
+  /// ## Parameters:
+  /// - [valueCandidate] The string to be checked.
+  ///
+  /// ## Returns:
+  /// A boolean indicating whether the string is a valid ISBN.
   bool isISBN(String valueCandidate) {
     final String isbn = valueCandidate.replaceAll('-', '').replaceAll(' ', '');
 

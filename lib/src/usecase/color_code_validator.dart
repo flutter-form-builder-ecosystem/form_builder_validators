@@ -1,7 +1,21 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template color_code_validator_template}
+/// [ColorCodeValidator] extends [BaseValidator] to validate if a string is a valid color code in specified formats.
+///
+/// This validator checks if the value matches the specified color formats, such as hex, rgb, or hsl.
+///
+/// ## Parameters:
+///
+/// - [formats] The list of color formats to check against. Defaults to ['hex', 'rgb', 'hsl'].
+/// - [regex] An optional custom regular expression to validate the color code.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class ColorCodeValidator extends BaseValidator<String> {
+  /// Constructor for the color code validator.
   ColorCodeValidator({
     this.formats = const <String>['hex', 'rgb', 'hsl'],
 
@@ -17,8 +31,10 @@ class ColorCodeValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   });
 
+  /// The list of color formats to check against.
   final List<String> formats;
 
+  /// An optional custom regular expression to validate the color code.
   final RegExp? regex;
 
   /// {@template hex_template}
@@ -65,8 +81,14 @@ class ColorCodeValidator extends BaseValidator<String> {
     return isColorCode(valueCandidate, formats: formats) ? null : errorText;
   }
 
-  /// check if the string is a color
-  /// * [formats] is a list of color formats to check
+  /// Checks if the string is a valid color code in specified formats.
+  ///
+  /// ## Parameters:
+  /// - [value] The string to be checked.
+  /// - [formats] The list of color formats to check against.
+  ///
+  /// ## Returns:
+  /// A boolean indicating whether the string is a valid color code.
   bool isColorCode(
     String value, {
     List<String> formats = const <String>['hex', 'rgb', 'hsl'],

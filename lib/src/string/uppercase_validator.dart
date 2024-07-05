@@ -1,7 +1,19 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template uppercase_validator_template}
+/// [UppercaseValidator] extends [BaseValidator] to validate if a string is entirely uppercase.
+///
+/// This validator checks if the value is the same as its uppercase version.
+///
+/// ## Parameters:
+///
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class UppercaseValidator extends BaseValidator<String> {
+  /// Constructor for the uppercase validator.
   const UppercaseValidator({
     /// {@macro base_validator_error_text}
     super.errorText,

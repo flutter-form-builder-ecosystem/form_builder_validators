@@ -161,8 +161,6 @@ void main() {
       // Fail
       expect(validator(null), isNull);
       expect(validator(''), isNull);
-
-      //TODO: Add object test
     });
 
     test('FormFieldValidatorExtensions.withMessage', () {

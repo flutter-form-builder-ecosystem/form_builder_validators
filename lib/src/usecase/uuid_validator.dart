@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template uuid_validator_template}
+/// [UuidValidator] extends [BaseValidator] to validate if a string is a valid UUID (version 4).
+///
+/// This validator checks if the value matches the specified regex pattern for UUID format, including hyphens.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the UUID format. Defaults to a regex that matches version 4 UUIDs.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class UuidValidator extends BaseValidator<String> {
+  /// Constructor for the UUID validator.
   UuidValidator({
     /// {@macro uuid_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class UuidValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _uuid;
 
+  /// The regular expression used to validate the UUID format.
   final RegExp regex;
 
   /// {@template uuid_template}

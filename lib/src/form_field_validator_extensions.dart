@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../form_builder_validators.dart';
 
+/// Extension methods for [FormFieldValidator].
 extension FormFieldValidatorExtensions<T> on FormFieldValidator<T> {
   /// Combines the current validator with another validator using logical AND.
   FormFieldValidator<T> and(FormFieldValidator<T> other) {
