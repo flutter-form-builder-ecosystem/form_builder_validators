@@ -1,6 +1,25 @@
 import '../../form_builder_validators.dart';
 
+/// {@template url_validator_template}
+/// [UrlValidator] extends [BaseValidator] to validate if a string represents a valid URL.
+///
+/// This validator checks if the URL matches the specified regex pattern and adheres to various URL validation rules.
+///
+/// ## Parameters:
+///
+/// - [protocols] The list of allowed protocols (e.g., http, https, ftp). Defaults to ['http', 'https', 'ftp'].
+/// - [requireTld] Whether a top-level domain (TLD) is required. Defaults to true.
+/// - [requireProtocol] Whether the protocol is required. Defaults to false.
+/// - [allowUnderscore] Whether underscores are allowed in the URL. Defaults to false.
+/// - [hostWhitelist] A list of valid hostnames that are explicitly allowed.
+/// - [hostBlacklist] A list of invalid hostnames that are explicitly disallowed.
+/// - [regex] The regular expression used to validate the URL format. If provided, overrides the default URL regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class UrlValidator extends BaseValidator<String> {
+  /// Constructor for the URL validator.
   UrlValidator({
     this.protocols = const <String>['http', 'https', 'ftp'],
     this.requireTld = true,
@@ -17,22 +36,31 @@ class UrlValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : _ipValidator = IpValidator(regex: regex, errorText: errorText);
 
+  /// The list of allowed protocols.
   final List<String> protocols;
 
+  /// Whether a top-level domain (TLD) is required.
   final bool requireTld;
 
+  /// Whether the protocol is required.
   final bool requireProtocol;
 
+  /// Whether underscores are allowed in the URL.
   final bool allowUnderscore;
 
+  /// A list of valid hostnames that are explicitly allowed.
   final List<String> hostWhitelist;
 
+  /// A list of invalid hostnames that are explicitly disallowed.
   final List<String> hostBlacklist;
 
+  /// The regular expression used to validate the URL format.
   final RegExp? regex;
 
+  /// The maximum allowable length for a URL.
   final int _maxUrlLength = 2083;
 
+  /// The IP validator instance used to validate IP addresses within the URL.
   final IpValidator _ipValidator;
 
   @override
@@ -55,7 +83,7 @@ class UrlValidator extends BaseValidator<String> {
         : null;
   }
 
-  /// check if the string [str] is a URL
+  /// Check if the string [str] is a URL.
   ///
   /// * [protocols] sets the list of allowed protocols
   /// * [requireTld] sets if TLD is required
@@ -177,10 +205,10 @@ class UrlValidator extends BaseValidator<String> {
     return true;
   }
 
-  /// check if the string [str] is a fully qualified domain name (e.g. domain.com).
+  /// Check if the string [str] is a fully qualified domain name (e.g., domain.com).
   ///
   /// * [requireTld] sets if TLD is required
-  /// * [allowUnderscore] sets if underscores are allowed
+  /// * [allowUnderscores] sets if underscores are allowed
   bool isFQDN(
     String str, {
     bool requireTld = true,
@@ -212,6 +240,7 @@ class UrlValidator extends BaseValidator<String> {
     return true;
   }
 
+  /// Remove and return the first element from a list.
   T shift<T>(List<T> l) {
     if (l.isNotEmpty) {
       final T first = l.first;

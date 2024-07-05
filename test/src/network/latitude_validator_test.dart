@@ -51,7 +51,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(FormBuilderLocalizations.current.longitudeErrorText),
+          equals(FormBuilderLocalizations.current.latitudeErrorText),
         );
       }
     });
@@ -107,7 +107,7 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(FormBuilderLocalizations.current.longitudeErrorText),
+        equals(FormBuilderLocalizations.current.latitudeErrorText),
       );
     });
 
@@ -140,7 +140,7 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(FormBuilderLocalizations.current.longitudeErrorText),
+        equals(FormBuilderLocalizations.current.latitudeErrorText),
       );
     });
   });

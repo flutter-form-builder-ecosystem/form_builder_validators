@@ -1,7 +1,20 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template phone_number_validator_template}
+/// [PhoneNumberValidator] extends [BaseValidator] to validate if a string represents a valid international phone number.
+///
+/// This validator checks if the phone number matches the specified regex pattern.
+///
+/// ## Parameters:
+///
+/// - [regex] The regular expression used to validate the phone number format. Defaults to a standard international phone number regex.
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class PhoneNumberValidator extends BaseValidator<String> {
+  /// Constructor for the phone number validator.
   PhoneNumberValidator({
     /// {@macro phone_number_template}
     RegExp? regex,
@@ -13,6 +26,7 @@ class PhoneNumberValidator extends BaseValidator<String> {
     super.checkNullOrEmpty,
   }) : regex = regex ?? _phoneNumber;
 
+  /// The regular expression used to validate the phone number format.
   final RegExp regex;
 
   /// {@template phone_number_template}

@@ -1,7 +1,19 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template prime_number_validator_template}
+/// [PrimeNumberValidator] extends [BaseValidator] to validate if a value is a prime number.
+///
+/// This validator checks if the value is an integer or a string that can be parsed into an integer and ensures it is a prime number.
+///
+/// ## Parameters:
+///
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class PrimeNumberValidator<T> extends BaseValidator<T> {
+  /// Constructor for the prime number validator.
   const PrimeNumberValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
@@ -13,14 +25,6 @@ class PrimeNumberValidator<T> extends BaseValidator<T> {
   @override
   String get translatedErrorText =>
       FormBuilderLocalizations.current.primeNumberErrorText;
-
-  bool _isPrime(int number) {
-    if (number <= 1) return false;
-    for (int i = 2; i <= number ~/ 2; i++) {
-      if (number % i == 0) return false;
-    }
-    return true;
-  }
 
   @override
   String? validateValue(T valueCandidate) {
@@ -37,10 +41,25 @@ class PrimeNumberValidator<T> extends BaseValidator<T> {
       return errorText;
     }
 
-    if (!_isPrime(value)) {
+    if (!isPrime(value)) {
       return errorText;
     }
 
     return null;
+  }
+
+  /// Checks if the number is prime.
+  ///
+  /// ## Parameters:
+  /// - [number] The number to be checked.
+  ///
+  /// ## Returns:
+  /// A boolean indicating whether the number is prime.
+  bool isPrime(int number) {
+    if (number <= 1) return false;
+    for (int i = 2; i <= number ~/ 2; i++) {
+      if (number % i == 0) return false;
+    }
+    return true;
   }
 }

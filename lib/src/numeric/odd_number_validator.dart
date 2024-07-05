@@ -1,7 +1,19 @@
 import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
+/// {@template odd_number_validator_template}
+/// [OddNumberValidator] extends [BaseValidator] to validate if a string represents an odd number.
+///
+/// This validator checks if the provided string can be parsed into an integer and if that integer is odd.
+///
+/// ## Parameters:
+///
+/// - [errorText] The error message returned if the validation fails.
+/// - [checkNullOrEmpty] Whether to check if the value is null or empty.
+///
+/// {@endtemplate}
 class OddNumberValidator extends BaseValidator<String> {
+  /// Constructor for the odd number validator.
   const OddNumberValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
