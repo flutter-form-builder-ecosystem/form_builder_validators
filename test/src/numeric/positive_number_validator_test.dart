@@ -38,6 +38,10 @@ void main() {
           FormBuilderLocalizations.current.positiveNumberErrorText,
         ),
       );
+      expect(
+        result,
+        equals(validator.errorText),
+      );
     });
 
     test('should return the custom error message if the value is zero', () {
@@ -278,6 +282,18 @@ void main() {
 
       // Assert
       expect(result, equals(customErrorMessage));
+    });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const PositiveNumberValidator<bool> validator =
+          PositiveNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
+      );
     });
   });
 }

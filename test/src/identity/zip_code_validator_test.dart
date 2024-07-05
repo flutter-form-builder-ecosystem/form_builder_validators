@@ -126,5 +126,17 @@ void main() {
       // Assert
       expect(result, customErrorMessage);
     });
+
+    test('should return default error if the value is empty', () {
+      // Arrange
+      final ZipCodeValidator validator = ZipCodeValidator();
+      const String value = '';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, validator.errorText);
+    });
   });
 }

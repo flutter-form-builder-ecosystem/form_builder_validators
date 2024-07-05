@@ -92,6 +92,7 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.dateStringErrorText),
       );
+      expect(result, validator.errorText);
     });
 
     test(

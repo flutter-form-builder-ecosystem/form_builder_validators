@@ -237,5 +237,17 @@ void main() {
         ),
       );
     });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const NegativeNumberValidator<bool> validator =
+          NegativeNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
+      );
+    });
   });
 }

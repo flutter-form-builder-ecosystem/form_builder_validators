@@ -179,5 +179,105 @@ void main() {
       // Pass
       expect(validatorWithMessage('test'), isNull);
     });
+
+    test('FormFieldValidatorExtensions.and with nested validators', () {
+      // Arrange
+      final FormFieldValidator<String> validator1 =
+          FormBuilderValidators.required();
+      final FormFieldValidator<String> validator2 =
+          FormBuilderValidators.minLength(5);
+      final FormFieldValidator<String> validator3 =
+          FormBuilderValidators.maxLength(10);
+      final FormFieldValidator<String> combinedValidator =
+          validator1.and(validator2.and(validator3));
+
+      // Act & Assert
+      // Pass
+      expect(combinedValidator('hello'), isNull);
+      expect(combinedValidator('hello123'), isNull);
+
+      // Fail
+      expect(combinedValidator(null), isNotNull);
+      expect(combinedValidator(''), isNotNull);
+      expect(combinedValidator('test'), isNotNull);
+      expect(combinedValidator('hello world'), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.or with nested validators', () {
+      // Arrange
+      final FormFieldValidator<String> validator1 =
+          FormBuilderValidators.endsWith('world');
+      final FormFieldValidator<String> validator2 =
+          FormBuilderValidators.startsWith('Hello');
+      final FormFieldValidator<String> validator3 =
+          FormBuilderValidators.equal('test');
+      final FormFieldValidator<String> combinedValidator =
+          validator1.or(validator2.or(validator3));
+
+      // Act & Assert
+      // Pass
+      expect(combinedValidator('Hello world'), isNull);
+      expect(combinedValidator('Hello'), isNull);
+      expect(combinedValidator('test'), isNull);
+
+      // Fail
+      expect(combinedValidator('123 hello'), isNotNull);
+      expect(combinedValidator(null), isNotNull);
+      expect(combinedValidator(''), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.transform with custom transformation',
+        () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.transform<String>(
+        (String? value) => value?.toUpperCase() ?? '',
+        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator('abc'), isNull);
+      expect(validator('ABC'), isNull);
+
+      // Fail
+      expect(validator('abc123'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.when with custom condition', () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.required<String>();
+      final FormFieldValidator<String> conditionalValidator =
+          validator.when((String? value) => value != 'skip');
+
+      // Act & Assert
+      // Pass
+      expect(conditionalValidator('test'), isNull);
+
+      // Fail
+      expect(conditionalValidator('skip'), isNull);
+      expect(conditionalValidator(null), isNotNull);
+      expect(conditionalValidator(''), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.unless with custom condition', () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.required<String>();
+      final FormFieldValidator<String> conditionalValidator =
+          validator.unless((String? value) => value == 'skip');
+
+      // Act & Assert
+      // Pass
+      expect(conditionalValidator('skip'), isNull);
+
+      // Fail
+      expect(conditionalValidator('test'), isNull);
+      expect(conditionalValidator(null), isNotNull);
+      expect(conditionalValidator(''), isNotNull);
+    });
   });
 }

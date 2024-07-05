@@ -43,6 +43,10 @@ void main() {
         validator.validate('1HGCM82633A1O3456'), // contains invalid character O
         equals(FormBuilderLocalizations.current.vinErrorText),
       );
+      expect(
+        validator.validate('1HGCM82633A1O3456'), // contains invalid character O
+        equals(validator.errorText),
+      );
     });
 
     test('should return the custom error message for invalid VIN strings', () {

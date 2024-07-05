@@ -48,6 +48,10 @@ void main() {
         validator.validate('10'),
         equals(FormBuilderLocalizations.current.primeNumberErrorText),
       );
+      expect(
+        validator.validate('10'),
+        equals(validator.errorText),
+      );
     });
 
     test(
@@ -119,6 +123,21 @@ void main() {
       // Act & Assert
       final String? result = validator.validate(value);
       expect(result, isNull);
+    });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const PrimeNumberValidator<bool> validator = PrimeNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(true),
+        equals(FormBuilderLocalizations.current.primeNumberErrorText),
+      );
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
+      );
     });
   });
 }

@@ -128,5 +128,15 @@ void main() {
         expect(result, FormBuilderLocalizations.current.countryErrorText);
       }
     });
+
+    test('should return null when no arguments are set in the constructor', () {
+      // Arrange
+      final CountryValidator validator = CountryValidator();
+
+      // Act & Assert
+      expect(validator.validate('United States'), isNull);
+      expect(validator.validate('Canada'), isNull);
+      expect(validator.validate('InvalidCountry'), isNull);
+    });
   });
 }

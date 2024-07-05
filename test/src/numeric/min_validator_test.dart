@@ -249,5 +249,16 @@ void main() {
         ),
       );
     });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const MinValidator<bool> validator = MinValidator<bool>(1);
+
+      // Act & Assert
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
+      );
+    });
   });
 }

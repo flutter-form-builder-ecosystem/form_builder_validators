@@ -44,7 +44,7 @@ void main() {
       );
       expect(
         validator.validate('123'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        equals(validator.errorText),
       );
     });
 

@@ -40,6 +40,10 @@ void main() {
         validator.validate('INVALID PLATE'),
         equals(FormBuilderLocalizations.current.licensePlateErrorText),
       );
+      expect(
+        validator.validate('INVALID PLATE'),
+        equals(validator.errorText),
+      );
     });
 
     test(

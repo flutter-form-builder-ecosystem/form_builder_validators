@@ -133,5 +133,17 @@ void main() {
       // Assert
       expect(result, customErrorMessage);
     });
+
+    test('should return default error if the SSN is empty', () {
+      // Arrange
+      final SsnValidator validator = SsnValidator();
+      const String emptySsn = '';
+
+      // Act
+      final String? result = validator.validate(emptySsn);
+
+      // Assert
+      expect(result, validator.errorText);
+    });
   });
 }

@@ -169,5 +169,17 @@ void main() {
         ),
       );
     });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const NotZeroNumberValidator<bool> validator =
+          NotZeroNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
+      );
+    });
   });
 }
