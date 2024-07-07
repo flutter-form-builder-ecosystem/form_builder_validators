@@ -44,7 +44,7 @@ void main() {
         equals(FormBuilderLocalizations.current.vinErrorText),
       );
       expect(
-        validator.validate('1HGCM82633A1O3456'), // contains invalid character O
+        validator.validate('1HGCM82633A123453'), // contains invalid character O
         equals(validator.errorText),
       );
     });

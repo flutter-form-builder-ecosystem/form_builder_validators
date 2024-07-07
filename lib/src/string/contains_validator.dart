@@ -39,12 +39,13 @@ class ContainsValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    if (caseSensitive) {
-      return valueCandidate.contains(substring) ? null : errorText;
-    } else {
-      return valueCandidate.toLowerCase().contains(substring.toLowerCase())
-          ? null
-          : errorText;
+    if (substring.isEmpty) {
+      return errorText;
+    } else if (caseSensitive
+        ? valueCandidate.contains(substring)
+        : valueCandidate.toLowerCase().contains(substring.toLowerCase())) {
+      return null;
     }
+    return errorText;
   }
 }

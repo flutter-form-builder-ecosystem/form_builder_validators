@@ -51,8 +51,8 @@ class CreditCardValidator extends BaseValidator<String> {
   }
 
   /// Check if the string is a credit card number.
-  bool isCreditCard(String str) {
-    final String sanitized = str.replaceAll(RegExp('[^0-9]+'), '');
+  bool isCreditCard(String value) {
+    final String sanitized = value.replaceAll(RegExp('[^0-9]+'), '');
     if (!regex.hasMatch(sanitized)) {
       return false;
     }

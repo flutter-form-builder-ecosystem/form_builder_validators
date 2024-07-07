@@ -63,14 +63,14 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
   }
 
   /// Check if the string is a valid credit card expiration date.
-  bool isCreditCardExpirationDate(String str) {
+  bool isCreditCardExpirationDate(String value) {
     // Check if the format matches MM/YY
-    if (!regex.hasMatch(str)) {
+    if (!regex.hasMatch(value)) {
       return false;
     }
 
     // Extract month and year from the value
-    final List<int> parts = str.split('/').map(int.parse).toList();
+    final List<int> parts = value.split('/').map(int.parse).toList();
     final int month = parts[0];
     final int year = parts[1];
 
@@ -83,8 +83,8 @@ class CreditCardExpirationDateValidator extends BaseValidator<String> {
   }
 
   /// Check if the string is not an expired credit card date.
-  bool isNotExpiredCreditCardDate(String str) {
-    final List<int> parts = str.split('/').map(int.parse).toList();
+  bool isNotExpiredCreditCardDate(String value) {
+    final List<int> parts = value.split('/').map(int.parse).toList();
     final int month = parts[0];
     final int year = parts[1];
 

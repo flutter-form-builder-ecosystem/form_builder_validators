@@ -57,7 +57,7 @@ class PrimeNumberValidator<T> extends BaseValidator<T> {
   /// A boolean indicating whether the number is prime.
   bool isPrime(int number) {
     if (number <= 1) return false;
-    for (int i = 2; i <= number ~/ 2; i++) {
+    for (int i = 2; i * i <= number; i++) {
       if (number % i == 0) return false;
     }
     return true;

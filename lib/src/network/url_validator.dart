@@ -83,7 +83,7 @@ class UrlValidator extends BaseValidator<String> {
         : null;
   }
 
-  /// Check if the string [str] is a URL.
+  /// Check if the string [value] is a URL.
   ///
   /// * [protocols] sets the list of allowed protocols
   /// * [requireTld] sets if TLD is required
@@ -92,7 +92,7 @@ class UrlValidator extends BaseValidator<String> {
   /// * [hostWhitelist] sets the list of allowed hosts
   /// * [hostBlacklist] sets the list of disallowed hosts
   bool isURL(
-    String? str, {
+    String? value, {
     List<String?> protocols = const <String?>['http', 'https', 'ftp'],
     bool requireTld = true,
     bool requireProtocol = false,
@@ -100,10 +100,10 @@ class UrlValidator extends BaseValidator<String> {
     List<String> hostWhitelist = const <String>[],
     List<String> hostBlacklist = const <String>[],
   }) {
-    if (str == null ||
-        str.isEmpty ||
-        str.length > _maxUrlLength ||
-        str.startsWith('mailto:')) {
+    if (value == null ||
+        value.isEmpty ||
+        value.length > _maxUrlLength ||
+        value.startsWith('mailto:')) {
       return false;
     }
     final int port;
@@ -118,7 +118,7 @@ class UrlValidator extends BaseValidator<String> {
     final String hash;
 
     // check protocol
-    List<String> split = str.split('://');
+    List<String> split = value.split('://');
     if (split.length > 1) {
       protocol = shift(split).toLowerCase();
       if (!protocols.contains(protocol)) {
