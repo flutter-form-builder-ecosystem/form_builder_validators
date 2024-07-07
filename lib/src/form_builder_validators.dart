@@ -1,143 +1,287 @@
+// coverage:ignore-file
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
-import 'utils/helpers.dart';
-import 'utils/validators.dart';
 
 /// Provides utility methods for creating various [FormFieldValidator]s.
 class FormBuilderValidators {
-  /// [FormFieldValidator] that combines multiple validators into one.
-  /// This validator applies each provided validator sequentially, and fails if any of them return a non-null result.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of lowercase characters.
   ///
   /// ## Parameters:
-  /// - [validators] The list of validators to compose.
-  static FormFieldValidator<T> compose<T>(
-    List<FormFieldValidator<T>> validators,
-  ) {
-    return (valueCandidate) {
-      for (final validator in validators) {
-        final validatorResult = validator.call(valueCandidate);
-        if (validatorResult != null) {
-          return validatorResult;
-        }
-      }
-      return null;
-    };
-  }
+  /// - [atLeast] The minimum number of lowercase characters (default: 1).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of lowercase characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro lowercase_chars_template}
+  static FormFieldValidator<String> hasLowercaseChars({
+    int atLeast = 1,
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      HasLowercaseCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that combines multiple validators, passing validation if any return null.
-  /// This validator applies each provided validator sequentially, and passes if any of them return a null result.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  ///  number of numeric characters.
   ///
   /// ## Parameters:
-  /// - [validators] The list of validators to compose.
-  static FormFieldValidator<T> or<T>(
-    List<FormFieldValidator<T>> validators,
-  ) {
-    return (valueCandidate) {
-      String? errorResult;
-      for (final validator in validators) {
-        final validatorResult = validator.call(valueCandidate);
-        if (validatorResult == null) {
-          return null;
-        } else {
-          errorResult = validatorResult;
-        }
-      }
-      return errorResult;
-    };
-  }
+  /// - [atLeast] The minimum number of numeric characters (default: 1).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of numeric characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro numeric_chars_template}
+  static FormFieldValidator<String> hasNumericChars({
+    int atLeast = 1,
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      HasNumericCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that transforms the value before applying the validator.
-  /// This validator applies a transformer to the value before running the actual validator.
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of special characters.
   ///
   /// ## Parameters:
-  /// - [validator] The validator to apply.
-  /// - [transformer] The transformer to apply.
-  static FormFieldValidator transform<T>(
-    FormFieldValidator<T> validator,
-    T Function(T? value) transformer,
-  ) {
-    return (valueCandidate) {
-      final transformedValue = transformer(valueCandidate);
-      return validator(transformedValue);
-    };
-  }
+  /// - [atLeast] The minimum number of special characters (default: 1).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of special characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro special_chars_template}
+  static FormFieldValidator<String> hasSpecialChars({
+    int atLeast = 1,
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      HasSpecialCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to contain a minimum
+  /// number of uppercase characters.
+  ///
+  /// ## Parameters:
+  /// - [atLeast] The minimum number of uppercase characters (default: 1).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not contain the
+  /// required number of uppercase characters.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro uppercase_chars_template}
+  static FormFieldValidator<String> hasUppercaseChars({
+    int atLeast = 1,
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      HasUppercaseCharsValidator(
+        atLeast: atLeast,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a bool and
+  /// false.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not false.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<bool> isFalse({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      IsFalseValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a bool and
+  /// true.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not true.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<bool> isTrue({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      IsTrueValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be in a
+  /// list of values.
+  ///
+  /// ## Parameters:
+  /// - [values] The list of values that the field's value should be in.
+  /// - [errorText] The error message when the value is not in the list.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> containsElement<T>(
+    List<T> values, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      ContainsElementValidator<T>(
+        values,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the length of the field to be equal to
+  /// the provided length. Works with String, iterable, and int types.
+  ///
+  /// ## Parameters:
+  /// - [length] The length to compare.
+  /// - [allowEmpty] Whether the field's value can be empty (default: false).
+  /// - [errorText] The error message when the length is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> equalLength<T>(
+    int length, {
+    bool allowEmpty = false,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      EqualLengthValidator<T>(
+        length,
+        allowEmpty: allowEmpty,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the length of the field's value to be
+  /// less than or equal to the provided maximum length.
+  ///
+  /// ## Parameters:
+  /// - [maxLength] The maximum length to compare.
+  /// - [errorText] The error message when the length is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> maxLength<T>(
+    int maxLength, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MaxLengthValidator<T>(
+        maxLength,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the length of the field's value to be
+  /// greater than or equal to the provided minimum length.
+  ///
+  /// ## Parameters:
+  /// - [minLength] The minimum length to compare.
+  /// - [errorText] The error message when the length is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> minLength<T>(
+    int minLength, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MinLengthValidator<T>(
+        minLength,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be within
+  /// a certain range.
+  ///
+  /// ## Parameters:
+  /// - [min] The minimum value should be greater than or equal to.
+  /// - [max] The maximum value should be less than or equal to.
+  /// - [inclusive] Whether the range is inclusive (default: true).
+  /// - [errorText] The error message when the value is not in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> range<T>(
+    num min,
+    num max, {
+    bool inclusive = true,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      RangeValidator<T>(
+        min,
+        max,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that checks if the value is unique in a list
+  /// of values.
+  ///
+  /// ## Parameters:
+  /// - [values] The list of values to check against.
+  /// - [errorText] The error message when the value is not unique.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> unique<T>(
+    List<T> values, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      UniqueValidator<T>(
+        values,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that runs validators and collects all error messages.
-  /// This validator runs all provided validators and concatenates any error messages into a single string.
   ///
   /// ## Parameters:
   /// - [validators] The list of validators to run.
   static FormFieldValidator<T> aggregate<T>(
     List<FormFieldValidator<T>> validators,
-  ) {
-    return (valueCandidate) {
-      final errors = <String>[];
-      for (final validator in validators) {
-        final error = validator(valueCandidate);
-        if (error != null) {
-          errors.add(error);
-        }
-      }
-      return errors.isNotEmpty ? errors.join('\n') : null;
-    };
-  }
+  ) =>
+      AggregateValidator<T>(validators).validate;
 
-  /// [FormFieldValidator] that logs the value at a specific point in the validation chain.
-  /// This validator logs the value being validated and always returns null.
+  /// [FormFieldValidator] that combines multiple validators into one.
+  /// This validator applies each provided validator sequentially,
+  /// and fails if any of them return a non-null result.
   ///
   /// ## Parameters:
-  /// - [log] The log message to display.
-  static FormFieldValidator<T> log<T>({
-    String Function(T? value)? log,
-  }) {
-    return (valueCandidate) {
-      if (log != null) {
-        debugPrint(log(valueCandidate));
-      }
-      return null;
-    };
-  }
+  /// - [validators] The list of validators to compose.
+  static FormFieldValidator<T> compose<T>(
+    List<FormFieldValidator<T>> validators,
+  ) =>
+      ComposeValidator<T>(validators).validate;
 
-  /// [FormFieldValidator] that skips the validation when a certain condition is met.
-  /// This validator skips the provided validator if the condition is true.
+  /// [FormFieldValidator] that applies another validator conditionally.
   ///
   /// ## Parameters:
-  /// - [condition] The condition to check.
-  /// - [validator] The validator to skip.
-  static FormFieldValidator<T> skipWhen<T>(
+  /// - [condition] A function that determines if the validator should be
+  /// applied.
+  /// - [validator] The validator to apply if the condition is met.
+  static FormFieldValidator<T> conditional<T>(
     bool Function(T? value) condition,
     FormFieldValidator<T> validator,
-  ) {
-    return (valueCandidate) {
-      if (condition(valueCandidate)) {
-        return null;
-      }
-      return validator(valueCandidate);
-    };
-  }
+  ) =>
+      ConditionalValidator<T>(condition, validator).validate;
 
-  /// [FormFieldValidator] that checks if the value is unique in a list of values.
-  /// This validator ensures the value is unique within the provided list.
-  ///
-  /// ## Parameters:
-  /// - [values] The list of values to check against.
-  /// - [errorText] The error message to display when the value is not unique.
-  static FormFieldValidator<T> unique<T>(
-    List<T> values, {
-    String? errorText,
-  }) {
-    return (valueCandidate) {
-      if (valueCandidate == null ||
-          values.where((element) => element == valueCandidate).length != 1) {
-        return errorText ?? FormBuilderLocalizations.current.uniqueErrorText;
-      }
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that transforms the value to a default if it's null or empty before running the validator.
-  /// This validator uses a default value if the provided value is null or empty, and then applies the validator.
+  /// [FormFieldValidator] that transforms the value to a default if it's null
+  /// or empty before running the validator.
   ///
   /// ## Parameters:
   /// - [defaultValue] The default value to transform to.
@@ -146,542 +290,1264 @@ class FormBuilderValidators {
     T defaultValue,
     FormFieldValidator<T> validator,
   ) =>
-      (valueCandidate) => validator(valueCandidate ?? defaultValue);
+      DefaultValueValidator<T>(defaultValue, validator).validate;
 
-  /// [FormFieldValidator] that requires the field have a non-empty value.
-  /// This validator checks if the field's value is not empty.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is empty.
-  static FormFieldValidator<T> required<T>({
-    String? errorText,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate == null ||
-          (valueCandidate is String && valueCandidate.trim().isEmpty) ||
-          (valueCandidate is Iterable && valueCandidate.isEmpty) ||
-          (valueCandidate is Map && valueCandidate.isEmpty)) {
-        return errorText ?? FormBuilderLocalizations.current.requiredErrorText;
-      }
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the field's value be equal to the provided value.
-  /// This validator checks if the field's value is equal to the given value.
+  /// [FormFieldValidator] that requires the field's value be equal
+  /// to the provided value.
   ///
   /// ## Parameters:
   /// - [value] The value to compare with.
-  /// - [errorText] The error message to display when the value is not equal.
+  /// - [errorText] The error message when the value is not equal.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> equal<T>(
     Object value, {
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate != value
-          ? errorText ?? FormBuilderLocalizations.current.equalErrorText(value)
-          : null;
+      EqualValidator<T>(
+        value,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value be not equal to the provided value.
-  /// This validator checks if the field's value is not equal to the given value.
+  /// [FormFieldValidator] that logs the value at a specific point in the
+  /// validation chain.
+  /// This validator logs the value being validated and always returns null.
+  ///
+  /// ## Parameters:
+  /// - [log] The log message to display.
+  /// - [errorText] The error message when the value is invalid.
+  static FormFieldValidator<T> log<T>({
+    String Function(T? value)? log,
+    String? errorText,
+  }) =>
+      LogValidator<T>(
+        log: log,
+        errorText: errorText,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value be not equal
+  /// to the provided value.
   ///
   /// ## Parameters:
   /// - [value] The value to compare with.
-  /// - [errorText] The error message to display when the value is equal.
+  /// - [errorText] The error message when the value is equal.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> notEqual<T>(
     Object value, {
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate == value
-          ? errorText ??
-              FormBuilderLocalizations.current.notEqualErrorText(value)
-          : null;
+      NotEqualValidator<T>(
+        value,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be greater than (or equal) to the provided number.
-  /// This validator checks if the field's value is greater than or equal to the given minimum value.
+  /// [FormFieldValidator] that combines multiple validators,
+  /// passing validation if any return null.
   ///
   /// ## Parameters:
-  /// - [min] The minimum value to compare.
-  /// - [inclusive] Whether the comparison is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is invalid.
-  static FormFieldValidator<T> min<T>(
-    num min, {
-    bool inclusive = true,
-    String? errorText,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
+  /// - [validators] The list of validators to compose.
+  static FormFieldValidator<T> or<T>(
+    List<FormFieldValidator<T>> validators,
+  ) =>
+      OrValidator<T>(validators).validate;
 
-        if (number != null && (inclusive ? number < min : number <= min)) {
-          return errorText ??
-              FormBuilderLocalizations.current.minErrorText(min);
-        }
-      }
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the field's value to be less than (or equal) to the provided number.
-  /// This validator checks if the field's value is less than or equal to the given maximum value.
+  /// [FormFieldValidator] that requires the field have a non-empty value.
   ///
   /// ## Parameters:
-  /// - [max] The maximum value to compare.
-  /// - [inclusive] Whether the comparison is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is invalid.
-  static FormFieldValidator<T> max<T>(
-    num max, {
-    bool inclusive = true,
+  /// - [errorText] The error message when the value is empty.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> required<T>({
     String? errorText,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
-
-        if (number != null && (inclusive ? number > max : number >= max)) {
-          return errorText ??
-              FormBuilderLocalizations.current.maxErrorText(max);
-        }
-      }
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the length of the field's value to be greater than or equal to the provided minimum length.
-  /// This validator checks if the length of the field's value meets the minimum length requirement.
-  ///
-  /// ## Parameters:
-  /// - [minLength] The minimum length to compare.
-  /// - [allowEmpty] Whether the field's value can be empty (default: false).
-  /// - [errorText] The error message to display when the length is invalid.
-  static FormFieldValidator<T> minLength<T>(
-    int minLength, {
-    bool allowEmpty = false,
-    String? errorText,
-  }) {
-    assert(minLength > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate == null,
-      );
-      var valueLength = 0;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-      return valueLength < minLength && (!allowEmpty || valueLength > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.minLengthErrorText(minLength)
-          : null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the length of the field's value to be less than or equal to the provided maximum length.
-  /// This validator checks if the length of the field's value meets the maximum length requirement.
-  ///
-  /// ## Parameters:
-  /// - [maxLength] The maximum length to compare.
-  /// - [errorText] The error message to display when the length is invalid.
-  static FormFieldValidator<T> maxLength<T>(
-    int maxLength, {
-    String? errorText,
-  }) {
-    assert(maxLength > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate == null,
-      );
-      int valueLength = 0;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-      return null != valueCandidate && valueLength > maxLength
-          ? errorText ??
-              FormBuilderLocalizations.current.maxLengthErrorText(maxLength)
-          : null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the length of the field to be equal to the provided length. Works with String, iterable, and int types.
-  /// This validator checks if the length of the field's value is equal to the given length.
-  ///
-  /// ## Parameters:
-  /// - [length] The length to compare.
-  /// - [allowEmpty] Whether the field's value can be empty (default: false).
-  /// - [errorText] The error message to display when the length is invalid.
-  static FormFieldValidator<T> equalLength<T>(
-    int length, {
-    bool allowEmpty = false,
-    String? errorText,
-  }) {
-    assert(length > 0);
-    return (T? valueCandidate) {
-      assert(
-        valueCandidate is String ||
-            valueCandidate is Iterable ||
-            valueCandidate is int ||
-            valueCandidate == null,
-      );
-      int valueLength = 0;
-
-      if (valueCandidate is int) valueLength = valueCandidate.toString().length;
-      if (valueCandidate is String) valueLength = valueCandidate.length;
-      if (valueCandidate is Iterable) valueLength = valueCandidate.length;
-
-      return valueLength != length && (!allowEmpty || valueLength > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.equalLengthErrorText(length)
-          : null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the word count of the field's value to be greater than or equal to the provided minimum count.
-  /// This validator checks if the word count of the field's value meets the minimum count requirement.
-  ///
-  /// ## Parameters:
-  /// - [minCount] The minimum word count.
-  /// - [allowEmpty] Whether the field's value can be empty (default: false).
-  /// - [errorText] The error message to display when the word count is invalid.
-  static FormFieldValidator<String> minWordsCount(
-    int minCount, {
-    bool allowEmpty = false,
-    String? errorText,
-  }) {
-    assert(minCount > 0, 'The minimum words count must be greater than 0');
-    return (valueCandidate) {
-      int valueWordsCount = 0;
-
-      if (valueCandidate != null && valueCandidate.trim().isNotEmpty) {
-        valueWordsCount = valueCandidate.trim().split(' ').length;
-      }
-
-      return valueWordsCount < minCount && (!allowEmpty || valueWordsCount > 0)
-          ? errorText ??
-              FormBuilderLocalizations.current.minWordsCountErrorText(minCount)
-          : null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the word count of the field's value to be less than or equal to the provided maximum count.
-  /// This validator checks if the word count of the field's value meets the maximum count requirement.
-  ///
-  /// ## Parameters:
-  /// - [maxCount] The maximum word count.
-  /// - [errorText] The error message to display when the word count is invalid.
-  static FormFieldValidator<String> maxWordsCount(
-    int maxCount, {
-    String? errorText,
-  }) {
-    assert(maxCount > 0, 'The maximum words count must be greater than 0');
-    return (valueCandidate) {
-      final int valueWordsCount = valueCandidate?.trim().split(' ').length ?? 0;
-      return null != valueCandidate && valueWordsCount > maxCount
-          ? errorText ??
-              FormBuilderLocalizations.current.maxWordsCountErrorText(maxCount)
-          : null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the field's value to be a valid email address.
-  /// This validator checks if the field's value is a valid email address.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the email is invalid.
-  ///
-  /// {@macro email_template}
-  static FormFieldValidator<String> email({
-    String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) =>
-          (valueCandidate?.isNotEmpty ?? false) && !isEmail(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.emailErrorText
-              : null;
+      RequiredValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid URL.
-  /// This validator checks if the field's value is a valid URL.
+  /// [FormFieldValidator] that skips the validation when a certain
+  /// condition is met.
   ///
   /// ## Parameters:
-  /// - [protocols] The list of allowed protocols (default: ['http', 'https', 'ftp']).
-  /// - [requireTld] Whether TLD is required (default: true).
-  /// - [requireProtocol] Whether protocol is required for validation (default: false).
-  /// - [allowUnderscore] Whether underscores are allowed (default: false).
-  /// - [hostWhitelist] The list of allowed hosts.
-  /// - [hostBlacklist] The list of disallowed hosts.
-  /// - [errorText] The error message to display when the URL is invalid.
-  static FormFieldValidator<String> url({
+  /// - [condition] The condition to check.
+  /// - [validator] The validator to skip.
+  static FormFieldValidator<T> skipWhen<T>(
+    bool Function(T? value) condition,
+    FormFieldValidator<T> validator,
+  ) =>
+      SkipWhenValidator<T>(condition, validator).validate;
+
+  /// [FormFieldValidator] that transforms the value before applying
+  /// the validator.
+  ///
+  /// ## Parameters:
+  /// - [transformer] The transformer to apply.
+  /// - [validator] The validator to apply.
+  static FormFieldValidator<T> transform<T>(
+    T Function(T? value) transformer,
+    FormFieldValidator<T> validator,
+  ) =>
+      TransformValidator<T>(transformer, validator).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be in the future.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the date is not
+  /// in the future.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> dateFuture({
     String? errorText,
-    List<String> protocols = const ['http', 'https', 'ftp'],
-    bool requireTld = true,
-    bool requireProtocol = false,
-    bool allowUnderscore = false,
-    List<String> hostWhitelist = const [],
-    List<String> hostBlacklist = const [],
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isURL(
-                valueCandidate,
-                protocols: protocols,
-                requireTld: requireTld,
-                requireProtocol: requireProtocol,
-                allowUnderscore: allowUnderscore,
-                hostWhitelist: hostWhitelist,
-                hostBlacklist: hostBlacklist,
-              )
-          ? errorText ?? FormBuilderLocalizations.current.urlErrorText
-          : null;
+      DateFutureValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to match the provided regex pattern.
-  /// This validator checks if the field's value matches the given regex pattern.
+  /// [FormFieldValidator] that requires the field's value to be a valid time
+  /// in the past.
   ///
   /// ## Parameters:
-  /// - [pattern] The regex pattern to match.
-  /// - [errorText] The error message to display when the value does not match the pattern.
-  static FormFieldValidator<String> match(
-    String pattern, {
+  /// - [errorText] The error message when the time is not
+  /// in the past.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> datePast({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !RegExp(pattern).hasMatch(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.matchErrorText
-          : null;
+      DatePastValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value not to match the provided regex pattern.
-  /// This validator checks if the field's value does not match the given regex pattern.
+  /// [FormFieldValidator] that requires the field's value to be a date within
+  /// a certain range.
   ///
   /// ## Parameters:
-  /// - [pattern] The regex pattern to match.
-  /// - [errorText] The error message to display when the value matches the pattern.
-  static FormFieldValidator<String> notMatch(
-    String pattern, {
+  /// - [minDate] The minimum date that the field's value should be greater
+  /// than or equal to.
+  /// - [maxDate] The maximum date that the field's value should be less
+  /// than or equal to.
+  /// - [errorText] The error message when the date is not
+  /// in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> dateRange(
+    DateTime minDate,
+    DateTime maxDate, {
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              RegExp(pattern).hasMatch(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.matchErrorText
-          : null;
+      DateRangeValidator(
+        minDate,
+        maxDate,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid number.
-  /// This validator checks if the field's value is a valid number.
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid date string.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the number is invalid.
-  static FormFieldValidator<String> numeric({
+  /// - [errorText] The error message when the date is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> date({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              null == num.tryParse(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.numericErrorText
-          : null;
+      DateValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid integer.
-  /// This validator checks if the field's value is a valid integer.
+  /// [FormFieldValidator] that requires the field's value to be a valid date.
   ///
   /// ## Parameters:
-  /// - [radix] The radix to use when parsing the integer.
-  /// - [errorText] The error message to display when the integer is invalid.
-  static FormFieldValidator<String> integer({
+  /// - [errorText] The error message when the date is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<DateTime?> dateTime({
     String? errorText,
-    int? radix,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              null == int.tryParse(valueCandidate!, radix: radix)
-          ? errorText ?? FormBuilderLocalizations.current.integerErrorText
-          : null;
+      DateTimeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid credit card number.
-  /// This validator checks if the field's value is a valid credit card number.
+  /// [FormFieldValidator] that requires the field's value to be a valid time.
+  ///
+  /// It supports various time formats, both 24-hour and 12-hour formats.
+  ///
+  /// ## Valid 24-hour time formats:
+  /// - `HH:mm`: Hours and minutes,
+  /// e.g., `23:59`
+  /// - `HH:mm:ss`: Hours, minutes, and seconds,
+  /// e.g., `23:59:59`
+  /// - `HH:mm:ss.SSS`: Hours, minutes, seconds, and milliseconds,
+  /// e.g., `23:59:59.999`
+  ///
+  /// ## Valid 12-hour time formats:
+  /// - `h:mm a`: Hours and minutes with AM/PM,
+  /// e.g., `11:59 PM`
+  /// - `h:mm:ss a`: Hours, minutes, and seconds with AM/PM,
+  /// e.g., `11:59:59 PM`
+  /// - `h:mm:ss.SSS a`: Hours, minutes, seconds, and milliseconds with AM/PM,
+  /// e.g., `11:59:59.999 PM`
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the credit card number is invalid.
+  /// - [errorText] (optional): The error message when the time
+  /// is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
-  /// {@macro credit_card_template}
-  static FormFieldValidator<String> creditCard({
+  /// {@macro time_template}
+  static FormFieldValidator<String> time({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isCreditCard(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.creditCardErrorText
-          : null;
+      TimeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid credit card expiration date.
-  /// This validator checks if the field's value is a valid credit card expiration date.
+  /// [FormFieldValidator] that requires the field's value to be a valid time zone.
+
+  /// ## Parameters:
+  /// - [errorText] The error message when the time zone is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro time_zone_template}
+  static FormFieldValidator<String> timeZone({
+    List<String>? validTimeZones,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      TimeZoneValidator(
+        validTimeZones: validTimeZones,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to a valid file extension.
   ///
   /// ## Parameters:
-  /// - [checkForExpiration] Whether the expiration date should be checked (default: true).
-  /// - [errorText] The error message to display when the expiration date is invalid.
+  /// - [allowedExtensions] The list of allowed file extensions.
+  /// - [errorText] The error message when the file extension is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> fileExtension(
+    List<String> allowedExtensions, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FileExtensionValidator(
+        allowedExtensions,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid file name.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the file name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> fileName({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FileNameValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that restricts the size of a file to be less than or
+  /// equal to the provided maximum size.
+  ///
+  /// ## Parameters:
+  /// - [maxSize] The maximum size in bytes.
+  /// - [errorText] The error message when the file size exceeds the limit.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> fileSize(
+    int maxSize, {
+    bool base1024Conversion = true,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FileSizeValidator(
+        maxSize,
+        base1024Conversion: base1024Conversion,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid MIME type.
+  /// The MIME type should be in the format `type/subtype`.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the file name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> mimeType({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MimeTypeValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid file
+  /// or folder path.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the path is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro file_path_template}
+  static FormFieldValidator<String> path({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PathValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid BIC.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the BIC is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro bic_template}
+  static FormFieldValidator<String> bic({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      BicValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// credit card CVC.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the CVC is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> creditCardCVC({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      CreditCardCvcValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// credit card expiration date.
+  ///
+  /// ## Parameters:
+  /// - [checkForExpiration] Whether the expiration date should be checked
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the expiration
+  /// date is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro credit_card_expiration_template}
   static FormFieldValidator<String> creditCardExpirationDate({
     bool checkForExpiration = true,
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isCreditCardExpirationDate(valueCandidate!)
-          ? errorText ??
-              FormBuilderLocalizations.current.creditCardExpirationDateErrorText
-          : (checkForExpiration && !isNotExpiredCreditCardDate(valueCandidate!))
-              ? errorText ??
-                  FormBuilderLocalizations.current.creditCardExpiredErrorText
-              : null;
+      CreditCardExpirationDateValidator(
+        checkForExpiration: checkForExpiration,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid credit card CVC.
-  /// This validator checks if the field's value is a valid credit card CVC.
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid credit card number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the CVC is invalid.
-  static FormFieldValidator<String> creditCardCVC({
+  /// - [errorText] The error message when the credit card number
+  /// is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro credit_card_template}
+  static FormFieldValidator<String> creditCard({
     String? errorText,
-  }) {
-    return (valueCandidate) {
-      if (valueCandidate == null || valueCandidate.isEmpty) {
-        return errorText ??
-            FormBuilderLocalizations.current.creditCardCVCErrorText;
-      } else {
-        final cvc = int.tryParse(valueCandidate);
-        if (cvc == null ||
-            valueCandidate.length < 3 ||
-            valueCandidate.length > 4) {
-          return errorText ??
-              FormBuilderLocalizations.current.creditCardCVCErrorText;
-        } else {
-          return null;
-        }
-      }
-    };
-  }
+    bool checkNullOrEmpty = true,
+  }) =>
+      CreditCardValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the IBAN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro iban_template}
+  static FormFieldValidator<String> iban({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      IbanValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid city.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [citiesWhitelist] The list of allowed cities.
+  /// - [citiesBlacklist] The list of disallowed cities.
+  /// - [errorText] The error message when the city is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> city({
+    RegExp? regex,
+    List<String> citiesWhitelist = const <String>[],
+    List<String> citiesBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      CityValidator(
+        regex: regex,
+        citiesWhitelist: citiesWhitelist,
+        citiesBlacklist: citiesBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid country.
+  ///
+  /// ## Parameters:
+  /// - [countryWhitelist] The list of allowed countries.
+  /// - [countryBlacklist] The list of disallowed countries.
+  /// - [errorText] The error message when the country is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> country({
+    List<String> countryWhitelist = const <String>[],
+    List<String> countryBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      CountryValidator(
+        countryWhitelist: countryWhitelist,
+        countryBlacklist: countryBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid first name.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [firstNameWhitelist] The list of allowed first names.
+  /// - [firstNameBlacklist] The list of disallowed first names.
+  /// - [errorText] The error message when the first name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> firstName({
+    RegExp? regex,
+    List<String> firstNameWhitelist = const <String>[],
+    List<String> firstNameBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FirstNameValidator(
+        regex: regex,
+        firstNameWhitelist: firstNameWhitelist,
+        firstNameBlacklist: firstNameBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid last name.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [lastNameWhitelist] The list of allowed last names.
+  /// - [lastNameBlacklist] The list of disallowed last names.
+  /// - [errorText] The error message when the last name is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> lastName({
+    RegExp? regex,
+    List<String> lastNameWhitelist = const <String>[],
+    List<String> lastNameBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LastNameValidator(
+        regex: regex,
+        lastNameWhitelist: lastNameWhitelist,
+        lastNameBlacklist: lastNameBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid passport number.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [passportNumberWhitelist] The list of allowed passport numbers.
+  /// - [passportNumberBlacklist] The list of disallowed passport numbers.
+  /// - [errorText] The error message when the passport number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> passport({
+    RegExp? regex,
+    List<String> passportNumberWhitelist = const <String>[],
+    List<String> passportNumberBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PassportNumberValidator(
+        regex: regex,
+        passportNumberWhitelist: passportNumberWhitelist,
+        passportNumberBlacklist: passportNumberBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid state.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [stateWhitelist] The list of allowed states.
+  /// - [stateBlacklist] The list of disallowed states.
+  /// - [errorText] The error message when the state is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> state({
+    RegExp? regex,
+    List<String> stateWhitelist = const <String>[],
+    List<String> stateBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      StateValidator(
+        regex: regex,
+        stateWhitelist: stateWhitelist,
+        stateBlacklist: stateBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid street address.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [streetWhitelist] The list of allowed street addresses.
+  /// - [streetBlacklist] The list of disallowed street addresses.
+  /// - [errorText] The error message when the street address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> street({
+    RegExp? regex,
+    List<String> streetWhitelist = const <String>[],
+    List<String> streetBlacklist = const <String>[],
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      StreetValidator(
+        regex: regex,
+        streetWhitelist: streetWhitelist,
+        streetBlacklist: streetBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// password.
+  ///
+  /// ## Parameters:
+  /// - [minLength] The minimum length of the password (default: 8).
+  /// - [maxLength] The maximum length of the password (default: 32).
+  /// - [minUppercaseCount] The minimum number of uppercase characters (default: 1).
+  /// - [minLowercaseCount] The minimum number of lowercase characters (default: 1).
+  /// - [minNumberCount] The minimum number of numeric characters (default: 1).
+  /// - [minSpecialCharCount] The minimum number of special characters (default: 1).
+  /// - [errorText] The error message when the password is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> password({
+    int minLength = 8,
+    int maxLength = 32,
+    int minUppercaseCount = 1,
+    int minLowercaseCount = 1,
+    int minNumberCount = 1,
+    int minSpecialCharCount = 1,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PasswordValidator(
+        minLength: minLength,
+        maxLength: maxLength,
+        minUppercaseCount: minUppercaseCount,
+        minLowercaseCount: minLowercaseCount,
+        minNumberCount: minNumberCount,
+        minSpecialCharCount: minSpecialCharCount,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid SSN (Social Security Number).
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the SSN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> ssn({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      SsnValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid username.
+  ///
+  /// ## Parameters:
+  /// - [minLength] The minimum length of the username (default: 3).
+  /// - [maxLength] The maximum length of the username (default: 32).
+  /// - [allowNumbers] Whether digits are allowed (default: true).
+  /// - [allowUnderscore] Whether underscores are allowed (default: false).
+  /// - [allowDots] Whether dots are allowed (default: false).
+  /// - [allowDash] Whether dashes are allowed (default: false).
+  /// - [allowSpace] Whether spaces are allowed (default: false).
+  /// - [allowSpecialChar] Whether special characters are allowed
+  /// (default: false).
+  /// - [errorText] The error message when the username is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> username({
+    int minLength = 3,
+    int maxLength = 32,
+    bool allowNumbers = true,
+    bool allowUnderscore = false,
+    bool allowDots = false,
+    bool allowDash = false,
+    bool allowSpace = false,
+    bool allowSpecialChar = false,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      UsernameValidator(
+        minLength: minLength,
+        maxLength: maxLength,
+        allowNumbers: allowNumbers,
+        allowUnderscore: allowUnderscore,
+        allowDots: allowDots,
+        allowDash: allowDash,
+        allowSpace: allowSpace,
+        allowSpecialChar: allowSpecialChar,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid zip code.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the zip code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> zipCode({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      ZipCodeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid email address.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the email is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro email_regex_template}
+  static FormFieldValidator<String> email({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      EmailValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IP address.
-  /// This validator checks if the field's value is a valid IP address.
   ///
   /// ## Parameters:
   /// - [version] The IP version (4 or 6).
-  /// - [errorText] The error message to display when the IP address is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the IP address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro ipv4_template}
   ///
   /// {@macro ipv6_template}
   static FormFieldValidator<String> ip({
-    int? version,
+    int version = 4,
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) =>
-          valueCandidate?.isNotEmpty == true && !isIP(valueCandidate, version)
-              ? errorText ?? FormBuilderLocalizations.current.ipErrorText
-              : null;
+      IpValidator(
+        version: version,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid date string.
-  /// This validator checks if the field's value is a valid date string.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// latitude.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the date is invalid.
-  static FormFieldValidator<String> dateString({
+  /// - [errorText] The error message when the latitude is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> latitude({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isDateTime(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
-          : null;
+      LatitudeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid time string.
-  /// This validator checks if the field's value is a valid time string.
-  ///
-  /// The validator supports various time formats, both 24-hour and 12-hour clocks.
-  ///
-  /// ## Valid 24-hour time formats:
-  /// - `HH:mm`: Hours and minutes, e.g., `23:59`
-  /// - `HH:mm:ss`: Hours, minutes, and seconds, e.g., `23:59:59`
-  /// - `HH:mm:ss.SSS`: Hours, minutes, seconds, and milliseconds, e.g., `23:59:59.999`
-  ///
-  /// ## Valid 12-hour time formats:
-  /// - `h:mm a`: Hours and minutes with AM/PM, e.g., `11:59 PM`
-  /// - `h:mm:ss a`: Hours, minutes, and seconds with AM/PM, e.g., `11:59:59 PM`
-  /// - `h:mm:ss.SSS a`: Hours, minutes, seconds, and milliseconds with AM/PM, e.g., `11:59:59.999 PM`
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// longitude.
   ///
   /// ## Parameters:
-  /// - [errorText] (optional): The error message to display when the time is invalid.
-  ///
-  /// ## Returns:
-  /// If the value is null, empty, or not a valid time, it returns the [errorText] or a default error message.
-  ///
-  /// {@macro time_template}
-  static FormFieldValidator<String> time({
+  /// - [errorText] The error message when the longitude is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> longitude({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isTime(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.timeErrorText
-          : null;
+      LongitudeValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid date.
-  /// This validator checks if the field's value is a valid date.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// MAC address.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the date is invalid.
-  static FormFieldValidator<DateTime?> dateTime({
+  /// - [errorText] The error message when the MAC address is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro mac_address_template}
+  static FormFieldValidator<String> macAddress({
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate == null
-          ? errorText ?? FormBuilderLocalizations.current.dateStringErrorText
-          : null;
+      MacAddressValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a date within a certain range.
-  /// This validator checks if the field's value is a date within the given range.
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid phone number.
   ///
   /// ## Parameters:
-  /// - [minDate] The minimum date that the field's value should be greater than or equal to.
-  /// - [maxDate] The maximum date that the field's value should be less than or equal to.
-  /// - [errorText] The error message to display when the date is not in the range.
-  static FormFieldValidator<String> dateRange({
-    required DateTime minDate,
-    required DateTime maxDate,
-    String? errorText,
-  }) =>
-      (String? valueCandidate) {
-        if (valueCandidate == null || !isDateTime(valueCandidate)) {
-          return errorText ??
-              FormBuilderLocalizations.current.dateStringErrorText;
-        }
-
-        final DateTime date = DateTime.parse(valueCandidate);
-        return date.isBefore(minDate) || date.isAfter(maxDate)
-            ? errorText ??
-                FormBuilderLocalizations.current
-                    .dateRangeErrorText(minDate.toString(), maxDate.toString())
-            : null;
-      };
-
-  /// [FormFieldValidator] that requires the field's value to be a valid phone number.
-  /// This validator checks if the field's value is a valid phone number.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the phone number is invalid.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the phone number
+  /// is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro phone_number_template}
   static FormFieldValidator<String> phoneNumber({
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) {
-        if (valueCandidate == null || valueCandidate.isEmpty) {
-          return errorText ?? FormBuilderLocalizations.current.phoneErrorText;
-        }
-        return !isPhoneNumber(valueCandidate)
-            ? errorText ?? FormBuilderLocalizations.current.phoneErrorText
-            : null;
-      };
+      PhoneNumberValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid color code.
-  /// This validator checks if the field's value is a valid color code.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// port number.
   ///
   /// ## Parameters:
-  /// - [formats] The list of allowed color code formats (e.g., ['hex', 'rgb', 'hsl']).
-  /// - [errorText] The error message to display when the color code is invalid.
+  /// - [min] The minimum port number (default: 0).
+  /// - [max] The maximum port number (default: 65535).
+  /// - [errorText] The error message when the port number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> portNumber({
+    int min = 0,
+    int max = 65535,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PortNumberValidator(
+        min: min,
+        max: max,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid URL.
+  ///
+  /// ## Parameters:
+  /// - [protocols] The list of allowed protocols
+  /// (default: ['http', 'https', 'ftp']).
+  /// - [requireTld] Whether TLD is required (default: true).
+  /// - [requireProtocol] Whether protocol is required for validation.
+  /// - [allowUnderscore] Whether underscores are allowed.
+  /// - [hostWhitelist] The list of allowed hosts.
+  /// - [hostBlacklist] The list of disallowed hosts.
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the URL is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro url_template}
+  static FormFieldValidator<String> url({
+    List<String> protocols = const <String>['http', 'https', 'ftp'],
+    bool requireTld = true,
+    bool requireProtocol = false,
+    bool allowUnderscore = false,
+    List<String> hostWhitelist = const <String>[],
+    List<String> hostBlacklist = const <String>[],
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      UrlValidator(
+        protocols: protocols,
+        requireTld: requireTld,
+        requireProtocol: requireProtocol,
+        allowUnderscore: allowUnderscore,
+        hostWhitelist: hostWhitelist,
+        hostBlacklist: hostBlacklist,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be between
+  /// two numbers.
+  ///
+  /// ## Parameters:
+  /// - [min] The minimum value that the field's value should be greater than
+  /// or equal to.
+  /// - [max] The maximum value that the field's value should be less than
+  /// or equal to.
+  /// - [errorText] The error message when the value is not in the range.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<num> between(
+    num min,
+    num max, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      BetweenValidator(
+        min,
+        max,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be an even number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not an even number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> evenNumber({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      EvenNumberValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the value to be a valid integer.
+  ///
+  /// ## Parameters:
+  /// - [radix] The radix to use when parsing the integer.
+  /// - [errorText] The error message when the integer is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> integer({
+    int? radix,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      IntegerValidator(
+        radix: radix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be less than
+  /// (or equal) to the provided number.
+  ///
+  /// ## Parameters:
+  /// - [max] The maximum value to compare.
+  /// - [inclusive] Whether the comparison is inclusive (default: true).
+  /// - [errorText] The error message when the value is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> max<T>(
+    num max, {
+    bool inclusive = true,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MaxValidator<T>(
+        max,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be greater than
+  /// (or equal) to the provided number.
+  ///
+  /// ## Parameters:
+  /// - [min] The minimum value to compare.
+  /// - [inclusive] Whether the comparison is inclusive (default: true).
+  /// - [errorText] The error message when the value is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> min<T>(
+    num min, {
+    bool inclusive = true,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MinValidator<T>(
+        min,
+        inclusive: inclusive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// negative number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not negative.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> negativeNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      NegativeNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a number that
+  /// is not zero.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is zero.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> notZeroNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      NotZeroNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> numeric<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      NumericValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be an odd number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not an odd number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> oddNumber({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      OddNumberValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// positive number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not positive.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<T> positiveNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PositiveNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid prime number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not a prime number.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro prime_number_template}
+  static FormFieldValidator<T> primeNumber<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      PrimeNumberValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to contain only alphabetical characters.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value is not alphabetical.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  ///
+  /// {@macro alphabetical_template}
+  static FormFieldValidator<String> alphabetical({
+    RegExp? regex,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      AlphabeticalValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to contain a
+  /// specific value.
+  ///
+  /// ## Parameters:
+  /// - [substring] The value that the field's value should contain.
+  /// - [caseSensitive] Whether the search is case-sensitive (default: true).
+  /// - [errorText] The error message when the value does not contain the
+  /// substring.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> contains(
+    String substring, {
+    bool caseSensitive = true,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      ContainsValidator(
+        substring,
+        caseSensitive: caseSensitive,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to end with
+  /// a specific value.
+  ///
+  /// ## Parameters:
+  /// - [suffix] The value that the field's value should end with.
+  /// - [errorText] The error message when the value does not end with
+  /// the suffix.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> endsWith(
+    String suffix, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      EndsWithValidator(
+        suffix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be lowercase.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not lowercase.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> lowercase({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      LowercaseValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value not to match
+  /// the provided regex pattern.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value
+  /// matches the pattern.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> matchNot(
+    RegExp regex, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MatchNotValidator(
+        regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to match the
+  /// provided regex pattern.
+  ///
+  /// ## Parameters:
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the value does not
+  /// match the pattern.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> match(
+    RegExp regex, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MatchValidator(
+        regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the word count of the field's value
+  /// to be less than or equal to the provided maximum count.
+  ///
+  /// ## Parameters:
+  /// - [maxWordsCount] The maximum word count.
+  /// - [errorText] The error message when the word count is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> maxWordsCount(
+    int maxWordsCount, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MaxWordsCountValidator(
+        maxWordsCount,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the word count of the field's value
+  /// to be greater than or equal to the provided minimum count.
+  ///
+  /// ## Parameters:
+  /// - [minWordsCount] The minimum word count.
+  /// - [errorText] The error message when the word count is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> minWordsCount(
+    int minWordsCount, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      MinWordsCountValidator(
+        minWordsCount,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a single line.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not a single line.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> singleLine({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      SingleLineValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to start with
+  /// a specific value.
+  ///
+  /// ## Parameters:
+  /// - [prefix] The value that the field's value should start with.
+  /// - [errorText] The error message when the value does not start with
+  /// the prefix.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> startsWith(
+    String prefix, {
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      StartsWithValidator(
+        prefix,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be uppercase.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the value is not uppercase.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> uppercase({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      UppercaseValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// base64 string.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the base64 string is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> base64({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      Base64Validator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a
+  /// valid color code.
+  ///
+  /// ## Parameters:
+  /// - [formats] The list of allowed color code formats
+  /// (e.g., ['hex', 'rgb', 'hsl']).
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the color code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro hex_template}
   ///
@@ -689,650 +1555,150 @@ class FormBuilderValidators {
   ///
   /// {@macro hsl_template}
   static FormFieldValidator<String> colorCode({
-    List<String> formats = const ['hex', 'rgb', 'hsl'],
+    List<String> formats = const <String>['hex', 'rgb', 'hsl'],
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              !isColorCode(valueCandidate!, formats: formats)
-          ? errorText ??
-              FormBuilderLocalizations.current
-                  .colorCodeErrorText(formats.join(', '))
-          : null;
+      ColorCodeValidator(
+        formats: formats,
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be uppercase.
-  /// This validator checks if the field's value is uppercase.
+  /// [FormFieldValidator] that requires the field's value to be a valid DUNS number.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not uppercase.
-  static FormFieldValidator<String> uppercase({
+  /// - [regex] The regex pattern to match.
+  /// - [errorText] The error message when the DUNS number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro duns_template}
+  static FormFieldValidator<String> duns({
+    RegExp? regex,
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              valueCandidate!.toUpperCase() != valueCandidate
-          ? errorText ?? FormBuilderLocalizations.current.uppercaseErrorText
-          : null;
+      DunsValidator(
+        regex: regex,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be lowercase.
-  /// This validator checks if the field's value is lowercase.
+  /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not lowercase.
-  static FormFieldValidator<String> lowercase({
+  /// - [errorText] The error message when the ISBN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> isbn({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              valueCandidate!.toLowerCase() != valueCandidate
-          ? errorText ?? FormBuilderLocalizations.current.lowercaseErrorText
-          : null;
+      IsbnValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid file extension.
-  /// This validator checks if the field's value is a valid file extension.
+  /// [FormFieldValidator] that requires the field's value to be valid JSON.
   ///
   /// ## Parameters:
-  /// - [allowedExtensions] The list of allowed file extensions.
-  /// - [errorText] The error message to display when the file extension is invalid.
-  static FormFieldValidator<String> fileExtension({
-    required List<String> allowedExtensions,
+  /// - [errorText] The error message when the JSON is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static FormFieldValidator<String> json({
     String? errorText,
-  }) {
-    final allowedExtensionsLowerCase =
-        allowedExtensions.map((e) => e.toLowerCase()).toList();
-
-    return (valueCandidate) {
-      if (valueCandidate == null || valueCandidate.isEmpty) {
-        return errorText ??
-            FormBuilderLocalizations.current.fileExtensionErrorText(
-              allowedExtensions.join(', '),
-            );
-      }
-
-      final extension = fileExtensionFromPath(valueCandidate).toLowerCase();
-      if (!allowedExtensionsLowerCase.contains(extension)) {
-        return errorText ??
-            FormBuilderLocalizations.current.fileExtensionErrorText(
-              allowedExtensions.join(', '),
-            );
-      }
-
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that restricts the size of a file to be less than or equal to the provided maximum size.
-  /// This validator checks if the file size is within the given limit.
-  ///
-  /// ## Parameters:
-  /// - [maxSize] The maximum size in bytes.
-  /// - [errorText] The error message to display when the file size exceeds the limit.
-  static FormFieldValidator<String> fileSize({
-    required int maxSize,
-    String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) {
-        if (valueCandidate == null || valueCandidate.isEmpty) {
-          return errorText ??
-              FormBuilderLocalizations.current
-                  .fileSizeErrorText(formatBytes(0), formatBytes(maxSize));
-        }
+      JsonValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-        final size = int.tryParse(valueCandidate);
-        if (size == null || size > maxSize) {
-          return errorText ??
-              FormBuilderLocalizations.current.fileSizeErrorText(
-                  formatBytes(size ?? 0), formatBytes(maxSize));
-        }
-
-        return null;
-      };
-
-  /// [FormFieldValidator] that applies another validator conditionally.
-  /// This validator applies a provided validator based on the specified condition.
+  /// [FormFieldValidator] that requires the field's value to be a valid language code.
   ///
   /// ## Parameters:
-  /// - [condition] A function that determines if the validator should be applied.
-  /// - [validator] The validator to apply if the condition is met.
-  static FormFieldValidator<T> conditional<T>(
-    bool Function(T value) condition,
-    FormFieldValidator<T> validator,
-  ) =>
-      (valueCandidate) {
-        if (valueCandidate != null && condition(valueCandidate)) {
-          return validator(valueCandidate);
-        }
-        return null;
-      };
-
-  /// [FormFieldValidator] that requires the field's value to be within a certain range.
-  /// This validator checks if the field's value is within the specified numerical range.
-  ///
-  /// ## Parameters:
-  /// - [minValue] The minimum value that the field's value should be greater than or equal to.
-  /// - [maxValue] The maximum value that the field's value should be less than or equal to.
-  /// - [inclusive] Whether the range is inclusive (default: true).
-  /// - [errorText] The error message to display when the value is not in the range.
-  static FormFieldValidator<T> range<T>(
-    num minValue,
-    num maxValue, {
-    bool inclusive = true,
+  /// - [regex] The regex pattern to match.
+  /// - [languageCodeWhitelist] The list of allowed language codes.
+  /// - [languageCodeBlacklist] The list of disallowed language codes.
+  /// - [errorText] The error message when the language code is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro language_code_template}
+  static FormFieldValidator<String> languageCode({
+    RegExp? regex,
+    List<String> languageCodeWhitelist = const <String>[],
+    List<String> languageCodeBlacklist = const <String>[],
     String? errorText,
-  }) {
-    return (T? valueCandidate) {
-      if (valueCandidate != null) {
-        assert(valueCandidate is num || valueCandidate is String);
-        final number = valueCandidate is num
-            ? valueCandidate
-            : num.tryParse(valueCandidate.toString());
-
-        final minResult =
-            min(minValue, inclusive: inclusive, errorText: errorText)(number);
-        final maxResult =
-            max(maxValue, inclusive: inclusive, errorText: errorText)(number);
-
-        if (minResult != null || maxResult != null) {
-          return errorText ?? minResult ?? maxResult;
-        }
-      }
-      return null;
-    };
-  }
-
-  /// [FormFieldValidator] that requires the field's value to be a bool and true.
-  /// This validator checks if the field's value is true.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not true.
-  static FormFieldValidator<bool> isTrue({
-    String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate != true
-          ? errorText ?? FormBuilderLocalizations.current.mustBeTrueErrorText
-          : null;
+      LanguageCodeValidator(
+        regex: regex,
+        languageCodeWhitelist: languageCodeWhitelist,
+        languageCodeBlacklist: languageCodeBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a bool and false.
-  /// This validator checks if the field's value is false.
+  /// [FormFieldValidator] that requires the field's value to be a valid license plate.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not false.
-  static FormFieldValidator<bool> isFalse({
+  /// - [regex] The regex pattern to match.
+  /// - [licensePlateWhitelist] The list of allowed license plates.
+  /// - [licensePlateBlacklist] The list of disallowed license plates.
+  /// - [errorText] The error message when the license plate is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro license_plate_template}
+  static FormFieldValidator<String> licensePlate({
+    RegExp? regex,
+    List<String> licensePlateWhitelist = const <String>[],
+    List<String> licensePlateBlacklist = const <String>[],
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate != false
-          ? errorText ?? FormBuilderLocalizations.current.mustBeFalseErrorText
-          : null;
+      LicensePlateValidator(
+        regex: regex,
+        licensePlateWhitelist: licensePlateWhitelist,
+        licensePlateBlacklist: licensePlateBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of special characters.
-  /// This validator checks if the field's value contains the specified number of special characters.
+  /// [FormFieldValidator] that requires the field's value to be a valid
+  /// UUID.
   ///
   /// ## Parameters:
-  /// - [atLeast] The minimum number of special characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of special characters.
-  static FormFieldValidator<String> hasSpecialChars({
-    int atLeast = 1,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              specialCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsSpecialCharErrorText(atLeast);
-
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of uppercase characters.
-  /// This validator checks if the field's value contains the specified number of uppercase characters.
-  ///
-  /// ## Parameters:
-  /// - [atLeast] The minimum number of uppercase characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of uppercase characters.
-  static FormFieldValidator<String> hasUppercaseChars({
-    int atLeast = 1,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              uppercaseCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsUppercaseCharErrorText(atLeast);
-
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of lowercase characters.
-  /// This validator checks if the field's value contains the specified number of lowercase characters.
-  ///
-  /// ## Parameters:
-  /// - [atLeast] The minimum number of lowercase characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of lowercase characters.
-  static FormFieldValidator<String> hasLowercaseChars({
-    int atLeast = 1,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              lowercaseCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current
-                  .containsLowercaseCharErrorText(atLeast);
-
-  /// [FormFieldValidator] that requires the field's value to contain a minimum number of numeric characters.
-  /// This validator checks if the field's value contains the specified number of numeric characters.
-  ///
-  /// ## Parameters:
-  /// - [atLeast] The minimum number of numeric characters (default: 1).
-  /// - [errorText] The error message to display when the value does not contain the required number of numeric characters.
-  static FormFieldValidator<String> hasNumericChars({
-    int atLeast = 1,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isNotEmpty == true &&
-              numberCharLength(valueCandidate!) >= atLeast
-          ? null
-          : errorText ??
-              FormBuilderLocalizations.current.containsNumberErrorText(atLeast);
-
-  /// [FormFieldValidator] that requires the field's value to be a valid username.
-  /// This validator checks if the field's value meets the criteria for a valid username.
-  ///
-  /// ## Parameters:
-  /// - [minLength] The minimum length of the username (default: 3).
-  /// - [maxLength] The maximum length of the username (default: 32).
-  /// - [errorText] The error message to display when the username is invalid.
-  /// - [allowNumbers] Whether digits are allowed (default: true).
-  /// - [allowUnderscore] Whether underscores are allowed (default: false).
-  /// - [allowDots] Whether dots are allowed (default: false).
-  /// - [allowDash] Whether dashes are allowed (default: false).
-  /// - [allowSpace] Whether spaces are allowed (default: false).
-  /// - [allowSpecialChar] Whether special characters are allowed (default: false).
-  static FormFieldValidator<String> username({
-    int minLength = 3,
-    int maxLength = 32,
-    String? errorText,
-    bool allowNumbers = true,
-    bool allowUnderscore = false,
-    bool allowDots = false,
-    bool allowDash = false,
-    bool allowSpace = false,
-    bool allowSpecialChar = false,
-  }) {
-    return FormBuilderValidators.compose<String>(
-      [
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (!allowNumbers)
-          FormBuilderValidators.notMatch(
-            r'[0-9]',
-            errorText: errorText,
-          ),
-        if (!allowUnderscore)
-          FormBuilderValidators.notMatch(
-            r'_',
-            errorText: errorText,
-          ),
-        if (!allowDots)
-          FormBuilderValidators.notMatch(
-            r'\.',
-            errorText: errorText,
-          ),
-        if (!allowDash)
-          FormBuilderValidators.notMatch(
-            r'-',
-            errorText: errorText,
-          ),
-        if (!allowSpace)
-          FormBuilderValidators.notMatch(
-            r'\s',
-            errorText: errorText,
-          ),
-        if (!allowSpecialChar)
-          FormBuilderValidators.notMatch(
-            r'[!@#\$%^&*(),.?":{}|<>]',
-            errorText: errorText,
-          ),
-      ],
-    );
-  }
-
-  /// [FormFieldValidator] that requires the field's value to be a valid password.
-  /// This validator checks if the field's value meets the criteria for a valid password.
-  ///
-  /// ## Parameters:
-  /// - [minLength] The minimum length of the password (default: 8).
-  /// - [maxLength] The maximum length of the password (default: 32).
-  /// - [uppercase] The minimum number of uppercase characters (default: 1).
-  /// - [lowercase] The minimum number of lowercase characters (default: 1).
-  /// - [number] The minimum number of numeric characters (default: 1).
-  /// - [specialChar] The minimum number of special characters (default: 1).
-  /// - [errorText] The error message to display when the password is invalid.
-  static FormFieldValidator<String> password({
-    int minLength = 8,
-    int maxLength = 32,
-    int uppercase = 1,
-    int lowercase = 1,
-    int number = 1,
-    int specialChar = 1,
-    String? errorText,
-  }) {
-    return FormBuilderValidators.compose<String>(
-      [
-        FormBuilderValidators.minLength(minLength, errorText: errorText),
-        FormBuilderValidators.maxLength(maxLength, errorText: errorText),
-        if (uppercase > 0)
-          FormBuilderValidators.hasUppercaseChars(
-              atLeast: uppercase, errorText: errorText),
-        if (lowercase > 0)
-          FormBuilderValidators.hasLowercaseChars(
-              atLeast: lowercase, errorText: errorText),
-        if (number > 0)
-          FormBuilderValidators.hasNumericChars(
-              atLeast: number, errorText: errorText),
-        if (specialChar > 0)
-          FormBuilderValidators.hasSpecialChars(
-              atLeast: specialChar, errorText: errorText),
-      ],
-    );
-  }
-
-  /// [FormFieldValidator] that requires the field's value to be alphabetical.
-  /// This validator checks if the field's value contains only alphabetical characters.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not alphabetical.
-  ///
-  /// {@macro alphabetical_template}
-  static FormFieldValidator<String> alphabetical({
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isAlphabetical(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.alphabeticalErrorText
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid UUID.
-  /// This validator checks if the field's value is a valid UUID.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the UUID is invalid.
+  /// - [errorText] The error message when the UUID is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro uuid_template}
   static FormFieldValidator<String> uuid({
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) => valueCandidate == null ||
-              valueCandidate.isEmpty ||
-              !isUUID(valueCandidate)
-          ? errorText ?? FormBuilderLocalizations.current.uuidErrorText
-          : null;
+      UuidValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be valid JSON.
-  /// This validator checks if the field's value is valid JSON.
+  /// [FormFieldValidator] that requires the field's value to be a valid VIN.
   ///
   /// ## Parameters:
-  /// - [errorText] The error message to display when the JSON is invalid.
-  static FormFieldValidator<String> json({
+  /// - [regex] The regex pattern to match.
+  /// - [vinWhitelist] The list of allowed VINs.
+  /// - [vinBlacklist] The list of disallowed VINs.
+  /// - [errorText] The error message when the VIN is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro vin_template}
+  static FormFieldValidator<String> vin({
+    RegExp? regex,
+    List<String> vinWhitelist = const <String>[],
+    List<String> vinBlacklist = const <String>[],
     String? errorText,
+    bool checkNullOrEmpty = true,
   }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isJSON(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.jsonErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid latitude.
-  /// This validator checks if the field's value is a valid latitude.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the latitude is invalid.
-  static FormFieldValidator<String> latitude({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isLatitude(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.latitudeErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid longitude.
-  /// This validator checks if the field's value is a valid longitude.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the longitude is invalid.
-  static FormFieldValidator<String> longitude({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isLongitude(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.longitudeErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid base64 string.
-  /// This validator checks if the field's value is a valid base64 string.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the base64 string is invalid.
-  static FormFieldValidator<String> base64({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isBase64(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.base64ErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid file or folder path.
-  /// This validator checks if the field's value is a valid file or folder path.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the path is invalid.
-  ///
-  /// {@macro file_path_template}
-  static FormFieldValidator<String> path({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isFilePath(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.pathErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be an odd number.
-  /// This validator checks if the field's value is an odd number.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not an odd number.
-  static FormFieldValidator<String> oddNumber({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isOddNumber(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.oddNumberErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be an even number.
-  /// This validator checks if the field's value is an even number.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not an even number.
-  static FormFieldValidator<String> evenNumber({
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isEvenNumber(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.evenNumberErrorText
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid port number.
-  /// This validator checks if the field's value is a valid port number.
-  ///
-  /// ## Parameters:
-  /// - [min] The minimum port number (default: 0).
-  /// - [max] The maximum port number (default: 65535).
-  /// - [errorText] The error message to display when the port number is invalid.
-  static FormFieldValidator<String> portNumber({
-    int min = 0,
-    int max = 65535,
-    String? errorText,
-  }) =>
-      (valueCandidate) {
-        if (valueCandidate?.isNotEmpty == true) {
-          int? port = int.tryParse(valueCandidate!);
-          if (port == null || port < min || port > max) {
-            return errorText ??
-                FormBuilderLocalizations.current.portNumberErrorText(min, max);
-          }
-        } else {
-          return errorText ??
-              FormBuilderLocalizations.current.portNumberErrorText(min, max);
-        }
-        return null;
-      };
-
-  /// [FormFieldValidator] that requires the field's value to be a valid MAC address.
-  /// This validator checks if the field's value is a valid MAC address.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the MAC address is invalid.
-  ///
-  /// {@macro mac_address_template}
-  static FormFieldValidator<String> macAddress({
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isMACAddress(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.macAddressErrorText
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to start with a specific value.
-  /// This validator checks if the field's value starts with the given prefix.
-  ///
-  /// ## Parameters:
-  /// - [prefix] The value that the field's value should start with.
-  /// - [errorText] The error message to display when the value does not start with the prefix.
-  static FormFieldValidator<String> startsWith({
-    required String prefix,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isEmpty != false ||
-              !valueCandidate!.startsWith(prefix)
-          ? errorText ??
-              FormBuilderLocalizations.current.startsWithErrorText(prefix)
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to end with a specific value.
-  /// This validator checks if the field's value ends with the given suffix.
-  ///
-  /// ## Parameters:
-  /// - [suffix] The value that the field's value should end with.
-  /// - [errorText] The error message to display when the value does not end with the suffix.
-  static FormFieldValidator<String> endsWith({
-    required String suffix,
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !valueCandidate!.endsWith(suffix)
-              ? errorText ??
-                  FormBuilderLocalizations.current.endsWithErrorText(suffix)
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to contain a specific value.
-  /// This validator checks if the field's value contains the given substring.
-  ///
-  /// ## Parameters:
-  /// - [substring] The value that the field's value should contain.
-  /// - [caseSensitive] Whether the search is case-sensitive (default: true).
-  /// - [errorText] The error message to display when the value does not contain the substring.
-  static FormFieldValidator<String> contains({
-    required String substring,
-    bool caseSensitive = true,
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isEmpty != false ||
-              caseSensitive && !valueCandidate!.contains(substring) ||
-              !caseSensitive &&
-                  !valueCandidate!
-                      .toLowerCase()
-                      .contains(substring.toLowerCase())
-          ? errorText ??
-              FormBuilderLocalizations.current.containsErrorText(substring)
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to be between two numbers.
-  /// This validator checks if the field's value is between the given minimum and maximum values.
-  ///
-  /// ## Parameters:
-  /// - [min] The minimum value that the field's value should be greater than or equal to.
-  /// - [max] The maximum value that the field's value should be less than or equal to.
-  /// - [errorText] The error message to display when the value is not in the range.
-  static FormFieldValidator<num> between({
-    required num min,
-    required num max,
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate == null || valueCandidate < min || valueCandidate > max
-              ? errorText ??
-                  FormBuilderLocalizations.current.betweenErrorText(min, max)
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be in a list of values.
-  /// This validator checks if the field's value is in the given list of values.
-  ///
-  /// ## Parameters:
-  /// - [values] The list of values that the field's value should be in.
-  /// - [errorText] The error message to display when the value is not in the list.
-  static FormFieldValidator<T> containsElement<T>(
-    List<T> values, {
-    String? errorText,
-  }) =>
-      (valueCandidate) => !values.contains(valueCandidate)
-          ? errorText ??
-              FormBuilderLocalizations.current.containsElementErrorText
-          : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
-  /// This validator checks if the field's value is a valid IBAN.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the IBAN is invalid.
-  static FormFieldValidator<String> iban({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isIBAN(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.ibanErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid BIC.
-  /// This validator checks if the field's value is a valid BIC.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the BIC is invalid.
-  ///
-  /// {@macro bic_template}
-  static FormFieldValidator<String> bic({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isBIC(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.bicErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
-  /// This validator checks if the field's value is a valid ISBN.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the ISBN is invalid.
-  static FormFieldValidator<String> isbn({
-    String? errorText,
-  }) =>
-      (valueCandidate) =>
-          valueCandidate?.isEmpty != false || !isISBN(valueCandidate!)
-              ? errorText ?? FormBuilderLocalizations.current.isbnErrorText
-              : null;
-
-  /// [FormFieldValidator] that requires the field's value to be a single line.
-  /// This validator checks if the field's value is a single line.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message to display when the value is not a single line.
-  static FormFieldValidator<String> singleLine({
-    String? errorText,
-  }) =>
-      (valueCandidate) => valueCandidate?.isEmpty != false ||
-              !isSingleLine(valueCandidate!)
-          ? errorText ?? FormBuilderLocalizations.current.singleLineErrorText
-          : null;
+      VinValidator(
+        regex: regex,
+        vinWhitelist: vinWhitelist,
+        vinBlacklist: vinBlacklist,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
 }

@@ -11,7 +11,7 @@ Future<void> testValidations(
 ) async {
   await tester.pumpWidget(
     MaterialApp(
-      localizationsDelegates: const [
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         FormBuilderLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
