@@ -28,6 +28,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
     - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
 - [Migrations](#migrations)
   - [v7 to v8](#v7-to-v8)
+  - [v10 to 11](#v10-to-v11)
 - [Support](#support)
   - [Contribute](#contribute)
     - [Add new supported language](#add-new-supported-language)
@@ -314,6 +315,11 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 
 ## Migrations
 
+### v10 to v11
+
+- All validators now first check for null or empty value and return an error if so. You can set `checkNullOrEmpty` to `false` if you want to avoid this behavior.
+- `dateString()` changed to `date()` for constancy in api naming. Simply change the name to fix the code.
+
 ### v7 to v8
 
 Remove `context` as a parameter to validator functions. For example, `FormBuilderValidators.required(context)` becomes `FormBuilderValidators.required()` without `context` passed in.
@@ -360,14 +366,19 @@ We welcome efforts to internationalize/localize the package by translating the d
 
 #### Add new validator
 
-1. Add method to `validators.dart` with your Dart documentation
-2. Implement tests
-3. Add to [validators](#validators) with name and description
-4. Add message error translated on all languages (yes, all languages). To accomplish this need:
+1. Add a new validator to one of the folders in the `src` folder.
+2. Implement it using the `BaseValidator` class. Override the `validateValue` method and let the base class handle the null check in the `validate` method.
+3. Override the `translatedErrorText` property and return the correct translation from `FormBuilderLocalizations.current.`.
+4. Make sure to pass `errorText` and `checkNullOrEmpty` to the base class.
+5. Add static method to `form_builder_validators.dart` that uses the new validator.
+6. Implement tests
+7. Add to [validators](#validators) with name and description
+8. Add message error translated on all languages (yes, all languages). To accomplish this need:
    a. Add property to all `intl_*.arb` files, in alphabetic order.
    b. Translate message in all languages.
    c. Run `flutter gen-l10n` command
-5. Submit PR
+9. Run dart `dart fix --apply` and `dart format .`
+10. Submit PR
 
 ### Questions and answers
 

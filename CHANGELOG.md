@@ -9,6 +9,10 @@
 - Re-land generated l10n files
 - Add Bulgarian
 
+### Breaking changes
+
+- See Readme: <https://github.com/flutter-form-builder-ecosystem/form_builder_validators?tab=readme-ov-file#v10-to-v11>
+
 ### New validators
 
 - Add creditCardExpirationDate
