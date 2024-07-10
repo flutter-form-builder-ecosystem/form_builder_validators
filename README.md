@@ -19,7 +19,8 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 
 - [Features](#features)
 - [Validators](#validators)
-  - [Supported languages](#supported-languages)
+  - [Bool validators](#bool-validators)
+- [Supported languages](#supported-languages)
 - [Use](#use)
   - [Setup](#setup)
   - [Basic use](#basic-use)
@@ -173,7 +174,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
 - `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
 
-## Extension methods used for chaining validators
+### Extension methods used for chaining validators
 
 - `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
 - `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
@@ -184,7 +185,7 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidator.log()` - Logs the value during the validation process.
 - `FormBuilderValidator.withErrorMessage()` - Overrides the error message of the current validator.
 
-### Supported languages
+## Supported languages
 
 Validators support default `errorText` messages in these languages:
 
