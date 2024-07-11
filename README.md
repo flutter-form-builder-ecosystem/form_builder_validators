@@ -20,6 +20,17 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 - [Features](#features)
 - [Validators](#validators)
   - [Bool validators](#bool-validators)
+  - [Collection validators](#collection-validators)
+  - [Core validators](#core-validators)
+  - [Datetime validators](#datetime-validators)
+  - [File validators](#file-validators)
+  - [Finance validators](#finance-validators)
+  - [Identity validators](#identity-validators)
+  - [Network validators](#network-validators)
+  - [Numeric validators](#numeric-validators)
+  - [String validators](#string-validators)
+  - [Use-case validators](#use-case-validators)
+  - [Extension method validators](#extension-method-validators)
 - [Supported languages](#supported-languages)
 - [Use](#use)
   - [Setup](#setup)
@@ -174,7 +185,9 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
 - `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
 
-### Extension methods used for chaining validators
+### Extension method validators
+
+Used for chaining and combining multiple validators.
 
 - `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
 - `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
