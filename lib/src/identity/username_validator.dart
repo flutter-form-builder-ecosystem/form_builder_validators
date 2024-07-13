@@ -116,7 +116,7 @@ class UsernameValidator extends BaseValidator<String> {
     }
 
     if (!allowSpecialChar &&
-        RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]').hasMatch(valueCandidate)) {
+        RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%-]').hasMatch(valueCandidate)) {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
