@@ -388,5 +388,21 @@ void main() {
       // Assert
       expect(result, FormBuilderLocalizations.current.usernameErrorText);
     });
+    test('should return null if the username meets all customized requirements',
+        () {
+      // Arrange
+      const UsernameValidator validator = UsernameValidator(
+        minLength: 4,
+        maxLength: 15,
+        allowNumbers: true,
+      );
+      const String validUsername = 'abc1';
+
+      // Act
+      final String? result = validator.validate(validUsername);
+
+      // Assert
+      expect(result, isNull);
+    });
   });
 }
