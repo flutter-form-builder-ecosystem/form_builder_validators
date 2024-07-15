@@ -333,6 +333,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 
 - All validators now first check for null or empty value and return an error if so. You can set `checkNullOrEmpty` to `false` if you want to avoid this behavior.
 - `dateString()` changed to `date()` for constancy in api naming. Simply change the name to fix the code.
+- The positional parameter for the validator  [`match()`](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/93d6fb230c706a6415a3a85973fc37fabbd82588/lib/src/form_builder_validators.dart#L1433) is not a `String` pattern anymore, but a `RegExp` regex.
 
 ### v7 to v8
 
