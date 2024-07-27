@@ -14,7 +14,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class BetweenValidator extends BaseValidator<num> {
+class BetweenValidator<T> extends BaseValidator<T> {
   /// Constructor for the between validator.
   const BetweenValidator(
     this.min,
@@ -37,9 +37,18 @@ class BetweenValidator extends BaseValidator<num> {
       FormBuilderLocalizations.current.betweenErrorText(min, max);
 
   @override
-  String? validateValue(num valueCandidate) {
-    final num value = valueCandidate;
-    if (value < min || value > max) {
+  String? validateValue(T valueCandidate) {
+    final num? value;
+
+    if (valueCandidate is String) {
+      value = num.tryParse(valueCandidate);
+    } else if (valueCandidate is num) {
+      value = valueCandidate;
+    } else {
+      return errorText;
+    }
+
+    if (value == null || (value < min || value > max)) {
       return errorText;
     }
 

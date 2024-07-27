@@ -1155,13 +1155,13 @@ class FormBuilderValidators {
   /// or equal to.
   /// - [errorText] The error message when the value is not in the range.
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
-  static FormFieldValidator<num> between(
+  static FormFieldValidator<T> between<T>(
     num min,
     num max, {
     String? errorText,
     bool checkNullOrEmpty = true,
   }) =>
-      BetweenValidator(
+      BetweenValidator<T>(
         min,
         max,
         errorText: errorText,
