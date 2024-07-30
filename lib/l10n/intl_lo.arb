@@ -84,5 +84,7 @@
   "dunsErrorText": "ຄ່າຕ້ອງເປັນໝາຍເລກ DUNS ທີ່ຖືກຕ້ອງ.",
   "licensePlateErrorText": "ຄ່າຕ້ອງເປັນໝາຍເລກປ້າຍທີ່ຖືກຕ້ອງ.",
   "vinErrorText": "ຄ່າຕ້ອງເປັນ VIN ທີ່ຖືກຕ້ອງ.",
-  "languageCodeErrorText": "ຄ່າຕ້ອງເປັນໄລຄໂລດພາສາທີ່ຖືກຕ້ອງ."
+  "languageCodeErrorText": "ຄ່າຕ້ອງເປັນໄລຄໂລດພາສາທີ່ຖືກຕ້ອງ.",
+  "floatErrorText": "ຄ່າຕ້ອງເປັນໂຕເລກ float ທີ່ຖືກຕ້ອງ.",
+  "hexadecimalErrorText": "ຄ່າຕ້ອງເປັນໂຕເລກເຮັກຊະເດສິມທີ່ຖືກຕ້ອງ."
 }

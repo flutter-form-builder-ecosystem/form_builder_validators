@@ -84,5 +84,7 @@
   "dunsErrorText": "Valoarea trebuie să fie un număr DUNS valid.",
   "licensePlateErrorText": "Valoarea trebuie să fie un număr de înmatriculare valid.",
   "vinErrorText": "Valoarea trebuie să fie un VIN valid.",
-  "languageCodeErrorText": "Valoarea trebuie să fie un cod de limbă valid."
+  "languageCodeErrorText": "Valoarea trebuie să fie un cod de limbă valid.",
+  "floatErrorText": "Valoarea trebuie să fie un număr zecimal valid.",
+  "hexadecimalErrorText": "Valoarea trebuie să fie un număr hexadecimal valid."
 }

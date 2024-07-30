@@ -84,5 +84,7 @@
   "dunsErrorText": "値は有効なDUNS番号でなければなりません。",
   "licensePlateErrorText": "値は有効なナンバープレートでなければなりません。",
   "vinErrorText": "値は有効なVINでなければなりません。",
-  "languageCodeErrorText": "値は有効な言語コードでなければなりません。"
+  "languageCodeErrorText": "値は有効な言語コードでなければなりません。",
+  "floatErrorText": "値は有効な浮動小数点数でなければなりません。",
+  "hexadecimalErrorText": "値は有効な16進数でなければなりません。"
 }

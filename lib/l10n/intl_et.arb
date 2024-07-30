@@ -84,5 +84,7 @@
   "dunsErrorText": "Väärtus peab olema kehtiv DUNS number.",
   "licensePlateErrorText": "Väärtus peab olema kehtiv numbrimärk.",
   "vinErrorText": "Väärtus peab olema kehtiv VIN.",
-  "languageCodeErrorText": "Väärtus peab olema kehtiv keelekood."
+  "languageCodeErrorText": "Väärtus peab olema kehtiv keelekood.",
+  "floatErrorText": "Väärtus peab olema kehtiv ujukomaarv.",
+  "hexadecimalErrorText": "Väärtus peab olema kehtiv kuueteistkümnendkohtade süsteemi arv."
 }

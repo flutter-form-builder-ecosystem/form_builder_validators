@@ -84,5 +84,7 @@
   "dunsErrorText": "Verdien må være et gyldig DUNS-nummer.",
   "licensePlateErrorText": "Verdien må være et gyldig registreringsnummer.",
   "vinErrorText": "Verdien må være et gyldig VIN.",
-  "languageCodeErrorText": "Verdien må være en gyldig språkkode."
+  "languageCodeErrorText": "Verdien må være en gyldig språkkode.",
+  "floatErrorText": "Verdien må være et gyldig flyttall.",
+  "hexadecimalErrorText": "Verdien må være et gyldig heksadesimalt tall."
 }

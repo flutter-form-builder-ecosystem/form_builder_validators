@@ -84,5 +84,7 @@
   "dunsErrorText": "តម្លៃត្រូវតែជាលេខ DUNS ដែលត្រឹមត្រូវ។",
   "licensePlateErrorText": "តម្លៃត្រូវតែជាបណ្ណកាតសម្លេង។",
   "vinErrorText": "តម្លៃត្រូវតែជាលេខ VIN ដែលត្រឹមត្រូវ។",
-  "languageCodeErrorText": "តម្លៃត្រូវតែជាកូដភាសាដែលត្រឹមត្រូវ។"
+  "languageCodeErrorText": "តម្លៃត្រូវតែជាកូដភាសាដែលត្រឹមត្រូវ។",
+  "floatErrorText": "តម្លៃត្រូវតែជាចំនួនទសភាគត្រឹមត្រូវ។",
+  "hexadecimalErrorText": "តម្លៃត្រូវតែជាលេខសិប្បកម្មត្រឹមត្រូវ។"
 }

@@ -84,5 +84,7 @@
   "dunsErrorText": "Giá trị phải là số DUNS hợp lệ.",
   "licensePlateErrorText": "Giá trị phải là biển số xe hợp lệ.",
   "vinErrorText": "Giá trị phải là số VIN hợp lệ.",
-  "languageCodeErrorText": "Giá trị phải là mã ngôn ngữ hợp lệ."
+  "languageCodeErrorText": "Giá trị phải là mã ngôn ngữ hợp lệ.",
+  "floatErrorText": "Giá trị phải là một số dấu phẩy động hợp lệ.",
+  "hexadecimalErrorText": "Giá trị phải là một số thập lục phân hợp lệ."
 }

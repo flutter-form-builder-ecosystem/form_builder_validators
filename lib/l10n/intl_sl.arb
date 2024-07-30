@@ -84,5 +84,7 @@
   "dunsErrorText": "Vrednost mora biti veljavna DUNS številka.",
   "licensePlateErrorText": "Vrednost mora biti veljavna registrska tablica.",
   "vinErrorText": "Vrednost mora biti veljavna identifikacijska številka vozila (VIN).",
-  "languageCodeErrorText": "Vrednost mora biti veljavna koda jezika."
+  "languageCodeErrorText": "Vrednost mora biti veljavna koda jezika.",
+  "floatErrorText": "Vrednost mora biti veljavno število s plavajočo vejico.",
+  "hexadecimalErrorText": "Vrednost mora biti veljavno šestnajstiško število."
 }

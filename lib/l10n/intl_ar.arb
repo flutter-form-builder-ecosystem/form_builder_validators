@@ -84,5 +84,7 @@
   "dunsErrorText": "يجب أن تكون القيمة رقم DUNS صالح.",
   "licensePlateErrorText": "يجب أن تكون القيمة لوحة ترخيص صالحة.",
   "vinErrorText": "يجب أن تكون القيمة رقم VIN صالح.",
-  "languageCodeErrorText": "يجب أن تكون القيمة رمز لغة صالح."
+  "languageCodeErrorText": "يجب أن تكون القيمة رمز لغة صالح.",
+  "floatErrorText": "يجب أن تكون القيمة رقم عشري صالح.",
+  "hexadecimalErrorText": "يجب أن تكون القيمة رقم سداسي عشري صالح."
 }

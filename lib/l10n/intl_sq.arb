@@ -84,5 +84,7 @@
   "dunsErrorText": "Vlera duhet të jetë një numër DUNS i vlefshëm.",
   "licensePlateErrorText": "Vlera duhet të jetë një targë makine e vlefshme.",
   "vinErrorText": "Vlera duhet të jetë një VIN i vlefshëm.",
-  "languageCodeErrorText": "Vlera duhet të jetë një kod gjuhe i vlefshëm."
+  "languageCodeErrorText": "Vlera duhet të jetë një kod gjuhe i vlefshëm.",
+  "floatErrorText": "Vlera duhet të jetë një numër i vlefshëm me pikë lundruese.",
+  "hexadecimalErrorText": "Vlera duhet të jetë një numër i vlefshëm heksadecimal."
 }

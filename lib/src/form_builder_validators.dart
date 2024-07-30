@@ -1182,6 +1182,36 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to be a valid float.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the float is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro float_template}
+  static FormFieldValidator<T> float<T>({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      FloatValidator<T>(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
+  /// [FormFieldValidator] that requires the field's value to be a valid hexadecimal.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the hexadecimal is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro hexadecimal_template}
+  static FormFieldValidator<String> hexadecimal({
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      HexadecimalValidator(
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the value to be a valid integer.
   ///
   /// ## Parameters:

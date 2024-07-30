@@ -84,5 +84,7 @@
   "dunsErrorText": "El valor debe ser un número DUNS válido.",
   "licensePlateErrorText": "El valor debe ser una placa de matrícula válida.",
   "vinErrorText": "El valor debe ser un VIN válido.",
-  "languageCodeErrorText": "El valor debe ser un código de idioma válido."
+  "languageCodeErrorText": "El valor debe ser un código de idioma válido.",
+  "floatErrorText": "El valor debe ser un número de punto flotante válido.",
+  "hexadecimalErrorText": "El valor debe ser un número hexadecimal válido."
 }

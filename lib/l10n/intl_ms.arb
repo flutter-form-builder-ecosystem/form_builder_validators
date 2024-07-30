@@ -84,5 +84,7 @@
   "dunsErrorText": "Nilai mesti nombor DUNS yang sah.",
   "licensePlateErrorText": "Nilai mesti nombor plat lesen yang sah.",
   "vinErrorText": "Nilai mesti nombor VIN yang sah.",
-  "languageCodeErrorText": "Nilai mesti kod bahasa yang sah."
+  "languageCodeErrorText": "Nilai mesti kod bahasa yang sah.",
+  "floatErrorText": "Nilai mesti nombor terapung sah.",
+  "hexadecimalErrorText": "Nilai mesti nombor heksadesimal sah."
 }

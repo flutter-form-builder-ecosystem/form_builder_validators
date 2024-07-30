@@ -84,5 +84,7 @@
   "dunsErrorText": "Nilai harus berupa nomor DUNS yang valid.",
   "licensePlateErrorText": "Nilai harus berupa pelat nomor yang valid.",
   "vinErrorText": "Nilai harus berupa VIN yang valid.",
-  "languageCodeErrorText": "Nilai harus berupa kode bahasa yang valid."
+  "languageCodeErrorText": "Nilai harus berupa kode bahasa yang valid.",
+  "floatErrorText": "Nilai harus berupa angka floating point yang valid.",
+  "hexadecimalErrorText": "Nilai harus berupa angka heksadesimal yang valid."
 }

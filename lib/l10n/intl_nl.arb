@@ -84,5 +84,7 @@
   "dunsErrorText": "Waarde moet een geldig DUNS-nummer zijn.",
   "licensePlateErrorText": "Waarde moet een geldige kentekenplaat zijn.",
   "vinErrorText": "Waarde moet een geldig VIN zijn.",
-  "languageCodeErrorText": "Waarde moet een geldige taalcode zijn."
+  "languageCodeErrorText": "Waarde moet een geldige taalcode zijn.",
+  "floatErrorText": "Waarde moet een geldig drijvend-komma getal zijn.",
+  "hexadecimalErrorText": "Waarde moet een geldig hexadecimaal getal zijn."
 }

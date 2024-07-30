@@ -84,5 +84,7 @@
   "dunsErrorText": "Nirxî divê yekem hejmarê DUNS derbasdar be.",
   "licensePlateErrorText": "Nirxî divê yekem pelka prezantiyê ya derbasdar be.",
   "vinErrorText": "Nirxî divê yekem hejmarê VIN derbasdar be.",
-  "languageCodeErrorText": "Nirxî divê yekem kodê zimanê derbasdar be."
+  "languageCodeErrorText": "Nirxî divê yekem kodê zimanê derbasdar be.",
+  "floatErrorText": "Gerrdê hewce ye ku zêdeya rast bibe.",
+  "hexadecimalErrorText": "Gerrdê hewce ye ku hexa de rast bibe."
 }
