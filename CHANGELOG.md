@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.0.1
+
+- Align between validator input types with other validators
+
 ## 11.0.0
 
 - Split up validators into smaller pieces
