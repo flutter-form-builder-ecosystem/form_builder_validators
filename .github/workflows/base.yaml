@@ -1,12 +1,12 @@
-name: Base
+name: CI & CD
 
 on:
   workflow_dispatch:
-    
+
   push:
     branches: [main]
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+*'
+      - "[0-9]+.[0-9]+.[0-9]+*"
 
   pull_request:
     branches: [main]
@@ -18,27 +18,25 @@ concurrency:
 
 jobs:
   build:
+    name: Build package & run tests
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Use shallow clone for faster checkout
 
       - name: Check broken links
         uses: JustinBeckwith/linkinator-action@v1
         with:
           paths: "**/*.md"
 
-      - name: Get Flutter version by FVM
-        uses: kuhnroyal/flutter-fvm-config-action@v2
-        id: fvm-config-action
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          path: '.fvmrc'
-          flavor: 'stable'
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+          channel: "stable"
+          architecture: x64
           cache: true
 
       - name: Install dependencies
@@ -48,9 +46,8 @@ jobs:
         run: flutter gen-l10n
 
       - name: Run l10n on example
-        run: |
-          cd example
-          flutter gen-l10n
+        run: flutter gen-l10n
+        working-directory: example
 
       - name: Format code
         run: dart format --set-exit-if-changed $(find . -name "*.dart" ! \( -wholename "./lib/localization/intl/*" -or -wholename "./example/lib/localization/intl/*" \))
@@ -59,15 +56,10 @@ jobs:
         run: dart analyze
 
       - name: Run tests
-        run: flutter test --coverage
+        run: flutter test --no-pub --coverage
 
       - name: Check publish warnings
         run: dart pub publish --dry-run
-
-      - name: Build example
-        run: |
-          cd example
-          flutter build appbundle --debug
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -78,23 +70,58 @@ jobs:
           flags: unittests
           name: form_builder_validators
 
+  example:
+    name: Build example app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Use shallow clone for faster checkout
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          architecture: x64
+          cache: true
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Run l10n
+        run: flutter gen-l10n
+
+      - name: Run l10n on example
+        run: flutter gen-l10n
+        working-directory: example
+
+      - name: Build example
+        run: flutter build appbundle --debug
+        working-directory: example
+
   deployment:
     if: ${{ github.ref_type == 'tag' }}
-    needs: build
+    needs: [build, example]
     name: Deploy package
     permissions:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Use shallow clone for faster checkout
 
-      - uses: dart-lang/setup-dart@v1
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
 
-      - name: Flutter action
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-          # use the build-in cache from Subosito
+          channel: "stable"
+          architecture: x64
           cache: true
 
       - name: Install dependencies
@@ -105,4 +132,3 @@ jobs:
 
       - name: Publish package
         run: dart pub publish -v -f
-
