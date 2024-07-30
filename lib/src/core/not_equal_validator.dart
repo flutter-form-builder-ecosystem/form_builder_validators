@@ -27,7 +27,7 @@ class NotEqualValidator<T> extends BaseValidator<T> {
 
   @override
   String get translatedErrorText =>
-      FormBuilderLocalizations.current.notEqualErrorText(value);
+      FormBuilderLocalizations.current.notEqualErrorText(value.toString());
 
   @override
   String? validateValue(T valueCandidate) {

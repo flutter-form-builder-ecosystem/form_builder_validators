@@ -153,17 +153,15 @@ void main() {
         () {
       // Arrange
       const List<String> value = <String>['a', 'b'];
-      final NotEqualValidator<List<String>> validator =
-          NotEqualValidator<List<String>>(
-        value,
-        errorText: customErrorMessage,
-      );
+      const NotEqualValidator<List<String>> validator =
+          NotEqualValidator<List<String>>(value);
 
       // Act
       final String? result = validator.validate(value);
 
       // Assert
-      expect(result, customErrorMessage);
+      expect(result,
+          FormBuilderLocalizations.current.notEqualErrorText(value.toString()));
     });
   });
 }

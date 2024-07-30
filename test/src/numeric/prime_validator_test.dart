@@ -139,5 +139,31 @@ void main() {
         equals(validator.errorText),
       );
     });
+
+    test(
+        'should return the default error message for non-numeric string values',
+        () {
+      // Arrange
+      const PrimeNumberValidator<String> validator =
+          PrimeNumberValidator<String>();
+
+      // Act & Assert
+      expect(
+        validator.validate('abc'),
+        equals(FormBuilderLocalizations.current.primeNumberErrorText),
+      );
+    });
+
+    test('should return the custom error message for non-numeric string values',
+        () {
+      // Arrange
+      final PrimeNumberValidator<String> validator =
+          PrimeNumberValidator<String>(
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('abc'), equals(customErrorMessage));
+    });
   });
 }

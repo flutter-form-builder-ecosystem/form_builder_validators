@@ -91,6 +91,32 @@ void main() {
         // Assert
         expect(result, equals(customErrorMessage));
       });
+
+      test(
+          'should return the default error message for non-numeric string values',
+          () {
+        // Arrange
+        const num max = 10;
+        const MaxValidator<String> validator = MaxValidator<String>(max);
+
+        // Act & Assert
+        expect(
+          validator.validate('abc'),
+          equals(FormBuilderLocalizations.current.maxErrorText(max)),
+        );
+      });
+
+      test(
+          'should return the custom error message for non-numeric string values',
+          () {
+        // Arrange
+        const num max = 10;
+        final MaxValidator<String> validator =
+            MaxValidator<String>(max, errorText: customErrorMessage);
+
+        // Act & Assert
+        expect(validator.validate('abc'), equals(customErrorMessage));
+      });
     });
 
     group('num', () {
@@ -247,6 +273,17 @@ void main() {
         equals(
           validator.errorText,
         ),
+      );
+    });
+
+    test('should return the default error message for invalid value types', () {
+      // Arrange
+      const MaxValidator<bool> validator = MaxValidator<bool>(1);
+
+      // Act & Assert
+      expect(
+        validator.validate(false),
+        equals(validator.errorText),
       );
     });
   });

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 /// {@template compose_validator_template}
@@ -20,9 +19,10 @@ class ComposeValidator<T> extends BaseValidator<T> {
   /// The list of validators to apply to the value.
   final List<FormFieldValidator<T>> validators;
 
+  // coverage:ignore-start
   @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
+  String get translatedErrorText => '';
+  // coverage:ignore-end
 
   @override
   String? validate(T? valueCandidate) {

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
 import '../base_validator.dart';
 
 /// {@template transform_validator_template}
@@ -26,9 +25,10 @@ class TransformValidator<T> extends BaseValidator<T> {
   /// The validator to apply to the transformed value.
   final FormFieldValidator<T> validator;
 
+  // coverage:ignore-start
   @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
+  String get translatedErrorText => '';
+  // coverage:ignore-end
 
   @override
   String? validate(T? valueCandidate) {

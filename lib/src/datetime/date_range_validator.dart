@@ -33,8 +33,8 @@ class DateRangeValidator extends BaseValidator<String> {
   final DateTime maxDate;
 
   @override
-  String get translatedErrorText => FormBuilderLocalizations.current
-      .dateRangeErrorText(minDate.toString(), maxDate.toString());
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.dateRangeErrorText(minDate, maxDate);
 
   @override
   String? validateValue(String valueCandidate) {

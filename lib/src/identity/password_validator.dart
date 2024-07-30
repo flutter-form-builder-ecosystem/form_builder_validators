@@ -55,8 +55,10 @@ class PasswordValidator extends BaseValidator<String> {
   /// The minimum number of special characters required.
   final int minSpecialCharCount;
 
+  // coverage:ignore-start
   @override
   String get translatedErrorText => '';
+  // coverage:ignore-end
 
   @override
   String? validateValue(String valueCandidate) {

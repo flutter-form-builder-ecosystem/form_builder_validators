@@ -91,6 +91,32 @@ void main() {
         // Assert
         expect(result, equals(customErrorMessage));
       });
+
+      test(
+          'should return the default error message for non-numeric string values',
+          () {
+        // Arrange
+        const num min = 10;
+        const MinValidator<String> validator = MinValidator<String>(min);
+
+        // Act & Assert
+        expect(
+          validator.validate('abc'),
+          equals(FormBuilderLocalizations.current.minErrorText(min)),
+        );
+      });
+
+      test(
+          'should return the custom error message for non-numeric string values',
+          () {
+        // Arrange
+        const num min = 10;
+        final MinValidator<String> validator =
+            MinValidator<String>(min, errorText: customErrorMessage);
+
+        // Act & Assert
+        expect(validator.validate('abc'), equals(customErrorMessage));
+      });
     });
 
     group('num', () {
