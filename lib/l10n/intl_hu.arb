@@ -84,5 +84,7 @@
   "dunsErrorText": "Az értéknek egy érvényes DUNS számnak kell lennie.",
   "licensePlateErrorText": "Az értéknek egy érvényes rendszámnak kell lennie.",
   "vinErrorText": "Az értéknek egy érvényes járműazonosító számnak kell lennie.",
-  "languageCodeErrorText": "Az értéknek egy érvényes nyelvkódnak kell lennie."
+  "languageCodeErrorText": "Az értéknek egy érvényes nyelvkódnak kell lennie.",
+  "floatErrorText": "Az értéknek érvényes lebegőpontos számnak kell lennie.",
+  "hexadecimalErrorText": "Az értéknek érvényes hexadecimális számnak kell lennie."
 }

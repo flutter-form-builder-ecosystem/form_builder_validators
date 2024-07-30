@@ -84,5 +84,7 @@
   "dunsErrorText": "Der Wert muss eine gültige DUNS-Nummer sein.",
   "licensePlateErrorText": "Der Wert muss ein gültiges Nummernschild sein.",
   "vinErrorText": "Der Wert muss eine gültige Fahrzeug-Identifizierungsnummer (VIN) sein.",
-  "languageCodeErrorText": "Der Wert muss ein gültiger Sprachcode sein."
+  "languageCodeErrorText": "Der Wert muss ein gültiger Sprachcode sein.",
+  "floatErrorText": "Der Wert muss eine gültige Fließkommazahl sein.",
+  "hexadecimalErrorText": "Der Wert muss eine gültige hexadezimale Zahl sein."
 }

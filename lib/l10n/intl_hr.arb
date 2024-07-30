@@ -84,5 +84,7 @@
   "dunsErrorText": "Vrijednost mora biti važeći DUNS broj.",
   "licensePlateErrorText": "Vrijednost mora biti važeća registarska oznaka.",
   "vinErrorText": "Vrijednost mora biti važeći VIN.",
-  "languageCodeErrorText": "Vrijednost mora biti važeći jezični kod."
+  "languageCodeErrorText": "Vrijednost mora biti važeći jezični kod.",
+  "floatErrorText": "Vrijednost mora biti valjani broj s pomičnim zarezom.",
+  "hexadecimalErrorText": "Vrijednost mora biti valjani heksadecimalni broj."
 }

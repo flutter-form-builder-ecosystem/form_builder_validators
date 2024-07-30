@@ -84,5 +84,7 @@
   "dunsErrorText": "Arvon on oltava kelvollinen DUNS-numero.",
   "licensePlateErrorText": "Arvon on oltava kelvollinen rekisterinumero.",
   "vinErrorText": "Arvon on oltava kelvollinen VIN.",
-  "languageCodeErrorText": "Arvon on oltava kelvollinen kielikoodi."
+  "languageCodeErrorText": "Arvon on oltava kelvollinen kielikoodi.",
+  "floatErrorText": "Arvon on oltava kelvollinen liukuluku.",
+  "hexadecimalErrorText": "Arvon on oltava kelvollinen heksadesimaaliluku."
 }

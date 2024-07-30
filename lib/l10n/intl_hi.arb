@@ -84,5 +84,7 @@
   "dunsErrorText": "मान मान्य DUNS नंबर होना चाहिए।",
   "licensePlateErrorText": "मान मान्य लाइसेंस प्लेट होना चाहिए।",
   "vinErrorText": "मान मान्य VIN होना चाहिए।",
-  "languageCodeErrorText": "मान मान्य भाषा कोड होना चाहिए।"
+  "languageCodeErrorText": "मान मान्य भाषा कोड होना चाहिए।",
+  "floatErrorText": "मान्य फ़्लोटिंग पॉइंट नंबर होना चाहिए।",
+  "hexadecimalErrorText": "मान्य हेक्साडेसिमल नंबर होना चाहिए।"
 }

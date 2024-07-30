@@ -84,5 +84,7 @@
   "dunsErrorText": "הערך חייב להיות מספר DUNS חוקי.",
   "licensePlateErrorText": "הערך חייב להיות מספר רכב חוקי.",
   "vinErrorText": "הערך חייב להיות מספר VIN חוקי.",
-  "languageCodeErrorText": "הערך חייב להיות קוד שפה חוקי."
+  "languageCodeErrorText": "הערך חייב להיות קוד שפה חוקי.",
+  "floatErrorText": "הערך חייב להיות מספר נקודה צפה חוקי.",
+  "hexadecimalErrorText": "הערך חייב להיות מספר הקסדצימלי חוקי."
 }

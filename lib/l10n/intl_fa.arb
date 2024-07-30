@@ -84,5 +84,7 @@
   "dunsErrorText": "مقدار باید یک شماره DUNS معتبر باشد.",
   "licensePlateErrorText": "مقدار باید یک شماره پلاک معتبر باشد.",
   "vinErrorText": "مقدار باید یک شماره VIN معتبر باشد.",
-  "languageCodeErrorText": "مقدار باید یک کد زبان معتبر باشد."
+  "languageCodeErrorText": "مقدار باید یک کد زبان معتبر باشد.",
+  "floatErrorText": "مقدار باید یک عدد اعشاری معتبر باشد.",
+  "hexadecimalErrorText": "مقدار باید یک عدد هگزادسیمال معتبر باشد."
 }

@@ -84,5 +84,7 @@
   "dunsErrorText": "Değer geçerli bir DUNS numarası olmalıdır.",
   "licensePlateErrorText": "Değer geçerli bir plaka olmalıdır.",
   "vinErrorText": "Değer geçerli bir VIN numarası olmalıdır.",
-  "languageCodeErrorText": "Değer geçerli bir dil kodu olmalıdır."
+  "languageCodeErrorText": "Değer geçerli bir dil kodu olmalıdır.",
+  "floatErrorText": "Değer geçerli bir noktalı sayı olmalıdır.",
+  "hexadecimalErrorText": "Değer geçerli bir onaltılık sayı olmalıdır."
 }

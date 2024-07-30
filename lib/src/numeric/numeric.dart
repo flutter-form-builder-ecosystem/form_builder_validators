@@ -1,5 +1,7 @@
 export 'between_validator.dart';
 export 'even_number_validator.dart';
+export 'float_validator.dart';
+export 'hexadecimal_validator.dart';
 export 'integer_validator.dart';
 export 'max_validator.dart';
 export 'min_validator.dart';

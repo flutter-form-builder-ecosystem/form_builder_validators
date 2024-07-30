@@ -84,5 +84,7 @@
   "dunsErrorText": "El valor ha de ser un número DUNS vàlid.",
   "licensePlateErrorText": "El valor ha de ser una matrícula vàlida.",
   "vinErrorText": "El valor ha de ser un VIN vàlid.",
-  "languageCodeErrorText": "El valor ha de ser un codi de llengua vàlid."
+  "languageCodeErrorText": "El valor ha de ser un codi de llengua vàlid.",
+  "floatErrorText": "El valor ha de ser un nombre de coma flotant vàlid.",
+  "hexadecimalErrorText": "El valor ha de ser un nombre hexadecimal vàlid."
 }

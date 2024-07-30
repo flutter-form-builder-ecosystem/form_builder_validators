@@ -84,5 +84,7 @@
   "dunsErrorText": "Thamani lazima iwe nambari halali ya DUNS.",
   "licensePlateErrorText": "Thamani lazima iwe nambari sahihi ya leseni.",
   "vinErrorText": "Thamani lazima iwe VIN halali.",
-  "languageCodeErrorText": "Thamani lazima iwe msimbo halali wa lugha."
+  "languageCodeErrorText": "Thamani lazima iwe msimbo halali wa lugha.",
+  "floatErrorText": "Thamani lazima iwe nambari sahihi ya nukta mvutano.",
+  "hexadecimalErrorText": "Thamani lazima iwe nambari sahihi ya hekshadesimali."
 }

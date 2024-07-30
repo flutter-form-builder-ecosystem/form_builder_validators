@@ -84,5 +84,7 @@
   "dunsErrorText": "值必須是一個有效的DUNS號碼。",
   "licensePlateErrorText": "值必須是一個有效的車牌號碼。",
   "vinErrorText": "值必須是一個有效的車輛識別號。",
-  "languageCodeErrorText": "值必須是一個有效的語言代碼。"
+  "languageCodeErrorText": "值必須是一個有效的語言代碼。",
+  "floatErrorText": "數值必須為有效的浮點數。",
+  "hexadecimalErrorText": "數值必須為有效的十六進位數字。"
 }

@@ -84,5 +84,7 @@
   "dunsErrorText": "Wartość musi być prawidłowym numerem DUNS.",
   "licensePlateErrorText": "Wartość musi być prawidłowym numerem tablicy rejestracyjnej.",
   "vinErrorText": "Wartość musi być prawidłowym numerem VIN.",
-  "languageCodeErrorText": "Wartość musi być prawidłowym kodem języka."
+  "languageCodeErrorText": "Wartość musi być prawidłowym kodem języka.",
+  "floatErrorText": "Wartość musi być prawidłową liczbą zmiennoprzecinkową.",
+  "hexadecimalErrorText": "Wartość musi być prawidłową liczbą szesnastkową."
 }
