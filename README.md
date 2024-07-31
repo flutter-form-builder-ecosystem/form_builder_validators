@@ -382,7 +382,7 @@ We welcome efforts to internationalize/localize the package by translating the d
 #### Add new validator
 
 1. Add a new validator to one of the folders in the `src` folder.
-2. Implement it using the `BaseValidator` class. Override the `validateValue` method and let the base class handle the null check in the `validate` method.
+2. Implement it using the `BaseValidator` or `TranslatedValidator` class. Override the `validateValue` method and let the base class handle the null check in the `validate` method. When using a translation also override `translatedErrorText`.
 3. Override the `translatedErrorText` property and return the correct translation from `FormBuilderLocalizations.current.`.
 4. Make sure to pass `errorText` and `checkNullOrEmpty` to the base class.
 5. Add static method to `form_builder_validators.dart` that uses the new validator.

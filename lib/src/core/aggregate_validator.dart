@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template aggregate_validator_template}
-/// [AggregateValidator] extends [TranslatedValidator] to validate a value using a list of multiple validators.
+/// [AggregateValidator] extends [BaseValidator] to validate a value using a list of multiple validators.
 ///
 /// ## Parameters:
 ///

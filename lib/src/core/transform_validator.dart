@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template transform_validator_template}
-/// [TransformValidator] extends [TranslatedValidator] to transform a value before applying a validator.
+/// [TransformValidator] extends [BaseValidator] to transform a value before applying a validator.
 ///
 /// ## Parameters:
 ///

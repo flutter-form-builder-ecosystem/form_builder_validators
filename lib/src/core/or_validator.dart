@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template or_validator_template}
-/// [OrValidator] extends [TranslatedValidator] to validate a value using multiple validators,
+/// [OrValidator] extends [BaseValidator] to validate a value using multiple validators,
 /// returning null if at least one of the validators passes.
 ///
 /// ## Parameters:

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template default_value_validator_template}
-/// [DefaultValueValidator] extends [TranslatedValidator] to validate a value using a default value if the value is null.
+/// [DefaultValueValidator] extends [BaseValidator] to validate a value using a default value if the value is null.
 ///
 /// ## Parameters:
 ///

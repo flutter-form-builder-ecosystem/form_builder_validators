@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template skip_when_validator_template}
-/// [SkipWhenValidator] extends [TranslatedValidator] to conditionally skip validation based on a provided condition.
+/// [SkipWhenValidator] extends [BaseValidator] to conditionally skip validation based on a provided condition.
 ///
 /// ## Parameters:
 ///

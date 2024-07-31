@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template compose_validator_template}
-/// [ComposeValidator] extends [TranslatedValidator] to validate a value using a list of validators,
+/// [ComposeValidator] extends [BaseValidator] to validate a value using a list of validators,
 /// returning the first validation error encountered.
 ///
 /// ## Parameters:
