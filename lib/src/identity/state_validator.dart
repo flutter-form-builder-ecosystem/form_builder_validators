@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template state_validator_template}
-/// [StateValidator] extends [BaseValidator] to validate if a string represents a valid state name.
+/// [StateValidator] extends [TranslatedValidator] to validate if a string represents a valid state name.
 ///
 /// This validator checks if the state name matches a specified regex pattern and is not in a blacklist,
 /// and optionally checks if it is in a whitelist.
@@ -16,7 +15,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class StateValidator extends BaseValidator<String> {
+class StateValidator extends TranslatedValidator<String> {
   /// Constructor for the state name validator.
   StateValidator({
     /// {@macro state_template}

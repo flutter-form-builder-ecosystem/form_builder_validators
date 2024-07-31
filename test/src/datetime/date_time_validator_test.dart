@@ -32,7 +32,6 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.dateStringErrorText),
       );
-      expect(result, validator.errorText);
     });
 
     test('should return the custom error message when the value is null', () {
@@ -92,7 +91,6 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.dateStringErrorText),
       );
-      expect(result, validator.errorText);
     });
 
     test(
@@ -119,6 +117,54 @@ void main() {
       final DateTimeValidator validator =
           DateTimeValidator(errorText: customErrorMessage);
       const String value = 'invalid-date';
+
+      // Act
+      final String? result = validator.validate(DateTime.tryParse(value));
+
+      // Assert
+      expect(result, equals(customErrorMessage));
+    });
+
+    // Additional tests to cover return errorText;
+    test(
+        'should return the default error message when the value is an invalid DateTime',
+        () {
+      // Arrange
+      const DateTimeValidator validator = DateTimeValidator();
+      const DateTime? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(
+          result, equals(FormBuilderLocalizations.current.dateStringErrorText));
+    });
+
+    test(
+        'should return the custom error message when the value is an invalid DateTime',
+        () {
+      // Arrange
+      final DateTimeValidator validator = DateTimeValidator(
+        errorText: customErrorMessage,
+      );
+      const DateTime? value = null;
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(customErrorMessage));
+    });
+
+    test(
+        'should return the custom error message when the value is an empty string',
+        () {
+      // Arrange
+      final DateTimeValidator validator = DateTimeValidator(
+        errorText: customErrorMessage,
+      );
+      const String value = '';
 
       // Act
       final String? result = validator.validate(DateTime.tryParse(value));

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template not_zero_number_validator_template}
-/// [NotZeroNumberValidator] extends [BaseValidator] to validate if a value is not zero.
+/// [NotZeroNumberValidator] extends [TranslatedValidator] to validate if a value is not zero.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number and ensures it is not zero.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class NotZeroNumberValidator<T> extends BaseValidator<T> {
+class NotZeroNumberValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the not zero number validator.
   const NotZeroNumberValidator({
     /// {@macro base_validator_error_text}

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template hexadecimal_validator_template}
-/// [HexadecimalValidator] extends [BaseValidator] to validate if a value is a hexadecimal string.
+/// [HexadecimalValidator] extends [TranslatedValidator] to validate if a value is a hexadecimal string.
 ///
 /// This validator checks if the value is a valid hexadecimal string using a regular expression.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 ///
 /// {@macro hexadecimal_regex_template}
 /// {@endtemplate}
-class HexadecimalValidator extends BaseValidator<String> {
+class HexadecimalValidator extends TranslatedValidator<String> {
   /// Constructor for the hexadecimal validator.
   HexadecimalValidator({
     /// {@macro hexadecimal_regex_template}

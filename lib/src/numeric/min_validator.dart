@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template min_validator_template}
-/// [MinValidator] extends [BaseValidator] to validate if a value is greater than or equal to a specified minimum value.
+/// [MinValidator] extends [TranslatedValidator] to validate if a value is greater than or equal to a specified minimum value.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number and ensures it meets the specified minimum value.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MinValidator<T> extends BaseValidator<T> {
+class MinValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the minimum value validator.
   const MinValidator(
     this.min, {

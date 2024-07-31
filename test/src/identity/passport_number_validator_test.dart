@@ -121,5 +121,50 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test(
+        'should return the default error message for non-whitelisted passport number',
+        () {
+      // Arrange
+      final PassportNumberValidator validator = PassportNumberValidator(
+        passportNumberWhitelist: passportNumberWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelisted123'),
+        equals(FormBuilderLocalizations.current.passportNumberErrorText),
+      );
+    });
+
+    test(
+        'should return the custom error message for non-whitelisted passport number',
+        () {
+      // Arrange
+      final PassportNumberValidator validator = PassportNumberValidator(
+        passportNumberWhitelist: passportNumberWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelisted123'),
+        equals(customErrorMessage),
+      );
+    });
+
+    test(
+        'should return the error message when the value does not match the regex and is not in whitelist or blacklist',
+        () {
+      // Arrange
+      final PassportNumberValidator validator = PassportNumberValidator(
+        passportNumberWhitelist: passportNumberWhitelist,
+        passportNumberBlacklist: passportNumberBlacklist,
+      );
+
+      // Act & Assert
+      expect(validator.validate('NotInWhitelistOrBlacklist'),
+          equals(validator.errorText));
+    });
   });
 }

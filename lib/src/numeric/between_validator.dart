@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template between_validator_template}
-/// [BetweenValidator] extends [BaseValidator] to validate if a number is within a specified range.
+/// [BetweenValidator] extends [TranslatedValidator] to validate if a number is within a specified range.
 ///
 /// This validator checks if the value is between the minimum and maximum inclusive.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class BetweenValidator<T> extends BaseValidator<T> {
+class BetweenValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the between validator.
   const BetweenValidator(
     this.min,

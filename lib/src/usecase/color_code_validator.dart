@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template color_code_validator_template}
-/// [ColorCodeValidator] extends [BaseValidator] to validate if a string is a valid color code in specified formats.
+/// [ColorCodeValidator] extends [TranslatedValidator] to validate if a string is a valid color code in specified formats.
 ///
 /// This validator checks if the value matches the specified color formats, such as hex, rgb, or hsl.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class ColorCodeValidator extends BaseValidator<String> {
+class ColorCodeValidator extends TranslatedValidator<String> {
   /// Constructor for the color code validator.
   ColorCodeValidator({
     this.formats = const <String>['hex', 'rgb', 'hsl'],

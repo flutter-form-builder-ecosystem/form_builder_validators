@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template json_validator_template}
-/// [JsonValidator] extends [BaseValidator] to validate if a string is a valid JSON format.
+/// [JsonValidator] extends [TranslatedValidator] to validate if a string is a valid JSON format.
 ///
 /// This validator checks if the value can be successfully decoded as JSON.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class JsonValidator extends BaseValidator<String> {
+class JsonValidator extends TranslatedValidator<String> {
   /// Constructor for the JSON validator.
   const JsonValidator({
     /// {@macro base_validator_error_text}

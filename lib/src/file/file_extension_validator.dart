@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template file_extension_validator_template}
-/// [FileExtensionValidator] extends [BaseValidator] to validate if a file path has an allowed extension.
+/// [FileExtensionValidator] extends [TranslatedValidator] to validate if a file path has an allowed extension.
 ///
 /// This validator checks if the file extension is within the list of allowed extensions.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class FileExtensionValidator extends BaseValidator<String> {
+class FileExtensionValidator extends TranslatedValidator<String> {
   /// Constructor for the file extension validator.
   const FileExtensionValidator(
     this.allowedExtensions, {

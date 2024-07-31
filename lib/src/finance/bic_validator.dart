@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template bic_validator_template}
-/// [BicValidator] extends [BaseValidator] to validate if a string represents a valid BIC (Bank Identifier Code).
+/// [BicValidator] extends [TranslatedValidator] to validate if a string represents a valid BIC (Bank Identifier Code).
 ///
 /// This validator checks if the string matches the specified regex pattern for valid BICs.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class BicValidator extends BaseValidator<String> {
+class BicValidator extends TranslatedValidator<String> {
   /// Constructor for the BIC validator.
   BicValidator({
     /// {@macro bic_template}

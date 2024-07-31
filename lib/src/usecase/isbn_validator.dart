@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template isbn_validator_template}
-/// [IsbnValidator] extends [BaseValidator] to validate if a string is a valid ISBN (International Standard Book Number).
+/// [IsbnValidator] extends [TranslatedValidator] to validate if a string is a valid ISBN (International Standard Book Number).
 ///
 /// This validator checks if the value is a valid ISBN-10 or ISBN-13 format.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class IsbnValidator extends BaseValidator<String> {
+class IsbnValidator extends TranslatedValidator<String> {
   /// Constructor for the ISBN validator.
   const IsbnValidator({
     /// {@macro base_validator_error_text}

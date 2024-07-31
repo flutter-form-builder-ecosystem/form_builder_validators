@@ -249,5 +249,44 @@ void main() {
         equals(validator.errorText),
       );
     });
+
+    test(
+        'should return the default error message for non-numeric string values',
+        () {
+      // Arrange
+      const NegativeNumberValidator<String> validator =
+          NegativeNumberValidator<String>();
+
+      // Act & Assert
+      expect(
+        validator.validate('abc'),
+        equals(FormBuilderLocalizations.current.negativeNumberErrorText),
+      );
+    });
+
+    test('should return the custom error message for non-numeric string values',
+        () {
+      // Arrange
+      final NegativeNumberValidator<String> validator =
+          NegativeNumberValidator<String>(
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('abc'), equals(customErrorMessage));
+    });
+
+    test('should return the default error message for unsupported value types',
+        () {
+      // Arrange
+      const NegativeNumberValidator<bool> validator =
+          NegativeNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(true),
+        equals(FormBuilderLocalizations.current.negativeNumberErrorText),
+      );
+    });
   });
 }

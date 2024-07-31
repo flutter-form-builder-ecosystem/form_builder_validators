@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template language_code_validator_template}
-/// [LanguageCodeValidator] extends [BaseValidator] to validate if a string is a valid language code.
+/// [LanguageCodeValidator] extends [TranslatedValidator] to validate if a string is a valid language code.
 ///
 /// This validator checks if the value matches the specified regex pattern that requires exactly 2 lowercase letters (ISO 639-1 standard).
 ///
@@ -15,7 +14,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class LanguageCodeValidator extends BaseValidator<String> {
+class LanguageCodeValidator extends TranslatedValidator<String> {
   /// Constructor for the language code validator.
   LanguageCodeValidator({
     /// {@macro language_code_template}

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template has_lowercase_chars_template}
-/// [HasLowercaseCharsValidator] extends [BaseValidator] to validate if a string
+/// [HasLowercaseCharsValidator] extends [TranslatedValidator] to validate if a string
 /// contains a specified minimum number of lowercase characters.
 ///
 /// ## Parameters:
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 ///
 /// {@macro lower_case_template}
 /// {@endtemplate}
-class HasLowercaseCharsValidator extends BaseValidator<String> {
+class HasLowercaseCharsValidator extends TranslatedValidator<String> {
   /// Constructor for the lowercase characters validator.
   HasLowercaseCharsValidator({
     this.atLeast = 1,

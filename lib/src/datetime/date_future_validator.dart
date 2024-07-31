@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template date_future_validator_template}
-/// [DateFutureValidator] extends [BaseValidator] to validate if a date string represents a future date.
+/// [DateFutureValidator] extends [TranslatedValidator] to validate if a date string represents a future date.
 ///
 /// This validator checks if the date parsed from the string is after the current date and time.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class DateFutureValidator extends BaseValidator<String> {
+class DateFutureValidator extends TranslatedValidator<String> {
   /// Constructor for the future date validator.
   const DateFutureValidator({
     /// {@macro base_validator_error_text}

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template negative_number_validator_template}
-/// [NegativeNumberValidator] extends [BaseValidator] to validate if a value is a negative number.
+/// [NegativeNumberValidator] extends [TranslatedValidator] to validate if a value is a negative number.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number and ensures it is negative.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class NegativeNumberValidator<T> extends BaseValidator<T> {
+class NegativeNumberValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the negative number validator.
   const NegativeNumberValidator({
     /// {@macro base_validator_error_text}
