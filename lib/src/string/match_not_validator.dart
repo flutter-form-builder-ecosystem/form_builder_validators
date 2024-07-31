@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template match_not_validator_template}
-/// [MatchNotValidator] extends [BaseValidator] to validate if a string does not match a specified regular expression pattern.
+/// [MatchNotValidator] extends [TranslatedValidator] to validate if a string does not match a specified regular expression pattern.
 ///
 /// This validator checks if the value does not match the provided regex pattern.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MatchNotValidator extends BaseValidator<String> {
+class MatchNotValidator extends TranslatedValidator<String> {
   /// Constructor for the match not validator.
   const MatchNotValidator(
     this.regex, {

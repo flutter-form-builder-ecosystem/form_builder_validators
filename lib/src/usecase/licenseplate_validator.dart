@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template license_plate_validator_template}
-/// [LicensePlateValidator] extends [BaseValidator] to validate if a string is a valid license plate.
+/// [LicensePlateValidator] extends [TranslatedValidator] to validate if a string is a valid license plate.
 ///
 /// This validator checks if the value matches the specified regex pattern for common license plate formats and optionally checks against whitelists and blacklists.
 ///
@@ -15,7 +14,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class LicensePlateValidator extends BaseValidator<String> {
+class LicensePlateValidator extends TranslatedValidator<String> {
   /// Constructor for the license plate validator.
   LicensePlateValidator({
     /// {@macro license_plate_template}

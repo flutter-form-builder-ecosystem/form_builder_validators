@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template min_length_validator_template}
-/// [MinLengthValidator] extends [BaseValidator] to validate if a value meets a specified minimum length.
+/// [MinLengthValidator] extends [TranslatedValidator] to validate if a value meets a specified minimum length.
 ///
 /// This validator works with various types, including String, Iterable, and Map.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MinLengthValidator<T> extends BaseValidator<T> {
+class MinLengthValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the minimum length validator.
   const MinLengthValidator(
     this.minLength, {

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template uuid_validator_template}
-/// [UuidValidator] extends [BaseValidator] to validate if a string is a valid UUID (version 4).
+/// [UuidValidator] extends [TranslatedValidator] to validate if a string is a valid UUID (version 4).
 ///
 /// This validator checks if the value matches the specified regex pattern for UUID format, including hyphens.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class UuidValidator extends BaseValidator<String> {
+class UuidValidator extends TranslatedValidator<String> {
   /// Constructor for the UUID validator.
   UuidValidator({
     /// {@macro uuid_template}

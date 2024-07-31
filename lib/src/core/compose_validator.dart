@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template compose_validator_template}
-/// [ComposeValidator] extends [BaseValidator] to validate a value using a list of validators,
+/// [ComposeValidator] extends [TranslatedValidator] to validate a value using a list of validators,
 /// returning the first validation error encountered.
 ///
 /// ## Parameters:
@@ -18,11 +18,6 @@ class ComposeValidator<T> extends BaseValidator<T> {
 
   /// The list of validators to apply to the value.
   final List<FormFieldValidator<T>> validators;
-
-  // coverage:ignore-start
-  @override
-  String get translatedErrorText => '';
-  // coverage:ignore-end
 
   @override
   String? validate(T? valueCandidate) {

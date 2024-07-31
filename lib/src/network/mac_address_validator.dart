@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template mac_address_validator_template}
-/// [MacAddressValidator] extends [BaseValidator] to validate if a string represents a valid MAC address.
+/// [MacAddressValidator] extends [TranslatedValidator] to validate if a string represents a valid MAC address.
 ///
 /// This validator checks if the MAC address matches the specified regex pattern.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MacAddressValidator extends BaseValidator<String> {
+class MacAddressValidator extends TranslatedValidator<String> {
   /// Constructor for the MAC address validator.
   MacAddressValidator({
     /// {@macro mac_address_template}

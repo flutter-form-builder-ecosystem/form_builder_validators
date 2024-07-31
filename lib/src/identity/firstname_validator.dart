@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template first_name_validator_template}
-/// [FirstNameValidator] extends [BaseValidator] to validate if a string represents a valid first name.
+/// [FirstNameValidator] extends [TranslatedValidator] to validate if a string represents a valid first name.
 ///
 /// This validator checks if the first name matches a specified regex pattern and is not in a blacklist,
 /// and optionally checks if it is in a whitelist.
@@ -16,7 +15,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class FirstNameValidator extends BaseValidator<String> {
+class FirstNameValidator extends TranslatedValidator<String> {
   /// Constructor for the first name validator.
   FirstNameValidator({
     /// {@macro first_name_template}

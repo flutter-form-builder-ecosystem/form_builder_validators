@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template numeric_validator_template}
-/// [NumericValidator] extends [BaseValidator] to validate if a value is numeric.
+/// [NumericValidator] extends [TranslatedValidator] to validate if a value is numeric.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class NumericValidator<T> extends BaseValidator<T> {
+class NumericValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the numeric validator.
   const NumericValidator({
     /// {@macro base_validator_error_text}

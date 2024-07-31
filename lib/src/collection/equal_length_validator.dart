@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template equal_length_validator_template}
-/// [EqualLengthValidator] extends [BaseValidator] to validate if a value has a specified length.
+/// [EqualLengthValidator] extends [TranslatedValidator] to validate if a value has a specified length.
 ///
 /// This validator works with various types, including String, Iterable, and Map.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class EqualLengthValidator<T> extends BaseValidator<T> {
+class EqualLengthValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the equal length validator.
   const EqualLengthValidator(
     this.length, {

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template contains_validator_template}
-/// [ContainsValidator] extends [BaseValidator] to validate if a string contains a specified substring.
+/// [ContainsValidator] extends [TranslatedValidator] to validate if a string contains a specified substring.
 ///
 /// This validator checks if the value contains the specified substring, with an option for case sensitivity.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class ContainsValidator extends BaseValidator<String> {
+class ContainsValidator extends TranslatedValidator<String> {
   /// Constructor for the contains validator.
   const ContainsValidator(
     this.substring, {

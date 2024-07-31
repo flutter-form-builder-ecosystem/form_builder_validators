@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template conditional_validator_template}
-/// [ConditionalValidator] extends [BaseValidator] to conditionally validate a value based on a provided condition.
+/// [ConditionalValidator] extends [TranslatedValidator] to conditionally validate a value based on a provided condition.
 ///
 /// ## Parameters:
 ///
@@ -24,11 +24,6 @@ class ConditionalValidator<T> extends BaseValidator<T> {
 
   /// The validator to apply if the condition is met.
   final FormFieldValidator<T> validator;
-
-  // coverage:ignore-start
-  @override
-  String get translatedErrorText => '';
-  // coverage:ignore-end
 
   @override
   String? validate(T? valueCandidate) {

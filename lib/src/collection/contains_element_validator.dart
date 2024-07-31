@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template contains_element_validator_template}
-/// [ContainsElementValidator] extends [BaseValidator] to validate if a value is
+/// [ContainsElementValidator] extends [TranslatedValidator] to validate if a value is
 /// contained within a specified list of values.
 ///
 /// ## Parameters:
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class ContainsElementValidator<T> extends BaseValidator<T> {
+class ContainsElementValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the contains element validator.
   const ContainsElementValidator(
     this.values, {

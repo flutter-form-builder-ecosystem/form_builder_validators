@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template equal_validator_template}
-/// [EqualValidator] extends [BaseValidator] to validate if a value is equal to a specified value.
+/// [EqualValidator] extends [TranslatedValidator] to validate if a value is equal to a specified value.
 ///
 /// ## Parameters:
 ///
@@ -11,7 +10,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class EqualValidator<T> extends BaseValidator<T> {
+class EqualValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the equal value validator.
   const EqualValidator(
     this.value, {

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template required_validator_template}
-/// [RequiredValidator] extends [BaseValidator] to validate that a value is required (non-null).
+/// [RequiredValidator] extends [TranslatedValidator] to validate that a value is required (non-null).
 ///
 /// This validator is primarily used to ensure that a field is not left empty or null.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class RequiredValidator<T> extends BaseValidator<T> {
+class RequiredValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the required value validator.
   const RequiredValidator({
     /// {@macro base_validator_error_text}

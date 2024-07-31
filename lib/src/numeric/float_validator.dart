@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template float_validator_template}
-/// [FloatValidator] extends [BaseValidator] to validate if a value is a float and does not exceed a maximum value.
+/// [FloatValidator] extends [TranslatedValidator] to validate if a value is a float and does not exceed a maximum value.
 ///
 /// This validator checks if the value is a float number or a string that can be parsed into a float number and ensures it does not exceed the maximum value.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [maxValue] The maximum allowed value for the float. Default is 1.0.
 ///
 /// {@endtemplate}
-class FloatValidator<T> extends BaseValidator<T> {
+class FloatValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the float validator.
   const FloatValidator({
     /// {@macro base_validator_error_text}

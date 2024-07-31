@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template is_false_validator_template}
-/// [IsFalseValidator] extends [BaseValidator] to validate if a boolean value is false.
+/// [IsFalseValidator] extends [TranslatedValidator] to validate if a boolean value is false.
 ///
 /// ## Parameters:
 ///
@@ -10,7 +9,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class IsFalseValidator extends BaseValidator<bool> {
+class IsFalseValidator extends TranslatedValidator<bool> {
   /// Constructor for the false value validator.
   const IsFalseValidator({
     /// {@macro base_validator_error_text}

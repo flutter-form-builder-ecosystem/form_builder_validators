@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template time_validator_template}
-/// [TimeValidator] extends [BaseValidator] to validate if a string represents a valid time in 24-hour or 12-hour format.
+/// [TimeValidator] extends [TranslatedValidator] to validate if a string represents a valid time in 24-hour or 12-hour format.
 ///
 /// This validator checks if the string matches the time format or can be parsed into a valid time.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class TimeValidator extends BaseValidator<String> {
+class TimeValidator extends TranslatedValidator<String> {
   /// Constructor for the time string validator.
   TimeValidator({
     /// {@macro time_template}

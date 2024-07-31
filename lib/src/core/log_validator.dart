@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template log_validator_template}
-/// [LogValidator] extends [BaseValidator] to log the value being validated.
+/// [LogValidator] extends [TranslatedValidator] to log the value being validated.
 /// This validator is primarily used for debugging purposes and always returns `null`, indicating no validation errors.
 ///
 /// ## Parameters:
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty. This is set to false by default.
 ///
 /// {@endtemplate}
-class LogValidator<T> extends BaseValidator<T> {
+class LogValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the log validator.
   const LogValidator({
     this.log,

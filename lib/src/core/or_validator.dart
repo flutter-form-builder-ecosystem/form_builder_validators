@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template or_validator_template}
-/// [OrValidator] extends [BaseValidator] to validate a value using multiple validators,
+/// [OrValidator] extends [TranslatedValidator] to validate a value using multiple validators,
 /// returning null if at least one of the validators passes.
 ///
 /// ## Parameters:
@@ -18,11 +18,6 @@ class OrValidator<T> extends BaseValidator<T> {
 
   /// The list of validators to apply to the value.
   final List<FormFieldValidator<T>> validators;
-
-  // coverage:ignore-start
-  @override
-  String get translatedErrorText => '';
-  // coverage:ignore-end
 
   @override
   String? validate(T? valueCandidate) {
