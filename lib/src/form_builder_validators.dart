@@ -1691,6 +1691,27 @@ class FormBuilderValidators {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
+  /// [FormFieldValidator] that requires the field's value to contain profanity.
+  ///
+  /// ## Parameters:
+  /// - [profanityList] The list of profanity words.
+  /// - [useAllLocales] Whether to use all locales (default: false).
+  /// - [errorText] The error message when the value contains profanity.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  /// {@macro profanity_template}
+  static FormFieldValidator<String> profanity({
+    List<String>? profanityList,
+    bool useAllLocales = false,
+    String? errorText,
+    bool checkNullOrEmpty = true,
+  }) =>
+      ProfanityValidator(
+        profanityList: profanityList,
+        useAllLocales: useAllLocales,
+        errorText: errorText,
+        checkNullOrEmpty: checkNullOrEmpty,
+      ).validate;
+
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// UUID.
   ///
