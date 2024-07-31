@@ -118,6 +118,26 @@ void main() {
       expect(validatorWithErrorMessage('  '), customErrorMessage);
     });
 
+    test('FormFieldValidatorExtensions.transform with custom transformation',
+        () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.transform<String>(
+        (String? value) => value?.toUpperCase() ?? '',
+        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator('abc'), isNull);
+      expect(validator('ABC'), isNull);
+
+      // Fail
+      expect(validator('abc123'), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+    });
+
     test('FormFieldValidatorExtensions.skipWhen', () {
       // Arrange
       final FormFieldValidator<String> validator =
@@ -149,18 +169,31 @@ void main() {
 
     test('FormFieldValidatorExtensions.log', () {
       // Arrange
+      String? logMessage;
       final FormFieldValidator<String> validator =
           FormBuilderValidators.log<String>(
-        log: (String? value) => 'Logging: $value',
+        log: (String? value) => logMessage = 'Logging: $value',
       );
 
-      // Act & Assert
-      // Pass
-      expect(validator('test'), isNull);
+      // Act
+      validator('test');
 
-      // Fail
-      expect(validator(null), isNull);
-      expect(validator(''), isNull);
+      // Assert
+      expect(logMessage, 'Logging: test');
+
+      // Act
+      logMessage = null;
+      validator(null);
+
+      // Assert
+      expect(logMessage, 'Logging: null');
+
+      // Act
+      logMessage = null;
+      validator('');
+
+      // Assert
+      expect(logMessage, 'Logging: ');
     });
 
     test('FormFieldValidatorExtensions.withMessage', () {
@@ -278,6 +311,166 @@ void main() {
       expect(conditionalValidator('test'), isNull);
       expect(conditionalValidator(null), isNotNull);
       expect(conditionalValidator(''), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.skipWhen with custom condition', () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.skipWhen<String>(
+        (String? value) => value == 'SKIP',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator('SKIP'), isNull);
+
+      // Fail
+      expect(validator(''), customErrorMessage);
+      expect(validator(null), customErrorMessage);
+    });
+
+    test('FormFieldValidatorExtensions.log with custom logger', () {
+      // Arrange
+      String? logMessage;
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.log<String>(
+        log: (String? value) {
+          logMessage = 'Custom Log: $value';
+          return '';
+        },
+      );
+
+      // Act
+      validator('test');
+
+      // Assert
+      expect(logMessage, 'Custom Log: test');
+
+      // Act
+      logMessage = null;
+      validator(null);
+
+      // Assert
+      expect(logMessage, 'Custom Log: null');
+
+      // Act
+      logMessage = null;
+      validator('');
+
+      // Assert
+      expect(logMessage, 'Custom Log: ');
+    });
+
+    test('FormFieldValidatorExtensions.transform with trimming and uppercasing',
+        () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.transform<String>(
+        (String? value) => value?.trim().toUpperCase() ?? '',
+        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator(' abc '), isNull);
+      expect(validator(' ABC '), isNull);
+
+      // Fail
+      expect(validator(' abc123 '), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(' '), isNotNull);
+    });
+
+    test('FormFieldValidatorExtensions.transform', () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.transform<String>(
+        (String? value) => value?.trim() ?? '',
+        FormBuilderValidators.required(),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator(' trimmed '), isNull);
+
+      // Fail
+      expect(validator('  '), isNotNull);
+      expect(validator(null), isNotNull);
+      expect(validator(''), isNotNull);
+
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.transform<String>(
+        (String? value) => value?.trim() ?? '',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+
+      // Pass
+      expect(validatorWithErrorMessage(' trimmed '), isNull);
+
+      // Fail
+      expect(validatorWithErrorMessage('  '), customErrorMessage);
+    });
+
+    test('FormFieldValidatorExtensions.skipWhen with custom condition', () {
+      // Arrange
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.skipWhen<String>(
+        (String? value) => value == 'skip',
+        FormBuilderValidators.required(),
+      );
+
+      // Act & Assert
+      // Pass
+      expect(validator('skip'), isNull);
+
+      // Fail
+      expect(validator(''), isNotNull);
+      expect(validator(null), isNotNull);
+
+      final FormFieldValidator<String> validatorWithErrorMessage =
+          FormBuilderValidators.skipWhen<String>(
+        (String? value) => value == 'skip',
+        FormBuilderValidators.required(errorText: customErrorMessage),
+      );
+
+      // Pass
+      expect(validatorWithErrorMessage('skip'), isNull);
+
+      // Fail
+      expect(validatorWithErrorMessage(''), customErrorMessage);
+    });
+
+    test('FormFieldValidatorExtensions.log with custom logger', () {
+      // Arrange
+      String? logMessage;
+      final FormFieldValidator<String> validator =
+          FormBuilderValidators.log<String>(
+        log: (String? value) {
+          logMessage = 'Custom Log: $value';
+          return '';
+        },
+      );
+
+      // Act
+      validator('test');
+
+      // Assert
+      expect(logMessage, 'Custom Log: test');
+
+      // Act
+      logMessage = null;
+      validator(null);
+
+      // Assert
+      expect(logMessage, 'Custom Log: null');
+
+      // Act
+      logMessage = null;
+      validator('');
+
+      // Assert
+      expect(logMessage, 'Custom Log: ');
     });
   });
 }

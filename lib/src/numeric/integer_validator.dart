@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template integer_validator_template}
-/// [IntegerValidator] extends [BaseValidator] to validate if a string represents a valid integer.
+/// [IntegerValidator] extends [TranslatedValidator] to validate if a string represents a valid integer.
 ///
 /// This validator checks if the provided string can be parsed into an integer with an optional radix.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class IntegerValidator extends BaseValidator<String> {
+class IntegerValidator extends TranslatedValidator<String> {
   /// Constructor for the integer validator.
   const IntegerValidator({
     this.radix,

@@ -45,4 +45,5 @@ export 'src/identity/identity.dart';
 export 'src/network/network.dart';
 export 'src/numeric/numeric.dart';
 export 'src/string/string.dart';
+export 'src/translated_validator.dart';
 export 'src/usecase/usecase.dart';

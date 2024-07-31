@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template unique_validator_template}
-/// [UniqueValidator] extends [BaseValidator] to validate if a value is unique within a specified list of values.
+/// [UniqueValidator] extends [TranslatedValidator] to validate if a value is unique within a specified list of values.
 ///
 /// ## Parameters:
 ///
@@ -11,7 +10,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class UniqueValidator<T> extends BaseValidator<T> {
+class UniqueValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the unique value validator.
   const UniqueValidator(
     this.values, {

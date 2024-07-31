@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template date_validator_template}
-/// [DateValidator] extends [BaseValidator] to validate if a string can be parsed into a valid [DateTime] object.
+/// [DateValidator] extends [TranslatedValidator] to validate if a string can be parsed into a valid [DateTime] object.
 ///
 /// This validator ensures that the value is a valid date string.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class DateValidator extends BaseValidator<String> {
+class DateValidator extends TranslatedValidator<String> {
   /// Constructor for the date string validator.
   const DateValidator({
     /// {@macro base_validator_error_text}

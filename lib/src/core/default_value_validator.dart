@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template default_value_validator_template}
 /// [DefaultValueValidator] extends [BaseValidator] to validate a value using a default value if the value is null.
@@ -23,10 +22,6 @@ class DefaultValueValidator<T> extends BaseValidator<T> {
 
   /// The validator to apply to the value or the default value.
   final FormFieldValidator<T> validator;
-
-  @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
 
   @override
   String? validate(T? valueCandidate) {

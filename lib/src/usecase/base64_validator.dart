@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template base64_validator_template}
-/// [Base64Validator] extends [BaseValidator] to validate if a string is a valid base64 encoded string.
+/// [Base64Validator] extends [TranslatedValidator] to validate if a string is a valid base64 encoded string.
 ///
 /// This validator checks if the value can be successfully decoded from base64 format.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class Base64Validator extends BaseValidator<String> {
+class Base64Validator extends TranslatedValidator<String> {
   /// Constructor for the base64 validator.
   const Base64Validator({
     /// {@macro base_validator_error_text}

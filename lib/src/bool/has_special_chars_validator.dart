@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template has_special_chars_template}
-/// [HasSpecialCharsValidator] extends [BaseValidator] to validate if a string
+/// [HasSpecialCharsValidator] extends [TranslatedValidator] to validate if a string
 /// contains a specified minimum number of special characters.
 ///
 /// ## Parameters:
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 ///
 /// {@macro special_chars_template}
 /// {@endtemplate}
-class HasSpecialCharsValidator extends BaseValidator<String> {
+class HasSpecialCharsValidator extends TranslatedValidator<String> {
   /// Constructor for the special characters validator.
   HasSpecialCharsValidator({
     this.atLeast = 1,

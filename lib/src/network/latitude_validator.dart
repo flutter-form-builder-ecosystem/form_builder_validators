@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template latitude_validator_template}
-/// [LatitudeValidator] extends [BaseValidator] to validate if a string represents a valid latitude value.
+/// [LatitudeValidator] extends [TranslatedValidator] to validate if a string represents a valid latitude value.
 ///
 /// This validator checks if the latitude value is a number within the range of -90 to 90 degrees.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class LatitudeValidator extends BaseValidator<String> {
+class LatitudeValidator extends TranslatedValidator<String> {
   /// Constructor for the latitude validator.
   const LatitudeValidator({
     /// {@macro base_validator_error_text}

@@ -145,5 +145,34 @@ void main() {
       // Assert
       expect(result, validator.errorText);
     });
+
+    test('should return null for valid SSN using custom regex', () {
+      // Arrange
+      final RegExp customRegex = RegExp(r'^\d{3}\s\d{2}\s\d{4}$');
+      final SsnValidator validator = SsnValidator(regex: customRegex);
+      const String validSsn = '123 45 6789';
+
+      // Act
+      final String? result = validator.validate(validSsn);
+
+      // Assert
+      expect(result, isNull);
+    });
+
+    test('should return error for invalid SSN using custom regex', () {
+      // Arrange
+      final RegExp customRegex = RegExp(r'^\d{3}\s\d{2}\s\d{4}$');
+      final SsnValidator validator = SsnValidator(
+        regex: customRegex,
+        errorText: customErrorMessage,
+      );
+      const String invalidSsn = '123-45-6789';
+
+      // Act
+      final String? result = validator.validate(invalidSsn);
+
+      // Assert
+      expect(result, customErrorMessage);
+    });
   });
 }

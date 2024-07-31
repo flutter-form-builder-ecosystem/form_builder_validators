@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template credit_card_validator_template}
-/// [CreditCardValidator] extends [BaseValidator] to validate if a string represents a valid credit card number.
+/// [CreditCardValidator] extends [TranslatedValidator] to validate if a string represents a valid credit card number.
 ///
 /// This validator checks if the credit card number matches the specified regex pattern and passes the Luhn algorithm.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class CreditCardValidator extends BaseValidator<String> {
+class CreditCardValidator extends TranslatedValidator<String> {
   /// Constructor for the credit card number validator.
   CreditCardValidator({
     /// {@macro credit_card_template}

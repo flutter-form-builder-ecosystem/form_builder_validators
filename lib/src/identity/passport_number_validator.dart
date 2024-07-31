@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template passport_number_validator_template}
-/// [PassportNumberValidator] extends [BaseValidator] to validate if a string represents a valid passport number.
+/// [PassportNumberValidator] extends [TranslatedValidator] to validate if a string represents a valid passport number.
 ///
 /// This validator checks if the passport number matches a specified regex pattern and is not in a blacklist,
 /// and optionally checks if it is in a whitelist.
@@ -16,7 +15,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class PassportNumberValidator extends BaseValidator<String> {
+class PassportNumberValidator extends TranslatedValidator<String> {
   /// Constructor for the passport number validator.
   PassportNumberValidator({
     /// {@macro passport_number_template}

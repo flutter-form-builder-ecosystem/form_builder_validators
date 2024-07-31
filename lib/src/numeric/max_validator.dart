@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template max_validator_template}
-/// [MaxValidator] extends [BaseValidator] to validate if a value is less than or equal to a specified maximum value.
+/// [MaxValidator] extends [TranslatedValidator] to validate if a value is less than or equal to a specified maximum value.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number and ensures it does not exceed the specified maximum value.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MaxValidator<T> extends BaseValidator<T> {
+class MaxValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the maximum value validator.
   const MaxValidator(
     this.max, {

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template skip_when_validator_template}
 /// [SkipWhenValidator] extends [BaseValidator] to conditionally skip validation based on a provided condition.
@@ -25,10 +24,6 @@ class SkipWhenValidator<T> extends BaseValidator<T> {
 
   /// The validator to apply if the condition is not met.
   final FormFieldValidator<T> validator;
-
-  @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
 
   @override
   String? validate(T? valueCandidate) {

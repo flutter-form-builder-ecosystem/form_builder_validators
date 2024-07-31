@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template city_validator_template}
-/// [CityValidator] extends [BaseValidator] to validate if a string represents a valid city name.
+/// [CityValidator] extends [TranslatedValidator] to validate if a string represents a valid city name.
 ///
 /// This validator checks if the city name matches a specified regex pattern and is not in a blacklist,
 /// and optionally checks if it is in a whitelist.
@@ -16,7 +15,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class CityValidator extends BaseValidator<String> {
+class CityValidator extends TranslatedValidator<String> {
   /// Constructor for the city name validator.
   CityValidator({
     /// {@macro city_template}

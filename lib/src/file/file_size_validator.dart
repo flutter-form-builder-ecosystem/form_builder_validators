@@ -2,11 +2,10 @@ import 'dart:math';
 
 import 'package:intl/intl.dart';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template file_size_validator_template}
-/// [FileSizeValidator] extends [BaseValidator] to validate if a file size string is within a specified maximum size.
+/// [FileSizeValidator] extends [TranslatedValidator] to validate if a file size string is within a specified maximum size.
 ///
 /// This validator checks if the file size, parsed from the string, does not exceed the maximum size limit.
 ///
@@ -18,7 +17,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class FileSizeValidator extends BaseValidator<String> {
+class FileSizeValidator extends TranslatedValidator<String> {
   /// Constructor for the file size validator.
   const FileSizeValidator(
     this.maxSize, {

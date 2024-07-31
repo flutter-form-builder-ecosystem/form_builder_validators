@@ -155,5 +155,18 @@ void main() {
         ),
       );
     });
+
+    test('should return the error message if the substring is an empty string',
+        () {
+      // Arrange
+      const ContainsValidator validator = ContainsValidator('');
+      const String value = 'test';
+
+      // Act
+      final String? result = validator.validate(value);
+
+      // Assert
+      expect(result, equals(validator.errorText));
+    });
   });
 }

@@ -123,5 +123,61 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test(
+        'should return the custom error message when the value does not match the regex pattern',
+        () {
+      // Arrange
+      final LicensePlateValidator validator = LicensePlateValidator(
+        licensePlateWhitelist: licensePlateWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('@@@###'), equals(customErrorMessage));
+    });
+
+    test(
+        'should return the default error message when the value does not match the regex pattern',
+        () {
+      // Arrange
+      final LicensePlateValidator validator = LicensePlateValidator(
+        licensePlateWhitelist: licensePlateWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('@@@###'),
+        equals(FormBuilderLocalizations.current.licensePlateErrorText),
+      );
+    });
+
+    test(
+        'should return the custom error message when the value is not in the whitelist',
+        () {
+      // Arrange
+      final LicensePlateValidator validator = LicensePlateValidator(
+        licensePlateWhitelist: licensePlateWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('NOTINLIST'), equals(customErrorMessage));
+    });
+
+    test(
+        'should return the default error message when the value is not in the whitelist',
+        () {
+      // Arrange
+      final LicensePlateValidator validator = LicensePlateValidator(
+        licensePlateWhitelist: licensePlateWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NOTINLIST'),
+        equals(FormBuilderLocalizations.current.licensePlateErrorText),
+      );
+    });
   });
 }

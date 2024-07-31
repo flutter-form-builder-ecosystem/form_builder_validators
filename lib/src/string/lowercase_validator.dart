@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template lowercase_validator_template}
-/// [LowercaseValidator] extends [BaseValidator] to validate if a string is entirely lowercase.
+/// [LowercaseValidator] extends [TranslatedValidator] to validate if a string is entirely lowercase.
 ///
 /// This validator checks if the value is the same as its lowercase version.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class LowercaseValidator extends BaseValidator<String> {
+class LowercaseValidator extends TranslatedValidator<String> {
   /// Constructor for the lowercase validator.
   const LowercaseValidator({
     /// {@macro base_validator_error_text}

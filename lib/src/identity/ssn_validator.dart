@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template ssn_validator_template}
-/// [SsnValidator] extends [BaseValidator] to validate if a string represents a valid SSN (Social Security Number).
+/// [SsnValidator] extends [TranslatedValidator] to validate if a string represents a valid SSN (Social Security Number).
 ///
 /// This validator checks if the SSN matches the specified regex pattern.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class SsnValidator extends BaseValidator<String> {
+class SsnValidator extends TranslatedValidator<String> {
   /// Constructor for the SSN validator.
   SsnValidator({
     /// {@macro ssn_template}

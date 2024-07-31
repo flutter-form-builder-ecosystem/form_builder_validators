@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template even_number_validator_template}
-/// [EvenNumberValidator] extends [BaseValidator] to validate if a string represents an even number.
+/// [EvenNumberValidator] extends [TranslatedValidator] to validate if a string represents an even number.
 ///
 /// This validator checks if the provided string can be parsed into an integer and if that integer is even.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class EvenNumberValidator extends BaseValidator<String> {
+class EvenNumberValidator extends TranslatedValidator<String> {
   /// Constructor for the even number validator.
   const EvenNumberValidator({
     /// {@macro base_validator_error_text}

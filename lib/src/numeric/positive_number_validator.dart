@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template positive_number_validator_template}
-/// [PositiveNumberValidator] extends [BaseValidator] to validate if a value is a positive number.
+/// [PositiveNumberValidator] extends [TranslatedValidator] to validate if a value is a positive number.
 ///
 /// This validator checks if the value is a number or a string that can be parsed into a number and ensures it is positive.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class PositiveNumberValidator<T> extends BaseValidator<T> {
+class PositiveNumberValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the positive number validator.
   const PositiveNumberValidator({
     /// {@macro base_validator_error_text}

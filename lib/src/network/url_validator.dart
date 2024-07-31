@@ -1,7 +1,7 @@
 import '../../form_builder_validators.dart';
 
 /// {@template url_validator_template}
-/// [UrlValidator] extends [BaseValidator] to validate if a string represents a valid URL.
+/// [UrlValidator] extends [TranslatedValidator] to validate if a string represents a valid URL.
 ///
 /// This validator checks if the URL matches the specified regex pattern and adheres to various URL validation rules.
 ///
@@ -18,7 +18,7 @@ import '../../form_builder_validators.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class UrlValidator extends BaseValidator<String> {
+class UrlValidator extends TranslatedValidator<String> {
   /// Constructor for the URL validator.
   UrlValidator({
     this.protocols = const <String>['http', 'https', 'ftp'],

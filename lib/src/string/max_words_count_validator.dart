@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template max_words_count_validator_template}
-/// [MaxWordsCountValidator] extends [BaseValidator] to validate if a string contains no more than a specified number of words.
+/// [MaxWordsCountValidator] extends [TranslatedValidator] to validate if a string contains no more than a specified number of words.
 ///
 /// This validator checks if the number of words in the value does not exceed the specified maximum word count.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MaxWordsCountValidator extends BaseValidator<String> {
+class MaxWordsCountValidator extends TranslatedValidator<String> {
   /// Constructor for the maximum words count validator.
   const MaxWordsCountValidator(
     this.maxWordsCount, {

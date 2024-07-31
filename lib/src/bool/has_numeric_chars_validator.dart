@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template has_numeric_chars_template}
-/// [HasNumericCharsValidator] extends [BaseValidator] to validate if a string
+/// [HasNumericCharsValidator] extends [TranslatedValidator] to validate if a string
 /// contains a specified minimum number of numeric characters (digits).
 ///
 /// ## Parameters:
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 ///
 /// {@macro numeric_chars_template}
 /// {@endtemplate}
-class HasNumericCharsValidator extends BaseValidator<String> {
+class HasNumericCharsValidator extends TranslatedValidator<String> {
   /// Constructor for the numeric characters validator.
   HasNumericCharsValidator({
     this.atLeast = 1,
