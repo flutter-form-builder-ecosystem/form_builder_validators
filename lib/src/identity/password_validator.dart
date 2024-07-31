@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../form_builder_validators.dart';
 
 /// {@template password_validator_template}
-/// [PasswordValidator] extends [TranslatedValidator] to validate if a string meets specified password requirements.
+/// [PasswordValidator] extends [BaseValidator] to validate if a string meets specified password requirements.
 ///
 /// This validator checks the password for minimum length, maximum length, and the presence of uppercase, lowercase, numeric,
 /// and special characters based on the provided constraints.
@@ -20,7 +20,7 @@ import '../../form_builder_validators.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class PasswordValidator extends TranslatedValidator<String> {
+class PasswordValidator extends BaseValidator<String> {
   /// Constructor for the password validator.
   const PasswordValidator({
     this.minLength = 8,
@@ -54,11 +54,6 @@ class PasswordValidator extends TranslatedValidator<String> {
 
   /// The minimum number of special characters required.
   final int minSpecialCharCount;
-
-  // coverage:ignore-start
-  @override
-  String get translatedErrorText => '';
-  // coverage:ignore-end
 
   @override
   String? validateValue(String valueCandidate) {
