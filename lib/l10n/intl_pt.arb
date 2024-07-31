@@ -86,5 +86,6 @@
   "vinErrorText": "O valor deve ser um VIN válido.",
   "languageCodeErrorText": "O valor deve ser um código de idioma válido.",
   "floatErrorText": "O valor deve ser um número de ponto flutuante válido.",
-  "hexadecimalErrorText": "O valor deve ser um número hexadecimal válido."
+  "hexadecimalErrorText": "O valor deve ser um número hexadecimal válido.",
+  "profanityErrorText": "O valor não deve conter: {profanity}."
 }

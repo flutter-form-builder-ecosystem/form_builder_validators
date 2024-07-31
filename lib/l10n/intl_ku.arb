@@ -86,5 +86,6 @@
   "vinErrorText": "Nirxî divê yekem hejmarê VIN derbasdar be.",
   "languageCodeErrorText": "Nirxî divê yekem kodê zimanê derbasdar be.",
   "floatErrorText": "Gerrdê hewce ye ku zêdeya rast bibe.",
-  "hexadecimalErrorText": "Gerrdê hewce ye ku hexa de rast bibe."
+  "hexadecimalErrorText": "Gerrdê hewce ye ku hexa de rast bibe.",
+  "profanityErrorText": "Naxa nabe ku nadirîn: {profanity}."
 }

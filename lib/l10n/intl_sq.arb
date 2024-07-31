@@ -86,5 +86,6 @@
   "vinErrorText": "Vlera duhet të jetë një VIN i vlefshëm.",
   "languageCodeErrorText": "Vlera duhet të jetë një kod gjuhe i vlefshëm.",
   "floatErrorText": "Vlera duhet të jetë një numër i vlefshëm me pikë lundruese.",
-  "hexadecimalErrorText": "Vlera duhet të jetë një numër i vlefshëm heksadecimal."
+  "hexadecimalErrorText": "Vlera duhet të jetë një numër i vlefshëm heksadecimal.",
+  "profanityErrorText": "Vlera nuk duhet të përmbajë: {profanity}."
 }

@@ -86,5 +86,6 @@
   "vinErrorText": "মানটি একটি বৈধ VIN হতে হবে।",
   "languageCodeErrorText": "মানটি একটি বৈধ ভাষা কোড হতে হবে।",
   "floatErrorText": "মান একটি বৈধ ভাসমান বিন্দু সংখ্যা হতে হবে।",
-  "hexadecimalErrorText": "মান একটি বৈধ হেক্সাডেসিমাল সংখ্যা হতে হবে।"
+  "hexadecimalErrorText": "মান একটি বৈধ হেক্সাডেসিমাল সংখ্যা হতে হবে।",
+  "profanityErrorText": "মানের মধ্যে এইগুলি থাকা যাবে না: {profanity}."
 }

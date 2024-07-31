@@ -86,5 +86,6 @@
   "vinErrorText": "Thamani lazima iwe VIN halali.",
   "languageCodeErrorText": "Thamani lazima iwe msimbo halali wa lugha.",
   "floatErrorText": "Thamani lazima iwe nambari sahihi ya nukta mvutano.",
-  "hexadecimalErrorText": "Thamani lazima iwe nambari sahihi ya hekshadesimali."
+  "hexadecimalErrorText": "Thamani lazima iwe nambari sahihi ya hekshadesimali.",
+  "profanityErrorText": "Thamani haipaswi kuwa na: {profanity}."
 }

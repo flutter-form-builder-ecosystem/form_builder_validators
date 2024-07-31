@@ -86,5 +86,6 @@
   "vinErrorText": "តម្លៃត្រូវតែជាលេខ VIN ដែលត្រឹមត្រូវ។",
   "languageCodeErrorText": "តម្លៃត្រូវតែជាកូដភាសាដែលត្រឹមត្រូវ។",
   "floatErrorText": "តម្លៃត្រូវតែជាចំនួនទសភាគត្រឹមត្រូវ។",
-  "hexadecimalErrorText": "តម្លៃត្រូវតែជាលេខសិប្បកម្មត្រឹមត្រូវ។"
+  "hexadecimalErrorText": "តម្លៃត្រូវតែជាលេខសិប្បកម្មត្រឹមត្រូវ។",
+  "profanityErrorText": "តម្លៃមិនត្រូវមាន: {profanity}."
 }

@@ -86,5 +86,6 @@
   "vinErrorText": "הערך חייב להיות מספר VIN חוקי.",
   "languageCodeErrorText": "הערך חייב להיות קוד שפה חוקי.",
   "floatErrorText": "הערך חייב להיות מספר נקודה צפה חוקי.",
-  "hexadecimalErrorText": "הערך חייב להיות מספר הקסדצימלי חוקי."
+  "hexadecimalErrorText": "הערך חייב להיות מספר הקסדצימלי חוקי.",
+  "profanityErrorText": "הערך לא יכול להכיל: {profanity}."
 }

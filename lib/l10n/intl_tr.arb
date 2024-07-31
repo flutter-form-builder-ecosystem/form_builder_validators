@@ -86,5 +86,6 @@
   "vinErrorText": "Değer geçerli bir VIN numarası olmalıdır.",
   "languageCodeErrorText": "Değer geçerli bir dil kodu olmalıdır.",
   "floatErrorText": "Değer geçerli bir noktalı sayı olmalıdır.",
-  "hexadecimalErrorText": "Değer geçerli bir onaltılık sayı olmalıdır."
+  "hexadecimalErrorText": "Değer geçerli bir onaltılık sayı olmalıdır.",
+  "profanityErrorText": "Değer şunları içermemelidir: {profanity}."
 }

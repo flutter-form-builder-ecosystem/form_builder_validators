@@ -86,5 +86,6 @@
   "vinErrorText": "Værdien skal være en gyldig VIN.",
   "languageCodeErrorText": "Værdien skal være en gyldig sprogkode.",
   "floatErrorText": "Værdien skal være et gyldigt flydende punkt nummer.",
-  "hexadecimalErrorText": "Værdien skal være et gyldigt hexadecimalt nummer."
+  "hexadecimalErrorText": "Værdien skal være et gyldigt hexadecimalt nummer.",
+  "profanityErrorText": "Værdien må ikke indeholde: {profanity}."
 }
