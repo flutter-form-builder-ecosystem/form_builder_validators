@@ -73,5 +73,31 @@ void main() {
       // Act & Assert
       expect(() => validator.validate(value), prints('$customErrorMessage\n'));
     });
+
+    // Additional test to cover debugPrint(errorText);
+    test(
+        'should log the default errorText if valueCandidate is null and errorText is not provided',
+        () {
+      // Arrange
+      const LogValidator<String> validator = LogValidator<String>();
+      const String? value = null;
+
+      // Act & Assert
+      expect(() => validator.validate(value),
+          prints('${FormBuilderLocalizations.current.requiredErrorText}\n'));
+    });
+
+    test(
+        'should log the custom errorText if valueCandidate is null and errorText is provided',
+        () {
+      // Arrange
+      final LogValidator<String> validator = LogValidator<String>(
+        errorText: customErrorMessage,
+      );
+      const String? value = null;
+
+      // Act & Assert
+      expect(() => validator.validate(value), prints('$customErrorMessage\n'));
+    });
   });
 }

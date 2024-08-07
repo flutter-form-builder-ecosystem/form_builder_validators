@@ -126,5 +126,61 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test(
+        'should return the custom error message when the value does not match the regex pattern',
+        () {
+      // Arrange
+      final LanguageCodeValidator validator = LanguageCodeValidator(
+        languageCodeWhitelist: languageCodeWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('@@'), equals(customErrorMessage));
+    });
+
+    test(
+        'should return the default error message when the value does not match the regex pattern',
+        () {
+      // Arrange
+      final LanguageCodeValidator validator = LanguageCodeValidator(
+        languageCodeWhitelist: languageCodeWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('@@'),
+        equals(FormBuilderLocalizations.current.languageCodeErrorText),
+      );
+    });
+
+    test(
+        'should return the custom error message when the value is not in the whitelist',
+        () {
+      // Arrange
+      final LanguageCodeValidator validator = LanguageCodeValidator(
+        languageCodeWhitelist: languageCodeWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('xx'), equals(customErrorMessage));
+    });
+
+    test(
+        'should return the default error message when the value is not in the whitelist',
+        () {
+      // Arrange
+      final LanguageCodeValidator validator = LanguageCodeValidator(
+        languageCodeWhitelist: languageCodeWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('xx'),
+        equals(FormBuilderLocalizations.current.languageCodeErrorText),
+      );
+    });
   });
 }

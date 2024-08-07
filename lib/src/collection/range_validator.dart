@@ -1,7 +1,7 @@
 import '../../form_builder_validators.dart';
 
 /// {@template range_validator_template}
-/// [RangeValidator] extends [BaseValidator] to validate if a value falls within a specified range.
+/// [RangeValidator] extends [TranslatedValidator] to validate if a value falls within a specified range.
 ///
 /// This validator works with various types, including numeric types and collections.
 ///
@@ -16,7 +16,7 @@ import '../../form_builder_validators.dart';
 /// This validator uses [MinValidator], [MaxValidator], [MinLengthValidator], and [MaxLengthValidator] internally.
 ///
 /// {@endtemplate}
-class RangeValidator<T> extends BaseValidator<T> {
+class RangeValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the range validator.
   RangeValidator(
     this.min,

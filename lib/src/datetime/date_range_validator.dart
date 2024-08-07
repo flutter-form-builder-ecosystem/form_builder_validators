@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template date_range_validator_template}
-/// [DateRangeValidator] extends [BaseValidator] to validate if a date string falls within a specified date range.
+/// [DateRangeValidator] extends [TranslatedValidator] to validate if a date string falls within a specified date range.
 ///
 /// This validator checks if the date parsed from the string is between the specified minimum and maximum dates.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class DateRangeValidator extends BaseValidator<String> {
+class DateRangeValidator extends TranslatedValidator<String> {
   /// Constructor for the date range validator.
   const DateRangeValidator(
     this.minDate,
@@ -33,8 +32,8 @@ class DateRangeValidator extends BaseValidator<String> {
   final DateTime maxDate;
 
   @override
-  String get translatedErrorText => FormBuilderLocalizations.current
-      .dateRangeErrorText(minDate.toString(), maxDate.toString());
+  String get translatedErrorText =>
+      FormBuilderLocalizations.current.dateRangeErrorText(minDate, maxDate);
 
   @override
   String? validateValue(String valueCandidate) {

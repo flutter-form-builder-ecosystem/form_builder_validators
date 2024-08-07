@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template alphabetical_validator_template}
-/// [AlphabeticalValidator] extends [BaseValidator] to validate if a string contains only alphabetical characters.
+/// [AlphabeticalValidator] extends [TranslatedValidator] to validate if a string contains only alphabetical characters.
 ///
 /// This validator checks if the value matches the specified regex pattern that allows only letters (both uppercase and lowercase).
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class AlphabeticalValidator extends BaseValidator<String> {
+class AlphabeticalValidator extends TranslatedValidator<String> {
   /// Constructor for the alphabetical validator.
   AlphabeticalValidator({
     /// {@macro alphabetical_template}

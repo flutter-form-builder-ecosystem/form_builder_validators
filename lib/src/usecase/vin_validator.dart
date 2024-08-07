@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template vin_validator_template}
-/// [VinValidator] extends [BaseValidator] to validate if a string is a valid Vehicle Identification Number (VIN).
+/// [VinValidator] extends [TranslatedValidator] to validate if a string is a valid Vehicle Identification Number (VIN).
 ///
 /// This validator checks if the value matches the specified regex pattern for VIN format and optionally checks against whitelists and blacklists.
 ///
@@ -15,7 +14,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class VinValidator extends BaseValidator<String> {
+class VinValidator extends TranslatedValidator<String> {
   /// Constructor for the VIN validator.
   VinValidator({
     /// {@macro vin_template}

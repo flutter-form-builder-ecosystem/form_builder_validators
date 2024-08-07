@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template credit_card_cvc_validator_template}
-/// [CreditCardCvcValidator] extends [BaseValidator] to validate if a string represents a valid credit card CVC (Card Verification Code).
+/// [CreditCardCvcValidator] extends [TranslatedValidator] to validate if a string represents a valid credit card CVC (Card Verification Code).
 ///
 /// This validator checks if the CVC is a numeric string of length 3 or 4.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class CreditCardCvcValidator extends BaseValidator<String> {
+class CreditCardCvcValidator extends TranslatedValidator<String> {
   /// Constructor for the credit card CVC validator.
   const CreditCardCvcValidator({
     /// {@macro base_validator_error_text}

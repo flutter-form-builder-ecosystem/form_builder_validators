@@ -115,5 +115,33 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test('should return the default error message for non-whitelisted name',
+        () {
+      // Arrange
+      final FirstNameValidator validator = FirstNameValidator(
+        firstNameWhitelist: firstNameWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedName'),
+        equals(FormBuilderLocalizations.current.firstNameErrorText),
+      );
+    });
+
+    test('should return the custom error message for non-whitelisted name', () {
+      // Arrange
+      final FirstNameValidator validator = FirstNameValidator(
+        firstNameWhitelist: firstNameWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedName'),
+        equals(customErrorMessage),
+      );
+    });
   });
 }

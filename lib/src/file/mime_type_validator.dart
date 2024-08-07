@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template mime_type_validator_template}
-/// [MimeTypeValidator] extends [BaseValidator] to validate if a string represents a valid MIME type.
+/// [MimeTypeValidator] extends [TranslatedValidator] to validate if a string represents a valid MIME type.
 ///
 /// This validator checks if the string matches a valid MIME type pattern.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MimeTypeValidator extends BaseValidator<String> {
+class MimeTypeValidator extends TranslatedValidator<String> {
   /// Constructor for the MIME type validator.
   MimeTypeValidator({
     RegExp? regex,

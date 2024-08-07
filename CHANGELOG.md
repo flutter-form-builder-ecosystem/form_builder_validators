@@ -3,6 +3,7 @@
 ## 11.0.1
 
 - Align between validator input types with other validators
+- Split up BaseValidator into TranslatedValidator so only that one needs to provide a translation
 
 ## 11.0.0
 

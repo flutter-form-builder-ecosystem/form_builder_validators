@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template zip_code_validator_template}
-/// [ZipCodeValidator] extends [BaseValidator] to validate if a string represents a valid USA ZIP code.
+/// [ZipCodeValidator] extends [TranslatedValidator] to validate if a string represents a valid USA ZIP code.
 ///
 /// This validator checks if the ZIP code matches the specified regex pattern.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class ZipCodeValidator extends BaseValidator<String> {
+class ZipCodeValidator extends TranslatedValidator<String> {
   /// Constructor for the ZIP code validator.
   ZipCodeValidator({
     /// {@macro zip_code_template}

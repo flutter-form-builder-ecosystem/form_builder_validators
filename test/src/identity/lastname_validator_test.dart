@@ -114,5 +114,33 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test('should return the default error message for non-whitelisted name',
+        () {
+      // Arrange
+      final LastNameValidator validator = LastNameValidator(
+        lastNameWhitelist: lastNameWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedName'),
+        equals(FormBuilderLocalizations.current.lastNameErrorText),
+      );
+    });
+
+    test('should return the custom error message for non-whitelisted name', () {
+      // Arrange
+      final LastNameValidator validator = LastNameValidator(
+        lastNameWhitelist: lastNameWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedName'),
+        equals(customErrorMessage),
+      );
+    });
   });
 }

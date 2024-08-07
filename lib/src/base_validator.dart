@@ -10,10 +10,7 @@ abstract class BaseValidator<T> {
   /// {@template base_validator_error_text}
   /// The error message returned if the value is invalid.
   /// {@endtemplate}
-  String get errorText => _errorText ?? translatedErrorText;
-
-  /// The translated error message returned if the value is invalid.
-  String get translatedErrorText;
+  String? get errorText => _errorText;
 
   /// {@template base_validator_null_check}
   /// Whether to check if the value is null or empty.

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template prime_number_validator_template}
-/// [PrimeNumberValidator] extends [BaseValidator] to validate if a value is a prime number.
+/// [PrimeNumberValidator] extends [TranslatedValidator] to validate if a value is a prime number.
 ///
 /// This validator checks if the value is an integer or a string that can be parsed into an integer and ensures it is a prime number.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class PrimeNumberValidator<T> extends BaseValidator<T> {
+class PrimeNumberValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the prime number validator.
   const PrimeNumberValidator({
     /// {@macro base_validator_error_text}

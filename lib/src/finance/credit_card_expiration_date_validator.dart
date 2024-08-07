@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template credit_card_expiration_date_validator_template}
-/// [CreditCardExpirationDateValidator] extends [BaseValidator] to validate if a string represents a valid credit card expiration date.
+/// [CreditCardExpirationDateValidator] extends [TranslatedValidator] to validate if a string represents a valid credit card expiration date.
 ///
 /// This validator checks if the expiration date is in the format MM/YY, and optionally if the date is not expired.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class CreditCardExpirationDateValidator extends BaseValidator<String> {
+class CreditCardExpirationDateValidator extends TranslatedValidator<String> {
   /// Constructor for the credit card expiration date validator.
   CreditCardExpirationDateValidator({
     this.checkForExpiration = true,

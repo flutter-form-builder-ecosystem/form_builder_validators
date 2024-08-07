@@ -210,9 +210,8 @@ void main() {
     // Additional tests to cover FormBuilderLocalizations
     test('should return localized error if username is too short', () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
+      const UsernameValidator validator = UsernameValidator(
         minLength: 5,
-        errorText: FormBuilderLocalizations.current.minLengthErrorText(5),
       );
       const String shortUsername = 'usr';
 
@@ -225,9 +224,8 @@ void main() {
 
     test('should return localized error if username is too long', () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
+      const UsernameValidator validator = UsernameValidator(
         maxLength: 10,
-        errorText: FormBuilderLocalizations.current.maxLengthErrorText(10),
       );
       const String longUsername = 'thisIsAVeryLongUsername';
 
@@ -242,10 +240,8 @@ void main() {
         'should return localized error if numbers are not allowed and username contains numbers',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
+      const UsernameValidator validator = UsernameValidator(
         allowNumbers: false,
-        errorText: FormBuilderLocalizations
-            .current.usernameCannotContainNumbersErrorText,
       );
       const String usernameWithNumbers = 'user123';
 
@@ -263,10 +259,7 @@ void main() {
         'should return localized error if underscores are not allowed and username contains underscores',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations
-            .current.usernameCannotContainUnderscoreErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String usernameWithUnderscore = 'user_name';
 
       // Act
@@ -284,10 +277,7 @@ void main() {
         'should return localized error if dots are not allowed and username contains dots',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText:
-            FormBuilderLocalizations.current.usernameCannotContainDotsErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String usernameWithDot = 'user.name';
 
       // Act
@@ -304,10 +294,7 @@ void main() {
         'should return localized error if dashes are not allowed and username contains dashes',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations
-            .current.usernameCannotContainDashesErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String usernameWithDash = 'user-name';
 
       // Act
@@ -324,10 +311,7 @@ void main() {
         'should return localized error if spaces are not allowed and username contains spaces',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations
-            .current.usernameCannotContainSpacesErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String usernameWithSpace = 'user name';
 
       // Act
@@ -344,10 +328,7 @@ void main() {
         'should return localized error if special characters are not allowed and username contains special characters',
         () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations
-            .current.usernameCannotContainSpecialCharErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String usernameWithSpecialChar = 'user@name';
 
       // Act
@@ -363,9 +344,7 @@ void main() {
 
     test('should return localized error if value is null', () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations.current.usernameErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String? value = null;
 
       // Act
@@ -377,9 +356,7 @@ void main() {
 
     test('should return localized error if value is empty', () {
       // Arrange
-      final UsernameValidator validator = UsernameValidator(
-        errorText: FormBuilderLocalizations.current.usernameErrorText,
-      );
+      const UsernameValidator validator = UsernameValidator();
       const String value = '';
 
       // Act
@@ -388,6 +365,7 @@ void main() {
       // Assert
       expect(result, FormBuilderLocalizations.current.usernameErrorText);
     });
+
     test('should return null if the username meets all customized requirements',
         () {
       // Arrange

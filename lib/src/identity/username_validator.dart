@@ -1,7 +1,7 @@
 import '../../form_builder_validators.dart';
 
 /// {@template username_validator_template}
-/// [UsernameValidator] extends [BaseValidator] to validate if a string meets specified username requirements.
+/// [UsernameValidator] extends [TranslatedValidator] to validate if a string meets specified username requirements.
 ///
 /// This validator checks the username for minimum length, maximum length, and the presence or absence of numbers,
 /// underscores, dots, dashes, spaces, and special characters based on the provided constraints.
@@ -20,7 +20,7 @@ import '../../form_builder_validators.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class UsernameValidator extends BaseValidator<String> {
+class UsernameValidator extends TranslatedValidator<String> {
   /// Constructor for the username validator.
   const UsernameValidator({
     this.minLength = 3,

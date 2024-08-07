@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template aggregate_validator_template}
 /// [AggregateValidator] extends [BaseValidator] to validate a value using a list of multiple validators.
@@ -18,10 +17,6 @@ class AggregateValidator<T> extends BaseValidator<T> {
 
   /// The list of validators to apply to the value.
   final List<FormFieldValidator<T>> validators;
-
-  @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.requiredErrorText;
 
   @override
   String? validate(T? valueCandidate) {

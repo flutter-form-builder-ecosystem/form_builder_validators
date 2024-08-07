@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template ip_validator_template}
-/// [IpValidator] extends [BaseValidator] to validate if a string represents a valid IPv4 or IPv6 address.
+/// [IpValidator] extends [TranslatedValidator] to validate if a string represents a valid IPv4 or IPv6 address.
 ///
 /// This validator checks if the IP address matches the specified regex pattern for either IPv4 or IPv6.
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class IpValidator extends BaseValidator<String> {
+class IpValidator extends TranslatedValidator<String> {
   /// Constructor for the IP address validator.
   IpValidator({
     this.version = 4,

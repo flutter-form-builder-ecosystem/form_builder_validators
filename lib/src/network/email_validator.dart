@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template email_template}
-/// [EmailValidator] extends [BaseValidator] that validates a given email address.
+/// [EmailValidator] extends [TranslatedValidator] that validates a given email address.
 /// It uses a regular expression to check if the email address is valid.
 ///
 /// ## Parameters:
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 ///
 /// {@macro email_regex_template}
 /// {@endtemplate}
-class EmailValidator extends BaseValidator<String> {
+class EmailValidator extends TranslatedValidator<String> {
   /// Constructor for the email validator.
   EmailValidator({
     /// {@macro email_regex_template}

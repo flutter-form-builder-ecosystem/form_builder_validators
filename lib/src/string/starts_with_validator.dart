@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template starts_with_validator_template}
-/// [StartsWithValidator] extends [BaseValidator] to validate if a string starts with a specified prefix.
+/// [StartsWithValidator] extends [TranslatedValidator] to validate if a string starts with a specified prefix.
 ///
 /// This validator checks if the value starts with the specified prefix.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class StartsWithValidator extends BaseValidator<String> {
+class StartsWithValidator extends TranslatedValidator<String> {
   /// Constructor for the starts with validator.
   const StartsWithValidator(
     this.prefix, {

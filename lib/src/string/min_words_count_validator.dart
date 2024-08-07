@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template min_words_count_validator_template}
-/// [MinWordsCountValidator] extends [BaseValidator] to validate if a string contains at least a specified number of words.
+/// [MinWordsCountValidator] extends [TranslatedValidator] to validate if a string contains at least a specified number of words.
 ///
 /// This validator checks if the number of words in the value is at least the specified minimum word count.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class MinWordsCountValidator extends BaseValidator<String> {
+class MinWordsCountValidator extends TranslatedValidator<String> {
   /// Constructor for the minimum words count validator.
   const MinWordsCountValidator(
     this.minWordsCount, {

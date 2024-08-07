@@ -1,12 +1,17 @@
 import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   final Faker faker = Faker.instance;
   final String customErrorMessage = faker.lorem.sentence();
   final DateTime minDate = DateTime.now().subtract(const Duration(days: 10));
   final DateTime maxDate = DateTime.now().add(const Duration(days: 10));
+
+  setUpAll(() async {
+    await initializeDateFormatting('en', null);
+  });
 
   group('Date range -', () {
     test('should return null when the date is within the range', () {

@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template longitude_validator_template}
-/// [LongitudeValidator] extends [BaseValidator] to validate if a string represents a valid longitude value.
+/// [LongitudeValidator] extends [TranslatedValidator] to validate if a string represents a valid longitude value.
 ///
 /// This validator checks if the longitude value is a number within the range of -180 to 180 degrees.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class LongitudeValidator extends BaseValidator<String> {
+class LongitudeValidator extends TranslatedValidator<String> {
   /// Constructor for the longitude validator.
   const LongitudeValidator({
     /// {@macro base_validator_error_text}

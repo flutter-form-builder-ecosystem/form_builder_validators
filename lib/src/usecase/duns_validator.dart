@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template duns_validator_template}
-/// [DunsValidator] extends [BaseValidator] to validate if a string is a valid DUNS number.
+/// [DunsValidator] extends [TranslatedValidator] to validate if a string is a valid DUNS number.
 ///
 /// This validator checks if the value matches the specified regex pattern that requires exactly 9 digits.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class DunsValidator extends BaseValidator<String> {
+class DunsValidator extends TranslatedValidator<String> {
   /// Constructor for the DUNS validator.
   DunsValidator({
     /// {@macro duns_template}

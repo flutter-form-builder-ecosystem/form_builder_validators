@@ -56,9 +56,6 @@ class PasswordValidator extends BaseValidator<String> {
   final int minSpecialCharCount;
 
   @override
-  String get translatedErrorText => '';
-
-  @override
   String? validateValue(String valueCandidate) {
     final String? result = FormBuilderValidators.compose<String>(
       <FormFieldValidator<String>>[

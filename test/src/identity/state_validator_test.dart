@@ -112,5 +112,36 @@ void main() {
       final String? result = validator.validate(value);
       expect(result, isNull);
     });
+
+    test(
+        'should return the default error message for non-whitelisted state name',
+        () {
+      // Arrange
+      final StateValidator validator = StateValidator(
+        stateWhitelist: stateWhitelist,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedState'),
+        equals(FormBuilderLocalizations.current.stateErrorText),
+      );
+    });
+
+    test(
+        'should return the custom error message for non-whitelisted state name',
+        () {
+      // Arrange
+      final StateValidator validator = StateValidator(
+        stateWhitelist: stateWhitelist,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(
+        validator.validate('NonWhitelistedState'),
+        equals(customErrorMessage),
+      );
+    });
   });
 }

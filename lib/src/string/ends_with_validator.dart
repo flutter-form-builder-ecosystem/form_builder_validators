@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template ends_with_validator_template}
-/// [EndsWithValidator] extends [BaseValidator] to validate if a string ends with a specified suffix.
+/// [EndsWithValidator] extends [TranslatedValidator] to validate if a string ends with a specified suffix.
 ///
 /// This validator checks if the value ends with the specified suffix.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class EndsWithValidator extends BaseValidator<String> {
+class EndsWithValidator extends TranslatedValidator<String> {
   /// Constructor for the ends with validator.
   const EndsWithValidator(
     this.suffix, {

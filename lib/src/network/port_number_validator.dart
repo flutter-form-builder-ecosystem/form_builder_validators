@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template port_number_validator_template}
-/// [PortNumberValidator] extends [BaseValidator] to validate if a string represents a valid port number.
+/// [PortNumberValidator] extends [TranslatedValidator] to validate if a string represents a valid port number.
 ///
 /// This validator checks if the port number is an integer within the specified range (0 to 65535 by default).
 ///
@@ -14,7 +13,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class PortNumberValidator extends BaseValidator<String> {
+class PortNumberValidator extends TranslatedValidator<String> {
   /// Constructor for the port number validator.
   PortNumberValidator({
     this.min = 0,

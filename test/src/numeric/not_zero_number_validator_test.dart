@@ -181,5 +181,44 @@ void main() {
         equals(validator.errorText),
       );
     });
+
+    test(
+        'should return the default error message for non-numeric string values',
+        () {
+      // Arrange
+      const NotZeroNumberValidator<String> validator =
+          NotZeroNumberValidator<String>();
+
+      // Act & Assert
+      expect(
+        validator.validate('abc'),
+        equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
+      );
+    });
+
+    test('should return the custom error message for non-numeric string values',
+        () {
+      // Arrange
+      final NotZeroNumberValidator<String> validator =
+          NotZeroNumberValidator<String>(
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert
+      expect(validator.validate('abc'), equals(customErrorMessage));
+    });
+
+    test('should return the default error message for unsupported value types',
+        () {
+      // Arrange
+      const NotZeroNumberValidator<bool> validator =
+          NotZeroNumberValidator<bool>();
+
+      // Act & Assert
+      expect(
+        validator.validate(true),
+        equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
+      );
+    });
   });
 }

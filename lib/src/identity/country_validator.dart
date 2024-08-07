@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template country_validator_template}
-/// [CountryValidator] extends [BaseValidator] to validate if a string represents a valid country name.
+/// [CountryValidator] extends [TranslatedValidator] to validate if a string represents a valid country name.
 ///
 /// This validator checks if the country name is not in a blacklist,
 /// and optionally checks if it is in a whitelist.
@@ -15,7 +14,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class CountryValidator extends BaseValidator<String> {
+class CountryValidator extends TranslatedValidator<String> {
   /// Constructor for the country name validator.
   CountryValidator({
     List<String>? countryWhitelist,

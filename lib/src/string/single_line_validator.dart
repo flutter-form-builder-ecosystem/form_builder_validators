@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template single_line_validator_template}
-/// [SingleLineValidator] extends [BaseValidator] to validate if a string contains only a single line.
+/// [SingleLineValidator] extends [TranslatedValidator] to validate if a string contains only a single line.
 ///
 /// This validator checks if the value does not contain any newline characters.
 ///
@@ -12,7 +11,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class SingleLineValidator extends BaseValidator<String> {
+class SingleLineValidator extends TranslatedValidator<String> {
   /// Constructor for the single line validator.
   const SingleLineValidator({
     /// {@macro base_validator_error_text}

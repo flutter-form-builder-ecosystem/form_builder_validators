@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template has_uppercase_chars_template}
-/// [HasUppercaseCharsValidator] extends [BaseValidator] to validate if a string
+/// [HasUppercaseCharsValidator] extends [TranslatedValidator] to validate if a string
 /// contains a specified minimum number of uppercase characters.
 ///
 /// ## Parameters:
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 ///
 /// {@macro upper_case_template}
 /// {@endtemplate}
-class HasUppercaseCharsValidator extends BaseValidator<String> {
+class HasUppercaseCharsValidator extends TranslatedValidator<String> {
   /// Constructor for the uppercase characters validator.
   HasUppercaseCharsValidator({
     this.atLeast = 1,

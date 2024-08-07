@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template file_name_validator_template}
-/// [FileNameValidator] extends [BaseValidator] to validate if a string is a valid file name.
+/// [FileNameValidator] extends [TranslatedValidator] to validate if a string is a valid file name.
 ///
 /// This validator checks if the string matches the specified regex pattern for valid file names.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class FileNameValidator extends BaseValidator<String> {
+class FileNameValidator extends TranslatedValidator<String> {
   /// Constructor for the file name validator.
   FileNameValidator({
     /// {@macro filename_template}

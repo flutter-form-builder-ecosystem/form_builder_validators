@@ -1,8 +1,7 @@
-import '../../localization/l10n.dart';
-import '../base_validator.dart';
+import '../../form_builder_validators.dart';
 
 /// {@template iban_validator_template}
-/// [IbanValidator] extends [BaseValidator] to validate if a string represents a valid IBAN (International Bank Account Number).
+/// [IbanValidator] extends [TranslatedValidator] to validate if a string represents a valid IBAN (International Bank Account Number).
 ///
 /// This validator checks if the IBAN matches the specified regex pattern and performs a checksum validation.
 ///
@@ -13,7 +12,7 @@ import '../base_validator.dart';
 /// - [checkNullOrEmpty] Whether to check if the value is null or empty.
 ///
 /// {@endtemplate}
-class IbanValidator extends BaseValidator<String> {
+class IbanValidator extends TranslatedValidator<String> {
   /// Constructor for the IBAN validator.
   IbanValidator({
     /// {@macro iban_template}
