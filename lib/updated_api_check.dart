@@ -10,7 +10,7 @@ abstract base class ElementaryValidatorInterface<T extends Object?,
     W extends Object?> {
   const ElementaryValidatorInterface({
     this.and,
-    this.or,
+    this.otherwise,
   });
   String get errorMsg;
 
@@ -21,29 +21,44 @@ abstract base class ElementaryValidatorInterface<T extends Object?,
   String? validate(T value) {
     final (isValid, transformedValue) = transformValueIfValid(value);
     if (isValid) {
-      return and?.validate(transformedValue as W);
-    }
-
-    for (final validator
-        in or ?? <ElementaryValidatorInterface<T, dynamic>>[]) {
-      if (validator.validate(value) == null) {
+      final completeErrorMsg = [];
+      for (final validator
+          in and ?? <ElementaryValidatorInterface<W, dynamic>>[]) {
+        final validation = validator.validate(transformedValue as W);
+        if (validation == null) {
+          return null;
+        }
+        completeErrorMsg.add(validation);
+      }
+      if (completeErrorMsg.isEmpty) {
         return null;
       }
+      return completeErrorMsg.join(' or ');
     }
-    return errorMsg;
+
+    final completeErrorMsg = [errorMsg];
+    for (final validator
+        in otherwise ?? <ElementaryValidatorInterface<T, dynamic>>[]) {
+      final validation = validator.validate(value);
+      if (validation == null) {
+        return null;
+      }
+      completeErrorMsg.add(validation);
+    }
+    return completeErrorMsg.join(' or ');
   }
 
   // Here we make the restrictions weaker. But we will get them strong when
   // overriding those getters.
-  final ElementaryValidatorInterface<W, dynamic>? and;
-  final List<ElementaryValidatorInterface<T, dynamic>>? or;
+  final List<ElementaryValidatorInterface<W, dynamic>>? and;
+  final List<ElementaryValidatorInterface<T, dynamic>>? otherwise;
 }
 
 final class RequiredValidator<T extends Object>
     extends ElementaryValidatorInterface<T?, T> {
   const RequiredValidator({
     super.and,
-    super.or,
+    super.otherwise,
   });
 
   @override
@@ -61,11 +76,35 @@ final class RequiredValidator<T extends Object>
   }
 }
 
+final class NotRequiredValidator<T extends Object>
+    extends ElementaryValidatorInterface<T?, T?> {
+  const NotRequiredValidator({
+    super.and,
+    // in this case, the or is more restricted, thus, we need to restrict its
+    // type in the constructor.
+    List<ElementaryValidatorInterface<T, dynamic>>? otherwise,
+  }) : super(otherwise: otherwise);
+
+  @override
+  String get errorMsg => 'Value must not be provided.';
+
+  @override
+  (bool, T?) transformValueIfValid(T? value) {
+    if (value == null ||
+        (value is String && value.trim().isEmpty) ||
+        (value is Iterable && value.isEmpty) ||
+        (value is Map && value.isEmpty)) {
+      return (true, value);
+    }
+    return (false, null);
+  }
+}
+
 final class IsBool<T extends Object>
     extends ElementaryValidatorInterface<T, bool> {
   const IsBool({
     super.and,
-    super.or,
+    super.otherwise,
   });
 
   @override
@@ -94,7 +133,7 @@ final class IsInt<T extends Object>
     extends ElementaryValidatorInterface<T, int> {
   const IsInt({
     super.and,
-    super.or,
+    super.otherwise,
   });
 
   @override
@@ -115,12 +154,31 @@ final class IsInt<T extends Object>
   }
 }
 
+final class IsLessThan<T extends num>
+    extends ElementaryValidatorInterface<T, T> {
+  const IsLessThan(
+    this.reference, {
+    super.and,
+    super.otherwise,
+  });
+  final T reference;
+
+  @override
+  String get errorMsg => 'Value must be less than $reference';
+
+  @override
+  (bool, T?) transformValueIfValid(T value) {
+    final isValid = value < reference;
+    return (isValid, isValid ? value : null);
+  }
+}
+
 final class IsGreaterThan<T extends num>
     extends ElementaryValidatorInterface<T, T> {
   const IsGreaterThan(
     this.reference, {
     super.and,
-    super.or,
+    super.otherwise,
   });
   final T reference;
 
@@ -134,31 +192,72 @@ final class IsGreaterThan<T extends num>
   }
 }
 
+final class StringLengthLessThan
+    extends ElementaryValidatorInterface<String, String> {
+  const StringLengthLessThan({required this.referenceValue})
+      : assert(referenceValue > 0);
+  final int referenceValue;
+
+  @override
+  String get errorMsg => 'Length must be less than $referenceValue';
+
+  @override
+  (bool, String?) transformValueIfValid(String value) {
+    final isValid = value.length < referenceValue;
+    return (isValid, isValid ? value : null);
+  }
+}
+
 void main() {
   print('-------------New validation-------------------------');
   print('Enter the value: ');
   final value = stdin.readLineSync();
-  const validator = RequiredValidator<String>(
-    and: IsInt(
-      and: IsGreaterThan(13),
-    ),
+
+  const requiredIntLessThan10Validator = RequiredValidator(
+    and: [
+      IsInt(
+        and: [IsLessThan(10)],
+      ),
+    ],
   );
 
-  /*
+  const requiredIntLessThan10OrGreaterThan13OrBool = RequiredValidator<String>(
+    and: [
+      IsInt(
+        and: [
+          IsGreaterThan(13, otherwise: [IsLessThan(10)])
+        ],
+      ),
+      IsBool(),
+    ],
+  );
+
+  const optionalDescriptionText = NotRequiredValidator(
+    otherwise: [
+      StringLengthLessThan(referenceValue: 10),
+    ],
+  );
+
   // this validator does not compile, because it does not make sense to compare
   // a bool with an integer
+  /*
   const validator = RequiredValidator<String>(
-    and: IsInt(
-      and: IsBool(
-        and: IsGreaterThan(13),
-      ),
-    ),
-    or: [
+    and: [
+      IsInt(
+        and: [
+          IsBool(
+            and: [IsGreaterThan(13)],
+          )
+        ],
+      )
+    ],
+    otherwise: [
       IsInt(),
     ],
   );
-  */
-  final validation = validator.validate(value);
+  
+   */
+  final validation = optionalDescriptionText.validate(value);
 
   print(validation ?? 'Valid value!');
 }
