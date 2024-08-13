@@ -1,4 +1,5 @@
 import '../../form_builder_validators.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template is_true_validator_template}
 /// [IsTrueValidator] extends [TranslatedValidator] to validate if a boolean value is true.
@@ -25,6 +26,10 @@ class IsTrueValidator extends TranslatedValidator<bool> {
 
   @override
   String? validateValue(bool valueCandidate) {
-    return valueCandidate == true ? null : errorText;
+    final IsTrueElementaryValidator elementaryValidator =
+        IsTrueElementaryValidator(errorText: errorText);
+    return elementaryValidator.transformValueIfValid(valueCandidate).$1
+        ? null
+        : elementaryValidator.errorText;
   }
 }

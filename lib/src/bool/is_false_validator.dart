@@ -1,5 +1,5 @@
 import '../../form_builder_validators.dart';
-import '../elementary_validators/bool/is_false_elementary_validator.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template is_false_validator_template}
 /// [IsFalseValidator] extends [TranslatedValidator] to validate if a boolean value is false.
