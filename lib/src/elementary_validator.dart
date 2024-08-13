@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import '../localization/l10n.dart';
-
-// ignore_for_file: public_member_api_docs, always_specify_types
+// ignore_for_file: always_specify_types
 
 /// Interface class for elementary validators. It may be used to compose more
 /// complex validators.
@@ -68,7 +64,10 @@ abstract base class BaseElementaryValidator<T extends Object?,
 
   // Here we make the restrictions weaker. But we will get them strong when
   // overriding those getters.
+  /// Allows adding AND composition with other validators.
   final List<BaseElementaryValidator<W, dynamic>>? and;
+
+  /// Allows adding OR composition with other validators.
   final List<BaseElementaryValidator<T, dynamic>>? otherwise;
 }
 
