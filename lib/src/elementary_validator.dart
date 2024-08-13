@@ -1,29 +1,47 @@
 import 'dart:io';
 
+import '../localization/l10n.dart';
+
 // ignore_for_file: public_member_api_docs, always_specify_types
 
+/// Interface class for elementary validators. It may be used to compose more
+/// complex validators.
+///
 /// ## Generic types
 /// - T: type of the input value, before any possible transformation. It should be more
 /// generic or equal to W.
 /// - W: type of the transformed value. It should be more specific or equal to T.
-abstract base class ElementaryValidatorInterface<T extends Object?,
+abstract base class BaseElementaryValidator<T extends Object?,
     W extends Object?> {
-  const ElementaryValidatorInterface({
+  /// Creates a new instance of the validator.
+  const BaseElementaryValidator({
+    String? errorText,
     this.and,
     this.otherwise,
-  });
-  String get errorMsg;
+  }) : _errorText = errorText;
+
+  /// Backing field for [errorText].
+  final String? _errorText;
+
+  /// {@template base_validator_error_text}
+  /// The error message returned if the value is invalid.
+  /// {@endtemplate}
+  String get errorText => _errorText ?? translatedErrorText;
+
+  /// The translated error message returned if the value is invalid.
+  String get translatedErrorText;
 
   /// Checks if [value] is valid and returns its transformed value if so.
-  /// ## Return: a record of the form (isValid, transformedValue)
+  /// ## Return
+  /// - a record of the form (isValid, transformedValue)
   (bool, W?) transformValueIfValid(T value);
 
-  String? validate(T value) {
-    final (isValid, transformedValue) = transformValueIfValid(value);
+  /// Validates the value.
+  String? validate(T valueCandidate) {
+    final (isValid, transformedValue) = transformValueIfValid(valueCandidate);
     if (isValid) {
       final completeErrorMsg = [];
-      for (final validator
-          in and ?? <ElementaryValidatorInterface<W, dynamic>>[]) {
+      for (final validator in and ?? <BaseElementaryValidator<W, dynamic>>[]) {
         final validation = validator.validate(transformedValue as W);
         if (validation == null) {
           return null;
@@ -36,10 +54,10 @@ abstract base class ElementaryValidatorInterface<T extends Object?,
       return completeErrorMsg.join(' or ');
     }
 
-    final completeErrorMsg = [errorMsg];
+    final completeErrorMsg = [_errorText];
     for (final validator
-        in otherwise ?? <ElementaryValidatorInterface<T, dynamic>>[]) {
-      final validation = validator.validate(value);
+        in otherwise ?? <BaseElementaryValidator<T, dynamic>>[]) {
+      final validation = validator.validate(valueCandidate);
       if (validation == null) {
         return null;
       }
@@ -50,19 +68,20 @@ abstract base class ElementaryValidatorInterface<T extends Object?,
 
   // Here we make the restrictions weaker. But we will get them strong when
   // overriding those getters.
-  final List<ElementaryValidatorInterface<W, dynamic>>? and;
-  final List<ElementaryValidatorInterface<T, dynamic>>? otherwise;
+  final List<BaseElementaryValidator<W, dynamic>>? and;
+  final List<BaseElementaryValidator<T, dynamic>>? otherwise;
 }
 
+/*
 final class RequiredValidator<T extends Object>
-    extends ElementaryValidatorInterface<T?, T> {
+    extends BaseElementaryValidator<T?, T> {
   const RequiredValidator({
     super.and,
     super.otherwise,
   });
 
   @override
-  String get errorMsg => 'Value is required.';
+  String get _errorText => 'Value is required.';
 
   @override
   (bool, T?) transformValueIfValid(T? value) {
@@ -77,16 +96,16 @@ final class RequiredValidator<T extends Object>
 }
 
 final class NotRequiredValidator<T extends Object>
-    extends ElementaryValidatorInterface<T?, T?> {
+    extends BaseElementaryValidator<T?, T?> {
   const NotRequiredValidator({
     super.and,
     // in this case, the or is more restricted, thus, we need to restrict its
     // type in the constructor.
-    List<ElementaryValidatorInterface<T, dynamic>>? otherwise,
+    List<BaseElementaryValidator<T, dynamic>>? otherwise,
   }) : super(otherwise: otherwise);
 
   @override
-  String get errorMsg => 'Value must not be provided.';
+  String get _errorText => 'Value must not be provided.';
 
   @override
   (bool, T?) transformValueIfValid(T? value) {
@@ -100,15 +119,14 @@ final class NotRequiredValidator<T extends Object>
   }
 }
 
-final class IsBool<T extends Object>
-    extends ElementaryValidatorInterface<T, bool> {
+final class IsBool<T extends Object> extends BaseElementaryValidator<T, bool> {
   const IsBool({
     super.and,
     super.otherwise,
   });
 
   @override
-  String get errorMsg => 'Value must be true/false';
+  String get _errorText => 'Value must be true/false';
 
   @override
   (bool, bool?) transformValueIfValid(T value) {
@@ -129,15 +147,14 @@ final class IsBool<T extends Object>
   }
 }
 
-final class IsInt<T extends Object>
-    extends ElementaryValidatorInterface<T, int> {
+final class IsInt<T extends Object> extends BaseElementaryValidator<T, int> {
   const IsInt({
     super.and,
     super.otherwise,
   });
 
   @override
-  String get errorMsg => 'Value must be int';
+  String get _errorText => 'Value must be int';
 
   @override
   (bool, int?) transformValueIfValid(T value) {
@@ -154,8 +171,7 @@ final class IsInt<T extends Object>
   }
 }
 
-final class IsLessThan<T extends num>
-    extends ElementaryValidatorInterface<T, T> {
+final class IsLessThan<T extends num> extends BaseElementaryValidator<T, T> {
   const IsLessThan(
     this.reference, {
     super.and,
@@ -164,7 +180,7 @@ final class IsLessThan<T extends num>
   final T reference;
 
   @override
-  String get errorMsg => 'Value must be less than $reference';
+  String get _errorText => 'Value must be less than $reference';
 
   @override
   (bool, T?) transformValueIfValid(T value) {
@@ -173,8 +189,7 @@ final class IsLessThan<T extends num>
   }
 }
 
-final class IsGreaterThan<T extends num>
-    extends ElementaryValidatorInterface<T, T> {
+final class IsGreaterThan<T extends num> extends BaseElementaryValidator<T, T> {
   const IsGreaterThan(
     this.reference, {
     super.and,
@@ -183,7 +198,7 @@ final class IsGreaterThan<T extends num>
   final T reference;
 
   @override
-  String get errorMsg => 'Value must be greater than $reference';
+  String get _errorText => 'Value must be greater than $reference';
 
   @override
   (bool, T?) transformValueIfValid(T value) {
@@ -193,13 +208,13 @@ final class IsGreaterThan<T extends num>
 }
 
 final class StringLengthLessThan
-    extends ElementaryValidatorInterface<String, String> {
+    extends BaseElementaryValidator<String, String> {
   const StringLengthLessThan({required this.referenceValue})
       : assert(referenceValue > 0);
   final int referenceValue;
 
   @override
-  String get errorMsg => 'Length must be less than $referenceValue';
+  String get _errorText => 'Length must be less than $referenceValue';
 
   @override
   (bool, String?) transformValueIfValid(String value) {
@@ -207,7 +222,9 @@ final class StringLengthLessThan
     return (isValid, isValid ? value : null);
   }
 }
+*/
 
+/*
 void main() {
   print('-------------New validation-------------------------');
   print('Enter the value: ');
@@ -261,3 +278,5 @@ void main() {
 
   print(validation ?? 'Valid value!');
 }
+
+ */
