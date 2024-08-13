@@ -1,4 +1,5 @@
 import '../../form_builder_validators.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template has_uppercase_chars_template}
 /// [HasUppercaseCharsValidator] extends [TranslatedValidator] to validate if a string
@@ -17,6 +18,7 @@ class HasUppercaseCharsValidator extends TranslatedValidator<String> {
   HasUppercaseCharsValidator({
     this.atLeast = 1,
 
+    // TODO(ArturAssisComp): clarify what is the use case for this regex?
     /// {@macro upper_case_template}
     RegExp? regex,
 
@@ -49,7 +51,16 @@ class HasUppercaseCharsValidator extends TranslatedValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return uppercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
+    final HasMinUppercaseCharsElementaryValidator elementaryValidator =
+        HasMinUppercaseCharsElementaryValidator(
+      atLeast: atLeast,
+      errorText: errorText,
+      regex: regex,
+    );
+
+    return elementaryValidator.transformValueIfValid(valueCandidate).$1
+        ? null
+        : elementaryValidator.errorText;
   }
 
   /// Calculates the number of uppercase characters in the given value.
