@@ -1,4 +1,5 @@
 import '../../form_builder_validators.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template has_lowercase_chars_template}
 /// [HasLowercaseCharsValidator] extends [TranslatedValidator] to validate if a string
@@ -49,7 +50,16 @@ class HasLowercaseCharsValidator extends TranslatedValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    return lowercaseCharLength(valueCandidate) >= atLeast ? null : errorText;
+    final HasMinLowercaseCharsElementaryValidator elementaryValidator =
+        HasMinLowercaseCharsElementaryValidator(
+      atLeast: atLeast,
+      errorText: errorText,
+      regex: regex,
+    );
+
+    return elementaryValidator.transformValueIfValid(valueCandidate).$1
+        ? null
+        : elementaryValidator.errorText;
   }
 
   /// Calculates the number of lowercase characters in the given value.
