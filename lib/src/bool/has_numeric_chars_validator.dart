@@ -1,4 +1,5 @@
 import '../../form_builder_validators.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template has_numeric_chars_template}
 /// [HasNumericCharsValidator] extends [TranslatedValidator] to validate if a string
@@ -45,21 +46,20 @@ class HasNumericCharsValidator extends TranslatedValidator<String> {
   ///
   /// Examples: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
   /// {@endtemplate}
-  static final RegExp _number = RegExp('[0-9]');
+  static final RegExp _number =
+      HasMinNumericCharsElementaryValidator.defaultNumericCharRegex;
 
   @override
   String? validateValue(String valueCandidate) {
-    return numberCharLength(valueCandidate) >= atLeast ? null : errorText;
-  }
+    final HasMinNumericCharsElementaryValidator elementaryValidator =
+        HasMinNumericCharsElementaryValidator(
+      atLeast: atLeast,
+      errorText: errorText,
+      regex: regex,
+    );
 
-  /// Calculates the number of numeric characters in the given value.
-  ///
-  /// ## Parameters:
-  /// - [value] The string to be evaluated.
-  ///
-  /// ## Returns:
-  /// The count of numeric characters in the string.
-  int numberCharLength(String value) {
-    return regex.allMatches(value).length;
+    return elementaryValidator.transformValueIfValid(valueCandidate).$1
+        ? null
+        : elementaryValidator.errorText;
   }
 }
