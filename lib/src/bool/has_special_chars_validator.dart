@@ -1,4 +1,5 @@
 import '../../form_builder_validators.dart';
+import '../elementary_validators/bool/bool.dart';
 
 /// {@template has_special_chars_template}
 /// [HasSpecialCharsValidator] extends [TranslatedValidator] to validate if a string
@@ -45,11 +46,21 @@ class HasSpecialCharsValidator extends TranslatedValidator<String> {
   ///
   /// Examples: @, #, %
   /// {@endtemplate}
-  static final RegExp _specialChar = RegExp('[^A-Za-z0-9]');
+  static final RegExp _specialChar =
+      HasMinSpecialCharsElementaryValidator.defaultSpecialCharRegex;
 
   @override
   String? validateValue(String valueCandidate) {
-    return specialCharLength(valueCandidate) >= atLeast ? null : errorText;
+    final HasMinSpecialCharsElementaryValidator elementaryValidator =
+        HasMinSpecialCharsElementaryValidator(
+      atLeast: atLeast,
+      errorText: errorText,
+      regex: regex,
+    );
+
+    return elementaryValidator.transformValueIfValid(valueCandidate).$1
+        ? null
+        : elementaryValidator.errorText;
   }
 
   /// Calculates the number of special characters in the given value.
