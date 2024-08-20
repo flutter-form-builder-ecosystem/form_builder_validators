@@ -1,7 +1,7 @@
 // coverage:ignore-file
 import 'package:flutter/widgets.dart';
 
-import 'elementary_validator.dart';
+import 'base_elementary_validator.dart';
 import 'elementary_validators/bool/bool.dart';
 import 'elementary_validators/required/required.dart';
 

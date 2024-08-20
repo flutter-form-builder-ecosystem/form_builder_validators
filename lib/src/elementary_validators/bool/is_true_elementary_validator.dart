@@ -1,5 +1,5 @@
 import '../../../localization/l10n.dart';
-import '../../elementary_validator.dart';
+import '../../base_elementary_validator.dart';
 
 /// {@template IsTrueElementaryValidator}
 /// This validator returns null if the input value is true and an error message

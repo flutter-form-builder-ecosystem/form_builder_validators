@@ -1,5 +1,5 @@
 import '../../../localization/l10n.dart';
-import '../../elementary_validator.dart';
+import '../../base_elementary_validator.dart';
 
 /// {@template is_required_elementary_validator}
 /// This validator checks if a value was provided. On the validation

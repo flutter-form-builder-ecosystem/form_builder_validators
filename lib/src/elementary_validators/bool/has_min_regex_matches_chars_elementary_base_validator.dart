@@ -1,4 +1,4 @@
-import '../../elementary_validator.dart';
+import '../../base_elementary_validator.dart';
 
 /// {@template has_min_regex_matcher_chars_template}
 /// Extends this class to create a validator that checks whether there is a min

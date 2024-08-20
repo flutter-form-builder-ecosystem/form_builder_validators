@@ -1,4 +1,4 @@
-import '../../elementary_validator.dart';
+import '../../base_elementary_validator.dart';
 
 /// {@template is_not_required_elementary_validator}
 /// This validator checks if a value was not provided. On the validation

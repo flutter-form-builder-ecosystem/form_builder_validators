@@ -39,18 +39,17 @@ abstract base class BaseElementaryValidator<T extends Object?,
       final completeErrorMsg = [];
       for (final validator in and ?? <BaseElementaryValidator<W, dynamic>>[]) {
         final validation = validator.validate(transformedValue as W);
-        if (validation == null) {
-          return null;
+        if (validation != null) {
+          completeErrorMsg.add(validation);
         }
-        completeErrorMsg.add(validation);
       }
       if (completeErrorMsg.isEmpty) {
         return null;
       }
-      return completeErrorMsg.join(' or ');
+      return completeErrorMsg.join(' and ');
     }
 
-    final completeErrorMsg = [_errorText];
+    final completeErrorMsg = [errorText];
     for (final validator
         in otherwise ?? <BaseElementaryValidator<T, dynamic>>[]) {
       final validation = validator.validate(valueCandidate);
