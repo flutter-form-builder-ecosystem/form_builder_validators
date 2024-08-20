@@ -1,3 +1,5 @@
+import 'elementary_validators/required/required.dart';
+
 /// Base class for all validators.
 abstract class BaseValidator<T> {
   /// Creates a new instance of the validator.
@@ -19,7 +21,11 @@ abstract class BaseValidator<T> {
 
   /// Validates the value and checks if it is null or empty.
   String? validate(T? valueCandidate) {
-    final bool isNullOrEmpty = this.isNullOrEmpty(valueCandidate);
+    final bool isNullOrEmpty = const IsRequiredElementaryValidator<Object>()
+                .validate(valueCandidate) !=
+            null
+        ? true
+        : false;
 
     if (checkNullOrEmpty && isNullOrEmpty) {
       return errorText;
@@ -28,19 +34,6 @@ abstract class BaseValidator<T> {
     } else {
       return validateValue(valueCandidate as T);
     }
-  }
-
-  /// Checks if the value is null or empty.
-  /// Returns `true` if the value is null or empty, otherwise `false`.
-  /// The value is considered empty if it is a [String], [Iterable], or [Map]
-  /// and it is empty or contains only whitespace characters.
-  /// If the value is not a [String], [Iterable], or [Map], it is considered
-  /// empty if it is `null`.
-  bool isNullOrEmpty(T? valueCandidate) {
-    return valueCandidate == null ||
-        (valueCandidate is String && valueCandidate.trim().isEmpty) ||
-        (valueCandidate is Iterable && valueCandidate.isEmpty) ||
-        (valueCandidate is Map && valueCandidate.isEmpty);
   }
 
   /// Validates the value.
