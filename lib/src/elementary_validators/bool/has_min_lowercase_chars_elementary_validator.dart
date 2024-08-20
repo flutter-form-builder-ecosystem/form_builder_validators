@@ -1,5 +1,5 @@
 import '../../../localization/l10n.dart';
-import '../../elementary_validator.dart';
+import 'has_min_regex_matches_chars_elementary_base_validator.dart';
 
 /// {@template has_lowercase_chars_template}
 /// This validator checks whether the user input has more than or equal to
@@ -14,7 +14,7 @@ import '../../elementary_validator.dart';
 /// {@macro lower_case_template}
 /// {@endtemplate}
 final class HasMinLowercaseCharsElementaryValidator
-    extends BaseElementaryValidator<String, String> {
+    extends HasMinRegexMatchesCharsElementaryValidator {
   /// {@macro has_lowercase_chars_template}
   HasMinLowercaseCharsElementaryValidator({
     this.atLeast = 1,
@@ -25,12 +25,14 @@ final class HasMinLowercaseCharsElementaryValidator
 
     /// {@macro base_validator_error_text}
     super.errorText,
-  }) : regex = regex ?? _lowerCase;
+  }) : regex = regex ?? defaultLowerCaseCharRegex;
 
   /// The minimum number of lowercase characters required.
+  @override
   final int atLeast;
 
   /// The regular expression used to identify lowercase characters.
+  @override
   final RegExp regex;
 
   /// {@template lower_case_template}
@@ -41,15 +43,7 @@ final class HasMinLowercaseCharsElementaryValidator
   ///
   /// Examples: a, b, c
   /// {@endtemplate}
-  static final RegExp _lowerCase = RegExp('[a-z]');
-
-  @override
-  (bool, String?) transformValueIfValid(String value) {
-    // TODO (ArturAssisComp): remember to cover the edge case when length is
-    // equal to atLeast
-    final bool isValid = regex.allMatches(value).length >= atLeast;
-    return (isValid, isValid ? value : null);
-  }
+  static final RegExp defaultLowerCaseCharRegex = RegExp('[a-z]');
 
   @override
   String get translatedErrorText =>

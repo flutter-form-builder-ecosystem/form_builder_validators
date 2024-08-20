@@ -46,7 +46,8 @@ class HasLowercaseCharsValidator extends TranslatedValidator<String> {
   ///
   /// Examples: a, b, c
   /// {@endtemplate}
-  static final RegExp _lowerCase = RegExp('[a-z]');
+  static final RegExp _lowerCase =
+      HasMinLowercaseCharsElementaryValidator.defaultLowerCaseCharRegex;
 
   @override
   String? validateValue(String valueCandidate) {

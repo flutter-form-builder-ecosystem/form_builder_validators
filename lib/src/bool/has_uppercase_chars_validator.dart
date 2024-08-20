@@ -47,7 +47,8 @@ class HasUppercaseCharsValidator extends TranslatedValidator<String> {
   ///
   /// Examples: A, B, C
   /// {@endtemplate}
-  static final RegExp _upperCase = RegExp('[A-Z]');
+  static final RegExp _upperCase =
+      HasMinUppercaseCharsElementaryValidator.defaultUpperCaseCharRegex;
 
   @override
   String? validateValue(String valueCandidate) {

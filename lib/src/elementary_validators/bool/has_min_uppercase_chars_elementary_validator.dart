@@ -1,5 +1,5 @@
 import '../../../localization/l10n.dart';
-import '../../elementary_validator.dart';
+import 'has_min_regex_matches_chars_elementary_base_validator.dart';
 
 /// {@template has_uppercase_chars_template}
 /// This validator checks whether the user input has more than or equal to
@@ -14,7 +14,7 @@ import '../../elementary_validator.dart';
 /// {@macro upper_case_template}
 /// {@endtemplate}
 final class HasMinUppercaseCharsElementaryValidator
-    extends BaseElementaryValidator<String, String> {
+    extends HasMinRegexMatchesCharsElementaryValidator {
   /// {@macro has_uppercase_chars_template}
   HasMinUppercaseCharsElementaryValidator({
     this.atLeast = 1,
@@ -25,12 +25,14 @@ final class HasMinUppercaseCharsElementaryValidator
 
     /// {@macro base_validator_error_text}
     super.errorText,
-  }) : regex = regex ?? _upperCase;
+  }) : regex = regex ?? defaultUpperCaseCharRegex;
 
   /// The minimum number of uppercase characters required.
+  @override
   final int atLeast;
 
   /// The regular expression used to identify uppercase characters.
+  @override
   final RegExp regex;
 
   /// {@template upper_case_template}
@@ -41,13 +43,7 @@ final class HasMinUppercaseCharsElementaryValidator
   ///
   /// Examples: A, B, C
   /// {@endtemplate}
-  static final RegExp _upperCase = RegExp('[A-Z]');
-
-  @override
-  (bool, String?) transformValueIfValid(String value) {
-    final bool isValid = regex.allMatches(value).length >= atLeast;
-    return (isValid, isValid ? value : null);
-  }
+  static final RegExp defaultUpperCaseCharRegex = RegExp('[A-Z]');
 
   @override
   String get translatedErrorText =>
