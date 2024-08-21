@@ -55,10 +55,12 @@ class ValidatorBuilder {
   static Validator<T, num> numeric<T extends Object>({
     String? errorText,
     bool ignoreErrorMessage = false,
+    List<BaseElementaryValidator<num, dynamic>>? and,
   }) =>
       IsNumericElementaryValidator<T>(
         errorText: errorText,
         ignoreErrorMessage: ignoreErrorMessage,
+        withAndComposition: and,
       );
 
   // bool validators
@@ -81,6 +83,26 @@ class ValidatorBuilder {
       HasMinLowercaseCharsElementaryValidator(
         atLeast: atLeast,
         regex: regex,
+        errorText: errorText,
+      );
+
+  // numeric validators
+  /// [FormFieldValidator] that requires the field's value to be less than
+  /// (or equal) to the provided number.
+  ///
+  /// ## Parameters:
+  /// - [max] The maximum value to compare.
+  /// - [inclusive] Whether the comparison is inclusive (default: true).
+  /// - [errorText] The error message when the value is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static Validator<T, T> max<T extends num>(
+    num max, {
+    bool inclusive = true,
+    String? errorText,
+  }) =>
+      MaxElementaryValidator<T>(
+        max,
+        inclusive: inclusive,
         errorText: errorText,
       );
 
@@ -1271,26 +1293,6 @@ class ValidatorBuilder {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be less than
-  /// (or equal) to the provided number.
-  ///
-  /// ## Parameters:
-  /// - [max] The maximum value to compare.
-  /// - [inclusive] Whether the comparison is inclusive (default: true).
-  /// - [errorText] The error message when the value is invalid.
-  /// - [checkNullOrEmpty] Whether to check for null or empty values.
-  static FormFieldValidator<T> max<T>(
-    num max, {
-    bool inclusive = true,
-    String? errorText,
-    bool checkNullOrEmpty = true,
-  }) =>
-      MaxValidator<T>(
-        max,
-        inclusive: inclusive,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be greater than
   /// (or equal) to the provided number.
