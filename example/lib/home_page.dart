@@ -38,6 +38,8 @@ class HomePage extends StatelessWidget {
                   (String? val) {
                     if (val != null) {
                       final int? number = int.tryParse(val);
+                      // todo bug here: if it is not int, it accepts negative
+                      // numbers
                       if (number == null) return null;
                       if (number < 0) return 'We cannot have a negative age';
                     }
