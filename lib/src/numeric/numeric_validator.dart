@@ -27,6 +27,17 @@ class NumericValidator<T> extends TranslatedValidator<T> {
 
   @override
   String? validateValue(T valueCandidate) {
+    // ignore: always_specify_types
+    final IsRequiredElementaryValidator validator =
+        // ignore: always_specify_types
+        IsRequiredElementaryValidator(
+            errorText: errorText,
+            withAndComposition: [
+          // ignore: always_specify_types
+          IsNumericElementaryValidator(errorText: errorText)
+        ]);
+    return validator.validate(valueCandidate);
+    /*
     final num? value;
     if (valueCandidate is String) {
       value = num.tryParse(valueCandidate);
@@ -37,5 +48,6 @@ class NumericValidator<T> extends TranslatedValidator<T> {
     }
 
     return value == null ? errorText : null;
+     */
   }
 }

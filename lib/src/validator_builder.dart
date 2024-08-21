@@ -2,8 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'base_elementary_validator.dart';
-import 'elementary_validators/bool/bool.dart';
-import 'elementary_validators/required/required.dart';
+import 'elementary_validators/elementary_validators.dart';
 
 /// Defines the high level validator.
 typedef Validator<IN extends Object?, OUT extends Object?>
@@ -20,10 +19,12 @@ class ValidatorBuilder {
   static Validator<T?, T> required<T extends Object>({
     String? errorText,
     List<BaseElementaryValidator<T, dynamic>>? and,
+    bool ignoreErrorMessage = false,
   }) =>
       IsRequiredElementaryValidator<T>(
+        ignoreErrorMessage: ignoreErrorMessage,
         errorText: errorText,
-        and: and,
+        withAndComposition: and,
       );
 
   /// Builds a validator that makes a field optional. The otherwise condition
@@ -44,6 +45,21 @@ class ValidatorBuilder {
       otherwise: otherwise,
     );
   }
+
+  // Type validators
+  /// [FormFieldValidator] that requires the field's value to be a valid number.
+  ///
+  /// ## Parameters:
+  /// - [errorText] The error message when the number is invalid.
+  /// - [checkNullOrEmpty] Whether to check for null or empty values.
+  static Validator<T, num> numeric<T extends Object>({
+    String? errorText,
+    bool ignoreErrorMessage = false,
+  }) =>
+      IsNumericElementaryValidator<T>(
+        errorText: errorText,
+        ignoreErrorMessage: ignoreErrorMessage,
+      );
 
   // bool validators
   /// [FormFieldValidator] that requires the field's value to contain a minimum
@@ -1327,19 +1343,6 @@ class ValidatorBuilder {
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
 
-  /// [FormFieldValidator] that requires the field's value to be a valid number.
-  ///
-  /// ## Parameters:
-  /// - [errorText] The error message when the number is invalid.
-  /// - [checkNullOrEmpty] Whether to check for null or empty values.
-  static FormFieldValidator<T> numeric<T>({
-    String? errorText,
-    bool checkNullOrEmpty = true,
-  }) =>
-      NumericValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an odd number.
   ///

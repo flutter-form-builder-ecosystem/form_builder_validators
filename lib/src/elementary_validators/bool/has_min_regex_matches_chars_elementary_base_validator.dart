@@ -17,7 +17,7 @@ abstract base class HasMinRegexMatchesCharsElementaryValidator
   HasMinRegexMatchesCharsElementaryValidator({
     /// {@macro base_validator_error_text}
     super.errorText,
-  });
+  }) : super(ignoreErrorMessage: false);
 
   /// The minimum number of regex matches required.
   int get atLeast;

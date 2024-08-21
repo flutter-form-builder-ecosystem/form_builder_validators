@@ -8,7 +8,7 @@ import '../../base_elementary_validator.dart';
 ///
 /// ## Parameters
 /// - [errorText] The error message returned if the validation fails.
-/// - [and] List of elementary validators that will be executed if this
+/// - [withAndComposition] List of elementary validators that will be executed if this
 /// validator passes.
 /// - [otherwise] List of elementary validators that will be executed if this
 /// validator fails. They are alternative validation in case this fails.
@@ -18,9 +18,10 @@ final class IsNotRequiredElementaryValidator<T extends Object>
   /// {@macro is_not_required_elementary_validator}
   const IsNotRequiredElementaryValidator({
     super.errorText,
-    super.and,
+    super.withAndComposition,
+    super.withOrComposition,
     super.otherwise,
-  });
+  }) : super(ignoreErrorMessage: true);
 
   @override
   (bool, T?) transformValueIfValid(T? value) {

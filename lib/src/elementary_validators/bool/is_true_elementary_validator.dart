@@ -11,7 +11,8 @@ final class IsTrueElementaryValidator
   ///
   /// ## Arguments
   /// - [String?] `errorText`: custom error text provided by the user.
-  const IsTrueElementaryValidator({super.errorText});
+  const IsTrueElementaryValidator({super.errorText})
+      : super(ignoreErrorMessage: false);
   @override
   (bool, bool?) transformValueIfValid(bool value) {
     final bool isValid = value == true;
