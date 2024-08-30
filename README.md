@@ -431,6 +431,7 @@ validator, add a type validator, and then chain as many specialized validators a
 ```dart
 // In this example, we build a validator composing a required, with a numeric and then a max.
 // The logic result is: required && numeric && max(70)
+
 final validator = ValidatorBuilder.required(and: <Validator<Object, num>>[
       ValidatorBuilder.numeric(
           errorText: 'La edad debe ser numérica.',

@@ -48,4 +48,5 @@ export 'src/numeric/numeric.dart';
 export 'src/string/string.dart';
 export 'src/translated_validator.dart';
 export 'src/usecase/usecase.dart';
-export 'src/validator_builder.dart';
+//export 'src/validator_builder.dart';
+export 'new_api_prototype.dart';
