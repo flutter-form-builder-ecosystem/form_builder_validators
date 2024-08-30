@@ -32,22 +32,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final class _NonNegativeNum<T extends num>
-    extends BaseElementaryValidator<T, T> {
-  _NonNegativeNum() : super(ignoreErrorMessage: false);
-
-  @override
-  (bool, T?) transformValueIfValid(T value) {
-    if (value >= 0) {
-      return (true, value);
-    }
-    return (false, null);
-  }
-
-  @override
-  String get translatedErrorText => 'We cannot have a negative age';
-}
-
 /// Represents the home page of the application.
 class NewAPIHomePage extends StatelessWidget {
   /// Constructs a new instance of the [NewAPIHomePage] class.
@@ -67,14 +51,11 @@ class NewAPIHomePage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator: FormBuilderValidators.compose([
-                  ValidatorBuilder.required(and: <Validator<Object, num>>[
-                    ValidatorBuilder.numeric(
-                        errorText: 'La edad debe ser numérica.',
-                        and: <BaseElementaryValidator<num, dynamic>>[
-                          ValidatorBuilder.max(70),
-                        ])
-                  ]).validate,
+                validator:
+                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
+                  req(
+                    isNum(max(70), isNumMessage: 'La edad debe ser numérica.'),
+                  ),
 
                   /// Include your own custom `FormFieldValidator` function, if you want
                   /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
@@ -87,7 +68,9 @@ class NewAPIHomePage extends StatelessWidget {
                     return null;
                   }
                 ]),
+
                 /*
+                // Original api
                     FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   /// Makes this field required
                   FormBuilderValidators.required(),
@@ -119,16 +102,19 @@ class NewAPIHomePage extends StatelessWidget {
                     const InputDecoration(labelText: 'Age (better way to do)'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator:
-                    // Equivalent to: required && numeric && max(70) && _NonNegativeNum
-                    ValidatorBuilder.required(and: <Validator<Object, num>>[
-                  ValidatorBuilder.numeric(
-                      errorText: 'La edad debe ser numérica.',
-                      and: <BaseElementaryValidator<num, dynamic>>[
-                        ValidatorBuilder.max(70),
-                        _NonNegativeNum<num>(),
-                      ])
-                ]).validate,
+                validator: req(
+                  isNum(
+                    and([
+                      max(70),
+                      (num value) {
+                        if (value < 0) return 'We cannot have a negative age';
+
+                        return null;
+                      },
+                    ]),
+                    isNumMessage: 'La edad debe ser numérica.',
+                  ),
+                ),
               ),
 
               // Required Validator
@@ -138,7 +124,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.star),
                 ),
                 // validator: FormBuilderValidators.required(),
-                validator: ValidatorBuilder.required().validate,
+                validator: req(null),
                 autofillHints: const <String>[AutofillHints.name],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -151,11 +137,11 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.numeric(),
-                validator: ValidatorBuilder.required(
-                    ignoreErrorMessage: true,
-                    and: <Validator<Object, num>>[
-                      ValidatorBuilder.numeric()
-                    ]).validate,
+                // To maintain the previous behavior, we use msg. Below, there is a more precise way of doing that.
+                validator: msg(
+                    FormBuilderLocalizations.current.numericErrorText,
+                    req(isNum(null))),
+
                 autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -167,15 +153,11 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.numeric(),
-                validator: ValidatorBuilder.required(
-                    and: <Validator<Object, num>>[
-                      ValidatorBuilder.numeric()
-                    ]).validate,
+                validator: req(isNum(null)),
                 autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
-              /*
               // Email Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -183,7 +165,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.email),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                validator: FormBuilderValidators.email(),
+                //validator: FormBuilderValidators.email(),
+                validator: msg(
+                  FormBuilderLocalizations.current.emailErrorText,
+                  req(email()),
+                ),
                 autofillHints: const <String>[AutofillHints.email],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -195,7 +181,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.link),
                 ),
                 keyboardType: TextInputType.url,
-                validator: FormBuilderValidators.url(),
+                //validator: FormBuilderValidators.url(),
+                validator: msg(
+                  FormBuilderLocalizations.current.urlErrorText,
+                  req(url()),
+                ),
                 autofillHints: const <String>[AutofillHints.url],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -206,7 +196,11 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'Min Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: FormBuilderValidators.minLength(5),
+                //validator: FormBuilderValidators.minLength(5),
+                validator: msg(
+                  FormBuilderLocalizations.current.minLengthErrorText(5),
+                  req(minLength(5)),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -216,7 +210,11 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'Max Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: FormBuilderValidators.maxLength(10),
+                //validator: FormBuilderValidators.maxLength(10),
+                validator: msg(
+                  FormBuilderLocalizations.current.maxLengthErrorText(5),
+                  req(maxLength(5)),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -227,7 +225,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_neg_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.min(10),
+                //validator: FormBuilderValidators.min(10),
+                validator: msg(
+                  FormBuilderLocalizations.current.minErrorText(10),
+                  req(isNum(min(10))),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -238,7 +240,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_plus_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.max(100),
+                //validator: FormBuilderValidators.max(100),
+                validator: msg(
+                  FormBuilderLocalizations.current.maxErrorText(100),
+                  req(isNum(max(100))),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -248,7 +254,8 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'Equal Field',
                   prefixIcon: Icon(Icons.check),
                 ),
-                validator: FormBuilderValidators.equal('test'),
+                //validator: FormBuilderValidators.equal('test'),
+                validator: equal('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -258,7 +265,11 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'Contains "test"',
                   prefixIcon: Icon(Icons.search),
                 ),
-                validator: FormBuilderValidators.contains('test'),
+                //validator: FormBuilderValidators.contains('test'),
+                validator: msg(
+                  FormBuilderLocalizations.current.containsErrorText('test'),
+                  req(contains('test')),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -268,8 +279,12 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'Match Pattern',
                   prefixIcon: Icon(Icons.pattern),
                 ),
-                validator:
-                    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
+                //validator:
+                //    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
+                validator: msg(
+                  FormBuilderLocalizations.current.matchErrorText,
+                  req(match(RegExp(r'^[a-zA-Z0-9]+$'))),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -280,7 +295,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.computer),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.ip(),
+                // validator: FormBuilderValidators.ip(),
+                validator: msg(
+                  FormBuilderLocalizations.current.ipErrorText,
+                  req(ip()),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -290,7 +309,11 @@ class NewAPIHomePage extends StatelessWidget {
                   labelText: 'UUID Field',
                   prefixIcon: Icon(Icons.code),
                 ),
-                validator: FormBuilderValidators.uuid(),
+                //validator: FormBuilderValidators.uuid(),
+                validator: msg(
+                  FormBuilderLocalizations.current.uuidErrorText,
+                  req(uuid()),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -301,7 +324,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.credit_card),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.creditCard(),
+                //validator: FormBuilderValidators.creditCard(),
+                validator: msg(
+                  FormBuilderLocalizations.current.creditCardErrorText,
+                  req(creditCard()),
+                ),
                 autofillHints: const <String>[AutofillHints.creditCardNumber],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -313,7 +340,11 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.phone),
                 ),
                 keyboardType: TextInputType.phone,
-                validator: FormBuilderValidators.phoneNumber(),
+                //validator: FormBuilderValidators.phoneNumber(),
+                validator: msg(
+                  FormBuilderLocalizations.current.phoneErrorText,
+                  req(phoneNumber()),
+                ),
                 autofillHints: const <String>[AutofillHints.telephoneNumber],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -325,7 +356,8 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock),
                 ),
                 obscureText: true,
-                validator: FormBuilderValidators.password(),
+                //validator: FormBuilderValidators.password(),
+                validator: req(password()),
                 autofillHints: const <String>[AutofillHints.password],
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
@@ -337,6 +369,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.calendar_today),
                 ),
                 keyboardType: TextInputType.number,
+                /*
                 validator:
                     FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   FormBuilderValidators.required(),
@@ -344,11 +377,11 @@ class NewAPIHomePage extends StatelessWidget {
                   FormBuilderValidators.min(0),
                   FormBuilderValidators.max(120),
                 ]),
+               */
+                validator: req(isNum(and([min(0), max(120)]))),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
-
-               */
             ],
           ),
         ),
