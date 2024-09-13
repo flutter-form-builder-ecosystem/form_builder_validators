@@ -382,6 +382,27 @@ class NewAPIHomePage extends StatelessWidget {
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText:
+                      '(optional) Choose a value that is either a num in the set: (-10,5] U {7, 8} U (100, +inf) or an even integer.',
+                  prefixIcon: Icon(Icons.numbers),
+                ),
+                validator: opt(or([
+                  isNum(or([
+                    and([gt(-10), ltE(5)]),
+                    equal(7),
+                    equal(8),
+                    gt(100),
+                  ])),
+                  isInt(
+                    (int value) =>
+                        value % 2 == 0 ? null : 'The input must be even.',
+                  ),
+                ])),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
             ],
           ),
         ),

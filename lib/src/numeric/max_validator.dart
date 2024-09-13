@@ -40,24 +40,6 @@ class MaxValidator<T> extends TranslatedValidator<T> {
   String? validateValue(T valueCandidate) {
     final num? value;
 
-    final MaxElementaryValidator<num> maxValidator =
-        MaxElementaryValidator<num>(
-      max,
-      inclusive: inclusive,
-      errorText: errorText,
-    );
-    final IsRequiredElementaryValidator<Object> validator =
-        IsRequiredElementaryValidator<Object>(
-            withAndComposition: <BaseElementaryValidator<Object, dynamic>>[
-          IsNumericElementaryValidator<Object>(
-              withAndComposition: [maxValidator])
-        ]);
-
-    print(valueCandidate);
-    print(validator.validate(valueCandidate));
-    return validator.validate(valueCandidate) == null
-        ? null
-        : maxValidator.errorText;
     if (valueCandidate is String) {
       value = num.tryParse(valueCandidate);
     } else if (valueCandidate is num) {
