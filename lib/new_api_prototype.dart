@@ -157,13 +157,6 @@ Validator<T> isBool<T extends Object>(Validator<bool>? v,
   return (false, null);
 }
 
-// Placeholder validator
-String? placeholder(Object value) {
-  return null;
-}
-
-const ph = placeholder;
-
 // Composition validators
 Validator<T> and<T extends Object>(
   List<Validator<T>> validators, {
