@@ -79,6 +79,6 @@ class PasswordValidator extends BaseValidator<String> {
           ),
       ],
     ).call(valueCandidate);
-    return result != null && errorText != null ? errorText : result;
+    return result != null && errorText != '' ? errorText : result;
   }
 }
