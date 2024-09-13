@@ -42,8 +42,8 @@ Validator<T?> isOptional<T extends Object>(
   return finalValidator;
 }
 
-const req = isRequired;
-const opt = isOptional;
+const isReq = isRequired;
+const isOpt = isOptional;
 
 (bool, T?) requiredValidatorAndTransformer<T extends Object>(T? value) {
   if (value != null &&

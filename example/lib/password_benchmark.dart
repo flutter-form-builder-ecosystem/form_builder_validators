@@ -1,7 +1,7 @@
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_validators/new_api_prototype.dart'
-    show req, password;
+    show isReq, password;
 
 import 'package:flutter/material.dart';
 // ignore_for_file: public_member_api_docs
@@ -14,7 +14,7 @@ class ReqPasswordBenchmark extends BenchmarkBase {
 
   @override
   void run() {
-    final FormFieldValidator<String> v = req(password());
+    final FormFieldValidator<String> v = isReq(password());
     v('h');
     v('he');
     v('hel');
