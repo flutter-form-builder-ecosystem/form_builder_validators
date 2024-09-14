@@ -10,7 +10,7 @@ Validator<T?> isRequired<T extends Object>(
   String? isRequiredMessage,
 }) {
   String? finalValidator(T? value) {
-    final (isValid, transformedValue) = requiredValidatorAndTransformer(value);
+    final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
     if (!isValid) {
       return isRequiredMessage ??
           FormBuilderLocalizations.current.requiredErrorText;
@@ -26,7 +26,7 @@ Validator<T?> isOptional<T extends Object>(
   String? isOptionalMessage,
 }) {
   String? finalValidator(T? value) {
-    final (isValid, transformedValue) = requiredValidatorAndTransformer(value);
+    final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
     if (!isValid) {
       // field not provided
       return null;
@@ -45,7 +45,7 @@ Validator<T?> isOptional<T extends Object>(
 const isReq = isRequired;
 const isOpt = isOptional;
 
-(bool, T?) requiredValidatorAndTransformer<T extends Object>(T? value) {
+(bool, T?) _isRequiredValidateAndConvert<T extends Object>(T? value) {
   if (value != null &&
       (value is! String || value.trim().isNotEmpty) &&
       (value is! Iterable || value.isNotEmpty) &&
@@ -60,8 +60,7 @@ const isOpt = isOptional;
 Validator<T> isString<T extends Object>(Validator<String>? v,
     {String? isStringMessage}) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) =
-        isStringValidatorAndTransformer(value);
+    final (isValid, typeTransformedValue) = _isStringValidateAndConvert(value);
     if (!isValid) {
       return isStringMessage ?? 'This field requires a valid string.';
     }
@@ -71,7 +70,7 @@ Validator<T> isString<T extends Object>(Validator<String>? v,
   return finalValidator;
 }
 
-(bool, String?) isStringValidatorAndTransformer<T extends Object>(T value) {
+(bool, String?) _isStringValidateAndConvert<T extends Object>(T value) {
   if (value is String) {
     return (true, value);
   }
@@ -81,7 +80,7 @@ Validator<T> isString<T extends Object>(Validator<String>? v,
 Validator<T> isInt<T extends Object>(Validator<int>? v,
     {String? isIntMessage}) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = isIntValidatorAndTransformer(value);
+    final (isValid, typeTransformedValue) = _isIntValidateAndConvert(value);
     if (!isValid) {
       return isIntMessage ?? FormBuilderLocalizations.current.integerErrorText;
     }
@@ -91,7 +90,7 @@ Validator<T> isInt<T extends Object>(Validator<int>? v,
   return finalValidator;
 }
 
-(bool, int?) isIntValidatorAndTransformer<T extends Object>(T value) {
+(bool, int?) _isIntValidateAndConvert<T extends Object>(T value) {
   if (value is int) {
     return (true, value);
   }
@@ -107,7 +106,7 @@ Validator<T> isInt<T extends Object>(Validator<int>? v,
 Validator<T> isNum<T extends Object>(Validator<num>? v,
     {String? isNumMessage}) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = isNumValidatorAndTransformer(value);
+    final (isValid, typeTransformedValue) = _isNumValidateAndConvert(value);
     if (!isValid) {
       return isNumMessage ?? FormBuilderLocalizations.current.numericErrorText;
     }
@@ -117,7 +116,7 @@ Validator<T> isNum<T extends Object>(Validator<num>? v,
   return finalValidator;
 }
 
-(bool, num?) isNumValidatorAndTransformer<T extends Object>(T value) {
+(bool, num?) _isNumValidateAndConvert<T extends Object>(T value) {
   if (value is num) {
     return (true, value);
   }
@@ -133,8 +132,7 @@ Validator<T> isNum<T extends Object>(Validator<num>? v,
 Validator<T> isBool<T extends Object>(Validator<bool>? v,
     {String? isBoolMessage}) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) =
-        isBoolValidatorAndTransformer(value);
+    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(value);
     if (!isValid) {
       return isBoolMessage ?? FormBuilderLocalizations.current.numericErrorText;
     }
@@ -144,7 +142,7 @@ Validator<T> isBool<T extends Object>(Validator<bool>? v,
   return finalValidator;
 }
 
-(bool, bool?) isBoolValidatorAndTransformer<T extends Object>(T value) {
+(bool, bool?) _isBoolValidateAndConvert<T extends Object>(T value) {
   if (value is bool) {
     return (true, value);
   }
