@@ -215,7 +215,7 @@ Validator<String> password({
     hasMinSpecial(min: minSpecialCharCount),
   ]);
   return passwordMessage != null
-      ? msg(passwordMessage, andValidator)
+      ? replaceMsg(passwordMessage, andValidator)
       : andValidator;
 }
 
@@ -640,7 +640,7 @@ String? isFalse(bool value) =>
 // msg wrapper
 /// Replaces any inner message with [errorMessage]. It is useful also for changing
 /// the message of direct validator implementations, like [isTrue] or [isFalse].
-Validator<T> withMessage<T extends Object?>(
+Validator<T> replaceErrorMessage<T extends Object?>(
   String errorMessage,
   Validator<T> v,
 ) {
@@ -653,7 +653,7 @@ Validator<T> withMessage<T extends Object?>(
   };
 }
 
-const msg = withMessage;
+const replaceMsg = replaceErrorMessage;
 
 //******************************************************************************
 //*                              Aux functions                                 *
