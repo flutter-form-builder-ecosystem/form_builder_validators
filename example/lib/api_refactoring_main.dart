@@ -255,7 +255,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.check),
                 ),
                 //validator: FormBuilderValidators.equal('test'),
-                validator: equal('test'),
+                validator: isEqual('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -390,10 +390,10 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 validator: isOpt(or([
                   isNum(or([
-                    and([gt(-10), ltE(5)]),
-                    equal(7),
-                    equal(8),
-                    gt(100),
+                    and([greaterT(-10), lessTE(5)]),
+                    isEqual(7),
+                    isEqual(8),
+                    greaterT(100),
                   ])),
                   isInt(
                     (int value) =>

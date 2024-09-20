@@ -310,7 +310,7 @@ Validator<String> creditCard({
   String? creditCardMessage,
 }) {
   return (value) {
-    return isCreditCard(value, regex ?? _creditCardRegex)
+    return _isCreditCard(value, regex ?? _creditCardRegex)
         ? null
         : creditCardMessage ??
             FormBuilderLocalizations.current.creditCardErrorText;
@@ -355,7 +355,7 @@ Validator<String> email({
   String? emailMessage,
 }) {
   final defaultRegex = RegExp(
-    r"^((([a-z]|\d|[!#\$%&'*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$",
+    r"^((([a-z]|\d|[!#$%&'*+\-/=?^_`{|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#$%&'*+\-/=?^_`{|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)(((([\x20\x09])*(\x0d\x0a))?([\x20\x09])+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*((([\x20\x09])*(\x0d\x0a))?([\x20\x09])+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$",
   );
   return (value) {
     return (regex ?? defaultRegex).hasMatch(value.toLowerCase())
@@ -377,7 +377,7 @@ Validator<String> url({
   const defaultProtocols = <String>['http', 'https', 'ftp'];
   return (value) {
     return (regex != null && !regex.hasMatch(value)) ||
-            !isURL(
+            !_isURL(
               value,
               protocols: protocols ?? defaultProtocols,
               requireTld: requireTld,
@@ -397,14 +397,14 @@ Validator<String> ip({
   String? ipMessage,
 }) {
   return (value) {
-    return !isIP(value, version, regex)
+    return !_isIP(value, version, regex)
         ? ipMessage ?? FormBuilderLocalizations.current.ipErrorText
         : null;
   };
 }
 
 // T validators
-Validator<T> equal<T extends Object?>(T value,
+Validator<T> isEqual<T extends Object?>(T value,
     {String Function(String)? equalMessage}) {
   return (input) {
     final valueString = value.toString();
@@ -624,11 +624,10 @@ Validator<T> between<T extends num>(T? min, T? max,
   };
 }
 
-const gt = greaterThan;
-const gtE = greaterThanOrEqual;
-const lt = lessThan;
-const ltE = lessThanOrEqual;
-const bw = between;
+const greaterT = greaterThan;
+const greaterTE = greaterThanOrEqual;
+const lessT = lessThan;
+const lessTE = lessThanOrEqual;
 
 // bool validators
 String? isTrue(bool value) =>
@@ -662,15 +661,15 @@ const int _maxUrlLength = 2083;
 final RegExp _ipv4Maybe =
     RegExp(r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$');
 final RegExp _ipv6 = RegExp(
-  r'^((?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(?::0{1,4}){0,1}:){0,1}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))$',
+  r'^((?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]+|::(ffff(?::0{1,4})?:)?(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))$',
 );
 
 /// Check if the string [str] is IP [version] 4 or 6.
 ///
 /// * [version] is a String or an `int`.
-bool isIP(String? str, int version, RegExp? regex) {
+bool _isIP(String? str, int version, RegExp? regex) {
   if (version != 4 && version != 6) {
-    return isIP(str, 4, regex) || isIP(str, 6, regex);
+    return _isIP(str, 4, regex) || _isIP(str, 6, regex);
   } else if (version == 4) {
     if (regex != null) {
       return regex.hasMatch(str!);
@@ -694,7 +693,7 @@ bool isIP(String? str, int version, RegExp? regex) {
 /// * [allowUnderscore] sets if underscores are allowed
 /// * [hostWhitelist] sets the list of allowed hosts
 /// * [hostBlacklist] sets the list of disallowed hosts
-bool isURL(
+bool _isURL(
   String? value, {
   List<String?> protocols = const <String?>['http', 'https', 'ftp'],
   bool requireTld = true,
@@ -724,7 +723,7 @@ bool isURL(
   // check protocol
   List<String> split = value.split('://');
   if (split.length > 1) {
-    protocol = shift(split).toLowerCase();
+    protocol = _shift(split).toLowerCase();
     if (!protocols.contains(protocol)) {
       return false;
     }
@@ -735,7 +734,7 @@ bool isURL(
 
   // check hash
   split = str1.split('#');
-  final String str2 = shift(split);
+  final String str2 = _shift(split);
   hash = split.join('#');
   if (hash.isNotEmpty && RegExp(r'\s').hasMatch(hash)) {
     return false;
@@ -743,7 +742,7 @@ bool isURL(
 
   // check query params
   split = str2.split('?');
-  final String str3 = shift(split);
+  final String str3 = _shift(split);
   query = split.join('?');
   if (query.isNotEmpty && RegExp(r'\s').hasMatch(query)) {
     return false;
@@ -751,7 +750,7 @@ bool isURL(
 
   // check path
   split = str3.split('/');
-  final String str4 = shift(split);
+  final String str4 = _shift(split);
   path = split.join('/');
   if (path.isNotEmpty && RegExp(r'\s').hasMatch(path)) {
     return false;
@@ -760,9 +759,9 @@ bool isURL(
   // check auth type urls
   split = str4.split('@');
   if (split.length > 1) {
-    auth = shift(split);
+    auth = _shift(split);
     if (auth?.contains(':') ?? false) {
-      user = shift(auth!.split(':'));
+      user = _shift(auth!.split(':'));
       if (!RegExp(r'^\S+$').hasMatch(user)) {
         return false;
       }
@@ -775,7 +774,7 @@ bool isURL(
   // check hostname
   hostname = split.join('@');
   split = hostname.split(':');
-  host = shift(split).toLowerCase();
+  host = _shift(split).toLowerCase();
   if (split.isNotEmpty) {
     portStr = split.join(':');
     try {
@@ -788,8 +787,8 @@ bool isURL(
     }
   }
 
-  if (!isIP(host, 0, regexp) &&
-      !isFQDN(
+  if (!_isIP(host, 0, regexp) &&
+      !_isFQDN(
         host,
         requireTld: requireTld,
         allowUnderscores: allowUnderscore,
@@ -813,7 +812,7 @@ bool isURL(
 ///
 /// * [requireTld] sets if TLD is required
 /// * [allowUnderscores] sets if underscores are allowed
-bool isFQDN(
+bool _isFQDN(
   String str, {
   bool requireTld = true,
   bool allowUnderscores = false,
@@ -845,7 +844,7 @@ bool isFQDN(
 }
 
 /// Remove and return the first element from a list.
-T shift<T>(List<T> l) {
+T _shift<T>(List<T> l) {
   if (l.isNotEmpty) {
     final T first = l.first;
     l.removeAt(0);
@@ -854,7 +853,7 @@ T shift<T>(List<T> l) {
   return null as T;
 }
 
-bool isCreditCard(String value, RegExp regex) {
+bool _isCreditCard(String value, RegExp regex) {
   final String sanitized = value.replaceAll(RegExp('[^0-9]+'), '');
   if (!regex.hasMatch(sanitized)) {
     return false;
