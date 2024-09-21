@@ -210,7 +210,7 @@ Validator<String> password({
     _minL(minLength),
     _maxL(maxLength),
     hasMinUppercase(min: minUppercaseCount),
-    hasMinLowercase(min: minLowercaseCount),
+    hasMinLowercaseChars(min: minLowercaseCount),
     hasMinNumeric(min: minNumberCount),
     hasMinSpecial(min: minSpecialCharCount),
   ]);
@@ -237,15 +237,16 @@ Validator<String> hasMinUppercase({
   };
 }
 
-Validator<String> hasMinLowercase({
+Validator<String> hasMinLowercaseChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinLowercaseMessage,
+  String Function(int)? hasMinLowercaseCharsMessage,
 }) {
+  assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _lowerCaseRegex).allMatches(value).length >= min
         ? null
-        : hasMinLowercaseMessage?.call(min) ??
+        : hasMinLowercaseCharsMessage?.call(min) ??
             FormBuilderLocalizations.current
                 .containsLowercaseCharErrorText(min);
   };
