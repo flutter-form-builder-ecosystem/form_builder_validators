@@ -212,7 +212,7 @@ Validator<String> password({
     hasMinUppercase(min: minUppercaseCount),
     hasMinLowercaseChars(min: minLowercaseCount),
     hasMinNumericChars(min: minNumberCount),
-    hasMinSpecial(min: minSpecialCharCount),
+    hasMinSpecialChars(min: minSpecialCharCount),
   ]);
   return passwordMessage != null
       ? replaceMsg(passwordMessage, andValidator)
@@ -266,15 +266,16 @@ Validator<String> hasMinNumericChars({
   };
 }
 
-Validator<String> hasMinSpecial({
+Validator<String> hasMinSpecialChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinSpecialMessage,
+  String Function(int)? hasMinSpecialCharsMessage,
 }) {
+  assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _specialRegex).allMatches(value).length >= min
         ? null
-        : hasMinSpecialMessage?.call(min) ??
+        : hasMinSpecialCharsMessage?.call(min) ??
             FormBuilderLocalizations.current.containsSpecialCharErrorText(min);
   };
 }
