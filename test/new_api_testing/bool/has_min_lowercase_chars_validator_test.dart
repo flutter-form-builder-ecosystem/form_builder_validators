@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
-  final Faker faker = Faker.instance;
-  final String customErrorMessage = faker.lorem.sentence();
+  const String customErrorMessage = 'custom error message';
 
   group('Validator: hasMinLowercaseChars', () {
     group('Validations with default error message', () {
@@ -79,6 +78,7 @@ void main() {
     });
 
     test('Should throw assertion error when the min parameter is invalid', () {
+      expect(() => hasMinLowercaseChars(min: -10), throwsAssertionError);
       expect(() => hasMinLowercaseChars(min: -1), throwsAssertionError);
       expect(() => hasMinLowercaseChars(min: 0), throwsAssertionError);
     });
