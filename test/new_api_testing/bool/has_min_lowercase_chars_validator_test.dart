@@ -51,7 +51,7 @@ void main() {
           () {
         // Arrange
         final Validator<String> validator = hasMinLowercaseChars(
-            hasMinLowercaseCharsMessage: (_) => customErrorMessage);
+            hasMinLowercaseCharsMsg: (_) => customErrorMessage);
         const String value = 'PASSWORD123';
 
         // Act
@@ -66,7 +66,7 @@ void main() {
           () {
         // Arrange
         final Validator<String> validator = hasMinLowercaseChars(
-            min: 2, hasMinLowercaseCharsMessage: (_) => customErrorMessage);
+            min: 2, hasMinLowercaseCharsMsg: (_) => customErrorMessage);
         const String value = 'PASSWOrD';
 
         // Act
@@ -91,7 +91,7 @@ void main() {
         final Validator<String> validator = hasMinLowercaseChars(
           // todo investigate the need for this argument.
           regex: RegExp('[a-z]'),
-          hasMinLowercaseCharsMessage: (_) => customErrorMessage,
+          hasMinLowercaseCharsMsg: (_) => customErrorMessage,
         );
         const String value = 'PASSWORD';
 

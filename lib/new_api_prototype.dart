@@ -7,12 +7,12 @@ typedef Validator<T extends Object?> = String? Function(T);
 // Emptiness check validator:
 Validator<T?> isRequired<T extends Object>(
   Validator<T>? v, {
-  String? isRequiredMessage,
+  String? isRequiredMsg,
 }) {
   String? finalValidator(T? value) {
     final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
     if (!isValid) {
-      return isRequiredMessage ??
+      return isRequiredMsg ??
           FormBuilderLocalizations.current.requiredErrorText;
     }
     return v?.call(transformedValue!);
@@ -23,7 +23,7 @@ Validator<T?> isRequired<T extends Object>(
 
 Validator<T?> isOptional<T extends Object>(
   Validator<T>? v, {
-  String? isOptionalMessage,
+  String? isOptionalMsg,
 }) {
   String? finalValidator(T? value) {
     final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
@@ -58,11 +58,11 @@ const isOpt = isOptional;
 // Type validator:
 
 Validator<T> isString<T extends Object>(Validator<String>? v,
-    {String? isStringMessage}) {
+    {String? isStringMsg}) {
   String? finalValidator(T value) {
     final (isValid, typeTransformedValue) = _isStringValidateAndConvert(value);
     if (!isValid) {
-      return isStringMessage ?? 'This field requires a valid string.';
+      return isStringMsg ?? 'This field requires a valid string.';
     }
     return v?.call(typeTransformedValue!);
   }
@@ -77,12 +77,11 @@ Validator<T> isString<T extends Object>(Validator<String>? v,
   return (false, null);
 }
 
-Validator<T> isInt<T extends Object>(Validator<int>? v,
-    {String? isIntMessage}) {
+Validator<T> isInt<T extends Object>(Validator<int>? v, {String? isIntMsg}) {
   String? finalValidator(T value) {
     final (isValid, typeTransformedValue) = _isIntValidateAndConvert(value);
     if (!isValid) {
-      return isIntMessage ?? FormBuilderLocalizations.current.integerErrorText;
+      return isIntMsg ?? FormBuilderLocalizations.current.integerErrorText;
     }
     return v?.call(typeTransformedValue!);
   }
@@ -103,12 +102,11 @@ Validator<T> isInt<T extends Object>(Validator<int>? v,
   return (false, null);
 }
 
-Validator<T> isNum<T extends Object>(Validator<num>? v,
-    {String? isNumMessage}) {
+Validator<T> isNum<T extends Object>(Validator<num>? v, {String? isNumMsg}) {
   String? finalValidator(T value) {
     final (isValid, typeTransformedValue) = _isNumValidateAndConvert(value);
     if (!isValid) {
-      return isNumMessage ?? FormBuilderLocalizations.current.numericErrorText;
+      return isNumMsg ?? FormBuilderLocalizations.current.numericErrorText;
     }
     return v?.call(typeTransformedValue!);
   }
@@ -130,13 +128,13 @@ Validator<T> isNum<T extends Object>(Validator<num>? v,
 }
 
 Validator<T> isBool<T extends Object>(Validator<bool>? v,
-    {String? isBoolMessage, bool caseSensitive = false, bool trim = true}) {
+    {String? isBoolMsg, bool caseSensitive = false, bool trim = true}) {
   String? finalValidator(T value) {
     final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(value,
         caseSensitive: caseSensitive, trim: trim);
     if (!isValid) {
       // TODO(ArturAssisComp): Add the default error message for the isBool validator.
-      return isBoolMessage ??
+      return isBoolMsg ??
           'default bool error msg'; //FormBuilderLocalizations.current.boolErrorText;
     }
     return v?.call(typeTransformedValue!);
@@ -209,7 +207,7 @@ Validator<String> password({
   int minLowercaseCount = 1,
   int minNumberCount = 1,
   int minSpecialCharCount = 1,
-  String? passwordMessage,
+  String? passwordMsg,
 }) {
   final andValidator = and([
     _minL(minLength),
@@ -219,8 +217,8 @@ Validator<String> password({
     hasMinNumericChars(min: minNumberCount),
     hasMinSpecialChars(min: minSpecialCharCount),
   ]);
-  return passwordMessage != null
-      ? overrideErrorMsg(passwordMessage, andValidator)
+  return passwordMsg != null
+      ? overrideErrorMsg(passwordMsg, andValidator)
       : andValidator;
 }
 
@@ -233,20 +231,20 @@ final _specialRegex = RegExp('[^A-Za-z0-9]');
 /// least [min] uppercase chars (A-Z). If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`, if
-/// [hasMinUppercaseCharsMessage] is not provided.
+/// [hasMinUppercaseCharsMsg] is not provided.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinUppercaseChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinUppercaseCharsMessage,
+  String Function(int)? hasMinUppercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _upperCaseRegex).allMatches(value).length >= min
         ? null
-        : hasMinUppercaseCharsMessage?.call(min) ??
+        : hasMinUppercaseCharsMsg?.call(min) ??
             FormBuilderLocalizations.current
                 .containsUppercaseCharErrorText(min);
   };
@@ -256,20 +254,20 @@ Validator<String> hasMinUppercaseChars({
 /// least [min] lowercase chars (a-z). If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsLowercaseCharErrorText(min)`, if
-/// [hasMinLowercaseCharsMessage] is not provided.
+/// [hasMinLowercaseCharsMsg] is not provided.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinLowercaseChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinLowercaseCharsMessage,
+  String Function(int)? hasMinLowercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _lowerCaseRegex).allMatches(value).length >= min
         ? null
-        : hasMinLowercaseCharsMessage?.call(min) ??
+        : hasMinLowercaseCharsMsg?.call(min) ??
             FormBuilderLocalizations.current
                 .containsLowercaseCharErrorText(min);
   };
@@ -279,20 +277,20 @@ Validator<String> hasMinLowercaseChars({
 /// least [min] numeric chars (0-9). If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
-/// [hasMinNumericCharsMessage] is not provided.
+/// [hasMinNumericCharsMsg] is not provided.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinNumericChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinNumericCharsMessage,
+  String Function(int)? hasMinNumericCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _numericRegex).allMatches(value).length >= min
         ? null
-        : hasMinNumericCharsMessage?.call(min) ??
+        : hasMinNumericCharsMsg?.call(min) ??
             FormBuilderLocalizations.current.containsNumberErrorText(min);
   };
 }
@@ -301,32 +299,32 @@ Validator<String> hasMinNumericChars({
 /// least [min] special chars. If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsSpecialCharErrorText(min)`, if
-/// [hasMinSpecialCharsMessage] is not provided.
+/// [hasMinSpecialCharsMsg] is not provided.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinSpecialChars({
   int min = 1,
   RegExp? regex,
-  String Function(int)? hasMinSpecialCharsMessage,
+  String Function(int)? hasMinSpecialCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
     return (regex ?? _specialRegex).allMatches(value).length >= min
         ? null
-        : hasMinSpecialCharsMessage?.call(min) ??
+        : hasMinSpecialCharsMsg?.call(min) ??
             FormBuilderLocalizations.current.containsSpecialCharErrorText(min);
   };
 }
 
 Validator<String> match(
   RegExp regex, {
-  String? matchMessage,
+  String? matchMsg,
 }) {
   return (value) {
     return regex.hasMatch(value)
         ? null
-        : matchMessage ?? FormBuilderLocalizations.current.matchErrorText;
+        : matchMsg ?? FormBuilderLocalizations.current.matchErrorText;
   };
 }
 
@@ -335,12 +333,12 @@ final _uuidRegex = RegExp(
 );
 Validator<String> uuid({
   RegExp? regex,
-  String? uuidMessage,
+  String? uuidMsg,
 }) {
   return (value) {
     return (regex ?? _uuidRegex).hasMatch(value)
         ? null
-        : uuidMessage ?? FormBuilderLocalizations.current.uuidErrorText;
+        : uuidMsg ?? FormBuilderLocalizations.current.uuidErrorText;
   };
 }
 
@@ -349,13 +347,12 @@ final _creditCardRegex = RegExp(
 );
 Validator<String> creditCard({
   RegExp? regex,
-  String? creditCardMessage,
+  String? creditCardMsg,
 }) {
   return (value) {
     return _isCreditCard(value, regex ?? _creditCardRegex)
         ? null
-        : creditCardMessage ??
-            FormBuilderLocalizations.current.creditCardErrorText;
+        : creditCardMsg ?? FormBuilderLocalizations.current.creditCardErrorText;
   };
 }
 
@@ -364,20 +361,20 @@ final _phoneNumberRegex = RegExp(
 );
 Validator<String> phoneNumber({
   RegExp? regex,
-  String? phoneNumberMessage,
+  String? phoneNumberMsg,
 }) {
   return (value) {
     final String phoneNumber = value.replaceAll(' ', '').replaceAll('-', '');
     return (regex ?? _phoneNumberRegex).hasMatch(phoneNumber)
         ? null
-        : phoneNumberMessage ?? FormBuilderLocalizations.current.phoneErrorText;
+        : phoneNumberMsg ?? FormBuilderLocalizations.current.phoneErrorText;
   };
 }
 
 Validator<String> contains(
   String substring, {
   bool caseSensitive = true,
-  String Function(String)? containsMessage,
+  String Function(String)? containsMsg,
 }) {
   return (value) {
     if (substring.isEmpty) {
@@ -387,14 +384,14 @@ Validator<String> contains(
         : value.toLowerCase().contains(substring.toLowerCase())) {
       return null;
     }
-    return containsMessage?.call(substring) ??
+    return containsMsg?.call(substring) ??
         FormBuilderLocalizations.current.containsErrorText(substring);
   };
 }
 
 Validator<String> email({
   RegExp? regex,
-  String? emailMessage,
+  String? emailMsg,
 }) {
   final defaultRegex = RegExp(
     r"^((([a-z]|\d|[!#$%&'*+\-/=?^_`{|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#$%&'*+\-/=?^_`{|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)(((([\x20\x09])*(\x0d\x0a))?([\x20\x09])+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*((([\x20\x09])*(\x0d\x0a))?([\x20\x09])+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$",
@@ -402,7 +399,7 @@ Validator<String> email({
   return (value) {
     return (regex ?? defaultRegex).hasMatch(value.toLowerCase())
         ? null
-        : emailMessage ?? FormBuilderLocalizations.current.emailErrorText;
+        : emailMsg ?? FormBuilderLocalizations.current.emailErrorText;
   };
 }
 
@@ -414,7 +411,7 @@ Validator<String> url({
   List<String>? hostWhitelist,
   List<String>? hostBlacklist,
   RegExp? regex,
-  String? urlMessage,
+  String? urlMsg,
 }) {
   const defaultProtocols = <String>['http', 'https', 'ftp'];
   return (value) {
@@ -428,7 +425,7 @@ Validator<String> url({
               hostWhitelist: hostWhitelist ?? [],
               hostBlacklist: hostBlacklist ?? [],
             )
-        ? urlMessage ?? FormBuilderLocalizations.current.urlErrorText
+        ? urlMsg ?? FormBuilderLocalizations.current.urlErrorText
         : null;
   };
 }
@@ -436,29 +433,29 @@ Validator<String> url({
 Validator<String> ip({
   int version = 4,
   RegExp? regex,
-  String? ipMessage,
+  String? ipMsg,
 }) {
   return (value) {
     return !_isIP(value, version, regex)
-        ? ipMessage ?? FormBuilderLocalizations.current.ipErrorText
+        ? ipMsg ?? FormBuilderLocalizations.current.ipErrorText
         : null;
   };
 }
 
 // T validators
 Validator<T> isEqual<T extends Object?>(T value,
-    {String Function(String)? equalMessage}) {
+    {String Function(String)? equalMsg}) {
   return (input) {
     final valueString = value.toString();
     return value == input
         ? null
-        : equalMessage?.call(valueString) ??
+        : equalMsg?.call(valueString) ??
             FormBuilderLocalizations.current.equalErrorText(valueString);
   };
 }
 
 Validator<T> minLength<T extends Object>(int minLength,
-    {String Function(int)? minLengthMessage}) {
+    {String Function(int)? minLengthMsg}) {
   return (value) {
     // I think it makes more sense to say that scalar objects has length 1 instead of 0.
     int valueLength = 1;
@@ -468,14 +465,14 @@ Validator<T> minLength<T extends Object>(int minLength,
     if (value is Map) valueLength = value.length;
 
     return valueLength < minLength
-        ? minLengthMessage?.call(minLength) ??
+        ? minLengthMsg?.call(minLength) ??
             FormBuilderLocalizations.current.minLengthErrorText(minLength)
         : null;
   };
 }
 
 Validator<T> maxLength<T extends Object>(int maxLength,
-    {String Function(int)? maxLengthMessage}) {
+    {String Function(int)? maxLengthMsg}) {
   return (value) {
     // I think it makes more sense to say that scalar objects has length 1 instead of 0.
     int valueLength = 1;
@@ -485,7 +482,7 @@ Validator<T> maxLength<T extends Object>(int maxLength,
     if (value is Map) valueLength = value.length;
 
     return valueLength > maxLength
-        ? maxLengthMessage?.call(maxLength) ??
+        ? maxLengthMsg?.call(maxLength) ??
             FormBuilderLocalizations.current.maxLengthErrorText(maxLength)
         : null;
   };
@@ -495,7 +492,7 @@ Validator<T> maxLength<T extends Object>(int maxLength,
 Validator<T> max<T extends num>(T? max,
     {T Function()? dynMax,
     bool inclusive = true,
-    String Function(num)? maxMessage}) {
+    String Function(num)? maxMsg}) {
   assert(
     max != null && dynMax == null || max == null && dynMax != null,
     'Exactly one of the inputs must be null',
@@ -511,7 +508,7 @@ Validator<T> max<T extends num>(T? max,
 
     return (inclusive ? (value <= actualMax) : (value < actualMax))
         ? null
-        : maxMessage?.call(actualMax) ??
+        : maxMsg?.call(actualMax) ??
             FormBuilderLocalizations.current.maxErrorText(actualMax);
   };
 }
@@ -519,7 +516,7 @@ Validator<T> max<T extends num>(T? max,
 Validator<T> min<T extends num>(T? min,
     {T Function()? dynMin,
     bool inclusive = true,
-    String Function(num)? minMessage}) {
+    String Function(num)? minMsg}) {
   assert(
     min != null && dynMin == null || min == null && dynMin != null,
     'Exactly one of the inputs must be null',
@@ -535,13 +532,13 @@ Validator<T> min<T extends num>(T? min,
 
     return (inclusive ? (value >= actualMin) : (value > actualMin))
         ? null
-        : minMessage?.call(actualMin) ??
+        : minMsg?.call(actualMin) ??
             FormBuilderLocalizations.current.minErrorText(actualMin);
   };
 }
 
 Validator<T> greaterThan<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? greaterThanMessage]) {
+    [T Function()? dynN, String Function(num)? greaterThanMsg]) {
   assert(
     n != null && dynN == null || n == null && dynN != null,
     'Exactly one of the inputs must be null',
@@ -557,13 +554,13 @@ Validator<T> greaterThan<T extends num>(T? n,
     }
     return value > actualN
         ? null
-        : greaterThanMessage?.call(actualN) ??
+        : greaterThanMsg?.call(actualN) ??
             'Value must be greater than $actualN';
   };
 }
 
 Validator<T> greaterThanOrEqual<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? greaterThanOrEqualMessage]) {
+    [T Function()? dynN, String Function(num)? greaterThanOrEqualMsg]) {
   assert(
     n != null && dynN == null || n == null && dynN != null,
     'Exactly one of the inputs must be null',
@@ -579,13 +576,13 @@ Validator<T> greaterThanOrEqual<T extends num>(T? n,
     }
     return value >= actualN
         ? null
-        : greaterThanOrEqualMessage?.call(actualN) ??
+        : greaterThanOrEqualMsg?.call(actualN) ??
             'Value must be greater than or equal to $actualN';
   };
 }
 
 Validator<T> lessThan<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? lessThanMessage]) {
+    [T Function()? dynN, String Function(num)? lessThanMsg]) {
   assert(
     n != null && dynN == null || n == null && dynN != null,
     'Exactly one of the inputs must be null',
@@ -601,12 +598,12 @@ Validator<T> lessThan<T extends num>(T? n,
     }
     return value < actualN
         ? null
-        : lessThanMessage?.call(actualN) ?? 'Value must be less than $actualN';
+        : lessThanMsg?.call(actualN) ?? 'Value must be less than $actualN';
   };
 }
 
 Validator<T> lessThanOrEqual<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? lessThanOrEqualMessage]) {
+    [T Function()? dynN, String Function(num)? lessThanOrEqualMsg]) {
   assert(
     n != null && dynN == null || n == null && dynN != null,
     'Exactly one of the inputs must be null',
@@ -622,7 +619,7 @@ Validator<T> lessThanOrEqual<T extends num>(T? n,
     }
     return value <= actualN
         ? null
-        : lessThanOrEqualMessage?.call(actualN) ??
+        : lessThanOrEqualMsg?.call(actualN) ??
             'Value must be less than or equal to $actualN';
   };
 }
@@ -632,7 +629,7 @@ Validator<T> between<T extends num>(T? min, T? max,
     T Function()? dynMax,
     bool leftInclusive = true,
     bool rightInclusive = true,
-    String Function(num min, num max)? betweenMessage}) {
+    String Function(num min, num max)? betweenMsg}) {
   assert(
     min != null && dynMin == null || min == null && dynMin != null,
     'Exactly one of the min inputs must be null',
@@ -661,7 +658,7 @@ Validator<T> between<T extends num>(T? min, T? max,
     return (leftInclusive ? value >= actualMin : value > actualMin) &&
             (rightInclusive ? value <= actualMax : value < actualMax)
         ? null
-        : betweenMessage?.call(actualMin, actualMax) ??
+        : betweenMsg?.call(actualMin, actualMax) ??
             'Value must be greater than ${leftInclusive ? 'or equal to ' : ''}$actualMin and less than ${rightInclusive ? 'or equal to ' : ''}$actualMax';
   };
 }
@@ -676,7 +673,7 @@ const lessTE = lessThanOrEqual;
 /// boolean or a [String] parsable to a `true` boolean. If the input satisfies
 /// this condition, the validator returns `null`. Otherwise, it returns the
 /// default error message
-/// `FormBuilderLocalizations.current.mustBeTrueErrorText`, if [isTrueMessage]
+/// `FormBuilderLocalizations.current.mustBeTrueErrorText`, if [isTrueMsg]
 /// is not provided.
 ///
 /// # Parsing rules
@@ -698,7 +695,7 @@ const lessTE = lessThanOrEqual;
 /// assert(isTrue(caseSensitive:true)('TRue') != null);
 /// ```
 Validator<T> isTrue<T extends Object>(
-    {String? isTrueMessage, bool caseSensitive = false, bool trim = true}) {
+    {String? isTrueMsg, bool caseSensitive = false, bool trim = true}) {
   return (value) {
     final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
       value,
@@ -708,8 +705,7 @@ Validator<T> isTrue<T extends Object>(
     if (isValid && typeTransformedValue! == true) {
       return null;
     }
-    return isTrueMessage ??
-        FormBuilderLocalizations.current.mustBeTrueErrorText;
+    return isTrueMsg ?? FormBuilderLocalizations.current.mustBeTrueErrorText;
   };
 }
 
@@ -717,7 +713,7 @@ Validator<T> isTrue<T extends Object>(
 /// boolean or a [String] parsable to a `false` boolean. If the input satisfies
 /// this condition, the validator returns `null`. Otherwise, it returns the
 /// default error message
-/// `FormBuilderLocalizations.current.mustBeFalseErrorText`, if [isFalseMessage]
+/// `FormBuilderLocalizations.current.mustBeFalseErrorText`, if [isFalseMsg]
 /// is not provided.
 ///
 /// # Parsing rules
@@ -739,7 +735,7 @@ Validator<T> isTrue<T extends Object>(
 /// assert(isFalse(caseSensitive:true)('FAlse') != null);
 /// ```
 Validator<T> isFalse<T extends Object>(
-    {String? isFalseMessage, bool caseSensitive = false, bool trim = true}) {
+    {String? isFalseMsg, bool caseSensitive = false, bool trim = true}) {
   return (value) {
     final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
       value,
@@ -749,22 +745,21 @@ Validator<T> isFalse<T extends Object>(
     if (isValid && typeTransformedValue! == false) {
       return null;
     }
-    return isFalseMessage ??
-        FormBuilderLocalizations.current.mustBeFalseErrorText;
+    return isFalseMsg ?? FormBuilderLocalizations.current.mustBeFalseErrorText;
   };
 }
 
 // msg wrapper
-/// Replaces any inner message with [errorMessage]. It is useful for changing
+/// Replaces any inner message with [errorMsg]. It is useful for changing
 /// the message of direct validator implementations.
 Validator<T> overrideErrorMsg<T extends Object?>(
-  String errorMessage,
+  String errorMsg,
   Validator<T> v,
 ) {
   return (value) {
     final vErrorMessage = v(value);
     if (vErrorMessage != null) {
-      return errorMessage;
+      return errorMsg;
     }
     return null;
   };

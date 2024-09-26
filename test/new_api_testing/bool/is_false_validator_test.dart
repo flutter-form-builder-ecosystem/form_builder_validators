@@ -59,7 +59,7 @@ void main() {
         () {
       // Arrange
       final v.Validator<String> validator =
-          v.isFalse(isFalseMessage: customErrorMessage);
+          v.isFalse(isFalseMsg: customErrorMessage);
       const String value = 'not valid false';
 
       // Act
