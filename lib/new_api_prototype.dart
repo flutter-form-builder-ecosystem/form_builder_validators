@@ -224,6 +224,14 @@ final _lowerCaseRegex = RegExp('[a-z]');
 final _numericRegex = RegExp('[0-9]');
 final _specialRegex = RegExp('[^A-Za-z0-9]');
 
+/// Returns a [Validator] function that checks if its [String] input has at
+/// least [min] uppercase chars (A-Z). If the input satisfies this condition, the
+/// validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`, if
+/// [hasMinUppercaseCharsMessage] is not provided.
+///
+/// # Errors
+/// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinUppercaseChars({
   int min = 1,
   RegExp? regex,
@@ -239,6 +247,14 @@ Validator<String> hasMinUppercaseChars({
   };
 }
 
+/// Returns a [Validator] function that checks if its [String] input has at
+/// least [min] lowercase chars (a-z). If the input satisfies this condition, the
+/// validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.containsLowercaseCharErrorText(min)`, if
+/// [hasMinLowercaseCharsMessage] is not provided.
+///
+/// # Errors
+/// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinLowercaseChars({
   int min = 1,
   RegExp? regex,
@@ -254,6 +270,14 @@ Validator<String> hasMinLowercaseChars({
   };
 }
 
+/// Returns a [Validator] function that checks if its [String] input has at
+/// least [min] numeric chars (0-9). If the input satisfies this condition, the
+/// validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
+/// [hasMinNumericCharsMessage] is not provided.
+///
+/// # Errors
+/// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinNumericChars({
   int min = 1,
   RegExp? regex,
@@ -268,6 +292,14 @@ Validator<String> hasMinNumericChars({
   };
 }
 
+/// Returns a [Validator] function that checks if its [String] input has at
+/// least [min] special chars. If the input satisfies this condition, the
+/// validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.containsSpecialCharErrorText(min)`, if
+/// [hasMinSpecialCharsMessage] is not provided.
+///
+/// # Errors
+/// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinSpecialChars({
   int min = 1,
   RegExp? regex,
