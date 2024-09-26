@@ -138,7 +138,7 @@ class NewAPIHomePage extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.numeric(),
                 // To maintain the previous behavior, we use msg. Below, there is a more precise way of doing that.
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                     FormBuilderLocalizations.current.numericErrorText,
                     isReq(isNum(null))),
 
@@ -166,7 +166,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 //validator: FormBuilderValidators.email(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.emailErrorText,
                   isReq(email()),
                 ),
@@ -182,7 +182,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.url,
                 //validator: FormBuilderValidators.url(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.urlErrorText,
                   isReq(url()),
                 ),
@@ -197,7 +197,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.text_fields),
                 ),
                 //validator: FormBuilderValidators.minLength(5),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.minLengthErrorText(5),
                   isReq(minLength(5)),
                 ),
@@ -211,7 +211,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.text_fields),
                 ),
                 //validator: FormBuilderValidators.maxLength(10),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.maxLengthErrorText(5),
                   isReq(maxLength(5)),
                 ),
@@ -226,7 +226,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.min(10),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.minErrorText(10),
                   isReq(isNum(min(10))),
                 ),
@@ -241,7 +241,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.max(100),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.maxErrorText(100),
                   isReq(isNum(max(100))),
                 ),
@@ -266,7 +266,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.search),
                 ),
                 //validator: FormBuilderValidators.contains('test'),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.containsErrorText('test'),
                   isReq(contains('test')),
                 ),
@@ -281,7 +281,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 //validator:
                 //    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.matchErrorText,
                   isReq(match(RegExp(r'^[a-zA-Z0-9]+$'))),
                 ),
@@ -296,7 +296,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 // validator: FormBuilderValidators.ip(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.ipErrorText,
                   isReq(ip()),
                 ),
@@ -310,7 +310,7 @@ class NewAPIHomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.code),
                 ),
                 //validator: FormBuilderValidators.uuid(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.uuidErrorText,
                   isReq(uuid()),
                 ),
@@ -325,7 +325,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 //validator: FormBuilderValidators.creditCard(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.creditCardErrorText,
                   isReq(creditCard()),
                 ),
@@ -341,7 +341,7 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.phone,
                 //validator: FormBuilderValidators.phoneNumber(),
-                validator: replaceMsg(
+                validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.phoneErrorText,
                   isReq(phoneNumber()),
                 ),
