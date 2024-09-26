@@ -130,11 +130,14 @@ Validator<T> isNum<T extends Object>(Validator<num>? v,
 }
 
 Validator<T> isBool<T extends Object>(Validator<bool>? v,
-    {String? isBoolMessage}) {
+    {String? isBoolMessage, bool caseSensitive = false, bool trim = true}) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(value);
+    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(value,
+        caseSensitive: caseSensitive, trim: trim);
     if (!isValid) {
-      return isBoolMessage ?? FormBuilderLocalizations.current.numericErrorText;
+      // TODO(ArturAssisComp): Add the default error message for the isBool validator.
+      return isBoolMessage ??
+          'default bool error msg'; //FormBuilderLocalizations.current.boolErrorText;
     }
     return v?.call(typeTransformedValue!);
   }
@@ -142,12 +145,14 @@ Validator<T> isBool<T extends Object>(Validator<bool>? v,
   return finalValidator;
 }
 
-(bool, bool?) _isBoolValidateAndConvert<T extends Object>(T value) {
+(bool, bool?) _isBoolValidateAndConvert<T extends Object>(T value,
+    {bool caseSensitive = false, bool trim = true}) {
   if (value is bool) {
     return (true, value);
   }
   if (value is String) {
-    final bool? candidateValue = bool.tryParse(value.toLowerCase());
+    final bool? candidateValue = bool.tryParse(trim ? value.trim() : value,
+        caseSensitive: caseSensitive);
     if (candidateValue != null) {
       return (true, candidateValue);
     }
@@ -667,16 +672,92 @@ const lessT = lessThan;
 const lessTE = lessThanOrEqual;
 
 // bool validators
-String? isTrue(bool value) =>
-    value ? null : FormBuilderLocalizations.current.mustBeTrueErrorText;
+/// Returns a [Validator] function that checks if its `T` input is a `true`
+/// boolean or a [String] parsable to a `true` boolean. If the input satisfies
+/// this condition, the validator returns `null`. Otherwise, it returns the
+/// default error message
+/// `FormBuilderLocalizations.current.mustBeTrueErrorText`, if [isTrueMessage]
+/// is not provided.
+///
+/// # Parsing rules
+/// If the input of the validator is a [String], it will be parsed using
+/// the rules specified by the combination of [caseSensitive] and [trim].
+/// [caseSensitive] indicates whether the lowercase must be considered equal to
+/// uppercase or not, and [trim] indicates whether whitespaces from both sides
+/// of the string will be ignored or not.
+///
+/// The default behavior is to ignore leading and trailing whitespaces and be
+/// case insensitive.
+///
+/// # Examples
+/// ```dart
+/// // The following examples must pass:
+/// assert(isTrue()(' true ') == null);
+/// assert(isTrue(trim:false)(' true ') != null);
+/// assert(isTrue()('TRue') == null);
+/// assert(isTrue(caseSensitive:true)('TRue') != null);
+/// ```
+Validator<T> isTrue<T extends Object>(
+    {String? isTrueMessage, bool caseSensitive = false, bool trim = true}) {
+  return (value) {
+    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
+      value,
+      caseSensitive: caseSensitive,
+      trim: trim,
+    );
+    if (isValid && typeTransformedValue! == true) {
+      return null;
+    }
+    return isTrueMessage ??
+        FormBuilderLocalizations.current.mustBeTrueErrorText;
+  };
+}
 
-String? isFalse(bool value) =>
-    value ? FormBuilderLocalizations.current.mustBeFalseErrorText : null;
+/// Returns a [Validator] function that checks if its `T` input is a `false`
+/// boolean or a [String] parsable to a `false` boolean. If the input satisfies
+/// this condition, the validator returns `null`. Otherwise, it returns the
+/// default error message
+/// `FormBuilderLocalizations.current.mustBeFalseErrorText`, if [isFalseMessage]
+/// is not provided.
+///
+/// # Parsing rules
+/// If the input of the validator is a [String], it will be parsed using
+/// the rules specified by the combination of [caseSensitive] and [trim].
+/// [caseSensitive] indicates whether the lowercase must be considered equal to
+/// uppercase or not, and [trim] indicates whether whitespaces from both sides
+/// of the string will be ignored or not.
+///
+/// The default behavior is to ignore leading and trailing whitespaces and be
+/// case insensitive.
+///
+/// # Examples
+/// ```dart
+/// // The following examples must pass:
+/// assert(isFalse()(' false ') == null);
+/// assert(isFalse(trim:false)(' false ') != null);
+/// assert(isFalse()('FAlse') == null);
+/// assert(isFalse(caseSensitive:true)('FAlse') != null);
+/// ```
+Validator<T> isFalse<T extends Object>(
+    {String? isFalseMessage, bool caseSensitive = false, bool trim = true}) {
+  return (value) {
+    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
+      value,
+      caseSensitive: caseSensitive,
+      trim: trim,
+    );
+    if (isValid && typeTransformedValue! == false) {
+      return null;
+    }
+    return isFalseMessage ??
+        FormBuilderLocalizations.current.mustBeFalseErrorText;
+  };
+}
 
 // msg wrapper
-/// Replaces any inner message with [errorMessage]. It is useful also for changing
-/// the message of direct validator implementations, like [isTrue] or [isFalse].
-Validator<T> replaceErrorMessage<T extends Object?>(
+/// Replaces any inner message with [errorMessage]. It is useful for changing
+/// the message of direct validator implementations.
+Validator<T> overrideErrorMessage<T extends Object?>(
   String errorMessage,
   Validator<T> v,
 ) {
@@ -689,7 +770,7 @@ Validator<T> replaceErrorMessage<T extends Object?>(
   };
 }
 
-const replaceMsg = replaceErrorMessage;
+const replaceMsg = overrideErrorMessage;
 
 //******************************************************************************
 //*                              Aux functions                                 *
