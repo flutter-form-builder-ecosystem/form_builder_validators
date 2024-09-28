@@ -1,4 +1,3 @@
-import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -7,6 +6,9 @@ void main() {
 
   group('Validator: hasMinLowercaseChars', () {
     group('Validations with default error message', () {
+      String turkishLowercase = 'abcçdefgğhıijklmnoöprsştuüvyz';
+      String randomLowercase =
+          'b, æ, à, ø, ĉ, ĳ, ɣ, φ, ϋ, ϗ, ϧ, ѓ, ѽ, ծ, ⴌ, ḝ, ἄ, ⓜ, ⰲ, ⲫ, ａ, 𐑄';
       final List<({String input, bool isValid, int? minValue})> testCases =
           <({int? minValue, String input, bool isValid})>[
         (minValue: null, input: '', isValid: false),
@@ -23,6 +25,17 @@ void main() {
         (minValue: 2, input: 'PAssWORD123', isValid: true),
         (minValue: 2, input: 'Password123', isValid: true),
         (minValue: 4, input: 'Password123', isValid: true),
+        // Testing for non A-Z chars
+        (minValue: 1, input: 'ç', isValid: true),
+        (minValue: 1, input: 'Ç', isValid: false),
+        (minValue: 1, input: '123!@#\$%¨&*()_+`{}[]´^~/?:', isValid: false),
+        (minValue: 1, input: 'Aá12', isValid: true),
+        (minValue: 29, input: turkishLowercase, isValid: true),
+        (minValue: 30, input: turkishLowercase, isValid: false),
+        (minValue: 22, input: randomLowercase, isValid: true),
+        (minValue: 23, input: randomLowercase, isValid: false),
+        // Examples that does not work:
+        // (minValue: 3, input: 'ფ, ꟶ, 𐓀', isValid: true),
       ];
 
       for (final (
@@ -77,44 +90,24 @@ void main() {
       });
     });
 
+    test('Should pass with custom counter that identifies # as lowercase', () {
+      const String value = 'ABC#abc';
+      expect(
+          hasMinUppercaseChars(min: 4)(value),
+          equals(FormBuilderLocalizations.current
+              .containsUppercaseCharErrorText(4)));
+      expect(
+          hasMinUppercaseChars(
+              min: 4,
+              customUppercaseCounter: (String v) =>
+                  RegExp('[a-z#]').allMatches(v).length)(value),
+          isNull);
+    });
+
     test('Should throw assertion error when the min parameter is invalid', () {
       expect(() => hasMinLowercaseChars(min: -10), throwsAssertionError);
       expect(() => hasMinLowercaseChars(min: -1), throwsAssertionError);
       expect(() => hasMinLowercaseChars(min: 0), throwsAssertionError);
-    });
-
-    group('Custom Regex is provided', () {
-      test(
-          'should return the custom error message when using a custom regex and the value does not match',
-          () {
-        // Arrange
-        final Validator<String> validator = hasMinLowercaseChars(
-          // todo investigate the need for this argument.
-          regex: RegExp('[a-z]'),
-          hasMinLowercaseCharsMsg: (_) => customErrorMessage,
-        );
-        const String value = 'PASSWORD';
-
-        // Act
-        final String? result = validator(value);
-
-        // Assert
-        expect(result, equals(customErrorMessage));
-      });
-
-      test('should return null when using a custom regex and the value matches',
-          () {
-        // Arrange
-        final Validator<String> validator =
-            hasMinLowercaseChars(regex: RegExp('[a-z]'));
-        const String value = 'Password';
-
-        // Act
-        final String? result = validator(value);
-
-        // Assert
-        expect(result, isNull);
-      });
     });
   });
 }

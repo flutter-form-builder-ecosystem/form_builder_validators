@@ -1,4 +1,3 @@
-import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -7,6 +6,9 @@ void main() {
 
   group('Validator: hasMinUppercaseChars', () {
     group('Validations with default error message', () {
+      String turkishUpper = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ';
+      String randomUppercase =
+          'B, Æ, À, Ø, Ĉ, Ĳ, Ɣ, Φ, Ϋ, Ϗ, Ϧ, Ѓ, Ѽ, Ծ, Ⴌ, Ḝ, Ἄ, Ⓜ, Ⰲ, Ⲫ, Ａ, 𐐜';
       final List<({String input, bool isValid, int? minValue})> testCases =
           <({int? minValue, String input, bool isValid})>[
         (minValue: null, input: '', isValid: false),
@@ -27,21 +29,11 @@ void main() {
         (minValue: 1, input: 'ç', isValid: false),
         (minValue: 1, input: '123!@#\$%¨&*()_+`{}[]´^~/?:', isValid: false),
         (minValue: 1, input: 'aÁ12', isValid: true),
-        (minValue: 29, input: 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ', isValid: true),
-        (minValue: 30, input: 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ', isValid: false),
+        (minValue: 29, input: turkishUpper, isValid: true),
+        (minValue: 30, input: turkishUpper, isValid: false),
 
-        (
-          minValue: 22,
-          input:
-              'B, Æ, À, Ø, Ĉ, Ĳ, Ɣ, Φ, Ϋ, Ϗ, Ϧ, Ѓ, Ѽ, Ծ, Ⴌ, Ḝ, Ἄ, Ⓜ, Ⰲ, Ⲫ, Ａ, 𐐜',
-          isValid: true
-        ),
-        (
-          minValue: 23,
-          input:
-              'B, Æ, À, Ø, Ĉ, Ĳ, Ɣ, Φ, Ϋ, Ϗ, Ϧ, Ѓ, Ѽ, Ծ, Ⴌ, Ḝ, Ἄ, Ⓜ, Ⰲ, Ⲫ, Ａ, 𐐜',
-          isValid: false
-        ),
+        (minValue: 22, input: randomUppercase, isValid: true),
+        (minValue: 23, input: randomUppercase, isValid: false),
         // Examples that does not work:
         // (minValue: 3, input: 'Ფ, Ꟶ, 𐓀', isValid: true),
       ];

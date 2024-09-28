@@ -246,13 +246,14 @@ final _specialRegex = RegExp('[^A-Za-z0-9]');
 }
 
 /// Returns a [Validator] function that checks if its [String] input has at
-/// least [min] uppercase chars (any char affected by toLowerCase/toUpperCase
-/// String methods). If the input satisfies this condition, the validator
-/// returns `null`. Otherwise, it returns the default error message
+/// least [min] uppercase chars. If the input satisfies this condition, the
+/// validator returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`, if
 /// [hasMinUppercaseCharsMsg] is not provided.
 ///
 /// # Caveats
+/// - The only uppercase chars that are counted are those that are affected by
+/// String methods toLowerCase/toUpperCase and are in the uppercase state.
 /// - By default, the validator returned counts the uppercase chars using a
 /// language independent unicode mapping, which may not work for some languages.
 /// For that situations, the user can provide a custom uppercase counter
@@ -279,21 +280,32 @@ Validator<String> hasMinUppercaseChars({
 }
 
 /// Returns a [Validator] function that checks if its [String] input has at
-/// least [min] lowercase chars (a-z). If the input satisfies this condition, the
+/// least [min] lowercase chars. If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
-/// `FormBuilderLocalizations.current.containsLowercaseCharErrorText(min)`, if
+/// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`, if
 /// [hasMinLowercaseCharsMsg] is not provided.
+///
+/// # Caveats
+/// - The only lowercase chars that are counted are those that are affected by
+/// String methods toLowerCase/toUpperCase and are in the lowercase state.
+/// - By default, the validator returned counts the lowercase chars using a
+/// language independent unicode mapping, which may not work for some languages.
+/// For that situations, the user can provide a custom lowercase counter
+/// function.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinLowercaseChars({
   int min = 1,
-  RegExp? regex,
+  int Function(String)? customUppercaseCounter,
   String Function(int)? hasMinLowercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
-    return (regex ?? _lowerCaseRegex).allMatches(value).length >= min
+    var lowercaseCount = customUppercaseCounter?.call(value) ??
+        _upperAndLowerCaseCounter(value).lowerCount;
+
+    return lowercaseCount >= min
         ? null
         : hasMinLowercaseCharsMsg?.call(min) ??
             FormBuilderLocalizations.current
