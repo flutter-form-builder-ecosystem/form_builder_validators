@@ -222,7 +222,6 @@ Validator<String> password({
       : andValidator;
 }
 
-final _lowerCaseRegex = RegExp('[a-z]');
 final _numericRegex = RegExp('[0-9]');
 final _specialRegex = RegExp('[^A-Za-z0-9]');
 
@@ -297,12 +296,12 @@ Validator<String> hasMinUppercaseChars({
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinLowercaseChars({
   int min = 1,
-  int Function(String)? customUppercaseCounter,
+  int Function(String)? customLowercaseCounter,
   String Function(int)? hasMinLowercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
-    var lowercaseCount = customUppercaseCounter?.call(value) ??
+    var lowercaseCount = customLowercaseCounter?.call(value) ??
         _upperAndLowerCaseCounter(value).lowerCount;
 
     return lowercaseCount >= min
@@ -319,16 +318,29 @@ Validator<String> hasMinLowercaseChars({
 /// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
 /// [hasMinNumericCharsMsg] is not provided.
 ///
+///
+/// # Caveats
+/// - By default, the validator returned counts the numeric chars using the 0-9
+/// regexp rule, which may not work for some languages. For that situations, the
+/// user can provide a custom numeric counter function.
+///
+/// ```dart
+/// // countNumericDigits can be a function from some specific package.
+/// final validator = hasMinNumericChars(customNumericCounter:countNumericDigits);
+/// ```
+///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinNumericChars({
   int min = 1,
-  RegExp? regex,
+  int Function(String)? customNumericCounter,
   String Function(int)? hasMinNumericCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
-    return (regex ?? _numericRegex).allMatches(value).length >= min
+    final numericCount = customNumericCounter?.call(value) ??
+        _numericRegex.allMatches(value).length;
+    return numericCount >= min
         ? null
         : hasMinNumericCharsMsg?.call(min) ??
             FormBuilderLocalizations.current.containsNumberErrorText(min);

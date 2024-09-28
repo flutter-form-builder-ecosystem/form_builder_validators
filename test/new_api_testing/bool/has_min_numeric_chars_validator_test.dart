@@ -62,6 +62,20 @@ void main() {
       });
     });
 
+    test('Should pass when abcdef and ABCDEF is also considered numeric digits',
+        () {
+      const String s = '123aBc ijklm*';
+
+      expect(hasMinNumericChars(min: 6)(s),
+          equals(FormBuilderLocalizations.current.containsNumberErrorText(6)));
+      expect(
+          hasMinNumericChars(
+              min: 6,
+              customNumericCounter: (String v) =>
+                  RegExp('[0-9a-fA-F]').allMatches(v).length)(s),
+          isNull);
+    });
+
     test('Should throw assertion error when the min parameter is invalid', () {
       expect(() => hasMinNumericChars(min: -10), throwsAssertionError);
       expect(() => hasMinNumericChars(min: -1), throwsAssertionError);
