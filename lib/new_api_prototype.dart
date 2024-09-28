@@ -222,27 +222,55 @@ Validator<String> password({
       : andValidator;
 }
 
-final _upperCaseRegex = RegExp('[A-Z]');
 final _lowerCaseRegex = RegExp('[a-z]');
 final _numericRegex = RegExp('[0-9]');
 final _specialRegex = RegExp('[^A-Za-z0-9]');
 
+({int upperCount, int lowerCount}) _upperAndLowerCaseCounter(String value) {
+  var uppercaseCount = 0;
+  var lowercaseCount = 0;
+  final upperCaseVersion = value.toUpperCase();
+  final lowerCaseVersion = value.toLowerCase();
+  // initial version: 1.0
+  final o = value.runes.iterator;
+  final u = upperCaseVersion.runes.iterator;
+  final l = lowerCaseVersion.runes.iterator;
+  while (o.moveNext() && u.moveNext() && l.moveNext()) {
+    if (o.current == u.current && o.current != l.current) {
+      uppercaseCount++;
+    } else if (o.current != u.current && o.current == l.current) {
+      lowercaseCount++;
+    }
+  }
+  return (lowerCount: lowercaseCount, upperCount: uppercaseCount);
+}
+
 /// Returns a [Validator] function that checks if its [String] input has at
-/// least [min] uppercase chars (A-Z). If the input satisfies this condition, the
-/// validator returns `null`. Otherwise, it returns the default error message
+/// least [min] uppercase chars (any char affected by toLowerCase/toUpperCase
+/// String methods). If the input satisfies this condition, the validator
+/// returns `null`. Otherwise, it returns the default error message
 /// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`, if
 /// [hasMinUppercaseCharsMsg] is not provided.
+///
+/// # Caveats
+/// - By default, the validator returned counts the uppercase chars using a
+/// language independent unicode mapping, which may not work for some languages.
+/// For that situations, the user can provide a custom uppercase counter
+/// function.
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
 Validator<String> hasMinUppercaseChars({
   int min = 1,
-  RegExp? regex,
+  int Function(String)? customUppercaseCounter,
   String Function(int)? hasMinUppercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
-    return (regex ?? _upperCaseRegex).allMatches(value).length >= min
+    var uppercaseCount = customUppercaseCounter?.call(value) ??
+        _upperAndLowerCaseCounter(value).upperCount;
+
+    return uppercaseCount >= min
         ? null
         : hasMinUppercaseCharsMsg?.call(min) ??
             FormBuilderLocalizations.current

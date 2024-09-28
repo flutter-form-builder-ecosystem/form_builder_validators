@@ -22,6 +22,28 @@ void main() {
         (minValue: 2, input: 'IDL', isValid: true),
         (minValue: 2, input: 'passWOrd123', isValid: true),
         (minValue: 4, input: 'PASSWOrd123', isValid: true),
+        // Testing for non A-Z chars
+        (minValue: 1, input: 'Ç', isValid: true),
+        (minValue: 1, input: 'ç', isValid: false),
+        (minValue: 1, input: '123!@#\$%¨&*()_+`{}[]´^~/?:', isValid: false),
+        (minValue: 1, input: 'aÁ12', isValid: true),
+        (minValue: 29, input: 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ', isValid: true),
+        (minValue: 30, input: 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ', isValid: false),
+
+        (
+          minValue: 22,
+          input:
+              'B, Æ, À, Ø, Ĉ, Ĳ, Ɣ, Φ, Ϋ, Ϗ, Ϧ, Ѓ, Ѽ, Ծ, Ⴌ, Ḝ, Ἄ, Ⓜ, Ⰲ, Ⲫ, Ａ, 𐐜',
+          isValid: true
+        ),
+        (
+          minValue: 23,
+          input:
+              'B, Æ, À, Ø, Ĉ, Ĳ, Ɣ, Φ, Ϋ, Ϗ, Ϧ, Ѓ, Ѽ, Ծ, Ⴌ, Ḝ, Ἄ, Ⓜ, Ⰲ, Ⲫ, Ａ, 𐐜',
+          isValid: false
+        ),
+        // Examples that does not work:
+        // (minValue: 3, input: 'Ფ, Ꟶ, 𐓀', isValid: true),
       ];
 
       for (final (
@@ -76,6 +98,19 @@ void main() {
       });
     });
 
+    test('Should pass with custom counter that identifies # as uppercase', () {
+      const String value = 'ABC#abc';
+      expect(
+          hasMinUppercaseChars(min: 4)(value),
+          equals(FormBuilderLocalizations.current
+              .containsUppercaseCharErrorText(4)));
+      expect(
+          hasMinUppercaseChars(
+              min: 4,
+              customUppercaseCounter: (String v) =>
+                  RegExp('[A-Z#]').allMatches(v).length)(value),
+          isNull);
+    });
     test('Should throw assertion error when the min parameter is invalid', () {
       expect(() => hasMinUppercaseChars(min: -10), throwsAssertionError);
       expect(() => hasMinUppercaseChars(min: -1), throwsAssertionError);
