@@ -1,6 +1,6 @@
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:form_builder_validators/new_api_prototype.dart'
+import 'package:form_builder_validators/new_api_prototype/new_api_prototype.dart'
     show isReq, password;
 
 import 'package:flutter/material.dart';
