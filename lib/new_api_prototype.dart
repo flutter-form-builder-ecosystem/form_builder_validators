@@ -266,6 +266,7 @@ Validator<String> hasMinUppercaseChars({
   String Function(int)? hasMinUppercaseCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
+
   return (value) {
     var uppercaseCount = customUppercaseCounter?.call(value) ??
         _upperAndLowerCaseCounter(value).upperCount;
@@ -362,7 +363,12 @@ Validator<String> hasMinSpecialChars({
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
-    return (regex ?? _specialRegex).allMatches(value).length >= min
+    final (lowerCount: lowerCount, upperCount: upperCount) =
+        _upperAndLowerCaseCounter(value);
+    final specialCount = value.length -
+        (lowerCount + upperCount + RegExp('[0-9]').allMatches(value).length);
+
+    return specialCount >= min
         ? null
         : hasMinSpecialCharsMsg?.call(min) ??
             FormBuilderLocalizations.current.containsSpecialCharErrorText(min);

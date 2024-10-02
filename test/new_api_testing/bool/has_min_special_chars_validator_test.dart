@@ -2,12 +2,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
+  String turkishLowercase = 'abcçdefgğhıijklmnoöprsştuüvyz';
+  String randomAlphabeticalChars = 'bæàøĉĳɣφϋϗϧѓѽծⴌḝἄⓜⰲⲫａ';
   const String customErrorMessage = 'custom error message';
   group('Validator: hasMinSpecialCharsValidator', () {
     group('Validations with default error message', () {
       final List<({String input, bool isValid, int? minValue})> testCases =
           <({int? minValue, String input, bool isValid})>[
         (minValue: null, input: '', isValid: false),
+        (minValue: null, input: ' ', isValid: true),
         (minValue: null, input: 'D', isValid: false),
         (minValue: null, input: 'password', isValid: false),
         (minValue: 1, input: '*', isValid: true),
@@ -18,8 +21,13 @@ void main() {
         (minValue: 2, input: '==', isValid: true),
         (minValue: 2, input: '@_-', isValid: true),
         (minValue: 2, input: 'password13%%', isValid: true),
+        (minValue: 2, input: 'paççword13', isValid: false),
         (minValue: 2, input: 'Password123#@#', isValid: true),
         (minValue: 4, input: 'Pass0word123!!!!', isValid: true),
+        // Testing for non A-Z chars
+        (minValue: 1, input: 'ç', isValid: false),
+        (minValue: 1, input: randomAlphabeticalChars, isValid: false),
+        (minValue: 1, input: turkishLowercase, isValid: false),
       ];
 
       for (final (
