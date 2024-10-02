@@ -223,7 +223,6 @@ Validator<String> password({
 }
 
 final _numericRegex = RegExp('[0-9]');
-final _specialRegex = RegExp('[^A-Za-z0-9]');
 
 ({int upperCount, int lowerCount}) _upperAndLowerCaseCounter(String value) {
   var uppercaseCount = 0;
@@ -351,24 +350,43 @@ Validator<String> hasMinNumericChars({
 /// Returns a [Validator] function that checks if its [String] input has at
 /// least [min] special chars. If the input satisfies this condition, the
 /// validator returns `null`. Otherwise, it returns the default error message
-/// `FormBuilderLocalizations.current.containsSpecialCharErrorText(min)`, if
-/// [hasMinSpecialCharsMsg] is not provided.
+/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
+/// [hasMinNumericCharsMsg] is not provided.
+///
+///
+/// # Caveats
+/// - The default method for calculating special chars is to make the difference
+/// between the total number of chars and the sum of digits and alphabetical
+/// chars. The alphabetical chars are counted as those which are affected by
+/// the String methods toLowercase/toUppercase.
+/// - By default, the validator returned counts the special chars using a
+/// language independent unicode mapping, which may not work for some languages.
+/// For that situations, the user can provide a custom special counter
+/// function.
+///
+/// ```dart
+/// // US-ASCII special chars
+/// final validator = hasMinSpecialChars(customSpecialCounter:(v)=>RegExp('[^A-Za-z0-9]'));
+/// ```
 ///
 /// # Errors
 /// - Throws an [AssertionError] if [min] is not positive (< 1).
+///
+///
 Validator<String> hasMinSpecialChars({
   int min = 1,
-  RegExp? regex,
+  int Function(String)? customSpecialCounter,
   String Function(int)? hasMinSpecialCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
   return (value) {
+    // todo (optimize) avoid calculating _upperAndLowerCaseCounter when user provides customSpecialCounter
     final (lowerCount: lowerCount, upperCount: upperCount) =
         _upperAndLowerCaseCounter(value);
     final specialCount = value.length -
-        (lowerCount + upperCount + RegExp('[0-9]').allMatches(value).length);
+        (lowerCount + upperCount + _numericRegex.allMatches(value).length);
 
-    return specialCount >= min
+    return (customSpecialCounter?.call(value) ?? specialCount) >= min
         ? null
         : hasMinSpecialCharsMsg?.call(min) ??
             FormBuilderLocalizations.current.containsSpecialCharErrorText(min);
