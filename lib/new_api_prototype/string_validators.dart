@@ -1,7 +1,7 @@
 import '../localization/l10n.dart';
+import 'collection_validators.dart';
 import 'composition_validators.dart';
 import 'constants.dart';
-import 'generic_type_validators.dart';
 import 'override_error_msg.dart';
 
 const _minL = minLength;

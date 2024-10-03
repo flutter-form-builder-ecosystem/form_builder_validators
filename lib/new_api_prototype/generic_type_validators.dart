@@ -1,12 +1,21 @@
 import '../localization/l10n.dart';
 import 'constants.dart';
 
-Validator<T> containsElement<T extends Object>(
+/// Returns a [Validator] function that checks whether its input is in the
+/// provided list `values`. If the input is valid, the validator returns `null`,
+/// otherwise, it returns `containsElementMsg`, if provided, or
+/// `FormBuilderLocalizations.current.containsElementErrorText`.
+///
+/// # Errors
+/// - Throws an [AssertionError] if the input `values` is an empty list.
+Validator<T> containsElement<T extends Object?>(
   List<T> values, {
   String? containsElementMsg,
 }) {
+  assert(values.isNotEmpty, 'The list "values" may not be empty.');
+  final Set<T> setOfValues = values.toSet();
   return (T value) {
-    return values.contains(value)
+    return setOfValues.contains(value)
         ? null
         : containsElementMsg ??
             FormBuilderLocalizations.current.containsElementErrorText;

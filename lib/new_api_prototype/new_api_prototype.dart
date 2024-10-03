@@ -1,3 +1,4 @@
+export 'collection_validators.dart';
 export 'composition_validators.dart';
 export 'constants.dart';
 export 'generic_type_validators.dart';
