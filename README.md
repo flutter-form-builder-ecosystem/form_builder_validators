@@ -231,6 +231,7 @@ Validators support default `errorText` messages in these languages:
 - Korean (ko)
 - Khmer (km)
 - Lao (lo)
+- Latvian (lv)
 - Malay (ms)
 - Mongolian (mn)
 - Norwegian (no)
