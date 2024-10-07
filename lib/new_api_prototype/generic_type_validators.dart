@@ -60,7 +60,7 @@ Validator<T> isEqual<T extends Object?>(T value,
 /// ```
 Validator<T> isTrue<T extends Object>(
     {String? isTrueMsg, bool caseSensitive = false, bool trim = true}) {
-  return (value) {
+  return (T value) {
     final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
       value,
       caseSensitive: caseSensitive,
@@ -100,7 +100,7 @@ Validator<T> isTrue<T extends Object>(
 /// ```
 Validator<T> isFalse<T extends Object>(
     {String? isFalseMsg, bool caseSensitive = false, bool trim = true}) {
-  return (value) {
+  return (T value) {
     final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(
       value,
       caseSensitive: caseSensitive,

@@ -61,6 +61,50 @@ Validator<T> maxLength<T extends Object>(int maxLength,
   };
 }
 
+/// Temporary error message for `betweenLength` validator.
+String betweenLengthTemporaryErrorMessage(
+        {required int min, required int max}) =>
+    'Value must have a length that is between $min and $max, inclusive';
+
+/// Returns a [Validator] function that checks if its input has a length that is
+/// between `minLength` and `maxLength`, inclusive. If the input satisfies this
+/// condition, the validator returns `null`. Otherwise, it returns the default
+/// error message
+/// `FormBuilderLocalizations.current.betweenLengthErrorText(minLength, maxLength)`,
+/// if [betweenLengthMsg] is not provided.
+///
+/// # Caveats
+/// - Objects that are not collections are considered as collections with
+/// length 1.
+///
+/// # Errors
+/// - Throws [AssertionError] if `minLength` or `maxLength` are negative.
+/// - Throws [AssertionError] if `maxLength` is less than `minLength`.
+Validator<T> betweenLength<T extends Object>(
+  int minLength,
+  int maxLength, {
+  String Function({required int min, required int max})? betweenLengthMsg,
+}) {
+  assert(minLength >= 0, 'The "minLength" parameter may not be negative');
+  assert(maxLength >= minLength,
+      'The "maxLength" parameter must be greater than or equal to "minLength"');
+  return (T value) {
+    // I think it makes more sense to say that scalar objects has length 1 instead of 0.
+    int valueLength = 1;
+
+    if (value is String) valueLength = value.length;
+    if (value is Iterable) valueLength = value.length;
+    if (value is Map) valueLength = value.length;
+
+    return (valueLength < minLength || valueLength > maxLength)
+        ? betweenLengthMsg?.call(min: minLength, max: maxLength) ??
+            // TODO (ArturAssisComp): add the translated version of this message
+            // FormBuilderLocalizations.current.betweenLengthErrorText(maxLength)
+            betweenLengthTemporaryErrorMessage(min: minLength, max: maxLength)
+        : null;
+  };
+}
+
 /// Returns a [Validator] function that checks if its input has the length equals
 /// to the provided positional parameter `length`. If the input satisfies this
 /// condition, the validator returns `null`. Otherwise, it returns the default
