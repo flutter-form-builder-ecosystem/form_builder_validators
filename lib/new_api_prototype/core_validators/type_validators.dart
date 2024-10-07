@@ -1,7 +1,7 @@
 // Type validator:
 
-import '../localization/l10n.dart';
-import 'constants.dart';
+import '../../localization/l10n.dart';
+import '../constants.dart';
 
 Validator<T> isString<T extends Object>(Validator<String>? v,
     {String? isStringMsg}) {

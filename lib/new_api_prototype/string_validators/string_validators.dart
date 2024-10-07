@@ -1,8 +1,8 @@
-import '../localization/l10n.dart';
-import 'collection_validators.dart';
-import 'composition_validators.dart';
-import 'constants.dart';
-import 'override_error_msg.dart';
+import '../../localization/l10n.dart';
+import '../collection_validators.dart';
+import '../constants.dart';
+import '../core_validators/composition_validators.dart';
+import '../core_validators/override_error_msg.dart';
 
 const _minL = minLength;
 const _maxL = maxLength;

@@ -1,9 +1,9 @@
 export 'collection_validators.dart';
-export 'composition_validators.dart';
 export 'constants.dart';
+export 'core_validators/composition_validators.dart';
+export 'core_validators/override_error_msg.dart';
+export 'core_validators/required_validators.dart';
+export 'core_validators/type_validators.dart';
 export 'generic_type_validators.dart';
 export 'numeric_validators.dart';
-export 'override_error_msg.dart';
-export 'required_validators.dart';
-export 'string_validators.dart';
-export 'type_validators.dart';
+export 'string_validators/string_validators.dart';

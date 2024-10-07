@@ -1,4 +1,4 @@
-import 'constants.dart';
+import '../constants.dart';
 
 /// Replaces any inner message with [errorMsg]. It is useful for changing
 /// the message of direct validator implementations.
