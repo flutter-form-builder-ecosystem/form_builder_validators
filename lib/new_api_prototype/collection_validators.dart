@@ -18,9 +18,22 @@ Validator<T> minLength<T extends Object>(int minLength,
   };
 }
 
+/// Returns a [Validator] function that checks if its input has a length that is
+/// less than or equal to `maxLength`. If the input satisfies this condition,
+/// the validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.maxLengthErrorText(maxLength)`,
+/// if [maxLengthMsg] is not provided.
+///
+/// # Caveats
+/// - Objects that are not collections are considered as collections with
+/// length 1.
+///
+/// # Errors
+/// - Throws [AssertionError] if `maxLength` is negative.
 Validator<T> maxLength<T extends Object>(int maxLength,
     {String Function(int)? maxLengthMsg}) {
-  return (value) {
+  assert(maxLength >= 0, 'The "maxLength" parameter may not be negative');
+  return (T value) {
     // I think it makes more sense to say that scalar objects has length 1 instead of 0.
     int valueLength = 1;
 
