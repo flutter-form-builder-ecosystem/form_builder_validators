@@ -1,9 +1,22 @@
 import '../localization/l10n.dart';
 import 'constants.dart';
 
+/// Returns a [Validator] function that checks if its input has a length that is
+/// greater than or equal to `minLength`. If the input satisfies this condition,
+/// the validator returns `null`. Otherwise, it returns the default error message
+/// `FormBuilderLocalizations.current.minLengthErrorText(minLength)`,
+/// if [minLengthMsg] is not provided.
+///
+/// # Caveats
+/// - Objects that are not collections are considered as collections with
+/// length 1.
+///
+/// # Errors
+/// - Throws [AssertionError] if `minLength` is negative.
 Validator<T> minLength<T extends Object>(int minLength,
     {String Function(int)? minLengthMsg}) {
-  return (value) {
+  assert(minLength >= 0, 'The "minLength" parameter may not be negative');
+  return (T value) {
     // I think it makes more sense to say that scalar objects has length 1 instead of 0.
     int valueLength = 1;
 
