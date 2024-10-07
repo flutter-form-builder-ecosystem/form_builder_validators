@@ -5,6 +5,10 @@ import '../constants.dart';
 // Something like: FormBuilderLocalizations.current.andSeparator;
 const String andSeparatorTemporary = ' and ';
 
+// TODO (ArturAssisComp): add the translated 'or' separator error message.
+// Something like: FormBuilderLocalizations.current.orSeparator;
+const String orSeparatorTemporary = ' or ';
+
 /// This function returns a validator that is an AND composition of `validators`.
 /// The composition is done following the order of validators from `validators`.
 /// If `printErrorAsSoonAsPossible` is true, it prints the error of the first
@@ -47,16 +51,36 @@ Validator<T> and<T extends Object>(
   };
 }
 
-Validator<T> or<T extends Object>(List<Validator<T>> validators) {
+/// This function returns a validator that is an OR composition of `validators`.
+/// The composition is done following the order of validators from `validators`.
+/// The validator returns null as soon as a validator from the composition
+/// returns null. Otherwise, the failure message will be composed in the
+/// following way:
+/// '$prefix<msg1>$separator<msg2>$separator<msg3>...$separator<msgN>$suffix'.
+///
+/// # Parameters
+/// - String? `separator`: the separator of each validator failure message when
+/// all validators fail. By default, it is
+/// `FormBuilderLocalizations.current.orSeparator`,
+///
+/// # Errors
+/// - Throws [AssertionError] if `validators` is empty.
+Validator<T> or<T extends Object>(
+  List<Validator<T>> validators, {
+  String prefix = '',
+  String suffix = '',
+  String? separator,
+}) {
+  assert(validators.isNotEmpty, 'The input validators may not be empty.');
   return (T value) {
-    final errorMessageBuilder = <String>[];
-    for (final validator in validators) {
-      final errorMessage = validator(value);
+    final List<String> errorMessageBuilder = <String>[];
+    for (final Validator<T> validator in validators) {
+      final String? errorMessage = validator(value);
       if (errorMessage == null) {
         return null;
       }
       errorMessageBuilder.add(errorMessage);
     }
-    return errorMessageBuilder.join(' OR ');
+    return '$prefix${errorMessageBuilder.join(separator ?? orSeparatorTemporary)}$suffix';
   };
 }
