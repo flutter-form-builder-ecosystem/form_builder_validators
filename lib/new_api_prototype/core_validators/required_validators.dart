@@ -1,12 +1,19 @@
 import '../../localization/l10n.dart';
 import '../constants.dart';
 
-Validator<T?> isRequired<T extends Object>(
-  Validator<T>? v, {
+/// This function returns a transformer validator that checks if the user input
+/// is neither null nor empty, in the case it is a collection, a string or a map.
+/// If the condition was not satisfied, it returns the `isRequiredMsg` error message,
+/// if provided, or ´FormBuilderLocalizations.current.requiredErrorText´ otherwise.
+/// If the condition is satisfied, it returns the validation of the input with
+/// `v` or null if `v` was not provided.
+Validator<T?> isRequired<T extends Object>([
+  Validator<T>? v,
   String? isRequiredMsg,
-}) {
+]) {
   String? finalValidator(T? value) {
-    final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
+    final (bool isValid, T? transformedValue) =
+        _isRequiredValidateAndConvert(value);
     if (!isValid) {
       return isRequiredMsg ??
           FormBuilderLocalizations.current.requiredErrorText;
@@ -22,12 +29,13 @@ Validator<T?> isOptional<T extends Object>(
   String? isOptionalMsg,
 }) {
   String? finalValidator(T? value) {
-    final (isValid, transformedValue) = _isRequiredValidateAndConvert(value);
+    final (bool isValid, T? transformedValue) =
+        _isRequiredValidateAndConvert(value);
     if (!isValid) {
       // field not provided
       return null;
     }
-    final vErrorMessage = v?.call(transformedValue!);
+    final String? vErrorMessage = v?.call(transformedValue!);
     if (vErrorMessage == null) {
       return null;
     }
