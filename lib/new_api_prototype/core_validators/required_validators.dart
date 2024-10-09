@@ -1,12 +1,11 @@
 import '../../localization/l10n.dart';
 import '../constants.dart';
 
-/// This function returns a transformer validator that checks if the user input
-/// is neither null nor empty, in the case it is a collection, a string or a map.
-/// If the condition was not satisfied, it returns the `isRequiredMsg` error message,
-/// if provided, or ´FormBuilderLocalizations.current.requiredErrorText´ otherwise.
-/// If the condition is satisfied, it returns the validation of the input with
-/// `v` or null if `v` was not provided.
+/// This function generates a validator that enforces a required field rule. If
+/// the input is not provided (i.e., null or empty), the function returns an
+/// error message indicating that the field is required. If the input is
+/// provided, the function applies an additional validator v (if supplied) to
+/// further validate the input.
 Validator<T?> isRequired<T extends Object>([
   Validator<T>? v,
   String? isRequiredMsg,
@@ -24,10 +23,19 @@ Validator<T?> isRequired<T extends Object>([
   return finalValidator;
 }
 
-Validator<T?> isOptional<T extends Object>(
-  Validator<T>? v, {
-  String? isOptionalMsg,
-}) {
+String errorIsOptionalTemporary(String vErrorMessage) {
+  return 'The field is optional, otherwise, $vErrorMessage';
+}
+
+/// This function generates a validator that marks a field as optional. If the
+/// user input is not provided (i.e., it's null or empty), the validator will
+/// return null, indicating no validation error. If the input is provided, the
+/// function applies an additional validator v (if provided) to further validate
+/// the input.
+Validator<T?> isOptional<T extends Object>([
+  Validator<T>? v,
+  String Function(String)? isOptionalMsg,
+]) {
   String? finalValidator(T? value) {
     final (bool isValid, T? transformedValue) =
         _isRequiredValidateAndConvert(value);
@@ -40,7 +48,8 @@ Validator<T?> isOptional<T extends Object>(
       return null;
     }
 
-    return 'The field is optional, otherwise, $vErrorMessage';
+    return isOptionalMsg?.call(vErrorMessage) ??
+        errorIsOptionalTemporary(vErrorMessage);
   }
 
   return finalValidator;
