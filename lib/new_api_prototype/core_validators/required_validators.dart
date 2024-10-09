@@ -23,6 +23,13 @@ Validator<T?> isRequired<T extends Object>([
   return finalValidator;
 }
 
+/// This function returns a validator that validates the user input with `v`,
+/// replacing null/empty input with `defaultValue`.
+Validator<T?> validateWithDefault<T extends Object>(
+    T defaultValue, Validator<T> v) {
+  return (T? value) => v(value ?? defaultValue);
+}
+
 String errorIsOptionalTemporary(String vErrorMessage) {
   return 'The field is optional, otherwise, $vErrorMessage';
 }
