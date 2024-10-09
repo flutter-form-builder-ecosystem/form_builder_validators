@@ -86,5 +86,6 @@
   "vinErrorText": "Nilai mesti nombor VIN yang sah.",
   "languageCodeErrorText": "Nilai mesti kod bahasa yang sah.",
   "floatErrorText": "Nilai mesti nombor terapung sah.",
-  "hexadecimalErrorText": "Nilai mesti nombor heksadesimal sah."
+  "hexadecimalErrorText": "Nilai mesti nombor heksadesimal sah.",
+  "profanityErrorText": "Nilai tidak boleh mengandungi: {profanity}."
 }
