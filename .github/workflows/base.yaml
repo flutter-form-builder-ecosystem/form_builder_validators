@@ -33,7 +33,7 @@ jobs:
           paths: "**/*.md"
 
       - name: Get Flutter version by FVM
-        uses: kuhnroyal/flutter-fvm-config-action@v2
+        uses: kuhnroyal/flutter-fvm-config-action@v3
         id: fvm-config-action
         with:
           path: ".fvmrc"
@@ -89,7 +89,7 @@ jobs:
           fetch-depth: 1 # Use shallow clone for faster checkout
 
       - name: Get Flutter version by FVM
-        uses: kuhnroyal/flutter-fvm-config-action@v2
+        uses: kuhnroyal/flutter-fvm-config-action@v3
         id: fvm-config-action
         with:
           path: ".fvmrc"
@@ -134,7 +134,7 @@ jobs:
         uses: dart-lang/setup-dart@v1
 
       - name: Get Flutter version by FVM
-        uses: kuhnroyal/flutter-fvm-config-action@v2
+        uses: kuhnroyal/flutter-fvm-config-action@v3
         id: fvm-config-action
         with:
           path: ".fvmrc"
