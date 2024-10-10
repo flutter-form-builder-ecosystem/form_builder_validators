@@ -22,17 +22,6 @@ Validator<T> containsElement<T extends Object?>(
   };
 }
 
-Validator<T> isEqual<T extends Object?>(T value,
-    {String Function(String)? equalMsg}) {
-  return (input) {
-    final valueString = value.toString();
-    return value == input
-        ? null
-        : equalMsg?.call(valueString) ??
-            FormBuilderLocalizations.current.equalErrorText(valueString);
-  };
-}
-
 /// Returns a [Validator] function that checks if its `T` input is a `true`
 /// boolean or a [String] parsable to a `true` boolean. If the input satisfies
 /// this condition, the validator returns `null`. Otherwise, it returns the

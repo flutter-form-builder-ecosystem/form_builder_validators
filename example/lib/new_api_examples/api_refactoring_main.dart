@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-import 'localization/intl/app_localizations.dart';
-import 'override_form_builder_localizations_en.dart';
+import '../localization/intl/app_localizations.dart';
+import '../override_form_builder_localizations_en.dart';
 
 void main() {
   runApp(const MyApp());
