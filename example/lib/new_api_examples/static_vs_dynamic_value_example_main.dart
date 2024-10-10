@@ -43,88 +43,124 @@ class _HomePageState extends State<_HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Static vs Dynamic - Example')),
+      appBar: AppBar(
+          title: Text(
+              'Static vs Dynamic - Example (all the fields check if the input is equal to $referenceValue)')),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  IconButton(
-                      onPressed: () => setState(() {
-                            referenceValue--;
-                          }),
-                      icon: const Icon(Icons.remove)),
-                  Text(referenceValue.toString()),
-                  IconButton(
-                      onPressed: () => setState(() {
-                            referenceValue++;
-                          }),
-                      icon: const Icon(Icons.add)),
-                ],
-              ),
-              const SizedBox(height: 16),
-              const Text('With flutter form fields:'),
-              const SizedBox(height: 8),
-              TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'isEqual (static)'),
-                autovalidateMode: AutovalidateMode.always,
-                validator: isRequired(isInt(isEqual(referenceValue))),
-              ),
-              const SizedBox(height: 8),
-              TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'isEqual (dynamic)'),
-                autovalidateMode: AutovalidateMode.always,
-                validator: isRequired(
-                    isInt(isEqual(null, dynValue: () => referenceValue))),
-              ),
-              const SizedBox(height: 8),
-              TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'isEqual (old API)'),
-                autovalidateMode: AutovalidateMode.always,
-                validator:
-                    FormBuilderValidators.equal(referenceValue.toString()),
-              ),
-              const SizedBox(height: 16),
-              const Text('With flutter_form_builder:'),
-              const SizedBox(height: 8),
-              FormBuilder(
-                key: _formKey,
-                autovalidateMode: AutovalidateMode.always,
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                    onPressed: () => setState(() {
+                          referenceValue--;
+                        }),
+                    icon: const Icon(Icons.remove)),
+                Text(referenceValue.toString()),
+                IconButton(
+                    onPressed: () => setState(() {
+                          referenceValue++;
+                        }),
+                    icon: const Icon(Icons.add)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
-                  children: <Widget>[
+                  children: [
+                    const Text('With flutter TextFormField:'),
+                    TextFormField(
+                      decoration:
+                          const InputDecoration(labelText: 'isEqual (static)'),
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: isRequired(isInt(isEqual(referenceValue))),
+                    ),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      decoration:
+                          const InputDecoration(labelText: 'isEqual (dynamic)'),
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: isRequired(
+                          isInt(isEqual(null, dynValue: () => referenceValue))),
+                    ),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      decoration:
+                          const InputDecoration(labelText: 'isEqual (old API)'),
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: FormBuilderValidators.equal(
+                          referenceValue.toString()),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                        'With flutter_form_builder outside a FormBuilder:'),
                     FormBuilderTextField(
                       name: 'isEqual (static)',
+                      autovalidateMode: AutovalidateMode.always,
                       decoration:
                           const InputDecoration(labelText: 'isEqual (static)'),
                       validator: isRequired(isInt(isEqual(referenceValue))),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 5),
                     FormBuilderTextField(
                       name: 'isEqual (dynamic)',
+                      autovalidateMode: AutovalidateMode.always,
                       decoration:
                           const InputDecoration(labelText: 'isEqual (dynamic)'),
                       validator: isRequired(
                           isInt(isEqual(null, dynValue: () => referenceValue))),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 5),
                     FormBuilderTextField(
                       name: 'isEqual (old API)',
+                      autovalidateMode: AutovalidateMode.always,
                       decoration:
                           const InputDecoration(labelText: 'isEqual (old API)'),
                       validator: FormBuilderValidators.equal(
                           referenceValue.toString()),
                     ),
+                    const SizedBox(height: 8),
+                    const Text(
+                        'With flutter_form_builder inside a FormBuilder:'),
+                    FormBuilder(
+                      key: _formKey,
+                      autovalidateMode: AutovalidateMode.always,
+                      child: Column(
+                        children: <Widget>[
+                          FormBuilderTextField(
+                            name: 'isEqual (static)',
+                            decoration: const InputDecoration(
+                                labelText: 'isEqual (static)'),
+                            validator:
+                                isRequired(isInt(isEqual(referenceValue))),
+                          ),
+                          const SizedBox(height: 5),
+                          FormBuilderTextField(
+                            name: 'isEqual (dynamic)',
+                            decoration: const InputDecoration(
+                                labelText: 'isEqual (dynamic)'),
+                            validator: isRequired(isInt(
+                                isEqual(null, dynValue: () => referenceValue))),
+                          ),
+                          const SizedBox(height: 5),
+                          FormBuilderTextField(
+                            name: 'isEqual (old API)',
+                            decoration: const InputDecoration(
+                                labelText: 'isEqual (old API)'),
+                            validator: FormBuilderValidators.equal(
+                                referenceValue.toString()),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
