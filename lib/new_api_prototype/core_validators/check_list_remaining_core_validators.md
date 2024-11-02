@@ -1,0 +1,9 @@
+- [X] Aggregate validator (replaced by 'and' and 'or')
+- [X] Compose validator ('and' and 'or')
+- [X] Conditional validator ('validateIf' and 'skipIf')
+- [X] Log/debug validator ('debugPrint' validator)
+- [X] isEqual/isNotEqual validators 
+- [X] validate with default value validator
+- [X] Required/optional validators
+- [X] Add tests to override error msg validator
+- [ ] Transform validator
