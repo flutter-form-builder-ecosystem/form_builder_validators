@@ -81,14 +81,6 @@ class _HomePageState extends State<_HomePage> {
                     const SizedBox(height: 5),
                     TextFormField(
                       decoration:
-                          const InputDecoration(labelText: 'isEqual (dynamic)'),
-                      autovalidateMode: AutovalidateMode.always,
-                      validator: isRequired(
-                          isInt(isEqual(null, dynValue: () => referenceValue))),
-                    ),
-                    const SizedBox(height: 5),
-                    TextFormField(
-                      decoration:
                           const InputDecoration(labelText: 'isEqual (old API)'),
                       autovalidateMode: AutovalidateMode.always,
                       validator: FormBuilderValidators.equal(
@@ -103,15 +95,6 @@ class _HomePageState extends State<_HomePage> {
                       decoration:
                           const InputDecoration(labelText: 'isEqual (static)'),
                       validator: isRequired(isInt(isEqual(referenceValue))),
-                    ),
-                    const SizedBox(height: 5),
-                    FormBuilderTextField(
-                      name: 'isEqual (dynamic)',
-                      autovalidateMode: AutovalidateMode.always,
-                      decoration:
-                          const InputDecoration(labelText: 'isEqual (dynamic)'),
-                      validator: isRequired(
-                          isInt(isEqual(null, dynValue: () => referenceValue))),
                     ),
                     const SizedBox(height: 5),
                     FormBuilderTextField(
@@ -136,14 +119,6 @@ class _HomePageState extends State<_HomePage> {
                                 labelText: 'isEqual (static)'),
                             validator:
                                 isRequired(isInt(isEqual(referenceValue))),
-                          ),
-                          const SizedBox(height: 5),
-                          FormBuilderTextField(
-                            name: 'isEqual (dynamic)',
-                            decoration: const InputDecoration(
-                                labelText: 'isEqual (dynamic)'),
-                            validator: isRequired(isInt(
-                                isEqual(null, dynValue: () => referenceValue))),
                           ),
                           const SizedBox(height: 5),
                           FormBuilderTextField(
