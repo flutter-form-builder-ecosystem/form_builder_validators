@@ -6,4 +6,5 @@
 - [X] validate with default value validator
 - [X] Required/optional validators
 - [X] Add tests to override error msg validator
-- [ ] Transform validator
+- [ ] Type validators
+- [X] Transform validator
