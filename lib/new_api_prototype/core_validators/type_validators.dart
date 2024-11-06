@@ -32,13 +32,19 @@ Validator<T> isString<T extends Object>([
   return (false, null);
 }
 
-Validator<T> isInt<T extends Object>(Validator<int>? v, {String? isIntMsg}) {
+/// This function returns a validator that checks if the user input is either an
+/// `int` or a `String` that is parsable to an `int`.
+/// If it checks positive, then it returns null when `next` is not provided. Otherwise,
+/// if `next` is provided, it passes the transformed value as `int` to the `next`
+/// validator.
+Validator<T> isInt<T extends Object>([Validator<int>? next, String? isIntMsg]) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = _isIntValidateAndConvert(value);
+    final (bool isValid, int? typeTransformedValue) =
+        _isIntValidateAndConvert(value);
     if (!isValid) {
       return isIntMsg ?? FormBuilderLocalizations.current.integerErrorText;
     }
-    return v?.call(typeTransformedValue!);
+    return next?.call(typeTransformedValue!);
   }
 
   return finalValidator;
