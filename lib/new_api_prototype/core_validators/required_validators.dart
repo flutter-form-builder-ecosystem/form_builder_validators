@@ -4,10 +4,10 @@ import '../constants.dart';
 /// This function generates a validator that enforces a required field rule. If
 /// the input is not provided (i.e., null or empty), the function returns an
 /// error message indicating that the field is required. If the input is
-/// provided, the function applies an additional validator v (if supplied) to
+/// provided, the function applies an additional validator `next` (if supplied) to
 /// further validate the input.
 Validator<T?> isRequired<T extends Object>([
-  Validator<T>? v,
+  Validator<T>? next,
   String? isRequiredMsg,
 ]) {
   String? finalValidator(T? value) {
@@ -17,7 +17,7 @@ Validator<T?> isRequired<T extends Object>([
       return isRequiredMsg ??
           FormBuilderLocalizations.current.requiredErrorText;
     }
-    return v?.call(transformedValue!);
+    return next?.call(transformedValue!);
   }
 
   return finalValidator;
@@ -37,10 +37,10 @@ String errorIsOptionalTemporary(String vErrorMessage) {
 /// This function generates a validator that marks a field as optional. If the
 /// user input is not provided (i.e., it's null or empty), the validator will
 /// return null, indicating no validation error. If the input is provided, the
-/// function applies an additional validator v (if provided) to further validate
+/// function applies an additional validator `next` (if provided) to further validate
 /// the input.
 Validator<T?> isOptional<T extends Object>([
-  Validator<T>? v,
+  Validator<T>? next,
   String Function(String)? isOptionalMsg,
 ]) {
   String? finalValidator(T? value) {
@@ -50,7 +50,7 @@ Validator<T?> isOptional<T extends Object>([
       // field not provided
       return null;
     }
-    final String? vErrorMessage = v?.call(transformedValue!);
+    final String? vErrorMessage = next?.call(transformedValue!);
     if (vErrorMessage == null) {
       return null;
     }

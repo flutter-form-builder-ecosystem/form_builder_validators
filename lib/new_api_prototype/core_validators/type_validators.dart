@@ -3,14 +3,23 @@
 import '../../localization/l10n.dart';
 import '../constants.dart';
 
-Validator<T> isString<T extends Object>(Validator<String>? v,
-    {String? isStringMsg}) {
+const tmpIsStringMsg = 'This field requires a valid string.';
+
+/// This function returns a validator that checks if the user input is a `String`.
+/// If it is a `String`, then it returns null when `next` is not provided. Otherwise,
+/// if `next` is provided, it passes the transformed value as `String` to the `next`
+/// validator.
+Validator<T> isString<T extends Object>([
+  Validator<String>? next,
+  String? isStringMsg,
+]) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = _isStringValidateAndConvert(value);
+    final (bool isValid, String? typeTransformedValue) =
+        _isStringValidateAndConvert(value);
     if (!isValid) {
-      return isStringMsg ?? 'This field requires a valid string.';
+      return isStringMsg ?? tmpIsStringMsg;
     }
-    return v?.call(typeTransformedValue!);
+    return next?.call(typeTransformedValue!);
   }
 
   return finalValidator;
