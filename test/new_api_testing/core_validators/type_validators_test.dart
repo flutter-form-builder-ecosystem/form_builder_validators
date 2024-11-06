@@ -7,6 +7,7 @@ void main() {
       input.length > 3 ? null : errorMsg;
   String? isEven(int input) => input % 2 == 0 ? null : errorMsg;
   String? greaterThan9(num input) => input > 9 ? null : errorMsg;
+  String? isT(bool input) => input ? null : errorMsg;
 
   group('Validator: isString', () {
     test('Should only check if the input is a String', () {
@@ -113,6 +114,61 @@ void main() {
       expect(v('not num'), equals(customError));
       expect(v('23'), isNull);
       expect(v(-23.34), isNull);
+    });
+  });
+
+  group('Validator: isBool', () {
+    test('Should only check if the input is a bool/parsable to bool', () {
+      // defaults to case insensitive and trim
+      final Validator<Object> v = isBool();
+
+      expect(v('not a bool'), equals(tmpIsBoolMsg));
+      expect(v('T'), equals(tmpIsBoolMsg));
+      expect(v('isTrue'), equals(tmpIsBoolMsg));
+      expect(v('true.'), equals(tmpIsBoolMsg));
+      expect(v('true true'), equals(tmpIsBoolMsg));
+      expect(v(true), isNull);
+      expect(v(1 > 2), isNull);
+      expect(v(false), isNull);
+      expect(v('True'), isNull);
+      expect(v('TrUe'), isNull);
+      expect(v(' true'), isNull);
+      expect(v('true\n'), isNull);
+    });
+    test(
+        'Should only check if the input is a bool/parsable to bool without trim and with case sensitiveness',
+        () {
+      final Validator<Object> v = isBool(null, null, true, false);
+
+      expect(v('not a bool'), equals(tmpIsBoolMsg));
+      expect(v('T'), equals(tmpIsBoolMsg));
+      expect(v('isTrue'), equals(tmpIsBoolMsg));
+      expect(v('true.'), equals(tmpIsBoolMsg));
+      expect(v(true), isNull);
+      expect(v(1 > 2), isNull);
+      expect(v(false), isNull);
+      expect(v('True'), equals(tmpIsBoolMsg));
+      expect(v('TrUe'), equals(tmpIsBoolMsg));
+      expect(v(' true'), equals(tmpIsBoolMsg));
+      expect(v('true\n'), equals(tmpIsBoolMsg));
+    });
+    test('Should check if the input is true', () {
+      final Validator<Object> v = isBool(isT);
+
+      expect(v('not a bool'), equals(tmpIsBoolMsg));
+      expect(v(true), isNull);
+      expect(v(1 > 2), equals(errorMsg));
+      expect(v(false), equals(errorMsg));
+      expect(v('False'), equals(errorMsg));
+      expect(v('fAlSE   \n '), equals(errorMsg));
+    });
+    test('Should check if the input is a bool using custom error', () {
+      const String customError = 'custom error';
+      final Validator<Object> v = isBool(null, customError);
+
+      expect(v('not num'), equals(customError));
+      expect(v(true), isNull);
+      expect(v(false), isNull);
     });
   });
 }

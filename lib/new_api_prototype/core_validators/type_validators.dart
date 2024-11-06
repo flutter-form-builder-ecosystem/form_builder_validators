@@ -94,17 +94,37 @@ Validator<T> isNum<T extends Object>([Validator<num>? next, String? isNumMsg]) {
   return (false, null);
 }
 
-Validator<T> isBool<T extends Object>(Validator<bool>? v,
-    {String? isBoolMsg, bool caseSensitive = false, bool trim = true}) {
+const tmpIsBoolMsg = 'Value must be "true" or "false"';
+
+/// This function returns a validator that checks if the user input is either a
+/// `bool` or a `String` that is parsable to a `bool`.
+/// If it checks positive, then it returns null when `next` is not provided. Otherwise,
+/// if `next` is provided, it passes the transformed value as `bool` to the `next`
+/// validator.
+///
+/// ## Parameters
+/// For the following parameters, consider the information that the parsing process
+/// only happens if the input is a `String`.
+/// - `caseSensitive` (defaults to `false`): whether the parsing process is case
+/// sensitive. If true, inputs like `FaLsE` would be accepted as a valid boolean.
+/// - `trim` (defaults to `true`): whether the parsing process is preceded by a
+/// trim of whitespaces (`\n`, `\t`, `' '`, etc). If true, inputs like `false \n` would
+/// be accepted as valid `bool`.
+Validator<T> isBool<T extends Object>(
+    [Validator<bool>? next,
+    String? isBoolMsg,
+    bool caseSensitive = false,
+    bool trim = true]) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = _isBoolValidateAndConvert(value,
-        caseSensitive: caseSensitive, trim: trim);
+    final (bool isValid, bool? typeTransformedValue) =
+        _isBoolValidateAndConvert(value,
+            caseSensitive: caseSensitive, trim: trim);
     if (!isValid) {
       // TODO(ArturAssisComp): Add the default error message for the isBool validator.
       return isBoolMsg ??
-          'default bool error msg'; //FormBuilderLocalizations.current.boolErrorText;
+          tmpIsBoolMsg; //FormBuilderLocalizations.current.boolErrorText;
     }
-    return v?.call(typeTransformedValue!);
+    return next?.call(typeTransformedValue!);
   }
 
   return finalValidator;
