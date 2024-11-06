@@ -63,13 +63,19 @@ Validator<T> isInt<T extends Object>([Validator<int>? next, String? isIntMsg]) {
   return (false, null);
 }
 
-Validator<T> isNum<T extends Object>(Validator<num>? v, {String? isNumMsg}) {
+/// This function returns a validator that checks if the user input is either a
+/// `num` or a `String` that is parsable to a `num`.
+/// If it checks positive, then it returns null when `next` is not provided. Otherwise,
+/// if `next` is provided, it passes the transformed value as `num` to the `next`
+/// validator.
+Validator<T> isNum<T extends Object>([Validator<num>? next, String? isNumMsg]) {
   String? finalValidator(T value) {
-    final (isValid, typeTransformedValue) = _isNumValidateAndConvert(value);
+    final (bool isValid, num? typeTransformedValue) =
+        _isNumValidateAndConvert(value);
     if (!isValid) {
       return isNumMsg ?? FormBuilderLocalizations.current.numericErrorText;
     }
-    return v?.call(typeTransformedValue!);
+    return next?.call(typeTransformedValue!);
   }
 
   return finalValidator;

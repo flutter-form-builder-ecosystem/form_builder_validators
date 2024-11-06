@@ -6,6 +6,7 @@ void main() {
   String? hasLengthGreaterThan3(String input) =>
       input.length > 3 ? null : errorMsg;
   String? isEven(int input) => input % 2 == 0 ? null : errorMsg;
+  String? greaterThan9(num input) => input > 9 ? null : errorMsg;
 
   group('Validator: isString', () {
     test('Should only check if the input is a String', () {
@@ -50,6 +51,8 @@ void main() {
       expect(v('123'), isNull);
       expect(v('1'), isNull);
       expect(v(24), isNull);
+      expect(v(1 + 1), isNull);
+      expect(v(1 ~/ 1), isNull);
       expect(v(-24), isNull);
       expect(v('-0'), isNull);
     });
@@ -69,6 +72,47 @@ void main() {
       expect(v('not int'), equals(customError));
       expect(v('23'), isNull);
       expect(v(23), isNull);
+    });
+  });
+
+  group('Validator: isNum', () {
+    test('Should only check if the input is a num/parsable to num', () {
+      final Validator<Object> v = isNum();
+
+      expect(v('not an num'),
+          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+          v('1-3'), equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+          v(true), equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(v('123.0'), isNull);
+      expect(v('123'), isNull);
+      expect(v('1'), isNull);
+      expect(v('1e3'), isNull);
+      expect(v(24 / 3), isNull);
+      expect(v(24), isNull);
+      expect(v(-24), isNull);
+      expect(v('-0'), isNull);
+    });
+    test('Should check if the input is an numeric greater than 9', () {
+      final Validator<Object> v = isNum(greaterThan9);
+
+      expect(v('not an int'),
+          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(v('1234'), isNull);
+      expect(v(10), isNull);
+      expect(v(9), equals(errorMsg));
+      expect(v(8), equals(errorMsg));
+      expect(v(-4), equals(errorMsg));
+      expect(v('-1234'), equals(errorMsg));
+    });
+    test('Should check if the input is a num using custom error', () {
+      const String customError = 'custom error';
+      final Validator<Object> v = isNum(null, customError);
+
+      expect(v('not num'), equals(customError));
+      expect(v('23'), isNull);
+      expect(v(-23.34), isNull);
     });
   });
 }
