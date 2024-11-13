@@ -144,3 +144,45 @@ Validator<T> isBool<T extends Object>(
   }
   return (false, null);
 }
+
+/// This function returns a validator that checks if the user input is either a `DateTime`
+/// or a parsable String to `DateTime`.
+/// If it checks positive, then it returns null when `next` is not provided.
+/// Otherwise, if `next` is provided, it passes the transformed value as `String`
+/// to the `next` validator.
+///
+/// ## Caveats
+/// - If the user input is a String, the validator tries to parse it using the
+/// [DateTime.tryParse] method (which parses a subset of ISO 8601 date specifications),
+/// thus, it cannot be adapted to parse only some specific DateTime pattern.
+Validator<T> isDateTime<T extends Object>([
+  Validator<DateTime>? next,
+  String? isDateTimeMsg,
+]) {
+  String? finalValidator(T value) {
+    final (bool isValid, DateTime? typeTransformedValue) =
+        _isDateTimeValidateAndConvert(value);
+    if (!isValid) {
+      return isDateTimeMsg ??
+          // This error text is not 100% correct for this validator. It also validates non-Strings.
+          FormBuilderLocalizations.current.dateStringErrorText;
+    }
+    return next?.call(typeTransformedValue!);
+  }
+
+  return finalValidator;
+}
+
+(bool, DateTime?) _isDateTimeValidateAndConvert<T extends Object>(T value) {
+  if (value is DateTime) {
+    return (true, value);
+  }
+
+  if (value is String) {
+    final DateTime? transformedValue = DateTime.tryParse(value);
+    if (transformedValue != null) {
+      return (true, transformedValue);
+    }
+  }
+  return (false, null);
+}

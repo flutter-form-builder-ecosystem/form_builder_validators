@@ -54,7 +54,7 @@ class NewAPIHomePage extends StatelessWidget {
                 validator:
                     FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   isReq(
-                    isNum(max(70), isNumMsg: 'La edad debe ser numérica.'),
+                    isNum(max(70), 'La edad debe ser numérica.'),
                   ),
 
                   /// Include your own custom `FormFieldValidator` function, if you want
@@ -112,7 +112,7 @@ class NewAPIHomePage extends StatelessWidget {
                         return null;
                       },
                     ]),
-                    isNumMsg: 'La edad debe ser numérica.',
+                    'La edad debe ser numérica.',
                   ),
                 ),
               ),

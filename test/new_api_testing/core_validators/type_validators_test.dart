@@ -8,6 +8,8 @@ void main() {
   String? isEven(int input) => input % 2 == 0 ? null : errorMsg;
   String? greaterThan9(num input) => input > 9 ? null : errorMsg;
   String? isT(bool input) => input ? null : errorMsg;
+  String? isLaterThan1995(DateTime input) =>
+      input.year > 1995 ? null : errorMsg;
 
   group('Validator: isString', () {
     test('Should only check if the input is a String', () {
@@ -169,6 +171,111 @@ void main() {
       expect(v('not num'), equals(customError));
       expect(v(true), isNull);
       expect(v(false), isNull);
+    });
+  });
+
+  group('Validator: isDateTime', () {
+    test('Should only check if the input is an DateTime/parsable to DateTime',
+        () {
+      final Validator<Object> v = isDateTime();
+
+      expect(v('not an DateTime'),
+          equals(FormBuilderLocalizations.current.dateStringErrorText));
+      expect(v('1/2.0/2023.0'),
+          equals(FormBuilderLocalizations.current.dateStringErrorText));
+      expect(v(123.0),
+          equals(FormBuilderLocalizations.current.dateStringErrorText));
+
+      expect(
+        v('1992-04-20'),
+        isNull,
+        reason: 'Valid date in YYYY-MM-DD format (1992-04-20)',
+      );
+      expect(
+        v('2012-02-27'),
+        isNull,
+        reason: 'Valid date in YYYY-MM-DD format (2012-02-27)',
+      );
+      expect(
+        v('2012-02-27 13:27:00'),
+        isNull,
+        reason: 'Valid datetime with time in YYYY-MM-DD HH:MM:SS format',
+      );
+      expect(
+        v('2012-02-27 13:27:00.123456789z'),
+        isNull,
+        reason: 'Valid datetime with fractional seconds and Z suffix',
+      );
+      expect(
+        v('2012-02-27 13:27:00,123456789z'),
+        isNull,
+        reason:
+            'Valid datetime with fractional seconds using comma and Z suffix',
+      );
+      expect(
+        v('20120227 13:27:00'),
+        isNull,
+        reason: 'Valid compact date and time in YYYYMMDD HH:MM:SS format',
+      );
+      expect(
+        v('20120227T132700'),
+        isNull,
+        reason:
+            'Valid compact datetime with T separator in YYYYMMDDTHHMMSS format',
+      );
+      expect(
+        v('20120227'),
+        isNull,
+        reason: 'Valid compact date in YYYYMMDD format',
+      );
+      expect(
+        v('+20120227'),
+        isNull,
+        reason: 'Valid date with plus sign in +YYYYMMDD format',
+      );
+      expect(
+        v('2012-02-27T14Z'),
+        isNull,
+        reason: 'Valid datetime with time and Z suffix',
+      );
+      expect(
+        v('2012-02-27T14+00:00'),
+        isNull,
+        reason: 'Valid datetime with time and timezone offset +00:00',
+      );
+      expect(
+        v('-123450101 00:00:00 Z'),
+        isNull,
+        reason: 'Valid historical date with negative year -12345 and Z suffix',
+      );
+      expect(
+        v('2002-02-27T14:00:00-0500'),
+        isNull,
+        reason:
+            'Valid datetime with timezone offset -0500, equivalent to "2002-02-27T19:00:00Z"',
+      );
+      expect(
+        v(DateTime.now()),
+        isNull,
+        reason: 'Current DateTime object is valid',
+      );
+    });
+    test('Should check if the input is a DateTime with year later than 1995',
+        () {
+      final Validator<Object> v = isDateTime(isLaterThan1995);
+
+      expect(v('not a datetime'),
+          equals(FormBuilderLocalizations.current.dateStringErrorText));
+      expect(v('12330803'), equals(errorMsg));
+    });
+
+    test('Should check if the input is a DateTime using custom error', () {
+      const String customError = 'custom error';
+      final Validator<Object> v = isDateTime(null, customError);
+
+      expect(v('not datetime'), equals(customError));
+      expect(v('1289-02-12'), isNull);
+      expect(v(DateTime(1990)), isNull);
     });
   });
 }
