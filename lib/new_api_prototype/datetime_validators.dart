@@ -22,8 +22,8 @@ Validator<DateTime> isAfter(
 }
 
 /// This function returns a validator that checks if the user [DateTime] input is
-/// in the future. If the checking results true, the validator returns `null`.
-/// Otherwise, it returns `isInTheFutureMsg`, if provided, or
+/// in the future (after [DateTime.now]). If the checking results true, the validator
+/// returns `null`. Otherwise, it returns `isInTheFutureMsg`, if provided, or
 /// `FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText`.
 Validator<DateTime> isInTheFuture({
   String? isInTheFutureMsg,
@@ -54,6 +54,21 @@ Validator<DateTime> isBefore(
             (inclusive ? value.isAtSameMomentAs(reference) : false)
         ? null
         : isBeforeMsg?.call(reference) ?? tmpIsBeforeErrorMsg(reference);
+  };
+}
+
+/// This function returns a validator that checks if the user [DateTime] input is
+/// in the past (before [DateTime.now]). If the checking results true, the validator
+/// returns `null`. Otherwise, it returns `isInThePastMsg`, if provided, or
+/// `FormBuilderLocalizations.current.dateMustBeInThePastErrorText`.
+Validator<DateTime> isInThePast({
+  String? isInThePastMsg,
+}) {
+  return (DateTime value) {
+    return value.isBefore(DateTime.now())
+        ? null
+        : isInThePastMsg ??
+            FormBuilderLocalizations.current.dateMustBeInThePastErrorText;
   };
 }
 
