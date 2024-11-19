@@ -40,3 +40,33 @@ Validator<DateTime> isBefore(
         : isBeforeMsg?.call(reference) ?? tmpIsBeforeErrorMsg(reference);
   };
 }
+
+String tmpIsDateTimeBetweenErrorMsg(DateTime left, DateTime right) {
+  return 'The date must be after ${left.toLocal()} and before ${right.toLocal()}';
+}
+
+/// This function returns a validator that checks if the user [DateTime] input is
+/// between `leftReference` and `rightReference` [DateTime]s. If the checking results
+/// true, the validator returns `null`. Otherwise, it returns `isDateTimeBetweenMsg`, if
+/// provided, or `FormBuilderLocalizations.current.isDateTimeBetweenErrorText`.
+Validator<DateTime> isDateTimeBetween(
+  DateTime leftReference,
+  DateTime rightReference, {
+  String Function(DateTime, DateTime)? isDateTimeBetweenMsg,
+  bool leftInclusive = false,
+  bool rightInclusive = false,
+}) {
+  assert(leftReference.isBefore(rightReference),
+      'leftReference must be before rightReference');
+  return (DateTime value) {
+    return (value.isBefore(rightReference) ||
+                (rightInclusive
+                    ? value.isAtSameMomentAs(rightReference)
+                    : false)) &&
+            (value.isAfter(leftReference) ||
+                (leftInclusive ? value.isAtSameMomentAs(leftReference) : false))
+        ? null
+        : isDateTimeBetweenMsg?.call(leftReference, rightReference) ??
+            tmpIsDateTimeBetweenErrorMsg(leftReference, rightReference);
+  };
+}
