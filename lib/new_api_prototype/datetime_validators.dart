@@ -1,3 +1,4 @@
+import '../localization/l10n.dart';
 import 'constants.dart';
 
 String tmpIsAfterErrorMsg(DateTime reference) =>
@@ -17,6 +18,21 @@ Validator<DateTime> isAfter(
             (inclusive ? value.isAtSameMomentAs(reference) : false)
         ? null
         : isAfterMsg?.call(reference) ?? tmpIsAfterErrorMsg(reference);
+  };
+}
+
+/// This function returns a validator that checks if the user [DateTime] input is
+/// in the future. If the checking results true, the validator returns `null`.
+/// Otherwise, it returns `isInTheFutureMsg`, if provided, or
+/// `FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText`.
+Validator<DateTime> isInTheFuture({
+  String? isInTheFutureMsg,
+}) {
+  return (DateTime value) {
+    return value.isAfter(DateTime.now())
+        ? null
+        : isInTheFutureMsg ??
+            FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText;
   };
 }
 
