@@ -137,7 +137,7 @@ void main() {
         'Should accept files with extension ".abc" or ".a.b.d" or "" with custom message',
         () {
       final List<String> extensions = <String>['.abc', '.a.b.c', ''];
-      final String errorMsg = 'custom error message';
+      const String errorMsg = 'custom error message';
       final Validator<String> v = matchesAllowedExtensions(extensions,
           matchesAllowedExtensionsMsg: (_) => errorMsg);
 
