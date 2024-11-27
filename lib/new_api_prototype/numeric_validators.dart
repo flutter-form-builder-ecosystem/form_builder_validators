@@ -5,7 +5,9 @@ String greaterThanTmpMsg(num n) => 'Value must be greater than $n';
 
 /// This function returns a validator that checks whether the user input is greater
 /// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
-/// returns an error message. The error message is
+/// returns an error message. The error message is `greaterThanMsg`, or
+/// `FormBuilderLocalizations.current.greaterThan(n)` if `betweenMsg`
+/// was not provided.
 Validator<T> greaterThan<T extends num>(T n,
     {String Function(num)? greaterThanMsg}) {
   return (T value) {
@@ -13,25 +15,20 @@ Validator<T> greaterThan<T extends num>(T n,
   };
 }
 
-Validator<T> greaterThanOrEqual<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? greaterThanOrEqualMsg]) {
-  assert(
-    n != null && dynN == null || n == null && dynN != null,
-    'Exactly one of the inputs must be null',
-  );
-  return (value) {
-    final T actualN;
-    if (n != null) {
-      actualN = n;
-    } else if (dynN != null) {
-      actualN = dynN();
-    } else {
-      throw TypeError();
-    }
-    return value >= actualN
+String greaterThanOrEqualToTmpMsg(num n) =>
+    'Value must be greater than or equal to $n';
+
+/// This function returns a validator that checks whether the user input is greater
+/// than or equal to `n`. If the input is valid, the validator returns `null`. Otherwise, it
+/// returns an error message. The error message is `greaterThanOrEqualMsg`, or
+/// `FormBuilderLocalizations.current.greaterThanOrEqualTo(n)` if `betweenMsg`
+/// was not provided.
+Validator<T> greaterThanOrEqualTo<T extends num>(T n,
+    {String Function(num)? greaterThanOrEqualToMsg}) {
+  return (T value) {
+    return value >= n
         ? null
-        : greaterThanOrEqualMsg?.call(actualN) ??
-            'Value must be greater than or equal to $actualN';
+        : greaterThanOrEqualToMsg?.call(n) ?? greaterThanOrEqualToTmpMsg(n);
   };
 }
 
@@ -108,6 +105,6 @@ Validator<T> between<T extends num>(T min, T max,
 }
 
 const greaterT = greaterThan;
-const greaterTE = greaterThanOrEqual;
+const greaterTE = greaterThanOrEqualTo;
 const lessT = lessThan;
 const lessTE = lessThanOrEqual;
