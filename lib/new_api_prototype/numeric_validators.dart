@@ -6,7 +6,7 @@ String greaterThanTmpMsg(num n) => 'Value must be greater than $n';
 /// This function returns a validator that checks whether the user input is greater
 /// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
 /// returns an error message. The error message is `greaterThanMsg`, or
-/// `FormBuilderLocalizations.current.greaterThan(n)` if `betweenMsg`
+/// `FormBuilderLocalizations.current.greaterThan(n)` if `greaterThanMsg`
 /// was not provided.
 Validator<T> greaterThan<T extends num>(T n,
     {String Function(num)? greaterThanMsg}) {
@@ -21,7 +21,7 @@ String greaterThanOrEqualToTmpMsg(num n) =>
 /// This function returns a validator that checks whether the user input is greater
 /// than or equal to `n`. If the input is valid, the validator returns `null`. Otherwise, it
 /// returns an error message. The error message is `greaterThanOrEqualMsg`, or
-/// `FormBuilderLocalizations.current.greaterThanOrEqualTo(n)` if `betweenMsg`
+/// `FormBuilderLocalizations.current.greaterThanOrEqualTo(n)` if `greaterThanOrEqualToMsg`
 /// was not provided.
 Validator<T> greaterThanOrEqualTo<T extends num>(T n,
     {String Function(num)? greaterThanOrEqualToMsg}) {
@@ -32,24 +32,16 @@ Validator<T> greaterThanOrEqualTo<T extends num>(T n,
   };
 }
 
-Validator<T> lessThan<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? lessThanMsg]) {
-  assert(
-    n != null && dynN == null || n == null && dynN != null,
-    'Exactly one of the inputs must be null',
-  );
-  return (value) {
-    final T actualN;
-    if (n != null) {
-      actualN = n;
-    } else if (dynN != null) {
-      actualN = dynN();
-    } else {
-      throw TypeError();
-    }
-    return value < actualN
-        ? null
-        : lessThanMsg?.call(actualN) ?? 'Value must be less than $actualN';
+String lessThanTmpMsg(num n) => 'Value must be less than $n';
+
+/// This function returns a validator that checks whether the user input is less
+/// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
+/// returns an error message. The error message is `lessThanMsg`, or
+/// `FormBuilderLocalizations.current.lessThan(n)` if `lessThanMsg`
+/// was not provided.
+Validator<T> lessThan<T extends num>(T n, {String Function(num)? lessThanMsg}) {
+  return (T value) {
+    return value < n ? null : lessThanMsg?.call(n) ?? lessThanTmpMsg(n);
   };
 }
 
@@ -103,8 +95,3 @@ Validator<T> between<T extends num>(T min, T max,
             'Value must be greater than ${leftInclusive ? 'or equal to ' : ''}$min and less than ${rightInclusive ? 'or equal to ' : ''}$max';
   };
 }
-
-const greaterT = greaterThan;
-const greaterTE = greaterThanOrEqualTo;
-const lessT = lessThan;
-const lessTE = lessThanOrEqual;
