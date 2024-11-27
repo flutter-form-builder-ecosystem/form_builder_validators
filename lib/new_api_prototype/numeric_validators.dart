@@ -1,73 +1,15 @@
 import '../localization/l10n.dart';
 import 'constants.dart';
 
-Validator<T> max<T extends num>(T? max,
-    {T Function()? dynMax,
-    bool inclusive = true,
-    String Function(num)? maxMsg}) {
-  assert(
-    max != null && dynMax == null || max == null && dynMax != null,
-    'Exactly one of the inputs must be null',
-  );
+String greaterThanTmpMsg(num n) => 'Value must be greater than $n';
 
-  return (value) {
-    late final T actualMax;
-    if (max != null) {
-      actualMax = max;
-    } else if (dynMax != null) {
-      actualMax = dynMax();
-    }
-
-    return (inclusive ? (value <= actualMax) : (value < actualMax))
-        ? null
-        : maxMsg?.call(actualMax) ??
-            FormBuilderLocalizations.current.maxErrorText(actualMax);
-  };
-}
-
-Validator<T> min<T extends num>(T? min,
-    {T Function()? dynMin,
-    bool inclusive = true,
-    String Function(num)? minMsg}) {
-  assert(
-    min != null && dynMin == null || min == null && dynMin != null,
-    'Exactly one of the inputs must be null',
-  );
-
-  return (value) {
-    late final T actualMin;
-    if (min != null) {
-      actualMin = min;
-    } else if (dynMin != null) {
-      actualMin = dynMin();
-    }
-
-    return (inclusive ? (value >= actualMin) : (value > actualMin))
-        ? null
-        : minMsg?.call(actualMin) ??
-            FormBuilderLocalizations.current.minErrorText(actualMin);
-  };
-}
-
-Validator<T> greaterThan<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? greaterThanMsg]) {
-  assert(
-    n != null && dynN == null || n == null && dynN != null,
-    'Exactly one of the inputs must be null',
-  );
-  return (value) {
-    final T actualN;
-    if (n != null) {
-      actualN = n;
-    } else if (dynN != null) {
-      actualN = dynN();
-    } else {
-      throw TypeError();
-    }
-    return value > actualN
-        ? null
-        : greaterThanMsg?.call(actualN) ??
-            'Value must be greater than $actualN';
+/// This function returns a validator that checks whether the user input is greater
+/// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
+/// returns an error message. The error message is
+Validator<T> greaterThan<T extends num>(T n,
+    {String Function(num)? greaterThanMsg}) {
+  return (T value) {
+    return value > n ? null : greaterThanMsg?.call(n) ?? greaterThanTmpMsg(n);
   };
 }
 
