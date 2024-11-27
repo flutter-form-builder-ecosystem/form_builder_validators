@@ -54,7 +54,7 @@ class NewAPIHomePage extends StatelessWidget {
                 validator:
                     FormBuilderValidators.compose(<FormFieldValidator<String>>[
                   isReq(
-                    isNum(max(70), 'La edad debe ser numérica.'),
+                    isNum(lessThanOrEqualTo(70), 'La edad debe ser numérica.'),
                   ),
 
                   /// Include your own custom `FormFieldValidator` function, if you want
@@ -105,7 +105,7 @@ class NewAPIHomePage extends StatelessWidget {
                 validator: isReq(
                   isNum(
                     and([
-                      max(70),
+                      lessThanOrEqualTo(70),
                       (num value) {
                         if (value < 0) return 'We cannot have a negative age';
 
@@ -228,7 +228,7 @@ class NewAPIHomePage extends StatelessWidget {
                 //validator: FormBuilderValidators.min(10),
                 validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.minErrorText(10),
-                  isReq(isNum(min(10))),
+                  isReq(isNum(greaterThanOrEqualTo(10))),
                 ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -243,7 +243,7 @@ class NewAPIHomePage extends StatelessWidget {
                 //validator: FormBuilderValidators.max(100),
                 validator: overrideErrorMsg(
                   FormBuilderLocalizations.current.maxErrorText(100),
-                  isReq(isNum(max(100))),
+                  isReq(isNum(lessThanOrEqualTo(100))),
                 ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -378,7 +378,8 @@ class NewAPIHomePage extends StatelessWidget {
                   FormBuilderValidators.max(120),
                 ]),
                */
-                validator: isReq(isNum(and([min(0), max(120)]))),
+                validator: isReq(isNum(
+                    and([greaterThanOrEqualTo(0), lessThanOrEqualTo(120)]))),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -390,10 +391,10 @@ class NewAPIHomePage extends StatelessWidget {
                 ),
                 validator: isOpt(or([
                   isNum(or([
-                    and([greaterT(-10), lessTE(5)]),
+                    and([greaterThan(-10), lessThanOrEqualTo(5)]),
                     isEqual(7),
                     isEqual(8),
-                    greaterT(100),
+                    greaterThan(100),
                   ])),
                   isInt(
                     (int value) =>
