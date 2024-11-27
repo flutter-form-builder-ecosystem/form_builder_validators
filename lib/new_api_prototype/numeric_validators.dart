@@ -45,25 +45,20 @@ Validator<T> lessThan<T extends num>(T n, {String Function(num)? lessThanMsg}) {
   };
 }
 
-Validator<T> lessThanOrEqual<T extends num>(T? n,
-    [T Function()? dynN, String Function(num)? lessThanOrEqualMsg]) {
-  assert(
-    n != null && dynN == null || n == null && dynN != null,
-    'Exactly one of the inputs must be null',
-  );
-  return (value) {
-    final T actualN;
-    if (n != null) {
-      actualN = n;
-    } else if (dynN != null) {
-      actualN = dynN();
-    } else {
-      throw TypeError();
-    }
-    return value <= actualN
+String lessThanOrEqualToTmpMsg(num n) =>
+    'Value must be less than or equal to $n';
+
+/// This function returns a validator that checks whether the user input is less
+/// than or equal to `n`. If the input is valid, the validator returns `null`. Otherwise, it
+/// returns an error message. The error message is `lessThanOrEqualMsg`, or
+/// `FormBuilderLocalizations.current.lessThanOrEqualTo(n)` if `lessThanOrEqualToMsg`
+/// was not provided.
+Validator<T> lessThanOrEqualTo<T extends num>(T n,
+    {String Function(num)? lessThanOrEqualToMsg}) {
+  return (T value) {
+    return value <= n
         ? null
-        : lessThanOrEqualMsg?.call(actualN) ??
-            'Value must be less than or equal to $actualN';
+        : lessThanOrEqualToMsg?.call(n) ?? lessThanOrEqualToTmpMsg(n);
   };
 }
 
