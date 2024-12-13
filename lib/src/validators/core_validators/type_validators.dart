@@ -1,6 +1,6 @@
 // Type validator:
 
-import '../../localization/l10n.dart';
+import '../../../localization/l10n.dart';
 import '../constants.dart';
 
 const tmpIsStringMsg = 'This field requires a valid string.';

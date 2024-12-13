@@ -1,9 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/new_api_prototype/constants.dart';
-import 'package:form_builder_validators/new_api_prototype/datetime_validators.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
-  group('Validator: isBefore', () {
+  group('Validator: isAfter', () {
     test('Validation for the year 1994', () {
       final DateTime reference = DateTime(1994);
       final DateTime eq = reference.copyWith();
@@ -12,8 +11,8 @@ void main() {
       final DateTime before1Year = DateTime(1993);
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
-      final Validator<DateTime> v = isBefore(reference);
-      final String errorMsg = tmpIsBeforeErrorMsg(reference);
+      final Validator<DateTime> v = isAfter(reference);
+      final String errorMsg = tmpIsAfterErrorMsg(reference);
 
       expect(
         v(eq),
@@ -22,23 +21,23 @@ void main() {
       );
       expect(
         v(after10Years),
-        errorMsg,
-        reason: 'Should return error against 2004',
+        isNull,
+        reason: 'Should return null against 2004',
       );
       expect(
         v(after1Ms),
-        errorMsg,
-        reason: 'Should return error against 1994 + 1ms',
+        isNull,
+        reason: 'Should return null against 1994 + 1ms',
       );
       expect(
         v(before1Year),
-        isNull,
-        reason: 'Should return null against 1993',
+        errorMsg,
+        reason: 'Should return errorMsg against 1993',
       );
       expect(
         v(before1Sec),
-        isNull,
-        reason: 'Should return null against 1994 - 1s',
+        errorMsg,
+        reason: 'Should return errorMsg against 1994 - 1s',
       );
     });
     test(
@@ -51,8 +50,8 @@ void main() {
       final DateTime before1Year = reference.copyWith(year: 2088);
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
-      final Validator<DateTime> v = isBefore(reference, inclusive: true);
-      final String errorMsg = tmpIsBeforeErrorMsg(reference);
+      final Validator<DateTime> v = isAfter(reference, inclusive: true);
+      final String errorMsg = tmpIsAfterErrorMsg(reference);
 
       expect(
         v(eq),
@@ -61,25 +60,25 @@ void main() {
       );
       expect(
         v(after10Years),
-        errorMsg,
-        reason: 'Should return error against the reference shifted +10 years',
+        isNull,
+        reason: 'Should return null against the reference shifted +10 years',
       );
       expect(
         v(after1Ms),
-        errorMsg,
-        reason: 'Should return error against the reference shifted +1 ms',
+        isNull,
+        reason: 'Should return null against the reference shifted +1 ms',
       );
       expect(
         v(before1Year),
-        isNull,
+        errorMsg,
         reason:
-            'Should return null against a datetime 1 year before the reference',
+            'Should return errorMsg against a datetime 1 year before the reference',
       );
       expect(
         v(before1Sec),
-        isNull,
+        errorMsg,
         reason:
-            'Should return null against a datetime 1 sec before the reference',
+            'Should return errorMsg against a datetime 1 sec before the reference',
       );
     });
 
@@ -87,7 +86,7 @@ void main() {
       const String errorMsg = 'error msg';
       final DateTime reference = DateTime(2);
       final Validator<DateTime> v =
-          isBefore(reference, isBeforeMsg: (_) => errorMsg);
+          isAfter(reference, isAfterMsg: (_) => errorMsg);
 
       expect(
         v(reference.copyWith()),
@@ -97,14 +96,14 @@ void main() {
       );
       expect(
         v(reference.subtract(const Duration(microseconds: 1))),
-        isNull,
-        reason: 'Should return null when input is before the reference',
+        errorMsg,
+        reason:
+            'Should return custom message when input is before the reference',
       );
       expect(
         v(reference.add(const Duration(days: 1))),
-        errorMsg,
-        reason:
-            'Should return custom message when the input is after the reference',
+        isNull,
+        reason: 'Should return null when the input is after the reference',
       );
     });
   });

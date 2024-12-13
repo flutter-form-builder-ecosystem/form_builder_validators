@@ -40,11 +40,13 @@ void main() {
       final Validator<num> v2 = or(<Validator<num>>[ltE(19), gt(100)]);
 
       expect(v1(9), isNull);
-      expect(v1(23), '$errorGt$orSeparatorTemporary$errorLtE');
+      expect(v1(23),
+          '$errorGt${FormBuilderLocalizations.current.orSeparator}$errorLtE');
       expect(v1(1002), isNull);
 
       expect(v2(19), isNull);
-      expect(v2(100), '$errorLtE$orSeparatorTemporary$errorGt');
+      expect(v2(100),
+          '$errorLtE${FormBuilderLocalizations.current.orSeparator}$errorGt');
       expect(v2(101), isNull);
     });
 
@@ -59,13 +61,13 @@ void main() {
       expect(v1(3), isNull);
       expect(v1(10), isNull);
       expect(v1(10.1),
-          '$errorIsEven$orSeparatorTemporary$errorGt$orSeparatorTemporary$errorLtE');
+          '$errorIsEven${FormBuilderLocalizations.current.orSeparator}$errorGt${FormBuilderLocalizations.current.orSeparator}$errorLtE');
       expect(v1(13), isNull);
 
       expect(v2(3), isNull);
       expect(v2(10), isNull);
       expect(v2(10.1),
-          '$errorLtE$orSeparatorTemporary$errorGt$orSeparatorTemporary$errorIsEven');
+          '$errorLtE${FormBuilderLocalizations.current.orSeparator}$errorGt${FormBuilderLocalizations.current.orSeparator}$errorIsEven');
       expect(v2(13), isNull);
     });
 

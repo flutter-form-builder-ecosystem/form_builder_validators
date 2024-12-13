@@ -67,12 +67,14 @@ void main() {
           and([isEven(), gt(4.6), ltE(9.0)], printErrorAsSoonAsPossible: false);
       final Validator<num> v2 = and([ltE(9.0), gt(4.6), isEven()]);
 
-      expect(v1(3), '$errorIsEven$andSeparatorTemporary$errorGt');
+      expect(v1(3),
+          '$errorIsEven${FormBuilderLocalizations.current.andSeparator}$errorGt');
       expect(v1(4), errorGt);
       expect(v1(5), errorIsEven);
       expect(v1(6.0), errorIsEven);
       expect(v1(6), isNull);
-      expect(v1(10.9), '$errorIsEven$andSeparatorTemporary$errorLtE');
+      expect(v1(10.9),
+          '$errorIsEven${FormBuilderLocalizations.current.andSeparator}$errorLtE');
 
       expect(v2(3), errorGt);
       expect(v2(4), errorGt);

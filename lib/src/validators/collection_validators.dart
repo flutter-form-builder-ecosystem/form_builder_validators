@@ -1,4 +1,4 @@
-import '../localization/l10n.dart';
+import '../../localization/l10n.dart';
 import 'constants.dart';
 
 /// Returns a [Validator] function that checks if its input has a length that is

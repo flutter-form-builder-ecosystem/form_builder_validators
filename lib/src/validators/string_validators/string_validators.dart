@@ -1,4 +1,4 @@
-import '../../localization/l10n.dart';
+import '../../../localization/l10n.dart';
 import '../collection_validators.dart';
 import '../constants.dart';
 import '../core_validators/composition_validators.dart';

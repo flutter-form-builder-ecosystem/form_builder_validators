@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
-import 'package:form_builder_validators/new_api_prototype/constants.dart';
-import 'package:form_builder_validators/new_api_prototype/string_validators/path_validators.dart';
 
 void main() {
   group('Validator: matchesAllowedExtensionsValidator', () {

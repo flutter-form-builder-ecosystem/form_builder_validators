@@ -1,4 +1,4 @@
-import '../localization/l10n.dart';
+import '../../localization/l10n.dart';
 import 'constants.dart';
 
 String tmpIsAfterErrorMsg(DateTime reference) =>

@@ -1,4 +1,4 @@
-import '../../localization/l10n.dart';
+import '../../../localization/l10n.dart';
 import '../constants.dart';
 
 /// This function returns a validator that checks if the user input is equal (using

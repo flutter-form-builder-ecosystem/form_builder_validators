@@ -1,6 +1,6 @@
 import 'package:path/path.dart' as p;
 
-import '../../localization/l10n.dart';
+import '../../../localization/l10n.dart';
 import '../constants.dart';
 
 bool _isValidExtension(String v) => v.isEmpty || v[0] == '.';

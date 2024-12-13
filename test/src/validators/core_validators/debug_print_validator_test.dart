@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/new_api_prototype/constants.dart';
-import 'package:form_builder_validators/new_api_prototype/core_validators/debug_print_validator.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class _CustomClass {
   @override

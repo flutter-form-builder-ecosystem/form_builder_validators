@@ -1,4 +1,3 @@
-import '../localization/l10n.dart';
 import 'constants.dart';
 
 String greaterThanTmpMsg(num n) => 'Value must be greater than $n';

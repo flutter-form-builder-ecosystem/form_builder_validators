@@ -1,4 +1,4 @@
-import '../../localization/l10n.dart';
+import '../../../localization/l10n.dart';
 import '../constants.dart';
 
 /// This function generates a validator that enforces a required field rule. If
