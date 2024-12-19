@@ -2,6 +2,9 @@
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
+import 'validators/validators.dart' as v;
+
+@Deprecated('use the base class Validators instead')
 
 /// Provides utility methods for creating various [FormFieldValidator]s.
 class FormBuilderValidators {
@@ -1731,4 +1734,36 @@ class FormBuilderValidators {
         errorText: errorText,
         checkNullOrEmpty: checkNullOrEmpty,
       ).validate;
+}
+
+/// A class that is used as an aggregator/namespace for all the available
+/// validators in this package.
+final class Validators {
+  /// {@macro ValidatorAnd}
+  static Validator<T> and<T extends Object>(
+    List<Validator<T>> validators, {
+    String prefix = '',
+    String suffix = '',
+    String? separator,
+    bool printErrorAsSoonAsPossible = true,
+  }) =>
+      v.and<T>(validators,
+          prefix: prefix,
+          suffix: suffix,
+          separator: separator,
+          printErrorAsSoonAsPossible: printErrorAsSoonAsPossible);
+
+  /// {@macro ValidatorOr}
+  static Validator<T> or<T extends Object>(
+    List<Validator<T>> validators, {
+    String prefix = '',
+    String suffix = '',
+    String? separator,
+  }) =>
+      v.or<T>(
+        validators,
+        prefix: prefix,
+        suffix: suffix,
+        separator: separator,
+      );
 }

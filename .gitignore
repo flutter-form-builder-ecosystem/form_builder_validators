@@ -33,13 +33,13 @@ build/
 pubspec.lock
 
 # Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
+example/android_backup/**/gradle-wrapper.jar
+example/android_backup/.gradle
+example/android_backup/captures/
+example/android_backup/gradlew
+example/android_backup/gradlew.bat
+example/android_backup/local.properties
+example/android_backup/**/GeneratedPluginRegistrant.java
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

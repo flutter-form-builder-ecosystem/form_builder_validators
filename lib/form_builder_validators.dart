@@ -31,6 +31,7 @@ export 'localization/intl/messages_tr.dart';
 export 'localization/intl/messages_uk.dart';
 export 'localization/intl/messages_zh.dart';
 export 'localization/l10n.dart';
+// DEPRECATED START
 export 'src/base_validator.dart';
 export 'src/bool/bool.dart';
 export 'src/collection/collection.dart';
@@ -46,3 +47,5 @@ export 'src/numeric/numeric.dart';
 export 'src/string/string.dart';
 export 'src/translated_validator.dart';
 export 'src/usecase/usecase.dart';
+// DEPRECATED END
+export 'src/validators/validators.dart';

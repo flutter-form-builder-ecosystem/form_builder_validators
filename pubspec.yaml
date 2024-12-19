@@ -20,6 +20,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
+  path: ^1.9.0
 
 dev_dependencies:
   faker_dart: ^0.2.2
