@@ -1,9 +1,14 @@
 # Changelog
 
-## 11.0.1
+## 11.1.0
 
+- Add Latvian language support
+- Add float validator
+- Add hexadecimal validator
 - Align between validator input types with other validators
 - Split up BaseValidator into TranslatedValidator so only that one needs to provide a translation
+- Update constraints to min Dart 3.6
+- Update constraints to min Flutter 3.27.0
 
 ## 11.0.0
 
