@@ -408,6 +408,7 @@ Donate or become a sponsor of Flutter Form Builder Ecosystem
 
 ## Roadmap
 
+- [API refactor to improve performance and behavior](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/129)
 - [Solve open issues](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/issues), [prioritizing bugs](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/labels/bug)
 
 ## Ecosystem
