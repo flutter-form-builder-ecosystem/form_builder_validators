@@ -86,5 +86,6 @@
   "vinErrorText": "值必須是一個有效的車輛識別號。",
   "languageCodeErrorText": "值必須是一個有效的語言代碼。",
   "floatErrorText": "數值必須為有效的浮點數。",
-  "hexadecimalErrorText": "數值必須為有效的十六進位數字。"
+  "hexadecimalErrorText": "數值必須為有效的十六進位數字。",
+  "profanityErrorText": "內容不可包含：{profanity}。"
 }

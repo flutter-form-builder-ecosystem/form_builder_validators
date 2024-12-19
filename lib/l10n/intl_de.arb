@@ -86,5 +86,6 @@
   "vinErrorText": "Der Wert muss eine gültige Fahrzeug-Identifizierungsnummer (VIN) sein.",
   "languageCodeErrorText": "Der Wert muss ein gültiger Sprachcode sein.",
   "floatErrorText": "Der Wert muss eine gültige Fließkommazahl sein.",
-  "hexadecimalErrorText": "Der Wert muss eine gültige hexadezimale Zahl sein."
+  "hexadecimalErrorText": "Der Wert muss eine gültige hexadezimale Zahl sein.",
+  "profanityErrorText": "Der Wert darf nicht enthalten: {profanity}."
 }

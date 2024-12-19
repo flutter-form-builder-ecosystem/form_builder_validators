@@ -86,5 +86,6 @@
   "vinErrorText": "Värdet måste vara ett giltigt VIN.",
   "languageCodeErrorText": "Värdet måste vara en giltig språkkod.",
   "floatErrorText": "Värdet måste vara ett giltigt flyttal.",
-  "hexadecimalErrorText": "Värdet måste vara ett giltigt hexadecimaltal."
+  "hexadecimalErrorText": "Värdet måste vara ett giltigt hexadecimaltal.",
+  "profanityErrorText": "Värdet får inte innehålla: {profanity}."
 }

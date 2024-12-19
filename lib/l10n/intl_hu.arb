@@ -86,5 +86,6 @@
   "vinErrorText": "Az értéknek egy érvényes járműazonosító számnak kell lennie.",
   "languageCodeErrorText": "Az értéknek egy érvényes nyelvkódnak kell lennie.",
   "floatErrorText": "Az értéknek érvényes lebegőpontos számnak kell lennie.",
-  "hexadecimalErrorText": "Az értéknek érvényes hexadecimális számnak kell lennie."
+  "hexadecimalErrorText": "Az értéknek érvényes hexadecimális számnak kell lennie.",
+  "profanityErrorText": "Az érték nem tartalmazhat: {profanity}."
 }

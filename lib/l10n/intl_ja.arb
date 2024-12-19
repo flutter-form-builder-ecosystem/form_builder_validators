@@ -86,5 +86,6 @@
   "vinErrorText": "値は有効なVINでなければなりません。",
   "languageCodeErrorText": "値は有効な言語コードでなければなりません。",
   "floatErrorText": "値は有効な浮動小数点数でなければなりません。",
-  "hexadecimalErrorText": "値は有効な16進数でなければなりません。"
+  "hexadecimalErrorText": "値は有効な16進数でなければなりません。",
+  "profanityErrorText": "値に含めてはいけません: {profanity}。"
 }
