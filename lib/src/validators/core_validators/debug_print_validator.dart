@@ -2,13 +2,29 @@ import 'package:flutter/widgets.dart';
 
 import '../constants.dart';
 
-/// Each time the user provides an `input`, this validator prints its [String]
-/// representation to `stdout` for debugging purposes.
+/// {@template debug_print_validator}
+/// Creates a validator that logs input values to stdout before optionally applying
+/// another validator.
 ///
-/// The logging message can be customized providing the `logOnInput` parameter.
+/// ## Example
+/// ```dart
+/// final validator = debugPrintValidator<String>(
+///   next: validateEmail,
+///   logOnInput: (value) => 'Email input: $value',
+/// );
+/// ```
 ///
-/// If the validator `next` is provided, it redirects user's input to it, returning
-/// its result. Otherwise, it never fails, thus, always returning `null`.
+/// ## Parameters
+/// - `next`: Optional validator to apply after logging
+/// - `logOnInput`: Optional function to customize log message format
+///
+/// ## Returns
+/// - `null` if no `next` validator or if validation passes
+/// - Validation failure from `next` validator if validation fails
+///
+/// ## Type Parameters
+/// - `T`: Type of value being validated, may be a nullable Object
+/// {@endtemplate}
 Validator<T> debugPrintValidator<T extends Object?>(
     {Validator<T>? next, String Function(T)? logOnInput}) {
   return (T value) {

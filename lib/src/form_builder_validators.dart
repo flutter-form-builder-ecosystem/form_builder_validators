@@ -1778,4 +1778,10 @@ final class Validators {
   static Validator<T> skipIf<T extends Object?>(
           bool Function(T value) condition, Validator<T> v) =>
       val.skipIf<T>(condition, v);
+
+  // Debug print validator
+  /// {@macro debug_print_validator}
+  static Validator<T> debugPrintValidator<T extends Object?>(
+          {Validator<T>? next, String Function(T)? logOnInput}) =>
+      val.debugPrintValidator(next: next, logOnInput: logOnInput);
 }
