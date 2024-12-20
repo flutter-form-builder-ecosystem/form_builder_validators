@@ -81,8 +81,27 @@ jobs:
         working-directory: example
 
   deployment:
+    # Don't use because need generate l10n before publish
+    # uses: flutter-form-builder-ecosystem/.github/.github/workflows/deployment.yaml@main
     if: ${{ github.ref_type == 'tag' }}
-    uses: flutter-form-builder-ecosystem/.github/.github/workflows/deployment.yaml@main
+    needs: [build, example]
+    name: Deploy package
     permissions:
       id-token: write
-    needs: [build, example]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Use shallow clone for faster checkout
+      - name: Setup Flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+        with:
+          path: '.fvmrc'
+          flavor: 'stable'
+      - name: Install dependencies
+        run: dart pub get
+      - name: Run l10n
+        run: flutter gen-l10n
+      - name: Publish package
+        run: dart pub publish -v -f

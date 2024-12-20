@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.1.1
+
+- Fix issue when build fails due to missing l10n files
+
 ## 11.1.0
 
 - Add Latvian language support
