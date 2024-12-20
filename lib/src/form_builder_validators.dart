@@ -2,7 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
-import 'validators/validators.dart' as v;
+import 'validators/validators.dart' as val;
 
 @Deprecated('use the base class Validators instead')
 
@@ -1739,7 +1739,8 @@ class FormBuilderValidators {
 /// A class that is used as an aggregator/namespace for all the available
 /// validators in this package.
 final class Validators {
-  /// {@macro ValidatorAnd}
+  // Composition validators
+  /// {@macro validator_and}
   static Validator<T> and<T extends Object>(
     List<Validator<T>> validators, {
     String prefix = '',
@@ -1747,23 +1748,34 @@ final class Validators {
     String? separator,
     bool printErrorAsSoonAsPossible = true,
   }) =>
-      v.and<T>(validators,
+      val.and<T>(validators,
           prefix: prefix,
           suffix: suffix,
           separator: separator,
           printErrorAsSoonAsPossible: printErrorAsSoonAsPossible);
 
-  /// {@macro ValidatorOr}
+  /// {@macro validator_or}
   static Validator<T> or<T extends Object>(
     List<Validator<T>> validators, {
     String prefix = '',
     String suffix = '',
     String? separator,
   }) =>
-      v.or<T>(
+      val.or<T>(
         validators,
         prefix: prefix,
         suffix: suffix,
         separator: separator,
       );
+
+  // Conditional validators
+  /// {@macro validate_if}
+  static Validator<T> validateIf<T extends Object?>(
+          bool Function(T value) condition, Validator<T> v) =>
+      val.validateIf<T>(condition, v);
+
+  /// {@macro skip_if}
+  static Validator<T> skipIf<T extends Object?>(
+          bool Function(T value) condition, Validator<T> v) =>
+      val.skipIf<T>(condition, v);
 }

@@ -2,7 +2,7 @@
 import '../../../localization/l10n.dart';
 import '../constants.dart';
 
-/// {@template ValidatorAnd}
+/// {@template validator_and}
 /// Creates a composite validator that applies multiple validation rules from
 /// `validators` using AND logic.
 ///
@@ -70,7 +70,7 @@ Validator<T> and<T extends Object>(
   };
 }
 
-/// {@template ValidatorOr}
+/// {@template validator_or}
 /// Creates a composite validator that applies multiple validation rules from
 /// `validators` using OR logic.
 ///
