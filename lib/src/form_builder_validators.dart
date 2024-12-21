@@ -1784,4 +1784,19 @@ final class Validators {
   static Validator<T> debugPrintValidator<T extends Object?>(
           {Validator<T>? next, String Function(T)? logOnInput}) =>
       val.debugPrintValidator(next: next, logOnInput: logOnInput);
+
+  // Equality validators
+  /// {@macro validator_is_equal}
+  static Validator<T> isEqual<T extends Object?>(
+    T value, {
+    String Function(String)? isEqualMsg,
+  }) =>
+      val.isEqual(value, isEqualMsg: isEqualMsg);
+
+  /// {@macro validator_is_not_equal}
+  static Validator<T> isNotEqual<T extends Object?>(
+    T value, {
+    String Function(String)? isNotEqualMsg,
+  }) =>
+      val.isNotEqual(value, isNotEqualMsg: isNotEqualMsg);
 }
