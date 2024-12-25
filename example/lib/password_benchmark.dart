@@ -12,7 +12,7 @@ class ReqPasswordBenchmark extends BenchmarkBase {
 
   @override
   void run() {
-    final FormFieldValidator<String> v = isReq(password());
+    final FormFieldValidator<String> v = isRequired(password());
     v('h');
     v('he');
     v('hel');
