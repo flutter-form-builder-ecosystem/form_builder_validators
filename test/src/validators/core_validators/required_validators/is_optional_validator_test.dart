@@ -7,7 +7,8 @@ String? isMultipleBy6(int value) {
 }
 
 void main() {
-  final String defaultError = errorIsOptionalTemporary(errorMultBy6);
+  final String defaultError =
+      FormBuilderLocalizations.current.isOptionalErrorText(errorMultBy6);
 
   group('Validator: isOptional', () {
     test('Should make the input optional', () {

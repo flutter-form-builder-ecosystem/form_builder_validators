@@ -100,6 +100,16 @@
   "numericErrorText": "Value must be numeric.",
   "orSeparator": " or ",
   "requiredErrorText": "This field cannot be empty.",
+  "transformAndValidateErrorTextV1": "Value is not able to be transformed.",
+  "transformAndValidateErrorTextV2": "Value must be a valid {transformedResultTypeDescription}.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  },
   "urlErrorText": "This field requires a valid URL address.",
   "phoneErrorText": "This field requires a valid phone number.",
   "creditCardExpirationDateErrorText": "This field requires a valid expiration date.",

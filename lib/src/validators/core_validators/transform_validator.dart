@@ -1,40 +1,54 @@
-import '../constants.dart';
+import '../../../form_builder_validators.dart';
 
-String errorTransformAndValidateTemporary<T>(
-    T userInput, String? transformedResultTypeDescription) {
-  if (transformedResultTypeDescription != null) {
-    // An example, it will print the error message: "Hello" is not a valid integer.
-    return '"${userInput.toString()}" is not a valid $transformedResultTypeDescription';
-  }
-
-  return '"${userInput.toString()}" is not able to be transformed.';
-}
-
-/// This function returns a validator which transforms the user input.
-/// If the transformation fails, it returns a transformation error message.
-/// Otherwise, it passes the input to the `next` validator, if it was provided,
-/// or, if `next` was not provided, it returns `null`.
+/// {@template validator_transform_and_validate}
+/// Creates a validator that transforms user input and optionally chains with the `next` validator.
+/// This validator attempts to transform the input using the provided transformation function.
+/// If the transformation succeeds, it either returns null or passes the transformed value
+/// to the next validator in the chain. If the transformation fails, it returns an error message.
 ///
-/// # Parameters
-/// - `String?` `transformedResultTypeDescription`: This parameter helps improving
-/// the readability of the error message. If provided, the error message can
-/// specify what is the expected type/result of the transformation. For example,
-/// if 'positive integer' is provided, it can return a message like:
-/// '"hello" is not a valid positive integer'. Otherwise, if this parameter is
-/// not provided, the default error message will be more generic.
-/// - `String` `Function(IN)?` `transformAndValidateMsg`: this is the custom message
-/// for the validation error message. It is a function that receives the user
-/// input as argument and returns a String, the error message.
+/// The validator is particularly useful for type conversions and data transformations where
+/// the transformation itself serves as a validation step. For example, converting string
+/// input to numbers or dates where invalid formats should be treated as validation failures.
 ///
-/// # Transformation
-/// This process transforms the user input from the type `IN` to the type `OUT`.
-/// Its failure is considered a validation failure, and, when it happens, a
-/// validation failure message is returned.
+/// ## Type Parameters
+/// - `IN`: The input type to be transformed. Must be nullable or non-nullable Object.
+/// - `OUT`: The output type after transformation. Must be nullable or non-nullable Object.
 ///
-/// # Example
+/// ## Parameters
+/// - `transformFunction` (`OUT Function(IN)`): The function that performs the actual
+///   transformation from type `IN` to type `OUT`. This function should throw an exception
+///   if the transformation cannot be performed.
+/// - `next` (`Validator<OUT>?`): Optional validator to process the transformed value.
+///   If provided, its result will be returned when transformation succeeds.
+/// - `transformAndValidateMsg` (`String Function(IN)?`): Optional function that generates
+///   a custom error message when transformation fails. Receives the original input as
+///   an argument.
+/// - `transformedResultTypeDescription` (`String?`): Optional description of the expected
+///   transformed type, used to generate more readable error messages. For example,
+///   "positive integer" would result in messages like 'Value is not a valid positive integer'.
+///
+/// ## Returns
+/// Returns a `Validator<IN>` function that:
+/// - Returns `null` if transformation succeeds and no `next` validator is provided
+/// - Returns the result of the `next` validator if transformation succeeds and a `next`
+///   validator is provided
+/// - Returns an error message string if transformation fails
+///
+/// ## Examples
 /// ```dart
+/// // Creating a validator that converts strings to ArithmeticExpression:
+/// final arithmeticExprValidator = transformAndValidate<String, ArithmeticExpression>(
+///   parseToArithmeticExpression,
+///   transformedResultTypeDescription: 'arithmetic expression',
+/// );
 ///
+/// // Example usage:
+/// final validator = arithmeticExprValidator;
+/// print(validator('2+3')); // null (valid)
+/// print(validator('2+Hello World+3')); // "Value is not a valid arithmetic expression"
+/// print(validator('1+2+3+4+5+6+7+8+9+10')); // null (valid)
 /// ```
+/// {@endtemplate}
 Validator<IN> transformAndValidate<IN extends Object?, OUT extends Object?>(
   OUT Function(IN) transformFunction, {
   Validator<OUT>? next,
@@ -47,8 +61,11 @@ Validator<IN> transformAndValidate<IN extends Object?, OUT extends Object?>(
       return next?.call(transformedValue);
     } catch (_) {
       return transformAndValidateMsg?.call(input) ??
-          errorTransformAndValidateTemporary(
-              input.toString(), transformedResultTypeDescription);
+          (transformedResultTypeDescription == null
+              ? FormBuilderLocalizations.current.transformAndValidateErrorTextV1
+              : FormBuilderLocalizations.current
+                  .transformAndValidateErrorTextV2(
+                      transformedResultTypeDescription));
     }
   };
 }

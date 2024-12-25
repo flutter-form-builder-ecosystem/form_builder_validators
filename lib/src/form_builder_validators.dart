@@ -1827,4 +1827,21 @@ final class Validators {
     String Function(String)? isOptionalMsg,
   ]) =>
       val.isOptional(next, isOptionalMsg);
+
+  // Transform Validator
+
+  /// {@macro validator_transform_and_validate}
+  static Validator<IN>
+      transformAndValidate<IN extends Object?, OUT extends Object?>(
+    OUT Function(IN) transformFunction, {
+    Validator<OUT>? next,
+    String Function(IN)? transformAndValidateMsg,
+    String? transformedResultTypeDescription,
+  }) =>
+          val.transformAndValidate(
+            transformFunction,
+            next: next,
+            transformAndValidateMsg: transformAndValidateMsg,
+            transformedResultTypeDescription: transformedResultTypeDescription,
+          );
 }
