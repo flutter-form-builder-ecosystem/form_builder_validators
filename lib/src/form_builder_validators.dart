@@ -1846,4 +1846,10 @@ final class Validators {
           );
 
   // Type Validator
+  /// {@macro validator_is_string}
+  static Validator<T> isString<T extends Object>([
+    Validator<String>? next,
+    String Function(T input)? isStringMsg,
+  ]) =>
+      val.isString(next, isStringMsg);
 }

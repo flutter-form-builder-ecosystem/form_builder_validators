@@ -33,6 +33,7 @@
       }
     }
   },
+  "isStringErrorText": "This field requires a valid string.",
   "matchErrorText": "Value does not match pattern.",
   "maxErrorText": "Value must be less than or equal to {max}.",
   "@maxErrorText": {

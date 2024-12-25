@@ -3,21 +3,63 @@
 import '../../../localization/l10n.dart';
 import '../constants.dart';
 
-const tmpIsStringMsg = 'This field requires a valid string.';
-
-/// This function returns a validator that checks if the user input is a `String`.
-/// If it is a `String`, then it returns null when `next` is not provided. Otherwise,
-/// if `next` is provided, it passes the transformed value as `String` to the `next`
-/// validator.
+/// {@template validator_is_string}
+/// Creates a validator function that checks if the provided non-nullable input
+/// is a String. If it is a valid string, it will be passed to the `next` validator.
+///
+/// ## Type Parameters
+/// - T: The type of the input value, must extend Object to ensure non-null values
+///
+/// ## Parameters
+/// - `next` (`Validator<String>?`): An optional subsequent validator that processes
+///   the input after successful string validation. Receives the validated input
+///   as a [String].
+/// - `isStringMsg` (`String Function(T input)?`): An optional custom error message
+///   generator function that takes the input as parameter and returns a customized error
+///   message.
+///
+/// ## Returns
+/// Returns a `Validator<T>` function that:
+/// - Returns null if the input is valid and no `next` validator is provided
+/// - If the input is a valid [String], returns the result of the `next` validator
+/// - Returns an error message string if the input is not a [String]
+///
+/// ## Examples
+/// ```dart
+/// // Basic string validation
+/// final validator = isString<Object>();
+/// print(validator('valid string')); // null
+/// print(validator(123)); // 'Must be a string'
+///
+/// // With custom error message
+/// final customValidator = isString<dynamic>(
+///   isStringMsg: (input) => '${input.toString()} is not a valid String.',
+/// );
+/// print(customValidator(42)); // '42 is not a valid string'
+///
+/// // Chaining validators
+/// final chainedValidator = isString<Object>(
+///   (value) => value.isEmpty ? 'String cannot be empty' : null,
+/// );
+/// print(chainedValidator('')); // 'String cannot be empty'
+/// ```
+///
+///
+/// ## Caveats
+/// - This validator does not automatically convert the input to [String]. For
+/// example, if the input is a number, it will never transform it to the string
+/// version by calling `toString` method.
+/// {@endtemplate}
 Validator<T> isString<T extends Object>([
   Validator<String>? next,
-  String? isStringMsg,
+  String Function(T input)? isStringMsg,
 ]) {
-  String? finalValidator(T value) {
+  String? finalValidator(T input) {
     final (bool isValid, String? typeTransformedValue) =
-        _isStringValidateAndConvert(value);
+        _isStringValidateAndConvert(input);
     if (!isValid) {
-      return isStringMsg ?? tmpIsStringMsg;
+      return isStringMsg?.call(input) ??
+          FormBuilderLocalizations.current.isStringErrorText;
     }
     return next?.call(typeTransformedValue!);
   }
