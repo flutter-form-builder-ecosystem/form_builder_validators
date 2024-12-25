@@ -1,6 +1,6 @@
 import '../constants.dart';
 
-/// {@template validate_if}
+/// {@template validator_validate_if}
 /// Creates a conditional validator that only applies validation when a specified
 /// condition is met.
 ///
@@ -32,7 +32,7 @@ Validator<T> validateIf<T extends Object?>(
   return (T value) => condition(value) ? v(value) : null;
 }
 
-/// {@template skip_if}
+/// {@template validator_skip_if}
 /// Creates a validator that conditionally bypasses validation based on a
 /// predicate function.
 ///

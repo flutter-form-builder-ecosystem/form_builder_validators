@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../constants.dart';
 
-/// {@template debug_print_validator}
+/// {@template validator_debug_print_validator}
 /// Creates a validator that logs input values to stdout before optionally applying
 /// another validator.
 ///

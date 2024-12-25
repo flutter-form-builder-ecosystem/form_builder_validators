@@ -1769,18 +1769,18 @@ final class Validators {
       );
 
   // Conditional validators
-  /// {@macro validate_if}
+  /// {@macro validator_validate_if}
   static Validator<T> validateIf<T extends Object?>(
           bool Function(T value) condition, Validator<T> v) =>
       val.validateIf<T>(condition, v);
 
-  /// {@macro skip_if}
+  /// {@macro validator_skip_if}
   static Validator<T> skipIf<T extends Object?>(
           bool Function(T value) condition, Validator<T> v) =>
       val.skipIf<T>(condition, v);
 
   // Debug print validator
-  /// {@macro debug_print_validator}
+  /// {@macro validator_debug_print_validator}
   static Validator<T> debugPrintValidator<T extends Object?>(
           {Validator<T>? next, String Function(T)? logOnInput}) =>
       val.debugPrintValidator(next: next, logOnInput: logOnInput);
@@ -1807,4 +1807,24 @@ final class Validators {
     Validator<T> v,
   ) =>
       val.overrideErrorMsg(errorMsg, v);
+
+  // Required validators
+  /// {@macro validator_is_required}
+  static Validator<T> isRequired<T extends Object>([
+    Validator<T>? next,
+    String? isRequiredMsg,
+  ]) =>
+      val.isRequired(next, isRequiredMsg);
+
+  /// {@macro validator_validate_with_default}
+  static Validator<T> validateWithDefault<T extends Object>(
+          T defaultValue, Validator<T> next) =>
+      val.validateWithDefault(defaultValue, next);
+
+  /// {@macro validator_is_optional}
+  static Validator<T> isOptional<T extends Object>([
+    Validator<T>? next,
+    String Function(String)? isOptionalMsg,
+  ]) =>
+      val.isOptional(next, isOptionalMsg);
 }

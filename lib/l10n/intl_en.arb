@@ -24,6 +24,15 @@
   },
   "integerErrorText": "This field requires a valid integer.",
   "ipErrorText": "This field requires a valid IP.",
+  "isOptionalErrorText": "The field is optional, otherwise, {nextErrorMessage}'",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
   "matchErrorText": "Value does not match pattern.",
   "maxErrorText": "Value must be less than or equal to {max}.",
   "@maxErrorText": {

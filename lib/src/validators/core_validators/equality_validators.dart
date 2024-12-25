@@ -78,7 +78,7 @@ Validator<T> isEqual<T extends Object?>(
 /// ```dart
 /// // Basic usage with strings
 /// final validator = isNotEqual<String>('reserved');
-/// print(validator('different')); // null (validation passes)
+/// print(validator('not-reserved')); // null (validation passes)
 /// print(validator('reserved')); // "Value must not be equal to reserved"
 ///
 /// // Custom error message
@@ -90,11 +90,10 @@ Validator<T> isEqual<T extends Object?>(
 /// ```
 ///
 /// ## Caveats
-/// - The validator uses string representation for error messages, so ensure
-///   your type `T` has a meaningful `toString()` implementation if using custom
-///   types.
-/// - Null values are handled based on Dart's null safety rules and the `!=`
-///   operator's behavior with nulls.
+/// - The comparison uses the `!=` operator, which may not be suitable for complex
+///   objects without proper equality implementation
+/// - The error message uses the string representation of the value via
+///   `toString()`, which might not be ideal for all types
 /// {@endtemplate}
 Validator<T> isNotEqual<T extends Object?>(
   T value, {
