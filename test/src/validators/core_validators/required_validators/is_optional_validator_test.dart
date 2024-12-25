@@ -35,8 +35,9 @@ void main() {
 
     test('Should return custom message for invalid input', () {
       const String customMsg = 'custom error message ';
-      final Validator<Object?> v = isOptional(null, (_) => customMsg);
-      final Validator<int?> v1 = isOptional(isMultipleBy6, (_) => customMsg);
+      final Validator<Object?> v = isOptional(null, (_, __) => customMsg);
+      final Validator<int?> v1 =
+          isOptional(isMultipleBy6, (_, __) => customMsg);
 
       expect(v(null), isNull);
       expect(v(''), isNull);

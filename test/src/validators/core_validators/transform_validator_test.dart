@@ -13,7 +13,7 @@ void main() {
 
       expect(v('12'), isNull);
       expect(v('not integer'),
-          errorTransformAndValidateTemporary('not integer', null));
+          FormBuilderLocalizations.current.transformAndValidateErrorTextV1);
     });
     test('Should transform and apply a next validator', () {
       final Validator<String> v =
@@ -24,7 +24,7 @@ void main() {
       expect(v('59'), defaultMsg);
       expect(v('60'), isNull);
       expect(v('not integer'),
-          errorTransformAndValidateTemporary('not integer', null));
+          FormBuilderLocalizations.current.transformAndValidateErrorTextV1);
     });
     test('Should return a custom transformation error message', () {
       const String customErrorMsg = 'custom error msg';
@@ -55,7 +55,7 @@ void main() {
       expect(v('59'), defaultMsg);
       expect(v('60'), isNull);
       expect(v('not integer'),
-          errorTransformAndValidateTemporary('not integer', t));
+          FormBuilderLocalizations.current.transformAndValidateErrorTextV2(t));
     });
   });
 }

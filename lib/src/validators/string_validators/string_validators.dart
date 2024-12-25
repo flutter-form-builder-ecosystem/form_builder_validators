@@ -25,7 +25,7 @@ Validator<String> password({
     hasMinSpecialChars(min: minSpecialCharCount),
   ]);
   return passwordMsg != null
-      ? overrideErrorMsg(passwordMsg, andValidator)
+      ? overrideErrorMsg((_) => passwordMsg, andValidator)
       : andValidator;
 }
 

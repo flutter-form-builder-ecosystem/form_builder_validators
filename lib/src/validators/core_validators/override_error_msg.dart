@@ -8,8 +8,9 @@ import '../constants.dart';
 ///
 ///
 /// ## Parameters
-/// - `errorMsg` (`String`): The new error message that will replace the original
-///   validator's error message when validation fails.
+/// - `errorMsg` (`String Function(T input)`): The new error message that will
+/// replace the original validator's error message when validation fails. Takes
+/// the `input` as parameter and returns a string.
 /// - `v` (`Validator<T>`): The original validator whose error message will be
 ///   overridden. Its validation logic remains unchanged.
 ///
@@ -30,7 +31,7 @@ import '../constants.dart';
 ///
 /// // Creating a custom error message for a specific form
 /// final customEmailValidator = overrideErrorMsg(
-///   'Please provide a valid email address',
+///   (_)=>'Please provide a valid email address',
 ///   emailValidator,
 /// );
 ///
@@ -39,13 +40,13 @@ import '../constants.dart';
 /// ```
 /// {@endtemplate}
 Validator<T> overrideErrorMsg<T extends Object?>(
-  String errorMsg,
+  String Function(T input) errorMsg,
   Validator<T> v,
 ) {
-  return (T value) {
-    final String? vErrorMessage = v(value);
+  return (T input) {
+    final String? vErrorMessage = v(input);
     if (vErrorMessage != null) {
-      return errorMsg;
+      return errorMsg(input);
     }
     return null;
   };

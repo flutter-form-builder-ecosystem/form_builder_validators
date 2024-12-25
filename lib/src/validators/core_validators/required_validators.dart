@@ -129,9 +129,9 @@ Validator<T?> validateWithDefault<T extends Object>(
 /// - `next` (`Validator<T>?`): An optional subsequent validator function that will be
 ///   applied only if the input value is provided (non-null and non-empty). This allows
 ///   for chaining validation rules.
-/// - `isOptionalMsg` (`String Function(String)?`): An optional function that transforms
-///   the error message from the `next` validator. If not provided, uses a default
-///   localized error message.
+/// - `isOptionalMsg` (`String Function(T input, String nextErrorMessage)?`): An
+/// optional error message that takes the `input` and the `nextErrorMessage` as
+/// parameters and returns the custom error message.
 ///
 /// ## Returns
 /// Returns a `Validator<T?>` function that:
@@ -148,7 +148,7 @@ Validator<T?> validateWithDefault<T extends Object>(
 /// // Optional validator with additional email validation
 /// final emailValidator = isOptional<String>(
 ///   validateEmail,
-///   (error) => 'Invalid email format: $error',
+///   (_, error) => 'Invalid email format: $error',
 /// );
 ///
 /// // Usage with different inputs
@@ -163,11 +163,11 @@ Validator<T?> validateWithDefault<T extends Object>(
 /// {@endtemplate}
 Validator<T?> isOptional<T extends Object>([
   Validator<T>? next,
-  String Function(String)? isOptionalMsg,
+  String Function(T input, String nextErrorMsg)? isOptionalMsg,
 ]) {
-  String? finalValidator(T? value) {
+  String? finalValidator(T? input) {
     final (bool isValid, T? transformedValue) =
-        _isRequiredValidateAndConvert(value);
+        _isRequiredValidateAndConvert(input);
     if (!isValid) {
       // field not provided
       return null;
@@ -177,7 +177,7 @@ Validator<T?> isOptional<T extends Object>([
       return null;
     }
 
-    return isOptionalMsg?.call(nextErrorMessage) ??
+    return isOptionalMsg?.call(input!, nextErrorMessage) ??
         FormBuilderLocalizations.current.isOptionalErrorText(nextErrorMessage);
   }
 

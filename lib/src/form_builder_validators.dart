@@ -1782,28 +1782,28 @@ final class Validators {
   // Debug print validator
   /// {@macro validator_debug_print_validator}
   static Validator<T> debugPrintValidator<T extends Object?>(
-          {Validator<T>? next, String Function(T)? logOnInput}) =>
+          {Validator<T>? next, String Function(T input)? logOnInput}) =>
       val.debugPrintValidator(next: next, logOnInput: logOnInput);
 
   // Equality validators
   /// {@macro validator_is_equal}
   static Validator<T> isEqual<T extends Object?>(
     T value, {
-    String Function(String)? isEqualMsg,
+    String Function(T input, T referenceValue)? isEqualMsg,
   }) =>
       val.isEqual(value, isEqualMsg: isEqualMsg);
 
   /// {@macro validator_is_not_equal}
   static Validator<T> isNotEqual<T extends Object?>(
     T value, {
-    String Function(String)? isNotEqualMsg,
+    String Function(T input, T referenceValue)? isNotEqualMsg,
   }) =>
       val.isNotEqual(value, isNotEqualMsg: isNotEqualMsg);
 
   // Override error validator
   /// {@macro validator_override_error_msg}
   static Validator<T> overrideErrorMsg<T extends Object?>(
-    String errorMsg,
+    String Function(T input) errorMsg,
     Validator<T> v,
   ) =>
       val.overrideErrorMsg(errorMsg, v);
@@ -1824,7 +1824,7 @@ final class Validators {
   /// {@macro validator_is_optional}
   static Validator<T> isOptional<T extends Object>([
     Validator<T>? next,
-    String Function(String)? isOptionalMsg,
+    String Function(T input, String nextErrorMsg)? isOptionalMsg,
   ]) =>
       val.isOptional(next, isOptionalMsg);
 
@@ -1844,4 +1844,6 @@ final class Validators {
             transformAndValidateMsg: transformAndValidateMsg,
             transformedResultTypeDescription: transformedResultTypeDescription,
           );
+
+  // Type Validator
 }

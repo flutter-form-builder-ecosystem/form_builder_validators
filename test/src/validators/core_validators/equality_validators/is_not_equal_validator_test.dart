@@ -102,7 +102,7 @@ void main() {
       const String ref = 'hello';
       const String customErrorMessage = 'custom error';
       final Validator<Object> v =
-          isNotEqual(ref, isNotEqualMsg: (_) => customErrorMessage);
+          isNotEqual(ref, isNotEqualMsg: (_, __) => customErrorMessage);
 
       // success
       expect(v(123), isNull);

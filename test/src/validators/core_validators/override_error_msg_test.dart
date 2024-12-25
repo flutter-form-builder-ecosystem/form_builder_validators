@@ -10,7 +10,8 @@ void main() {
     test('Should return null when the input is valid for the inner validator',
         () {
       const String newMsg = 'new error msg';
-      final Validator<Object?> v = overrideErrorMsg(newMsg, isEvenInteger);
+      final Validator<Object?> v =
+          overrideErrorMsg((_) => newMsg, isEvenInteger);
 
       // sanity check
       expect(isEvenInteger(12), isNull);
@@ -21,7 +22,8 @@ void main() {
         'Should return new error message when the input is not valid for the inner validator',
         () {
       const String newMsg = 'new error msg';
-      final Validator<Object?> v = overrideErrorMsg(newMsg, isEvenInteger);
+      final Validator<Object?> v =
+          overrideErrorMsg((_) => newMsg, isEvenInteger);
 
       // sanity check
       expect(isEvenInteger(null), errorMsg);

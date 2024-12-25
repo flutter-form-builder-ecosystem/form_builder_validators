@@ -2,17 +2,16 @@ import '../../../localization/l10n.dart';
 import '../constants.dart';
 
 /// {@template validator_is_equal}
-/// Creates a validator that checks if a given input matches `value` using
-/// the equality (`==`) operator.
+/// Creates a validator that checks if a given input matches `referenceValue`
+/// using the equality (`==`) operator.
 ///
 ///
 /// ## Parameters
-/// - `value` (`T`): The target value to compare against the input. This serves as
+/// - `referenceValue` (`T`): The value to compare against the input. This serves as
 ///   the reference for equality checking.
-/// - `isEqualMsg` (`String Function(String)?`): Optional custom error message
-///   generator. Takes the string representation of the target value and returns
-///   a custom error message.
-///
+/// - `isEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+/// custom error message generator. Takes the `input` and the `referenceValue`
+/// as parameters and returns a custom error message.
 ///
 /// ## Type Parameters
 /// - `T`: The type of value being validated. Must extend `Object?` to allow for
@@ -32,7 +31,7 @@ import '../constants.dart';
 /// // Using custom error message
 /// final specificValueValidator = isEqual<int>(
 ///   42,
-///   isEqualMsg: (value) => 'Value must be exactly $value',
+///   isEqualMsg: (_, value) => 'Value must be exactly $value',
 /// );
 /// ```
 ///
@@ -40,30 +39,31 @@ import '../constants.dart';
 /// - The comparison uses the `==` operator, which may not be suitable for complex
 ///   objects without proper equality implementation
 /// - The error message uses the string representation of the value via
-///   `toString()`, which might not be ideal for all types
+///   `toString()`, which might not be ideal for all types.
 /// {@endtemplate}
 Validator<T> isEqual<T extends Object?>(
-  T value, {
-  String Function(String)? isEqualMsg,
+  T referenceValue, {
+  String Function(T input, T referenceValue)? isEqualMsg,
 }) {
   return (T input) {
-    final String valueString = value.toString();
-    return value == input
+    return referenceValue == input
         ? null
-        : isEqualMsg?.call(valueString) ??
-            FormBuilderLocalizations.current.equalErrorText(valueString);
+        : isEqualMsg?.call(input, referenceValue) ??
+            FormBuilderLocalizations.current
+                .equalErrorText(referenceValue.toString());
   };
 }
 
 /// {@template validator_is_not_equal}
-/// Creates a validator that checks if a given input is not equal to`value` using
-/// the not-equal (`!=`) operator.
+/// Creates a validator that checks if a given input is not equal to
+/// `referenceValue` using the not-equal (`!=`) operator.
 ///
 /// ## Parameters
-/// - `value` (`T`): The reference value to compare against. Input must not equal
-///   this value to pass validation.
-/// - `isNotEqualMsg` (`String Function(String)?`): Optional custom error message generator.
-///   Takes the string representation of the reference value and returns a custom error message.
+/// - `referenceValue` (`T`): The reference value to compare against. Input must
+/// not equal this value to pass validation.
+/// - `isNotEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+/// custom error message generator. Takes the `input` and the `referenceValue`
+/// as parameters and returns a custom error message.
 ///
 /// ## Type Parameters
 /// - `T`: The type of value being validated. Must extend `Object?` to allow for
@@ -84,7 +84,7 @@ Validator<T> isEqual<T extends Object?>(
 /// // Custom error message
 /// final customValidator = isNotEqual<int>(
 ///   42,
-///   isNotEqualMsg: (value) => 'Please choose a number other than $value',
+///   isNotEqualMsg: (_, value) => 'Please choose a number other than $value',
 /// );
 /// print(customValidator(42)); // "Please choose a number other than 42"
 /// ```
@@ -96,14 +96,14 @@ Validator<T> isEqual<T extends Object?>(
 ///   `toString()`, which might not be ideal for all types
 /// {@endtemplate}
 Validator<T> isNotEqual<T extends Object?>(
-  T value, {
-  String Function(String)? isNotEqualMsg,
+  T referenceValue, {
+  String Function(T input, T referenceValue)? isNotEqualMsg,
 }) {
   return (T input) {
-    final String valueString = value.toString();
-    return value != input
+    return referenceValue != input
         ? null
-        : isNotEqualMsg?.call(valueString) ??
-            FormBuilderLocalizations.current.notEqualErrorText(valueString);
+        : isNotEqualMsg?.call(input, referenceValue) ??
+            FormBuilderLocalizations.current
+                .notEqualErrorText(referenceValue.toString());
   };
 }
