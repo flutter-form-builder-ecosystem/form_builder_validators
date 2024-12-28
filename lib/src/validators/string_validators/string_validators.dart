@@ -1,12 +1,50 @@
 import '../../../localization/l10n.dart';
-import '../collection_validators.dart';
+import '../collection_validators.dart' as collection_val;
 import '../constants.dart';
 import '../core_validators/composition_validators.dart';
 import '../core_validators/override_error_msg.dart';
 
-const _minL = minLength;
-const _maxL = maxLength;
-
+/// {@template validator_password}
+/// Creates a composite validator for password validation that enforces multiple
+/// password strength requirements simultaneously.
+///
+/// This validator combines multiple validation rules including length constraints,
+/// character type requirements (uppercase, lowercase, numbers, and special characters),
+/// and allows for custom error message overriding.
+///
+/// ## Parameters
+/// - `minLength` (`int`): Minimum required length for the password. Defaults to `8`
+/// - `maxLength` (`int`): Maximum allowed length for the password. Defaults to `32`
+/// - `minUppercaseCount` (`int`): Minimum required uppercase characters. Defaults to `1`
+/// - `minLowercaseCount` (`int`): Minimum required lowercase characters. Defaults to `1`
+/// - `minNumberCount` (`int`): Minimum required numeric characters. Defaults to `1`
+/// - `minSpecialCharCount` (`int`): Minimum required special characters. Defaults to `1`
+/// - `passwordMsg` (`String?`): Optional custom error message that overrides all
+///   validation error messages. When `null`, individual validator messages are used
+///
+/// ## Returns
+/// Returns a `Validator<String>` that combines all specified password requirements
+/// into a single validator. The validator returns null if all conditions are met,
+/// otherwise returns the appropriate error message.
+///
+/// ## Examples
+/// ```dart
+/// // Default password validation
+/// final validator = password();
+///
+/// // Custom requirements
+/// final strictValidator = password(
+///   minLength: 12,
+///   minUppercaseCount: 2,
+///   minSpecialCharCount: 2,
+///   passwordMsg: 'Password does not meet security requirements'
+/// );
+/// ```
+///
+/// ## Caveats
+/// - When `passwordMsg` is provided, individual validation failure details
+///   are not available to the user
+/// {@endtemplate}
 Validator<String> password({
   int minLength = 8,
   int maxLength = 32,
@@ -16,9 +54,9 @@ Validator<String> password({
   int minSpecialCharCount = 1,
   String? passwordMsg,
 }) {
-  final andValidator = and([
-    _minL(minLength),
-    _maxL(maxLength),
+  final Validator<String> andValidator = and(<Validator<String>>[
+    collection_val.minLength(minLength),
+    collection_val.maxLength(maxLength),
     hasMinUppercaseChars(min: minUppercaseCount),
     hasMinLowercaseChars(min: minLowercaseCount),
     hasMinNumericChars(min: minNumberCount),
@@ -29,17 +67,17 @@ Validator<String> password({
       : andValidator;
 }
 
-final _numericRegex = RegExp('[0-9]');
+final RegExp _numericRegex = RegExp('[0-9]');
 
 ({int upperCount, int lowerCount}) _upperAndLowerCaseCounter(String value) {
-  var uppercaseCount = 0;
-  var lowercaseCount = 0;
-  final upperCaseVersion = value.toUpperCase();
-  final lowerCaseVersion = value.toLowerCase();
+  int uppercaseCount = 0;
+  int lowercaseCount = 0;
+  final String upperCaseVersion = value.toUpperCase();
+  final String lowerCaseVersion = value.toLowerCase();
   // initial version: 1.0
-  final o = value.runes.iterator;
-  final u = upperCaseVersion.runes.iterator;
-  final l = lowerCaseVersion.runes.iterator;
+  final RuneIterator o = value.runes.iterator;
+  final RuneIterator u = upperCaseVersion.runes.iterator;
+  final RuneIterator l = lowerCaseVersion.runes.iterator;
   while (o.moveNext() && u.moveNext() && l.moveNext()) {
     if (o.current == u.current && o.current != l.current) {
       uppercaseCount++;

@@ -1894,4 +1894,25 @@ final class Validators {
         matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
         caseSensitive: caseSensitive,
       );
+
+  // String validators
+  /// {@macro validator_password}
+  static Validator<String> password({
+    int minLength = 8,
+    int maxLength = 32,
+    int minUppercaseCount = 1,
+    int minLowercaseCount = 1,
+    int minNumberCount = 1,
+    int minSpecialCharCount = 1,
+    String? passwordMsg,
+  }) =>
+      val.password(
+        minLength: minLength,
+        maxLength: maxLength,
+        minUppercaseCount: minUppercaseCount,
+        minLowercaseCount: minLowercaseCount,
+        minNumberCount: minNumberCount,
+        minSpecialCharCount: minSpecialCharCount,
+        passwordMsg: passwordMsg,
+      );
 }
