@@ -1,8 +1,10 @@
 {
   "@@locale": "en",
   "andSeparator": " and ",
+  "booleanErrorText": "This field requires a valid boolean (true or false).",
   "creditCardErrorText": "This field requires a valid credit card number.",
   "dateStringErrorText": "This field requires a valid date string.",
+  "dateTimeErrorText": "This field requires a valid datetime.",
   "emailErrorText": "This field requires a valid email address.",
   "equalErrorText": "This field value must be equal to {value}.",
   "@equalErrorText": {
