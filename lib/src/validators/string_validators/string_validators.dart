@@ -225,37 +225,73 @@ Validator<String> hasMinLowercaseChars({
   };
 }
 
-/// Returns a [Validator] function that checks if its [String] input has at
-/// least [min] numeric chars (0-9). If the input satisfies this condition, the
-/// validator returns `null`. Otherwise, it returns the default error message
-/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
-/// [hasMinNumericCharsMsg] is not provided.
+/// {@template validator_has_min_numeric_chars}
+/// Creates a validator function that checks if the [String] input contains a
+/// minimum number of numeric characters (0-9). The validator returns `null` for
+/// valid input and an error message for invalid input.
 ///
+/// If validation fails and no custom error message generator is provided via
+/// [hasMinNumericCharsMsg], returns the default localized error message from
+/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`.
 ///
-/// # Caveats
-/// - By default, the validator returned counts the numeric chars using the 0-9
-/// regexp rule, which may not work for some languages. For that situations, the
-/// user can provide a custom numeric counter function.
+/// ## Parameters
+/// - `min` (`int`): The minimum number of numeric characters required. Defaults
+///   to 1.
+/// - `customNumericCounter` (`int Function(String)?`): Optional custom function
+///   to count numeric characters. If not provided, uses a default regex-based
+///   counter matching digits 0-9.
+/// - `hasMinNumericCharsMsg` (`String Function(String input, int min)?`):
+///   Optional function to generate custom error messages. Receives the input and
+///   the minimum numeric count required and returns an error message string.
 ///
+/// ## Returns
+/// Returns a `Validator<String>` function that takes a string input and returns:
+/// - `null` if the input contains at least [min] numeric characters
+/// - An error message string if the validation fails
+///
+/// ## Throws
+/// - `AssertionError`: When [min] is less than 1
+///
+/// ## Examples
 /// ```dart
-/// // countNumericDigits can be a function from some specific package.
-/// final validator = hasMinNumericChars(customNumericCounter:countNumericDigits);
+/// // Basic usage with default parameters
+/// final validator = hasMinNumericChars();
+/// print(validator('hello123')); // Returns null
+/// print(validator('hello')); // Returns error message
+///
+/// // Custom minimum requirement
+/// final strictValidator = hasMinNumericChars(min: 2);
+/// print(strictValidator('hello12')); // Returns null
+/// print(strictValidator('hello1')); // Returns error message
+///
+/// // Custom error message
+/// final customValidator = hasMinNumericChars(
+///   hasMinNumericCharsMsg: (_, min) => 'Need $min numbers!',
+/// );
+///
+/// // Custom numeric counter for special cases
+/// final customCounter = hasMinNumericChars(
+///   customNumericCounter: countNumericDigits, // From a specialized package, for example.
+/// );
 /// ```
 ///
-/// # Errors
-/// - Throws an [AssertionError] if [min] is not positive (< 1).
+/// ## Caveats
+/// - The default counter uses a regular expression matching digits 0-9, which may
+///   not work correctly for all languages or number systems. Custom numeric counter
+///   function should be provided for special numbering requirements
+/// {@endtemplate}
 Validator<String> hasMinNumericChars({
   int min = 1,
   int Function(String)? customNumericCounter,
-  String Function(int)? hasMinNumericCharsMsg,
+  String Function(String input, int min)? hasMinNumericCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
-  return (value) {
-    final numericCount = customNumericCounter?.call(value) ??
-        _numericRegex.allMatches(value).length;
+  return (String input) {
+    final int numericCount = customNumericCounter?.call(input) ??
+        _numericRegex.allMatches(input).length;
     return numericCount >= min
         ? null
-        : hasMinNumericCharsMsg?.call(min) ??
+        : hasMinNumericCharsMsg?.call(input, min) ??
             FormBuilderLocalizations.current.containsNumberErrorText(min);
   };
 }

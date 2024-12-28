@@ -64,7 +64,7 @@ void main() {
           () {
         // Arrange
         final Validator<String> validator = hasMinUppercaseChars(
-            hasMinUppercaseCharsMsg: (_) => customErrorMessage);
+            hasMinUppercaseCharsMsg: (_, __) => customErrorMessage);
         const String value = 'password123';
 
         // Act
@@ -79,7 +79,7 @@ void main() {
           () {
         // Arrange
         final Validator<String> validator = hasMinUppercaseChars(
-            min: 2, hasMinUppercaseCharsMsg: (_) => customErrorMessage);
+            min: 2, hasMinUppercaseCharsMsg: (_, __) => customErrorMessage);
         const String value = 'passwoRd';
 
         // Act

@@ -47,7 +47,7 @@ void main() {
           'Should return custom error message when the value does not have any numeric value',
           () {
         final Validator<String> validator = hasMinNumericChars(
-          hasMinNumericCharsMsg: (_) => customErrorMessage,
+          hasMinNumericCharsMsg: (_, __) => customErrorMessage,
         );
         expect(validator('passWORD'), equals(customErrorMessage));
       });
@@ -56,7 +56,7 @@ void main() {
           () {
         final Validator<String> validator = hasMinNumericChars(
           min: 4,
-          hasMinNumericCharsMsg: (_) => customErrorMessage,
+          hasMinNumericCharsMsg: (_, __) => customErrorMessage,
         );
         expect(validator('pas4sWORD1'), equals(customErrorMessage));
       });
