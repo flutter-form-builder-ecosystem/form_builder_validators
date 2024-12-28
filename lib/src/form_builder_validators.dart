@@ -1852,4 +1852,33 @@ final class Validators {
     String Function(T input)? isStringMsg,
   ]) =>
       val.isString(next, isStringMsg);
+
+  /// {@macro validator_is_int}
+  static Validator<T> isInt<T extends Object>([
+    Validator<int>? next,
+    String Function(T input)? isIntMsg,
+  ]) =>
+      val.isInt(next, isIntMsg);
+
+  /// {@macro validator_is_num}
+  static Validator<T> isNum<T extends Object>([
+    Validator<num>? next,
+    String Function(T input)? isNumMsg,
+  ]) =>
+      val.isNum(next, isNumMsg);
+
+  /// {@macro validator_is_bool}
+  static Validator<T> isBool<T extends Object>(
+          [Validator<bool>? next,
+          String Function(T input)? isBoolMsg,
+          bool caseSensitive = false,
+          bool trim = true]) =>
+      val.isBool(next, isBoolMsg, caseSensitive, trim);
+
+  /// {@macro validator_is_date_time}
+  static Validator<T> isDateTime<T extends Object>([
+    Validator<DateTime>? next,
+    String Function(T input)? isDateTimeMsg,
+  ]) =>
+      val.isDateTime(next, isDateTimeMsg);
 }
