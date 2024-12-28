@@ -1915,4 +1915,28 @@ final class Validators {
         minSpecialCharCount: minSpecialCharCount,
         passwordMsg: passwordMsg,
       );
+
+  /// {@macro validator_has_min_uppercase_chars}
+  static Validator<String> hasMinUppercaseChars({
+    int min = 1,
+    int Function(String)? customUppercaseCounter,
+    String Function(String input, int min)? hasMinUppercaseCharsMsg,
+  }) =>
+      val.hasMinUppercaseChars(
+        min: min,
+        customUppercaseCounter: customUppercaseCounter,
+        hasMinUppercaseCharsMsg: hasMinUppercaseCharsMsg,
+      );
+
+  /// {@macro validator_has_min_lowercase_chars}
+  static Validator<String> hasMinLowercaseChars({
+    int min = 1,
+    int Function(String)? customLowercaseCounter,
+    String Function(String input, int min)? hasMinLowercaseCharsMsg,
+  }) =>
+      val.hasMinLowercaseChars(
+        min: min,
+        customLowercaseCounter: customLowercaseCounter,
+        hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
+      );
 }
