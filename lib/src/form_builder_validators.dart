@@ -1963,4 +1963,11 @@ final class Validators {
         customSpecialCounter: customSpecialCounter,
         hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
       );
+
+  /// {@macro validator_match}
+  static Validator<String> match(
+    RegExp regex, {
+    String Function(String input)? matchMsg,
+  }) =>
+      val.match(regex, matchMsg: matchMsg);
 }

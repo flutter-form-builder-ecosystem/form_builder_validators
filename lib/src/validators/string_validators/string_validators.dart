@@ -376,25 +376,63 @@ Validator<String> hasMinSpecialChars({
   };
 }
 
+/// {@template validator_match}
+/// Creates a validator function that checks if the [String] input matches a given
+/// regular expression pattern. The validator returns `null` for valid input and
+/// an error message for invalid input.
+///
+/// If validation fails and no custom error message is provided via [matchMsg],
+/// returns the default localized error message from
+/// `FormBuilderLocalizations.current.matchErrorText`.
+///
+/// ## Parameters
+/// - `regex` (`RegExp`): The regular expression pattern to match against the input
+///   string.
+/// - `matchMsg` (`String Function(String input)?`): Optional custom error message
+/// to display when the validation fails. If not provided, uses the default
+/// localized error message.
+///
+/// ## Returns
+/// Returns a `Validator<String>` function that takes a string input and returns:
+/// - `null` if the input matches the provided regular expression pattern
+/// - An error message string if the validation fails
+///
+/// ## Examples
+/// ```dart
+/// // Basic email validation
+/// final emailValidator = match(
+///   emailRegExp,
+///   matchMsg: (_)=>'Please enter a valid email address',
+/// );
+/// print(emailValidator('user@example.com')); // Returns null
+/// print(emailValidator('invalid-email')); // Returns error message
+/// ```
+///
+/// ## Caveats
+/// - Complex regular expressions may impact performance for large inputs
+/// - Consider using more specific validators for common patterns like email
+///   or phone number validation
+/// {@endtemplate}
 Validator<String> match(
   RegExp regex, {
-  String? matchMsg,
+  String Function(String input)? matchMsg,
 }) {
-  return (value) {
-    return regex.hasMatch(value)
+  return (String input) {
+    return regex.hasMatch(input)
         ? null
-        : matchMsg ?? FormBuilderLocalizations.current.matchErrorText;
+        : matchMsg?.call(input) ??
+            FormBuilderLocalizations.current.matchErrorText;
   };
 }
 
-final _uuidRegex = RegExp(
+final RegExp _uuidRegex = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
 );
 Validator<String> uuid({
   RegExp? regex,
   String? uuidMsg,
 }) {
-  return (value) {
+  return (String value) {
     return (regex ?? _uuidRegex).hasMatch(value)
         ? null
         : uuidMsg ?? FormBuilderLocalizations.current.uuidErrorText;
