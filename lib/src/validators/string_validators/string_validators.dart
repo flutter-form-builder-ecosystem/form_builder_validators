@@ -296,48 +296,82 @@ Validator<String> hasMinNumericChars({
   };
 }
 
-/// Returns a [Validator] function that checks if its [String] input has at
-/// least [min] special chars. If the input satisfies this condition, the
-/// validator returns `null`. Otherwise, it returns the default error message
-/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`, if
-/// [hasMinNumericCharsMsg] is not provided.
+/// {@template validator_has_min_special_chars}
+/// Creates a validator function that checks if the [String] input contains a
+/// minimum number of special characters. The validator returns `null` for
+/// valid input and an error message for invalid input.
 ///
+/// If validation fails and no custom error message generator is provided via
+/// [hasMinSpecialCharsMsg], returns the default localized error message from
+/// `FormBuilderLocalizations.current.containsSpecialCharErrorText(min)`.
 ///
-/// # Caveats
-/// - The default method for calculating special chars is to make the difference
-/// between the total number of chars and the sum of digits and alphabetical
-/// chars. The alphabetical chars are counted as those which are affected by
-/// the String methods toLowercase/toUppercase.
-/// - By default, the validator returned counts the special chars using a
-/// language independent unicode mapping, which may not work for some languages.
-/// For that situations, the user can provide a custom special counter
-/// function.
+/// ## Parameters
+/// - `min` (`int`): The minimum number of special characters required. Defaults
+///   to 1.
+/// - `customSpecialCounter` (`int Function(String)?`): Optional custom function
+///   to count special characters. If not provided, uses a default calculation
+///   that considers special characters as any character that is neither
+///   alphanumeric.
+/// - `hasMinSpecialCharsMsg` (`String Function(String input, int min)?`):
+///   Optional function to generate custom error messages. Receives the input and
+///   the minimum special character count required and returns an error message string.
 ///
+/// ## Returns
+/// Returns a `Validator<String>` function that takes a string input and returns:
+/// - `null` if the input contains at least [min] special characters
+/// - An error message string if the validation fails
+///
+/// ## Throws
+/// - `AssertionError`: When [min] is less than 1
+///
+/// ## Examples
 /// ```dart
-/// // US-ASCII special chars
-/// final validator = hasMinSpecialChars(customSpecialCounter:(v)=>RegExp('[^A-Za-z0-9]'));
+/// // Basic usage with default parameters
+/// final validator = hasMinSpecialChars();
+/// print(validator('hello@world')); // Returns null
+/// print(validator('helloworld')); // Returns error message
+///
+/// // Custom minimum requirement
+/// final strictValidator = hasMinSpecialChars(min: 2);
+/// print(strictValidator('hello@#world')); // Returns null
+/// print(strictValidator('hello@world')); // Returns error message
+///
+/// // Custom error message
+/// final customValidator = hasMinSpecialChars(
+///   hasMinSpecialCharsMsg: (_, min) => 'Need $min special characters!',
+/// );
+///
+/// // Custom special character counter for US-ASCII
+/// final asciiValidator = hasMinSpecialChars(
+///   customSpecialCounter: (v) => RegExp('[^A-Za-z0-9]').allMatches(v).length,
+/// );
 /// ```
 ///
-/// # Errors
-/// - Throws an [AssertionError] if [min] is not positive (< 1).
-///
-///
+/// ## Caveats
+/// - The default counter uses language-independent Unicode mapping, which may not
+///   work correctly for all languages. Custom special character counter function
+///   should be provided for specific character set requirements
+/// {@endtemplate}
 Validator<String> hasMinSpecialChars({
   int min = 1,
   int Function(String)? customSpecialCounter,
-  String Function(int)? hasMinSpecialCharsMsg,
+  String Function(String input, int min)? hasMinSpecialCharsMsg,
 }) {
   assert(min > 0, 'min must be positive (at least 1)');
-  return (value) {
-    // todo (optimize) avoid calculating _upperAndLowerCaseCounter when user provides customSpecialCounter
-    final (lowerCount: lowerCount, upperCount: upperCount) =
-        _upperAndLowerCaseCounter(value);
-    final specialCount = value.length -
-        (lowerCount + upperCount + _numericRegex.allMatches(value).length);
+  return (String input) {
+    int specialCount;
+    if (customSpecialCounter == null) {
+      final (lowerCount: int lowerCount, upperCount: int upperCount) =
+          _upperAndLowerCaseCounter(input);
+      specialCount = input.length -
+          (lowerCount + upperCount + _numericRegex.allMatches(input).length);
+    } else {
+      specialCount = customSpecialCounter.call(input);
+    }
 
-    return (customSpecialCounter?.call(value) ?? specialCount) >= min
+    return specialCount >= min
         ? null
-        : hasMinSpecialCharsMsg?.call(min) ??
+        : hasMinSpecialCharsMsg?.call(input, min) ??
             FormBuilderLocalizations.current.containsSpecialCharErrorText(min);
   };
 }

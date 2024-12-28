@@ -1951,4 +1951,16 @@ final class Validators {
         customNumericCounter: customNumericCounter,
         hasMinNumericCharsMsg: hasMinNumericCharsMsg,
       );
+
+  /// {@macro validator_has_min_special_chars}
+  static Validator<String> hasMinSpecialChars({
+    int min = 1,
+    int Function(String)? customSpecialCounter,
+    String Function(String input, int min)? hasMinSpecialCharsMsg,
+  }) =>
+      val.hasMinSpecialChars(
+        min: min,
+        customSpecialCounter: customSpecialCounter,
+        hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
+      );
 }

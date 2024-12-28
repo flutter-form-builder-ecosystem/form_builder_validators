@@ -54,7 +54,7 @@ void main() {
           'Should return custom error message when the value does not have any special value',
           () {
         final Validator<String> validator = hasMinSpecialChars(
-          hasMinSpecialCharsMsg: (_) => customErrorMessage,
+          hasMinSpecialCharsMsg: (_, __) => customErrorMessage,
         );
         expect(validator('passWORD'), equals(customErrorMessage));
       });
@@ -63,7 +63,7 @@ void main() {
           () {
         final Validator<String> validator = hasMinSpecialChars(
           min: 4,
-          hasMinSpecialCharsMsg: (_) => customErrorMessage,
+          hasMinSpecialCharsMsg: (_, __) => customErrorMessage,
         );
         expect(validator('pas4sWORD1'), equals(customErrorMessage));
       });
