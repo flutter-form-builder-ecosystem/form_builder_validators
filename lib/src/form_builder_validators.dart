@@ -1970,4 +1970,36 @@ final class Validators {
     String Function(String input)? matchMsg,
   }) =>
       val.match(regex, matchMsg: matchMsg);
+
+  // TODO implement the other string validators here...
+
+// Collection validators
+  /// {@macro validator_min_length}
+  static Validator<T> minLength<T extends Object>(int min,
+          {String Function(T input, int min)? minLengthMsg}) =>
+      val.minLength(min, minLengthMsg: minLengthMsg);
+
+  /// {@macro validator_max_length}
+  static Validator<T> maxLength<T extends Object>(int max,
+          {String Function(T input, int max)? maxLengthMsg}) =>
+      val.maxLength(max, maxLengthMsg: maxLengthMsg);
+
+  /// {@macro validator_between_length}
+  static Validator<T> betweenLength<T extends Object>(
+    int min,
+    int max, {
+    String Function(T input, {required int min, required int max})?
+        betweenLengthMsg,
+  }) =>
+      val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
+
+  /// {@macro validator_equal_length}
+  static Validator<T> equalLength<T extends Object>(int expectedLength,
+          {bool allowEmpty = false,
+          String Function(T input, int expectedLength)? equalLengthMsg}) =>
+      val.equalLength(
+        expectedLength,
+        allowEmpty: allowEmpty,
+        equalLengthMsg: equalLengthMsg,
+      );
 }

@@ -61,7 +61,8 @@ void main() {
     test('Should validate input returning custom message error when invalid',
         () {
       const String customMsg = 'custom msg';
-      final Validator<Object> v = minLength(3, minLengthMsg: (_) => customMsg);
+      final Validator<Object> v =
+          minLength(3, minLengthMsg: (_, __) => customMsg);
 
       expect(v(89), equals(customMsg));
       expect(v(<Object>[1, '2', 3, 4]), isNull);

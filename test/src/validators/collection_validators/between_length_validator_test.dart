@@ -11,10 +11,11 @@ void main() {
         final Validator<Object> v2 = betweenLength(3, 3);
 
         expect(v(<int>[]), isNull);
-        expect(
-            v(<int>[12]), betweenLengthTemporaryErrorMessage(min: 0, max: 0));
+        expect(v(<int>[12]),
+            FormBuilderLocalizations.current.betweenLengthErrorText(0, 0));
         expect(v2(<int>[12, 23, 456]), isNull);
-        expect(v2(12), betweenLengthTemporaryErrorMessage(min: 3, max: 3));
+        expect(v2(12),
+            FormBuilderLocalizations.current.betweenLengthErrorText(3, 3));
       });
       test(
           'Should validate the input when it is expected to have minLength 1 and maxLength 5',
@@ -22,24 +23,27 @@ void main() {
         final Validator<List<int>> v = betweenLength(1, 5);
         final Validator<Object> v2 = betweenLength(1, 5);
 
-        expect(v(<int>[]), betweenLengthTemporaryErrorMessage(min: 1, max: 5));
+        expect(v(<int>[]),
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
         expect(v(<int>[0]), isNull);
         expect(v(<int>[0, 1]), isNull);
         expect(v(<int>[0, 2, 3]), isNull);
         expect(v(<int>[23, 432, 52, 65, 1]), isNull);
         expect(v(<int>[1, 2, 3, 4, 5, 6]),
-            betweenLengthTemporaryErrorMessage(min: 1, max: 5));
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
         expect(v(<int>[1, 2, 3, 4, 5, 6, 7]),
-            betweenLengthTemporaryErrorMessage(min: 1, max: 5));
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
 
-        expect(v2(<int>[]), betweenLengthTemporaryErrorMessage(min: 1, max: 5));
-        expect(v2(''), betweenLengthTemporaryErrorMessage(min: 1, max: 5));
+        expect(v2(<int>[]),
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
+        expect(v2(''),
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
         expect(v2(<String>['0']), isNull);
         expect(v2(0), isNull);
         expect(v2(<Object>[1, '3']), isNull);
         expect(v2('hi '), isNull);
-        expect(
-            v2('      '), betweenLengthTemporaryErrorMessage(min: 1, max: 5));
+        expect(v2('      '),
+            FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
       });
     });
 
@@ -47,7 +51,7 @@ void main() {
         () {
       const String customMsg = 'custom msg';
       final Validator<Object> v = betweenLength(3, 4,
-          betweenLengthMsg: ({required int min, required int max}) =>
+          betweenLengthMsg: (_, {required int min, required int max}) =>
               customMsg);
 
       expect(v(89), equals(customMsg));

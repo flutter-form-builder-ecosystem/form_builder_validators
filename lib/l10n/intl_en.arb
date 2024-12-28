@@ -1,6 +1,19 @@
 {
   "@@locale": "en",
   "andSeparator": " and ",
+  "betweenLengthErrorText": "Value must have a length that is between {min} and {max}, inclusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "booleanErrorText": "This field requires a valid boolean (true or false).",
   "creditCardErrorText": "This field requires a valid credit card number.",
   "dateStringErrorText": "This field requires a valid date string.",
