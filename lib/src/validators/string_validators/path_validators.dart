@@ -8,27 +8,54 @@ bool _isValidExtension(String v) => v.isEmpty || v[0] == '.';
 /// Expects not empty v
 int _numOfExtensionLevels(String v) => r'.'.allMatches(v).length;
 
-/// This function returns a validator that checks if the user input path has an
-/// extension that matches at least one element from `extensions`. If a match
-/// happens, the validator returns `null`, otherwise, it returns
-/// `matchesAllowedExtensionsMsg`, if it is provided, or
-/// [FormBuilderLocalizations.current.fileExtensionErrorText], if not.
+/// {@template validator_matches_allowed_extensions}
+/// A validator function that checks if a file path's extension matches any of
+/// the specified allowed extensions. Returns `null` for valid extensions, or an
+/// error message for invalid ones.
+///
+/// The validator supports both single-level (e.g., '.txt') and multi-level
+/// (e.g., '.tar.gz') extensions, with configurable case sensitivity.
 ///
 /// ## Parameters
-/// - `extensions`: a list of valid allowed extensions. An extension must be started
-/// by a dot. Check for examples in the `Errors` section.
-/// - `caseSensitive`: whether the match is case sensitive.
+/// - `extensions` (`List<String>`): List of valid file extensions. Each extension must start
+///   with a dot (e.g., '.pdf', '.tar.gz'). Empty string is considered a valid extension
+/// - `matchesAllowedExtensionsMsg` (`String Function(List<String>)?`): Optional custom error
+///   message generator. Receives the list of allowed extensions and returns an error message
+/// - `caseSensitive` (`bool`): Controls whether extension matching is case-sensitive.
+///   Defaults to `true`
 ///
-/// ## Errors
-/// - Throws [AssertionError] when `extensions` is empty.
-/// - Throws [AssertionError] when an extension from `extensions` is neither
-/// empty nor initiated by dot.
-///   - Examples of valid extensions: '.exe', '', '.a.b.c', '.', '..'.
-///   - Examples of invalid extensions: 'invalid.extension', 'abc', 'a.b.c.'.
+/// ## Returns
+/// Returns a `Validator<String>` function that:
+/// - Returns `null` if the input path's extension matches any allowed extension
+/// - Returns an error message (custom or default) if no extension match is found
+///
+/// ## Throws
+/// - `AssertionError`: When `extensions` list is empty
+/// - `AssertionError`: When any extension in `extensions` doesn't start with a dot
+///   (except for empty string)
+///
+/// ## Examples
+/// ```dart
+/// // Single-level extension validation
+/// final validator = matchesAllowedExtensions(['.pdf', '.doc']);
+/// print(validator('document.pdf')); // Returns: null
+/// print(validator('document.txt')); // Returns: error message
+///
+/// // Multi-level extension validation
+/// final archiveValidator = matchesAllowedExtensions(['.tar.gz', '.zip']);
+/// print(archiveValidator('archive.tar.gz')); // Returns: null
+///
+/// // Case-insensitive validation
+/// final caseValidator = matchesAllowedExtensions(
+///   ['.PDF', '.DOC'],
+///   caseSensitive: false
+/// );
+/// print(caseValidator('document.pdf')); // Returns: null
+/// ```
 ///
 /// ## Caveats
-/// - Remember, extensions must start with a trailing dot. Thus, instead
-/// of 'txt', type '.txt'.
+/// - Extensions must explicitly include the leading dot (use '.txt' not 'txt')
+/// {@endtemplate}
 Validator<String> matchesAllowedExtensions(
   List<String> extensions, {
   String Function(List<String>)? matchesAllowedExtensionsMsg,

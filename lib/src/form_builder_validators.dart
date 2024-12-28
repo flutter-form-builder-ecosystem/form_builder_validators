@@ -1881,4 +1881,17 @@ final class Validators {
     String Function(T input)? isDateTimeMsg,
   ]) =>
       val.isDateTime(next, isDateTimeMsg);
+
+  // Path validators
+  /// {@macro validator_matches_allowed_extensions}
+  static Validator<String> matchesAllowedExtensions(
+    List<String> extensions, {
+    String Function(List<String>)? matchesAllowedExtensionsMsg,
+    bool caseSensitive = true,
+  }) =>
+      val.matchesAllowedExtensions(
+        extensions,
+        matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
+        caseSensitive: caseSensitive,
+      );
 }
