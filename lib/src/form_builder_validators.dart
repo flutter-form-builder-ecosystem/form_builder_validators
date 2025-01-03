@@ -2002,4 +2002,13 @@ final class Validators {
         allowEmpty: allowEmpty,
         equalLengthMsg: equalLengthMsg,
       );
+
+  // DateTime Validators
+  /// {@macro validator_is_after}
+  static Validator<DateTime> isAfter(
+    DateTime reference, {
+    String Function(DateTime input, DateTime reference)? isAfterMsg,
+    bool inclusive = false,
+  }) =>
+      val.isAfter(reference, isAfterMsg: isAfterMsg, inclusive: inclusive);
 }

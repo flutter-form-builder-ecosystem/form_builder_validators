@@ -12,7 +12,8 @@ void main() {
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v = isAfter(reference);
-      final String errorMsg = tmpIsAfterErrorMsg(reference);
+      final String errorMsg =
+          FormBuilderLocalizations.current.dateMustBeAfterErrorText(reference);
 
       expect(
         v(eq),
@@ -51,7 +52,8 @@ void main() {
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v = isAfter(reference, inclusive: true);
-      final String errorMsg = tmpIsAfterErrorMsg(reference);
+      final String errorMsg =
+          FormBuilderLocalizations.current.dateMustBeAfterErrorText(reference);
 
       expect(
         v(eq),
@@ -86,7 +88,7 @@ void main() {
       const String errorMsg = 'error msg';
       final DateTime reference = DateTime(2);
       final Validator<DateTime> v =
-          isAfter(reference, isAfterMsg: (_) => errorMsg);
+          isAfter(reference, isAfterMsg: (_, __) => errorMsg);
 
       expect(
         v(reference.copyWith()),
