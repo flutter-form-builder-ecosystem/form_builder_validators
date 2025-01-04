@@ -2011,4 +2011,12 @@ final class Validators {
     bool inclusive = false,
   }) =>
       val.isAfter(reference, isAfterMsg: isAfterMsg, inclusive: inclusive);
+
+  /// {@macro validator_is_before}
+  static Validator<DateTime> isBefore(
+    DateTime reference, {
+    String Function(DateTime input, DateTime reference)? isBeforeMsg,
+    bool inclusive = false,
+  }) =>
+      val.isBefore(reference, isBeforeMsg: isBeforeMsg, inclusive: inclusive);
 }

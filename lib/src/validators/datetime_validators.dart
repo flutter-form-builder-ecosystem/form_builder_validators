@@ -67,24 +67,55 @@ Validator<DateTime> isInTheFuture({
   };
 }
 
-String tmpIsBeforeErrorMsg(DateTime reference) {
-  return 'The date must be before ${reference.toLocal()}';
-}
-
-/// This function returns a validator that checks if the user [DateTime] input is
-/// before (or equal, if `inclusive` is true) to `reference`. If the checking results
-/// true, the validator returns `null`. Otherwise, it returns `isBeforeMsg`, if
-/// provided, or `FormBuilderLocalizations.current.isBeforeErrorText`.
+/// {@template validator_is_before}
+/// Creates a [DateTime] validator that checks if an input date occurs before
+/// `reference`.
+///
+/// ## Parameters
+/// - `reference` (`DateTime`): The baseline date against which the input will be compared.
+///   This serves as the maximum acceptable date (exclusive by default).
+/// - `isBeforeMsg` (`String Function(DateTime input, DateTime reference)?`): Optional custom
+///   error message generator. When provided, it receives both the input and reference
+///   dates to construct a context-aware error message.
+/// - `inclusive` (`bool`): When set to `true`, allows the input date to exactly match
+///   the reference date. Defaults to `false`, requiring strictly earlier dates.
+///
+/// ## Returns
+/// Returns a `Validator<DateTime>` function that:
+/// - Returns `null` if validation passes (input is before reference)
+/// - Returns an error message string if validation fails. If no custom message is provided,
+///   falls back to the localized error text from `FormBuilderLocalizations`
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage requiring date before January 1st, 2025
+/// final validator = isBefore(DateTime(2025));
+///
+/// // Inclusive validation allowing exact match
+/// final inclusiveValidator = isBefore(
+///   DateTime(2024),
+///   inclusive: true,
+/// );
+///
+/// // Custom error message
+/// final customValidator = isBefore(
+///   DateTime(2024),
+///   isBeforeMsg: (_, ref) => 'Please select a date before ${ref.toString()}',
+/// );
+/// ```
+/// {@endtemplate}
 Validator<DateTime> isBefore(
   DateTime reference, {
-  String Function(DateTime)? isBeforeMsg,
+  String Function(DateTime input, DateTime reference)? isBeforeMsg,
   bool inclusive = false,
 }) {
-  return (DateTime value) {
-    return value.isBefore(reference) ||
-            (inclusive ? value.isAtSameMomentAs(reference) : false)
+  return (DateTime input) {
+    return input.isBefore(reference) ||
+            (inclusive ? input.isAtSameMomentAs(reference) : false)
         ? null
-        : isBeforeMsg?.call(reference) ?? tmpIsBeforeErrorMsg(reference);
+        : isBeforeMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current
+                .dateMustBeBeforeErrorText(reference);
   };
 }
 

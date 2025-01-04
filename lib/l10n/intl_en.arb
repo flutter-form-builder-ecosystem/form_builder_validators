@@ -27,6 +27,17 @@
       }
     }
   },
+  "dateMustBeBeforeErrorText": "Date must before {reference}.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
   "dateStringErrorText": "This field requires a valid date string.",
   "dateTimeErrorText": "This field requires a valid datetime.",
   "emailErrorText": "This field requires a valid email address.",

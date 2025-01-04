@@ -1,7 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  setUpAll(() async {
+    await initializeDateFormatting('en', null);
+  });
   group('Validator: isBefore', () {
     test('Validation for the year 1994', () {
       final DateTime reference = DateTime(1994);
@@ -12,7 +16,8 @@ void main() {
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v = isBefore(reference);
-      final String errorMsg = tmpIsBeforeErrorMsg(reference);
+      final String errorMsg =
+          FormBuilderLocalizations.current.dateMustBeBeforeErrorText(reference);
 
       expect(
         v(eq),
@@ -51,7 +56,8 @@ void main() {
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v = isBefore(reference, inclusive: true);
-      final String errorMsg = tmpIsBeforeErrorMsg(reference);
+      final String errorMsg =
+          FormBuilderLocalizations.current.dateMustBeBeforeErrorText(reference);
 
       expect(
         v(eq),
@@ -86,7 +92,7 @@ void main() {
       const String errorMsg = 'error msg';
       final DateTime reference = DateTime(2);
       final Validator<DateTime> v =
-          isBefore(reference, isBeforeMsg: (_) => errorMsg);
+          isBefore(reference, isBeforeMsg: (_, __) => errorMsg);
 
       expect(
         v(reference.copyWith()),
