@@ -76,6 +76,24 @@
       }
     }
   },
+  "greaterThanErrorText": "Value must be greater than {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Value must be greater than or equal to {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
   "integerErrorText": "This field requires a valid integer.",
   "ipErrorText": "This field requires a valid IP.",
   "isOptionalErrorText": "The field is optional, otherwise, {nextErrorMessage}'",

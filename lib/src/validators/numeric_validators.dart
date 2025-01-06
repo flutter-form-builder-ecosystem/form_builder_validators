@@ -1,33 +1,93 @@
+import '../../localization/l10n.dart';
 import 'constants.dart';
 
-String greaterThanTmpMsg(num n) => 'Value must be greater than $n';
-
-/// This function returns a validator that checks whether the user input is greater
-/// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
-/// returns an error message. The error message is `greaterThanMsg`, or
-/// `FormBuilderLocalizations.current.greaterThan(n)` if `greaterThanMsg`
-/// was not provided.
-Validator<T> greaterThan<T extends num>(T n,
-    {String Function(num)? greaterThanMsg}) {
-  return (T value) {
-    return value > n ? null : greaterThanMsg?.call(n) ?? greaterThanTmpMsg(n);
+/// {@template validator_greater_than}
+/// Creates a validator function that checks if a numeric input exceeds `reference`.
+///
+/// ## Type Parameters
+/// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+/// `num` validations
+///
+/// ## Parameters
+/// - `reference` (`T`): The threshold value that the input must exceed
+/// - `greaterThanMsg` (`String Function(T input, T reference)?`): Optional custom error
+///   message generator that takes the input value and threshold as parameters
+///
+/// ## Returns
+/// Returns a [Validator] function that:
+/// - Returns `null` if the input is greater than the threshold value `reference`
+/// - Returns an error message string if validation fails, either from the custom
+///   `greaterThanMsg` function or the default localized error text
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage with integers
+/// final ageValidator = greaterThan<int>(18);
+///
+/// // Custom error message
+/// final priceValidator = greaterThan<double>(
+///   0.0,
+///   greaterThanMsg: (_, ref) => 'Price must be greater than \$${ref.toStringAsFixed(2)}',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validator uses strict greater than comparison (`>`)
+/// {@endtemplate}
+Validator<T> greaterThan<T extends num>(T reference,
+    {String Function(T input, T reference)? greaterThanMsg}) {
+  return (T input) {
+    return input > reference
+        ? null
+        : greaterThanMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current.greaterThanErrorText(reference);
   };
 }
 
-String greaterThanOrEqualToTmpMsg(num n) =>
-    'Value must be greater than or equal to $n';
-
-/// This function returns a validator that checks whether the user input is greater
-/// than or equal to `n`. If the input is valid, the validator returns `null`. Otherwise, it
-/// returns an error message. The error message is `greaterThanOrEqualMsg`, or
-/// `FormBuilderLocalizations.current.greaterThanOrEqualTo(n)` if `greaterThanOrEqualToMsg`
-/// was not provided.
-Validator<T> greaterThanOrEqualTo<T extends num>(T n,
-    {String Function(num)? greaterThanOrEqualToMsg}) {
-  return (T value) {
-    return value >= n
+/// {@template validator_greater_than_or_equal_to}
+/// Creates a validator function that checks if a numeric input is greater than
+/// or equal to `reference`.
+///
+/// ## Type Parameters
+/// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+/// `num` validations
+///
+/// ## Parameters
+/// - `reference` (`T`): The threshold value that the input must be greater than or equal to
+/// - `greaterThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
+///   message generator that takes the input value and threshold as parameters
+///
+/// ## Returns
+/// Returns a [Validator] function that:
+/// - Returns `null` if the input is greater than or equal to the threshold value
+/// `reference`
+/// - Returns an error message string if validation fails, either from the custom
+///   `greaterThanOrEqualToMsg` function or the default localized error text from
+///   [FormBuilderLocalizations]
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage with integers
+/// final ageValidator = greaterThanOrEqualTo<int>(18);
+///
+/// // Custom error message
+/// final priceValidator = greaterThanOrEqualTo<double>(
+///   0.0,
+///   greaterThanOrEqualToMsg: (_, ref) => 'Price must be at least \$${ref.toStringAsFixed(2)}',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validator uses greater than or equal to comparison (`>=`)
+/// {@endtemplate}
+Validator<T> greaterThanOrEqualTo<T extends num>(T reference,
+    {String Function(T input, T reference)? greaterThanOrEqualToMsg}) {
+  return (T input) {
+    return input >= reference
         ? null
-        : greaterThanOrEqualToMsg?.call(n) ?? greaterThanOrEqualToTmpMsg(n);
+        : greaterThanOrEqualToMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current
+                .greaterThanOrEqualToErrorText(reference);
   };
 }
 

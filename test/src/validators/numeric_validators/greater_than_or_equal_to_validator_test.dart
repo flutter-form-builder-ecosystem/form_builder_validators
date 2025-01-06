@@ -4,7 +4,8 @@ import 'package:form_builder_validators/form_builder_validators.dart' as val;
 void main() {
   group('Validator: greaterThanOrEqualTo', () {
     group('Valid comparisons', () {
-      final List<(List<(num, bool)>, {num n})> testCases = [
+      final List<(List<(num, bool)>, {num n})> testCases =
+          <(List<(num, bool)>, {num n})>[
         (
           n: 0,
           <(num, bool)>[
@@ -43,7 +44,8 @@ void main() {
             'Should return error message if input is not greater than or equal to $n',
             () {
           final val.Validator<num> v = val.greaterThanOrEqualTo(n);
-          final String errorMsg = val.greaterThanOrEqualToTmpMsg(n);
+          final String errorMsg = val.FormBuilderLocalizations.current
+              .greaterThanOrEqualToErrorText(n);
           for (final (num input, bool isValid) in testCase.$1) {
             expect(v(input), isValid ? isNull : errorMsg,
                 reason:
@@ -55,7 +57,7 @@ void main() {
     test('Should validate with custom message', () {
       const String msg = 'error msg';
       final val.Validator<int> v =
-          val.greaterThanOrEqualTo(34, greaterThanOrEqualToMsg: (_) => msg);
+          val.greaterThanOrEqualTo(34, greaterThanOrEqualToMsg: (_, __) => msg);
 
       expect(v(35), isNull);
       expect(v(-1234), msg);

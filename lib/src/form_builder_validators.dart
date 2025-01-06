@@ -2070,4 +2070,17 @@ final class Validators {
           bool trim = false}) =>
       val.isFalse(
           isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
+
+  // Numeric validators
+  /// {@macro validator_greater_than}
+  static Validator<T> greaterThan<T extends num>(T reference,
+          {String Function(num input, num reference)? greaterThanMsg}) =>
+      val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
+
+  /// {@macro validator_greater_than_or_equal_to}
+  static Validator<T> greaterThanOrEqualTo<T extends num>(T reference,
+          {String Function(num input, num reference)?
+              greaterThanOrEqualToMsg}) =>
+      val.greaterThanOrEqualTo(reference,
+          greaterThanOrEqualToMsg: greaterThanOrEqualToMsg);
 }
