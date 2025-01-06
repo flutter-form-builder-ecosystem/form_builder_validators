@@ -1,23 +1,54 @@
 import '../../localization/l10n.dart';
 import 'constants.dart';
 
-/// Returns a [Validator] function that checks whether its input is in the
-/// provided list `values`. If the input is valid, the validator returns `null`,
-/// otherwise, it returns `containsElementMsg`, if provided, or
-/// `FormBuilderLocalizations.current.containsElementErrorText`.
+/// {@template validator_contains_element}
+/// Creates a validator function that verifies if a given input is in `values`.
 ///
-/// # Errors
-/// - Throws an [AssertionError] if the input `values` is an empty list.
+/// ## Type Parameters
+/// - `T`: The type of elements to validate. Must extend Object?, allowing nullable
+/// types.
+///
+/// ## Parameters
+/// - `values` (`List<T>`): A non-empty list of valid values to check against. The input
+///   will be validated against these values.
+/// - `containsElementMsg` (`String Function(T input, List<T> values)?`): Optional callback
+///   function that generates a custom error message when validation fails. The function
+///   receives the invalid input and the list of valid values as parameters. If not provided,
+///   defaults to the localized error text from FormBuilderLocalizations.
+///
+/// ## Returns
+/// Returns a `Validator<T>`  function that:
+/// - Returns null if the input value exists in the provided list
+/// - Returns a generated error message if the input is not found in the list.
+///
+/// ## Throws
+/// - `AssertionError`: Thrown if the provided values list is empty, which would
+/// make any input invalid.
+///
+/// ## Examples
+/// ```dart
+/// // Creating a validator with a custom error message generator
+/// final countryValidator = containsElement(
+///   ['USA', 'Canada', 'Mexico'],
+///   containsElementMsg: (input, values) =>
+///     'Country $input is not in allowed list: ${values.join(", ")}',
+/// );
+///
+/// // Using the validator
+/// final result = countryValidator('Brazil'); // Returns "Country Brazil is not in allowed list: USA, Canada, Mexico"
+/// final valid = countryValidator('USA');     // Returns null (valid)
+/// ```
+/// {@endtemplate}
 Validator<T> containsElement<T extends Object?>(
   List<T> values, {
-  String? containsElementMsg,
+  String Function(T input, List<T> values)? containsElementMsg,
 }) {
   assert(values.isNotEmpty, 'The list "values" may not be empty.');
   final Set<T> setOfValues = values.toSet();
-  return (T value) {
-    return setOfValues.contains(value)
+  return (T input) {
+    return setOfValues.contains(input)
         ? null
-        : containsElementMsg ??
+        : containsElementMsg?.call(input, values) ??
             FormBuilderLocalizations.current.containsElementErrorText;
   };
 }

@@ -2046,4 +2046,12 @@ final class Validators {
     String Function(DateTime input)? isInTheFutureMsg,
   }) =>
       val.isInTheFuture(isInTheFutureMsg: isInTheFutureMsg);
+
+  // Generic type validators
+  /// {@macro validator_contains_element}
+  static Validator<T> containsElement<T extends Object?>(
+    List<T> values, {
+    String Function(T input, List<T> values)? containsElementMsg,
+  }) =>
+      val.containsElement(values, containsElementMsg: containsElementMsg);
 }

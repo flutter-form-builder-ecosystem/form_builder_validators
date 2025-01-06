@@ -38,8 +38,8 @@ void main() {
     test('Should return custom error message when invalid input is provided',
         () {
       const customMessage = 'custom message';
-      final validator =
-          containsElement([1, 2, 3], containsElementMsg: customMessage);
+      final validator = containsElement([1, 2, 3],
+          containsElementMsg: (_, __) => customMessage);
 
       expect(validator(4), equals(customMessage));
     });
