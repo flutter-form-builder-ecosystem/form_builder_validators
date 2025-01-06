@@ -2094,4 +2094,23 @@ final class Validators {
           {String Function(num input, num reference)? lessThanOrEqualToMsg}) =>
       val.lessThanOrEqualTo(reference,
           lessThanOrEqualToMsg: lessThanOrEqualToMsg);
+
+  /// {@macro validator_between}
+  static Validator<T> between<T extends num>(T min, T max,
+          {bool minInclusive = true,
+          bool maxInclusive = true,
+          String Function(
+            T input,
+            T min,
+            T max,
+            bool minInclusive,
+            bool maxInclusive,
+          )? betweenMsg}) =>
+      val.between(
+        min,
+        max,
+        minInclusive: minInclusive,
+        maxInclusive: maxInclusive,
+        betweenMsg: betweenMsg,
+      );
 }

@@ -165,7 +165,7 @@ Validator<T?> isOptional<T extends Object>([
   Validator<T>? next,
   String Function(T input, String nextErrorMsg)? isOptionalMsg,
 ]) {
-  String? finalValidator(T? input) {
+  return (T? input) {
     final (bool isValid, T? transformedValue) =
         _isRequiredValidateAndConvert(input);
     if (!isValid) {
@@ -179,9 +179,7 @@ Validator<T?> isOptional<T extends Object>([
 
     return isOptionalMsg?.call(input!, nextErrorMessage) ??
         FormBuilderLocalizations.current.isOptionalErrorText(nextErrorMessage);
-  }
-
-  return finalValidator;
+  };
 }
 
 (bool, T?) _isRequiredValidateAndConvert<T extends Object>(T? value) {

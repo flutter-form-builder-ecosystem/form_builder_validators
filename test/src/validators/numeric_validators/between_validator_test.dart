@@ -51,7 +51,8 @@ void main() {
         final num max = testCase.max;
         test('Should return error message if input is not in [$min, $max]', () {
           final Validator<num> v = between(min, max);
-          final String errorMsg = betweenTmpMsg(true, true, min, max);
+          final String errorMsg = FormBuilderLocalizations.current
+              .betweenNumErrorText(min, max, 'true', 'true');
           for (final (num input, bool isValid) in testCase.$1) {
             expect(v(input), isValid ? isNull : errorMsg,
                 reason:
@@ -69,13 +70,16 @@ void main() {
       const int left = -3;
       const int right = 45;
       const double mid = (left + right) / 2;
-      final Validator<num> vLeft = between(left, right, leftInclusive: false);
-      final String leftErrorMsg = betweenTmpMsg(false, true, left, right);
-      final Validator<num> vRight = between(left, right, rightInclusive: false);
-      final String rightErrorMsg = betweenTmpMsg(true, false, left, right);
+      final Validator<num> vLeft = between(left, right, minInclusive: false);
+      final String leftErrorMsg = FormBuilderLocalizations.current
+          .betweenNumErrorText(left, right, 'false', 'true');
+      final Validator<num> vRight = between(left, right, maxInclusive: false);
+      final String rightErrorMsg = FormBuilderLocalizations.current
+          .betweenNumErrorText(left, right, 'true', 'false');
       final Validator<num> vBoth =
-          between(left, right, leftInclusive: false, rightInclusive: false);
-      final String bothErrorMsg = betweenTmpMsg(false, false, left, right);
+          between(left, right, minInclusive: false, maxInclusive: false);
+      final String bothErrorMsg = FormBuilderLocalizations.current
+          .betweenNumErrorText(left, right, 'false', 'false');
 
       expect(
         vLeft(left),
@@ -133,7 +137,7 @@ void main() {
     test('Should validate with custom message', () {
       const String msg = 'error msg';
       final Validator<int> v =
-          between(0, 34, betweenMsg: (_, __, ___, ____) => msg);
+          between(0, 34, betweenMsg: (_, __, ___, ____, _____) => msg);
 
       expect(v(3), isNull);
       expect(v(-1234), msg);

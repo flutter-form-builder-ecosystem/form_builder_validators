@@ -181,31 +181,84 @@ Validator<T> lessThanOrEqualTo<T extends num>(T reference,
   };
 }
 
-String betweenTmpMsg(
-        bool leftInclusive, bool rightInclusive, num min, num max) =>
-    'Value must be greater than ${leftInclusive ? 'or equal to ' : ''}$min and less than ${rightInclusive ? 'or equal to ' : ''}$max';
-
-/// This function returns a validator that checks if the user input is between
-/// `min` and `max`.
+/// {@template validator_between}
+/// Creates a validator function that checks if a numeric input falls within a specified
+/// range defined by `min` and `max` values.
 ///
-/// The comparison will be inclusive by default, but this behavior
-/// can be changed by editing `leftInclusive` and `rightInclusive`.
+/// ## Type Parameters
+/// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+/// `num` validations
 ///
-/// If the input is valid, it returns `null`. Otherwise,
-/// it returns an error message that is `betweenMsg`, or
-/// `FormBuilderLocalizations.current.between(min, max)` if `betweenMsg`
-/// was not provided.
+/// ## Parameters
+/// - `min` (`T`): The lower bound of the valid range
+/// - `max` (`T`): The upper bound of the valid range
+/// - `minInclusive` (`bool`): Determines if the lower bound is inclusive. Defaults to `true`
+/// - `maxInclusive` (`bool`): Determines if the upper bound is inclusive. Defaults to `true`
+/// - `betweenMsg` (`String Function(T input, T min, T max, bool minInclusive, bool maxInclusive)?`):
+///   Optional custom error message generator that takes the input value, inclusivity flags,
+///   and range bounds as parameters
+///
+///
+/// ## Returns
+/// Returns a [Validator] function that:
+/// - Returns `null` if the input falls within the specified range according to the
+///   inclusivity settings
+/// - Returns an error message string if validation fails, either from the custom
+///   `betweenMsg` function or the default localized error text from
+///   [FormBuilderLocalizations]
+///
+/// ## Throw
+/// - `AssertionError`: when `max` is not greater than or equal to `min`.
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage with inclusive bounds
+/// final ageValidator = between<int>(18, 65); // [18, 65]
+///
+/// // Exclusive upper bound for decimal values
+/// final priceValidator = between<double>( // [0.0, 100.0)
+///   0.0,
+///   100.0,
+///   maxInclusive: false,
+/// );
+///
+/// // Custom error message
+/// final scoreValidator = between<double>( //
+///   0.0,
+///   10.0,
+///   betweenMsg: (_, min, max, __, ___) =>
+///     'Score must be between $min and $max (inclusive)',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The default behavior uses inclusive bounds (`>=` and `<=`)
+/// {@endtemplate}
 Validator<T> between<T extends num>(T min, T max,
-    {bool leftInclusive = true,
-    bool rightInclusive = true,
-    String Function(bool? leftInclusive, bool rightInclusive, num min, num max)?
-        betweenMsg}) {
+    {bool minInclusive = true,
+    bool maxInclusive = true,
+    String Function(
+      T input,
+      T min,
+      T max,
+      bool minInclusive,
+      bool maxInclusive,
+    )? betweenMsg}) {
   assert(min <= max, 'Min must be less than or equal to max');
-  return (T value) {
-    return (leftInclusive ? value >= min : value > min) &&
-            (rightInclusive ? value <= max : value < max)
+  return (T input) {
+    return (minInclusive ? input >= min : input > min) &&
+            (maxInclusive ? input <= max : input < max)
         ? null
-        : betweenMsg?.call(leftInclusive, rightInclusive, min, max) ??
-            'Value must be greater than ${leftInclusive ? 'or equal to ' : ''}$min and less than ${rightInclusive ? 'or equal to ' : ''}$max';
+        : betweenMsg?.call(
+              input,
+              min,
+              max,
+              minInclusive,
+              maxInclusive,
+            ) ??
+            FormBuilderLocalizations.current.betweenNumErrorText(
+                min, max, minInclusive.toString(), maxInclusive.toString());
   };
 }
+
+// other possible validators: isPositive/isNegative, isMultipleOf, etc.
