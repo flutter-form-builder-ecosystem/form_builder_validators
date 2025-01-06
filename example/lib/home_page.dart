@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/form_builder_validators.dart'
+    show Validators, Validator;
+
+/// alias for Validators class.
+typedef V = Validators;
 
 /// Represents the home page of the application.
 class HomePage extends StatelessWidget {
@@ -20,18 +24,8 @@ class HomePage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator:
-                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
-                  /// Makes this field required
-                  FormBuilderValidators.required(),
-
-                  /// Ensures the value entered is numeric - with custom error message
-                  FormBuilderValidators.numeric(
-                    errorText: 'La edad debe ser numérica.',
-                  ),
-
-                  /// Sets a maximum value of 70
-                  FormBuilderValidators.max(70),
+                validator: V.isRequired(V.and(<Validator<String>>[
+                  V.isNum(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
                   /// Include your own custom `FormFieldValidator` function, if you want
                   /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
@@ -45,7 +39,7 @@ class HomePage extends StatelessWidget {
                     }
                     return null;
                   }
-                ]),
+                ])),
               ),
               // Required Validator
               TextFormField(
@@ -53,7 +47,7 @@ class HomePage extends StatelessWidget {
                   labelText: 'Required Field',
                   prefixIcon: Icon(Icons.star),
                 ),
-                validator: FormBuilderValidators.required(),
+                validator: V.isRequired(),
                 autofillHints: const <String>[AutofillHints.name],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -65,11 +59,12 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.numbers),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.numeric(),
+                validator: V.isRequired(V.isNum()),
                 autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              /* TODO implement the email and url validator
               // Email Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -77,7 +72,7 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.email),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                validator: FormBuilderValidators.email(),
+                validator: v.email(),
                 autofillHints: const <String>[AutofillHints.email],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -89,18 +84,19 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.link),
                 ),
                 keyboardType: TextInputType.url,
-                validator: FormBuilderValidators.url(),
+                validator: v.url(),
                 autofillHints: const <String>[AutofillHints.url],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+               */
               // Min Length Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Min Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: FormBuilderValidators.minLength(5),
+                validator: V.isRequired(V.minLength(5)),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -110,7 +106,7 @@ class HomePage extends StatelessWidget {
                   labelText: 'Max Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: FormBuilderValidators.maxLength(10),
+                validator: V.isRequired(V.maxLength(10)),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -121,7 +117,7 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_neg_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.min(10),
+                validator: V.isRequired(V.isNum(V.greaterThan(10))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -132,7 +128,7 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_plus_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.max(100),
+                validator: V.isRequired(V.isNum(V.lessThan(100))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -142,10 +138,11 @@ class HomePage extends StatelessWidget {
                   labelText: 'Equal Field',
                   prefixIcon: Icon(Icons.check),
                 ),
-                validator: FormBuilderValidators.equal('test'),
+                validator: V.isEqual('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              /* TODO implement contains substring
               // Contains Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -156,17 +153,19 @@ class HomePage extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+
+               */
               // Match Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Match Pattern',
                   prefixIcon: Icon(Icons.pattern),
                 ),
-                validator:
-                    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
+                validator: V.isRequired(V.match(RegExp(r'^[a-zA-Z0-9]+$'))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              /* TODO implement id, uuid, credit cart, and phone number validators
               // IP Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -174,17 +173,18 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.computer),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.ip(),
+                validator: v.ip(),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+
               // UUID Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'UUID Field',
                   prefixIcon: Icon(Icons.code),
                 ),
-                validator: FormBuilderValidators.uuid(),
+                validator: v.uuid(),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -212,6 +212,7 @@ class HomePage extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+               */
               // Password Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -219,7 +220,7 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock),
                 ),
                 obscureText: true,
-                validator: FormBuilderValidators.password(),
+                validator: V.isRequired(V.password()),
                 autofillHints: const <String>[AutofillHints.password],
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
@@ -231,13 +232,8 @@ class HomePage extends StatelessWidget {
                   prefixIcon: Icon(Icons.calendar_today),
                 ),
                 keyboardType: TextInputType.number,
-                validator:
-                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.numeric(),
-                  FormBuilderValidators.min(0),
-                  FormBuilderValidators.max(120),
-                ]),
+                validator: V.isRequired(
+                    V.isNum(V.and(<Validator<num>>[V.between(0, 120)]))),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),

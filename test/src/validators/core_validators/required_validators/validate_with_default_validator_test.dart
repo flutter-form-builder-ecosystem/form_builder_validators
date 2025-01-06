@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart';
 
 const String errorMultBy6 = 'error';
 String? isMultipleBy6(int value) {

@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart';
 
 void main() {
   group('Validator: equalLength', () {
@@ -59,7 +60,7 @@ void main() {
           equalLength(3, equalLengthMsg: (_, __) => customMsg);
 
       expect(v('hey'), isNull);
-      expect(v([1, '2', 3, 4]), equals(customMsg));
+      expect(v(<Object>[1, '2', 3, 4]), equals(customMsg));
     });
     test('Should throw AssertionError when length is negative', () {
       expect(() => equalLength(-2), throwsAssertionError);

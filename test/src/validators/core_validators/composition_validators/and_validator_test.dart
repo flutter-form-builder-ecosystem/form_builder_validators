@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart';
 
 const String errorGt = 'error gt';
 Validator<num> gt(num target) {
@@ -63,9 +64,11 @@ void main() {
     test(
         'Should validate if the input is even and a number greater than 4.6 and less than or equal to 9.0',
         () {
-      final Validator<num> v1 =
-          and([isEven(), gt(4.6), ltE(9.0)], printErrorAsSoonAsPossible: false);
-      final Validator<num> v2 = and([ltE(9.0), gt(4.6), isEven()]);
+      final Validator<num> v1 = and(
+          <Validator<num>>[isEven(), gt(4.6), ltE(9.0)],
+          printErrorAsSoonAsPossible: false);
+      final Validator<num> v2 =
+          and(<Validator<num>>[ltE(9.0), gt(4.6), isEven()]);
 
       expect(v1(3),
           '$errorIsEven${FormBuilderLocalizations.current.andSeparator}$errorGt');
@@ -105,19 +108,27 @@ void main() {
 
       expect(
           v(1),
-          equals('$prefix${[
+          equals('$prefix${<String>[
             errorIsEven,
             errorGt,
             errorDivBy37
           ].join(separator)}$suffix'));
-      expect(v(2),
-          equals('$prefix${[errorGt, errorDivBy37].join(separator)}$suffix'));
+      expect(
+          v(2),
+          equals('$prefix${<String>[
+            errorGt,
+            errorDivBy37
+          ].join(separator)}$suffix'));
       expect(
           v(7),
-          equals(
-              '$prefix${[errorIsEven, errorDivBy37].join(separator)}$suffix'));
-      expect(v(8), equals('$prefix${[errorDivBy37].join(separator)}$suffix'));
-      expect(v(37), equals('$prefix${[errorIsEven].join(separator)}$suffix'));
+          equals('$prefix${<String>[
+            errorIsEven,
+            errorDivBy37
+          ].join(separator)}$suffix'));
+      expect(v(8),
+          equals('$prefix${<String>[errorDivBy37].join(separator)}$suffix'));
+      expect(v(37),
+          equals('$prefix${<String>[errorIsEven].join(separator)}$suffix'));
       expect(v(74), isNull);
     });
 

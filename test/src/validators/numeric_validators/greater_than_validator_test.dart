@@ -1,10 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/form_builder_validators.dart' as val;
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart' as val;
 
 void main() {
   group('Validator: greaterThan', () {
     group('Valid comparisons', () {
-      final List<(List<(num, bool)>, {num n})> testCases = [
+      final List<(List<(num, bool)>, {num n})> testCases =
+          <(List<(num, bool)>, {num n})>[
         (
           n: 0,
           <(num, bool)>[
@@ -42,7 +44,7 @@ void main() {
         test('Should return error message if input is not greater than $n', () {
           final val.Validator<num> v = val.greaterThan(n);
           final String errorMsg =
-              val.FormBuilderLocalizations.current.greaterThanErrorText(n);
+              FormBuilderLocalizations.current.greaterThanErrorText(n);
           for (final (num input, bool isValid) in testCase.$1) {
             expect(v(input), isValid ? isNull : errorMsg,
                 reason:

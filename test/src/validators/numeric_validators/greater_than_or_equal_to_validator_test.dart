@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/form_builder_validators.dart' as val;
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart' as val;
 
 void main() {
   group('Validator: greaterThanOrEqualTo', () {
@@ -44,8 +45,8 @@ void main() {
             'Should return error message if input is not greater than or equal to $n',
             () {
           final val.Validator<num> v = val.greaterThanOrEqualTo(n);
-          final String errorMsg = val.FormBuilderLocalizations.current
-              .greaterThanOrEqualToErrorText(n);
+          final String errorMsg =
+              FormBuilderLocalizations.current.greaterThanOrEqualToErrorText(n);
           for (final (num input, bool isValid) in testCase.$1) {
             expect(v(input), isValid ? isNull : errorMsg,
                 reason:

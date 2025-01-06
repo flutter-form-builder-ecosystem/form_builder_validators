@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_builder_validators/form_builder_validators.dart' as v;
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart' as v;
 
 void main() {
   const String customErrorMessage = 'custom error message';
@@ -26,7 +27,7 @@ void main() {
       for (final (input: Object input, isValid: bool isValid) in testCases) {
         final String? expectedReturnValue = isValid
             ? null
-            : v.FormBuilderLocalizations.current.mustBeTrueErrorText;
+            : FormBuilderLocalizations.current.mustBeTrueErrorText;
         test(
             'Should return ${expectedReturnValue == null ? null : 'default error message'} with input "$input"',
             () {
@@ -42,17 +43,17 @@ void main() {
         'Should return default error message when input is invalid with caseSensitive = true',
         () {
       expect(v.isTrue(caseSensitive: true)('tRue'),
-          v.FormBuilderLocalizations.current.mustBeTrueErrorText);
+          FormBuilderLocalizations.current.mustBeTrueErrorText);
     });
     test(
         'Should return default error message when input is invalid with trim = false',
         () {
       expect(v.isTrue(trim: false)('true  '),
-          v.FormBuilderLocalizations.current.mustBeTrueErrorText);
+          FormBuilderLocalizations.current.mustBeTrueErrorText);
       expect(v.isTrue(trim: false)(' true'),
-          v.FormBuilderLocalizations.current.mustBeTrueErrorText);
+          FormBuilderLocalizations.current.mustBeTrueErrorText);
       expect(v.isTrue(trim: false)(' true '),
-          v.FormBuilderLocalizations.current.mustBeTrueErrorText);
+          FormBuilderLocalizations.current.mustBeTrueErrorText);
     });
 
     test('should return the custom error message when the value is not true',

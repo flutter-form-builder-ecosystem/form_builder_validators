@@ -2,6 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
+//import 'validators/constants.dart'; // Uncomment after removing the deprecated code.
 import 'validators/validators.dart' as val;
 
 @Deprecated('use the base class Validators instead')
@@ -1810,19 +1811,19 @@ final class Validators {
 
   // Required validators
   /// {@macro validator_is_required}
-  static Validator<T> isRequired<T extends Object>([
+  static Validator<T?> isRequired<T extends Object>([
     Validator<T>? next,
     String? isRequiredMsg,
   ]) =>
       val.isRequired(next, isRequiredMsg);
 
   /// {@macro validator_validate_with_default}
-  static Validator<T> validateWithDefault<T extends Object>(
+  static Validator<T?> validateWithDefault<T extends Object>(
           T defaultValue, Validator<T> next) =>
       val.validateWithDefault(defaultValue, next);
 
   /// {@macro validator_is_optional}
-  static Validator<T> isOptional<T extends Object>([
+  static Validator<T?> isOptional<T extends Object>([
     Validator<T>? next,
     String Function(T input, String nextErrorMsg)? isOptionalMsg,
   ]) =>

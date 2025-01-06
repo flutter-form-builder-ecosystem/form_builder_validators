@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/src/validators/validators.dart';
 
 const String errorGt = 'error gt';
 Validator<num> gt(num target) {
@@ -91,7 +92,7 @@ void main() {
 
       expect(
           v(1),
-          equals('$prefix${[
+          equals('$prefix${<String>[
             errorIsEven,
             errorGt,
             errorDivBy37
