@@ -32,13 +32,13 @@ void main() {
     });
 
     test('Should throw assertionError when list input is empty', () {
-      expect(() => containsElement([]), throwsAssertionError);
+      expect(() => containsElement(<Object>[]), throwsAssertionError);
     });
 
     test('Should return custom error message when invalid input is provided',
         () {
-      const customMessage = 'custom message';
-      final validator = containsElement([1, 2, 3],
+      const String customMessage = 'custom message';
+      final Validator<int> validator = containsElement(<int>[1, 2, 3],
           containsElementMsg: (_, __) => customMessage);
 
       expect(validator(4), equals(customMessage));

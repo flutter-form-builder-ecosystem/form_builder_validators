@@ -53,85 +53,131 @@ Validator<T> containsElement<T extends Object?>(
   };
 }
 
-/// Returns a [Validator] function that checks if its `T` input is a `true`
-/// boolean or a [String] parsable to a `true` boolean. If the input satisfies
-/// this condition, the validator returns `null`. Otherwise, it returns the
-/// default error message
-/// `FormBuilderLocalizations.current.mustBeTrueErrorText`, if [isTrueMsg]
-/// is not provided.
+/// {@template validator_is_true}
+/// Creates a validator function that checks if a given input represents a `true`
+/// boolean value, either as a direct boolean or as a string that can be parsed
+/// to `true`.
 ///
-/// # Parsing rules
-/// If the input of the validator is a [String], it will be parsed using
-/// the rules specified by the combination of [caseSensitive] and [trim].
-/// [caseSensitive] indicates whether the lowercase must be considered equal to
-/// uppercase or not, and [trim] indicates whether whitespaces from both sides
-/// of the string will be ignored or not.
+/// ## Type Parameters
+/// - `T`: The type of input to validate. Must extend `Object` to allow for both
+/// boolean and string inputs.
 ///
-/// The default behavior is to ignore leading and trailing whitespaces and be
-/// case insensitive.
+/// ## Parameters
+/// - `isTrueMsg` (`String Function(T input)?`): Optional callback function to
+/// generate custom error messages for invalid inputs. Receives the invalid
+/// input as a parameter.
+/// - `caseSensitive` (`bool`): Controls whether string comparison is
+/// case-sensitive. Defaults to `false`, making, for example, 'TRUE' and 'true'
+/// equivalent.
+/// - `trim` (`bool`): Determines if leading and trailing whitespace should be
+/// removed from string inputs before validation. Defaults to `true`.
 ///
-/// # Examples
+/// ## Returns
+/// Returns a `Validator<T>` function that:
+/// - Returns `null` if the input is `true` or parses to `true`
+/// - Returns an error message if the input is invalid, either from `isTrueMsg`
+/// or the default localized text
+///
+/// ## Examples
 /// ```dart
-/// // The following examples must pass:
-/// assert(isTrue()(' true ') == null);
-/// assert(isTrue(trim:false)(' true ') != null);
-/// assert(isTrue()('TRue') == null);
-/// assert(isTrue(caseSensitive:true)('TRue') != null);
+/// // Basic usage with default settings
+/// final validator = isTrue<String>();
+/// assert(validator('true') == null);      // Valid: case-insensitive match
+/// assert(validator(' TRUE ') == null);     // Valid: trimmed and case-insensitive
+/// assert(validator('t r u e') != null);      // Invalid: returns error message
+/// assert(validator('false') != null);      // Invalid: returns error message
+///
+/// // Custom configuration
+/// final strictValidator = isTrue<String>(
+///   caseSensitive: true,
+///   trim: false,
+///   isTrueMsg: (input) => 'Value "$input" must be exactly "true"',
+/// );
+/// assert(strictValidator('true') == null);   // Valid
+/// assert(strictValidator('TRUE') != null);   // Invalid: case-sensitive
+/// assert(strictValidator(' true') != null);  // Invalid: no trimming
 /// ```
+/// {@endtemplate}
 Validator<T> isTrue<T extends Object>(
-    {String? isTrueMsg, bool caseSensitive = false, bool trim = true}) {
-  return (T value) {
+    {String Function(T input)? isTrueMsg,
+    bool caseSensitive = false,
+    bool trim = true}) {
+  return (T input) {
     final (bool isValid, bool? typeTransformedValue) =
         _isBoolValidateAndConvert(
-      value,
+      input,
       caseSensitive: caseSensitive,
       trim: trim,
     );
     if (isValid && typeTransformedValue! == true) {
       return null;
     }
-    return isTrueMsg ?? FormBuilderLocalizations.current.mustBeTrueErrorText;
+    return isTrueMsg?.call(input) ??
+        FormBuilderLocalizations.current.mustBeTrueErrorText;
   };
 }
 
-/// Returns a [Validator] function that checks if its `T` input is a `false`
-/// boolean or a [String] parsable to a `false` boolean. If the input satisfies
-/// this condition, the validator returns `null`. Otherwise, it returns the
-/// default error message
-/// `FormBuilderLocalizations.current.mustBeFalseErrorText`, if [isFalseMsg]
-/// is not provided.
+/// {@template validator_is_false}
+/// Creates a validator function that checks if a given input represents a `false`
+/// boolean value, either as a direct boolean or as a string that can be parsed
+/// to `false`.
 ///
-/// # Parsing rules
-/// If the input of the validator is a [String], it will be parsed using
-/// the rules specified by the combination of [caseSensitive] and [trim].
-/// [caseSensitive] indicates whether the lowercase must be considered equal to
-/// uppercase or not, and [trim] indicates whether whitespaces from both sides
-/// of the string will be ignored or not.
+/// ## Type Parameters
+/// - `T`: The type of input to validate. Must extend `Object` to allow for both
+/// boolean and string inputs.
 ///
-/// The default behavior is to ignore leading and trailing whitespaces and be
-/// case insensitive.
+/// ## Parameters
+/// - `isFalseMsg` (`String Function(T input)?`): Optional callback function to
+/// generate custom error messages for invalid inputs. Receives the invalid
+/// input as a parameter.
+/// - `caseSensitive` (`bool`): Controls whether string comparison is
+/// case-sensitive. Defaults to `false`, making, for example, 'FALSE' and 'false'
+/// equivalent.
+/// - `trim` (`bool`): Determines if leading and trailing whitespace should be
+/// removed from string inputs before validation. Defaults to `true`.
 ///
-/// # Examples
+/// ## Returns
+/// Returns a `Validator<T>` function that:
+/// - Returns `null` if the input is `false` or parses to `false`
+/// - Returns an error message if the input is invalid, either from `isFalseMsg`
+/// or the default localized text
+///
+/// ## Examples
 /// ```dart
-/// // The following examples must pass:
-/// assert(isFalse()(' false ') == null);
-/// assert(isFalse(trim:false)(' false ') != null);
-/// assert(isFalse()('FAlse') == null);
-/// assert(isFalse(caseSensitive:true)('FAlse') != null);
+/// // Basic usage with default settings
+/// final validator = isFalse<String>();
+/// assert(validator('false') == null);     // Valid: case-insensitive match
+/// assert(validator(' FALSE ') == null);    // Valid: trimmed and case-insensitive
+/// assert(validator('f a l s e') != null); // Invalid: returns error message
+/// assert(validator('true') != null);      // Invalid: returns error message
+///
+/// // Custom configuration
+/// final strictValidator = isFalse<String>(
+///   caseSensitive: true,
+///   trim: false,
+///   isFalseMsg: (input) => 'Value "$input" must be exactly "false"',
+/// );
+/// assert(strictValidator('false') == null);  // Valid
+/// assert(strictValidator('FALSE') != null);  // Invalid: case-sensitive
+/// assert(strictValidator(' false') != null); // Invalid: no trimming
 /// ```
+/// {@endtemplate}
 Validator<T> isFalse<T extends Object>(
-    {String? isFalseMsg, bool caseSensitive = false, bool trim = true}) {
-  return (T value) {
+    {String Function(T input)? isFalseMsg,
+    bool caseSensitive = false,
+    bool trim = true}) {
+  return (T input) {
     final (bool isValid, bool? typeTransformedValue) =
         _isBoolValidateAndConvert(
-      value,
+      input,
       caseSensitive: caseSensitive,
       trim: trim,
     );
     if (isValid && typeTransformedValue! == false) {
       return null;
     }
-    return isFalseMsg ?? FormBuilderLocalizations.current.mustBeFalseErrorText;
+    return isFalseMsg?.call(input) ??
+        FormBuilderLocalizations.current.mustBeFalseErrorText;
   };
 }
 

@@ -2054,4 +2054,20 @@ final class Validators {
     String Function(T input, List<T> values)? containsElementMsg,
   }) =>
       val.containsElement(values, containsElementMsg: containsElementMsg);
+
+  /// {@macro validator_is_true}
+  static Validator<T> isTrue<T extends Object>(
+          {String Function(T input)? isTrueMsg,
+          bool caseSensitive = false,
+          bool trim = true}) =>
+      val.isTrue(
+          isTrueMsg: isTrueMsg, caseSensitive: caseSensitive, trim: trim);
+
+  /// {@macro validator_is_false}
+  static Validator<T> isFalse<T extends Object>(
+          {String Function(T input)? isFalseMsg,
+          bool caseSensitive = false,
+          bool trim = false}) =>
+      val.isFalse(
+          isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
 }
