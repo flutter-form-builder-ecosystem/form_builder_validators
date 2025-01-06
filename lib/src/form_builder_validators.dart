@@ -2034,4 +2034,10 @@ final class Validators {
           isDateTimeBetweenMsg: isDateTimeBetweenMsg,
           minInclusive: leftInclusive,
           maxInclusive: rightInclusive);
+
+  /// {@macro validator_is_in_the_past}
+  static Validator<DateTime> isInThePast({
+    String Function(DateTime input)? isInThePastMsg,
+  }) =>
+      val.isInThePast(isInThePastMsg: isInThePastMsg);
 }

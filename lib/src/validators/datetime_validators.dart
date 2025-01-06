@@ -184,17 +184,47 @@ Validator<DateTime> isDateTimeBetween(
   };
 }
 
-/// This function returns a validator that checks if the user [DateTime] input is
-/// in the past (before [DateTime.now]). If the checking results true, the validator
-/// returns `null`. Otherwise, it returns `isInThePastMsg`, if provided, or
-/// `FormBuilderLocalizations.current.dateMustBeInThePastErrorText`.
+/// {@template validator_is_in_past}
+/// Creates a [DateTime] validator that checks if an input date occurs in the past,
+/// which means before the current time ([DateTime.now]), computed while executing
+/// this validation.
+///
+/// ## Parameters
+/// - `isInThePastMsg` (`String Function(DateTime input)?`): Optional custom
+///   error message generator. When provided, it receives the input date to
+///   construct a context-aware error message.
+///
+/// ## Returns
+/// Returns a `Validator<DateTime>` function that:
+/// - Returns `null` if validation passes (input date is in the past)
+/// - Returns an error message string if validation fails. If no custom message
+///   is provided, falls back to the localized error text from
+///   `FormBuilderLocalizations`
+///
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage requiring a past date
+/// final validator = isInThePast();
+///
+/// // Custom error message
+/// final customValidator = isInThePast(
+///   isInThePastMsg: (input) =>
+///     'Selected date (${input.toString()}) must be in the past',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validation uses [DateTime.now] as the reference point, which means
+///   the valid date range continuously changes as time progresses
+/// {@endtemplate}
 Validator<DateTime> isInThePast({
-  String? isInThePastMsg,
+  String Function(DateTime input)? isInThePastMsg,
 }) {
-  return (DateTime value) {
-    return value.isBefore(DateTime.now())
+  return (DateTime input) {
+    return input.isBefore(DateTime.now())
         ? null
-        : isInThePastMsg ??
+        : isInThePastMsg?.call(input) ??
             FormBuilderLocalizations.current.dateMustBeInThePastErrorText;
   };
 }

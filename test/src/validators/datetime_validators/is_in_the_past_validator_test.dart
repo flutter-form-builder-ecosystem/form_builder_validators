@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:form_builder_validators/localization/l10n.dart';
 
 void main() {
   group('Validator: isInThePast', () {
@@ -41,7 +40,8 @@ void main() {
 
     test('Should return a custom message after validating', () {
       const String errorMsg = 'error msg';
-      final Validator<DateTime> v = isInThePast(isInThePastMsg: errorMsg);
+      final Validator<DateTime> v =
+          isInThePast(isInThePastMsg: (_) => errorMsg);
 
       expect(v(DateTime.now().add(const Duration(seconds: 1))), errorMsg);
     });
