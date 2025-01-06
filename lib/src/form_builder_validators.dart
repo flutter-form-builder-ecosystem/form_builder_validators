@@ -2083,4 +2083,15 @@ final class Validators {
               greaterThanOrEqualToMsg}) =>
       val.greaterThanOrEqualTo(reference,
           greaterThanOrEqualToMsg: greaterThanOrEqualToMsg);
+
+  /// {@macro validator_less_than}
+  static Validator<T> lessThan<T extends num>(T reference,
+          {String Function(num input, num reference)? lessThanMsg}) =>
+      val.lessThan(reference, lessThanMsg: lessThanMsg);
+
+  /// {@macro validator_less_than_or_equal_to}
+  static Validator<T> lessThanOrEqualTo<T extends num>(T reference,
+          {String Function(num input, num reference)? lessThanOrEqualToMsg}) =>
+      val.lessThanOrEqualTo(reference,
+          lessThanOrEqualToMsg: lessThanOrEqualToMsg);
 }

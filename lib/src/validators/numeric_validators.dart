@@ -91,33 +91,93 @@ Validator<T> greaterThanOrEqualTo<T extends num>(T reference,
   };
 }
 
-String lessThanTmpMsg(num n) => 'Value must be less than $n';
-
-/// This function returns a validator that checks whether the user input is less
-/// than `n`. If the input is valid, the validator returns `null`. Otherwise, it
-/// returns an error message. The error message is `lessThanMsg`, or
-/// `FormBuilderLocalizations.current.lessThan(n)` if `lessThanMsg`
-/// was not provided.
-Validator<T> lessThan<T extends num>(T n, {String Function(num)? lessThanMsg}) {
-  return (T value) {
-    return value < n ? null : lessThanMsg?.call(n) ?? lessThanTmpMsg(n);
+/// {@template validator_less_than}
+/// Creates a validator function that checks if a numeric input is less than `reference`.
+///
+/// ## Type Parameters
+/// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+/// `num` validations
+///
+/// ## Parameters
+/// - `reference` (`T`): The threshold value that the input must be less than
+/// - `lessThanMsg` (`String Function(T input, T reference)?`): Optional custom error
+///   message generator that takes the input value and threshold as parameters
+///
+/// ## Returns
+/// Returns a [Validator] function that:
+/// - Returns `null` if the input is less than the threshold value `reference`
+/// - Returns an error message string if validation fails, either from the custom
+///   `lessThanMsg` function or the default localized error text
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage with integers
+/// final maxAgeValidator = lessThan<int>(100);
+///
+/// // Custom error message
+/// final discountValidator = lessThan<double>(
+///   1.0,
+///   lessThanMsg: (_, ref) => 'Discount must be less than ${(ref * 100).toStringAsFixed(0)}%',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validator uses strict less than comparison (`<`)
+/// {@endtemplate}
+Validator<T> lessThan<T extends num>(T reference,
+    {String Function(T input, T reference)? lessThanMsg}) {
+  return (T input) {
+    return input < reference
+        ? null
+        : lessThanMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current.lessThanErrorText(reference);
   };
 }
 
-String lessThanOrEqualToTmpMsg(num n) =>
-    'Value must be less than or equal to $n';
-
-/// This function returns a validator that checks whether the user input is less
-/// than or equal to `n`. If the input is valid, the validator returns `null`. Otherwise, it
-/// returns an error message. The error message is `lessThanOrEqualMsg`, or
-/// `FormBuilderLocalizations.current.lessThanOrEqualTo(n)` if `lessThanOrEqualToMsg`
-/// was not provided.
-Validator<T> lessThanOrEqualTo<T extends num>(T n,
-    {String Function(num)? lessThanOrEqualToMsg}) {
-  return (T value) {
-    return value <= n
+/// {@template validator_less_than_or_equal_to}
+/// Creates a validator function that checks if a numeric input is less than
+/// or equal to `reference`.
+///
+/// ## Type Parameters
+/// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+/// `num` validations
+///
+/// ## Parameters
+/// - `reference` (`T`): The threshold value that the input must be less than or equal to
+/// - `lessThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
+///   message generator that takes the input value and threshold as parameters
+///
+/// ## Returns
+/// Returns a [Validator] function that:
+/// - Returns `null` if the input is less than or equal to the threshold value
+/// `reference`
+/// - Returns an error message string if validation fails, either from the custom
+///   `lessThanOrEqualToMsg` function or the default localized error text from
+///   [FormBuilderLocalizations]
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage with integers
+/// final maxAgeValidator = lessThanOrEqualTo<int>(100);
+///
+/// // Custom error message
+/// final maxPriceValidator = lessThanOrEqualTo<double>(
+///   999.99,
+///   lessThanOrEqualToMsg: (_, ref) => 'Price cannot exceed \$${ref.toStringAsFixed(2)}',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validator uses less than or equal to comparison (`<=`)
+/// {@endtemplate}
+Validator<T> lessThanOrEqualTo<T extends num>(T reference,
+    {String Function(T input, T reference)? lessThanOrEqualToMsg}) {
+  return (T input) {
+    return input <= reference
         ? null
-        : lessThanOrEqualToMsg?.call(n) ?? lessThanOrEqualToTmpMsg(n);
+        : lessThanOrEqualToMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current
+                .lessThanOrEqualToErrorText(reference);
   };
 }
 

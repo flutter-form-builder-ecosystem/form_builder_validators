@@ -106,6 +106,24 @@
     }
   },
   "isStringErrorText": "This field requires a valid string.",
+  "lessThanErrorText": "Value must be less than {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Value must be less than or equal to {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
   "matchErrorText": "Value does not match pattern.",
   "maxErrorText": "Value must be less than or equal to {max}.",
   "@maxErrorText": {

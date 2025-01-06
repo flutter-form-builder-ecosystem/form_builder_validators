@@ -41,7 +41,8 @@ void main() {
         final num n = testCase.n;
         test('Should return error message if input is not less than $n', () {
           final val.Validator<num> v = val.lessThan(n);
-          final String errorMsg = val.lessThanTmpMsg(n);
+          final String errorMsg =
+              val.FormBuilderLocalizations.current.lessThanErrorText(n);
           for (final (num input, bool isValid) in testCase.$1) {
             expect(v(input), isValid ? isNull : errorMsg,
                 reason:
@@ -52,7 +53,8 @@ void main() {
     });
     test('Should validate with custom message', () {
       const String msg = 'error msg';
-      final val.Validator<int> v = val.lessThan(34, lessThanMsg: (_) => msg);
+      final val.Validator<int> v =
+          val.lessThan(34, lessThanMsg: (_, __) => msg);
 
       expect(v(35), msg);
       expect(v(-1234), isNull);
