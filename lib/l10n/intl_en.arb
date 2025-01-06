@@ -16,7 +16,7 @@
   },
   "booleanErrorText": "This field requires a valid boolean (true or false).",
   "creditCardErrorText": "This field requires a valid credit card number.",
-  "dateMustBeAfterErrorText": "Date must after {reference}.",
+  "dateMustBeAfterErrorText": "Date must be after {reference}.",
   "@dateMustBeAfterErrorText": {
     "placeholders": {
       "reference": {
@@ -27,10 +27,27 @@
       }
     }
   },
-  "dateMustBeBeforeErrorText": "Date must before {reference}.",
+  "dateMustBeBeforeErrorText": "Date must be before {reference}.",
   "@dateMustBeBeforeErrorText": {
     "placeholders": {
       "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Date must be between {minReference} and {maxReference}.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
         "type": "DateTime",
         "format": "yMd",
         "example": "11/10/2021",

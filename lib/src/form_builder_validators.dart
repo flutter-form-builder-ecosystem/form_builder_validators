@@ -2019,4 +2019,19 @@ final class Validators {
     bool inclusive = false,
   }) =>
       val.isBefore(reference, isBeforeMsg: isBeforeMsg, inclusive: inclusive);
+
+  /// {@macro validator_is_date_time_between}
+  static Validator<DateTime> isDateTimeBetween(
+    DateTime minReference,
+    DateTime maxReference, {
+    String Function(
+            DateTime input, DateTime minReference, DateTime maxReference)?
+        isDateTimeBetweenMsg,
+    bool leftInclusive = false,
+    bool rightInclusive = false,
+  }) =>
+      val.isDateTimeBetween(minReference, maxReference,
+          isDateTimeBetweenMsg: isDateTimeBetweenMsg,
+          minInclusive: leftInclusive,
+          maxInclusive: rightInclusive);
 }

@@ -1,7 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  setUpAll(() async {
+    await initializeDateFormatting('en', null);
+  });
   group('Validator: isDateTimeBetween', () {
     test('Validation for the range 1994 and 1997', () {
       final DateTime leftReference = DateTime(1994);
@@ -21,8 +25,8 @@ void main() {
           leftReference.subtract(const Duration(microseconds: 1));
       final Validator<DateTime> v =
           isDateTimeBetween(leftReference, rightReference);
-      final String errorMsg =
-          tmpIsDateTimeBetweenErrorMsg(leftReference, rightReference);
+      final String errorMsg = FormBuilderLocalizations.current
+          .dateMustBeBetweenErrorText(leftReference, rightReference);
 
       expect(
         v(leftEq),
@@ -86,9 +90,9 @@ void main() {
       final DateTime before1Sec =
           leftReference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v =
-          isDateTimeBetween(leftReference, rightReference, leftInclusive: true);
-      final String errorMsg =
-          tmpIsDateTimeBetweenErrorMsg(leftReference, rightReference);
+          isDateTimeBetween(leftReference, rightReference, minInclusive: true);
+      final String errorMsg = FormBuilderLocalizations.current
+          .dateMustBeBetweenErrorText(leftReference, rightReference);
 
       expect(
         v(leftEq),
@@ -142,7 +146,7 @@ void main() {
       final DateTime rightReference = DateTime(5);
       final Validator<DateTime> v = isDateTimeBetween(
           leftReference, rightReference,
-          isDateTimeBetweenMsg: (_, __) => errorMsg);
+          isDateTimeBetweenMsg: (_, __, ___) => errorMsg);
 
       expect(
         v(rightReference.copyWith()),
