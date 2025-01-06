@@ -2040,4 +2040,10 @@ final class Validators {
     String Function(DateTime input)? isInThePastMsg,
   }) =>
       val.isInThePast(isInThePastMsg: isInThePastMsg);
+
+  /// {@macro validator_is_in_the_future}
+  static Validator<DateTime> isInTheFuture({
+    String Function(DateTime input)? isInTheFutureMsg,
+  }) =>
+      val.isInTheFuture(isInTheFutureMsg: isInTheFutureMsg);
 }

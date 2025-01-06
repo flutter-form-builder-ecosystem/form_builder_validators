@@ -41,7 +41,8 @@ void main() {
 
     test('Should return a custom message after validating', () {
       const String errorMsg = 'error msg';
-      final Validator<DateTime> v = isInTheFuture(isInTheFutureMsg: errorMsg);
+      final Validator<DateTime> v =
+          isInTheFuture(isInTheFutureMsg: (_) => errorMsg);
 
       expect(v(DateTime.now().subtract(const Duration(seconds: 1))), errorMsg);
     });

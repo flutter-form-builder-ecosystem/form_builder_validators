@@ -229,17 +229,46 @@ Validator<DateTime> isInThePast({
   };
 }
 
-/// This function returns a validator that checks if the user [DateTime] input is
-/// in the future (after [DateTime.now]). If the checking results true, the validator
-/// returns `null`. Otherwise, it returns `isInTheFutureMsg`, if provided, or
-/// `FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText`.
+/// {@template validator_is_in_future}
+/// Creates a [DateTime] validator that checks if an input date occurs in the future,
+/// which means after the current time ([DateTime.now]), computed while executing
+/// this validation.
+///
+/// ## Parameters
+/// - `isInTheFutureMsg` (`String Function(DateTime input)?`): Optional custom
+///   error message generator. When provided, it receives the input date to
+///   construct a context-aware error message.
+///
+/// ## Returns
+/// Returns a `Validator<DateTime>` function that:
+/// - Returns `null` if validation passes (input date is in the future)
+/// - Returns an error message string if validation fails. If no custom message
+///   is provided, falls back to the localized error text from
+///   `FormBuilderLocalizations`
+///
+/// ## Examples
+/// ```dart
+/// // Basic usage requiring a future date
+/// final validator = isInFuture();
+///
+/// // Custom error message
+/// final customValidator = isInFuture(
+///   isInFutureMsg: (input) =>
+///     'Selected date (${input.toString()}) must be in the future',
+/// );
+/// ```
+///
+/// ## Caveats
+/// - The validation uses [DateTime.now] as the reference point, which means
+///   the valid date range continuously changes as time progresses
+/// {@endtemplate}
 Validator<DateTime> isInTheFuture({
-  String? isInTheFutureMsg,
+  String Function(DateTime input)? isInTheFutureMsg,
 }) {
-  return (DateTime value) {
-    return value.isAfter(DateTime.now())
+  return (DateTime input) {
+    return input.isAfter(DateTime.now())
         ? null
-        : isInTheFutureMsg ??
+        : isInTheFutureMsg?.call(input) ??
             FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText;
   };
 }
