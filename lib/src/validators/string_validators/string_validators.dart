@@ -486,6 +486,9 @@ Validator<String> contains(
   };
 }
 
+/// {@template validator_email}
+/// Temporary implementation for email validator
+/// {@endtemplate}
 Validator<String> email({
   RegExp? regex,
   String? emailMsg,

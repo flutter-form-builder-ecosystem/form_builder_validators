@@ -416,3 +416,4 @@ Validator<T> isDateTime<T extends Object>([
 // TODO add other types like: Uri, isT(which checks if input is T and tries to
 //  apply the parsing strategy from the user. It is close to transformAndValidate,
 //  but not altogether) etc.
+// add isDouble

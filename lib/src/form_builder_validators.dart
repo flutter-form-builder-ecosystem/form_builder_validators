@@ -1917,6 +1917,16 @@ final class Validators {
         passwordMsg: passwordMsg,
       );
 
+  // PROVISORY IMPLEMENTATION (start)
+  /// {@macro validator_email}
+  static Validator<String> email({
+    RegExp? regex,
+    String? emailMsg,
+  }) =>
+      val.email(regex: regex, emailMsg: emailMsg);
+
+  // PROVISORY IMPLEMENTATION (end)
+
   /// {@macro validator_has_min_uppercase_chars}
   static Validator<String> hasMinUppercaseChars({
     int min = 1,

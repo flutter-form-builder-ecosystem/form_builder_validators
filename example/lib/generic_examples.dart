@@ -6,9 +6,9 @@ import 'package:form_builder_validators/form_builder_validators.dart'
 typedef V = Validators;
 
 /// Represents the home page of the application.
-class HomePage extends StatelessWidget {
-  /// Constructs a new instance of the [HomePage] class.
-  const HomePage({super.key});
+class GenericExamplesPage extends StatelessWidget {
+  /// Constructs a new instance of the [GenericExamplesPage] class.
+  const GenericExamplesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
