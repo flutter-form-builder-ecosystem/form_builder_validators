@@ -6,9 +6,12 @@ import 'package:form_builder_validators/form_builder_validators.dart'
 /// Alias for [Validators].
 typedef V = Validators;
 
+/// {@template forms_with_validate_granularly}
 /// Forms which you can use validate granularly to redirect the
 /// focus to the first invalid field after submitting.
+/// {@endtemplate}
 class FormsWithValidateGranularly extends StatelessWidget {
+  ///{@macro forms_with_validate_granularly}
   const FormsWithValidateGranularly({super.key});
 
   @override
