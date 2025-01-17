@@ -1,5 +1,6 @@
 {
   "@@locale": "fa",
+  "andSeparator": " و ",
   "creditCardErrorText": "این ورودی به شماره کارت اعتباری معتبر نیاز دارد.",
   "dateStringErrorText": "این ورودی به یک تاریخ معتبر نیاز دارد.",
   "emailErrorText": "این ورودی به یک آدرس ایمیل معتبر نیاز دارد.",

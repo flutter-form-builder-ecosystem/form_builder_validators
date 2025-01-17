@@ -1,5 +1,6 @@
 {
   "@@locale": "el",
+  "andSeparator": " και ",
   "creditCardErrorText": "Η τιμή πρέπει να είναι έγκυρη πιστωτική κάρτα.",
   "dateStringErrorText": "Η τιμή πρέπει να είναι έγκυρη ημερομηνία.",
   "emailErrorText": "Το πεδίο πρέπει να έχει μία έγκυρη διεύθυνση email.",

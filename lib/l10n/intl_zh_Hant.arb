@@ -1,5 +1,6 @@
 {
   "@@locale": "zh_Hant",
+  "andSeparator": " 和 ",
   "creditCardErrorText": "此欄位需要有效的信用卡號碼。",
   "dateStringErrorText": "此欄位需要有效的日期字符串。",
   "emailErrorText": "此欄位需要有效的電子郵件地址。",

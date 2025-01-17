@@ -1,5 +1,6 @@
 {
   "@@locale": "ru",
+  "andSeparator": " и ",
   "creditCardErrorText": "Значение поля должно быть номером кредитной карты.",
   "dateStringErrorText": "Поле должно быть датой.",
   "emailErrorText": "Поле должно быть email адресом.",

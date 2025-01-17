@@ -1,5 +1,6 @@
 {
   "@@locale": "pt",
+  "andSeparator": " e ",
   "creditCardErrorText": "Este campo requer um número de cartão de crédito válido.",
   "dateStringErrorText": "Este campo requer uma string de data válida.",
   "emailErrorText": "Este campo requer um endereço de e-mail válido.",

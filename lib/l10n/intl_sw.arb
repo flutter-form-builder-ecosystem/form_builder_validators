@@ -1,5 +1,6 @@
 {
   "@@locale": "sw",
+  "andSeparator": " na ",
   "creditCardErrorText": "Sehemu hii inahitaji nambari halali ya kadi ya mkopo.",
   "dateStringErrorText": "Sehemu hii inahitaji mfuatano halali wa tarehe.",
   "emailErrorText": "Sehemu hii inahitaji barua pepe halali.",

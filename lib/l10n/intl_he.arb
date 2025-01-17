@@ -1,5 +1,6 @@
 {
   "@@locale": "he",
+  "andSeparator": " ו ",
   "creditCardErrorText": "שדה זה דורש מספר כרטיס אשראי תקין.",
   "dateStringErrorText": "שדה זה דורש מחרוזת תאריך תקינה.",
   "emailErrorText": "שדה זה דורש כתובת דוא\"ל תקינה.",

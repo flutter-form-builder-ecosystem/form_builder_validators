@@ -1,5 +1,6 @@
 {
   "@@locale": "da",
+  "andSeparator": " og ",
   "creditCardErrorText": "Dette felt kræver et gyldigt kreditkort nummer.",
   "dateStringErrorText": "Dette felt kræver en gyldig dato.",
   "emailErrorText": "Dette felt kræver en gyldig e-mail adresse.",

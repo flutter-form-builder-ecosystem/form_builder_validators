@@ -1,5 +1,6 @@
 {
   "@@locale": "ko",
+  "andSeparator": " 그리고 ",
   "creditCardErrorText": "유효한 카드 번호를 입력해 주세요.",
   "dateStringErrorText": "날짜 형식이 올바르지 않습니다.",
   "emailErrorText": "이메일 주소 형식이 올바르지 않습니다.",

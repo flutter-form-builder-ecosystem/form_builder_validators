@@ -1,5 +1,6 @@
 {
   "@@locale": "fi",
+  "andSeparator": " ja ",
   "creditCardErrorText": "Luottokortin numero on oltava oikeassa muodossa.",
   "dateStringErrorText": "Päivämäärä ei ole oikeassa muodossa.",
   "emailErrorText": "Sähköpostiosoitteen muoto ei ole oikea.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "lo",
+  "andSeparator": " ແລະ ",
   "creditCardErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງເລກບັດເຄຣດິດ.",
   "dateStringErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງວັນທີ.",
   "emailErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງອີເມວ.",

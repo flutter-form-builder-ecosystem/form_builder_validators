@@ -1,5 +1,6 @@
 {
   "@@locale": "zh",
+  "andSeparator": " 和 ",
   "creditCardErrorText": "该字段必须是有效的信用卡号。",
   "dateStringErrorText": "该字段必须是有效的时间日期。",
   "emailErrorText": "该字段必须是有效的电子邮件地址。",

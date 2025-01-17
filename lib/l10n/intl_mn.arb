@@ -1,5 +1,6 @@
 {
   "@@locale": "mn",
+  "andSeparator": " ба ",
   "creditCardErrorText": "Картын дугаар алдаатай байна.",
   "dateStringErrorText": "Огнооны загварт таарахгүй байна.",
   "emailErrorText": "И-мэйл хаяг алдаатай байна.",

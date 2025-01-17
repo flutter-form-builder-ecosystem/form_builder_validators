@@ -1,5 +1,6 @@
 {
   "@@locale": "et",
+  "andSeparator": " ja ",
   "creditCardErrorText": "Sellele väljale tuleb sisestada korrektne krediitkaardi number.",
   "dateStringErrorText": "Sellele väljale tuleb sisestada korrektne kuupäev.",
   "emailErrorText": "See väli nõuab kehtivat e-posti aadressi.",

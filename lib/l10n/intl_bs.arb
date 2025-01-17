@@ -1,5 +1,6 @@
 {
   "@@locale": "bs",
+  "andSeparator": " i ",
   "creditCardErrorText": "Unesite validan broj kreditne kartice.",
   "dateStringErrorText": "Unesite validan datum.",
   "emailErrorText": "Unesite validnu e-mail adresu.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "cs",
+  "andSeparator": " a ",
   "creditCardErrorText": "Pole vyžaduje platné číslo kreditní karty.",
   "dateStringErrorText": "Pole vyžaduje platný zápis data.",
   "emailErrorText": "Pole vyžaduje platnou e-mailovou adresu.",

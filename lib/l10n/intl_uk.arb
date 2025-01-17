@@ -1,5 +1,6 @@
 {
   "@@locale": "uk",
+  "andSeparator": " і ",
   "creditCardErrorText": "Значення поля має бути номером кредитної картки.",
   "dateStringErrorText": "Поле має бути датою.",
   "emailErrorText": "Поле має бути email адресою.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "bg",
+  "andSeparator": " и ",
   "creditCardErrorText": "Това поле изисква валиден номер на кредитна карта.",
   "dateStringErrorText": "Това поле изисква валиден низ за дата.",
   "emailErrorText": "Това поле изисква валиден имейл адрес.",

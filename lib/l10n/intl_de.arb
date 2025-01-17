@@ -1,5 +1,6 @@
 {
   "@@locale": "de",
+  "andSeparator": " und ",
   "creditCardErrorText": "Für dieses Feld ist eine gültige Kreditkartennummer erforderlich.",
   "dateStringErrorText": "Dieses Feld erfordert ein gültiges Datum.",
   "emailErrorText": "Für dieses Feld ist eine gültige E-Mail-Adresse erforderlich.",

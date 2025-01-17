@@ -1,5 +1,6 @@
 {
   "@@locale": "sk",
+  "andSeparator": " a ",
   "creditCardErrorText": "Toto pole vyžaduje platné číslo platobnej karty.",
   "dateStringErrorText": "Toto pole vyžaduje platný dátum.",
   "emailErrorText": "Toto pole vyžaduje platnú emailovú adresu.",

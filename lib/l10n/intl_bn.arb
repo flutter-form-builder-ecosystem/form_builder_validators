@@ -1,5 +1,6 @@
 {
   "@@locale": "bn",
+  "andSeparator": " এবং ",
   "creditCardErrorText": "বৈধ ক্রেডিট কার্ড নম্বর প্রয়োজন।",
   "dateStringErrorText": "একটি বৈধ তারিখ প্রয়োজন।",
   "emailErrorText": "একটি বৈধ ইমেল আইডি প্রয়োজন।",

@@ -1,5 +1,6 @@
 {
   "@@locale": "nl",
+  "andSeparator": " en ",
   "creditCardErrorText": "Een geldig creditcardnummer is vereist.",
   "dateStringErrorText": "Een geldige datum is vereist.",
   "emailErrorText": "Een geldig e-mailadres is vereist.",

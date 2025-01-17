@@ -1,5 +1,6 @@
 {
   "@@locale": "ca",
+  "andSeparator": " i ",
   "creditCardErrorText": "Aquest camp requereix un número de targeta de crèdit vàlid.",
   "dateStringErrorText": "Aquest camp requereix una cadena de data vàlida.",
   "emailErrorText": "Aquest camp requereix una adreça de correu electrònic vàlida.",

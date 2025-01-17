@@ -1,5 +1,6 @@
 {
   "@@locale": "vi",
+  "andSeparator": " và ",
   "creditCardErrorText": "Yêu cầu nhập đúng số thẻ tín dụng.",
   "dateStringErrorText": "Yêu cầu nhập đúng định dạng ngày.",
   "emailErrorText": "Nhập đúng email.",

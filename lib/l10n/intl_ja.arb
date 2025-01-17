@@ -1,5 +1,6 @@
 {
   "@@locale": "ja",
+  "andSeparator": " と ",
   "creditCardErrorText": "有効なクレジットカード番号を入力してください。",
   "dateStringErrorText": "正しい日付を入力してください。",
   "emailErrorText": "有効なメールアドレスを入力してください。",

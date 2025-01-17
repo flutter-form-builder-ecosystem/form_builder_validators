@@ -1,5 +1,6 @@
 {
   "@@locale": "th",
+  "andSeparator": " และ ",
   "creditCardErrorText": "ข้อมูลนี้ต้องเป็นเลขบัตรเครดิตเท่านั้น",
   "dateStringErrorText": "ข้อมูลนี้ต้องเป็นวันที่เท่านั้น",
   "emailErrorText": "กรุณาระบุ email ของคุณ",

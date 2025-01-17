@@ -1,5 +1,6 @@
 {
   "@@locale": "lv",
+  "andSeparator": " un ",
   "creditCardErrorText": "Šis lauks prasa derīgu kredītkartes numuru.",
   "dateStringErrorText": "Šis lauks prasa derīgu datuma virkni.",
   "emailErrorText": "Šis lauks prasa derīgu e-pasta adresi.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "hu",
+  "andSeparator": " és ",
   "creditCardErrorText": "A megadott érték nem egy érvényes bankkártya szám.",
   "dateStringErrorText": "Ennek a mezőnek dátumnak kell lennie.",
   "emailErrorText": "A megadott érték nem egy érvényes email cím.",

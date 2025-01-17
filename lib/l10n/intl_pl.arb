@@ -1,5 +1,6 @@
 {
   "@@locale": "pl",
+  "andSeparator": " i ",
   "creditCardErrorText": "To pole wymaga podania ważnego numeru karty kredytowej.",
   "dateStringErrorText": "To pole wymaga prawidłowej daty.",
   "emailErrorText": "To pole wymaga prawidłowego adresu e-mail.",

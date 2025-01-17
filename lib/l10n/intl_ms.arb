@@ -1,5 +1,6 @@
 {
   "@@locale": "ms",
+  "andSeparator": " dan ",
   "creditCardErrorText": "Ruangan ini memerlukan nombor kad kredit yang sah.",
   "dateStringErrorText": "Ruangan ini memerlukan rentetan tarikh yang sah.",
   "emailErrorText": "Ruangan ini memerlukan alamat e-mel yang sah.",

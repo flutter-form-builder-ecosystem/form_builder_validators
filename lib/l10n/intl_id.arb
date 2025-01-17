@@ -1,5 +1,6 @@
 {
   "@@locale": "id",
+  "andSeparator": " dan ",
   "creditCardErrorText": "Nomor kartu kredit tidak valid.",
   "dateStringErrorText": "Tanggal tidak valid.",
   "emailErrorText": "Alamat email tidak valid.",

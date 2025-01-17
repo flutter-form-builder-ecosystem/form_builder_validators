@@ -1,5 +1,6 @@
 {
   "@@locale": "sq",
+  "andSeparator": " dhe ",
   "creditCardErrorText": "Kjo fushë kërkon një numër të vlefshëm për kartën e kreditit.",
   "dateStringErrorText": "Kjo fushë kërkon një datë të vlefshme.",
   "emailErrorText": "Kjo fushë kërkon një adresë e E-mail-i të vlefshme.",
