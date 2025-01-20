@@ -2,9 +2,9 @@ import '../constants.dart';
 
 /// {@template validator_override_error_msg}
 /// Creates a new validator that replaces the error message of an existing validator
-/// while preserving its validation logic. This is particularly useful when you need
-/// to customize error messages for specific validation when that is not possible
-/// by its direct manipulation.
+/// while preserving its validation logic.
+/// This is particularly useful when you need to customize error messages for a 
+/// specific validation and it is not possible by direct manipulation.
 ///
 ///
 /// ## Parameters
