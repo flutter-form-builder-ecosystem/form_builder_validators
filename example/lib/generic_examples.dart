@@ -13,7 +13,7 @@ class GenericExamplesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Form Builder Validators')),
+      appBar: AppBar(title: const Text('Generic Examples')),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: SingleChildScrollView(

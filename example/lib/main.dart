@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+import 'basic_examples.dart';
 import 'forms_with_validate_granularlly.dart';
 import 'generic_examples.dart';
 import 'localization/intl/app_localizations.dart';
@@ -44,6 +45,16 @@ class _HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+                onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => BasicExamplesPage(),
+                      ),
+                    ),
+                child: Text('Basic Examples')),
+            SizedBox(
+              height: 15,
+            ),
             ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute<void>(

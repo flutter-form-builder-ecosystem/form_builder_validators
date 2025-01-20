@@ -26,7 +26,9 @@ import '../constants.dart';
 /// ## Examples
 /// ```dart
 /// // Basic usage for password confirmation
-/// final passwordConfirmValidator = isEqual(password);
+/// final confirmAction = isEqual('Type this to confirm the action');
+/// assert(confirmAction('Type this to confirm the action') == null); // null returned (validation passes)
+/// assert(confirmAction(12345) != null); // Error message returned
 ///
 /// // Using custom error message
 /// final specificValueValidator = isEqual<int>(
@@ -78,8 +80,8 @@ Validator<T> isEqual<T extends Object?>(
 /// ```dart
 /// // Basic usage with strings
 /// final validator = isNotEqual<String>('reserved');
-/// print(validator('not-reserved')); // null (validation passes)
-/// print(validator('reserved')); // "Value must not be equal to reserved"
+/// assert(validator('not-reserved') == null); // null (validation passes)
+/// assert(validator('reserved') != null); // "Value must not be equal to reserved"
 ///
 /// // Custom error message
 /// final customValidator = isNotEqual<int>(
