@@ -88,7 +88,6 @@ Validator<T> isEqual<T extends Object?>(
 ///   42,
 ///   isNotEqualMsg: (_, value) => 'Please choose a number other than $value',
 /// );
-/// print(customValidator(42)); // "Please choose a number other than 42"
 /// ```
 ///
 /// ## Caveats
