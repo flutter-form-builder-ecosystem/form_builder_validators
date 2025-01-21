@@ -1801,14 +1801,6 @@ final class Validators {
   }) =>
       val.isNotEqual(value, isNotEqualMsg: isNotEqualMsg);
 
-  // Override error validator
-  /// {@macro validator_override_error_msg}
-  static Validator<T> overrideErrorMsg<T extends Object?>(
-    String Function(T input) errorMsg,
-    Validator<T> v,
-  ) =>
-      val.overrideErrorMsg(errorMsg, v);
-
   // Required validators
   /// {@macro validator_is_required}
   static Validator<T?> isRequired<T extends Object>([

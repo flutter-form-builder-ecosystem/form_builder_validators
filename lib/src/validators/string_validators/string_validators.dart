@@ -2,7 +2,6 @@ import '../../../localization/l10n.dart';
 import '../collection_validators.dart' as collection_val;
 import '../constants.dart';
 import '../core_validators/composition_validators.dart';
-import '../core_validators/override_error_msg.dart';
 
 /// {@template validator_password}
 /// Creates a composite validator for password validation that enforces multiple
@@ -62,9 +61,9 @@ Validator<String> password({
     hasMinNumericChars(min: minNumberCount),
     hasMinSpecialChars(min: minSpecialCharCount),
   ]);
-  return passwordMsg != null
-      ? overrideErrorMsg((_) => passwordMsg, andValidator)
-      : andValidator;
+  String? validatorWithPasswordMsg(String input) =>
+      andValidator(input) == null ? null : passwordMsg;
+  return passwordMsg != null ? validatorWithPasswordMsg : andValidator;
 }
 
 final RegExp _numericRegex = RegExp('[0-9]');

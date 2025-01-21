@@ -19,8 +19,15 @@ class BasicExamplesPage extends StatelessWidget {
             children: <Widget>[
               // Core validators
               Text(
-                'Equality Validators',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                'Core Validators',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Equality Validators',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -34,6 +41,24 @@ class BasicExamplesPage extends StatelessWidget {
                     labelText: 'Username (should not be "RESERVED")'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: Validators.isNotEqual('RESERVED'),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Required Error Message',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ),
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Input must not be null'),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (String? input) {
+                  final String? isRequiredMsg = Validators.isRequired()(input);
+                  return isRequiredMsg
+                      ?.toUpperCase()
+                      .replaceFirst('OVERRIDE: ', '');
+                },
               ),
             ],
           ),
