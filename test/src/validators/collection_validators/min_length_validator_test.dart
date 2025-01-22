@@ -12,7 +12,6 @@ void main() {
 
         expect(v(<int>[]), isNull);
         expect(v2(<int>[12]), isNull);
-        expect(v2(12), isNull);
       });
       test('Should validate the input when it is expected to have minLength 1',
           () {
@@ -27,7 +26,6 @@ void main() {
         expect(v2(<String>[]),
             FormBuilderLocalizations.current.minLengthErrorText(1));
         expect(v2(<String>['0']), isNull);
-        expect(v2(0), isNull);
         expect(v2(<Object>[1, '3']), isNull);
       });
       test('Should validate the input when it is expected to have minLength 4',
@@ -65,11 +63,14 @@ void main() {
       final Validator<Object> v =
           minLength(3, minLengthMsg: (_, __) => customMsg);
 
-      expect(v(89), equals(customMsg));
+      expect(v(<int, String>{1: '1', 2: '2'}), equals(customMsg));
       expect(v(<Object>[1, '2', 3, 4]), isNull);
     });
-    test('Should throw AssertionError when minLength is negative', () {
-      expect(() => minLength(-2), throwsAssertionError);
+    test('Should throw ArgumentError when minLength is negative', () {
+      expect(() => minLength(-2), throwsArgumentError);
+    });
+    test('Should throw ArgumentError when input is not collection', () {
+      expect(() => minLength(2)(12.3), throwsArgumentError);
     });
   });
 }

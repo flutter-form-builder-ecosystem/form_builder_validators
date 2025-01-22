@@ -50,6 +50,7 @@ Validator<T> and<T extends Object>(
   String? separator,
   bool printErrorAsSoonAsPossible = true,
 }) {
+  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
   assert(validators.isNotEmpty, 'The input validators may not be empty.');
   return (T value) {
     final List<String> errorMessageBuilder = <String>[];
@@ -106,6 +107,7 @@ Validator<T> or<T extends Object>(
   String suffix = '',
   String? separator,
 }) {
+  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
   assert(validators.isNotEmpty, 'The input validators may not be empty.');
   return (T value) {
     final List<String> errorMessageBuilder = <String>[];

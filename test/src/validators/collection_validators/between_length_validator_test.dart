@@ -14,8 +14,8 @@ void main() {
         expect(v(<int>[]), isNull);
         expect(v(<int>[12]),
             FormBuilderLocalizations.current.betweenLengthErrorText(0, 0));
-        expect(v2(<int>[12, 23, 456]), isNull);
-        expect(v2(12),
+        expect(v2(<Object>[12, '23', 456]), isNull);
+        expect(v2(<int>[12]),
             FormBuilderLocalizations.current.betweenLengthErrorText(3, 3));
       });
       test(
@@ -40,7 +40,6 @@ void main() {
         expect(v2(''),
             FormBuilderLocalizations.current.betweenLengthErrorText(1, 5));
         expect(v2(<String>['0']), isNull);
-        expect(v2(0), isNull);
         expect(v2(<Object>[1, '3']), isNull);
         expect(v2('hi '), isNull);
         expect(v2('      '),
@@ -55,19 +54,23 @@ void main() {
           betweenLengthMsg: (_, {required int min, required int max}) =>
               customMsg);
 
-      expect(v(89), equals(customMsg));
+      expect(v(<int, int>{89: 123}), equals(customMsg));
       expect(v(<Object>[1, '2', 3, 4]), isNull);
       expect(v('   '), isNull);
     });
-    group('Throws assertion error', () {
-      test('Should throw AssertionError when minLength is negative', () {
-        expect(() => betweenLength(-2, 3), throwsAssertionError);
-        expect(() => betweenLength(-2, -3), throwsAssertionError);
+    group('Throws Argument error', () {
+      test('Should throw ArgumentError when minLength is negative', () {
+        expect(() => betweenLength(-2, 3), throwsArgumentError);
+        expect(() => betweenLength(-2, -3), throwsArgumentError);
       });
-      test('Should throw AssertionError when maxLength is less than minLength',
+      test('Should throw ArgumentError when maxLength is less than minLength',
           () {
-        expect(() => betweenLength(3, 2), throwsAssertionError);
-        expect(() => betweenLength(3, -2), throwsAssertionError);
+        expect(() => betweenLength(3, 2), throwsArgumentError);
+        expect(() => betweenLength(3, -2), throwsArgumentError);
+      });
+      test('Should throw ArgumentError when input is not a collection', () {
+        expect(() => betweenLength(2, 3)(('this is a record',)),
+            throwsArgumentError);
       });
     });
   });

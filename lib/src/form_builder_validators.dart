@@ -1998,11 +1998,9 @@ final class Validators {
 
   /// {@macro validator_equal_length}
   static Validator<T> equalLength<T extends Object>(int expectedLength,
-          {bool allowEmpty = false,
-          String Function(T input, int expectedLength)? equalLengthMsg}) =>
+          {String Function(T input, int expectedLength)? equalLengthMsg}) =>
       val.equalLength(
         expectedLength,
-        allowEmpty: allowEmpty,
         equalLengthMsg: equalLengthMsg,
       );
 

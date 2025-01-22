@@ -13,7 +13,6 @@ void main() {
         expect(v(<int>[]), isNull);
         expect(v2(<int>[12]),
             FormBuilderLocalizations.current.maxLengthErrorText(0));
-        expect(v2(12), FormBuilderLocalizations.current.maxLengthErrorText(0));
       });
       test('Should validate the input when it is expected to have maxLength 1',
           () {
@@ -23,7 +22,7 @@ void main() {
         expect(v(<int>[]), isNull);
         expect(v(<int>[0]), isNull);
         expect(v2(<String>['0']), isNull);
-        expect(v2(0), isNull);
+        expect(v2(<int>{0}), isNull);
         expect(v(<int>[1, 2]),
             FormBuilderLocalizations.current.maxLengthErrorText(1));
         expect(v2(<Object>[1, '3']),
@@ -57,8 +56,11 @@ void main() {
       expect(v('hey'), isNull);
       expect(v(<Object>[1, '2', 3, 4]), equals(customMsg));
     });
-    test('Should throw AssertionError when maxLength is negative', () {
-      expect(() => maxLength(-2), throwsAssertionError);
+    test('Should throw ArgumentError when maxLength is negative', () {
+      expect(() => maxLength(-2), throwsArgumentError);
+    });
+    test('Should throw ArgumentError when input is not a collection', () {
+      expect(() => maxLength(2)(123), throwsArgumentError);
     });
   });
 }

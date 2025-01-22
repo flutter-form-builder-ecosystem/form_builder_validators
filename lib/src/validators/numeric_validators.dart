@@ -244,6 +244,7 @@ Validator<T> between<T extends num>(T min, T max,
       bool minInclusive,
       bool maxInclusive,
     )? betweenMsg}) {
+  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
   assert(min <= max, 'Min must be less than or equal to max');
   return (T input) {
     return (minInclusive ? input >= min : input > min) &&

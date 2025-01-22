@@ -61,6 +61,7 @@ Validator<String> matchesAllowedExtensions(
   String Function(List<String>)? matchesAllowedExtensionsMsg,
   bool caseSensitive = true,
 }) {
+  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
   assert(extensions.isNotEmpty, 'allowed extensions may not be empty.');
   int maxLevel = 1;
   for (final String ex in extensions) {
