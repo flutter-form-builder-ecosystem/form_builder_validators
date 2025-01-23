@@ -229,6 +229,86 @@ Validator<T> isNum<T extends Object>(
   return (false, null);
 }
 
+/// {@template validator_is_double}
+/// Creates a validator that verifies if an input value is a [double] or can be
+/// parsed into a [double]. If the check succeeds, the transformed value will be
+/// passed to the `next` validator.
+///
+/// This validator performs two key checks:
+/// 1. Direct validation of `double` types
+/// 2. String parsing validation for string inputs that represent doubles
+///
+/// ## Type Parameters
+/// - `T`: The type of the input value. Must extend `Object` to ensure non-null
+/// values
+///
+/// ## Parameters
+/// - `next` (`Validator<double>?`): An optional subsequent validator that receives
+///   the converted numeric value for additional validation
+/// - `isDoubleMsg` (`String Function(T input)?`): Optional custom error message
+///   generator function that receives the invalid input and returns an error
+///   message
+///
+/// ## Returns
+/// Returns a `Validator<T>` function that:
+/// - Returns `null` if validation succeeds and no `next` validator is provided
+/// - Returns the result of the `next` validator if provided and initial
+/// validation succeeds
+/// - Returns an error message string if validation fails
+///
+/// ## Examples
+/// ```dart
+/// // Basic number validation
+/// final validator = isDouble();
+/// print(validator(42.0));        // null (valid)
+/// print(validator(3.14));      // null (valid)
+/// print(validator('123.45'));  // null (valid)
+/// print(validator('1e-4'));    // null (valid)
+/// print(validator('abc'));     // 'Please enter a valid number'
+///
+/// // With custom error message
+/// final customValidator = isDouble(null, (input) => 'Invalid number: $input');
+/// print(customValidator('abc')); // 'Invalid number: abc'
+///
+/// // With chained validation
+/// final rangeValidator = isDouble((value) =>
+///     value > 1000 ? 'Must be less than 1000' : null);
+/// print(rangeValidator('1500')); // 'Must be less than 1000'
+/// ```
+///
+/// ## Caveats
+/// - If the input is [String], it will be parsed by the [double.tryParse] method.
+/// {@endtemplate}
+Validator<T> isDouble<T extends Object>(
+    [Validator<double>? next, String Function(T input)? isDoubleMsg]) {
+  String? finalValidator(T input) {
+    final (bool isValid, double? typeTransformedValue) =
+        _isDoubleValidateAndConvert(input);
+    if (!isValid) {
+      // Numeric error text is enough for the final user. He does not know what
+      // a double is.
+      return isDoubleMsg?.call(input) ??
+          FormBuilderLocalizations.current.numericErrorText;
+    }
+    return next?.call(typeTransformedValue!);
+  }
+
+  return finalValidator;
+}
+
+(bool, double?) _isDoubleValidateAndConvert<T extends Object>(T value) {
+  if (value is double) {
+    return (true, value);
+  }
+  if (value is String) {
+    final double? candidateValue = double.tryParse(value);
+    if (candidateValue != null) {
+      return (true, candidateValue);
+    }
+  }
+  return (false, null);
+}
+
 /// {@template validator_is_bool}
 /// Creates a validator that verifies if an input value is a [bool] or can be
 /// parsed into a [bool]. If the check succeeds, the transformed value will be
@@ -415,5 +495,4 @@ Validator<T> isDateTime<T extends Object>([
 
 // TODO add other types like: Uri, isT(which checks if input is T and tries to
 //  apply the parsing strategy from the user. It is close to transformAndValidate,
-//  but not altogether) etc.
-// add isDouble
+//  but not altogether) etc. Is collection (if an use case is found)

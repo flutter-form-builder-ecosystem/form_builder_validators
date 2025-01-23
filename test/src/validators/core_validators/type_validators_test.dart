@@ -122,6 +122,47 @@ void main() {
     });
   });
 
+  group('Validator: isDouble', () {
+    test('Should only check if the input is a double/parsable to double', () {
+      final Validator<Object> v = isDouble();
+
+      expect(v('not an double'),
+          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+          v('1-3'), equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+          v(true), equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(v('123.0'), isNull);
+      expect(v('123'), isNull);
+      expect(v('1'), isNull);
+      expect(v('1e3'), isNull);
+      expect(v(24 / 3), isNull);
+      expect(v(24.0), isNull);
+      expect(v(-24.0), isNull);
+      expect(v('-0'), isNull);
+    });
+    test('Should check if the input is a double greater than 9', () {
+      final Validator<Object> v = isDouble(greaterThan9);
+
+      expect(v('not an int'),
+          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(v('1234'), isNull);
+      expect(v(10.0), isNull);
+      expect(v(9.0), equals(errorMsg));
+      expect(v(8.0), equals(errorMsg));
+      expect(v(-4.0), equals(errorMsg));
+      expect(v('-1234'), equals(errorMsg));
+    });
+    test('Should check if the input is a double using custom error', () {
+      const String customError = 'custom error';
+      final Validator<Object> v = isDouble(null, (_) => customError);
+
+      expect(v('not double'), equals(customError));
+      expect(v('23'), isNull);
+      expect(v(-23.34), isNull);
+    });
+  });
+
   group('Validator: isBool', () {
     test('Should only check if the input is a bool/parsable to bool', () {
       // defaults to case insensitive and trim
