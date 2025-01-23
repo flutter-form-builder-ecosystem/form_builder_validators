@@ -102,7 +102,7 @@ void main() {
       expect(v(74), isNull);
     });
     test('Should throw AssertionError when the validators input is empty', () {
-      expect(() => or(<Validator<Object?>>[]), throwsAssertionError);
+      expect(() => or(<Validator<Object?>>[]), throwsArgumentError);
     });
   });
 }

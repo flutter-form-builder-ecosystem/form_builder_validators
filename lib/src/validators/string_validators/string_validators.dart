@@ -1,7 +1,7 @@
 import '../../../localization/l10n.dart';
 import '../collection_validators.dart' as collection_val;
 import '../constants.dart';
-import '../core_validators/composition_validators.dart';
+import '../core_validators/compose_validators.dart';
 
 /// {@template validator_password}
 /// Creates a composite validator for password validation that enforces multiple
@@ -525,8 +525,8 @@ Validator<String> url({
               requireTld: requireTld,
               requireProtocol: requireProtocol,
               allowUnderscore: allowUnderscore,
-              hostWhitelist: hostWhitelist ?? <String>[],
-              hostBlacklist: hostBlacklist ?? <String>[],
+              hostAllowList: hostWhitelist ?? <String>[],
+              hostBlockList: hostBlacklist ?? <String>[],
             )
         ? urlMsg ?? FormBuilderLocalizations.current.urlErrorText
         : null;
@@ -582,16 +582,16 @@ bool _isIP(String? str, int version, RegExp? regex) {
 /// * [requireTld] sets if TLD is required
 /// * [requireProtocol] is a `bool` that sets if protocol is required for validation
 /// * [allowUnderscore] sets if underscores are allowed
-/// * [hostWhitelist] sets the list of allowed hosts
-/// * [hostBlacklist] sets the list of disallowed hosts
+/// * [hostAllowList] sets the list of allowed hosts
+/// * [hostBlockList] sets the list of disallowed hosts
 bool _isURL(
   String? value, {
   List<String?> protocols = const <String?>['http', 'https', 'ftp'],
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
-  List<String> hostWhitelist = const <String>[],
-  List<String> hostBlacklist = const <String>[],
+  List<String> hostAllowList = const <String>[],
+  List<String> hostBlockList = const <String>[],
   RegExp? regexp,
 }) {
   if (value == null ||
@@ -688,11 +688,11 @@ bool _isURL(
     return false;
   }
 
-  if (hostWhitelist.isNotEmpty && !hostWhitelist.contains(host)) {
+  if (hostAllowList.isNotEmpty && !hostAllowList.contains(host)) {
     return false;
   }
 
-  if (hostBlacklist.isNotEmpty && hostBlacklist.contains(host)) {
+  if (hostBlockList.isNotEmpty && hostBlockList.contains(host)) {
     return false;
   }
 

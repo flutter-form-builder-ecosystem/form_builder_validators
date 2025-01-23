@@ -133,7 +133,7 @@ void main() {
     });
 
     test('Should throw AssertionError when the validators input is empty', () {
-      expect(() => and(<Validator<Object?>>[]), throwsAssertionError);
+      expect(() => and(<Validator<Object?>>[]), throwsArgumentError);
     });
   });
 }

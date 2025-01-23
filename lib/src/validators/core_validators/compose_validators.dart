@@ -1,4 +1,4 @@
-// Composition validators
+// Compose validators
 import '../../../localization/l10n.dart';
 import '../constants.dart';
 
@@ -41,7 +41,7 @@ import '../constants.dart';
 /// - Validation failure message, otherwise
 ///
 /// ## Throws
-/// - [AssertionError] if `validators` is empty
+/// - [ArgumentError] if `validators` is empty
 /// {@endtemplate}
 Validator<T> and<T extends Object>(
   List<Validator<T>> validators, {
@@ -50,8 +50,10 @@ Validator<T> and<T extends Object>(
   String? separator,
   bool printErrorAsSoonAsPossible = true,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(validators.isNotEmpty, 'The input validators may not be empty.');
+  if (validators.isEmpty) {
+    throw ArgumentError.value(
+        '[]', 'validators', 'The list of validators must not be empty');
+  }
   return (T value) {
     final List<String> errorMessageBuilder = <String>[];
     for (final Validator<T> validator in validators) {
@@ -99,7 +101,7 @@ Validator<T> and<T extends Object>(
 /// - Combined error message if all validations fail
 ///
 /// ## Throws
-/// - [AssertionError] if `validators` is empty
+/// - [ArgumentError] if `validators` is empty
 /// {@endtemplate}
 Validator<T> or<T extends Object>(
   List<Validator<T>> validators, {
@@ -107,8 +109,10 @@ Validator<T> or<T extends Object>(
   String suffix = '',
   String? separator,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(validators.isNotEmpty, 'The input validators may not be empty.');
+  if (validators.isEmpty) {
+    throw ArgumentError.value(
+        '[]', 'validators', 'The list of validators must not be empty');
+  }
   return (T value) {
     final List<String> errorMessageBuilder = <String>[];
     for (final Validator<T> validator in validators) {
