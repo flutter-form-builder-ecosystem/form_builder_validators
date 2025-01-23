@@ -45,7 +45,7 @@ import '../core_validators/composition_validators.dart';
 ///   are not available to the user
 /// {@endtemplate}
 Validator<String> password({
-  int minLength = 8,
+  int minLength = 16,
   int maxLength = 32,
   int minUppercaseCount = 1,
   int minLowercaseCount = 1,
