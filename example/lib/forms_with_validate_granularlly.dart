@@ -100,7 +100,9 @@ class _BodyState extends State<_Body> {
                     hintText: 'YYYY-MM-DD',
                     prefixIcon: Icon(Icons.calendar_today),
                   ),
-                  validator: V.isRequired(V.isDateTime(V.isInThePast())),
+                  validator: V.isRequired(V.isDateTime(V.isBefore(
+                      DateTime.now(),
+                      isBeforeMsg: (_, __) => 'Date must be in the past.'))),
                   keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.next,
                   onTap: () async {

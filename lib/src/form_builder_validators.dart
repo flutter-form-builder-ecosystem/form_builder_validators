@@ -2036,18 +2036,6 @@ final class Validators {
           minInclusive: leftInclusive,
           maxInclusive: rightInclusive);
 
-  /// {@macro validator_is_in_the_past}
-  static Validator<DateTime> isInThePast({
-    String Function(DateTime input)? isInThePastMsg,
-  }) =>
-      val.isInThePast(isInThePastMsg: isInThePastMsg);
-
-  /// {@macro validator_is_in_the_future}
-  static Validator<DateTime> isInTheFuture({
-    String Function(DateTime input)? isInTheFutureMsg,
-  }) =>
-      val.isInTheFuture(isInTheFutureMsg: isInTheFutureMsg);
-
   // Generic type validators
   /// {@macro validator_contains_element}
   static Validator<T> containsElement<T extends Object?>(
