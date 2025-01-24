@@ -77,10 +77,10 @@ void main() {
           isNull);
     });
 
-    test('Should throw assertion error when the min parameter is invalid', () {
-      expect(() => hasMinNumericChars(min: -10), throwsAssertionError);
-      expect(() => hasMinNumericChars(min: -1), throwsAssertionError);
-      expect(() => hasMinNumericChars(min: 0), throwsAssertionError);
+    test('Should throw argument error when the min parameter is invalid', () {
+      expect(() => hasMinNumericChars(min: -10), throwsArgumentError);
+      expect(() => hasMinNumericChars(min: -1), throwsArgumentError);
+      expect(() => hasMinNumericChars(min: 0), throwsArgumentError);
     });
   });
 }

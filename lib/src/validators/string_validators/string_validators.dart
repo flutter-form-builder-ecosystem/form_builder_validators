@@ -142,8 +142,9 @@ Validator<String> hasMinUppercaseChars({
   int Function(String)? customUppercaseCounter,
   String Function(String input, int min)? hasMinUppercaseCharsMsg,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(min > 0, 'min must be positive (at least 1)');
+  if (min < 1) {
+    throw ArgumentError.value(min, 'min', 'This argument must be at least 1');
+  }
 
   return (String input) {
     int uppercaseCount = customUppercaseCounter?.call(input) ??
@@ -212,8 +213,9 @@ Validator<String> hasMinLowercaseChars({
   int Function(String)? customLowercaseCounter,
   String Function(String input, int min)? hasMinLowercaseCharsMsg,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(min > 0, 'min must be positive (at least 1)');
+  if (min < 1) {
+    throw ArgumentError.value(min, 'min', 'This argument must be at least 1');
+  }
   return (String input) {
     int lowercaseCount = customLowercaseCounter?.call(input) ??
         _upperAndLowerCaseCounter(input).lowerCount;
@@ -286,8 +288,9 @@ Validator<String> hasMinNumericChars({
   int Function(String)? customNumericCounter,
   String Function(String input, int min)? hasMinNumericCharsMsg,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(min > 0, 'min must be positive (at least 1)');
+  if (min < 1) {
+    throw ArgumentError.value(min, 'min', 'This argument must be at least 1');
+  }
   return (String input) {
     final int numericCount = customNumericCounter?.call(input) ??
         _numericRegex.allMatches(input).length;
@@ -359,8 +362,9 @@ Validator<String> hasMinSpecialChars({
   int Function(String)? customSpecialCounter,
   String Function(String input, int min)? hasMinSpecialCharsMsg,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(min > 0, 'min must be positive (at least 1)');
+  if (min < 1) {
+    throw ArgumentError.value(min, 'min', 'This argument must be at least 1');
+  }
   return (String input) {
     int specialCount;
     if (customSpecialCounter == null) {

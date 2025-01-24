@@ -62,9 +62,9 @@ void main() {
         });
       }
     });
-    test('Should throw assertion error when min is greater than max', () {
-      expect(() => between(0, -2), throwsAssertionError);
-      expect(() => between(232, 89), throwsAssertionError);
+    test('Should throw Argument error when min is greater than max', () {
+      expect(() => between(0, -2), throwsArgumentError);
+      expect(() => between(232, 89), throwsArgumentError);
     });
 
     test('Should validate with non-inclusive references', () {

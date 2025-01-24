@@ -104,10 +104,10 @@ void main() {
                   RegExp('[A-Z#]').allMatches(v).length)(value),
           isNull);
     });
-    test('Should throw assertion error when the min parameter is invalid', () {
-      expect(() => hasMinUppercaseChars(min: -10), throwsAssertionError);
-      expect(() => hasMinUppercaseChars(min: -1), throwsAssertionError);
-      expect(() => hasMinUppercaseChars(min: 0), throwsAssertionError);
+    test('Should throw argument error when the min parameter is invalid', () {
+      expect(() => hasMinUppercaseChars(min: -10), throwsArgumentError);
+      expect(() => hasMinUppercaseChars(min: -1), throwsArgumentError);
+      expect(() => hasMinUppercaseChars(min: 0), throwsArgumentError);
     });
   });
 }

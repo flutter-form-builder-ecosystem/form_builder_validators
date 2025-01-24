@@ -102,15 +102,15 @@ void main() {
         );
       });
     }
-    test('Should throw AssertionError when allowed extensions is empty', () {
-      expect(() => matchesAllowedExtensions(<String>[]), throwsAssertionError);
+    test('Should throw ArgumentError when allowed extensions is empty', () {
+      expect(() => matchesAllowedExtensions(<String>[]), throwsArgumentError);
     });
     test(
-        'Should throw AssertionError when an invalid extension is provided to extensions',
+        'Should throw ArgumentError when an invalid extension is provided to extensions',
         () {
       expect(
           () => matchesAllowedExtensions(<String>['invalid extension', '.txt']),
-          throwsAssertionError);
+          throwsArgumentError);
     });
 
     test(

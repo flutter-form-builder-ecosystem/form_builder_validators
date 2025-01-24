@@ -70,10 +70,10 @@ void main() {
       });
     });
 
-    test('Should throw assertion error when the min parameter is invalid', () {
-      expect(() => hasMinSpecialChars(min: -10), throwsAssertionError);
-      expect(() => hasMinSpecialChars(min: -1), throwsAssertionError);
-      expect(() => hasMinSpecialChars(min: 0), throwsAssertionError);
+    test('Should throw argument error when the min parameter is invalid', () {
+      expect(() => hasMinSpecialChars(min: -10), throwsArgumentError);
+      expect(() => hasMinSpecialChars(min: -1), throwsArgumentError);
+      expect(() => hasMinSpecialChars(min: 0), throwsArgumentError);
     });
   });
 }

@@ -32,8 +32,8 @@ void main() {
       });
     });
 
-    test('Should throw assertionError when list input is empty', () {
-      expect(() => containsElement(<Object>[]), throwsAssertionError);
+    test('Should throw ArgumentError when list input is empty', () {
+      expect(() => containsElement(<Object>[]), throwsArgumentError);
     });
 
     test('Should return custom error message when invalid input is provided',

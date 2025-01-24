@@ -43,8 +43,10 @@ Validator<T> containsElement<T extends Object?>(
   List<T> values, {
   String Function(T input, List<T> values)? containsElementMsg,
 }) {
-  // TODO(ArturAssisComp): transform this assertion into an ArgumentError.value call
-  assert(values.isNotEmpty, 'The list "values" may not be empty.');
+  if (values.isEmpty) {
+    throw ArgumentError.value(
+        '[]', 'values', 'The list of values must not be empty');
+  }
   final Set<T> setOfValues = values.toSet();
   return (T input) {
     return setOfValues.contains(input)

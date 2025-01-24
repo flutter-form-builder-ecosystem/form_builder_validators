@@ -105,10 +105,10 @@ void main() {
           isNull);
     });
 
-    test('Should throw assertion error when the min parameter is invalid', () {
-      expect(() => hasMinLowercaseChars(min: -10), throwsAssertionError);
-      expect(() => hasMinLowercaseChars(min: -1), throwsAssertionError);
-      expect(() => hasMinLowercaseChars(min: 0), throwsAssertionError);
+    test('Should throw argument error when the min parameter is invalid', () {
+      expect(() => hasMinLowercaseChars(min: -10), throwsArgumentError);
+      expect(() => hasMinLowercaseChars(min: -1), throwsArgumentError);
+      expect(() => hasMinLowercaseChars(min: 0), throwsArgumentError);
     });
   });
 }
