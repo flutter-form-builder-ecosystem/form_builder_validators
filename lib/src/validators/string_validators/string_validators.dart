@@ -3,47 +3,7 @@ import '../collection_validators.dart' as collection_val;
 import '../constants.dart';
 import '../core_validators/compose_validators.dart';
 
-/// {@template validator_password}
-/// Creates a composite validator for password validation that enforces multiple
-/// password strength requirements simultaneously.
-///
-/// This validator combines multiple validation rules including length constraints,
-/// character type requirements (uppercase, lowercase, numbers, and special characters),
-/// and allows for custom error message overriding.
-///
-/// ## Parameters
-/// - `minLength` (`int`): Minimum required length for the password. Defaults to `8`
-/// - `maxLength` (`int`): Maximum allowed length for the password. Defaults to `32`
-/// - `minUppercaseCount` (`int`): Minimum required uppercase characters. Defaults to `1`
-/// - `minLowercaseCount` (`int`): Minimum required lowercase characters. Defaults to `1`
-/// - `minNumberCount` (`int`): Minimum required numeric characters. Defaults to `1`
-/// - `minSpecialCharCount` (`int`): Minimum required special characters. Defaults to `1`
-/// - `passwordMsg` (`String?`): Optional custom error message that overrides all
-///   validation error messages. When `null`, individual validator messages are used
-///
-/// ## Returns
-/// Returns a `Validator<String>` that combines all specified password requirements
-/// into a single validator. The validator returns null if all conditions are met,
-/// otherwise returns the appropriate error message.
-///
-/// ## Examples
-/// ```dart
-/// // Default password validation
-/// final validator = password();
-///
-/// // Custom requirements
-/// final strictValidator = password(
-///   minLength: 12,
-///   minUppercaseCount: 2,
-///   minSpecialCharCount: 2,
-///   passwordMsg: 'Password does not meet security requirements'
-/// );
-/// ```
-///
-/// ## Caveats
-/// - When `passwordMsg` is provided, individual validation failure details
-///   are not available to the user
-/// {@endtemplate}
+/// {@macro validator_password}
 Validator<String> password({
   int minLength = 16,
   int maxLength = 32,
@@ -87,56 +47,7 @@ final RegExp _numericRegex = RegExp('[0-9]');
   return (lowerCount: lowercaseCount, upperCount: uppercaseCount);
 }
 
-/// {@template validator_has_min_uppercase_chars}
-/// Creates a validator function that checks if the [String] input contains a
-/// minimum number of uppercase characters. The validator returns `null` for
-/// valid input and an error message for invalid input.
-///
-/// If validation fails and no custom error message generator is provided via
-/// [hasMinUppercaseCharsMsg], returns the default localized error message from
-/// `FormBuilderLocalizations.current.containsUppercaseCharErrorText(min)`.
-///
-/// ## Parameters
-/// - `min` (`int`): The minimum number of uppercase characters required. Defaults
-///   to 1.
-/// - `customUppercaseCounter` (`int Function(String)?`): Optional custom function
-///   to count uppercase characters. If not provided, uses a default Unicode-based
-///   counter.
-/// - `hasMinUppercaseCharsMsg` (`String Function(String input, int min)?`):
-///   Optional function to generate custom error messages. Receives the input and
-///   the minimum uppercase count required and returns an error message string.
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that takes a string input and returns:
-/// - `null` if the input contains at least [min] uppercase characters
-/// - An error message string if the validation fails
-///
-/// ## Throws
-/// - `AssertionError`: When [min] is less than 1
-///
-/// ## Examples
-/// ```dart
-/// // Basic usage with default parameters
-/// final validator = hasMinUppercaseChars();
-/// print(validator('Hello')); // Returns null
-/// print(validator('hello')); // Returns error message
-///
-/// // Custom minimum requirement
-/// final strictValidator = hasMinUppercaseChars(min: 2);
-/// print(strictValidator('HEllo')); // Returns null
-/// print(strictValidator('Hello')); // Returns error message
-///
-/// // Custom error message
-/// final customValidator = hasMinUppercaseChars(
-///   hasMinUppercaseCharsMsg: (_, min) => 'Need $min uppercase letters!',
-/// );
-/// ```
-///
-/// ## Caveats
-/// - The default counter uses language-independent Unicode mapping, which may not
-///   work correctly for all languages. Custom uppercase counter function should
-///   be provided for special language requirements
-/// {@endtemplate}
+/// {@macro validator_has_min_uppercase_chars}
 Validator<String> hasMinUppercaseChars({
   int min = 1,
   int Function(String)? customUppercaseCounter,
@@ -158,56 +69,7 @@ Validator<String> hasMinUppercaseChars({
   };
 }
 
-/// {@template validator_has_min_lowercase_chars}
-/// Creates a validator function that checks if the [String] input contains a
-/// minimum number of lowercase characters. The validator returns `null` for
-/// valid input and an error message for invalid input.
-///
-/// If validation fails and no custom error message generator is provided via
-/// [hasMinLowercaseCharsMsg], returns the default localized error message from
-/// `FormBuilderLocalizations.current.containsLowercaseCharErrorText(min)`.
-///
-/// ## Parameters
-/// - `min` (`int`): The minimum number of lowercase characters required. Defaults
-///   to 1.
-/// - `customLowercaseCounter` (`int Function(String)?`): Optional custom function
-///   to count lowercase characters. If not provided, uses a default Unicode-based
-///   counter.
-/// - `hasMinLowercaseCharsMsg` (`String Function(String input, int min)?`):
-///   Optional function to generate custom error messages. Receives the input and
-///   the minimum lowercase count required and returns an error message string.
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that takes a string input and returns:
-/// - `null` if the input contains at least [min] lowercase characters
-/// - An error message string if the validation fails
-///
-/// ## Throws
-/// - `AssertionError`: When [min] is less than 1
-///
-/// ## Examples
-/// ```dart
-/// // Basic usage with default parameters
-/// final validator = hasMinLowercaseChars();
-/// print(validator('hello')); // Returns null
-/// print(validator('HELLO')); // Returns error message
-///
-/// // Custom minimum requirement
-/// final strictValidator = hasMinLowercaseChars(min: 2);
-/// print(strictValidator('hEllo')); // Returns null
-/// print(strictValidator('HELlO')); // Returns error message
-///
-/// // Custom error message
-/// final customValidator = hasMinLowercaseChars(
-///   hasMinLowercaseCharsMsg: (_, min) => 'Need $min lowercase letters!',
-/// );
-/// ```
-///
-/// ## Caveats
-/// - The default counter uses language-independent Unicode mapping, which may not
-///   work correctly for all languages. Custom lowercase counter function should
-///   be provided for special language requirements
-/// {@endtemplate}
+/// {@macro validator_has_min_lowercase_chars}
 Validator<String> hasMinLowercaseChars({
   int min = 1,
   int Function(String)? customLowercaseCounter,
@@ -228,61 +90,7 @@ Validator<String> hasMinLowercaseChars({
   };
 }
 
-/// {@template validator_has_min_numeric_chars}
-/// Creates a validator function that checks if the [String] input contains a
-/// minimum number of numeric characters (0-9). The validator returns `null` for
-/// valid input and an error message for invalid input.
-///
-/// If validation fails and no custom error message generator is provided via
-/// [hasMinNumericCharsMsg], returns the default localized error message from
-/// `FormBuilderLocalizations.current.containsNumberErrorText(min)`.
-///
-/// ## Parameters
-/// - `min` (`int`): The minimum number of numeric characters required. Defaults
-///   to 1.
-/// - `customNumericCounter` (`int Function(String)?`): Optional custom function
-///   to count numeric characters. If not provided, uses a default regex-based
-///   counter matching digits 0-9.
-/// - `hasMinNumericCharsMsg` (`String Function(String input, int min)?`):
-///   Optional function to generate custom error messages. Receives the input and
-///   the minimum numeric count required and returns an error message string.
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that takes a string input and returns:
-/// - `null` if the input contains at least [min] numeric characters
-/// - An error message string if the validation fails
-///
-/// ## Throws
-/// - `AssertionError`: When [min] is less than 1
-///
-/// ## Examples
-/// ```dart
-/// // Basic usage with default parameters
-/// final validator = hasMinNumericChars();
-/// print(validator('hello123')); // Returns null
-/// print(validator('hello')); // Returns error message
-///
-/// // Custom minimum requirement
-/// final strictValidator = hasMinNumericChars(min: 2);
-/// print(strictValidator('hello12')); // Returns null
-/// print(strictValidator('hello1')); // Returns error message
-///
-/// // Custom error message
-/// final customValidator = hasMinNumericChars(
-///   hasMinNumericCharsMsg: (_, min) => 'Need $min numbers!',
-/// );
-///
-/// // Custom numeric counter for special cases
-/// final customCounter = hasMinNumericChars(
-///   customNumericCounter: countNumericDigits, // From a specialized package, for example.
-/// );
-/// ```
-///
-/// ## Caveats
-/// - The default counter uses a regular expression matching digits 0-9, which may
-///   not work correctly for all languages or number systems. Custom numeric counter
-///   function should be provided for special numbering requirements
-/// {@endtemplate}
+/// {@macro validator_has_min_numeric_chars}
 Validator<String> hasMinNumericChars({
   int min = 1,
   int Function(String)? customNumericCounter,
@@ -301,62 +109,7 @@ Validator<String> hasMinNumericChars({
   };
 }
 
-/// {@template validator_has_min_special_chars}
-/// Creates a validator function that checks if the [String] input contains a
-/// minimum number of special characters. The validator returns `null` for
-/// valid input and an error message for invalid input.
-///
-/// If validation fails and no custom error message generator is provided via
-/// [hasMinSpecialCharsMsg], returns the default localized error message from
-/// `FormBuilderLocalizations.current.containsSpecialCharErrorText(min)`.
-///
-/// ## Parameters
-/// - `min` (`int`): The minimum number of special characters required. Defaults
-///   to 1.
-/// - `customSpecialCounter` (`int Function(String)?`): Optional custom function
-///   to count special characters. If not provided, uses a default calculation
-///   that considers special characters as any character that is neither
-///   alphanumeric.
-/// - `hasMinSpecialCharsMsg` (`String Function(String input, int min)?`):
-///   Optional function to generate custom error messages. Receives the input and
-///   the minimum special character count required and returns an error message string.
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that takes a string input and returns:
-/// - `null` if the input contains at least [min] special characters
-/// - An error message string if the validation fails
-///
-/// ## Throws
-/// - `AssertionError`: When [min] is less than 1
-///
-/// ## Examples
-/// ```dart
-/// // Basic usage with default parameters
-/// final validator = hasMinSpecialChars();
-/// print(validator('hello@world')); // Returns null
-/// print(validator('helloworld')); // Returns error message
-///
-/// // Custom minimum requirement
-/// final strictValidator = hasMinSpecialChars(min: 2);
-/// print(strictValidator('hello@#world')); // Returns null
-/// print(strictValidator('hello@world')); // Returns error message
-///
-/// // Custom error message
-/// final customValidator = hasMinSpecialChars(
-///   hasMinSpecialCharsMsg: (_, min) => 'Need $min special characters!',
-/// );
-///
-/// // Custom special character counter for US-ASCII
-/// final asciiValidator = hasMinSpecialChars(
-///   customSpecialCounter: (v) => RegExp('[^A-Za-z0-9]').allMatches(v).length,
-/// );
-/// ```
-///
-/// ## Caveats
-/// - The default counter uses language-independent Unicode mapping, which may not
-///   work correctly for all languages. Custom special character counter function
-///   should be provided for specific character set requirements
-/// {@endtemplate}
+/// {@macro validator_has_min_special_chars}
 Validator<String> hasMinSpecialChars({
   int min = 1,
   int Function(String)? customSpecialCounter,
@@ -383,43 +136,7 @@ Validator<String> hasMinSpecialChars({
   };
 }
 
-/// {@template validator_match}
-/// Creates a validator function that checks if the [String] input matches a given
-/// regular expression pattern. The validator returns `null` for valid input and
-/// an error message for invalid input.
-///
-/// If validation fails and no custom error message is provided via [matchMsg],
-/// returns the default localized error message from
-/// `FormBuilderLocalizations.current.matchErrorText`.
-///
-/// ## Parameters
-/// - `regex` (`RegExp`): The regular expression pattern to match against the input
-///   string.
-/// - `matchMsg` (`String Function(String input)?`): Optional custom error message
-/// to display when the validation fails. If not provided, uses the default
-/// localized error message.
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that takes a string input and returns:
-/// - `null` if the input matches the provided regular expression pattern
-/// - An error message string if the validation fails
-///
-/// ## Examples
-/// ```dart
-/// // Basic email validation
-/// final emailValidator = match(
-///   emailRegExp,
-///   matchMsg: (_)=>'Please enter a valid email address',
-/// );
-/// print(emailValidator('user@example.com')); // Returns null
-/// print(emailValidator('invalid-email')); // Returns error message
-/// ```
-///
-/// ## Caveats
-/// - Complex regular expressions may impact performance for large inputs
-/// - Consider using more specific validators for common patterns like email
-///   or phone number validation
-/// {@endtemplate}
+/// {@macro validator_match}
 Validator<String> match(
   RegExp regex, {
   String Function(String input)? matchMsg,

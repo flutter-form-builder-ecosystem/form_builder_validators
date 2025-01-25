@@ -8,54 +8,7 @@ bool _isValidExtension(String v) => v.isEmpty || v[0] == '.';
 /// Expects not empty v
 int _numOfExtensionLevels(String v) => r'.'.allMatches(v).length;
 
-/// {@template validator_matches_allowed_extensions}
-/// A validator function that checks if a file path's extension matches any of
-/// the specified allowed extensions. Returns `null` for valid extensions, or an
-/// error message for invalid ones.
-///
-/// The validator supports both single-level (e.g., '.txt') and multi-level
-/// (e.g., '.tar.gz') extensions, with configurable case sensitivity.
-///
-/// ## Parameters
-/// - `extensions` (`List<String>`): List of valid file extensions. Each extension must start
-///   with a dot (e.g., '.pdf', '.tar.gz'). Empty string is considered a valid extension
-/// - `matchesAllowedExtensionsMsg` (`String Function(List<String>)?`): Optional custom error
-///   message generator. Receives the list of allowed extensions and returns an error message
-/// - `caseSensitive` (`bool`): Controls whether extension matching is case-sensitive.
-///   Defaults to `true`
-///
-/// ## Returns
-/// Returns a `Validator<String>` function that:
-/// - Returns `null` if the input path's extension matches any allowed extension
-/// - Returns an error message (custom or default) if no extension match is found
-///
-/// ## Throws
-/// - `AssertionError`: When `extensions` list is empty
-/// - `AssertionError`: When any extension in `extensions` doesn't start with a dot
-///   (except for empty string)
-///
-/// ## Examples
-/// ```dart
-/// // Single-level extension validation
-/// final validator = matchesAllowedExtensions(['.pdf', '.doc']);
-/// print(validator('document.pdf')); // Returns: null
-/// print(validator('document.txt')); // Returns: error message
-///
-/// // Multi-level extension validation
-/// final archiveValidator = matchesAllowedExtensions(['.tar.gz', '.zip']);
-/// print(archiveValidator('archive.tar.gz')); // Returns: null
-///
-/// // Case-insensitive validation
-/// final caseValidator = matchesAllowedExtensions(
-///   ['.PDF', '.DOC'],
-///   caseSensitive: false
-/// );
-/// print(caseValidator('document.pdf')); // Returns: null
-/// ```
-///
-/// ## Caveats
-/// - Extensions must explicitly include the leading dot (use '.txt' not 'txt')
-/// {@endtemplate}
+/// {@macro validator_matches_allowed_extensions}
 Validator<String> matchesAllowedExtensions(
   List<String> extensions, {
   String Function(List<String>)? matchesAllowedExtensionsMsg,
