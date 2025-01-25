@@ -6,3 +6,4 @@ export 'generic_type_validators.dart';
 export 'numeric_validators.dart';
 export 'string_validators/path_validators.dart';
 export 'string_validators/string_validators.dart';
+export 'user_information_validators.dart';

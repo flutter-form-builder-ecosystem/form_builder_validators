@@ -2657,65 +2657,6 @@ final class Validators {
       );
 
   // String validators
-  /// {@template validator_password}
-  /// Creates a composite validator for password validation that enforces multiple
-  /// password strength requirements simultaneously.
-  ///
-  /// This validator combines multiple validation rules including length constraints,
-  /// character type requirements (uppercase, lowercase, numbers, and special characters),
-  /// and allows for custom error message overriding.
-  ///
-  /// ## Parameters
-  /// - `minLength` (`int`): Minimum required length for the password. Defaults to `8`
-  /// - `maxLength` (`int`): Maximum allowed length for the password. Defaults to `32`
-  /// - `minUppercaseCount` (`int`): Minimum required uppercase characters. Defaults to `1`
-  /// - `minLowercaseCount` (`int`): Minimum required lowercase characters. Defaults to `1`
-  /// - `minNumberCount` (`int`): Minimum required numeric characters. Defaults to `1`
-  /// - `minSpecialCharCount` (`int`): Minimum required special characters. Defaults to `1`
-  /// - `passwordMsg` (`String?`): Optional custom error message that overrides all
-  ///   validation error messages. When `null`, individual validator messages are used
-  ///
-  /// ## Returns
-  /// Returns a `Validator<String>` that combines all specified password requirements
-  /// into a single validator. The validator returns null if all conditions are met,
-  /// otherwise returns the appropriate error message.
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Default password validation
-  /// final validator = password();
-  ///
-  /// // Custom requirements
-  /// final strictValidator = password(
-  ///   minLength: 12,
-  ///   minUppercaseCount: 2,
-  ///   minSpecialCharCount: 2,
-  ///   passwordMsg: 'Password does not meet security requirements'
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - When `passwordMsg` is provided, individual validation failure details
-  ///   are not available to the user
-  /// {@endtemplate}
-  static Validator<String> password({
-    int minLength = 8,
-    int maxLength = 32,
-    int minUppercaseCount = 1,
-    int minLowercaseCount = 1,
-    int minNumberCount = 1,
-    int minSpecialCharCount = 1,
-    String? passwordMsg,
-  }) =>
-      val.password(
-        minLength: minLength,
-        maxLength: maxLength,
-        minUppercaseCount: minUppercaseCount,
-        minLowercaseCount: minLowercaseCount,
-        minNumberCount: minNumberCount,
-        minSpecialCharCount: minSpecialCharCount,
-        passwordMsg: passwordMsg,
-      );
 
   // PROVISORY IMPLEMENTATION (start)
   /// {@macro validator_email}
@@ -3818,5 +3759,67 @@ final class Validators {
         minInclusive: minInclusive,
         maxInclusive: maxInclusive,
         betweenMsg: betweenMsg,
+      );
+
+  // User information validators
+  /// {@template validator_password}
+  /// Creates a composite validator for password validation that enforces multiple
+  /// password strength requirements simultaneously.
+  ///
+  /// This validator combines multiple validation rules including length constraints,
+  /// character type requirements (uppercase, lowercase, numbers, and special characters),
+  /// and allows for custom error message overriding.
+  ///
+  /// ## Parameters
+  /// - `minLength` (`int`): Minimum required length for the password. Defaults to `16`
+  /// - `maxLength` (`int`): Maximum allowed length for the password. Defaults to `32`
+  /// - `minUppercaseCount` (`int`): Minimum required uppercase characters. Defaults to `1`
+  /// - `minLowercaseCount` (`int`): Minimum required lowercase characters. Defaults to `1`
+  /// - `minNumberCount` (`int`): Minimum required numeric characters. Defaults to `1`
+  /// - `minSpecialCharCount` (`int`): Minimum required special characters. Defaults to `1`
+  /// - `passwordMsg` (`String Function(String input)?`): Optional custom error message
+  ///   that overrides all validation error messages. When `null`, individual validator
+  ///   messages are used.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` that combines all specified password requirements
+  /// into a single validator. The validator returns null if all conditions are met,
+  /// otherwise returns the appropriate error message.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Default password validation
+  /// final validator = password();
+  ///
+  /// // Custom requirements
+  /// final strictValidator = Validator.password(
+  ///   minLength: 12,
+  ///   minUppercaseCount: 2,
+  ///   minSpecialCharCount: 2,
+  ///   passwordMsg: (_)=>'Password does not meet security requirements'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - When `passwordMsg` is provided, individual validation failure details
+  ///   are not available to the user.
+  /// {@endtemplate}
+  static Validator<String> password({
+    int minLength = 8,
+    int maxLength = 32,
+    int minUppercaseCount = 1,
+    int minLowercaseCount = 1,
+    int minNumberCount = 1,
+    int minSpecialCharCount = 1,
+    String Function(String input)? passwordMsg,
+  }) =>
+      val.password(
+        minLength: minLength,
+        maxLength: maxLength,
+        minUppercaseCount: minUppercaseCount,
+        minLowercaseCount: minLowercaseCount,
+        minNumberCount: minNumberCount,
+        minSpecialCharCount: minSpecialCharCount,
+        passwordMsg: passwordMsg,
       );
 }

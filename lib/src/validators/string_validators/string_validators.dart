@@ -1,30 +1,5 @@
 import '../../../localization/l10n.dart';
-import '../collection_validators.dart' as collection_val;
 import '../constants.dart';
-import '../core_validators/compose_validators.dart';
-
-/// {@macro validator_password}
-Validator<String> password({
-  int minLength = 16,
-  int maxLength = 32,
-  int minUppercaseCount = 1,
-  int minLowercaseCount = 1,
-  int minNumberCount = 1,
-  int minSpecialCharCount = 1,
-  String? passwordMsg,
-}) {
-  final Validator<String> andValidator = and(<Validator<String>>[
-    collection_val.minLength(minLength),
-    collection_val.maxLength(maxLength),
-    hasMinUppercaseChars(min: minUppercaseCount),
-    hasMinLowercaseChars(min: minLowercaseCount),
-    hasMinNumericChars(min: minNumberCount),
-    hasMinSpecialChars(min: minSpecialCharCount),
-  ]);
-  String? validatorWithPasswordMsg(String input) =>
-      andValidator(input) == null ? null : passwordMsg;
-  return passwordMsg != null ? validatorWithPasswordMsg : andValidator;
-}
 
 final RegExp _numericRegex = RegExp('[0-9]');
 
