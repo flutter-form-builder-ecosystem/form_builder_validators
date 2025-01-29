@@ -220,15 +220,15 @@ void main() {
     });
 
     test('should return custom message', () {
-      final errorMessage = 'error Msg';
-      final validator = ip(ipMsg: (_) => errorMessage);
+      final String errorMessage = 'error Msg';
+      final Validator<String> validator = ip(ipMsg: (_) => errorMessage);
 
       expect(validator('1.2.3.4'), isNull);
       expect(validator('1.2.3.256'), errorMessage);
     });
 
     test('should validate with custom regex', () {
-      final validator =
+      final Validator<String> validator =
           ip(version: IpVersion.any, regex: RegExp('this is valid'));
 
       expect(
