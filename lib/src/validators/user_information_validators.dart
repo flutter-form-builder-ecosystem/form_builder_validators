@@ -1,7 +1,7 @@
 import '../../form_builder_validators.dart';
 import 'collection_validators.dart' as collection_val;
 import 'core_validators/compose_validators.dart';
-import 'string_validators/string_validators.dart';
+import 'string_validators.dart';
 
 /// {@macro validator_password}
 Validator<String> password({

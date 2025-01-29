@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
 //import 'validators/constants.dart'; // Uncomment after removing the deprecated code.
+import 'validators/network_validators.dart';
 import 'validators/validators.dart' as val;
 
 @Deprecated('use the base class Validators instead')
@@ -3821,5 +3822,55 @@ final class Validators {
         minNumberCount: minNumberCount,
         minSpecialCharCount: minSpecialCharCount,
         passwordMsg: passwordMsg,
+      );
+
+// Network validators
+
+  /// {@template validator_ip}
+  /// Creates a validator function for IP address validation, supporting both IPv4 and IPv6 formats.
+  /// The validator ensures that input strings conform to the specified IP address version's format
+  /// and structure requirements.
+  ///
+  /// ## Parameters
+  /// - `version` (`IpVersion`): Specifies the IP address version to validate against.
+  ///   Currently supports version 4 (`iPv4`), 6 (`iPv6`) or both (`any`).
+  /// - `regex` (`RegExp?`): Optional custom regular expression pattern for IP address
+  ///   validation. If provided, this pattern will be used instead of the default
+  ///   version-specific patterns.
+  /// - `ipMsg` (`String Function(String input)?`): Optional custom error message
+  ///   generator function. Takes the invalid input string and returns a custom error
+  ///   message. If not provided, defaults to the standard localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that takes a string input and returns:
+  /// - `null` if the input is a valid IP address according to the specified version
+  /// - An error message string if the input is invalid
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic IPv4 validation
+  /// final ipv4Validator = ip();
+  /// print(ipv4Validator('192.168.1.1')); // null (valid)
+  /// print(ipv4Validator('256.1.2.3')); // Returns error message (invalid)
+  ///
+  /// // Custom error message for IPv6
+  /// final ipv6Validator = ip(
+  ///   version: IpVersion.iPv6,
+  ///   ipMsg: (input) => 'Invalid IPv6 address: $input',
+  /// );
+  /// ```
+  /// ## Caveats
+  /// - The validator does not verify if the IP address is actually accessible or
+  ///   assigned on the network.
+  /// {@endtemplate}
+  static Validator<String> ip({
+    IpVersion version = IpVersion.iPv4,
+    RegExp? regex,
+    String Function(String input)? ipMsg,
+  }) =>
+      val.ip(
+        version: version,
+        regex: regex,
+        ipMsg: ipMsg,
       );
 }
