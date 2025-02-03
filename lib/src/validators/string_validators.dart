@@ -138,37 +138,6 @@ Validator<String> uuid({
   };
 }
 
-final RegExp _creditCardRegex = RegExp(
-  r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
-);
-
-final RegExp _phoneNumberRegex = RegExp(
-  r'^\+?(\d{1,4}[\s.-]?)?(\(?\d{1,4}\)?[\s.-]?)?(\d{1,4}[\s.-]?)?(\d{1,4}[\s.-]?)?(\d{1,9})$',
-);
-
-Validator<String> phoneNumber({
-  RegExp? regex,
-  String? phoneNumberMsg,
-}) {
-  return (String value) {
-    final String phoneNumber = value.replaceAll(' ', '').replaceAll('-', '');
-    return (regex ?? _phoneNumberRegex).hasMatch(phoneNumber)
-        ? null
-        : phoneNumberMsg ?? FormBuilderLocalizations.current.phoneErrorText;
-  };
-}
-
-Validator<String> creditCard({
-  RegExp? regex,
-  String? creditCardMsg,
-}) {
-  return (String value) {
-    return _isCreditCard(value, regex ?? _creditCardRegex)
-        ? null
-        : creditCardMsg ?? FormBuilderLocalizations.current.creditCardErrorText;
-  };
-}
-
 /// {@macro validator_contains}
 Validator<String> contains(
   String substring, {
@@ -186,38 +155,4 @@ Validator<String> contains(
     return containsMsg?.call(substring, input) ??
         FormBuilderLocalizations.current.containsErrorText(substring);
   };
-}
-
-//******************************************************************************
-//*                              Aux functions                                 *
-//******************************************************************************
-bool _isCreditCard(String value, RegExp regex) {
-  final String sanitized = value.replaceAll(RegExp('[^0-9]+'), '');
-  if (!regex.hasMatch(sanitized)) {
-    return false;
-  }
-
-  // Luhn algorithm
-  int sum = 0;
-  String digit;
-  bool shouldDouble = false;
-
-  for (int i = sanitized.length - 1; i >= 0; i--) {
-    digit = sanitized.substring(i, i + 1);
-    int tmpNum = int.parse(digit);
-
-    if (shouldDouble) {
-      tmpNum *= 2;
-      if (tmpNum >= 10) {
-        sum += (tmpNum % 10) + 1;
-      } else {
-        sum += tmpNum;
-      }
-    } else {
-      sum += tmpNum;
-    }
-    shouldDouble = !shouldDouble;
-  }
-
-  return (sum % 10 == 0);
 }
