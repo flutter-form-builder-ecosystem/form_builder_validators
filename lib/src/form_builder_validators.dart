@@ -3873,4 +3873,74 @@ final class Validators {
         regex: regex,
         ipMsg: ipMsg,
       );
+
+  /// {@template validator_url}
+  /// A validator function that checks if a given string represents a valid URL
+  /// based on specified criteria. This validator supports customizable URL
+  /// validation including protocol verification, TLD requirements, and host
+  /// filtering.
+  ///
+  /// ## Parameters
+  /// - `protocols` (`List<String>?`): List of allowed protocols. Defaults to
+  ///   `['http', 'https', 'ftp']` if not specified
+  /// - `requireTld` (`bool`): Whether the URL must contain a top-level domain.
+  ///   Defaults to `true`
+  /// - `requireProtocol` (`bool`): Whether the URL must include a protocol.
+  ///   Defaults to `false`
+  /// - `allowUnderscore` (`bool`): Whether underscores are permitted in the URL.
+  ///   Defaults to `false`
+  /// - `hostAllowList` (`List<String>?`): List of explicitly allowed host names.
+  ///   Empty by default
+  /// - `hostBlockList` (`List<String>?`): List of blocked host names.
+  ///   Empty by default
+  /// - `regex` (`RegExp?`): Optional custom regular expression for additional
+  ///   URL validation
+  /// - `urlMsg` (`String Function(String input)?`): Custom error message generator
+  ///   function that takes the invalid URL as input
+  ///
+  /// ## Returns
+  /// Returns `null` if the URL is valid according to all specified criteria.
+  /// Otherwise, returns an error message string, either custom-generated via
+  /// `urlMsg` or the default localized URL error text.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic URL validation
+  /// final validator = url();
+  /// print(validator('https://example.com')); // Returns: null
+  ///
+  /// // Custom protocol validation
+  /// final ftpValidator = url(
+  ///   protocols: ['ftp'],
+  ///   requireProtocol: true
+  /// );
+  /// print(ftpValidator('ftp://server.com')); // Returns: null
+  ///
+  /// // With host filtering
+  /// final restrictedValidator = url(
+  ///   hostBlockList: ['example.com'],
+  ///   hostAllowList: ['trusted-domain.com']
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> url({
+    List<String>? protocols,
+    bool requireTld = true,
+    bool requireProtocol = false,
+    bool allowUnderscore = false,
+    List<String>? hostAllowList,
+    List<String>? hostBlockList,
+    RegExp? regex,
+    String Function(String input)? urlMsg,
+  }) =>
+      val.url(
+        protocols: protocols,
+        requireTld: requireTld,
+        requireProtocol: requireProtocol,
+        allowUnderscore: allowUnderscore,
+        hostAllowList: hostAllowList,
+        hostBlockList: hostBlockList,
+        regex: regex,
+        urlMsg: urlMsg,
+      );
 }

@@ -42,15 +42,16 @@ Validator<String> ip({
   };
 }
 
+/// {@macro validator_url}
 Validator<String> url({
   List<String>? protocols,
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
-  List<String>? hostWhitelist,
-  List<String>? hostBlacklist,
+  List<String>? hostAllowList,
+  List<String>? hostBlockList,
   RegExp? regex,
-  String? urlMsg,
+  String Function(String input)? urlMsg,
 }) {
   const List<String> defaultProtocols = <String>['http', 'https', 'ftp'];
   return (String value) {
@@ -61,10 +62,10 @@ Validator<String> url({
               requireTld: requireTld,
               requireProtocol: requireProtocol,
               allowUnderscore: allowUnderscore,
-              hostAllowList: hostWhitelist ?? <String>[],
-              hostBlockList: hostBlacklist ?? <String>[],
+              hostAllowList: hostAllowList ?? <String>[],
+              hostBlockList: hostBlockList ?? <String>[],
             )
-        ? urlMsg ?? FormBuilderLocalizations.current.urlErrorText
+        ? urlMsg?.call(value) ?? FormBuilderLocalizations.current.urlErrorText
         : null;
   };
 }
