@@ -1,6 +1,19 @@
 {
   "@@locale": "uk",
   "andSeparator": " і ",
+  "betweenLengthErrorText": "Значення повинно мати довжину від {min} до {max} включно.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Значення поля має бути номером кредитної картки.",
   "dateStringErrorText": "Поле має бути датою.",
   "emailErrorText": "Поле має бути email адресою.",

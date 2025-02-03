@@ -1,6 +1,19 @@
 {
   "@@locale": "zh",
   "andSeparator": " 和 ",
+  "betweenLengthErrorText": "值的长度必须在 {min} 和 {max} 之间（包含）。",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "该字段必须是有效的信用卡号。",
   "dateStringErrorText": "该字段必须是有效的时间日期。",
   "emailErrorText": "该字段必须是有效的电子邮件地址。",

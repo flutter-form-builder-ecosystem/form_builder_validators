@@ -1,6 +1,19 @@
 {
   "@@locale": "sk",
   "andSeparator": " a ",
+  "betweenLengthErrorText": "Hodnota musí mať dĺžku medzi {min} a {max}, vrátane.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Toto pole vyžaduje platné číslo platobnej karty.",
   "dateStringErrorText": "Toto pole vyžaduje platný dátum.",
   "emailErrorText": "Toto pole vyžaduje platnú emailovú adresu.",

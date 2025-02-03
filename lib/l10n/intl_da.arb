@@ -1,6 +1,19 @@
 {
   "@@locale": "da",
   "andSeparator": " og ",
+  "betweenLengthErrorText": "Værdien skal have en længde mellem {min} og {max}, inklusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Dette felt kræver et gyldigt kreditkort nummer.",
   "dateStringErrorText": "Dette felt kræver en gyldig dato.",
   "emailErrorText": "Dette felt kræver en gyldig e-mail adresse.",

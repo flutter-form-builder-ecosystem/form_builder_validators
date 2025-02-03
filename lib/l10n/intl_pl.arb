@@ -1,6 +1,19 @@
 {
   "@@locale": "pl",
   "andSeparator": " i ",
+  "betweenLengthErrorText": "Wartość musi mieć długość pomiędzy {min} a {max}, włącznie.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "To pole wymaga podania ważnego numeru karty kredytowej.",
   "dateStringErrorText": "To pole wymaga prawidłowej daty.",
   "emailErrorText": "To pole wymaga prawidłowego adresu e-mail.",

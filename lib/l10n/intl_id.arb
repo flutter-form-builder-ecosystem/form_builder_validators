@@ -1,6 +1,19 @@
 {
   "@@locale": "id",
   "andSeparator": " dan ",
+  "betweenLengthErrorText": "Nilai harus memiliki panjang antara {min} dan {max}, inklusif.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Nomor kartu kredit tidak valid.",
   "dateStringErrorText": "Tanggal tidak valid.",
   "emailErrorText": "Alamat email tidak valid.",

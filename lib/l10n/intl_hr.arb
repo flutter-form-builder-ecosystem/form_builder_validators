@@ -1,6 +1,19 @@
 {
   "@@locale": "hr",
   "andSeparator": " i ",
+  "betweenLengthErrorText": "Vrijednost mora imati duljinu između {min} i {max}, uključivo.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Unesite validan broj kreditne kartice.",
   "dateStringErrorText": "Unesite validan datum.",
   "emailErrorText": "Unesite validnu e-mail adresu.",

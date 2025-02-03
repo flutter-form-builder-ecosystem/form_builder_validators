@@ -1,6 +1,19 @@
 {
   "@@locale": "lo",
   "andSeparator": " ແລະ ",
+  "betweenLengthErrorText": "ຄ່າຕ້ອງມີຄວາມຍາວລະຫວ່າງ {min} ແລະ {max}, ລວມທັງສອງຄ່າ.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງເລກບັດເຄຣດິດ.",
   "dateStringErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງວັນທີ.",
   "emailErrorText": "ຄ່າໃນຟອມນີ້ຕ້ອງຢູ່ໃນຮູບແບບຂອງອີເມວ.",

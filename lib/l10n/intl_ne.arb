@@ -1,6 +1,19 @@
 {
   "@@locale": "ne",
   "andSeparator": " र ",
+  "betweenLengthErrorText": "मान को लम्बाई {min} र {max} बीचमा हुनुपर्छ, समावेश गरेर।",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "यो क्षेत्रलाई मान्य क्रेडिट कार्ड नम्बर चाहिन्छ।",
   "dateStringErrorText": "यो क्षेत्रलाई मान्य मिति स्ट्रिंग चाहिन्छ।",
   "emailErrorText": "यो क्षेत्रलाई मान्य इमेल ठेगाना चाहिन्छ।",

@@ -1,6 +1,19 @@
 {
   "@@locale": "zh_Hant",
   "andSeparator": " 和 ",
+  "betweenLengthErrorText": "值的長度必須在 {min} 和 {max} 之間（包含）。",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "此欄位需要有效的信用卡號碼。",
   "dateStringErrorText": "此欄位需要有效的日期字符串。",
   "emailErrorText": "此欄位需要有效的電子郵件地址。",

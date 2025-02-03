@@ -1,6 +1,19 @@
 {
   "@@locale": "tr",
   "andSeparator": " ve ",
+  "betweenLengthErrorText": "Değer, {min} ile {max} arasında bir uzunluğa sahip olmalıdır, dahil.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Bu alan geçerli bir kredi kartı numarası gerektirir.",
   "dateStringErrorText": "Bu alan geçerli bir tarih gerektirir.",
   "emailErrorText": "Bu alan geçerli bir e-posta adresi gerektirir.",

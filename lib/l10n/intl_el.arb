@@ -1,6 +1,19 @@
 {
   "@@locale": "el",
   "andSeparator": " και ",
+  "betweenLengthErrorText": "Η τιμή πρέπει να έχει μήκος μεταξύ {min} και {max}, συμπεριλαμβανομένων.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Η τιμή πρέπει να είναι έγκυρη πιστωτική κάρτα.",
   "dateStringErrorText": "Η τιμή πρέπει να είναι έγκυρη ημερομηνία.",
   "emailErrorText": "Το πεδίο πρέπει να έχει μία έγκυρη διεύθυνση email.",

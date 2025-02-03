@@ -1,6 +1,19 @@
 {
   "@@locale": "th",
   "andSeparator": " และ ",
+  "betweenLengthErrorText": "ค่าต้องมีความยาวระหว่าง {min} และ {max} รวมทั้งสองค่า",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ข้อมูลนี้ต้องเป็นเลขบัตรเครดิตเท่านั้น",
   "dateStringErrorText": "ข้อมูลนี้ต้องเป็นวันที่เท่านั้น",
   "emailErrorText": "กรุณาระบุ email ของคุณ",

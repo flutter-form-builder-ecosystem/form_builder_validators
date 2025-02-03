@@ -1,6 +1,19 @@
 {
   "@@locale": "fi",
   "andSeparator": " ja ",
+  "betweenLengthErrorText": "Arvon pituuden on oltava välillä {min} ja {max}, mukaan lukien.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Luottokortin numero on oltava oikeassa muodossa.",
   "dateStringErrorText": "Päivämäärä ei ole oikeassa muodossa.",
   "emailErrorText": "Sähköpostiosoitteen muoto ei ole oikea.",

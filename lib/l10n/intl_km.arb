@@ -1,6 +1,19 @@
 {
   "@@locale": "km",
   "andSeparator": " និង ",
+  "betweenLengthErrorText": "តម្លៃត្រូវតែមានប្រវែងរវាង {min} និង {max} រួមបញ្ចូលទាំងពីរ។",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ទិន្នន័យនេះត្រូវតែជាលេខកាតឥណទានតែប៉ុណ្ណោះ។",
   "dateStringErrorText": "ទិន្នន័យ​នេះ​ត្រូវ​តែ​ជា​កាលបរិច្ឆេទតែប៉ុណ្ណោះ។",
   "emailErrorText": "ទិន្នន័យ​នេះ​ត្រូវ​តែ​ជាអ៊ីមែលតែប៉ុណ្ណោះ។",

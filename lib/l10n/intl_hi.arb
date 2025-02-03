@@ -1,6 +1,19 @@
 {
   "@@locale": "hi",
   "andSeparator": " और ",
+  "betweenLengthErrorText": "मान की लंबाई {min} और {max} के बीच होनी चाहिए, सहित.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "इस फ़ील्ड में एक मान्य क्रेडिट कार्ड नंबर की आवश्यकता है।",
   "dateStringErrorText": "इस फ़ील्ड में एक मान्य तिथि स्ट्रिंग की आवश्यकता है।",
   "emailErrorText": "इस फ़ील्ड में एक मान्य ईमेल पता की आवश्यकता है।",

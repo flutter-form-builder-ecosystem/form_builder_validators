@@ -1,6 +1,19 @@
 {
   "@@locale": "lv",
   "andSeparator": " un ",
+  "betweenLengthErrorText": "Vērtības garumam jābūt starp {min} un {max}, ieskaitot.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Šis lauks prasa derīgu kredītkartes numuru.",
   "dateStringErrorText": "Šis lauks prasa derīgu datuma virkni.",
   "emailErrorText": "Šis lauks prasa derīgu e-pasta adresi.",

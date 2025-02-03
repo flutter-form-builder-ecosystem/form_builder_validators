@@ -1,6 +1,19 @@
 {
   "@@locale": "sv",
   "andSeparator": " och ",
+  "betweenLengthErrorText": "Värdet måste ha en längd mellan {min} och {max}, inklusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Detta fält kräver ett giltigt kreditkortsnummer.",
   "dateStringErrorText": "Detta fält kräver ett giltigt datum.",
   "emailErrorText": "Detta fält kräver en giltig e-postadress.",

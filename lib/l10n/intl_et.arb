@@ -1,6 +1,19 @@
 {
   "@@locale": "et",
   "andSeparator": " ja ",
+  "betweenLengthErrorText": "Väärtuse pikkus peab olema vahemikus {min} kuni {max}, kaasa arvatud.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Sellele väljale tuleb sisestada korrektne krediitkaardi number.",
   "dateStringErrorText": "Sellele väljale tuleb sisestada korrektne kuupäev.",
   "emailErrorText": "See väli nõuab kehtivat e-posti aadressi.",

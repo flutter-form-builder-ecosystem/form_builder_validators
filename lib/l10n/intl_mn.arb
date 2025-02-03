@@ -1,6 +1,19 @@
 {
   "@@locale": "mn",
   "andSeparator": " ба ",
+  "betweenLengthErrorText": "Утгын урт нь {min}-с {max} хүртэл байх ёстой, оруулан тооцно.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Картын дугаар алдаатай байна.",
   "dateStringErrorText": "Огнооны загварт таарахгүй байна.",
   "emailErrorText": "И-мэйл хаяг алдаатай байна.",

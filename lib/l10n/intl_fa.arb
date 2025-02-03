@@ -1,6 +1,19 @@
 {
   "@@locale": "fa",
   "andSeparator": " و ",
+  "betweenLengthErrorText": "مقدار باید طولی بین {min} و {max}، به صورت شامل داشته باشد.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "این ورودی به شماره کارت اعتباری معتبر نیاز دارد.",
   "dateStringErrorText": "این ورودی به یک تاریخ معتبر نیاز دارد.",
   "emailErrorText": "این ورودی به یک آدرس ایمیل معتبر نیاز دارد.",

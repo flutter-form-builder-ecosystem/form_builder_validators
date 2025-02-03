@@ -1,6 +1,19 @@
 {
   "@@locale": "vi",
   "andSeparator": " và ",
+  "betweenLengthErrorText": "Giá trị phải có độ dài trong khoảng từ {min} đến {max}, bao gồm cả hai giá trị.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Yêu cầu nhập đúng số thẻ tín dụng.",
   "dateStringErrorText": "Yêu cầu nhập đúng định dạng ngày.",
   "emailErrorText": "Nhập đúng email.",

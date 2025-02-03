@@ -1,6 +1,19 @@
 {
   "@@locale": "bn",
   "andSeparator": " এবং ",
+  "betweenLengthErrorText": "মানটির দৈর্ঘ্য {min} এবং {max} এর মধ্যে হতে হবে, সহ.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "বৈধ ক্রেডিট কার্ড নম্বর প্রয়োজন।",
   "dateStringErrorText": "একটি বৈধ তারিখ প্রয়োজন।",
   "emailErrorText": "একটি বৈধ ইমেল আইডি প্রয়োজন।",

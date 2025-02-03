@@ -1,6 +1,19 @@
 {
   "@@locale": "ku",
   "andSeparator": " û ",
+  "betweenLengthErrorText": "Nirx divê dirêjahiya wê di navbera {min} û {max} de be, tevlî wan.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ئەم خانە پێویستە ژمارەی کارتی کرێدیتێکی دروست هەبێت.",
   "dateStringErrorText": "ئەم خانە پێویستە دەستپێکی بەروارێکی دروست هەبێت.",
   "emailErrorText": "ئەم خانە پێویستە ناونیشانی ئیمەیڵێکی دروست هەبێت.",

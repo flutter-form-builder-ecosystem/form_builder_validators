@@ -1,6 +1,19 @@
 {
   "@@locale": "no",
   "andSeparator": " og ",
+  "betweenLengthErrorText": "Verdien må ha en lengde mellom {min} og {max}, inkludert.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Dette feltet krever et gyldig kredittkortnummer.",
   "dateStringErrorText": "Dette feltet krever en gyldig dato.",
   "emailErrorText": "Dette feltet krever en gyldig e-postadresse.",

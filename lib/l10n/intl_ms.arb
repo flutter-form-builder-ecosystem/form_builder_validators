@@ -1,6 +1,19 @@
 {
   "@@locale": "ms",
   "andSeparator": " dan ",
+  "betweenLengthErrorText": "Nilai mesti mempunyai panjang antara {min} dan {max}, termasuk.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Ruangan ini memerlukan nombor kad kredit yang sah.",
   "dateStringErrorText": "Ruangan ini memerlukan rentetan tarikh yang sah.",
   "emailErrorText": "Ruangan ini memerlukan alamat e-mel yang sah.",

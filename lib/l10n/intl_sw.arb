@@ -1,6 +1,19 @@
 {
   "@@locale": "sw",
   "andSeparator": " na ",
+  "betweenLengthErrorText": "Thamani lazima iwe na urefu kati ya {min} na {max}, ikijumuisha.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Sehemu hii inahitaji nambari halali ya kadi ya mkopo.",
   "dateStringErrorText": "Sehemu hii inahitaji mfuatano halali wa tarehe.",
   "emailErrorText": "Sehemu hii inahitaji barua pepe halali.",

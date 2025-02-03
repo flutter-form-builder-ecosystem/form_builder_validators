@@ -1,6 +1,19 @@
 {
   "@@locale": "fr",
   "andSeparator": " et ",
+  "betweenLengthErrorText": "La valeur doit avoir une longueur comprise entre {min} et {max}, inclus.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Ce champ nécessite un numéro de carte de crédit valide.",
   "dateStringErrorText": "Ce champ nécessite une chaîne de date valide.",
   "emailErrorText": "Ce champ nécessite une adresse e-mail valide.",

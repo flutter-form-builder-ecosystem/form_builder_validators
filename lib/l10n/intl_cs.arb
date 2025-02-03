@@ -1,6 +1,19 @@
 {
   "@@locale": "cs",
   "andSeparator": " a ",
+  "betweenLengthErrorText": "Hodnota musí mít délku mezi {min} a {max} včetně.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Pole vyžaduje platné číslo kreditní karty.",
   "dateStringErrorText": "Pole vyžaduje platný zápis data.",
   "emailErrorText": "Pole vyžaduje platnou e-mailovou adresu.",

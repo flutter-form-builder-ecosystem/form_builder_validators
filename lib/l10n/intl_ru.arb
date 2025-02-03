@@ -1,6 +1,19 @@
 {
   "@@locale": "ru",
   "andSeparator": " и ",
+  "betweenLengthErrorText": "Значение должно иметь длину от {min} до {max} включительно.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Значение поля должно быть номером кредитной карты.",
   "dateStringErrorText": "Поле должно быть датой.",
   "emailErrorText": "Поле должно быть email адресом.",

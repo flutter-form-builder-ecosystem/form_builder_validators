@@ -1,6 +1,19 @@
 {
   "@@locale": "sq",
   "andSeparator": " dhe ",
+  "betweenLengthErrorText": "Vlera duhet të ketë një gjatësi midis {min} dhe {max}, përfshirë.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Kjo fushë kërkon një numër të vlefshëm për kartën e kreditit.",
   "dateStringErrorText": "Kjo fushë kërkon një datë të vlefshme.",
   "emailErrorText": "Kjo fushë kërkon një adresë e E-mail-i të vlefshme.",

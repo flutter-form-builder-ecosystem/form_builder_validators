@@ -1,6 +1,19 @@
 {
   "@@locale": "ro",
   "andSeparator": " și ",
+  "betweenLengthErrorText": "Valoarea trebuie să aibă o lungime între {min} și {max}, inclusiv.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Acest câmp necesită un număr valid de card de credit.",
   "dateStringErrorText": "Acest câmp necesită un șir de date valid.",
   "emailErrorText": "Acest câmp necesită o adresă de e-mail validă.",

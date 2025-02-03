@@ -1,6 +1,19 @@
 {
   "@@locale": "ar",
   "andSeparator": " و ",
+  "betweenLengthErrorText": "يجب أن يكون طول القيمة بين {min} و {max}، شاملة.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "القيمة المدخلة لا تصلح كرقم بطاقة إئتمانية.",
   "dateStringErrorText": "هذا الحقل يتطلب تاريخا صالحا.",
   "emailErrorText": "هذا الحقل يتطلب عنوان بريد إلكتروني صالح.",

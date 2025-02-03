@@ -1,6 +1,19 @@
 {
   "@@locale": "bg",
   "andSeparator": " и ",
+  "betweenLengthErrorText": "Стойността трябва да има дължина между {min} и {max}, включително.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Това поле изисква валиден номер на кредитна карта.",
   "dateStringErrorText": "Това поле изисква валиден низ за дата.",
   "emailErrorText": "Това поле изисква валиден имейл адрес.",

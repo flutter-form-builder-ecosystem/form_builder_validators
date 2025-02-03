@@ -1,6 +1,19 @@
 {
   "@@locale": "nl",
   "andSeparator": " en ",
+  "betweenLengthErrorText": "De waarde moet een lengte hebben tussen {min} en {max}, inclusief.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Een geldig creditcardnummer is vereist.",
   "dateStringErrorText": "Een geldige datum is vereist.",
   "emailErrorText": "Een geldig e-mailadres is vereist.",

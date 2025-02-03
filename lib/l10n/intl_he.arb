@@ -1,6 +1,19 @@
 {
   "@@locale": "he",
   "andSeparator": " ו ",
+  "betweenLengthErrorText": "הערך חייב להיות באורך שבין {min} ל-{max}, כולל.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "שדה זה דורש מספר כרטיס אשראי תקין.",
   "dateStringErrorText": "שדה זה דורש מחרוזת תאריך תקינה.",
   "emailErrorText": "שדה זה דורש כתובת דוא\"ל תקינה.",

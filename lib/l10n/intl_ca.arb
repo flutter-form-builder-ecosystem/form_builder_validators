@@ -1,6 +1,19 @@
 {
   "@@locale": "ca",
   "andSeparator": " i ",
+  "betweenLengthErrorText": "El valor ha de tenir una longitud entre {min} i {max}, inclosos.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Aquest camp requereix un número de targeta de crèdit vàlid.",
   "dateStringErrorText": "Aquest camp requereix una cadena de data vàlida.",
   "emailErrorText": "Aquest camp requereix una adreça de correu electrònic vàlida.",
