@@ -2660,6 +2660,7 @@ final class Validators {
   // String validators
 
   // PROVISORY IMPLEMENTATION (start)
+  // TODO change to user information validator
   /// {@macro validator_email}
   static Validator<String> email({
     RegExp? regex,
@@ -2668,6 +2669,56 @@ final class Validators {
       val.email(regex: regex, emailMsg: emailMsg);
 
   // PROVISORY IMPLEMENTATION (end)
+
+  /// {@template validator_uuid}
+  /// A validator function that checks if a given string matches the UUID format.
+  ///
+  /// Creates a validator that ensures the input string conforms to the standard
+  /// UUID (Universally Unique Identifier) format, consisting of 32 hexadecimal
+  /// digits displayed in 5 groups separated by hyphens (8-4-4-4-12).
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp?`): Optional custom regular expression pattern to override
+  ///   the default UUID validation pattern. Useful for supporting different UUID
+  ///   formats or adding additional constraints.
+  /// - `uuidMsg` (`String Function(String input)?`): Optional callback function that
+  ///   generates a custom error message based on the invalid input. If not provided,
+  ///   defaults to the standard form builder localization error text.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that accepts a string input and returns:
+  /// - `null` if the input is valid
+  /// - An error message string if the input is invalid
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Using default UUID validation
+  /// final validator = uuid();
+  /// print(validator('123e4567-e89b-12d3-a456-426614174000')); // null
+  /// print(validator('invalid-uuid')); // Returns error message
+  ///
+  /// // Using custom error message
+  /// final customValidator = uuid(
+  ///   uuidMsg: (input) => 'Invalid UUID format: $input',
+  /// );
+  ///
+  /// // Using custom regex pattern
+  /// final customPatternValidator = uuid(
+  ///   regex: RegExp(r'^[0-9]{8}-[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{12}$'),
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The default regex pattern accepts both uppercase and lowercase hexadecimal
+  ///   digits (0-9, a-f, A-F)
+  /// - The validation only checks the format, not the actual UUID version or
+  ///   variant compliance
+  /// {@endtemplate}
+  static Validator<String> uuid({
+    RegExp? regex,
+    String Function(String input)? uuidMsg,
+  }) =>
+      val.uuid(regex: regex, uuidMsg: uuidMsg);
 
   /// {@template validator_contains}
   /// Creates a validator function that checks if a string contains a specific
