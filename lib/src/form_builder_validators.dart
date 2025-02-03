@@ -2669,6 +2669,58 @@ final class Validators {
 
   // PROVISORY IMPLEMENTATION (end)
 
+  /// {@template validator_contains}
+  /// Creates a validator function that checks if a string contains a specific
+  /// substring. The validation can be performed with or without case sensitivity.
+  ///
+  /// ## Parameters
+  /// - `substring` (`String`): The text pattern to search for within the validated string.
+  ///   An empty substring will always result in successful validation.
+  /// - `caseSensitive` (`bool`): Determines whether the substring matching should be
+  ///   case-sensitive. Defaults to `true`. When set to `false`, both the input value
+  ///   and substring are converted to lowercase before comparison.
+  /// - `containsMsg` (`String Function(String substring, String input)?`): Optional
+  ///   callback function that generates a custom error message. Takes the
+  ///   substring and the user input as parameters and returns the error message
+  ///   string. If not provided, uses the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the validation passes (substring is found or empty)
+  /// - Returns an error message string if the validation fails (substring not found)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Case-sensitive validation
+  /// final validator = contains('test');
+  /// print(validator('This is a test')); // Returns: null
+  /// print(validator('This is a TEST')); // Returns: error message
+  ///
+  /// // Case-insensitive validation
+  /// final caseInsensitiveValidator = contains('test', caseSensitive: false);
+  /// print(caseInsensitiveValidator('This is a TEST')); // Returns: null
+  ///
+  /// // Custom error message
+  /// final customValidator = contains(
+  ///   'required',
+  ///   containsMsg: (value, _) => 'Text must contain "$value"'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Empty substrings are always considered valid and return `null`
+  /// {@endtemplate}
+  static Validator<String> contains(
+    String substring, {
+    bool caseSensitive = true,
+    String Function(String substring, String input)? containsMsg,
+  }) =>
+      val.contains(
+        substring,
+        caseSensitive: caseSensitive,
+        containsMsg: containsMsg,
+      );
+
   /// {@template validator_has_min_uppercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
   /// minimum number of uppercase characters. The validator returns `null` for

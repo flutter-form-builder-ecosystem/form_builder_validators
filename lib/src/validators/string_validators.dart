@@ -169,20 +169,21 @@ Validator<String> creditCard({
   };
 }
 
+/// {@macro validator_contains}
 Validator<String> contains(
   String substring, {
   bool caseSensitive = true,
-  String Function(String)? containsMsg,
+  String Function(String substring, String input)? containsMsg,
 }) {
-  return (String value) {
+  return (String input) {
     if (substring.isEmpty) {
       return null;
     } else if (caseSensitive
-        ? value.contains(substring)
-        : value.toLowerCase().contains(substring.toLowerCase())) {
+        ? input.contains(substring)
+        : input.toLowerCase().contains(substring.toLowerCase())) {
       return null;
     }
-    return containsMsg?.call(substring) ??
+    return containsMsg?.call(substring, input) ??
         FormBuilderLocalizations.current.containsErrorText(substring);
   };
 }
