@@ -100,5 +100,126 @@
   "vinErrorText": "يجب أن تكون القيمة رقم VIN صالح.",
   "languageCodeErrorText": "يجب أن تكون القيمة رمز لغة صالح.",
   "floatErrorText": "يجب أن تكون القيمة رقم عشري صالح.",
-  "hexadecimalErrorText": "يجب أن تكون القيمة رقم سداسي عشري صالح."
+  "hexadecimalErrorText": "يجب أن تكون القيمة رقم سداسي عشري صالح.",
+
+  "betweenNumErrorText": "يجب أن تكون القيمة {minInclusive, select, true{أكبر من أو تساوي} other{أكبر من}} {min} و{maxInclusive, select, true{أقل من أو تساوي} other{أقل من}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "يتطلب هذا الحقل قيمة منطقية صحيحة (صح أو خطأ).",
+  "dateMustBeAfterErrorText": "يجب أن يكون التاريخ بعد {reference}.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "يجب أن يكون التاريخ قبل {reference}.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "يجب أن يكون التاريخ بين {minReference} و {maxReference}.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "يتطلب هذا الحقل تاريخًا وتوقيتًا صحيحًا.",
+  "greaterThanErrorText": "يجب أن تكون القيمة أكبر من {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "يجب أن تكون القيمة أكبر من أو تساوي {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "هذا الحقل اختياري، وإلا، {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "يتطلب هذا الحقل نصًا صحيحًا.",
+  "lessThanErrorText": "يجب أن تكون القيمة أقل من {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "يجب أن تكون القيمة أقل من أو تساوي {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " أو ",
+  "transformAndValidateErrorTextV1": "لا يمكن تحويل القيمة.",
+  "transformAndValidateErrorTextV2": "يجب أن تكون القيمة {transformedResultTypeDescription} صحيحة.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }
