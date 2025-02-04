@@ -100,5 +100,125 @@
   "vinErrorText": "Değer geçerli bir VIN numarası olmalıdır.",
   "languageCodeErrorText": "Değer geçerli bir dil kodu olmalıdır.",
   "floatErrorText": "Değer geçerli bir noktalı sayı olmalıdır.",
-  "hexadecimalErrorText": "Değer geçerli bir onaltılık sayı olmalıdır."
+  "hexadecimalErrorText": "Değer geçerli bir onaltılık sayı olmalıdır.",
+  "betweenNumErrorText": "Değer {minInclusive, select, true{büyük veya eşit olmalı} other{büyük olmalı}} {min} ve {maxInclusive, select, true{küçük veya eşit olmalı} other{küçük olmalı}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Bu alan geçerli bir boolean değeri (true veya false) gerektirir.",
+  "dateMustBeAfterErrorText": "Tarih {reference} tarihinden sonra olmalıdır.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Tarih {reference} tarihinden önce olmalıdır.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Tarih {minReference} ve {maxReference} arasında olmalıdır.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Bu alan geçerli bir tarih ve saat gerektirir.",
+  "greaterThanErrorText": "Değer {min} değerinden büyük olmalıdır.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Değer {min} değerinden büyük veya eşit olmalıdır.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Bu alan isteğe bağlıdır, aksi takdirde {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Bu alan geçerli bir metin gerektirir.",
+  "lessThanErrorText": "Değer {max} değerinden küçük olmalıdır.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Değer {max} değerinden küçük veya eşit olmalıdır.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " veya ",
+  "transformAndValidateErrorTextV1": "Değer dönüştürülemiyor.",
+  "transformAndValidateErrorTextV2": "Değer geçerli bir {transformedResultTypeDescription} olmalıdır.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

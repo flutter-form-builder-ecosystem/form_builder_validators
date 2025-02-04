@@ -100,5 +100,125 @@
   "vinErrorText": "Значення повинно бути дійсним VIN.",
   "languageCodeErrorText": "Значення повинно бути дійсним кодом мови.",
   "floatErrorText": "Значення повинно бути дійсним числом з плаваючою комою.",
-  "hexadecimalErrorText": "Значення повинно бути дійсним шістнадцятковим числом."
+  "hexadecimalErrorText": "Значення повинно бути дійсним шістнадцятковим числом.",
+  "betweenNumErrorText": "Значення має бути {minInclusive, select, true{більше або дорівнювати} other{більше ніж}} {min} та {maxInclusive, select, true{менше або дорівнювати} other{менше ніж}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Це поле вимагає дійсного логічного значення (true або false)",
+  "dateMustBeAfterErrorText": "Дата має бути після {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Дата має бути до {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Дата має бути між {minReference} та {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Це поле вимагає дійсної дати та часу",
+  "greaterThanErrorText": "Значення має бути більше ніж {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Значення має бути більше або дорівнювати {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Поле є необов'язковим, в іншому випадку {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Це поле вимагає дійсного текстового рядка",
+  "lessThanErrorText": "Значення має бути менше ніж {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Значення має бути менше або дорівнювати {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " або ",
+  "transformAndValidateErrorTextV1": "Значення неможливо перетворити",
+  "transformAndValidateErrorTextV2": "Значення має бути дійсним {transformedResultTypeDescription}",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

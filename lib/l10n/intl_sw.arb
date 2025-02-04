@@ -100,5 +100,125 @@
   "vinErrorText": "Thamani lazima iwe VIN halali.",
   "languageCodeErrorText": "Thamani lazima iwe msimbo halali wa lugha.",
   "floatErrorText": "Thamani lazima iwe nambari sahihi ya nukta mvutano.",
-  "hexadecimalErrorText": "Thamani lazima iwe nambari sahihi ya hekshadesimali."
+  "hexadecimalErrorText": "Thamani lazima iwe nambari sahihi ya hekshadesimali.",
+  "betweenNumErrorText": "Thamani lazima iwe {minInclusive, select, true{kubwa kuliko au sawa na} other{kubwa kuliko}} {min} na {maxInclusive, select, true{ndogo kuliko au sawa na} other{ndogo kuliko}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Sehemu hii inahitaji boolean halali (kweli au si kweli)",
+  "dateMustBeAfterErrorText": "Tarehe lazima iwe baada ya {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Tarehe lazima iwe kabla ya {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Tarehe lazima iwe kati ya {minReference} na {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Sehemu hii inahitaji tarehe na wakati halali",
+  "greaterThanErrorText": "Thamani lazima iwe kubwa kuliko {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Thamani lazima iwe kubwa kuliko au sawa na {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Sehemu hii ni hiari, vinginevyo, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Sehemu hii inahitaji maandishi halali",
+  "lessThanErrorText": "Thamani lazima iwe ndogo kuliko {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Thamani lazima iwe ndogo kuliko au sawa na {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " au ",
+  "transformAndValidateErrorTextV1": "Thamani haiwezi kubadilishwa",
+  "transformAndValidateErrorTextV2": "Thamani lazima iwe {transformedResultTypeDescription} halali",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

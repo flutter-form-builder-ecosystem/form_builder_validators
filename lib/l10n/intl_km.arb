@@ -100,5 +100,125 @@
   "vinErrorText": "តម្លៃត្រូវតែជាលេខ VIN ដែលត្រឹមត្រូវ។",
   "languageCodeErrorText": "តម្លៃត្រូវតែជាកូដភាសាដែលត្រឹមត្រូវ។",
   "floatErrorText": "តម្លៃត្រូវតែជាចំនួនទសភាគត្រឹមត្រូវ។",
-  "hexadecimalErrorText": "តម្លៃត្រូវតែជាលេខសិប្បកម្មត្រឹមត្រូវ។"
+  "hexadecimalErrorText": "តម្លៃត្រូវតែជាលេខសិប្បកម្មត្រឹមត្រូវ។",
+  "betweenNumErrorText": "តម្លៃត្រូវតែ {minInclusive, select, true{ធំជាងឬស្មើ} other{ធំជាង}} {min} និង {maxInclusive, select, true{តូចជាងឬស្មើ} other{តូចជាង}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "វាលនេះត្រូវការតម្លៃប៊ូលីនត្រឹមត្រូវ (ពិត ឬ មិនពិត)",
+  "dateMustBeAfterErrorText": "កាលបរិច្ឆេទត្រូវតែនៅក្រោយ {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "កាលបរិច្ឆេទត្រូវតែនៅមុន {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "កាលបរិច្ឆេទត្រូវតែនៅចន្លោះ {minReference} និង {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "វាលនេះត្រូវការកាលបរិច្ឆេទនិងពេលវេលាត្រឹមត្រូវ",
+  "greaterThanErrorText": "តម្លៃត្រូវតែធំជាង {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "តម្លៃត្រូវតែធំជាងឬស្មើ {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "វាលនេះជាជម្រើស បើមិនដូច្នោះទេ {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "វាលនេះត្រូវការអក្សរត្រឹមត្រូវ",
+  "lessThanErrorText": "តម្លៃត្រូវតែតូចជាង {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "តម្លៃត្រូវតែតូចជាងឬស្មើ {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " ឬ ",
+  "transformAndValidateErrorTextV1": "តម្លៃមិនអាចបំលែងបានទេ",
+  "transformAndValidateErrorTextV2": "តម្លៃត្រូវតែជា {transformedResultTypeDescription} ត្រឹមត្រូវ",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

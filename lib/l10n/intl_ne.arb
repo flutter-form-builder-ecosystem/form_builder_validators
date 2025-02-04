@@ -100,5 +100,125 @@
   "vinErrorText": "मान मान्य VIN हुनुपर्छ।",
   "languageCodeErrorText": "मान मान्य भाषाको कोड हुनुपर्छ।",
   "floatErrorText": "मान्यता प्राप्त फ्लोटिङ पोइन्ट नम्बर हुनुपर्छ।",
-  "hexadecimalErrorText": "मान्यता प्राप्त हेक्साडेसिमल नम्बर हुनुपर्छ।"
+  "hexadecimalErrorText": "मान्यता प्राप्त हेक्साडेसिमल नम्बर हुनुपर्छ।",
+  "betweenNumErrorText": "मान {minInclusive, select, true{बराबर वा बढी} other{भन्दा बढी}} {min} र {maxInclusive, select, true{बराबर वा कम} other{भन्दा कम}} {max} हुनुपर्छ",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "यो फिल्डमा मान्य बुलियन (सत्य वा असत्य) आवश्यक छ",
+  "dateMustBeAfterErrorText": "मिति {reference} पछि हुनुपर्छ",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "मिति {reference} अघि हुनुपर्छ",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "मिति {minReference} र {maxReference} बीच हुनुपर्छ",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "यो फिल्डमा मान्य मिति र समय आवश्यक छ",
+  "greaterThanErrorText": "मान {min} भन्दा बढी हुनुपर्छ",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "मान {min} बराबर वा बढी हुनुपर्छ",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "यो फिल्ड वैकल्पिक छ, अन्यथा, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "यो फिल्डमा मान्य स्ट्रिङ आवश्यक छ",
+  "lessThanErrorText": "मान {max} भन्दा कम हुनुपर्छ",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "मान {max} बराबर वा कम हुनुपर्छ",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " वा ",
+  "transformAndValidateErrorTextV1": "मान रूपान्तरण गर्न सकिएन",
+  "transformAndValidateErrorTextV2": "मान मान्य {transformedResultTypeDescription} हुनुपर्छ",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

@@ -100,5 +100,125 @@
   "vinErrorText": "Vērtībai jābūt derīgam VIN.",
   "languageCodeErrorText": "Vērtībai jābūt derīgam valodas kodam.",
   "floatErrorText": "Vērtībai jābūt derīgam decimālskaitlim.",
-  "hexadecimalErrorText": "Vērtībai jābūt derīgam heksadecimālam skaitlim."
+  "hexadecimalErrorText": "Vērtībai jābūt derīgam heksadecimālam skaitlim.",
+  "betweenNumErrorText": "Vērtībai jābūt {minInclusive, select, true{lielākai vai vienādai ar} other{lielākai nekā}} {min} un {maxInclusive, select, true{mazākai vai vienādai ar} other{mazākai nekā}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Šim laukam nepieciešama derīga būla vērtība (true vai false)",
+  "dateMustBeAfterErrorText": "Datumam jābūt pēc {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Datumam jābūt pirms {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Datumam jābūt starp {minReference} un {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Šim laukam nepieciešams derīgs datums un laiks",
+  "greaterThanErrorText": "Vērtībai jābūt lielākai par {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Vērtībai jābūt lielākai vai vienādai ar {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Lauks ir neobligāts, pretējā gadījumā {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Šim laukam nepieciešama derīga teksta virkne",
+  "lessThanErrorText": "Vērtībai jābūt mazākai par {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Vērtībai jābūt mazākai vai vienādai ar {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " vai ",
+  "transformAndValidateErrorTextV1": "Vērtību nav iespējams pārveidot",
+  "transformAndValidateErrorTextV2": "Vērtībai jābūt derīgai {transformedResultTypeDescription}",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

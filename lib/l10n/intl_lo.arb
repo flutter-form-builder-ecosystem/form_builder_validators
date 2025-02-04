@@ -100,5 +100,125 @@
   "vinErrorText": "ຄ່າຕ້ອງເປັນ VIN ທີ່ຖືກຕ້ອງ.",
   "languageCodeErrorText": "ຄ່າຕ້ອງເປັນໄລຄໂລດພາສາທີ່ຖືກຕ້ອງ.",
   "floatErrorText": "ຄ່າຕ້ອງເປັນໂຕເລກ float ທີ່ຖືກຕ້ອງ.",
-  "hexadecimalErrorText": "ຄ່າຕ້ອງເປັນໂຕເລກເຮັກຊະເດສິມທີ່ຖືກຕ້ອງ."
+  "hexadecimalErrorText": "ຄ່າຕ້ອງເປັນໂຕເລກເຮັກຊະເດສິມທີ່ຖືກຕ້ອງ.",
+  "betweenNumErrorText": "ຄ່າຕ້ອງ {minInclusive, select, true{ໃຫຍ່ກວ່າ ຫຼື ເທົ່າກັບ} other{ໃຫຍ່ກວ່າ}} {min} ແລະ {maxInclusive, select, true{ນ້ອຍກວ່າ ຫຼື ເທົ່າກັບ} other{ນ້ອຍກວ່າ}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "ຊ່ອງນີ້ຕ້ອງການຄ່າ boolean ທີ່ຖືກຕ້ອງ (true ຫຼື false)",
+  "dateMustBeAfterErrorText": "ວັນທີຕ້ອງຢູ່ຫຼັງຈາກ {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "ວັນທີຕ້ອງຢູ່ກ່ອນ {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "ວັນທີຕ້ອງຢູ່ລະຫວ່າງ {minReference} ແລະ {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "ຊ່ອງນີ້ຕ້ອງການວັນທີແລະເວລາທີ່ຖືກຕ້ອງ",
+  "greaterThanErrorText": "ຄ່າຕ້ອງໃຫຍ່ກວ່າ {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "ຄ່າຕ້ອງໃຫຍ່ກວ່າ ຫຼື ເທົ່າກັບ {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "ຊ່ອງນີ້ເປັນທາງເລືອກ, ຖ້າບໍ່ດັ່ງນັ້ນ, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "ຊ່ອງນີ້ຕ້ອງການຂໍ້ຄວາມທີ່ຖືກຕ້ອງ",
+  "lessThanErrorText": "ຄ່າຕ້ອງນ້ອຍກວ່າ {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "ຄ່າຕ້ອງນ້ອຍກວ່າ ຫຼື ເທົ່າກັບ {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " ຫຼື ",
+  "transformAndValidateErrorTextV1": "ບໍ່ສາມາດແປງຄ່າໄດ້",
+  "transformAndValidateErrorTextV2": "ຄ່າຕ້ອງເປັນ {transformedResultTypeDescription} ທີ່ຖືກຕ້ອງ",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }
