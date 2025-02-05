@@ -2647,7 +2647,6 @@ final class Validators {
   /// - Extensions must explicitly include the leading dot (use '.txt' not 'txt')
   /// {@endtemplate}
   static Validator<String> matchesAllowedExtensions(
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> extensions, {
     String Function(List<String>)? matchesAllowedExtensionsMsg,
     bool caseSensitive = true,

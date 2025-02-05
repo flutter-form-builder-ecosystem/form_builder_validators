@@ -282,6 +282,6 @@ T _shift<T>(List<T> l) {
     l.removeAt(0);
     return first;
   }
-  // TODO refactor that. This does not make sense.
+  // TODO refactor that.
   return null as T;
 }
