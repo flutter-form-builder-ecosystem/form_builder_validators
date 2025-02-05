@@ -5,7 +5,7 @@ import 'constants.dart';
 /// Supported versions:
 /// - `iPv4`
 /// - `iPv6`
-/// - `any` (supports both versions)
+/// - `any` (supports all versions)
 enum IpVersion {
   /// IPv4 (RFC 791) - 32-bit addresses
   /// - Format: Four 8-bit decimal numbers (0-255) separated by dots
