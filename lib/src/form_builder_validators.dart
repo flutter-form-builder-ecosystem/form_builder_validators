@@ -1827,7 +1827,6 @@ final class Validators {
   /// - [ArgumentError] if `validators` is empty
   /// {@endtemplate}
   static Validator<T> or<T extends Object>(
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<Validator<T>> validators, {
     String prefix = '',
     String suffix = '',
