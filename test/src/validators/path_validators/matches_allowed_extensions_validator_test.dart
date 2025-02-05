@@ -145,5 +145,34 @@ void main() {
       // It seems to have a bug => https://github.com/dart-lang/core/issues/723
       //expect(v('/valid/.a.b'), errorMsg, reason: 'Input: "/valid/.a.b"');
     });
+
+    test('should be immutable even when the input list of extensions change',
+        () {
+      final List<String> validExtensions = <String>['.ext1', '.ext2'];
+
+      final Validator<String> v = matchesAllowedExtensions(validExtensions);
+      expect(v('/valid/v.ext1'), isNull);
+      expect(v('/valid/v.ext2'), isNull);
+      expect(
+          v('/valid/v.ext3'),
+          FormBuilderLocalizations.current
+              .fileExtensionErrorText(validExtensions.join(', ')));
+
+      validExtensions.removeLast();
+      expect(v('/valid/v.ext1'), isNull);
+      expect(v('/valid/v.ext2'), isNull);
+      expect(
+          v('/valid/v.ext3'),
+          FormBuilderLocalizations.current
+              .fileExtensionErrorText(validExtensions.join(', ')));
+
+      validExtensions.add('.ext3');
+      expect(v('/valid/v.ext1'), isNull);
+      expect(v('/valid/v.ext2'), isNull);
+      expect(
+          v('/valid/v.ext3'),
+          FormBuilderLocalizations.current
+              .fileExtensionErrorText(validExtensions.join(', ')));
+    });
   });
 }
