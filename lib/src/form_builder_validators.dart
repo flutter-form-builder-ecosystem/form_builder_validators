@@ -3517,7 +3517,6 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<T> containsElement<T extends Object?>(
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<T> values, {
     String Function(T input, List<T> values)? containsElementMsg,
   }) =>

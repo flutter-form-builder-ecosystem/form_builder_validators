@@ -44,5 +44,40 @@ void main() {
 
       expect(validator(4), equals(customMessage));
     });
+
+    test('should remain immutable when input elements change', () {
+      final List<Object> elements = <Object>[12, 15, 'hi'];
+
+      final Validator<Object> v = containsElement(elements);
+
+      expect(v(12), isNull);
+      expect(v(15), isNull);
+      expect(v('hi'), isNull);
+      expect(
+          v(12.02), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(v(2), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(
+          v(true), FormBuilderLocalizations.current.containsElementErrorText);
+
+      elements.removeLast();
+      expect(v(12), isNull);
+      expect(v(15), isNull);
+      expect(v('hi'), isNull);
+      expect(
+          v(12.02), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(v(2), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(
+          v(true), FormBuilderLocalizations.current.containsElementErrorText);
+
+      elements.add(true);
+      expect(v(12), isNull);
+      expect(v(15), isNull);
+      expect(v('hi'), isNull);
+      expect(
+          v(12.02), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(v(2), FormBuilderLocalizations.current.containsElementErrorText);
+      expect(
+          v(true), FormBuilderLocalizations.current.containsElementErrorText);
+    });
   });
 }
