@@ -64,16 +64,21 @@ Validator<String> url({
   RegExp? regex,
   String Function(String input)? urlMsg,
 }) {
+  final List<String> immutableProtocols = List<String>.unmodifiable(protocols);
+  final List<String> immutableHostAllowList =
+      List<String>.unmodifiable(hostAllowList);
+  final List<String> immutableHostBlockList =
+      List<String>.unmodifiable(hostBlockList);
   return (String value) {
     return (regex != null && !regex.hasMatch(value)) ||
             !_isURL(
               value,
-              protocols: protocols,
+              protocols: immutableProtocols,
               requireTld: requireTld,
               requireProtocol: requireProtocol,
               allowUnderscore: allowUnderscore,
-              hostAllowList: hostAllowList,
-              hostBlockList: hostBlockList,
+              hostAllowList: immutableHostAllowList,
+              hostBlockList: immutableHostBlockList,
             )
         ? urlMsg?.call(value) ?? FormBuilderLocalizations.current.urlErrorText
         : null;
@@ -126,8 +131,8 @@ bool _isURL(
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
-  List<String> hostAllowList = const <String>[],
-  List<String> hostBlockList = const <String>[],
+  required List<String> hostAllowList,
+  required List<String> hostBlockList,
   RegExp? regexp,
 }) {
   if (value.isEmpty ||

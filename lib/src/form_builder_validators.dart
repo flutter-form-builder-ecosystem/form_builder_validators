@@ -1784,6 +1784,7 @@ final class Validators {
   /// - [ArgumentError] if `validators` is empty
   /// {@endtemplate}
   static Validator<T> and<T extends Object>(
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<Validator<T>> validators, {
     String prefix = '',
     String suffix = '',
@@ -1827,6 +1828,7 @@ final class Validators {
   /// - [ArgumentError] if `validators` is empty
   /// {@endtemplate}
   static Validator<T> or<T extends Object>(
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<Validator<T>> validators, {
     String prefix = '',
     String suffix = '',
@@ -2647,6 +2649,7 @@ final class Validators {
   /// - Extensions must explicitly include the leading dot (use '.txt' not 'txt')
   /// {@endtemplate}
   static Validator<String> matchesAllowedExtensions(
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> extensions, {
     String Function(List<String>)? matchesAllowedExtensionsMsg,
     bool caseSensitive = true,
@@ -3058,8 +3061,6 @@ final class Validators {
     String Function(String input)? matchMsg,
   }) =>
       val.match(regex, matchMsg: matchMsg);
-
-  // TODO implement the other string validators here...
 
 // Collection validators
   /// {@template validator_min_length}
@@ -3516,6 +3517,7 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<T> containsElement<T extends Object?>(
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<T> values, {
     String Function(T input, List<T> values)? containsElementMsg,
   }) =>
@@ -4158,11 +4160,14 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<String> url({
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> protocols = val.kDefaultUrlValidationProtocols,
     bool requireTld = true,
     bool requireProtocol = false,
     bool allowUnderscore = false,
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> hostAllowList = const <String>[],
+    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> hostBlockList = const <String>[],
     RegExp? regex,
     String Function(String input)? urlMsg,

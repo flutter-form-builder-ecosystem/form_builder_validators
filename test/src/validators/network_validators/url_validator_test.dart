@@ -283,10 +283,92 @@ void main() {
       }
     });
 
-    test(
-        'should maintain validation rules when input lists are modified after creation',
-        () {
-      final v = url(protocols: []);
+    group('Validator immutability', () {
+      test(
+          'should maintain validation rules when protocol input list is changed',
+          () {
+        final List<String> protocols = <String>['a', 'b'];
+        final Validator<String> v = url(protocols: protocols);
+
+        expect(v('a://user@example.com'), isNull);
+        expect(v('b://user@example.com'), isNull);
+        expect(v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+
+        protocols.removeLast();
+        expect(v('a://user@example.com'), isNull);
+        expect(v('b://user@example.com'), isNull);
+        expect(v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+
+        protocols.add('b');
+        expect(v('a://user@example.com'), isNull);
+        expect(v('b://user@example.com'), isNull);
+        expect(v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+
+        protocols.add('c');
+        expect(v('a://user@example.com'), isNull);
+        expect(v('b://user@example.com'), isNull);
+        expect(v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+      });
+      test(
+          'should maintain validation rules when protocol allow list is changed',
+          () {
+        final List<String> allow = <String>[
+          'example.com',
+          'subdomain.example.com'
+        ];
+        final Validator<String> v = url(hostAllowList: allow);
+
+        expect(v('https://example.com'), isNull);
+        expect(v('https://subdomain.example.com'), isNull);
+        expect(v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+
+        allow.removeLast();
+        expect(v('https://example.com'), isNull);
+        expect(v('https://subdomain.example.com'), isNull);
+        expect(v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+
+        allow.add('exampleNotAllowed.com');
+        expect(v('https://example.com'), isNull);
+        expect(v('https://subdomain.example.com'), isNull);
+        expect(v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+      });
+
+      test(
+          'should maintain validation rules when protocol block list is changed',
+          () {
+        final List<String> block = <String>[
+          'example.com',
+          'subdomain.example.com'
+        ];
+        final Validator<String> v = url(hostBlockList: block);
+
+        expect(v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://exampleNotAllowed.com'), isNull);
+
+        block.removeLast();
+        expect(v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://exampleNotAllowed.com'), isNull);
+
+        block.add('exampleNotAllowed.com');
+        expect(v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText);
+        expect(v('https://exampleNotAllowed.com'), isNull);
+      });
     });
   });
 }
