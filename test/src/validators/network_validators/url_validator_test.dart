@@ -282,5 +282,11 @@ void main() {
         expect(validator(value), isNull);
       }
     });
+
+    test(
+        'should maintain validation rules when input lists are modified after creation',
+        () {
+      final v = url(protocols: []);
+    });
   });
 }

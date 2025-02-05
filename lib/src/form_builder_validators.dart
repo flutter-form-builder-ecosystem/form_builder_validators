@@ -4115,7 +4115,7 @@ final class Validators {
   /// filtering.
   ///
   /// ## Parameters
-  /// - `protocols` (`List<String>?`): List of allowed protocols. Defaults to
+  /// - `protocols` (`List<String>`): List of allowed protocols. Defaults to
   ///   `['http', 'https', 'ftp']` if not specified
   /// - `requireTld` (`bool`): Whether the URL must contain a top-level domain.
   ///   Defaults to `true`
@@ -4123,9 +4123,9 @@ final class Validators {
   ///   Defaults to `false`
   /// - `allowUnderscore` (`bool`): Whether underscores are permitted in the URL.
   ///   Defaults to `false`
-  /// - `hostAllowList` (`List<String>?`): List of explicitly allowed host names.
+  /// - `hostAllowList` (`List<String>`): List of explicitly allowed host names.
   ///   Empty by default
-  /// - `hostBlockList` (`List<String>?`): List of blocked host names.
+  /// - `hostBlockList` (`List<String>`): List of blocked host names.
   ///   Empty by default
   /// - `regex` (`RegExp?`): Optional custom regular expression for additional
   ///   URL validation
@@ -4158,12 +4158,12 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<String> url({
-    List<String>? protocols,
+    List<String> protocols = val.kDefaultUrlValidationProtocols,
     bool requireTld = true,
     bool requireProtocol = false,
     bool allowUnderscore = false,
-    List<String>? hostAllowList,
-    List<String>? hostBlockList,
+    List<String> hostAllowList = const <String>[],
+    List<String> hostBlockList = const <String>[],
     RegExp? regex,
     String Function(String input)? urlMsg,
   }) =>

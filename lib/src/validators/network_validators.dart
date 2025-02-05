@@ -32,38 +32,48 @@ Validator<String> ip({
   RegExp? regex,
   String Function(String input)? ipMsg,
 }) {
-  return (String value) {
-    return !_isIP(value, version, regex)
+  return (String input) {
+    return !_isIP(input, version, regex)
         // TODO(ArturAssisComp): study the possibility to make the error message more
         // meaningful. One good example is the password validator, which may be
         // configured to return a detailed message of why it is invalid.
-        ? ipMsg?.call(value) ?? FormBuilderLocalizations.current.ipErrorText
+        ? ipMsg?.call(input) ?? FormBuilderLocalizations.current.ipErrorText
         : null;
   };
 }
 
+/// Default protocols to be used for the url validation.
+/// The protocols are:
+///   - `http`
+///   - `https`
+///   - `ftp`
+const List<String> kDefaultUrlValidationProtocols = <String>[
+  'http',
+  'https',
+  'ftp'
+];
+
 /// {@macro validator_url}
 Validator<String> url({
-  List<String>? protocols,
+  List<String> protocols = kDefaultUrlValidationProtocols,
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
-  List<String>? hostAllowList,
-  List<String>? hostBlockList,
+  List<String> hostAllowList = const <String>[],
+  List<String> hostBlockList = const <String>[],
   RegExp? regex,
   String Function(String input)? urlMsg,
 }) {
-  const List<String> defaultProtocols = <String>['http', 'https', 'ftp'];
   return (String value) {
     return (regex != null && !regex.hasMatch(value)) ||
             !_isURL(
               value,
-              protocols: protocols ?? defaultProtocols,
+              protocols: protocols,
               requireTld: requireTld,
               requireProtocol: requireProtocol,
               allowUnderscore: allowUnderscore,
-              hostAllowList: hostAllowList ?? <String>[],
-              hostBlockList: hostBlockList ?? <String>[],
+              hostAllowList: hostAllowList,
+              hostBlockList: hostBlockList,
             )
         ? urlMsg?.call(value) ?? FormBuilderLocalizations.current.urlErrorText
         : null;
@@ -83,19 +93,19 @@ final RegExp _ipv6 = RegExp(
 /// Check if the string [str] is IP [version] 4 or 6.
 ///
 /// * [version] is a String or an `int`.
-bool _isIP(String? str, IpVersion version, RegExp? regex) {
+bool _isIP(String str, IpVersion version, RegExp? regex) {
   if (regex != null) {
-    return regex.hasMatch(str!);
+    return regex.hasMatch(str);
   }
   switch (version) {
     case IpVersion.iPv4:
-      if (!_ipv4Maybe.hasMatch(str!)) {
+      if (!_ipv4Maybe.hasMatch(str)) {
         return false;
       }
       final List<String> parts = str.split('.');
       return !parts.any((String e) => int.parse(e) > 255);
     case IpVersion.iPv6:
-      return _ipv6.hasMatch(str!);
+      return _ipv6.hasMatch(str);
     case IpVersion.any:
       return _isIP(str, IpVersion.iPv4, regex) ||
           _isIP(str, IpVersion.iPv6, regex);
@@ -111,8 +121,8 @@ bool _isIP(String? str, IpVersion version, RegExp? regex) {
 /// * [hostAllowList] sets the list of allowed hosts
 /// * [hostBlockList] sets the list of disallowed hosts
 bool _isURL(
-  String? value, {
-  List<String?> protocols = const <String?>['http', 'https', 'ftp'],
+  String value, {
+  required List<String> protocols,
   bool requireTld = true,
   bool requireProtocol = false,
   bool allowUnderscore = false,
@@ -120,8 +130,7 @@ bool _isURL(
   List<String> hostBlockList = const <String>[],
   RegExp? regexp,
 }) {
-  if (value == null ||
-      value.isEmpty ||
+  if (value.isEmpty ||
       value.length > _maxUrlLength ||
       value.startsWith('mailto:')) {
     return false;
@@ -264,8 +273,10 @@ bool _isFQDN(
 T _shift<T>(List<T> l) {
   if (l.isNotEmpty) {
     final T first = l.first;
+    // TODO why not iterating the list?
     l.removeAt(0);
     return first;
   }
+  // TODO refactor that. This does not make sense.
   return null as T;
 }
