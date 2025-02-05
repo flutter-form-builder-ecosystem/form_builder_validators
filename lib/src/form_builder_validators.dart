@@ -1784,7 +1784,6 @@ final class Validators {
   /// - [ArgumentError] if `validators` is empty
   /// {@endtemplate}
   static Validator<T> and<T extends Object>(
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<Validator<T>> validators, {
     String prefix = '',
     String suffix = '',
@@ -4159,14 +4158,11 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<String> url({
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> protocols = val.kDefaultUrlValidationProtocols,
     bool requireTld = true,
     bool requireProtocol = false,
     bool allowUnderscore = false,
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> hostAllowList = const <String>[],
-    // TODO(ArturAssisComp): refactor to make this input immutable.
     List<String> hostBlockList = const <String>[],
     RegExp? regex,
     String Function(String input)? urlMsg,

@@ -14,9 +14,11 @@ Validator<T> and<T extends Object>(
     throw ArgumentError.value(
         '[]', 'validators', 'The list of validators must not be empty');
   }
+  final List<Validator<T>> immutableValidators =
+      List<Validator<T>>.unmodifiable(validators);
   return (T value) {
     final List<String> errorMessageBuilder = <String>[];
-    for (final Validator<T> validator in validators) {
+    for (final Validator<T> validator in immutableValidators) {
       final String? errorMessage = validator(value);
       if (errorMessage != null) {
         if (printErrorAsSoonAsPossible) {

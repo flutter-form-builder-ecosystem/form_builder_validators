@@ -135,5 +135,29 @@ void main() {
     test('Should throw AssertionError when the validators input is empty', () {
       expect(() => and(<Validator<Object?>>[]), throwsArgumentError);
     });
+
+    test('should be immutable even when input validators change', () {
+      final List<String? Function(double)> validators =
+          <String? Function(double)>[gt(12), ltE(15)];
+
+      final Validator<double> v = and(validators);
+      expect(v(12), errorGt);
+      expect(v(13), isNull);
+      expect(v(15), isNull);
+      expect(v(16.5), errorLtE);
+
+      validators.add(gt(13));
+      expect(v(12), errorGt);
+      expect(v(13), isNull);
+      expect(v(15), isNull);
+      expect(v(16.5), errorLtE);
+
+      validators.removeLast();
+      validators.removeLast();
+      expect(v(12), errorGt);
+      expect(v(13), isNull);
+      expect(v(15), isNull);
+      expect(v(16.5), errorLtE);
+    });
   });
 }
