@@ -11,7 +11,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
 
 ---
 
-## Call for Maintainers
+## Call for Maintainers 
 
 > We are looking for maintainers to contribute to the development and maintenance of Flutter Form Builder Ecosystem. Is very important to keep the project alive and growing, so we need your help to keep it up to date and with new features. You can contribute in many ways, we describe some of them in [Support](#support) section.
 
