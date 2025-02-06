@@ -1,5 +1,19 @@
 {
   "@@locale": "bn",
+  "andSeparator": " এবং ",
+  "betweenLengthErrorText": "মানটির দৈর্ঘ্য {min} এবং {max} এর মধ্যে হতে হবে, সহ.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "বৈধ ক্রেডিট কার্ড নম্বর প্রয়োজন।",
   "dateStringErrorText": "একটি বৈধ তারিখ প্রয়োজন।",
   "emailErrorText": "একটি বৈধ ইমেল আইডি প্রয়োজন।",
@@ -86,5 +100,125 @@
   "vinErrorText": "মানটি একটি বৈধ VIN হতে হবে।",
   "languageCodeErrorText": "মানটি একটি বৈধ ভাষা কোড হতে হবে।",
   "floatErrorText": "মান একটি বৈধ ভাসমান বিন্দু সংখ্যা হতে হবে।",
-  "hexadecimalErrorText": "মান একটি বৈধ হেক্সাডেসিমাল সংখ্যা হতে হবে।"
+  "hexadecimalErrorText": "মান একটি বৈধ হেক্সাডেসিমাল সংখ্যা হতে হবে।",
+  "betweenNumErrorText": "মান অবশ্যই {minInclusive, select, true{বড় বা সমান হতে হবে} other{বড় হতে হবে}} {min} এবং {maxInclusive, select, true{ছোট বা সমান হতে হবে} other{ছোট হতে হবে}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "এই ক্ষেত্রে একটি বৈধ বুলিয়ান মান (সত্য বা মিথ্যা) প্রয়োজন।",
+  "dateMustBeAfterErrorText": "তারিখ অবশ্যই {reference} এর পরে হতে হবে।",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "তারিখ অবশ্যই {reference} এর আগে হতে হবে।",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "তারিখ অবশ্যই {minReference} এবং {maxReference} এর মধ্যে হতে হবে।",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "এই ক্ষেত্রে একটি বৈধ তারিখ ও সময় প্রয়োজন।",
+  "greaterThanErrorText": "মান অবশ্যই {min} এর চেয়ে বড় হতে হবে।",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "মান অবশ্যই {min} এর চেয়ে বড় বা সমান হতে হবে।",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "এই ক্ষেত্রটি ঐচ্ছিক, অন্যথায় {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "এই ক্ষেত্রে একটি বৈধ স্ট্রিং প্রয়োজন।",
+  "lessThanErrorText": "মান অবশ্যই {max} এর চেয়ে ছোট হতে হবে।",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "মান অবশ্যই {max} এর চেয়ে ছোট বা সমান হতে হবে।",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " বা ",
+  "transformAndValidateErrorTextV1": "মানটি রূপান্তর করা যাবে না।",
+  "transformAndValidateErrorTextV2": "মানটি অবশ্যই একটি বৈধ {transformedResultTypeDescription} হতে হবে।",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

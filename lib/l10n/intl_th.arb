@@ -1,5 +1,19 @@
 {
   "@@locale": "th",
+  "andSeparator": " และ ",
+  "betweenLengthErrorText": "ค่าต้องมีความยาวระหว่าง {min} และ {max} รวมทั้งสองค่า",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ข้อมูลนี้ต้องเป็นเลขบัตรเครดิตเท่านั้น",
   "dateStringErrorText": "ข้อมูลนี้ต้องเป็นวันที่เท่านั้น",
   "emailErrorText": "กรุณาระบุ email ของคุณ",
@@ -86,5 +100,125 @@
   "vinErrorText": "ค่าต้องเป็นหมายเลข VIN ที่ถูกต้อง",
   "languageCodeErrorText": "ค่าต้องเป็นรหัสภาษาที่ถูกต้อง",
   "floatErrorText": "ค่าต้องเป็นตัวเลขทศนิยมที่ถูกต้อง",
-  "hexadecimalErrorText": "ค่าต้องเป็นเลขฐานสิบหกที่ถูกต้อง"
+  "hexadecimalErrorText": "ค่าต้องเป็นเลขฐานสิบหกที่ถูกต้อง",
+  "betweenNumErrorText": "ค่าต้องอยู่ {minInclusive, select, true{มากกว่าหรือเท่ากับ} other{มากกว่า}} {min} และ {maxInclusive, select, true{น้อยกว่าหรือเท่ากับ} other{น้อยกว่า}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "ฟิลด์นี้ต้องการค่าบูลีนที่ถูกต้อง (จริงหรือเท็จ)",
+  "dateMustBeAfterErrorText": "วันที่ต้องอยู่หลัง {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "วันที่ต้องอยู่ก่อน {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "วันที่ต้องอยู่ระหว่าง {minReference} และ {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "ฟิลด์นี้ต้องการวันที่และเวลาที่ถูกต้อง",
+  "greaterThanErrorText": "ค่าต้องมากกว่า {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "ค่าต้องมากกว่าหรือเท่ากับ {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "ฟิลด์นี้เป็นตัวเลือก มิฉะนั้น {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "ฟิลด์นี้ต้องการสตริงที่ถูกต้อง",
+  "lessThanErrorText": "ค่าต้องน้อยกว่า {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "ค่าต้องน้อยกว่าหรือเท่ากับ {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " หรือ ",
+  "transformAndValidateErrorTextV1": "ไม่สามารถแปลงค่าได้",
+  "transformAndValidateErrorTextV2": "ค่าต้องเป็น {transformedResultTypeDescription} ที่ถูกต้อง",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

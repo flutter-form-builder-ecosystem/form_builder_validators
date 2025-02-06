@@ -1,7 +1,84 @@
 {
   "@@locale": "en",
+  "andSeparator": " and ",
+  "betweenLengthErrorText": "Value must have a length that is between {min} and {max}, inclusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
+  "betweenNumErrorText": "Value must be {minInclusive, select, true{greater than or equal to} other{greater than}} {min} and {maxInclusive, select, true{less than or equal to} other{less than}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "This field requires a valid boolean (true or false).",
   "creditCardErrorText": "This field requires a valid credit card number.",
+  "dateMustBeAfterErrorText": "Date must be after {reference}.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Date must be before {reference}.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Date must be between {minReference} and {maxReference}.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
   "dateStringErrorText": "This field requires a valid date string.",
+  "dateTimeErrorText": "This field requires a valid datetime.",
   "emailErrorText": "This field requires a valid email address.",
   "equalErrorText": "This field value must be equal to {value}.",
   "@equalErrorText": {
@@ -21,8 +98,54 @@
       }
     }
   },
+  "greaterThanErrorText": "Value must be greater than {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Value must be greater than or equal to {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
   "integerErrorText": "This field requires a valid integer.",
   "ipErrorText": "This field requires a valid IP.",
+  "isOptionalErrorText": "The field is optional, otherwise, {nextErrorMessage}'",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "This field requires a valid string.",
+  "lessThanErrorText": "Value must be less than {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Value must be less than or equal to {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
   "matchErrorText": "Value does not match pattern.",
   "maxErrorText": "Value must be less than or equal to {max}.",
   "@maxErrorText": {
@@ -88,7 +211,18 @@
     }
   },
   "numericErrorText": "Value must be numeric.",
+  "orSeparator": " or ",
   "requiredErrorText": "This field cannot be empty.",
+  "transformAndValidateErrorTextV1": "Value is not able to be transformed.",
+  "transformAndValidateErrorTextV2": "Value must be a valid {transformedResultTypeDescription}.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  },
   "urlErrorText": "This field requires a valid URL address.",
   "phoneErrorText": "This field requires a valid phone number.",
   "creditCardExpirationDateErrorText": "This field requires a valid expiration date.",

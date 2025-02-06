@@ -1,5 +1,19 @@
 {
   "@@locale": "ko",
+  "andSeparator": " 그리고 ",
+  "betweenLengthErrorText": "값의 길이는 {min}에서 {max} 사이여야 합니다(포함).",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "유효한 카드 번호를 입력해 주세요.",
   "dateStringErrorText": "날짜 형식이 올바르지 않습니다.",
   "emailErrorText": "이메일 주소 형식이 올바르지 않습니다.",
@@ -86,5 +100,125 @@
   "vinErrorText": "값은 유효한 VIN이어야 합니다.",
   "languageCodeErrorText": "값은 유효한 언어 코드이어야 합니다.",
   "floatErrorText": "값은 유효한 부동 소수점 수여야 합니다.",
-  "hexadecimalErrorText": "값은 유효한 16진수여야 합니다."
+  "hexadecimalErrorText": "값은 유효한 16진수여야 합니다.",
+  "betweenNumErrorText": "값은 {min}보다 {minInclusive, select, true{크거나 같고} other{크고}} {max}보다 {maxInclusive, select, true{작거나 같아야} other{작아야}} 합니다",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "이 필드는 유효한 불리언 값(true 또는 false)이 필요합니다",
+  "dateMustBeAfterErrorText": "날짜는 {reference} 이후여야 합니다",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "날짜는 {reference} 이전이어야 합니다",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "날짜는 {minReference}와 {maxReference} 사이여야 합니다",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "이 필드는 유효한 날짜/시간이 필요합니다",
+  "greaterThanErrorText": "값은 {min}보다 커야 합니다",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "값은 {min}보다 크거나 같아야 합니다",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "이 필드는 선택사항이며, 입력 시 {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "이 필드는 유효한 문자열이 필요합니다",
+  "lessThanErrorText": "값은 {max}보다 작아야 합니다",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "값은 {max}보다 작거나 같아야 합니다",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " 또는 ",
+  "transformAndValidateErrorTextV1": "값을 변환할 수 없습니다",
+  "transformAndValidateErrorTextV2": "값은 유효한 {transformedResultTypeDescription}이어야 합니다",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

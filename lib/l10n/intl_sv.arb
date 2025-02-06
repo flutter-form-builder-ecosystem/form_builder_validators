@@ -1,5 +1,19 @@
 {
   "@@locale": "sv",
+  "andSeparator": " och ",
+  "betweenLengthErrorText": "Värdet måste ha en längd mellan {min} och {max}, inklusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Detta fält kräver ett giltigt kreditkortsnummer.",
   "dateStringErrorText": "Detta fält kräver ett giltigt datum.",
   "emailErrorText": "Detta fält kräver en giltig e-postadress.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Värdet måste vara ett giltigt VIN.",
   "languageCodeErrorText": "Värdet måste vara en giltig språkkod.",
   "floatErrorText": "Värdet måste vara ett giltigt flyttal.",
-  "hexadecimalErrorText": "Värdet måste vara ett giltigt hexadecimaltal."
+  "hexadecimalErrorText": "Värdet måste vara ett giltigt hexadecimaltal.",
+  "betweenNumErrorText": "Värdet måste vara {minInclusive, select, true{större än eller lika med} other{större än}} {min} och {maxInclusive, select, true{mindre än eller lika med} other{mindre än}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Detta fält kräver ett giltigt booleskt värde (sant eller falskt)",
+  "dateMustBeAfterErrorText": "Datumet måste vara efter {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Datumet måste vara före {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Datumet måste vara mellan {minReference} och {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Detta fält kräver ett giltigt datum och tid",
+  "greaterThanErrorText": "Värdet måste vara större än {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Värdet måste vara större än eller lika med {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Fältet är valfritt, annars {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Detta fält kräver en giltig sträng",
+  "lessThanErrorText": "Värdet måste vara mindre än {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Värdet måste vara mindre än eller lika med {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " eller ",
+  "transformAndValidateErrorTextV1": "Värdet kan inte omvandlas",
+  "transformAndValidateErrorTextV2": "Värdet måste vara en giltig {transformedResultTypeDescription}",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

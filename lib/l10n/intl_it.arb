@@ -1,5 +1,19 @@
 {
   "@@locale": "it",
+  "andSeparator": " e ",
+  "betweenLengthErrorText": "Il valore deve avere una lunghezza compresa tra {min} e {max}, inclusi.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Questo campo richiede un numero di carta di credito valido.",
   "dateStringErrorText": "Questo campo richiede una data valida.",
   "emailErrorText": "Questo campo richiede un indirizzo email valido.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Il valore deve essere un VIN valido.",
   "languageCodeErrorText": "Il valore deve essere un codice lingua valido.",
   "floatErrorText": "Il valore deve essere un numero in virgola mobile valido.",
-  "hexadecimalErrorText": "Il valore deve essere un numero esadecimale valido."
+  "hexadecimalErrorText": "Il valore deve essere un numero esadecimale valido.",
+  "betweenNumErrorText": "Il valore deve essere {minInclusive, select, true{maggiore o uguale a} other{maggiore di}} {min} e {maxInclusive, select, true{minore o uguale a} other{minore di}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Questo campo richiede un valore booleano valido (vero o falso).",
+  "dateMustBeAfterErrorText": "La data deve essere successiva a {reference}.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "La data deve essere precedente a {reference}.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "La data deve essere compresa tra {minReference} e {maxReference}.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Questo campo richiede una data e ora valida.",
+  "greaterThanErrorText": "Il valore deve essere maggiore di {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Il valore deve essere maggiore o uguale a {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Il campo è opzionale, altrimenti, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Questo campo richiede una stringa valida.",
+  "lessThanErrorText": "Il valore deve essere minore di {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Il valore deve essere minore o uguale a {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " o ",
+  "transformAndValidateErrorTextV1": "Il valore non può essere trasformato.",
+  "transformAndValidateErrorTextV2": "Il valore deve essere un {transformedResultTypeDescription} valido.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

@@ -1,5 +1,19 @@
 {
   "@@locale": "nl",
+  "andSeparator": " en ",
+  "betweenLengthErrorText": "De waarde moet een lengte hebben tussen {min} en {max}, inclusief.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Een geldig creditcardnummer is vereist.",
   "dateStringErrorText": "Een geldige datum is vereist.",
   "emailErrorText": "Een geldig e-mailadres is vereist.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Waarde moet een geldig VIN zijn.",
   "languageCodeErrorText": "Waarde moet een geldige taalcode zijn.",
   "floatErrorText": "Waarde moet een geldig drijvend-komma getal zijn.",
-  "hexadecimalErrorText": "Waarde moet een geldig hexadecimaal getal zijn."
+  "hexadecimalErrorText": "Waarde moet een geldig hexadecimaal getal zijn.",
+  "betweenNumErrorText": "Waarde moet {minInclusive, select, true{groter dan of gelijk aan} other{groter dan}} {min} en {maxInclusive, select, true{kleiner dan of gelijk aan} other{kleiner dan}} {max} zijn",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Dit veld vereist een geldige booleaanse waarde (true of false)",
+  "dateMustBeAfterErrorText": "Datum moet na {reference} zijn",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Datum moet voor {reference} zijn",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Datum moet tussen {minReference} en {maxReference} liggen",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Dit veld vereist een geldige datum en tijd",
+  "greaterThanErrorText": "Waarde moet groter zijn dan {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Waarde moet groter dan of gelijk zijn aan {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Het veld is optioneel, anders {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Dit veld vereist een geldige tekst",
+  "lessThanErrorText": "Waarde moet kleiner zijn dan {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Waarde moet kleiner dan of gelijk zijn aan {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " of ",
+  "transformAndValidateErrorTextV1": "Waarde kan niet worden getransformeerd",
+  "transformAndValidateErrorTextV2": "Waarde moet een geldige {transformedResultTypeDescription} zijn",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

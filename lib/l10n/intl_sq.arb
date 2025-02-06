@@ -1,5 +1,19 @@
 {
   "@@locale": "sq",
+  "andSeparator": " dhe ",
+  "betweenLengthErrorText": "Vlera duhet të ketë një gjatësi midis {min} dhe {max}, përfshirë.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Kjo fushë kërkon një numër të vlefshëm për kartën e kreditit.",
   "dateStringErrorText": "Kjo fushë kërkon një datë të vlefshme.",
   "emailErrorText": "Kjo fushë kërkon një adresë e E-mail-i të vlefshme.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Vlera duhet të jetë një VIN i vlefshëm.",
   "languageCodeErrorText": "Vlera duhet të jetë një kod gjuhe i vlefshëm.",
   "floatErrorText": "Vlera duhet të jetë një numër i vlefshëm me pikë lundruese.",
-  "hexadecimalErrorText": "Vlera duhet të jetë një numër i vlefshëm heksadecimal."
+  "hexadecimalErrorText": "Vlera duhet të jetë një numër i vlefshëm heksadecimal.",
+  "betweenNumErrorText": "Vlera duhet të jetë {minInclusive, select, true{më e madhe ose e barabartë me} other{më e madhe se}} {min} dhe {maxInclusive, select, true{më e vogël ose e barabartë me} other{më e vogël se}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Kjo fushë kërkon një vlerë të vlefshme booleane (true ose false)",
+  "dateMustBeAfterErrorText": "Data duhet të jetë pas {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Data duhet të jetë para {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Data duhet të jetë midis {minReference} dhe {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Kjo fushë kërkon një datë të vlefshme",
+  "greaterThanErrorText": "Vlera duhet të jetë më e madhe se {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Vlera duhet të jetë më e madhe ose e barabartë me {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Fusha është opsionale, përndryshe, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Kjo fushë kërkon një varg të vlefshëm",
+  "lessThanErrorText": "Vlera duhet të jetë më e vogël se {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Vlera duhet të jetë më e vogël ose e barabartë me {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " ose ",
+  "transformAndValidateErrorTextV1": "Vlera nuk mund të transformohet",
+  "transformAndValidateErrorTextV2": "Vlera duhet të jetë një {transformedResultTypeDescription} i vlefshëm",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

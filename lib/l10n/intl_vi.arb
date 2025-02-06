@@ -1,5 +1,19 @@
 {
   "@@locale": "vi",
+  "andSeparator": " và ",
+  "betweenLengthErrorText": "Giá trị phải có độ dài trong khoảng từ {min} đến {max}, bao gồm cả hai giá trị.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Yêu cầu nhập đúng số thẻ tín dụng.",
   "dateStringErrorText": "Yêu cầu nhập đúng định dạng ngày.",
   "emailErrorText": "Nhập đúng email.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Giá trị phải là số VIN hợp lệ.",
   "languageCodeErrorText": "Giá trị phải là mã ngôn ngữ hợp lệ.",
   "floatErrorText": "Giá trị phải là một số dấu phẩy động hợp lệ.",
-  "hexadecimalErrorText": "Giá trị phải là một số thập lục phân hợp lệ."
+  "hexadecimalErrorText": "Giá trị phải là một số thập lục phân hợp lệ.",
+  "betweenNumErrorText": "Giá trị phải {minInclusive, select, true{lớn hơn hoặc bằng} other{lớn hơn}} {min} và {maxInclusive, select, true{nhỏ hơn hoặc bằng} other{nhỏ hơn}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Trường này yêu cầu một giá trị boolean hợp lệ (true hoặc false)",
+  "dateMustBeAfterErrorText": "Ngày phải sau {reference}",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Ngày phải trước {reference}",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Ngày phải nằm giữa {minReference} và {maxReference}",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Trường này yêu cầu một ngày giờ hợp lệ",
+  "greaterThanErrorText": "Giá trị phải lớn hơn {min}",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Giá trị phải lớn hơn hoặc bằng {min}",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Trường này là tùy chọn, nếu không thì {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Trường này yêu cầu một chuỗi hợp lệ",
+  "lessThanErrorText": "Giá trị phải nhỏ hơn {max}",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Giá trị phải nhỏ hơn hoặc bằng {max}",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " hoặc ",
+  "transformAndValidateErrorTextV1": "Không thể chuyển đổi giá trị",
+  "transformAndValidateErrorTextV2": "Giá trị phải là một {transformedResultTypeDescription} hợp lệ",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

@@ -57,6 +57,8 @@ void main() {
       expect(result, equals(customErrorMessage));
     });
 
+    // TODO(ArturAssisComp): fix this test case. It passes when executed alone
+    // but fails when executed with the complete test suite.
     test('should return null when the date is today', () {
       // Arrange
       const DatePastValidator validator = DatePastValidator();

@@ -1,5 +1,19 @@
 {
   "@@locale": "fa",
+  "andSeparator": " و ",
+  "betweenLengthErrorText": "مقدار باید طولی بین {min} و {max}، به صورت شامل داشته باشد.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "این ورودی به شماره کارت اعتباری معتبر نیاز دارد.",
   "dateStringErrorText": "این ورودی به یک تاریخ معتبر نیاز دارد.",
   "emailErrorText": "این ورودی به یک آدرس ایمیل معتبر نیاز دارد.",
@@ -86,5 +100,125 @@
   "vinErrorText": "مقدار باید یک شماره VIN معتبر باشد.",
   "languageCodeErrorText": "مقدار باید یک کد زبان معتبر باشد.",
   "floatErrorText": "مقدار باید یک عدد اعشاری معتبر باشد.",
-  "hexadecimalErrorText": "مقدار باید یک عدد هگزادسیمال معتبر باشد."
+  "hexadecimalErrorText": "مقدار باید یک عدد هگزادسیمال معتبر باشد.",
+  "betweenNumErrorText": "مقدار باید {minInclusive, select, true{بزرگتر یا مساوی با} other{بزرگتر از}} {min} و {maxInclusive, select, true{کوچکتر یا مساوی با} other{کوچکتر از}} {max} باشد",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "این فیلد نیاز به یک مقدار منطقی معتبر دارد (درست یا نادرست)",
+  "dateMustBeAfterErrorText": "تاریخ باید بعد از {reference} باشد",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "تاریخ باید قبل از {reference} باشد",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "تاریخ باید بین {minReference} و {maxReference} باشد",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "این فیلد نیاز به یک تاریخ و زمان معتبر دارد",
+  "greaterThanErrorText": "مقدار باید بزرگتر از {min} باشد",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "مقدار باید بزرگتر یا مساوی با {min} باشد",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "این فیلد اختیاری است، در غیر این صورت، {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "این فیلد نیاز به یک رشته معتبر دارد",
+  "lessThanErrorText": "مقدار باید کمتر از {max} باشد",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "مقدار باید کمتر یا مساوی با {max} باشد",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " یا ",
+  "transformAndValidateErrorTextV1": "مقدار قابل تبدیل نیست",
+  "transformAndValidateErrorTextV2": "مقدار باید یک {transformedResultTypeDescription} معتبر باشد",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

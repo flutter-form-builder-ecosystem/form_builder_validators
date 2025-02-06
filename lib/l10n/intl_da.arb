@@ -1,5 +1,19 @@
 {
   "@@locale": "da",
+  "andSeparator": " og ",
+  "betweenLengthErrorText": "Værdien skal have en længde mellem {min} og {max}, inklusive.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "Dette felt kræver et gyldigt kreditkort nummer.",
   "dateStringErrorText": "Dette felt kræver en gyldig dato.",
   "emailErrorText": "Dette felt kræver en gyldig e-mail adresse.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Værdien skal være en gyldig VIN.",
   "languageCodeErrorText": "Værdien skal være en gyldig sprogkode.",
   "floatErrorText": "Værdien skal være et gyldigt flydende punkt nummer.",
-  "hexadecimalErrorText": "Værdien skal være et gyldigt hexadecimalt nummer."
+  "hexadecimalErrorText": "Værdien skal være et gyldigt hexadecimalt nummer.",
+  "betweenNumErrorText": "Værdien skal være {minInclusive, select, true{større end eller lig med} other{større end}} {min} og {maxInclusive, select, true{mindre end eller lig med} other{mindre end}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Dette felt kræver en gyldig boolean (sand eller falsk).",
+  "dateMustBeAfterErrorText": "Datoen skal være efter {reference}.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Datoen skal være før {reference}.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Datoen skal være mellem {minReference} og {maxReference}.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Dette felt kræver en gyldig dato og tidspunkt.",
+  "greaterThanErrorText": "Værdien skal være større end {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Værdien skal være større end eller lig med {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Feltet er valgfrit, ellers {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Dette felt kræver en gyldig tekststreng.",
+  "lessThanErrorText": "Værdien skal være mindre end {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Værdien skal være mindre end eller lig med {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " eller ",
+  "transformAndValidateErrorTextV1": "Værdien kan ikke transformeres.",
+  "transformAndValidateErrorTextV2": "Værdien skal være en gyldig {transformedResultTypeDescription}.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

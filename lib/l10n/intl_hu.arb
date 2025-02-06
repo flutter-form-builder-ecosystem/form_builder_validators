@@ -1,5 +1,19 @@
 {
   "@@locale": "hu",
+  "andSeparator": " és ",
+  "betweenLengthErrorText": "Az értéknek {min} és {max} közötti hosszúságúnak kell lennie, beleértve.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "A megadott érték nem egy érvényes bankkártya szám.",
   "dateStringErrorText": "Ennek a mezőnek dátumnak kell lennie.",
   "emailErrorText": "A megadott érték nem egy érvényes email cím.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Az értéknek egy érvényes járműazonosító számnak kell lennie.",
   "languageCodeErrorText": "Az értéknek egy érvényes nyelvkódnak kell lennie.",
   "floatErrorText": "Az értéknek érvényes lebegőpontos számnak kell lennie.",
-  "hexadecimalErrorText": "Az értéknek érvényes hexadecimális számnak kell lennie."
+  "hexadecimalErrorText": "Az értéknek érvényes hexadecimális számnak kell lennie.",
+  "betweenNumErrorText": "Az értéknek {minInclusive, select, true{nagyobbnak vagy egyenlőnek kell lennie mint} other{nagyobbnak kell lennie mint}} {min} és {maxInclusive, select, true{kisebbnek vagy egyenlőnek kell lennie mint} other{kisebbnek kell lennie mint}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Ehhez a mezőhöz érvényes logikai érték szükséges (igaz vagy hamis).",
+  "dateMustBeAfterErrorText": "A dátumnak {reference} utáninak kell lennie.",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "A dátumnak {reference} előttinek kell lennie.",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "A dátumnak {minReference} és {maxReference} között kell lennie.",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Ehhez a mezőhöz érvényes dátum és időpont szükséges.",
+  "greaterThanErrorText": "Az értéknek nagyobbnak kell lennie mint {min}.",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Az értéknek nagyobbnak vagy egyenlőnek kell lennie mint {min}.",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "A mező opcionális, különben {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Ehhez a mezőhöz érvényes szöveg szükséges.",
+  "lessThanErrorText": "Az értéknek kisebbnek kell lennie mint {max}.",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Az értéknek kisebbnek vagy egyenlőnek kell lennie mint {max}.",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " vagy ",
+  "transformAndValidateErrorTextV1": "Az érték nem alakítható át.",
+  "transformAndValidateErrorTextV2": "Az értéknek érvényes {transformedResultTypeDescription}-nak/-nek kell lennie.",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

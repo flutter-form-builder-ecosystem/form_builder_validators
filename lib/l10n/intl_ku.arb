@@ -1,5 +1,19 @@
 {
   "@@locale": "ku",
+  "andSeparator": " û ",
+  "betweenLengthErrorText": "Nirx divê dirêjahiya wê di navbera {min} û {max} de be, tevlî wan.",
+  "@betweenLengthErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "int",
+        "description": "The minimum length allowed"
+      },
+      "max": {
+        "type": "int",
+        "description": "The maximum length allowed"
+      }
+    }
+  },
   "creditCardErrorText": "ئەم خانە پێویستە ژمارەی کارتی کرێدیتێکی دروست هەبێت.",
   "dateStringErrorText": "ئەم خانە پێویستە دەستپێکی بەروارێکی دروست هەبێت.",
   "emailErrorText": "ئەم خانە پێویستە ناونیشانی ئیمەیڵێکی دروست هەبێت.",
@@ -86,5 +100,125 @@
   "vinErrorText": "Nirxî divê yekem hejmarê VIN derbasdar be.",
   "languageCodeErrorText": "Nirxî divê yekem kodê zimanê derbasdar be.",
   "floatErrorText": "Gerrdê hewce ye ku zêdeya rast bibe.",
-  "hexadecimalErrorText": "Gerrdê hewce ye ku hexa de rast bibe."
+  "hexadecimalErrorText": "Gerrdê hewce ye ku hexa de rast bibe.",
+  "betweenNumErrorText": "Nirx divê {minInclusive, select, true{mezintir an wekhev be ji} other{mezintir be ji}} {min} û {maxInclusive, select, true{kêmtir an wekhev be ji} other{kêmtir be ji}} {max}",
+  "@betweenNumErrorText": {
+    "description": "Error text when a value must be within a specific range",
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum allowed value"
+      },
+      "max": {
+        "type": "num",
+        "description": "The maximum allowed value"
+      },
+      "minInclusive": {
+        "type": "String",
+        "description": "Whether the minimum bound is inclusive"
+      },
+      "maxInclusive": {
+        "type": "String",
+        "description": "Whether the maximum bound is inclusive"
+      }
+    }
+  },
+  "booleanErrorText": "Ev qad pêdivî bi nirxeke rast a boolean e (rast an şaş)",
+  "dateMustBeAfterErrorText": "Dîrok divê piştî {reference} be",
+  "@dateMustBeAfterErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      }
+    }
+  },
+  "dateMustBeBeforeErrorText": "Dîrok divê beriya {reference} be",
+  "@dateMustBeBeforeErrorText": {
+    "placeholders": {
+      "reference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateMustBeBetweenErrorText": "Dîrok divê di navbera {minReference} û {maxReference} de be",
+  "@dateMustBeBetweenErrorText": {
+    "placeholders": {
+      "minReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The minimum date allowed"
+      },
+      "maxReference": {
+        "type": "DateTime",
+        "format": "yMd",
+        "example": "11/10/2021",
+        "description": "The maximum date allowed"
+      }
+    }
+  },
+  "dateTimeErrorText": "Ev qad pêdivî bi dîrokeke derbasdar e",
+  "greaterThanErrorText": "Nirx divê ji {min} mezintir be",
+  "@greaterThanErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "greaterThanOrEqualToErrorText": "Nirx divê ji {min} mezintir an wekhev be",
+  "@greaterThanOrEqualToErrorText": {
+    "placeholders": {
+      "min": {
+        "type": "num",
+        "description": "The minimum value allowed"
+      }
+    }
+  },
+  "isOptionalErrorText": "Ev qad bijarte ye, wekî din, {nextErrorMessage}",
+  "@isOptionalErrorText": {
+    "placeholders": {
+      "nextErrorMessage": {
+        "type": "String",
+        "description": "The error text from the next validator."
+      }
+    }
+  },
+  "isStringErrorText": "Ev qad pêdivî bi rêzekeke derbasdar e",
+  "lessThanErrorText": "Nirx divê ji {max} kêmtir be",
+  "@lessThanErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "lessThanOrEqualToErrorText": "Nirx divê ji {max} kêmtir an wekhev be",
+  "@lessThanOrEqualToErrorText": {
+    "placeholders": {
+      "max": {
+        "type": "num",
+        "description": "The maximum value allowed"
+      }
+    }
+  },
+  "orSeparator": " an ",
+  "transformAndValidateErrorTextV1": "Nirx nikare were veguhertin",
+  "transformAndValidateErrorTextV2": "Nirx divê {transformedResultTypeDescription} ya derbasdar be",
+  "@transformAndValidateErrorTextV2": {
+    "placeholders": {
+      "transformedResultTypeDescription": {
+        "type": "String",
+        "description": "A description for the expected transformed type."
+      }
+    }
+  }
 }

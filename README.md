@@ -418,3 +418,37 @@ Take a look at [our fantastic ecosystem](https://github.com/flutter-form-builder
 ## Thanks to
 
 [All contributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)
+
+
+# API changes draft
+During the process of exploration of new possibilities for the new API, I realized that there are
+basically three layers of validators: required layer, type layer and the specialized layer. Instead of
+repeating the computations for required and type layer for each validator composition, it is possible
+to decouple them, avoiding this redundancy and taking benefits from the Dart compiler.
+    
+During the exploration, I implemented some elementary validators that would make it possible, by
+composition, to create more sophisticated validators. The recipe is simple, start with a (not)required
+validator, add a type validator, and then chain as many specialized validators as you want.
+
+```dart
+// In this example, we build a validator composing a required, with a numeric and then a max.
+// The logic result is: required && numeric && max(70)
+
+final validator = ValidatorBuilder.required(and: <Validator<Object, num>>[
+      ValidatorBuilder.numeric(
+          errorText: 'La edad debe ser numérica.',
+          and: <BaseElementaryValidator<num, dynamic>>[
+            ValidatorBuilder.max(70),
+          ])
+    ]).validate;
+```
+
+I needed to change a little bit the approach. Instead of composing directly the validators as 
+FormFieldValidator's, one level of indirection was necessary, using a ValidatorBuilder instead.
+Thus, we first build the validator and then create the validation method calling validate.
+
+I implemented some examples that are related to some examples from example/main.dart. The new
+API examples are implemented in example/api_refactoring_main.dart. I recorded a video showing the
+execution of the examples and explaining the new api ideas.
+
+Please, give me the necessary feedback for me to continue the work.
