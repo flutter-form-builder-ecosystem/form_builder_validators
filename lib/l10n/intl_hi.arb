@@ -86,5 +86,6 @@
   "vinErrorText": "मान मान्य VIN होना चाहिए।",
   "languageCodeErrorText": "मान मान्य भाषा कोड होना चाहिए।",
   "floatErrorText": "मान्य फ़्लोटिंग पॉइंट नंबर होना चाहिए।",
-  "hexadecimalErrorText": "मान्य हेक्साडेसिमल नंबर होना चाहिए।"
+  "hexadecimalErrorText": "मान्य हेक्साडेसिमल नंबर होना चाहिए।",
+  "profanityErrorText": "मान मान में शामिल नहीं होना चाहिए: {profanity}."
 }

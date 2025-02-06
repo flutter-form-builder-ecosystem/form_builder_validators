@@ -86,5 +86,6 @@
   "vinErrorText": "Valoarea trebuie să fie un VIN valid.",
   "languageCodeErrorText": "Valoarea trebuie să fie un cod de limbă valid.",
   "floatErrorText": "Valoarea trebuie să fie un număr zecimal valid.",
-  "hexadecimalErrorText": "Valoarea trebuie să fie un număr hexadecimal valid."
+  "hexadecimalErrorText": "Valoarea trebuie să fie un număr hexadecimal valid.",
+  "profanityErrorText": "Valoarea nu trebuie să conțină: {profanity}."
 }
