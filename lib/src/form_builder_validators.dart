@@ -3853,6 +3853,51 @@ final class Validators {
       );
 
   // User information validators
+
+  /// {@template validator_email}
+  /// A validator function that checks if a given string is a valid email address.
+  /// Uses either a custom or default RFC 5322 compliant regular expression for validation.
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp?`): Optional custom regular expression for email validation.
+  ///   If not provided, uses a default RFC 5322 compliant pattern that supports:
+  ///   - ASCII characters
+  ///   - Unicode characters (including IDN domains)
+  ///   - Special characters in local part
+  ///   - Quoted strings
+  ///   - Multiple dots
+  ///
+  /// - `emailMsg` (`String Function(String input)?`): Optional custom error message
+  ///   generator function that takes the invalid input and returns a custom error
+  ///   message. If not provided, uses the default localized error text.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the email is valid
+  /// - Returns an error message string if the email is invalid
+  ///
+  /// ## Examples
+  /// Basic usage with default settings:
+  /// ```dart
+  /// final emailValidator = email();
+  /// final result = emailValidator('user@example.com');
+  /// print(result); // null (valid email)
+  /// ```
+  ///
+  /// Using custom regex and error message:
+  /// ```dart
+  /// final customValidator = email(
+  ///   regex: RegExp(r'^[a-zA-Z0-9.]+@company\.com$'),
+  ///   emailMsg: (input) => '$input is not a valid company email',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> email({
+    RegExp? regex,
+    String Function(String input)? emailMsg,
+  }) =>
+      val.email(regex: regex, emailMsg: emailMsg);
+
   /// {@template validator_password}
   /// Creates a composite validator for password validation that enforces multiple
   /// password strength requirements simultaneously.
@@ -3958,50 +4003,6 @@ final class Validators {
     String Function(String input)? phoneNumberMsg,
   }) =>
       val.phoneNumber(regex: regex, phoneNumberMsg: phoneNumberMsg);
-
-  /// {@template validator_email}
-  /// A validator function that checks if a given string is a valid email address.
-  /// Uses either a custom or default RFC 5322 compliant regular expression for validation.
-  ///
-  /// ## Parameters
-  /// - `regex` (`RegExp?`): Optional custom regular expression for email validation.
-  ///   If not provided, uses a default RFC 5322 compliant pattern that supports:
-  ///   - ASCII characters
-  ///   - Unicode characters (including IDN domains)
-  ///   - Special characters in local part
-  ///   - Quoted strings
-  ///   - Multiple dots
-  ///
-  /// - `emailMsg` (`String Function(String input)?`): Optional custom error message
-  ///   generator function that takes the invalid input and returns a custom error
-  ///   message. If not provided, uses the default localized error text.
-  ///
-  /// ## Returns
-  /// Returns a `Validator<String>` function that:
-  /// - Returns `null` if the email is valid
-  /// - Returns an error message string if the email is invalid
-  ///
-  /// ## Examples
-  /// Basic usage with default settings:
-  /// ```dart
-  /// final emailValidator = email();
-  /// final result = emailValidator('user@example.com');
-  /// print(result); // null (valid email)
-  /// ```
-  ///
-  /// Using custom regex and error message:
-  /// ```dart
-  /// final customValidator = email(
-  ///   regex: RegExp(r'^[a-zA-Z0-9.]+@company\.com$'),
-  ///   emailMsg: (input) => '$input is not a valid company email',
-  /// );
-  /// ```
-  /// {@endtemplate}
-  static Validator<String> email({
-    RegExp? regex,
-    String Function(String input)? emailMsg,
-  }) =>
-      val.email(regex: regex, emailMsg: emailMsg);
 
   // Finance validators
   /// {@template validator_credit_card}

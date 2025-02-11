@@ -112,11 +112,11 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Finance validators
 
-- `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
-- `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
-- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
-- `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
-- `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
+- TODO `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
+- TODO `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
+- TODO `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
+- `Validators.creditCard()`: Checks if the field contains a valid credit card number.
+- TODO `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
 
 ### Identity validators
 
@@ -125,7 +125,6 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
 - `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
 - `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
-- `FormBuilderValidators.password()` - requires the field's to be a valid password that matched required conditions.
 - `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
 - `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
 - `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
@@ -134,14 +133,13 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Network validators
 
-- `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
-- `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
-- `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
-- `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
-- `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
-- `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
-- `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
-- `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
+- `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address.
+- `Validators.url()`: Checks if the field contains a properly formatted `Uniform Resource Locators` (URL).
+- TODO `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- TODO `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude. - `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
+- TODO `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
+- TODO `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
+- TODO `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
 
 ### Numeric validators
 
@@ -176,6 +174,13 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - TODO `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
 - TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
+### User Information validators
+
+- `Validators.email()`: Checks if the field contains a valid email.
+- `Validators.password()`: Checks if the field contains a valid password. A password may require some 
+conditions to be met in order to be considered as valid.
+- `Validators.phoneNumber()`: Checks if the field contains a valid phone number.
+
 ### Use-case validators
 
 - `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
@@ -185,7 +190,6 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - `FormBuilderValidators.json()` - requires the field's to be a valid json string.
 - `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
 - `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
-- `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
 - `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
 
 ### Extension method validators
