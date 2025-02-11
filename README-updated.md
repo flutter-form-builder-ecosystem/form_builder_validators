@@ -60,16 +60,12 @@ Also it includes the `l10n` / `i18n` of error text messages to multiple language
 
 ## Validators
 
-This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
+This package comes with several most common `FormFieldValidator`s such as required, numeric, email,
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 
 ### Bool validators
 
-- `FormBuilderValidators.hasLowercaseChars()` - requires the field's to contain a specified number of lowercase characters.
-- `FormBuilderValidators.hasNumericChars()` - requires the field's to contain a specified number of numeric characters.
-- `FormBuilderValidators.hasSpecialChars()` - requires the field's to contain a specified number of special characters.
-- `FormBuilderValidators.hasUppercaseChars()` - requires the field's to contain a specified number of uppercase characters.
 - `FormBuilderValidators.isFalse()` - requires the field's to be false.
 - `FormBuilderValidators.isTrue()` - requires the field's to be true.
 
@@ -163,17 +159,22 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### String validators
 
-- `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
-- `FormBuilderValidators.contains()` - requires the substring to be in the field's value.
-- `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
-- `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- `FormBuilderValidators.matchNot()` - requires the field's value to not match the provided regex pattern.
-- `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
-- `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
-- `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
-- `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
-- `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
-- `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
+- `Validators.contains(substring)` - Checks if the field contains the `substring`.
+- TODO `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
+- TODO `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
+- TODO `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
+- TODO `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
+- `Validators.hasMinUppercaseChars(min:min)` - Checks if the field has a minimum number of uppercase chars.
+- `Validators.hasMinLowercaseChars(min:min)` - Checks if the field has a minimum number of lowercase chars.
+- `Validators.hasMinNumericChars(min:min)` - Checks if the field has a minimum number of numeric chars.
+- `Validators.hasMinSpecialChars(min:min)` - Checks if the field has a minimum number of special chars.
+- `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
+- TODO `FormBuilderValidators.matchNot()` - requires the field's value to not match the provided regex pattern.
+- `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
+- TODO `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
+- TODO `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
+- TODO `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
+- TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
 ### Use-case validators
 
@@ -484,35 +485,3 @@ Take a look at [our fantastic ecosystem](https://github.com/flutter-form-builder
 [All contributors](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/graphs/contributors)
 
 
-# API changes draft
-During the process of exploration of new possibilities for the new API, I realized that there are
-basically three layers of validators: required layer, type layer and the specialized layer. Instead of
-repeating the computations for required and type layer for each validator composition, it is possible
-to decouple them, avoiding this redundancy and taking benefits from the Dart compiler.
-    
-During the exploration, I implemented some elementary validators that would make it possible, by
-composition, to create more sophisticated validators. The recipe is simple, start with a (not)required
-validator, add a type validator, and then chain as many specialized validators as you want.
-
-```dart
-// In this example, we build a validator composing a required, with a numeric and then a max.
-// The logic result is: required && numeric && max(70)
-
-final validator = ValidatorBuilder.required(and: <Validator<Object, num>>[
-      ValidatorBuilder.numeric(
-          errorText: 'La edad debe ser numérica.',
-          and: <BaseElementaryValidator<num, dynamic>>[
-            ValidatorBuilder.max(70),
-          ])
-    ]).validate;
-```
-
-I needed to change a little bit the approach. Instead of composing directly the validators as 
-FormFieldValidator's, one level of indirection was necessary, using a ValidatorBuilder instead.
-Thus, we first build the validator and then create the validation method calling validate.
-
-I implemented some examples that are related to some examples from example/main.dart. The new
-API examples are implemented in example/api_refactoring_main.dart. I recorded a video showing the
-execution of the examples and explaining the new api ideas.
-
-Please, give me the necessary feedback for me to continue the work.

@@ -113,11 +113,11 @@ Validator<String> hasMinSpecialChars({
 
 /// {@macro validator_match}
 Validator<String> match(
-  RegExp regex, {
+  RegExp regExp, {
   String Function(String input)? matchMsg,
 }) {
   return (String input) {
-    return regex.hasMatch(input)
+    return regExp.hasMatch(input)
         ? null
         : matchMsg?.call(input) ??
             FormBuilderLocalizations.current.matchErrorText;
