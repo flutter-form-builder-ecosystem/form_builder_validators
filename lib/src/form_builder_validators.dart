@@ -3060,6 +3060,72 @@ final class Validators {
       val.uuid(regex: regex, uuidMsg: uuidMsg);
 
 // Collection validators
+  /// {@template validator_equal_length}
+  /// Creates a validator function that checks if the input collection's length equals
+  /// the specified length. The validator returns `null` for valid input and an error
+  /// message for invalid input.
+  ///
+  /// If validation fails and no custom error message generator is provided via
+  /// [equalLengthMsg], returns the default localized error message from
+  /// `FormBuilderLocalizations.current.equalLengthErrorText(expectedLength)`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of input to validate. Must be a collection, in other words,
+  /// it must be one of `String`, `Iterable` or `Map`.
+  ///
+  /// ## Parameters
+  /// - `expectedLength` (`int`): The exact length required. Must be non-negative.
+  /// - `equalLengthMsg` (`String Function(T input, int expectedLength)?`): Optional
+  ///   function to generate custom error messages. Receives the input and the
+  ///   expected length, returning an error message string.
+  ///
+  /// ## Return Value
+  /// A `Validator<T>` function that produces:
+  /// - `null` for valid inputs (length == expectedLength)
+  /// - An error message string for invalid inputs (length != expectedLength)
+  ///
+  /// ## Throws
+  /// - `ArgumentError` when:
+  ///   - [expectedLength] is negative
+  ///   - input runtime type is not a collection
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // String validation
+  /// final stringValidator = equalLength<String>(3);
+  /// print(stringValidator('abc')); // Returns null
+  /// print(stringValidator('ab')); // Returns error message
+  /// print(stringValidator('abcd')); // Returns error message
+  ///
+  /// // List validation
+  /// final listValidator = equalLength<List>(2);
+  /// print(listValidator([1, 2])); // Returns null
+  /// print(listValidator([1])); // Returns error message
+  /// print(listValidator([1, 2, 3])); // Returns error message
+  ///
+  /// // Custom error message
+  /// final customValidator = equalLength<String>(
+  ///   5,
+  ///   equalLengthMsg: (_, expectedLength) =>
+  ///     'Text must be exactly $expectedLength chars long!',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Type parameter `T` must be restricted to `String`, `Map`, or `Iterable`.
+  /// While the compiler cannot enforce this restriction, it is the developer's
+  /// responsibility to maintain this constraint.
+  /// - The validator treats non-collection inputs as implementation errors rather
+  /// than validation failures. Validate input types before passing them to
+  /// this validator.
+  /// {@endtemplate}
+  static Validator<T> equalLength<T extends Object>(int expectedLength,
+          {String Function(T input, int expectedLength)? equalLengthMsg}) =>
+      val.equalLength(
+        expectedLength,
+        equalLengthMsg: equalLengthMsg,
+      );
+
   /// {@template validator_min_length}
   /// Creates a validator function that checks if the input collection's length is
   /// greater than or equal to `min`. The validator returns `null` for valid input
@@ -3250,72 +3316,6 @@ final class Validators {
   }) =>
       val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
 
-  /// {@template validator_equal_length}
-  /// Creates a validator function that checks if the input collection's length equals
-  /// the specified length. The validator returns `null` for valid input and an error
-  /// message for invalid input.
-  ///
-  /// If validation fails and no custom error message generator is provided via
-  /// [equalLengthMsg], returns the default localized error message from
-  /// `FormBuilderLocalizations.current.equalLengthErrorText(expectedLength)`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: The type of input to validate. Must be a collection, in other words,
-  /// it must be one of `String`, `Iterable` or `Map`.
-  ///
-  /// ## Parameters
-  /// - `expectedLength` (`int`): The exact length required. Must be non-negative.
-  /// - `equalLengthMsg` (`String Function(T input, int expectedLength)?`): Optional
-  ///   function to generate custom error messages. Receives the input and the
-  ///   expected length, returning an error message string.
-  ///
-  /// ## Return Value
-  /// A `Validator<T>` function that produces:
-  /// - `null` for valid inputs (length == expectedLength)
-  /// - An error message string for invalid inputs (length != expectedLength)
-  ///
-  /// ## Throws
-  /// - `ArgumentError` when:
-  ///   - [expectedLength] is negative
-  ///   - input runtime type is not a collection
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // String validation
-  /// final stringValidator = equalLength<String>(3);
-  /// print(stringValidator('abc')); // Returns null
-  /// print(stringValidator('ab')); // Returns error message
-  /// print(stringValidator('abcd')); // Returns error message
-  ///
-  /// // List validation
-  /// final listValidator = equalLength<List>(2);
-  /// print(listValidator([1, 2])); // Returns null
-  /// print(listValidator([1])); // Returns error message
-  /// print(listValidator([1, 2, 3])); // Returns error message
-  ///
-  /// // Custom error message
-  /// final customValidator = equalLength<String>(
-  ///   5,
-  ///   equalLengthMsg: (_, expectedLength) =>
-  ///     'Text must be exactly $expectedLength chars long!',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - Type parameter `T` must be restricted to `String`, `Map`, or `Iterable`.
-  /// While the compiler cannot enforce this restriction, it is the developer's
-  /// responsibility to maintain this constraint.
-  /// - The validator treats non-collection inputs as implementation errors rather
-  /// than validation failures. Validate input types before passing them to
-  /// this validator.
-  /// {@endtemplate}
-  static Validator<T> equalLength<T extends Object>(int expectedLength,
-          {String Function(T input, int expectedLength)? equalLengthMsg}) =>
-      val.equalLength(
-        expectedLength,
-        equalLengthMsg: equalLengthMsg,
-      );
-
   // DateTime Validators
   /// {@template validator_is_after}
   /// Creates a [DateTime] validator that checks if an input date occurs after
@@ -3475,7 +3475,7 @@ final class Validators {
           maxInclusive: rightInclusive);
 
   // Generic type validators
-  /// {@template validator_contains_element}
+  /// {@template validator_is_in_list}
   /// Creates a validator function that verifies if a given input is in `values`.
   ///
   /// ## Type Parameters
@@ -3485,7 +3485,7 @@ final class Validators {
   /// ## Parameters
   /// - `values` (`List<T>`): A non-empty list of valid values to check against. The input
   ///   will be validated against these values.
-  /// - `containsElementMsg` (`String Function(T input, List<T> values)?`): Optional callback
+  /// - `isInListMsg` (`String Function(T input, List<T> values)?`): Optional callback
   ///   function that generates a custom error message when validation fails. The function
   ///   receives the invalid input and the list of valid values as parameters. If not provided,
   ///   defaults to the localized error text from FormBuilderLocalizations.
@@ -3502,9 +3502,9 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Creating a validator with a custom error message generator
-  /// final countryValidator = containsElement(
+  /// final countryValidator = isInList(
   ///   ['USA', 'Canada', 'Mexico'],
-  ///   containsElementMsg: (input, values) =>
+  ///   isInListMsg: (input, values) =>
   ///     'Country $input is not in allowed list: ${values.join(", ")}',
   /// );
   ///
@@ -3513,11 +3513,11 @@ final class Validators {
   /// final valid = countryValidator('USA');     // Returns null (valid)
   /// ```
   /// {@endtemplate}
-  static Validator<T> containsElement<T extends Object?>(
+  static Validator<T> isInList<T extends Object?>(
     List<T> values, {
-    String Function(T input, List<T> values)? containsElementMsg,
+    String Function(T input, List<T> values)? isInListMsg,
   }) =>
-      val.containsElement(values, containsElementMsg: containsElementMsg);
+      val.isInList(values, isInListMsg: isInListMsg);
 
   /// {@template validator_is_true}
   /// Creates a validator function that checks if a given input represents a `true`
@@ -3624,6 +3624,77 @@ final class Validators {
           isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
 
   // Numeric validators
+  /// {@template validator_between}
+  /// Creates a validator function that checks if a numeric input falls within a specified
+  /// range defined by `min` and `max` values.
+  ///
+  /// ## Type Parameters
+  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+  /// `num` validations
+  ///
+  /// ## Parameters
+  /// - `min` (`T`): The lower bound of the valid range
+  /// - `max` (`T`): The upper bound of the valid range
+  /// - `minInclusive` (`bool`): Determines if the lower bound is inclusive. Defaults to `true`
+  /// - `maxInclusive` (`bool`): Determines if the upper bound is inclusive. Defaults to `true`
+  /// - `betweenMsg` (`String Function(T input, T min, T max, bool minInclusive, bool maxInclusive)?`):
+  ///   Optional custom error message generator that takes the input value, inclusivity flags,
+  ///   and range bounds as parameters
+  ///
+  ///
+  /// ## Returns
+  /// Returns a [Validator] function that:
+  /// - Returns `null` if the input falls within the specified range according to the
+  ///   inclusivity settings
+  /// - Returns an error message string if validation fails, either from the custom
+  ///   `betweenMsg` function or the default localized error text from
+  ///   [FormBuilderLocalizations]
+  ///
+  /// ## Throw
+  /// - `AssertionError`: when `max` is not greater than or equal to `min`.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with inclusive bounds
+  /// final ageValidator = between<int>(18, 65); // [18, 65]
+  ///
+  /// // Exclusive upper bound for decimal values
+  /// final priceValidator = between<double>( // [0.0, 100.0)
+  ///   0.0,
+  ///   100.0,
+  ///   maxInclusive: false,
+  /// );
+  ///
+  /// // Custom error message
+  /// final scoreValidator = between<double>( //
+  ///   0.0,
+  ///   10.0,
+  ///   betweenMsg: (_, min, max, __, ___) =>
+  ///     'Score must be between $min and $max (inclusive)',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The default behavior uses inclusive bounds (`>=` and `<=`)
+  /// {@endtemplate}
+  static Validator<T> between<T extends num>(T min, T max,
+          {bool minInclusive = true,
+          bool maxInclusive = true,
+          String Function(
+            T input,
+            T min,
+            T max,
+            bool minInclusive,
+            bool maxInclusive,
+          )? betweenMsg}) =>
+      val.between(
+        min,
+        max,
+        minInclusive: minInclusive,
+        maxInclusive: maxInclusive,
+        betweenMsg: betweenMsg,
+      );
+
   /// {@template validator_greater_than}
   /// Creates a validator function that checks if a numeric input exceeds `reference`.
   ///
@@ -3780,77 +3851,6 @@ final class Validators {
           {String Function(num input, num reference)? lessThanOrEqualToMsg}) =>
       val.lessThanOrEqualTo(reference,
           lessThanOrEqualToMsg: lessThanOrEqualToMsg);
-
-  /// {@template validator_between}
-  /// Creates a validator function that checks if a numeric input falls within a specified
-  /// range defined by `min` and `max` values.
-  ///
-  /// ## Type Parameters
-  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
-  /// `num` validations
-  ///
-  /// ## Parameters
-  /// - `min` (`T`): The lower bound of the valid range
-  /// - `max` (`T`): The upper bound of the valid range
-  /// - `minInclusive` (`bool`): Determines if the lower bound is inclusive. Defaults to `true`
-  /// - `maxInclusive` (`bool`): Determines if the upper bound is inclusive. Defaults to `true`
-  /// - `betweenMsg` (`String Function(T input, T min, T max, bool minInclusive, bool maxInclusive)?`):
-  ///   Optional custom error message generator that takes the input value, inclusivity flags,
-  ///   and range bounds as parameters
-  ///
-  ///
-  /// ## Returns
-  /// Returns a [Validator] function that:
-  /// - Returns `null` if the input falls within the specified range according to the
-  ///   inclusivity settings
-  /// - Returns an error message string if validation fails, either from the custom
-  ///   `betweenMsg` function or the default localized error text from
-  ///   [FormBuilderLocalizations]
-  ///
-  /// ## Throw
-  /// - `AssertionError`: when `max` is not greater than or equal to `min`.
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic usage with inclusive bounds
-  /// final ageValidator = between<int>(18, 65); // [18, 65]
-  ///
-  /// // Exclusive upper bound for decimal values
-  /// final priceValidator = between<double>( // [0.0, 100.0)
-  ///   0.0,
-  ///   100.0,
-  ///   maxInclusive: false,
-  /// );
-  ///
-  /// // Custom error message
-  /// final scoreValidator = between<double>( //
-  ///   0.0,
-  ///   10.0,
-  ///   betweenMsg: (_, min, max, __, ___) =>
-  ///     'Score must be between $min and $max (inclusive)',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The default behavior uses inclusive bounds (`>=` and `<=`)
-  /// {@endtemplate}
-  static Validator<T> between<T extends num>(T min, T max,
-          {bool minInclusive = true,
-          bool maxInclusive = true,
-          String Function(
-            T input,
-            T min,
-            T max,
-            bool minInclusive,
-            bool maxInclusive,
-          )? betweenMsg}) =>
-      val.between(
-        min,
-        max,
-        minInclusive: minInclusive,
-        maxInclusive: maxInclusive,
-        betweenMsg: betweenMsg,
-      );
 
   // User information validators
 

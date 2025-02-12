@@ -19,7 +19,6 @@ Also it includes the `l10n` / `i18n` of error text messages to multiple language
 
 - [Features](#features)
 - [Validators](#validators)
-  - [Bool validators](#bool-validators)
   - [Collection validators](#collection-validators)
   - [Core validators](#core-validators)
   - [Datetime validators](#datetime-validators)
@@ -64,19 +63,13 @@ This package comes with several most common `FormFieldValidator`s such as requir
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 
-### Bool validators
-
-- `FormBuilderValidators.isFalse()` - requires the field's to be false.
-- `FormBuilderValidators.isTrue()` - requires the field's to be true.
 
 ### Collection validators
 
-- `FormBuilderValidators.containsElement()` - requires the field's to be in the provided list.
-- `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
-- `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum size.
-- `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
-- `FormBuilderValidators.range()` - requires the field's to be within a range.
-- `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
+- `Validators.equalLength(expectedLength)`: Checks if the field contains a collection (must be a `String`, `Iterable`, or `Map`) with length equals `expectedLength`.
+- `Validators.minLength(min)`: Checks if the field contains a collection (must be a `String`, `Iterable`, or `Map`) with length greater than or equal to `min`.
+- `Validators.maxLength(max)`: Checks if the field contains a collection (must be a `String`, `Iterable`, or `Map`) with length less than or equal to `max`.
+- `Validators.betweenLength(min, max)`: Checks if the field contains a collection (must be a `String`, `Iterable`, or `Map`) with length between `min` and `max`, inclusive.
 
 ### Core validators
 
@@ -94,13 +87,12 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Datetime validators
 
-- `FormBuilderValidators.dateFuture()` - requires the field's value to be in the future.
-- `FormBuilderValidators.datePast()` - requires the field's value to be a in the past.
-- `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
-- `FormBuilderValidators.dateTime()` - requires the field's value to be a valid date time.
-- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
-- `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
-- `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
+- `Validators.isAfter(reference)`: Checks if the field contains a `DateTime` that is after `reference`.
+- `Validators.isBefore(reference)`: Checks if the field contains a `DateTime` that is before `reference`.
+- `Validators.isDateTimeBetween(minReference, maxReference)`: Checks if the field contains a `DateTime` that is after `minReference` and before `maxReference`.
+- TODO `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
+- TODO `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
+- TODO `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
 
 ### File validators
 
@@ -117,6 +109,13 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - TODO `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
 - `Validators.creditCard()`: Checks if the field contains a valid credit card number.
 - TODO `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
+
+### Generic Type Validators
+Validators that check a generic type user input.
+
+- `Validators.isInList(values)`: Checks if the field contains a value that is in the list `values`.
+- `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
+- `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
 
 ### Identity validators
 
@@ -143,17 +142,20 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Numeric validators
 
-- `FormBuilderValidators.between()` - requires the field's to be between two numbers.
-- `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
-- `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-- `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
-- `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
-- `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
-- `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
-- `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
-- `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
-- `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
-- `FormBuilderValidators.prime()` - requires the field's to be a prime number.
+- `Validators.between(min, max)`: Checks if the field contains a number that is in the range [min, max].
+- `Validators.greaterThan(reference)`: Checks if the field contains a number that is greater than `reference`.
+- `Validators.greaterThanOrEqualTo(reference)`: Checks if the field contains a number that is greater than or equal to `reference`.
+- `Validators.lessThan(reference)`: Checks if the field contains a number that is less than `reference`.
+- `Validators.lessThanOrEqualTo(reference)`: Checks if the field contains a number that is less than or equal to `reference`.
+- TODO `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
+- TODO `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
+- TODO `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
+- TODO `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
+- TODO `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
+- TODO `FormBuilderValidators.prime()` - requires the field's to be a prime number.
+
+### Path Validators
+- `Validators.matchesAllowedExtensions(extensions)`: Checks if the field contains a `String` that is in the list `extensions`.
 
 ### String validators
 
@@ -173,6 +175,9 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 - TODO `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
 - TODO `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
 - TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
+
+### Type Validators
+- `Validators. TODO checkpoint`
 
 ### User Information validators
 
