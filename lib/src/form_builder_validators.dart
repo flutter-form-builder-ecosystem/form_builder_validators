@@ -2075,53 +2075,6 @@ final class Validators {
   ]) =>
       val.isRequired(next, isRequiredMsg);
 
-  /// {@template validator_validate_with_default}
-  /// Creates a validator function that applies a default value before validation,
-  /// making sure the `next` validator will always receive a non-null input.
-  ///
-  /// This function generates a new validator that first replaces null input
-  /// with a specified default value, then applies `next` validator.
-  ///
-  /// ## Type Parameters
-  /// - `T`: The non-nullable version of the type of the input being validated.
-  /// It must extend from `Object`.
-  ///
-  /// ## Parameters
-  /// - `defaultValue` (`T`): The fallback non-null value to use when input is null.
-  /// - `next` (`Validator<T>`): The validation function to apply after the default
-  ///   value has been potentially substituted.
-  ///
-  /// ## Returns
-  /// Returns a new `Validator<T?>` function that accepts nullable input and
-  /// produces validation results based on the combined default value substitution
-  /// and validation logic. The returned validator is a function that:
-  /// - Returns null if the value, potentially replaced with the default, passes
-  /// the `next` validation
-  /// - Returns an error message string if validation fails
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Create a validator that requires a minimum length of 3
-  /// final minLength = (String value) =>
-  ///     value.length >= 3 ? null : 'Must be at least 3 characters';
-  ///
-  /// // Wrap it with a default value of 'N/A'
-  /// final defaultValue = 'default value';
-  /// final validator = validateWithDefault('N/A', minLength);
-  ///
-  /// print(validator(null));      // Returns null (valid)
-  /// print(validator('ab'));      // Returns 'Must be at least 3 characters'
-  /// print(validator('abc'));     // Returns null (valid)
-  /// // Equivalent to:
-  /// print(minLength(null ?? defaultValue));      // Returns null (valid)
-  /// print(minLength('ab' ?? defaultValue));      // Returns 'Must be at least 3 characters'
-  /// print(minLength('abc' ?? defaultValue));      // Returns null (valid)
-  /// ```
-  /// {@endtemplate}
-  static Validator<T?> validateWithDefault<T extends Object>(
-          T defaultValue, Validator<T> next) =>
-      val.validateWithDefault(defaultValue, next);
-
   /// {@template validator_is_optional}
   /// Creates a validator function that makes a field optional while allowing additional validation
   /// rules. This validator is particularly useful in form validation scenarios where certain
@@ -2178,6 +2131,53 @@ final class Validators {
     String Function(T input, String nextErrorMsg)? isOptionalMsg,
   ]) =>
       val.isOptional(next, isOptionalMsg);
+
+  /// {@template validator_validate_with_default}
+  /// Creates a validator function that applies a default value before validation,
+  /// making sure the `next` validator will always receive a non-null input.
+  ///
+  /// This function generates a new validator that first replaces null input
+  /// with a specified default value, then applies `next` validator.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The non-nullable version of the type of the input being validated.
+  /// It must extend from `Object`.
+  ///
+  /// ## Parameters
+  /// - `defaultValue` (`T`): The fallback non-null value to use when input is null.
+  /// - `next` (`Validator<T>`): The validation function to apply after the default
+  ///   value has been potentially substituted.
+  ///
+  /// ## Returns
+  /// Returns a new `Validator<T?>` function that accepts nullable input and
+  /// produces validation results based on the combined default value substitution
+  /// and validation logic. The returned validator is a function that:
+  /// - Returns null if the value, potentially replaced with the default, passes
+  /// the `next` validation
+  /// - Returns an error message string if validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Create a validator that requires a minimum length of 3
+  /// final minLength = (String value) =>
+  ///     value.length >= 3 ? null : 'Must be at least 3 characters';
+  ///
+  /// // Wrap it with a default value of 'N/A'
+  /// final defaultValue = 'default value';
+  /// final validator = validateWithDefault('N/A', minLength);
+  ///
+  /// print(validator(null));      // Returns null (valid)
+  /// print(validator('ab'));      // Returns 'Must be at least 3 characters'
+  /// print(validator('abc'));     // Returns null (valid)
+  /// // Equivalent to:
+  /// print(minLength(null ?? defaultValue));      // Returns null (valid)
+  /// print(minLength('ab' ?? defaultValue));      // Returns 'Must be at least 3 characters'
+  /// print(minLength('abc' ?? defaultValue));      // Returns null (valid)
+  /// ```
+  /// {@endtemplate}
+  static Validator<T?> validateWithDefault<T extends Object>(
+          T defaultValue, Validator<T> next) =>
+      val.validateWithDefault(defaultValue, next);
 
   // Transform Validator
 

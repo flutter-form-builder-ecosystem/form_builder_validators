@@ -73,22 +73,40 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### Core validators
 
-- `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
-- `FormBuilderValidators.compose()` - runs each validator against the value provided.
-- `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
-- `FormBuilderValidators.defaultValue()` - runs the validator using the default value when the provided value is null.
-- `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
-- `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
-- `FormBuilderValidators.notEqual()` - requires the field's value to be not equal to the provided object.
-- `FormBuilderValidators.or()` - runs each validator against the value provided and passes when any works.
-- `FormBuilderValidators.required()` - requires the field to have a non-empty value.
-- `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
-- `FormBuilderValidators.transform()` - transforms the value before running the validator.
+#### Composition validators
+
+- `Validators.and(validators)`: Validates the field by requiring it to pass all validators in the provided list of validators: `validators`.
+- `Validators.or(validators)`: Validates the field by requiring it to pass at least one of the validators in the provided list of validators: `validators`.
+ 
+#### Conditional validators
+
+- `Validators.validateIf(condition, v)`: Validates the field with validator `v` only if `condition` is `true`.
+- `Validators.skipIf(condition, v)`: Validates the field with validator `v` only if `condition` is `false`.
+
+#### Debug print validator
+- `Validators.debugPrintValidator()`: Print, for debug purposes, the user input value.
+ 
+#### Equality validators
+
+TODO remove every verb `is` from the name of the validators. 
+- `Validators.isEqual(value)`: Checks if the field contains an input that is equal to `value` (==).
+- `Validators.isNotEqual(value)`: Checks if the field contains an input that is not equal to `value` (!=).
+ 
+#### Required validators
+
+- `Validators.isRequired(next)`: Makes the field required by checking if it contains a non-null and non-empty value, passing it to the `next` validator as a not-nullable type.
+- `Validators.isOptional(next)`: Makes the field optional by passing it to the `next` validator if it contains a non-null and non-empty value. If the field is null or empty, null is returned.
+- `Validators.validateWithDefault(defaultValue, next)`: Validates the field with `next` validator. If the input is null, it uses the `defaultValue` instead.
+
+#### Transform validators
+
+- `Validators.transformAndValidate<IN, OUT>(transformFunction, next:next)`: Transforms an input from `IN` type to `OUT` type through the function `transformFunction` and pass it to the `next` validator.
 
 ### Datetime validators
 
 - `Validators.isAfter(reference)`: Checks if the field contains a `DateTime` that is after `reference`.
 - `Validators.isBefore(reference)`: Checks if the field contains a `DateTime` that is before `reference`.
+TODO replace isDateTimeBetween with betweenDateTime
 - `Validators.isDateTimeBetween(minReference, maxReference)`: Checks if the field contains a `DateTime` that is after `minReference` and before `maxReference`.
 - TODO `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
 - TODO `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
@@ -96,11 +114,11 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 
 ### File validators
 
-- `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
-- `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
-- `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
-- `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
-- `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
+- TODO `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
+- TODO `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
+- TODO `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
+- TODO `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
+- TODO `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
 
 ### Finance validators
 
@@ -117,19 +135,17 @@ Validators that check a generic type user input.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
 
-### Identity validators
+### Miscellaneous validators
 
-- `FormBuilderValidators.city()` - requires the field's value to be a valid city name.
-- `FormBuilderValidators.country()` - requires the field's value to be a valid country name.
-- `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
-- `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
-- `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
-- `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
-- `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
-- `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
-- `FormBuilderValidators.username()` - requires the field's to be a valid username that matched required conditions.
-- `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
-
+- TODO `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
+- TODO `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
+- TODO `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
+- TODO `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
+- TODO `FormBuilderValidators.json()` - requires the field's to be a valid json string.
+- TODO `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
+- TODO `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
+- TODO `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
+ 
 ### Network validators
 
 - `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address.
@@ -190,30 +206,16 @@ Validators that check a generic type user input.
 - `Validators.password()`: Checks if the field contains a valid password. A password may require some 
 conditions to be met in order to be considered as valid.
 - `Validators.phoneNumber()`: Checks if the field contains a valid phone number.
-
-### Use-case validators
-
-- `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
-- `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-- `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
-- `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
-- `FormBuilderValidators.json()` - requires the field's to be a valid json string.
-- `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
-- `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
-- `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
-
-### Extension method validators
-
-Used for chaining and combining multiple validators.
-
-- `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
-- `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
-- `FormBuilderValidator.when()` - Adds a condition to apply the validator only if the condition is met.
-- `FormBuilderValidator.unless()` - Adds a condition to apply the validator only if the condition is not met.
-- `FormBuilderValidator.transform()` - Transforms the value before applying the validator.
-- `FormBuilderValidator.skipWhen()` - Skips the validator if the condition is met.
-- `FormBuilderValidator.log()` - Logs the value during the validation process.
-- `FormBuilderValidator.withErrorMessage()` - Overrides the error message of the current validator.
+- TODO `FormBuilderValidators.city()` - requires the field's value to be a valid city name.
+- TODO `FormBuilderValidators.country()` - requires the field's value to be a valid country name.
+- TODO `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
+- TODO `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
+- TODO `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
+- TODO `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
+- TODO `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
+- TODO `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
+- TODO `FormBuilderValidators.username()` - requires the field's to be a valid username that matched required conditions.
+- TODO `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
 
 ## Supported languages
 
@@ -294,11 +296,11 @@ return MaterialApp(
 
 ### Basic use
 
-```Dart
+```dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Name'),
     autovalidateMode: AutovalidateMode.always,
-    validator: FormBuilderValidators.required(),
+    validator: Validators.isRequired(),
 ),
 ```
 
@@ -314,6 +316,7 @@ On validation, each validator is run, and if any validator returns a non-null va
 
 Example:
 
+TODO update this example (checkpoint)
 ```Dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Age'),
