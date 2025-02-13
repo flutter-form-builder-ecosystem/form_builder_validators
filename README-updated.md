@@ -177,7 +177,12 @@ Validators that check a generic type user input.
 - TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
 ### Type Validators
-- `Validators. TODO checkpoint`
+- `Validators.isString(next)`: Checks if the field contains a valid `String` and passes the input as `String` to the `next` validator.
+- `Validators.isInt(next)`: Checks if the field contains a valid `int` or parsable `String` to `int` and passes the input as `int` to the `next` validator.
+- `Validators.isDouble(next)`: Checks if the field contains a valid `double` or parsable `String` to `double` and passes the input as `double` to the `next` validator.
+- `Validators.isNum(next)`: Checks if the field contains a valid `num` or parsable `String` to `num` and passes the input as `num` to the `next` validator.
+- `Validators.isBool(next)`: Checks if the field contains a valid `bool` or parsable `String` to `bool` and passes the input as `bool` to the `next` validator.
+- `Validators.isDateTime(next)`: Checks if the field contains a valid `DateTime` or parsable `String` to `DateTime` and passes the input as `DateTime` to the `next` validator.
 
 ### User Information validators
 
