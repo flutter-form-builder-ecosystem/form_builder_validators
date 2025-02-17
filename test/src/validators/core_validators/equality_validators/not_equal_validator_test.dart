@@ -7,7 +7,7 @@ class _CustomClass {}
 void main() {
   final _CustomClass myObject = _CustomClass();
 
-  group('Validator: isEqual', () {
+  group('Validator: notEqual', () {
     final List<
         ({
           String description,
@@ -22,58 +22,61 @@ void main() {
     })>[
       // Edge cases
       (
-        description: 'Should match the null',
+        description: 'Should pass when the input is not null',
         referenceValue: null,
-        userInput: null,
+        userInput: 123,
         testFails: false
       ),
       (
-        description: 'Should not match the null',
+        description: 'Should fail when the value is null',
         referenceValue: null,
-        userInput: 123,
+        userInput: null,
         testFails: true
       ),
       (
-        description: 'Should match the empty string',
+        description: 'Should pass when the input is not the empty string',
         referenceValue: '',
-        userInput: '',
+        userInput: '\t',
         testFails: false
       ),
       (
-        description: 'Should not match the empty string',
+        description: 'Should fail when the value is the empty string',
         referenceValue: '',
-        userInput: ' ',
+        userInput: '',
         testFails: true
       ),
       // Domain cases
       (
-        description: 'Should match the integer 123',
+        description: 'Should pass when the input is not the integer 123',
         referenceValue: 123,
-        userInput: 123,
+        userInput: 122,
         testFails: false
       ),
       (
-        description: 'Should match the string "Hello, World!"',
+        description:
+            'Should pass when the input is not the string "Hello, World!"',
+        referenceValue: 'Hello, World!',
+        userInput: 'Hello, World',
+        testFails: false
+      ),
+      (
+        description: 'Should fail when the input is "Hello, World!"',
         referenceValue: 'Hello, World!',
         userInput: 'Hello, World!',
-        testFails: false
-      ),
-      (
-        description: 'Should not match the string "Hello, World!"',
-        referenceValue: 'Hello, World!',
-        userInput: 'Hello, World!\n',
         testFails: true
       ),
       (
-        description: 'Should match a custom class object',
+        description:
+            'Should pass when the input is not the same as a custom object',
         referenceValue: myObject,
-        userInput: myObject,
+        userInput: _CustomClass(),
         testFails: false
       ),
       (
-        description: 'Should not match a custom class object',
+        description:
+            'Should fail when the input is the same as a custom class object',
         referenceValue: myObject,
-        userInput: _CustomClass(),
+        userInput: myObject,
         testFails: true
       ),
     ];
@@ -85,13 +88,13 @@ void main() {
           testFails: bool testFails
         ) in testCases) {
       test(desc, () {
-        final Validator<Object?> v = isEqual(referenceValue);
+        final Validator<Object?> v = notEqual(referenceValue);
 
         expect(
             v(userInput),
             testFails
                 ? equals(FormBuilderLocalizations.current
-                    .equalErrorText(referenceValue.toString()))
+                    .notEqualErrorText(referenceValue.toString()))
                 : isNull);
       });
     }
@@ -100,13 +103,13 @@ void main() {
       const String ref = 'hello';
       const String customErrorMessage = 'custom error';
       final Validator<Object> v =
-          isEqual(ref, isEqualMsg: (_, __) => customErrorMessage);
+          notEqual(ref, notEqualMsg: (_, __) => customErrorMessage);
 
       // success
-      expect(v(ref), isNull);
+      expect(v(123), isNull);
 
       // failure
-      expect(v(123), customErrorMessage);
+      expect(v(ref), customErrorMessage);
     });
   });
 }

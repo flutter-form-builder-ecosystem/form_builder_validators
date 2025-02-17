@@ -1738,6 +1738,8 @@ class FormBuilderValidators {
       ).validate;
 }
 
+//********************************* NEW API ********************************************************************************
+
 /// A class that is used as an aggregator/namespace for all the available
 /// validators in this package.
 final class Validators {
@@ -1930,7 +1932,7 @@ final class Validators {
       val.debugPrintValidator(next: next, logOnInput: logOnInput);
 
   // Equality validators
-  /// {@template validator_is_equal}
+  /// {@template validator_equal}
   /// Creates a validator that checks if a given input matches `referenceValue`
   /// using the equality (`==`) operator.
   ///
@@ -1938,7 +1940,7 @@ final class Validators {
   /// ## Parameters
   /// - `referenceValue` (`T`): The value to compare against the input. This serves as
   ///   the reference for equality checking.
-  /// - `isEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+  /// - `equalMsg` (`String Function(T input, T referenceValue)?`): Optional
   /// custom error message generator. Takes the `input` and the `referenceValue`
   /// as parameters and returns a custom error message.
   ///
@@ -1955,14 +1957,14 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage for password confirmation
-  /// final confirmAction = isEqual('Type this to confirm the action');
+  /// final confirmAction = Validator.equal('Type this to confirm the action');
   /// assert(confirmAction('Type this to confirm the action') == null); // null returned (validation passes)
   /// assert(confirmAction(12345) != null); // Error message returned
   ///
   /// // Using custom error message
-  /// final specificValueValidator = isEqual<int>(
+  /// final specificValueValidator = Validator.equal<int>(
   ///   42,
-  ///   isEqualMsg: (_, value) => 'Value must be exactly $value',
+  ///   equalMsg: (_, value) => 'Value must be exactly $value',
   /// );
   /// ```
   ///
@@ -1972,20 +1974,20 @@ final class Validators {
   /// - The error message uses the string representation of the value via
   ///   `toString()`, which might not be ideal for all types.
   /// {@endtemplate}
-  static Validator<T> isEqual<T extends Object?>(
+  static Validator<T> equal<T extends Object?>(
     T value, {
-    String Function(T input, T referenceValue)? isEqualMsg,
+    String Function(T input, T referenceValue)? equalMsg,
   }) =>
-      val.isEqual(value, isEqualMsg: isEqualMsg);
+      val.equal(value, equalMsg: equalMsg);
 
-  /// {@template validator_is_not_equal}
+  /// {@template validator_not_equal}
   /// Creates a validator that checks if a given input is not equal to
   /// `referenceValue` using the not-equal (`!=`) operator.
   ///
   /// ## Parameters
   /// - `referenceValue` (`T`): The reference value to compare against. Input must
   /// not equal this value to pass validation.
-  /// - `isNotEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+  /// - `notEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
   /// custom error message generator. Takes the `input` and the `referenceValue`
   /// as parameters and returns a custom error message.
   ///
@@ -2001,14 +2003,14 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage with strings
-  /// final validator = isNotEqual<String>('reserved');
+  /// final validator = Validators.notEqual<String>('reserved');
   /// assert(validator('not-reserved') == null); // null (validation passes)
   /// assert(validator('reserved') != null); // "Value must not be equal to reserved"
   ///
   /// // Custom error message
-  /// final customValidator = isNotEqual<int>(
+  /// final customValidator = Validators.notEqual<int>(
   ///   42,
-  ///   isNotEqualMsg: (_, value) => 'Please choose a number other than $value',
+  ///   notEqualMsg: (_, value) => 'Please choose a number other than $value',
   /// );
   /// ```
   ///
@@ -2018,13 +2020,14 @@ final class Validators {
   /// - The error message uses the string representation of the value via
   ///   `toString()`, which might not be ideal for all types
   /// {@endtemplate}
-  static Validator<T> isNotEqual<T extends Object?>(
+  static Validator<T> notEqual<T extends Object?>(
     T value, {
-    String Function(T input, T referenceValue)? isNotEqualMsg,
+    String Function(T input, T referenceValue)? notEqualMsg,
   }) =>
-      val.isNotEqual(value, isNotEqualMsg: isNotEqualMsg);
+      val.notEqual(value, notEqualMsg: notEqualMsg);
 
   // Required validators
+  // TODO remove verb 'is' from validators
   /// {@template validator_is_required}
   /// Generates a validator function that enforces required field validation for
   /// form inputs. This validator ensures that a field has a non-null, non-empty

@@ -138,7 +138,7 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Equal Field',
                   prefixIcon: Icon(Icons.check),
                 ),
-                validator: V.isEqual('test'),
+                validator: V.equal('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
