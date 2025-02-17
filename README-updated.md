@@ -21,15 +21,23 @@ Also it includes the `l10n` / `i18n` of error text messages to multiple language
 - [Validators](#validators)
   - [Collection validators](#collection-validators)
   - [Core validators](#core-validators)
+    - [Composition validators](#composition-validators)
+    - [Conditional validators](#conditional-validators)
+    - [Debug print validator](#debug-print-validator)
+    - [Equality validators](#equality-validators)
+    - [Required validators](#required-validators)
+    - [Transform validators](#transform-validators)
   - [Datetime validators](#datetime-validators)
   - [File validators](#file-validators)
   - [Finance validators](#finance-validators)
-  - [Identity validators](#identity-validators)
+  - [Generic type validators](#generic-type-validators)
+  - [Miscellaneous validators](#miscellaneous-validators)
   - [Network validators](#network-validators)
   - [Numeric validators](#numeric-validators)
+  - [Path validators](#path-validators)
   - [String validators](#string-validators)
-  - [Use-case validators](#use-case-validators)
-  - [Extension method validators](#extension-method-validators)
+  - [Type validators](#type-validators)
+  - [User information validators](#user-information-validators)
 - [Supported languages](#supported-languages)
 - [Use](#use)
   - [Setup](#setup)
@@ -40,7 +48,7 @@ Also it includes the `l10n` / `i18n` of error text messages to multiple language
 - [Migrations](#migrations)
   - [v7 to v8](#v7-to-v8)
   - [v10 to 11](#v10-to-v11)
-- [How does this package works](#how-this-package-works)
+- [How this package works](#how-this-package-works)
 - [Support](#support)
   - [Contribute](#contribute)
     - [Add new supported language](#add-new-supported-language)
@@ -61,6 +69,14 @@ Also it includes the `l10n` / `i18n` of error text messages to multiple language
 
 This package comes with several most common `FormFieldValidator`s such as required, numeric, email,
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
+
+Generally, the validators are separated in three main groups:
+1. Required validators: makes a field optional or required.
+2. Type validators: checks the type of the field.
+3. Other validators: makes other types of checking.
+
+Generally, we build a validator composing those three types in the following way:
+<requiredValidator>(<typeValidator>(<otherValidator>()))
 
 
 
