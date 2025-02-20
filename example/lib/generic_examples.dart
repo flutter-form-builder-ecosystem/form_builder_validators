@@ -25,7 +25,7 @@ class GenericExamplesPage extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
                 validator: V.required(V.and(<Validator<String>>[
-                  V.isNum(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
+                  V.num(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
                   /// Include your own custom `FormFieldValidator` function, if you want
                   /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
@@ -59,7 +59,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.numbers),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.required(V.isNum()),
+                validator: V.required(V.num()),
                 autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -117,7 +117,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_neg_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.required(V.isNum(V.greaterThan(10))),
+                validator: V.required(V.num(V.greaterThan(10))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -128,7 +128,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_plus_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.required(V.isNum(V.lessThan(100))),
+                validator: V.required(V.num(V.lessThan(100))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -233,7 +233,7 @@ class GenericExamplesPage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: V.required(
-                    V.isNum(V.and(<Validator<num>>[V.between(0, 120)]))),
+                    V.num(V.and(<Validator<num>>[V.between(0, 120)]))),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),

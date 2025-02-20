@@ -100,7 +100,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'YYYY-MM-DD',
                     prefixIcon: Icon(Icons.calendar_today),
                   ),
-                  validator: V.required(V.isDateTime(V.isBefore(DateTime.now(),
+                  validator: V.required(V.dateTime(V.isBefore(DateTime.now(),
                       isBeforeMsg: (_, __) => 'Date must be in the past.'))),
                   keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.next,
@@ -126,7 +126,7 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.height),
                     suffixText: 'm',
                   ),
-                  validator: V.required(V.isNum(V.between(0.5, 2.5,
+                  validator: V.required(V.num(V.between(0.5, 2.5,
                       betweenMsg: (_, num min, num max, __, ___) =>
                           'Please enter a realistic height [$min-${max}m]'))),
                   keyboardType: TextInputType.number,
@@ -141,7 +141,7 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.monitor_weight),
                     suffixText: 'kg',
                   ),
-                  validator: V.optional(V.isNum(V.between(20, 300,
+                  validator: V.optional(V.num(V.between(20, 300,
                       betweenMsg: (_, num min, num max, ____, _____) =>
                           'weight must be in [$min, ${max}kg]'))),
                   keyboardType: TextInputType.number,

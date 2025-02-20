@@ -12,9 +12,9 @@ void main() {
   String? isLaterThan1995(DateTime input) =>
       input.year > 1995 ? null : errorMsg;
 
-  group('Validator: isString', () {
+  group('Validator: string', () {
     test('Should only check if the input is a String', () {
-      final Validator<Object> v = isString();
+      final Validator<Object> v = string();
 
       expect(
           v(123), equals(FormBuilderLocalizations.current.isStringErrorText));
@@ -24,7 +24,7 @@ void main() {
     });
     test('Should check if the input is a String with length greater than 3',
         () {
-      final Validator<Object> v = isString(hasLengthGreaterThan3);
+      final Validator<Object> v = string(hasLengthGreaterThan3);
 
       expect(
           v(123), equals(FormBuilderLocalizations.current.isStringErrorText));
@@ -34,7 +34,7 @@ void main() {
     });
     test('Should check if the input is a String with using custom error', () {
       const String customError = 'custom error';
-      final Validator<Object> v = isString(null, (_) => customError);
+      final Validator<Object> v = string(null, (_) => customError);
 
       expect(v(123), equals(customError));
       expect(v('1234'), isNull);
@@ -230,10 +230,10 @@ void main() {
     });
   });
 
-  group('Validator: isDateTime', () {
+  group('Validator: dateTime', () {
     test('Should only check if the input is an DateTime/parsable to DateTime',
         () {
-      final Validator<Object> v = isDateTime();
+      final Validator<Object> v = dateTime();
 
       expect(v('not an DateTime'),
           equals(FormBuilderLocalizations.current.dateTimeErrorText));
@@ -318,7 +318,7 @@ void main() {
     });
     test('Should check if the input is a DateTime with year later than 1995',
         () {
-      final Validator<Object> v = isDateTime(isLaterThan1995);
+      final Validator<Object> v = dateTime(isLaterThan1995);
 
       expect(v('not a datetime'),
           equals(FormBuilderLocalizations.current.dateTimeErrorText));
@@ -327,7 +327,7 @@ void main() {
 
     test('Should check if the input is a DateTime using custom error', () {
       const String customError = 'custom error';
-      final Validator<Object> v = isDateTime(null, (_) => customError);
+      final Validator<Object> v = dateTime(null, (_) => customError);
 
       expect(v('not datetime'), equals(customError));
       expect(v('1289-02-12'), isNull);
