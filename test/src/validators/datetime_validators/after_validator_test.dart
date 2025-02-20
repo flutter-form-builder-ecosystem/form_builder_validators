@@ -7,7 +7,7 @@ void main() {
   setUpAll(() async {
     await initializeDateFormatting('en', null);
   });
-  group('Validator: isAfter', () {
+  group('Validator: after', () {
     test('Validation for the year 1994', () {
       final DateTime reference = DateTime(1994);
       final DateTime eq = reference.copyWith();
@@ -16,7 +16,7 @@ void main() {
       final DateTime before1Year = DateTime(1993);
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
-      final Validator<DateTime> v = isAfter(reference);
+      final Validator<DateTime> v = after(reference);
       final String errorMsg =
           FormBuilderLocalizations.current.dateMustBeAfterErrorText(reference);
 
@@ -56,7 +56,7 @@ void main() {
       final DateTime before1Year = reference.copyWith(year: 2088);
       final DateTime before1Sec =
           reference.subtract(const Duration(seconds: 1));
-      final Validator<DateTime> v = isAfter(reference, inclusive: true);
+      final Validator<DateTime> v = after(reference, inclusive: true);
       final String errorMsg =
           FormBuilderLocalizations.current.dateMustBeAfterErrorText(reference);
 
@@ -93,7 +93,7 @@ void main() {
       const String errorMsg = 'error msg';
       final DateTime reference = DateTime(2);
       final Validator<DateTime> v =
-          isAfter(reference, isAfterMsg: (_, __) => errorMsg);
+          after(reference, afterMsg: (_, __) => errorMsg);
 
       expect(
         v(reference.copyWith()),
