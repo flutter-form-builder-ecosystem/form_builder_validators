@@ -104,14 +104,13 @@ Generally, we build a validator composing those three types in the following way
  
 #### Equality validators
 
-TODO remove every verb `is` from the name of the validators. 
-- `Validators.isEqual(value)`: Checks if the field contains an input that is equal to `value` (==).
-- `Validators.isNotEqual(value)`: Checks if the field contains an input that is not equal to `value` (!=).
+- `Validators.equal(value)`: Checks if the field contains an input that is equal to `value` (==).
+- `Validators.notEqual(value)`: Checks if the field contains an input that is not equal to `value` (!=).
  
 #### Required validators
 
-- `Validators.isRequired(next)`: Makes the field required by checking if it contains a non-null and non-empty value, passing it to the `next` validator as a not-nullable type.
-- `Validators.isOptional(next)`: Makes the field optional by passing it to the `next` validator if it contains a non-null and non-empty value. If the field is null or empty, null is returned.
+- `Validators.required(next)`: Makes the field required by checking if it contains a non-null and non-empty value, passing it to the `next` validator as a not-nullable type.
+- `Validators.optional(next)`: Makes the field optional by passing it to the `next` validator if it contains a non-null and non-empty value. If the field is null or empty, null is returned.
 - `Validators.validateWithDefault(defaultValue, next)`: Validates the field with `next` validator. If the input is null, it uses the `defaultValue` instead.
 
 #### Transform validators
@@ -120,10 +119,9 @@ TODO remove every verb `is` from the name of the validators.
 
 ### Datetime validators
 
-- `Validators.isAfter(reference)`: Checks if the field contains a `DateTime` that is after `reference`.
-- `Validators.isBefore(reference)`: Checks if the field contains a `DateTime` that is before `reference`.
-TODO replace isDateTimeBetween with betweenDateTime
-- `Validators.isDateTimeBetween(minReference, maxReference)`: Checks if the field contains a `DateTime` that is after `minReference` and before `maxReference`.
+- `Validators.after(reference)`: Checks if the field contains a `DateTime` that is after `reference`.
+- `Validators.before(reference)`: Checks if the field contains a `DateTime` that is before `reference`.
+- `Validators.betweenDateTime(minReference, maxReference)`: Checks if the field contains a `DateTime` that is after `minReference` and before `maxReference`.
 - TODO `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
 - TODO `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
 - TODO `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
@@ -147,7 +145,7 @@ TODO replace isDateTimeBetween with betweenDateTime
 ### Generic Type Validators
 Validators that check a generic type user input.
 
-- `Validators.isInList(values)`: Checks if the field contains a value that is in the list `values`.
+- `Validators.inList(values)`: Checks if the field contains a value that is in the list `values`.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
 
@@ -209,12 +207,12 @@ Validators that check a generic type user input.
 - TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
 
 ### Type Validators
-- `Validators.isString(next)`: Checks if the field contains a valid `String` and passes the input as `String` to the `next` validator.
-- `Validators.isInt(next)`: Checks if the field contains a valid `int` or parsable `String` to `int` and passes the input as `int` to the `next` validator.
-- `Validators.isDouble(next)`: Checks if the field contains a valid `double` or parsable `String` to `double` and passes the input as `double` to the `next` validator.
-- `Validators.isNum(next)`: Checks if the field contains a valid `num` or parsable `String` to `num` and passes the input as `num` to the `next` validator.
-- `Validators.isBool(next)`: Checks if the field contains a valid `bool` or parsable `String` to `bool` and passes the input as `bool` to the `next` validator.
-- `Validators.isDateTime(next)`: Checks if the field contains a valid `DateTime` or parsable `String` to `DateTime` and passes the input as `DateTime` to the `next` validator.
+- `Validators.string(next)`: Checks if the field contains a valid `String` and passes the input as `String` to the `next` validator.
+- `Validators.int(next)`: Checks if the field contains a valid `int` or parsable `String` to `int` and passes the input as `int` to the `next` validator.
+- `Validators.double(next)`: Checks if the field contains a valid `double` or parsable `String` to `double` and passes the input as `double` to the `next` validator.
+- `Validators.num(next)`: Checks if the field contains a valid `num` or parsable `String` to `num` and passes the input as `num` to the `next` validator.
+- `Validators.bool(next)`: Checks if the field contains a valid `bool` or parsable `String` to `bool` and passes the input as `bool` to the `next` validator.
+- `Validators.dateTime(next)`: Checks if the field contains a valid `DateTime` or parsable `String` to `DateTime` and passes the input as `DateTime` to the `next` validator.
 
 ### User Information validators
 
@@ -316,7 +314,7 @@ return MaterialApp(
 TextFormField(
     decoration: InputDecoration(labelText: 'Name'),
     autovalidateMode: AutovalidateMode.always,
-    validator: Validators.isRequired(),
+    validator: Validators.required(),
 ),
 ```
 
@@ -338,25 +336,23 @@ TextFormField(
     decoration: InputDecoration(labelText: 'Age'),
     keyboardType: TextInputType.number,
     autovalidateMode: AutovalidateMode.always,
-    validator: FormBuilderValidators.compose([
-        /// Makes this field required
-        FormBuilderValidators.required(),
-
-        /// Ensures the value entered is numeric - with a custom error message
-        FormBuilderValidators.numeric(errorText: 'La edad debe ser numérica.'),
-
-        /// Sets a maximum value of 70
-        FormBuilderValidators.max(70),
+    validator: Validators.required(
+      Validators.and(<Validator<String>>[
+        Validators.num(Validators.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
         /// Include your own custom `FormFieldValidator` function, if you want
-        /// Ensures positive values only. We could also have used `FormBuilderValidators.min(0)` instead
-        (val) {
-            final number = int.tryParse(val);
-            if (number == null) return null;
-            if (number < 0) return 'We cannot have a negative age';
+        /// Ensures positive values only. We could also have used `Validators.greaterThanOrEqualTo(0)` instead
+        (String? val) {
+            if (val != null) {
+              final int? number = int.tryParse(val);
+              // todo bug here: if it is not int, it accepts negative
+              // numbers
+              if (number == null) return null;
+              if (number < 0) return 'We cannot have a negative age';
+            }
             return null;
-        },
-    ]),
+        }
+      ]))
 ),
 ```
 
@@ -422,14 +418,14 @@ String? Function(int) isEven(){
   };
 }
 
-String? Function(int?) isRequired(String? Function(int) next){
+String? Function(int?) required(String? Function(int) next){
   return (int? userInput) {
     return (userInput != null) ? next(userInput):'This field is required';
   };
 }
 
-// Important: isEven() does not return a FormFieldValidator, but the composition isRequired(isEven()), does.
-final validator = isRequired(isEven());
+// Important: isEven() does not return a FormFieldValidator, but the composition required(isEven()), does.
+final validator = required(isEven());
 ```
 
 By introducing this level of indirection, we achieve:

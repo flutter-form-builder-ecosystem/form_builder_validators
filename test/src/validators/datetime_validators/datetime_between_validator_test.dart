@@ -25,7 +25,7 @@ void main() {
       final DateTime beforeLeft1Micro =
           leftReference.subtract(const Duration(microseconds: 1));
       final Validator<DateTime> v =
-          dateTimeBetween(leftReference, rightReference);
+          betweenDateTime(leftReference, rightReference);
       final String errorMsg = FormBuilderLocalizations.current
           .dateMustBeBetweenErrorText(leftReference, rightReference);
 
@@ -91,7 +91,7 @@ void main() {
       final DateTime before1Sec =
           leftReference.subtract(const Duration(seconds: 1));
       final Validator<DateTime> v =
-          dateTimeBetween(leftReference, rightReference, minInclusive: true);
+          betweenDateTime(leftReference, rightReference, minInclusive: true);
       final String errorMsg = FormBuilderLocalizations.current
           .dateMustBeBetweenErrorText(leftReference, rightReference);
 
@@ -145,9 +145,9 @@ void main() {
       const String errorMsg = 'error msg';
       final DateTime leftReference = DateTime(2);
       final DateTime rightReference = DateTime(5);
-      final Validator<DateTime> v = dateTimeBetween(
+      final Validator<DateTime> v = betweenDateTime(
           leftReference, rightReference,
-          dateTimeBetweenMsg: (_, __, ___) => errorMsg);
+          betweenDateTimeMsg: (_, __, ___) => errorMsg);
 
       expect(
         v(rightReference.copyWith()),
@@ -173,7 +173,7 @@ void main() {
         'Should throw AssertionError when the right reference is not after left reference',
         () {
       expect(
-          () => dateTimeBetween(
+          () => betweenDateTime(
               DateTime(1990, 12, 23, 20), DateTime(1990, 12, 22, 20)),
           throwsAssertionError);
     });

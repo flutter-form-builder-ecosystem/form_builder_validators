@@ -33,12 +33,12 @@ Validator<DateTime> before(
   };
 }
 
-/// {@macro validator_date_time_between}
-Validator<DateTime> dateTimeBetween(
+/// {@macro validator_between_date_time}
+Validator<DateTime> betweenDateTime(
   DateTime minReference,
   DateTime maxReference, {
   String Function(DateTime input, DateTime minReference, DateTime maxReference)?
-      dateTimeBetweenMsg,
+      betweenDateTimeMsg,
   bool minInclusive = false,
   bool maxInclusive = false,
 }) {
@@ -52,7 +52,7 @@ Validator<DateTime> dateTimeBetween(
             (input.isAfter(minReference) ||
                 (minInclusive ? input.isAtSameMomentAs(minReference) : false))
         ? null
-        : dateTimeBetweenMsg?.call(input, minReference, maxReference) ??
+        : betweenDateTimeMsg?.call(input, minReference, maxReference) ??
             FormBuilderLocalizations.current.dateMustBeBetweenErrorText(
                 minReference.toLocal(), maxReference.toLocal());
   };

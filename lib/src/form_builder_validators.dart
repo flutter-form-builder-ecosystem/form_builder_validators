@@ -3409,7 +3409,7 @@ final class Validators {
   }) =>
       val.before(reference, beforeMsg: beforeMsg, inclusive: inclusive);
 
-  /// {@template validator_date_time_between}
+  /// {@template validator_between_date_time}
   /// Creates a [DateTime] validator that checks if an input date falls within a specified
   /// range defined by `minReference` and `maxReference`.
   ///
@@ -3422,7 +3422,7 @@ final class Validators {
   ///   Input dates must occur after this date (or equal to it if `minInclusive` is true).
   /// - `maxReference` (`DateTime`): The upper bound of the acceptable date range.
   ///   Input dates must occur before this date (or equal to it if `maxInclusive` is true).
-  /// - `dateTimeBetweenMsg` (`String Function(DateTime, DateTime, DateTime)?`): Optional
+  /// - `betweenDateTimeMsg` (`String Function(DateTime, DateTime, DateTime)?`): Optional
   ///   custom error message generator. When provided, it receives the input date and both
   ///   reference dates to construct a context-aware error message.
   /// - `minInclusive` (`bool`): When set to `true`, allows the input date to exactly match
@@ -3443,13 +3443,13 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage requiring date between 2023 and 2025
-  /// final validator = Validators.dateTimeBetween(
+  /// final validator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
   /// );
   ///
   /// // Inclusive validation allowing exact matches
-  /// final inclusiveValidator = Validators.dateTimeBetween(
+  /// final inclusiveValidator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
   ///   minInclusive: true,
@@ -3457,25 +3457,25 @@ final class Validators {
   /// );
   ///
   /// // Custom error message
-  /// final customValidator = Validators.dateTimeBetween(
+  /// final customValidator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
-  ///   isDateTimeBetweenMsg: (_, min, max) =>
+  ///   betweenDateTimeMsg: (_, min, max) =>
   ///     'Please select a date between ${min.toString()} and ${max.toString()}',
   /// );
   /// ```
   /// {@endtemplate}
-  static Validator<DateTime> dateTimeBetween(
+  static Validator<DateTime> betweenDateTime(
     DateTime minReference,
     DateTime maxReference, {
     String Function(
             DateTime input, DateTime minReference, DateTime maxReference)?
-        dateTimeBetweenMsg,
+        betweenDateTimeMsg,
     c.bool leftInclusive = false,
     c.bool rightInclusive = false,
   }) =>
-      val.dateTimeBetween(minReference, maxReference,
-          dateTimeBetweenMsg: dateTimeBetweenMsg,
+      val.betweenDateTime(minReference, maxReference,
+          betweenDateTimeMsg: betweenDateTimeMsg,
           minInclusive: leftInclusive,
           maxInclusive: rightInclusive);
 
