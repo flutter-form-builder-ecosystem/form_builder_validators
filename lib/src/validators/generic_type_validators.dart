@@ -1,10 +1,10 @@
 import '../../localization/l10n.dart';
 import 'constants.dart';
 
-/// {@macro validator_is_in_list}
-Validator<T> isInList<T extends Object?>(
+/// {@macro validator_in_list}
+Validator<T> inList<T extends Object?>(
   List<T> values, {
-  String Function(T input, List<T> values)? isInListMsg,
+  String Function(T input, List<T> values)? inListMsg,
 }) {
   if (values.isEmpty) {
     throw ArgumentError.value(
@@ -14,7 +14,7 @@ Validator<T> isInList<T extends Object?>(
   return (T input) {
     return setOfValues.contains(input)
         ? null
-        : isInListMsg?.call(input, values) ??
+        : inListMsg?.call(input, values) ??
             FormBuilderLocalizations.current.containsElementErrorText;
   };
 }
@@ -39,7 +39,7 @@ Validator<T> isTrue<T extends Object>(
   };
 }
 
-/// {@macro validator_is_false}
+/// {@macro validator_false}
 Validator<T> isFalse<T extends Object>(
     {String Function(T input)? isFalseMsg,
     bool caseSensitive = false,

@@ -6,14 +6,14 @@ void main() {
   group('Validator: isInList', () {
     group('Validations with default error message', () {
       test('Should return null when int 0 is provided', () {
-        final Validator<int> validator = isInList(<int>[0]);
+        final Validator<int> validator = inList(<int>[0]);
 
         expect(validator(0), isNull);
         expect(validator(2),
             equals(FormBuilderLocalizations.current.containsElementErrorText));
       });
       test('Should return null when int 0 or String "2" is provided', () {
-        final Validator<Object> validator = isInList(<Object>[0, '2']);
+        final Validator<Object> validator = inList(<Object>[0, '2']);
 
         expect(validator(0), isNull);
         expect(validator('2'), isNull);
@@ -21,7 +21,7 @@ void main() {
             equals(FormBuilderLocalizations.current.containsElementErrorText));
       });
       test('Should return null when int 0, int 2, or null is provided', () {
-        final Validator<Object?> validator = isInList(<Object?>[0, 2, null]);
+        final Validator<Object?> validator = inList(<Object?>[0, 2, null]);
 
         expect(validator(0), isNull);
         expect(validator(2), isNull);
@@ -32,14 +32,14 @@ void main() {
     });
 
     test('Should throw ArgumentError when list input is empty', () {
-      expect(() => isInList(<Object>[]), throwsArgumentError);
+      expect(() => inList(<Object>[]), throwsArgumentError);
     });
 
     test('Should return custom error message when invalid input is provided',
         () {
       const String customMessage = 'custom message';
       final Validator<int> validator =
-          isInList(<int>[1, 2, 3], isInListMsg: (_, __) => customMessage);
+          inList(<int>[1, 2, 3], inListMsg: (_, __) => customMessage);
 
       expect(validator(4), equals(customMessage));
     });
@@ -47,7 +47,7 @@ void main() {
     test('should remain immutable when input elements change', () {
       final List<Object> elements = <Object>[12, 15, 'hi'];
 
-      final Validator<Object> v = isInList(elements);
+      final Validator<Object> v = inList(elements);
 
       expect(v(12), isNull);
       expect(v(15), isNull);

@@ -3480,7 +3480,7 @@ final class Validators {
           maxInclusive: rightInclusive);
 
   // Generic type validators
-  /// {@template validator_is_in_list}
+  /// {@template validator_in_list}
   /// Creates a validator function that verifies if a given input is in `values`.
   ///
   /// ## Type Parameters
@@ -3490,7 +3490,7 @@ final class Validators {
   /// ## Parameters
   /// - `values` (`List<T>`): A non-empty list of valid values to check against. The input
   ///   will be validated against these values.
-  /// - `isInListMsg` (`String Function(T input, List<T> values)?`): Optional callback
+  /// - `inListMsg` (`String Function(T input, List<T> values)?`): Optional callback
   ///   function that generates a custom error message when validation fails. The function
   ///   receives the invalid input and the list of valid values as parameters. If not provided,
   ///   defaults to the localized error text from FormBuilderLocalizations.
@@ -3507,7 +3507,7 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Creating a validator with a custom error message generator
-  /// final countryValidator = isInList(
+  /// final countryValidator = Validators.inList(
   ///   ['USA', 'Canada', 'Mexico'],
   ///   isInListMsg: (input, values) =>
   ///     'Country $input is not in allowed list: ${values.join(", ")}',
@@ -3518,11 +3518,11 @@ final class Validators {
   /// final valid = countryValidator('USA');     // Returns null (valid)
   /// ```
   /// {@endtemplate}
-  static Validator<T> isInList<T extends Object?>(
+  static Validator<T> inList<T extends Object?>(
     List<T> values, {
-    String Function(T input, List<T> values)? isInListMsg,
+    String Function(T input, List<T> values)? inListMsg,
   }) =>
-      val.isInList(values, isInListMsg: isInListMsg);
+      val.inList(values, inListMsg: inListMsg);
 
   /// {@template validator_is_true}
   /// Creates a validator function that checks if a given input represents a `true`

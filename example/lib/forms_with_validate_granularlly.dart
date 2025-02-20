@@ -180,8 +180,8 @@ class _BodyState extends State<_Body> {
                       child: Text('Invalid option 2'),
                     ),
                   ]).toList(),
-                  validator: V.required(V.isInList(validBloodTypeOptions,
-                      isInListMsg: (_, List<String> v) =>
+                  validator: V.required(V.inList(validBloodTypeOptions,
+                      inListMsg: (_, List<String> v) =>
                           'The option must be one of: ${v.join(', ')}.')),
                   onChanged: (String? value) {
                     setState(() {
