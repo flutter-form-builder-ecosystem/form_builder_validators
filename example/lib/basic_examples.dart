@@ -54,7 +54,7 @@ class BasicExamplesPage extends StatelessWidget {
                     const InputDecoration(labelText: 'Input must not be null'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (String? input) {
-                  final String? isRequiredMsg = Validators.isRequired()(input);
+                  final String? isRequiredMsg = Validators.required()(input);
                   return isRequiredMsg
                       ?.toUpperCase()
                       .replaceFirst('OVERRIDE: ', '');

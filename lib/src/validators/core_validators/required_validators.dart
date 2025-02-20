@@ -1,17 +1,16 @@
 import '../../../localization/l10n.dart';
 import '../constants.dart';
 
-/// {@macro validator_is_required}
-Validator<T?> isRequired<T extends Object>([
+/// {@macro validator_required}
+Validator<T?> required<T extends Object>([
   Validator<T>? next,
-  String? isRequiredMsg,
+  String? requiredMsg,
 ]) {
   String? finalValidator(T? value) {
     final (bool isValid, T? transformedValue) =
         _isRequiredValidateAndConvert(value);
     if (!isValid) {
-      return isRequiredMsg ??
-          FormBuilderLocalizations.current.requiredErrorText;
+      return requiredMsg ?? FormBuilderLocalizations.current.requiredErrorText;
     }
     return next?.call(transformedValue!);
   }
@@ -25,10 +24,10 @@ Validator<T?> validateWithDefault<T extends Object>(
   return (T? value) => next(value ?? defaultValue);
 }
 
-/// {@macro validator_is_optional}
-Validator<T?> isOptional<T extends Object>([
+/// {@macro validator_optional}
+Validator<T?> optional<T extends Object>([
   Validator<T>? next,
-  String Function(T input, String nextErrorMsg)? isOptionalMsg,
+  String Function(T input, String nextErrorMsg)? optionalMsg,
 ]) {
   return (T? input) {
     final (bool isValid, T? transformedValue) =
@@ -42,7 +41,7 @@ Validator<T?> isOptional<T extends Object>([
       return null;
     }
 
-    return isOptionalMsg?.call(input!, nextErrorMessage) ??
+    return optionalMsg?.call(input!, nextErrorMessage) ??
         FormBuilderLocalizations.current.isOptionalErrorText(nextErrorMessage);
   };
 }

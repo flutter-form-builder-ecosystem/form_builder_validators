@@ -75,7 +75,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your full name',
                     prefixIcon: Icon(Icons.person),
                   ),
-                  validator: V.isRequired(V.match(RegExp('[A-Z].*'),
+                  validator: V.required(V.match(RegExp('[A-Z].*'),
                       matchMsg: (_) => 'The name must start with uppercase')),
                   textInputAction: TextInputAction.next,
                 ),
@@ -87,7 +87,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your email',
                     prefixIcon: Icon(Icons.email),
                   ),
-                  validator: V.isRequired(V.email()),
+                  validator: V.required(V.email()),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),
@@ -100,8 +100,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'YYYY-MM-DD',
                     prefixIcon: Icon(Icons.calendar_today),
                   ),
-                  validator: V.isRequired(V.isDateTime(V.isBefore(
-                      DateTime.now(),
+                  validator: V.required(V.isDateTime(V.isBefore(DateTime.now(),
                       isBeforeMsg: (_, __) => 'Date must be in the past.'))),
                   keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.next,
@@ -127,7 +126,7 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.height),
                     suffixText: 'm',
                   ),
-                  validator: V.isRequired(V.isNum(V.between(0.5, 2.5,
+                  validator: V.required(V.isNum(V.between(0.5, 2.5,
                       betweenMsg: (_, num min, num max, __, ___) =>
                           'Please enter a realistic height [$min-${max}m]'))),
                   keyboardType: TextInputType.number,
@@ -142,7 +141,7 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.monitor_weight),
                     suffixText: 'kg',
                   ),
-                  validator: V.isOptional(V.isNum(V.between(20, 300,
+                  validator: V.optional(V.isNum(V.between(20, 300,
                       betweenMsg: (_, num min, num max, ____, _____) =>
                           'weight must be in [$min, ${max}kg]'))),
                   keyboardType: TextInputType.number,
@@ -156,7 +155,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your phone number',
                     prefixIcon: Icon(Icons.phone),
                   ),
-                  validator: V.isRequired(),
+                  validator: V.required(),
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                 ),
@@ -181,7 +180,7 @@ class _BodyState extends State<_Body> {
                       child: Text('Invalid option 2'),
                     ),
                   ]).toList(),
-                  validator: V.isRequired(V.isInList(validBloodTypeOptions,
+                  validator: V.required(V.isInList(validBloodTypeOptions,
                       isInListMsg: (_, List<String> v) =>
                           'The option must be one of: ${v.join(', ')}.')),
                   onChanged: (String? value) {

@@ -2027,8 +2027,7 @@ final class Validators {
       val.notEqual(value, notEqualMsg: notEqualMsg);
 
   // Required validators
-  // TODO remove verb 'is' from validators
-  /// {@template validator_is_required}
+  /// {@template validator_required}
   /// Generates a validator function that enforces required field validation for
   /// form inputs. This validator ensures that a field has a non-null, non-empty
   /// value before any subsequent validation is performed.
@@ -2043,7 +2042,7 @@ final class Validators {
   /// - `next` (`Validator<T>?`): An optional subsequent validator function that
   ///   will be applied after the required validation passes. This allows for
   ///   chaining multiple validation rules.
-  /// - `isRequiredMsg` (`String?`): An optional custom error message to display
+  /// - `requiredMsg` (`String?`): An optional custom error message to display
   ///   when the field is empty or null. If not provided, defaults to the
   ///   localized required field error text.
   ///
@@ -2056,13 +2055,13 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic required field validation
-  /// final validator = isRequired<String>();
+  /// final validator = Validators.required<String>();
   /// print(validator(null));     // Returns localized error message
   /// print(validator(''));       // Returns localized error message
   /// print(validator('value')); // Returns null (validation passed)
   ///
   /// // Chaining with another validator
-  /// final complexValidator = isRequired<String>(
+  /// final complexValidator = Validators.required<String>(
   ///   (value) => value.length < 10 ? 'Too long' : null,
   ///   'Custom required message'
   /// );
@@ -2072,13 +2071,13 @@ final class Validators {
   /// - The validator assumes empty strings/maps/iterables, white strings, and null
   /// values are equivalent for validation purposes
   /// {@endtemplate}
-  static Validator<T?> isRequired<T extends Object>([
+  static Validator<T?> required<T extends Object>([
     Validator<T>? next,
-    String? isRequiredMsg,
+    String? requiredMsg,
   ]) =>
-      val.isRequired(next, isRequiredMsg);
+      val.required(next, requiredMsg);
 
-  /// {@template validator_is_optional}
+  /// {@template validator_optional}
   /// Creates a validator function that makes a field optional while allowing additional validation
   /// rules. This validator is particularly useful in form validation scenarios where certain
   /// fields are not mandatory but still need to conform to specific rules when provided.
@@ -2097,7 +2096,7 @@ final class Validators {
   /// - `next` (`Validator<T>?`): An optional subsequent validator function that will be
   ///   applied only if the input value is provided (non-null and non-empty). This allows
   ///   for chaining validation rules.
-  /// - `isOptionalMsg` (`String Function(T input, String nextErrorMessage)?`): An
+  /// - `optionalMsg` (`String Function(T input, String nextErrorMessage)?`): An
   /// optional error message that takes the `input` and the `nextErrorMessage` as
   /// parameters and returns the custom error message.
   ///
@@ -2111,10 +2110,10 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic optional string validator
-  /// final validator = isOptional<String>();
+  /// final validator = Validators.optional<String>();
   ///
   /// // Optional validator with additional email validation
-  /// final emailValidator = isOptional<String>(
+  /// final emailValidator = Validators.optional<String>(
   ///   validateEmail,
   ///   (_, error) => 'Invalid email format: $error',
   /// );
@@ -2129,11 +2128,11 @@ final class Validators {
   /// - The validator assumes empty strings/maps/iterables, white strings, and null values are
   /// equivalent for validation purposes, all them are considered valid.
   /// {@endtemplate}
-  static Validator<T?> isOptional<T extends Object>([
+  static Validator<T?> optional<T extends Object>([
     Validator<T>? next,
-    String Function(T input, String nextErrorMsg)? isOptionalMsg,
+    String Function(T input, String nextErrorMsg)? optionalMsg,
   ]) =>
-      val.isOptional(next, isOptionalMsg);
+      val.optional(next, optionalMsg);
 
   /// {@template validator_validate_with_default}
   /// Creates a validator function that applies a default value before validation,
@@ -2167,7 +2166,7 @@ final class Validators {
   ///
   /// // Wrap it with a default value of 'N/A'
   /// final defaultValue = 'default value';
-  /// final validator = validateWithDefault('N/A', minLength);
+  /// final validator = Validators.validateWithDefault('N/A', minLength);
   ///
   /// print(validator(null));      // Returns null (valid)
   /// print(validator('ab'));      // Returns 'Must be at least 3 characters'
