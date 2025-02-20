@@ -11,9 +11,9 @@ void main() {
   final String defaultError =
       FormBuilderLocalizations.current.requiredErrorText;
 
-  group('Validator: isRequired', () {
+  group('Validator: required', () {
     test('Should check if the input value is not null/empty', () {
-      final Validator<Object?> v = isRequired();
+      final Validator<Object?> v = required();
 
       expect(v(null), defaultError);
       expect(v(''), defaultError);
@@ -27,7 +27,7 @@ void main() {
     test(
         'Should check if the input value is not null/empty with composed validator `v`',
         () {
-      final Validator<int?> v = isRequired(isMultipleBy6);
+      final Validator<int?> v = required(isMultipleBy6);
 
       expect(v(null), equals(defaultError));
       expect(v(0), isNull);
@@ -38,8 +38,8 @@ void main() {
 
     test('Should return custom message for null input', () {
       const String customMsg = 'custom error message ';
-      final Validator<Object?> v = isRequired(null, customMsg);
-      final Validator<int?> v1 = isRequired(isMultipleBy6, customMsg);
+      final Validator<Object?> v = required(null, customMsg);
+      final Validator<int?> v1 = required(isMultipleBy6, customMsg);
 
       expect(v(null), equals(customMsg));
       expect(v(''), equals(customMsg));

@@ -3,16 +3,16 @@
 import '../../../localization/l10n.dart';
 import '../constants.dart';
 
-/// {@macro validator_is_string}
-Validator<T> isString<T extends Object>([
+/// {@macro validator_string}
+Validator<T> string<T extends Object>([
   Validator<String>? next,
-  String Function(T input)? isStringMsg,
+  String Function(T input)? stringMsg,
 ]) {
   String? finalValidator(T input) {
     final (bool isValid, String? typeTransformedValue) =
         _isStringValidateAndConvert(input);
     if (!isValid) {
-      return isStringMsg?.call(input) ??
+      return stringMsg?.call(input) ??
           FormBuilderLocalizations.current.isStringErrorText;
     }
     return next?.call(typeTransformedValue!);
@@ -28,7 +28,7 @@ Validator<T> isString<T extends Object>([
   return (false, null);
 }
 
-/// {@macro validator_is_int}
+/// {@macro validator_int}
 Validator<T> isInt<T extends Object>(
     [Validator<int>? next, String Function(T input)? isIntMsg]) {
   String? finalValidator(T input) {
@@ -57,7 +57,7 @@ Validator<T> isInt<T extends Object>(
   return (false, null);
 }
 
-/// {@macro validator_is_num}
+/// {@macro validator_num}
 Validator<T> isNum<T extends Object>(
     [Validator<num>? next, String Function(T input)? isNumMsg]) {
   String? finalValidator(T input) {
@@ -86,7 +86,7 @@ Validator<T> isNum<T extends Object>(
   return (false, null);
 }
 
-/// {@macro validator_is_double}
+/// {@macro validator_double}
 Validator<T> isDouble<T extends Object>(
     [Validator<double>? next, String Function(T input)? isDoubleMsg]) {
   String? finalValidator(T input) {
@@ -117,7 +117,7 @@ Validator<T> isDouble<T extends Object>(
   return (false, null);
 }
 
-/// {@macro validator_is_bool}
+/// {@macro validator_bool}
 Validator<T> isBool<T extends Object>(
     [Validator<bool>? next,
     String Function(T input)? isBoolMsg,
@@ -152,16 +152,16 @@ Validator<T> isBool<T extends Object>(
   return (false, null);
 }
 
-/// {@macro validator_is_date_time}
-Validator<T> isDateTime<T extends Object>([
+/// {@macro validator_date_time}
+Validator<T> dateTime<T extends Object>([
   Validator<DateTime>? next,
-  String Function(T input)? isDateTimeMsg,
+  String Function(T input)? dateTimeMsg,
 ]) {
   String? finalValidator(T input) {
     final (bool isValid, DateTime? typeTransformedValue) =
         _isDateTimeValidateAndConvert(input);
     if (!isValid) {
-      return isDateTimeMsg?.call(input) ??
+      return dateTimeMsg?.call(input) ??
           FormBuilderLocalizations.current.dateTimeErrorText;
     }
     return next?.call(typeTransformedValue!);
