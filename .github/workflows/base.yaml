@@ -19,6 +19,10 @@ jobs:
   build:
     name: Build package & run tests
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        flutter-version: [stable, beta]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,7 +36,7 @@ jobs:
         uses: kuhnroyal/flutter-fvm-config-action/setup@v3
         with:
           path: '.fvmrc'
-          flavor: 'stable'
+          flavor: ${{ matrix.flutter-version }}
       - name: Install dependencies
         run: dart pub get
       - name: Run l10n
