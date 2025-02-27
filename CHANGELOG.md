@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.1.2
+
+- Update intl constraints to allow versions until 0.21.0
+
 ## 11.1.1
 
 - Fix issue when build fails due to missing l10n files
