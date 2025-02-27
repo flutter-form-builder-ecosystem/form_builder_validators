@@ -73,10 +73,15 @@ URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit ca
 Generally, the validators are separated in three main groups:
 1. Required validators: makes a field optional or required.
 2. Type validators: checks the type of the field.
-3. Other validators: makes other types of checking.
+3. Other validators: make any other kind of check that is not related to null or type validation.
 
 Generally, we build a validator composing those three types in the following way:
 <requiredValidator>(<typeValidator>(<otherValidator>()))
+
+For example: 
+- Make the field required, check if it is of type `num` or a `String` parsable to one and then check if 
+it is greater than 10.
+`Validators.required(Validators.num(Validators.greaterThan(10)))`
 
 
 
@@ -330,7 +335,6 @@ On validation, each validator is run, and if any validator returns a non-null va
 
 Example:
 
-TODO update this example (checkpoint)
 ```Dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Age'),
@@ -362,6 +366,11 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 
 ## Migrations
 
+### v11 to v12
+- Deprecate `FormBuilderValidators` class with its static methods as validators.
+- Instead, you should use `Validators` class.
+TODO implement the remaining of breaking changes
+
 ### v10 to v11
 
 - All validators now first check for null or empty value and return an error if so. You can set `checkNullOrEmpty` to `false` if you want to avoid this behavior.
@@ -373,7 +382,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 Remove `context` as a parameter to validator functions. For example, `FormBuilderValidators.required(context)` becomes `FormBuilderValidators.required()` without `context` passed in.
 
 ## How this package works
-This package comes with several most common `FormFieldValidator`s such as required, numeric, mail,
+This package comes with several most common `Validator`s and `FormFieldValidator`s such as required, numeric, mail,
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 - But what is a `FormFieldValidator`?
@@ -476,11 +485,74 @@ We welcome efforts to internationalize/localize the package by translating the d
 
 #### Add new validator
 
-1. Add a new validator to one of the folders in the `src` folder.
-2. Implement it using the `BaseValidator` or `TranslatedValidator` class. Override the `validateValue` method and let the base class handle the null check in the `validate` method.
-3. When using a `TranslatedValidator, Override the `translatedErrorText` property and return the correct translation from `FormBuilderLocalizations.current.`.
-4. Make sure to pass `errorText` and `checkNullOrEmpty` to the base class.
-5. Add static method to `form_builder_validators.dart` that uses the new validator.
+1. Add a new validator to one of the folders in the `src/validators` folder.
+2. Implement it as a function which returns `Validator<T>` with `T` being the type of
+the user input to be validated.
+3. Add the @macro tag for documentation using the template name: `validator_<validator_snake_case_name>`.
+This will refer to the actual documentation, which will be on the `Validators` static method.
+4. If your validator uses localized error message, you can use `FormBuilderLocalizations.current.<name_of_localized_message>`
+Next we have the example of the numeric validator `greaterThan`. As we can see, it has its `@macro` docstring, it uses a
+localized error message (`FormBuilderLocalizations.current.greaterThanErrorText(reference)`) and it returns
+`Validator<T extends num>`:
+    ```dart
+    /// {@macro validator_greater_than}
+    Validator<T> greaterThan<T extends num>(T reference,
+        {String Function(T input, T reference)? greaterThanMsg}) {
+      return (T input) {
+        return input > reference
+            ? null
+            : greaterThanMsg?.call(input, reference) ??
+            FormBuilderLocalizations.current.greaterThanErrorText(reference);
+      };
+    }
+    ```
+5. Add the validator as static method to `form_builder_validators.dart` in the `Validators` class. Do
+not forget to add documentation to the new static method, using the `@template` element to give a name
+to the docstring. Follow the pattern: `validator_<validator_snake_case_name>`.
+Here, an example of how to add the static method of the validator to the `Validators` class:
+    ```dart
+    final class Validators{
+      //Other validators...
+
+      /// {@template validator_greater_than}
+      /// Creates a validator function that checks if a numeric input exceeds `reference`.
+      ///
+      /// ## Type Parameters
+      /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+      /// `num` validations
+      ///
+      /// ## Parameters
+      /// - `reference` (`T`): The threshold value that the input must exceed
+      /// - `greaterThanMsg` (`String Function(T input, T reference)?`): Optional custom error
+      ///   message generator that takes the input value and threshold as parameters
+      ///
+      /// ## Returns
+      /// Returns a [Validator] function that:
+      /// - Returns `null` if the input is greater than the threshold value `reference`
+      /// - Returns an error message string if validation fails, either from the custom
+      ///   `greaterThanMsg` function or the default localized error text
+      ///
+      /// ## Examples
+      /// ```dart
+      /// // Basic usage with integers
+      /// final ageValidator = greaterThan<int>(18);
+      ///
+      /// // Custom error message
+      /// final priceValidator = greaterThan<double>(
+      ///   0.0,
+      ///   greaterThanMsg: (_, ref) => 'Price must be greater than \$${ref.toStringAsFixed(2)}',
+      /// );
+      /// ```
+      ///
+      /// ## Caveats
+      /// - The validator uses strict greater than comparison (`>`)
+      /// {@endtemplate}
+      static Validator<T> greaterThan<T extends c.num>(T reference,
+          {String Function(c.num input, c.num reference)? greaterThanMsg}) =>
+          val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
+    } 
+    // OBS.: the core package is imported with prefix c to avoid name collision!
+    ```
 6. Implement tests
 7. Add to [validators](#validators) with name and description
 8. Add message error translated on all languages (yes, all languages). To accomplish this need:
