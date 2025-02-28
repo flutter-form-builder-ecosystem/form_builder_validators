@@ -86,5 +86,6 @@
   "vinErrorText": "Vrijednost mora biti važeći VIN.",
   "languageCodeErrorText": "Vrijednost mora biti važeći jezični kod.",
   "floatErrorText": "Vrijednost mora biti valjani broj s pomičnim zarezom.",
-  "hexadecimalErrorText": "Vrijednost mora biti valjani heksadecimalni broj."
+  "hexadecimalErrorText": "Vrijednost mora biti valjani heksadecimalni broj.",
+  "profanityErrorText": "Vrijednost ne smije sadržavati: {profanity}."
 }

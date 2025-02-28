@@ -86,5 +86,6 @@
   "vinErrorText": "Wartość musi być prawidłowym numerem VIN.",
   "languageCodeErrorText": "Wartość musi być prawidłowym kodem języka.",
   "floatErrorText": "Wartość musi być prawidłową liczbą zmiennoprzecinkową.",
-  "hexadecimalErrorText": "Wartość musi być prawidłową liczbą szesnastkową."
+  "hexadecimalErrorText": "Wartość musi być prawidłową liczbą szesnastkową.",
+  "profanityErrorText": "Wartość nie może zawierać: {profanity}."
 }

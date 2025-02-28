@@ -86,5 +86,6 @@
   "vinErrorText": "Väärtus peab olema kehtiv VIN.",
   "languageCodeErrorText": "Väärtus peab olema kehtiv keelekood.",
   "floatErrorText": "Väärtus peab olema kehtiv ujukomaarv.",
-  "hexadecimalErrorText": "Väärtus peab olema kehtiv kuueteistkümnendkohtade süsteemi arv."
+  "hexadecimalErrorText": "Väärtus peab olema kehtiv kuueteistkümnendkohtade süsteemi arv.",
+  "profanityErrorText": "Väärtus ei tohi sisaldada: {profanity}."
 }

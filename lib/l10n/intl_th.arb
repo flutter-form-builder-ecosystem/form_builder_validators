@@ -86,5 +86,6 @@
   "vinErrorText": "ค่าต้องเป็นหมายเลข VIN ที่ถูกต้อง",
   "languageCodeErrorText": "ค่าต้องเป็นรหัสภาษาที่ถูกต้อง",
   "floatErrorText": "ค่าต้องเป็นตัวเลขทศนิยมที่ถูกต้อง",
-  "hexadecimalErrorText": "ค่าต้องเป็นเลขฐานสิบหกที่ถูกต้อง"
+  "hexadecimalErrorText": "ค่าต้องเป็นเลขฐานสิบหกที่ถูกต้อง",
+  "profanityErrorText": "ค่าต้องไม่ประกอบด้วย: {profanity}."
 }

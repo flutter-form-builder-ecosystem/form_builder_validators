@@ -86,5 +86,6 @@
   "vinErrorText": "Hodnota musí byť platné číslo VIN.",
   "languageCodeErrorText": "Hodnota musí byť platný kód jazyka.",
   "floatErrorText": "Hodnota musí byť platné desatinné číslo.",
-  "hexadecimalErrorText": "Hodnota musí byť platné hexadecimálne číslo."
+  "hexadecimalErrorText": "Hodnota musí byť platné hexadecimálne číslo.",
+  "profanityErrorText": "Hodnota nesmie obsahovať: {profanity}."
 }

@@ -86,5 +86,6 @@
   "vinErrorText": "El valor ha de ser un VIN vàlid.",
   "languageCodeErrorText": "El valor ha de ser un codi de llengua vàlid.",
   "floatErrorText": "El valor ha de ser un nombre de coma flotant vàlid.",
-  "hexadecimalErrorText": "El valor ha de ser un nombre hexadecimal vàlid."
+  "hexadecimalErrorText": "El valor ha de ser un nombre hexadecimal vàlid.",
+  "profanityErrorText": "El valor no ha de contenir: {profanity}."
 }

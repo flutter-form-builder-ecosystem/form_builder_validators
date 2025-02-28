@@ -86,5 +86,6 @@
   "vinErrorText": "Vrednost mora biti veljavna identifikacijska številka vozila (VIN).",
   "languageCodeErrorText": "Vrednost mora biti veljavna koda jezika.",
   "floatErrorText": "Vrednost mora biti veljavno število s plavajočo vejico.",
-  "hexadecimalErrorText": "Vrednost mora biti veljavno šestnajstiško število."
+  "hexadecimalErrorText": "Vrednost mora biti veljavno šestnajstiško število.",
+  "profanityErrorText": "Vrednost ne sme vsebovati: {profanity}."
 }
