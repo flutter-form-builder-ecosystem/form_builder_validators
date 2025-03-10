@@ -2768,7 +2768,7 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> hasMinUppercaseChars({
     c.int min = 1,
-    c.int Function(String)? customUppercaseCounter,
+    c.int Function(String input)? customUppercaseCounter,
     String Function(String input, c.int min)? hasMinUppercaseCharsMsg,
   }) =>
       val.hasMinUppercaseChars(
@@ -2789,9 +2789,9 @@ final class Validators {
   /// ## Parameters
   /// - `min` (`int`): The minimum number of lowercase characters required. Defaults
   ///   to 1.
-  /// - `customLowercaseCounter` (`int Function(String)?`): Optional custom function
-  ///   to count lowercase characters. If not provided, uses a default Unicode-based
-  ///   counter.
+  /// - `customLowercaseCounter` (`int Function(String input)?`): Optional custom function
+  ///   to count lowercase characters. It receives the user input as parameter.
+  ///   If not provided, uses a default Unicode-based counter.
   /// - `hasMinLowercaseCharsMsg` (`String Function(String input, int min)?`):
   ///   Optional function to generate custom error messages. Receives the input and
   ///   the minimum lowercase count required and returns an error message string.
@@ -2829,7 +2829,7 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> hasMinLowercaseChars({
     c.int min = 1,
-    c.int Function(String)? customLowercaseCounter,
+    c.int Function(String input)? customLowercaseCounter,
     String Function(String input, c.int min)? hasMinLowercaseCharsMsg,
   }) =>
       val.hasMinLowercaseChars(
@@ -2850,7 +2850,7 @@ final class Validators {
   /// ## Parameters
   /// - `min` (`int`): The minimum number of numeric characters required. Defaults
   ///   to 1.
-  /// - `customNumericCounter` (`int Function(String)?`): Optional custom function
+  /// - `customNumericCounter` (`int Function(String input)?`): Optional custom function
   ///   to count numeric characters. If not provided, uses a default regex-based
   ///   counter matching digits 0-9.
   /// - `hasMinNumericCharsMsg` (`String Function(String input, int min)?`):
@@ -2895,7 +2895,7 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> hasMinNumericChars({
     c.int min = 1,
-    c.int Function(String)? customNumericCounter,
+    c.int Function(String input)? customNumericCounter,
     String Function(String input, c.int min)? hasMinNumericCharsMsg,
   }) =>
       val.hasMinNumericChars(
@@ -2962,7 +2962,7 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> hasMinSpecialChars({
     c.int min = 1,
-    c.int Function(String)? customSpecialCounter,
+    c.int Function(String input)? customSpecialCounter,
     String Function(String input, c.int min)? hasMinSpecialCharsMsg,
   }) =>
       val.hasMinSpecialChars(
