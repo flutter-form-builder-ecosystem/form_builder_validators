@@ -376,7 +376,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
     - For this group of validators, it is expected to receive a `String` as user input. Thus, if your
     form widget does not guarantee a `String` input (it may receive an `Object`), you must wrap the 
     equivalent validator with the type validator for strings. Thus, instead of 
-    `Validators.hasMin<Something>Chars(...)`, use `Validators.string(Validators.hasMin<Something>Chars(...))`
+    `Validators.hasMin<Something>Chars(...)`, use `Validators.string(Validators.hasMin<Something>Chars(...))`.
         - `FormBuilderValidators.hasLowercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is 
         equivalent to `Validators.hasMinLowercaseChars(min: n, customLowercaseCounter:(input)=>reg.allMatches(input).length, hasMinLowercaseCharsMsg:(_, __)=>'some error')`
         - `FormBuilderValidators.hasNumericChars(atLeast: n, regex: reg, errorText: 'some error')` is
@@ -385,20 +385,39 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
           equivalent to `Validators.hasMinSpecialChars(min: n, customSpecialCounter:(input)=>reg.allMatches(input).length, hasMinSpecialCharsMsg:(_, __)=>'some error')`
         - `FormBuilderValidators.hasUppercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is
           equivalent to `Validators.hasMinUppercaseChars(min: n, customUppercaseCounter:(input)=>reg.allMatches(input).length, hasMinUppercaseCharsMsg:(_, __)=>'some error')`
-         
-      <<<<<<<<<<<<<<<CONTINUE THE TODO>>>>>>>>>>>>>>>
-    - `FormBuilderValidators.isFalse()` - requires the field's to be false.
-    - `FormBuilderValidators.isTrue()` - requires the field's to be true.
+    - `FormBuilderValidators.isFalse(errorText:'some error')` is equivalent to `Validators.isFalse(isFalseMsg: (_)=>'some error')`
+    - `FormBuilderValidators.isTrue(errorText:'some error')` is equivalent to `Validators.isTrue(isTrueMsg: (_)=>'some error')`
 
-### Collection validators
+  - Collection validators
+    - `FormBuilderValidators.containsElement([v1, v2, v3], errorText:'some error')` is 
+    equivalent to `Validators.inList([v1, v2, v3], inListMsg: (_, __)=>'some error')`
+    - `FormBuilderValidators.equalLength(n, ~~allowEmpty: allowEmpty~~, errorText:'some error')` is equivalent to 
+    `Validators.equalLength(n, equalLengthMsg: (_, __)=>'some error')`
+      - The parameter `allowEmpty` was removed and additional logic must be provided to handle the
+      case in which this parameter is true. Probably something like: `or([equalLength(0),equalLength(n)])`
+    - `FormBuilderValidators.maxLength(n, errorText:'some error')` is equivalent to
+      `Validators.maxLength(n, maxLengthMsg: (_, __)=>'some error')`
+    - `FormBuilderValidators.minLength(n, errorText:'some error')` is equivalent to
+      `Validators.minLength(n, minLengthMsg: (_, __)=>'some error')`
+    - `FormBuilderValidators.range(minValue, maxValue, inclusive:inclusive, errorText:'some error')` is equivalent to:
+      - `Validators.betweenLength(minValue, maxValue, betweenLengthMsg: (_)=>'some error')` if the 
+      user input is a collection. This is only for `inclusive:true`, thus if `inclusive` is `false`, the correct 
+      equivalent would be `Validators.betweenLength(minValue + 1, maxValue - 1, betweenLengthMsg: (_)=>'some error')`
+      - `Validators.between(minValue, maxValue, minInclusive:inclusive, maxInclusive:inclusive, betweenMsg: (_1, _2, _3, _4, _5)=>'some error')` 
+      if the user input is numeric.
+    - `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to this validator,
+    thus, a custom validator should be implemented.
+      - Example: 
+        ```dart
+        Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
+          return (input){
+            return values.where((element) => element == input).length > 1? errorText:null;
+          };
 
-- `FormBuilderValidators.containsElement()` - requires the field's to be in the provided list.
-- `FormBuilderValidators.equalLength()` - requires the length of the field's value to be equal to the provided minimum length.
-- `FormBuilderValidators.maxLength()` - requires the length of the field's value to be less than or equal to the provided maximum size.
-- `FormBuilderValidators.minLength()` - requires the length of the field's value to be greater than or equal to the provided minimum length.
-- `FormBuilderValidators.range()` - requires the field's to be within a range.
-- `FormBuilderValidators.unique()` - requires the field's to be unique in the provided list.
+        }
+        ```
 
+// TODO continue from here...
 ### Core validators
 
 - `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
