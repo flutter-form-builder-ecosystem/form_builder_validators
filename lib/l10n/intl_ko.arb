@@ -86,5 +86,6 @@
   "vinErrorText": "값은 유효한 VIN이어야 합니다.",
   "languageCodeErrorText": "값은 유효한 언어 코드이어야 합니다.",
   "floatErrorText": "값은 유효한 부동 소수점 수여야 합니다.",
-  "hexadecimalErrorText": "값은 유효한 16진수여야 합니다."
+  "hexadecimalErrorText": "값은 유효한 16진수여야 합니다.",
+  "profanityErrorText": "값에는 다음 내용을 포함할 수 없습니다: {profanity}."
 }

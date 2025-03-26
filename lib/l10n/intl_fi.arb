@@ -86,5 +86,6 @@
   "vinErrorText": "Arvon on oltava kelvollinen VIN.",
   "languageCodeErrorText": "Arvon on oltava kelvollinen kielikoodi.",
   "floatErrorText": "Arvon on oltava kelvollinen liukuluku.",
-  "hexadecimalErrorText": "Arvon on oltava kelvollinen heksadesimaaliluku."
+  "hexadecimalErrorText": "Arvon on oltava kelvollinen heksadesimaaliluku.",
+  "profanityErrorText": "Arvon ei pidä sisältää: {profanity}."
 }
