@@ -141,25 +141,15 @@ TextFormField(
 - `Validators.after(reference)`: Checks if the field contains a `DateTime` that is after `reference`.
 - `Validators.before(reference)`: Checks if the field contains a `DateTime` that is before `reference`.
 - `Validators.betweenDateTime(minReference, maxReference)`: Checks if the field contains a `DateTime` that is after `minReference` and before `maxReference`.
-- TODO `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
-- TODO `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
-- TODO `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
 
 ### File validators
 
-- TODO `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
-- TODO `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
-- TODO `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
-- TODO `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
-- TODO `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
+- TODO [ ] `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 
 ### Finance validators
 
-- TODO `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
-- TODO `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
-- TODO `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
-- `Validators.creditCard()`: Checks if the field contains a valid credit card number.
-- TODO `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
+- TODO [ ] `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
+- TODO [ ] `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
 
 ### Generic Type Validators
 Validators that check a generic type user input.
@@ -170,25 +160,15 @@ Validators that check a generic type user input.
 
 ### Miscellaneous validators
 
-- TODO `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
-- TODO `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-- TODO `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
+- TODO [ ] `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 - TODO `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
-- TODO `FormBuilderValidators.json()` - requires the field's to be a valid json string.
-- TODO `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
-- TODO `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
-- TODO `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
  
 ### Network validators
 
 - `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address. It may check for either `IPv4`, or `IPv6` or even for both.
 - `Validators.url()`: Checks if the field contains a properly formatted `Uniform Resource Locators` (URL).
-- TODO `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
-- TODO `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude. 
-- TODO `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
-- TODO `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
-- TODO `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
-- TODO `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
+- TODO [ ] `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- TODO [ ] `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 
 ### Numeric validators
 
@@ -197,12 +177,6 @@ Validators that check a generic type user input.
 - `Validators.greaterThanOrEqualTo(reference)`: Checks if the field contains a number that is greater than or equal to `reference`.
 - `Validators.lessThan(reference)`: Checks if the field contains a number that is less than `reference`.
 - `Validators.lessThanOrEqualTo(reference)`: Checks if the field contains a number that is less than or equal to `reference`.
-- TODO `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
-- TODO `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
-- TODO `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
-- TODO `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
-- TODO `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
-- TODO `FormBuilderValidators.prime()` - requires the field's to be a prime number.
 
 ### Path Validators
 - `Validators.matchesAllowedExtensions(extensions)`: Checks if the field contains a `String` that is in the list `extensions`.
@@ -210,21 +184,18 @@ Validators that check a generic type user input.
 ### String validators
 
 - `Validators.contains(substring)` - Checks if the field contains the `substring`.
-- TODO `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
-- TODO `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
-- TODO `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- TODO `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
+- TODO [ ] `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
+- TODO [ ] `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
+- TODO [ ] `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
+- TODO [ ] `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `Validators.hasMinUppercaseChars(min:min)` - Checks if the field has a minimum number of uppercase chars.
 - `Validators.hasMinLowercaseChars(min:min)` - Checks if the field has a minimum number of lowercase chars.
 - `Validators.hasMinNumericChars(min:min)` - Checks if the field has a minimum number of numeric chars.
 - `Validators.hasMinSpecialChars(min:min)` - Checks if the field has a minimum number of special chars.
 - `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
-- TODO `FormBuilderValidators.matchNot()` - requires the field's value to not match the provided regex pattern.
 - `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
-- TODO `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
-- TODO `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
-- TODO `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
-- TODO `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
+- TODO [ ] `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
+- TODO [ ] `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
 
 ### Type Validators
 - `Validators.string(next)`: Checks if the field contains a valid `String` and passes the input as `String` to the `next` validator.
@@ -240,16 +211,6 @@ Validators that check a generic type user input.
 - `Validators.password()`: Checks if the field contains a valid password. A password may require some 
 conditions to be met in order to be considered as valid.
 - `Validators.phoneNumber()`: Checks if the field contains a valid phone number.
-- TODO `FormBuilderValidators.city()` - requires the field's value to be a valid city name.
-- TODO `FormBuilderValidators.country()` - requires the field's value to be a valid country name.
-- TODO `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
-- TODO `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
-- TODO `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
-- TODO `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
-- TODO `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
-- TODO `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
-- TODO `FormBuilderValidators.username()` - requires the field's to be a valid username that matched required conditions.
-- TODO `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
 
 ## Supported languages
 
@@ -398,77 +359,521 @@ FormBuilderValidators.someValidator(..., checkNullOrEmpty:true);
 Validators.required(Validators.someEquivalentValidator(...));
 
 ```
-- `checkNullOrEmpty = false`: Given the old api: `FormBuilderValidators.someValidator(..., checkNullOrEmpty:false)`, the equivalent in the new API is `Validators.optional(Validators.someEquivalentValidator(...))`.
+- `checkNullOrEmpty = false`: 
+```dart
+// Old API
+FormBuilderValidators.someValidator(..., checkNullOrEmpty:false);
+
+// New API
+Validators.optional(Validators.someEquivalentValidator(...));
+```
 
 #### Bool validators
 
-- For the following group of validators, it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings. Thus, instead of `Validators.hasMin<Something>Chars(...)`, use `Validators.string(Validators.hasMin<Something>Chars(...))`. Now, check the specific case for each old validator:
-    - `FormBuilderValidators.hasLowercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is 
-    equivalent to `Validators.hasMinLowercaseChars(min: n, customLowercaseCounter:(input)=>reg.allMatches(input).length, hasMinLowercaseCharsMsg:(_, __)=>'some error')`
-    - `FormBuilderValidators.hasNumericChars(atLeast: n, regex: reg, errorText: 'some error')` is
-      equivalent to `Validators.hasMinNumericChars(min: n, customNumericCounter:(input)=>reg.allMatches(input).length, hasMinNumericCharsMsg:(_, __)=>'some error')`
-    - `FormBuilderValidators.hasSpecialChars(atLeast: n, regex: reg, errorText: 'some error')` is
-      equivalent to `Validators.hasMinSpecialChars(min: n, customSpecialCounter:(input)=>reg.allMatches(input).length, hasMinSpecialCharsMsg:(_, __)=>'some error')`
-    - `FormBuilderValidators.hasUppercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is
-      equivalent to `Validators.hasMinUppercaseChars(min: n, customUppercaseCounter:(input)=>reg.allMatches(input).length, hasMinUppercaseCharsMsg:(_, __)=>'some error')`
-- `FormBuilderValidators.isFalse(errorText:'some error')` is equivalent to `Validators.isFalse(isFalseMsg: (_)=>'some error')`
-- `FormBuilderValidators.isTrue(errorText:'some error')` is equivalent to `Validators.isTrue(isTrueMsg: (_)=>'some error')`
+For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
+Apply the following logic to the next items:
+
+```dart
+// Replace "Something" with the actual name of the validator
+// Old API - No type checking needed
+FormBuilderValidators.hasMinSomethingChars(...);
+
+// New API - With type checking
+Validators.string(Validators.hasMinSomethingChars(...));
+```
+
+- `FormBuilderValidators.hasLowercaseChars`
+```dart
+// Old API
+FormBuilderValidators.hasLowercaseChars(
+  atLeast: 3,
+  regex: RegExp(r'[a-z]'),
+  errorText: 'Need at least 3 lowercase letters'
+);
+
+// New API equivalent
+Validators.hasMinLowercaseChars(
+  min: 3,
+  customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length,
+  hasMinLowercaseCharsMsg: (_, __) => 'Need at least 3 lowercase letters'
+);
+```
+
+- `FormBuilderValidators.hasNumericChars`
+```dart
+// Old API
+FormBuilderValidators.hasNumericChars(
+  atLeast: 2,
+  regex: RegExp(r'[0-9]'),
+  errorText: 'Need at least 2 numbers'
+);
+
+// New API equivalent
+Validators.hasMinNumericChars(
+  min: 2,
+  customNumericCounter: (input) => RegExp(r'[0-9]').allMatches(input).length,
+  hasMinNumericCharsMsg: (_, __) => 'Need at least 2 numbers'
+);
+```
+
+- `FormBuilderValidators.hasSpecialChars`
+```dart
+// Old API
+FormBuilderValidators.hasSpecialChars(
+  atLeast: 1,
+  regex: RegExp(r'[!@#$%^&*(),.?":{}|<>]'),
+  errorText: 'Need at least 1 special character'
+);
+
+// New API equivalent
+Validators.hasMinSpecialChars(
+  min: 1,
+  customSpecialCounter: (input) => RegExp(r'[!@#$%^&*(),.?":{}|<>]').allMatches(input).length,
+  hasMinSpecialCharsMsg: (_, __) => 'Need at least 1 special character'
+);
+```
+
+- `FormBuilderValidators.hasUppercaseChars`
+```dart
+// Old API
+FormBuilderValidators.hasUppercaseChars(
+  atLeast: 2,
+  regex: RegExp(r'[A-Z]'),
+  errorText: 'Need at least 2 uppercase letters'
+);
+
+// New API equivalent
+Validators.hasMinUppercaseChars(
+  min: 2,
+  customUppercaseCounter: (input) => RegExp(r'[A-Z]').allMatches(input).length,
+  hasMinUppercaseCharsMsg: (_, __) => 'Need at least 2 uppercase letters'
+);
+```
+    
+For the remaining `isFalse` and `isTrue`, it is not necessary to wrap them with `Validators.string` even if the form widget does not provide `String` input.
+
+
+- `FormBuilderValidators.isFalse`
+```dart
+// Old API
+FormBuilderValidators.isFalse(
+  errorText: 'Value must be false'
+);
+
+// New API equivalent
+Validators.isFalse(
+  isFalseMsg: (_) => 'Value must be false'
+);
+```
+
+- `FormBuilderValidators.isTrue`
+```dart
+// Old API
+FormBuilderValidators.isTrue(
+  errorText: 'Value must be true'
+);
+
+// New API equivalent
+Validators.isTrue(
+  isTrueMsg: (_) => 'Value must be true'
+);
+```
 
 #### Collection validators
-- `FormBuilderValidators.containsElement([v1, v2, v3], errorText:'some error')` is 
-equivalent to `Validators.inList([v1, v2, v3], inListMsg: (_, __)=>'some error')`
-- `FormBuilderValidators.equalLength(n, `~~allowEmpty: allowEmpty~~`, errorText:'some error')` is equivalent to `Validators.equalLength(n, equalLengthMsg: (_, __)=>'some error')`
-  - The parameter `allowEmpty` was removed and [additional logic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/equal_length_validator.dart#L40) must be provided to handle the case in which this parameter is true. Probably something like: `or([equalLength(0),equalLength(n)])`
-- `FormBuilderValidators.maxLength(n, errorText:'some error')` is equivalent to
-  `Validators.maxLength(n, maxLengthMsg: (_, __)=>'some error')`
-- `FormBuilderValidators.minLength(n, errorText:'some error')` is equivalent to
-  `Validators.minLength(n, minLengthMsg: (_, __)=>'some error')`
-- `FormBuilderValidators.range(minValue, maxValue, inclusive:inclusive, errorText:'some error')` is equivalent to:
-  - `Validators.betweenLength(minValue, maxValue, betweenLengthMsg: (_)=>'some error')` if the 
-  user input is a collection. This is only for `inclusive:true`, thus if `inclusive` is `false`, the correct 
-  equivalent would be `Validators.betweenLength(minValue + 1, maxValue - 1, betweenLengthMsg: (_)=>'some error')`
-  - `Validators.between(minValue, maxValue, minInclusive:inclusive, maxInclusive:inclusive, betweenMsg: (_1, _2, _3, _4, _5)=>'some error')` 
-  if the user input is numeric.
-- `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32),
-thus, a custom validator should be implemented.
-  - Example: 
-    ```dart
-    Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
-      return (input){
-        return values.where((element) => element == input).length > 1? errorText:null;
-      };
+- `FormBuilderValidators.containsElement`
+```dart
+// Old API
+FormBuilderValidators.containsElement(
+  [v1, v2, v3],
+  errorText: 'Value must be in the list'
+);
 
-    }
-    ```
+// New API equivalent
+Validators.inList(
+  [v1, v2, v3],
+  inListMsg: (_, __) => 'Value must be in the list'
+);
+```
+- `FormBuilderValidators.equalLength`
+  - The parameter `allowEmpty` was removed and [additional logic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/equal_length_validator.dart#L40) must be provided to handle the case in which this parameter is true. 
+
+```dart
+// Old API
+FormBuilderValidators.equalLength(
+  8,
+  allowEmpty: false,
+  errorText: 'Must be exactly 8 characters'
+);
+
+// New API equivalent
+Validators.equalLength(
+  8,
+  equalLengthMsg: (_, __) => 'Must be exactly 8 characters'
+);
+
+// Note: The parameter `allowEmpty` was removed.
+// To handle allowEmpty: true case, use something like:
+Validators.or([
+  Validators.equalLength(0),
+  Validators.equalLength(8)
+]);
+```
+
+- `FormBuilderValidators.maxLength`
+```dart
+// Old API
+FormBuilderValidators.maxLength(
+  50,
+  errorText: 'Must be no more than 50 characters'
+);
+
+// New API equivalent
+Validators.maxLength(
+  50,
+  maxLengthMsg: (_, __) => 'Must be no more than 50 characters'
+);
+```
+
+- `FormBuilderValidators.minLength`
+```dart
+// Old API
+FormBuilderValidators.minLength(
+  8,
+  errorText: 'Must be at least 8 characters'
+);
+
+// New API equivalent
+Validators.minLength(
+  8,
+  minLengthMsg: (_, __) => 'Must be at least 8 characters'
+);
+```
+
+- `FormBuilderValidators.range` (for collections)
+```dart
+// Old API (inclusive: true)
+FormBuilderValidators.range(
+  3,
+  10,
+  inclusive: true,
+  errorText: 'Length must be between 3 and 10'
+);
+
+// New API equivalent
+Validators.betweenLength(
+  3,
+  10,
+  betweenLengthMsg: (_) => 'Length must be between 3 and 10'
+);
+
+/******************************************************************************/
+
+// Old API (inclusive: false)
+FormBuilderValidators.range(
+  3,
+  10,
+  inclusive: false,
+  errorText: 'Length must be between 4 and 9'
+);
+
+// New API equivalent
+Validators.betweenLength(
+  4,
+  9,
+  betweenLengthMsg: (_) => 'Length must be between 4 and 9'
+);
+```
+
+- `FormBuilderValidators.range` (for numeric values)
+```dart
+// Old API
+FormBuilderValidators.range(
+  1,
+  100,
+  inclusive: true,
+  errorText: 'Value must be between 1 and 100'
+);
+
+// New API equivalent
+Validators.between(
+  1,
+  100,
+  minInclusive: true,
+  maxInclusive: true,
+  betweenMsg: (_, __, ___, ____, _____) => 'Value must be between 1 and 100'
+);
+```
+- `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32), thus, a custom validator should be implemented.
+  - Example: 
+
+```dart
+Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
+  return (input){
+    return values.where((element) => element == input).length > 1? errorText:null;
+  };
+
+}
+```
         
 ### Core validators
 
-- `FormBuilderValidators.aggregate(validators)` is equivalent to `Validators.and(validators, separator:'\n', printErrorAsSoonAsPossible:false)`
-- `FormBuilderValidators.compose()` is equivalent to `Validators.and(validators)`
-- `FormBuilderValidators.conditional(condition, validator)` is equivalent to `Validators.validateIf(condition, validator)`
-- `FormBuilderValidators.defaultValue(defaultValue, validator)` is equivalent to `Validators.validateWithDefault(defaultValue, validator)`
-- `FormBuilderValidators.equal(value, 'error text')` is equivalent to `Validators.equal(value, (_, __)=>'error text')`
-- `FormBuilderValidators.log(log, 'error text')` is equivalent to `Validators.debugPrintValidator((input)=>log?.call(input) ?? 'error text')`
-- `FormBuilderValidators.notEqual(value, 'error text')` is equivalent to `Validators.notEqual(value, (_, __)=>'error text')`
-- `FormBuilderValidators.or(validators)` is close to `Validators.or(validators)`
-- `FormBuilderValidators.required('error text')` is equivalent to `Validators.required(null, 'error text')`
-- `FormBuilderValidators.skipWhen(condition, validator)` is equivalent to `Validators.skipIf(condition, validator)`
-- `FormBuilderValidators.transform(transformer, validator)` is equivalent to `Validators.transformAndValidate(transformer, next:validator)`
+- `FormBuilderValidators.aggregate`
+```dart
+// Old API
+FormBuilderValidators.aggregate([
+  validator1,
+  validator2,
+  validator3
+]);
 
-TODO continue from here....
+// New API equivalent
+Validators.and(
+  [validator1, validator2, validator3],
+  separator: '\n',
+  printErrorAsSoonAsPossible: false
+);
+```
+
+- `FormBuilderValidators.compose`
+```dart
+// Old API
+FormBuilderValidators.compose([
+  validator1,
+  validator2
+]);
+
+// New API equivalent
+Validators.and([
+  validator1,
+  validator2
+]);
+```
+
+- `FormBuilderValidators.conditional`
+```dart
+// Old API
+FormBuilderValidators.conditional(
+  (value) => value != null,
+  validator
+);
+
+// New API equivalent
+Validators.validateIf(
+  (value) => value != null,
+  validator
+);
+```
+
+- `FormBuilderValidators.defaultValue`
+```dart
+// Old API
+FormBuilderValidators.defaultValue(
+  'Default',
+  validator
+);
+
+// New API equivalent
+Validators.validateWithDefault(
+  'Default',
+  validator
+);
+```
+
+- `FormBuilderValidators.equal`
+```dart
+// Old API
+FormBuilderValidators.equal(
+  expectedValue,
+  'Must match the expected value'
+);
+
+// New API equivalent
+Validators.equal(
+  expectedValue,
+  equalMsg: (_, __) => 'Must match the expected value'
+);
+```
+
+- `FormBuilderValidators.log`
+```dart
+// Old API
+FormBuilderValidators.log(
+  (value) => print('Validating: $value'),
+  'Error message'
+);
+
+// New API equivalent
+Validators.debugPrintValidator(
+  (input) => print('Validating: $input') ?? 'Error message'
+);
+```
+
+- `FormBuilderValidators.notEqual`
+```dart
+// Old API
+FormBuilderValidators.notEqual(
+  forbiddenValue,
+  'Must not match the forbidden value'
+);
+
+// New API equivalent
+Validators.notEqual(
+  forbiddenValue,
+  notEqualMsg: (_, __) => 'Must not match the forbidden value'
+);
+```
+
+- `FormBuilderValidators.or`
+```dart
+// Old API
+FormBuilderValidators.or([
+  validator1,
+  validator2
+]);
+
+// New API equivalent
+Validators.or([
+  validator1,
+  validator2
+]);
+```
+
+- `FormBuilderValidators.required`
+```dart
+// Old API
+FormBuilderValidators.required(
+  'This field is required'
+);
+
+// New API equivalent
+Validators.required(
+  null,
+  'This field is required'
+);
+```
+
+- `FormBuilderValidators.skipWhen`
+```dart
+// Old API
+FormBuilderValidators.skipWhen(
+  (value) => value == null,
+  validator
+);
+
+// New API equivalent
+Validators.skipIf(
+  (value) => value == null,
+  validator
+);
+```
+
+- `FormBuilderValidators.transform`
+```dart
+// Old API
+FormBuilderValidators.transform(
+  (value) => value?.toString().trim(),
+  validator
+);
+
+// New API equivalent
+Validators.transformAndValidate(
+  (value) => value?.toString().trim(),
+  next: validator
+);
+```
+
 ### Datetime validators
 
-- `FormBuilderValidators.dateFuture()` - requires the field's value to be in the future.
-- `FormBuilderValidators.datePast()` - requires the field's value to be a in the past.
-- `FormBuilderValidators.dateRange()` - requires the field's value to be a within a date range.
-- `FormBuilderValidators.dateTime()` - requires the field's value to be a valid date time.
-- `FormBuilderValidators.date()` - requires the field's value to be a valid date string.
-- `FormBuilderValidators.time()` - requires the field's value to be a valid time string.
-- `FormBuilderValidators.timeZone()` - requires the field's value to be a valid time zone.
+- `FormBuilderValidators.dateFuture()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/date_future_validator.dart#L29), thus, a custom validator should be implemented.
+  - Example: 
+
+```dart
+// Old API:
+FormBuilderValidators.dateFuture(errorText: 'Date must be in the future');
+
+// New API (closest):
+Validators.dateTime(Validators.after(DateTime.now(), afterMsg: (_, __)=>'Date must be in the future'));
+
+``` 
+
+- `FormBuilderValidators.datePast()`:there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/date_past_validator.dart#L29), thus, a custom validator should be implemented.
+  - Example: 
+
+```dart
+// Old API:
+FormBuilderValidators.datePast(errorText: 'Date must be in the past');
+
+// New API (closest):
+Validators.dateTime(Validators.before(DateTime.now(), beforeMsg: (_, __)=>'Date must be in the past'));
+
+``` 
+
+- `FormBuilderValidators.dateRange()`
+
+```dart
+// Old API
+FormBuilderValidators.dateRange(
+  minDate,
+  maxDate,
+  errorText: 'Date must be between min and max dates'
+);
+
+// New API equivalent
+Validators.dateTime(
+  Validators.betweenDateTime(
+    minDate,
+    maxDate,
+    betweenDateTimeMsg: (_, __, ___) => 'Date must be between min and max dates'
+  ),
+);
+```
+
+- `FormBuilderValidators.dateTime()`: this validator only checks if the input of type `DateTime?` is not null. Something close would be the following example: 
+
+```dart
+// Old API:
+FormBuilderValidators.dateTime(errorText: 'Invalid date time');
+
+// New API (close):
+final errorText = 'Invalid date time';
+Validators.required(Validators.dateTime(null, (_)=>errorText), errorText);
+```
+
+- `FormBuilderValidators.date()`
+```dart
+// Old API
+FormBuilderValidators.date(errorText: 'Invalid date time');
+
+// New API
+Validators.dateTime(null, (_)=>'Invalid date time');
+```
+- `FormBuilderValidators.time()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/time_validator.dart#L48). But it is a combination of `Validators.dateTime` with `Validators.match` using some specific regex.
+
+- `FormBuilderValidators.timeZone()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/timezone_validator.dart#L75). 
+Something close would be:
+```dart
+Validators.inList(validTimezones, inListMsg: (_, __)=> 'Invalid timezone')
+```
 
 ### File validators
 
-- `FormBuilderValidators.fileExtension()` - requires the field's value to a valid file extension.
+- `FormBuilderValidators.fileExtension()`
+```dart
+// Old API:
+FormBuilderValidators.fileExtension(
+  ['pdf', 'txt', 'png'],
+  errorText: 'Invalid extension',
+);
+
+// New API:
+Validators.matchesAllowedExtensions(
+  // Actually, the extension is '.pdf' and not 'pdf'
+  ['.pdf', '.txt', '.png'],
+  matchesAllowedExtensionsMsg:(_)=>'Invalid extension',
+  caseSensitive: false,
+);
+```
+TODO continue from here!!!
 - `FormBuilderValidators.fileName()` - requires the field's to be a valid file name.
 - `FormBuilderValidators.fileSize()` - requires the field's to be less than the max size.
 - `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
