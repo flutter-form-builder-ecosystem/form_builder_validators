@@ -71,18 +71,32 @@ This package comes with several most common `FormFieldValidator`s such as requir
 URL, min, max, minLength, maxLength, minWordsCount, maxWordsCount, IP, credit card, etc., with default `errorText` messages.
 
 Generally, the validators are separated in three main groups:
-1. Required validators: makes a field optional or required.
-2. Type validators: checks the type of the field.
-3. Other validators: make any other kind of check that is not related to null or type validation.
+1. Field Requirement Validators: makes a field optional or required.
+2. Type Validators: checks the type of the field.
+3. Other validators: make any other kind of check that is not related to null/emptiness or type validation.
 
 Generally, we build a validator composing those three types in the following way:
-<requiredValidator>(<typeValidator>(<otherValidator>()))
+`<fieldRequirementValidator>(<typeValidator>(<otherValidator>()))`
 
 For example: 
-- Make the field required, check if it is of type `num` or a `String` parsable to one and then check if 
+- Make the field required, check if it is of type `num` or a `String` parsable to num and then check if 
 it is greater than 10.
 `Validators.required(Validators.num(Validators.greaterThan(10)))`
 
+As easy as that! This validator is meant to be used with form fields like in the following example:
+```dart
+// Example from the folder `examples`
+TextFormField(
+  decoration: const InputDecoration(
+    labelText: 'Min Value Field',
+    prefixIcon: Icon(Icons.exposure_neg_1),
+  ),
+  keyboardType: TextInputType.number,
+  validator: Validators.required(Validators.num(Validators.greaterThan(10))),
+  textInputAction: TextInputAction.next,
+  autovalidateMode: AutovalidateMode.always,
+);
+```
 
 
 ### Collection validators
@@ -96,8 +110,8 @@ it is greater than 10.
 
 #### Composition validators
 
-- `Validators.and(validators)`: Validates the field by requiring it to pass all validators in the provided list of validators: `validators`.
-- `Validators.or(validators)`: Validates the field by requiring it to pass at least one of the validators in the provided list of validators: `validators`.
+- `Validators.and(validators)`: Validates the field by requiring it to pass all validators in the `validators` list.
+- `Validators.or(validators)`: Validates the field by requiring it to pass at least one of the validators in the `validators` list.
  
 #### Conditional validators
 
@@ -112,7 +126,7 @@ it is greater than 10.
 - `Validators.equal(value)`: Checks if the field contains an input that is equal to `value` (==).
 - `Validators.notEqual(value)`: Checks if the field contains an input that is not equal to `value` (!=).
  
-#### Required validators
+#### Field Requirement Validators
 
 - `Validators.required(next)`: Makes the field required by checking if it contains a non-null and non-empty value, passing it to the `next` validator as a not-nullable type.
 - `Validators.optional(next)`: Makes the field optional by passing it to the `next` validator if it contains a non-null and non-empty value. If the field is null or empty, null is returned.
@@ -167,17 +181,18 @@ Validators that check a generic type user input.
  
 ### Network validators
 
-- `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address.
+- `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address. It may check for either `IPv4`, or `IPv6` or even for both.
 - `Validators.url()`: Checks if the field contains a properly formatted `Uniform Resource Locators` (URL).
 - TODO `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
-- TODO `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude. - `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
+- TODO `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude. 
+- TODO `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
 - TODO `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 - TODO `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
 - TODO `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
 
 ### Numeric validators
 
-- `Validators.between(min, max)`: Checks if the field contains a number that is in the range [min, max].
+- `Validators.between(min, max)`: Checks if the field contains a number that is in the inclusive range [min, max].
 - `Validators.greaterThan(reference)`: Checks if the field contains a number that is greater than `reference`.
 - `Validators.greaterThanOrEqualTo(reference)`: Checks if the field contains a number that is greater than or equal to `reference`.
 - `Validators.lessThan(reference)`: Checks if the field contains a number that is less than `reference`.
@@ -294,8 +309,9 @@ And you can still add your custom error messages.
 
 ### Setup
 
-The default error message is in English. To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`.
+The default error message is in English. To allow for localization of default error messages within your app, add `FormBuilderLocalizations.delegate` in the list of your app's `localizationsDelegates`. 
 
+For example, in your `MaterialApp`:
 ```Dart
 return MaterialApp(
     supportedLocales: [
@@ -309,12 +325,13 @@ return MaterialApp(
     localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        FormBuilderLocalizations.delegate,
+        FormBuilderLocalizations.delegate, // here
     ],
 ```
 
 ### Basic use
 
+In the following example, we have a required field for the `Name` of the user:
 ```dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Name'),
@@ -327,14 +344,13 @@ See [pub.dev example tab](https://pub.dev/packages/form_builder_validators/examp
 
 ### Specific uses
 
-#### Composing multiple validators
+#### Composing multiple validators with the logical `AND` semantics
 
-The `FormBuilderValidators` class comes with a handy static function named `compose()`, which takes a list of `FormFieldValidator` functions. Composing allows you to create once and reuse validation rules across multiple fields, widgets, or apps.
+The `Validators` class comes with a handy static function named `and()`, which takes a list of `Validator` functions. Composing allows you to create once and reuse validation rules across multiple fields, widgets, or apps.
 
-On validation, each validator is run, and if any validator returns a non-null value (i.e., a String), validation fails, and the `errorText` for the field is set as the returned string.
+On validation, each validator is run, and if any validator returns a non-null value (i.e., a String), validation fails, and the `errorText` for the field is set as the first returned string or as a composition of all failures.
 
-Example:
-
+In the following example, we have a form field for the user's `Age`, which is **required**, must be **numeric** (with custom error message if not numeric given by *"La edad debe ser numérica."*), must be **less than 70**, and, finally, must be **non-negative** (with custom non-negative validator):
 ```Dart
 TextFormField(
     decoration: InputDecoration(labelText: 'Age'),
@@ -344,8 +360,8 @@ TextFormField(
       Validators.and(<Validator<String>>[
         Validators.num(Validators.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
-        /// Include your own custom `FormFieldValidator` function, if you want
-        /// Ensures positive values only. We could also have used `Validators.greaterThanOrEqualTo(0)` instead
+        /// Include your own custom `Validator` function, if you want.
+        /// Ensures positive values only. We could also have used `Validators.greaterThanOrEqualTo(0)` instead.
         (String? val) {
             if (val != null) {
               final int? number = int.tryParse(val);
@@ -368,70 +384,78 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 ### v11 to v12
 - Deprecate `FormBuilderValidators` class with its static methods as validators.
 - Instead, you should use `Validators` class.
-- Instructions on how to update each old API validator to the new API equivalent:
-  - **checkNullOrEmpty**: Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator from the old API has this parameters, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections:
-    - `checkNullOrEmpty = true`: Given the old api: `FormBuilderValidators.someValidator(..., checkNullOrEmpty:true)`, the equivalent in the new API is `Validators.required(Validators.someEquivalentValidator(...))`.
-    - `checkNullOrEmpty = false`: Given the old api: `FormBuilderValidators.someValidator(..., checkNullOrEmpty:false)`, the equivalent in the new API is `Validators.optional(Validators.someEquivalentValidator(...))`.
-  - Bool validators
-    - For this group of validators, it is expected to receive a `String` as user input. Thus, if your
-    form widget does not guarantee a `String` input (it may receive an `Object`), you must wrap the 
-    equivalent validator with the type validator for strings. Thus, instead of 
-    `Validators.hasMin<Something>Chars(...)`, use `Validators.string(Validators.hasMin<Something>Chars(...))`.
-        - `FormBuilderValidators.hasLowercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is 
-        equivalent to `Validators.hasMinLowercaseChars(min: n, customLowercaseCounter:(input)=>reg.allMatches(input).length, hasMinLowercaseCharsMsg:(_, __)=>'some error')`
-        - `FormBuilderValidators.hasNumericChars(atLeast: n, regex: reg, errorText: 'some error')` is
-          equivalent to `Validators.hasMinNumericChars(min: n, customNumericCounter:(input)=>reg.allMatches(input).length, hasMinNumericCharsMsg:(_, __)=>'some error')`
-        - `FormBuilderValidators.hasSpecialChars(atLeast: n, regex: reg, errorText: 'some error')` is
-          equivalent to `Validators.hasMinSpecialChars(min: n, customSpecialCounter:(input)=>reg.allMatches(input).length, hasMinSpecialCharsMsg:(_, __)=>'some error')`
-        - `FormBuilderValidators.hasUppercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is
-          equivalent to `Validators.hasMinUppercaseChars(min: n, customUppercaseCounter:(input)=>reg.allMatches(input).length, hasMinUppercaseCharsMsg:(_, __)=>'some error')`
-    - `FormBuilderValidators.isFalse(errorText:'some error')` is equivalent to `Validators.isFalse(isFalseMsg: (_)=>'some error')`
-    - `FormBuilderValidators.isTrue(errorText:'some error')` is equivalent to `Validators.isTrue(isTrueMsg: (_)=>'some error')`
+- The next items of this section show how to convert from the old API functions to the closest equivalent using the new APIs. For each item, we try to show how the conversion is made from a validator with all its parameters being used, thus, if your case is simples, probably it will be enough to ignore the additional parameters in the example.
+#### checkNullOrEmpty
+Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator from the old API has this parameters, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections. 
 
-  - Collection validators
-    - `FormBuilderValidators.containsElement([v1, v2, v3], errorText:'some error')` is 
-    equivalent to `Validators.inList([v1, v2, v3], inListMsg: (_, __)=>'some error')`
-    - `FormBuilderValidators.equalLength(n, ~~allowEmpty: allowEmpty~~, errorText:'some error')` is equivalent to 
-    `Validators.equalLength(n, equalLengthMsg: (_, __)=>'some error')`
-      - The parameter `allowEmpty` was removed and additional logic must be provided to handle the
-      case in which this parameter is true. Probably something like: `or([equalLength(0),equalLength(n)])`
-    - `FormBuilderValidators.maxLength(n, errorText:'some error')` is equivalent to
-      `Validators.maxLength(n, maxLengthMsg: (_, __)=>'some error')`
-    - `FormBuilderValidators.minLength(n, errorText:'some error')` is equivalent to
-      `Validators.minLength(n, minLengthMsg: (_, __)=>'some error')`
-    - `FormBuilderValidators.range(minValue, maxValue, inclusive:inclusive, errorText:'some error')` is equivalent to:
-      - `Validators.betweenLength(minValue, maxValue, betweenLengthMsg: (_)=>'some error')` if the 
-      user input is a collection. This is only for `inclusive:true`, thus if `inclusive` is `false`, the correct 
-      equivalent would be `Validators.betweenLength(minValue + 1, maxValue - 1, betweenLengthMsg: (_)=>'some error')`
-      - `Validators.between(minValue, maxValue, minInclusive:inclusive, maxInclusive:inclusive, betweenMsg: (_1, _2, _3, _4, _5)=>'some error')` 
-      if the user input is numeric.
-    - `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to this validator,
-    thus, a custom validator should be implemented.
-      - Example: 
-        ```dart
-        Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
-          return (input){
-            return values.where((element) => element == input).length > 1? errorText:null;
-          };
+The conditions are:
+- `checkNullOrEmpty = true`: 
+```dart
+// Old API
+FormBuilderValidators.someValidator(..., checkNullOrEmpty:true);
 
-        }
-        ```
+// New API
+Validators.required(Validators.someEquivalentValidator(...));
 
-// TODO continue from here...
+```
+- `checkNullOrEmpty = false`: Given the old api: `FormBuilderValidators.someValidator(..., checkNullOrEmpty:false)`, the equivalent in the new API is `Validators.optional(Validators.someEquivalentValidator(...))`.
+
+#### Bool validators
+
+- For the following group of validators, it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings. Thus, instead of `Validators.hasMin<Something>Chars(...)`, use `Validators.string(Validators.hasMin<Something>Chars(...))`. Now, check the specific case for each old validator:
+    - `FormBuilderValidators.hasLowercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is 
+    equivalent to `Validators.hasMinLowercaseChars(min: n, customLowercaseCounter:(input)=>reg.allMatches(input).length, hasMinLowercaseCharsMsg:(_, __)=>'some error')`
+    - `FormBuilderValidators.hasNumericChars(atLeast: n, regex: reg, errorText: 'some error')` is
+      equivalent to `Validators.hasMinNumericChars(min: n, customNumericCounter:(input)=>reg.allMatches(input).length, hasMinNumericCharsMsg:(_, __)=>'some error')`
+    - `FormBuilderValidators.hasSpecialChars(atLeast: n, regex: reg, errorText: 'some error')` is
+      equivalent to `Validators.hasMinSpecialChars(min: n, customSpecialCounter:(input)=>reg.allMatches(input).length, hasMinSpecialCharsMsg:(_, __)=>'some error')`
+    - `FormBuilderValidators.hasUppercaseChars(atLeast: n, regex: reg, errorText: 'some error')` is
+      equivalent to `Validators.hasMinUppercaseChars(min: n, customUppercaseCounter:(input)=>reg.allMatches(input).length, hasMinUppercaseCharsMsg:(_, __)=>'some error')`
+- `FormBuilderValidators.isFalse(errorText:'some error')` is equivalent to `Validators.isFalse(isFalseMsg: (_)=>'some error')`
+- `FormBuilderValidators.isTrue(errorText:'some error')` is equivalent to `Validators.isTrue(isTrueMsg: (_)=>'some error')`
+
+#### Collection validators
+- `FormBuilderValidators.containsElement([v1, v2, v3], errorText:'some error')` is 
+equivalent to `Validators.inList([v1, v2, v3], inListMsg: (_, __)=>'some error')`
+- `FormBuilderValidators.equalLength(n, `~~allowEmpty: allowEmpty~~`, errorText:'some error')` is equivalent to `Validators.equalLength(n, equalLengthMsg: (_, __)=>'some error')`
+  - The parameter `allowEmpty` was removed and [additional logic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/equal_length_validator.dart#L40) must be provided to handle the case in which this parameter is true. Probably something like: `or([equalLength(0),equalLength(n)])`
+- `FormBuilderValidators.maxLength(n, errorText:'some error')` is equivalent to
+  `Validators.maxLength(n, maxLengthMsg: (_, __)=>'some error')`
+- `FormBuilderValidators.minLength(n, errorText:'some error')` is equivalent to
+  `Validators.minLength(n, minLengthMsg: (_, __)=>'some error')`
+- `FormBuilderValidators.range(minValue, maxValue, inclusive:inclusive, errorText:'some error')` is equivalent to:
+  - `Validators.betweenLength(minValue, maxValue, betweenLengthMsg: (_)=>'some error')` if the 
+  user input is a collection. This is only for `inclusive:true`, thus if `inclusive` is `false`, the correct 
+  equivalent would be `Validators.betweenLength(minValue + 1, maxValue - 1, betweenLengthMsg: (_)=>'some error')`
+  - `Validators.between(minValue, maxValue, minInclusive:inclusive, maxInclusive:inclusive, betweenMsg: (_1, _2, _3, _4, _5)=>'some error')` 
+  if the user input is numeric.
+- `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32),
+thus, a custom validator should be implemented.
+  - Example: 
+    ```dart
+    Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
+      return (input){
+        return values.where((element) => element == input).length > 1? errorText:null;
+      };
+
+    }
+    ```
+        
 ### Core validators
 
-- `FormBuilderValidators.aggregate()` - runs the validators in parallel, collecting all errors.
-- `FormBuilderValidators.compose()` - runs each validator against the value provided.
-- `FormBuilderValidators.conditional()` - conditionally runs a validator against the value provided.
-- `FormBuilderValidators.defaultValue()` - runs the validator using the default value when the provided value is null.
-- `FormBuilderValidators.equal()` - requires the field's value to be equal to the provided object.
-- `FormBuilderValidators.log()` - runs the validator and logs the value at a specific point in the validation chain.
-- `FormBuilderValidators.notEqual()` - requires the field's value to be not equal to the provided object.
-- `FormBuilderValidators.or()` - runs each validator against the value provided and passes when any works.
-- `FormBuilderValidators.required()` - requires the field to have a non-empty value.
-- `FormBuilderValidators.skipWhen()` - runs the validator and skips the validation when a certain condition is met.
-- `FormBuilderValidators.transform()` - transforms the value before running the validator.
+- `FormBuilderValidators.aggregate(validators)` is equivalent to `Validators.and(validators, separator:'\n', printErrorAsSoonAsPossible:false)`
+- `FormBuilderValidators.compose()` is equivalent to `Validators.and(validators)`
+- `FormBuilderValidators.conditional(condition, validator)` is equivalent to `Validators.validateIf(condition, validator)`
+- `FormBuilderValidators.defaultValue(defaultValue, validator)` is equivalent to `Validators.validateWithDefault(defaultValue, validator)`
+- `FormBuilderValidators.equal(value, 'error text')` is equivalent to `Validators.equal(value, (_, __)=>'error text')`
+- `FormBuilderValidators.log(log, 'error text')` is equivalent to `Validators.debugPrintValidator((input)=>log?.call(input) ?? 'error text')`
+- `FormBuilderValidators.notEqual(value, 'error text')` is equivalent to `Validators.notEqual(value, (_, __)=>'error text')`
+- `FormBuilderValidators.or(validators)` is close to `Validators.or(validators)`
+- `FormBuilderValidators.required('error text')` is equivalent to `Validators.required(null, 'error text')`
+- `FormBuilderValidators.skipWhen(condition, validator)` is equivalent to `Validators.skipIf(condition, validator)`
+- `FormBuilderValidators.transform(transformer, validator)` is equivalent to `Validators.transformAndValidate(transformer, next:validator)`
 
+TODO continue from here....
 ### Datetime validators
 
 - `FormBuilderValidators.dateFuture()` - requires the field's value to be in the future.
@@ -564,17 +588,11 @@ String? isEven(int? userInput) {
 ```
 The challenge with the previous approach is that we must handle null checks in every validator
 implementation. This leads to:
-    1. Tangled validator logic: Each validator must handle both validation rules and null checking,
-       making the code harder to understand and maintain.
-    1. Code duplication: When composing validators, the same null-checking logic must be repeated
-       across multiple validators, violating the DRY principle.
-    1. Poor separation of concerns: A validator named `isEven` should focus solely on checking if a
-       number is even. It shouldn't need to handle null cases or type validation - those are separate
-       responsibilities that deserve their own focused validators.
-    1. Verbose implementations: The combination of null checks, type validation, and business logic
-       in each validator results in unnecessarily lengthy code that's harder to test and maintain.
-    1. Potential problems with null safety: imagine an unsafe version of isEven that simply uses
-       the `!` operator to throw an error during runtime if the user input is null:
+    1. Tangled validator logic: Each validator must handle both validation rules and null checking,making the code harder to understand and maintain.
+    2. Code duplication: When composing validators, the same null-checking logic must be repeated across multiple validators, violating the DRY principle.
+    3. Poor separation of concerns: A validator named `isEven` should focus solely on checking if a number is even. It shouldn't need to handle null cases or type validation - those are separate responsibilities that deserve their own focused validators.
+    4. Verbose implementations: The combination of null checks, type validation, and business logic in each validator results in unnecessarily lengthy code that's harder to test and maintain.
+    5. Potential problems with null safety: imagine an unsafe version of isEven that simply uses the `!` operator to throw an error during runtime if the user input is null:
 ```dart
 /// `userInput` may not be null.
 String? isEven(int? userInput) {
@@ -604,9 +622,9 @@ final validator = required(isEven());
 
 By introducing this level of indirection, we achieve:
     1. Clean separation between null checks and validation logic
-    1. More composable validators
-    1. Specific error messages for missing vs invalid input
-    1. Type-safe validator chains
+    2. More composable validators
+    3. Specific error messages for missing vs invalid input
+    4. Type-safe validator chains
 
 ## Support
 
