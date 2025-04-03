@@ -3479,6 +3479,48 @@ final class Validators {
           minInclusive: leftInclusive,
           maxInclusive: rightInclusive);
 
+  /// {@template validator_max_file_size}
+  /// Validates that a file size in bytes is less than or equal to `max`.
+  ///
+  /// This validator compares the input integer (representing bytes) against a
+  /// maximum size threshold (`max`). The comparison can be performed using
+  /// either 1000-based units (B, kB, MB, etc.) or 1024-based units (B, KiB,
+  /// MiB, etc.) depending on the selected [base].
+  ///
+  /// ## Parameters
+  /// - `max` (`int`): The maximum allowed file size in bytes
+  /// - `base` (`Base`): The base unit system to use for calculations and error messages.
+  ///   Defaults to [Base.b1024]
+  /// - `maxFileSizeMsg` (`String Function(int input, int max, Base base)?`):
+  ///   Optional custom error message generator that receives the input size,
+  ///   maximum size, and base to produce a tailored error message
+  ///
+  /// ## Returns
+  /// A [Validator] function that returns `null` when the input is valid (less than or equal
+  /// to the maximum size), or an error message string when validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Create a validator restricting files to 5 MiB using 1024-based units
+  /// final validator = maxFileSize(5 * 1024 * 1024);
+  ///
+  /// // Create a validator restricting files to 5 MB using 1000-based units
+  /// final validator = maxFileSize(5 * 1000 * 1000, base: Base.b1000);
+  ///
+  /// // Using a custom error message
+  /// final validator = maxFileSize(
+  ///   10 * 1024 * 1024,
+  ///   maxFileSizeMsg: (input, max, base) => 'File too large: ${formatBytes(input, base)}',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<c.int> maxFileSize(
+    c.int max, {
+    val.Base base = val.Base.b1024,
+    String Function(c.int input, c.int max, val.Base base)? maxFileSizeMsg,
+  }) =>
+      val.maxFileSize(max, base: base, maxFileSizeMsg: maxFileSizeMsg);
+
   // Generic type validators
   /// {@template validator_in_list}
   /// Creates a validator function that verifies if a given input is in `values`.
