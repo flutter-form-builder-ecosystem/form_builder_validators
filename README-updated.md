@@ -149,7 +149,7 @@ TextFormField(
 
 ### Finance validators
 
-- TODO [ ] `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
+- `FormBuilderValidators.bic()`: Checks if the field contains a valid BIC (Bank Identifier Code).
 - TODO [ ] `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
 
 ### Generic Type Validators

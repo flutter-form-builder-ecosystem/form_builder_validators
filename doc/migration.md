@@ -583,13 +583,57 @@ Validators.maxFileSize(
     maxFileSizeMsg: (_, __, ___)=>'error text',
 );
 ```
-TODO continue from here!!!
-- `FormBuilderValidators.mimeType()` - requires the field's value to a valid MIME type.
-- `FormBuilderValidators.path()` - requires the field's to be a valid file or folder path.
+- `FormBuilderValidators.mimeType()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/mime_type_validator.dart#L47). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.mimeType(
+  // This regex is the same as the default
+  regex: RegExp(r'^[a-zA-Z0-9!#$&^_-]+\/[a-zA-Z0-9!#$&^_-]+$'),
+  errorText: 'error text',
+);
+
+// New API:
+Validators.match(
+  RegExp(r'^[a-zA-Z0-9!#$&^_-]+\/[a-zA-Z0-9!#$&^_-]+$'),
+  matchMsg: (_)=>'error text'
+);
+```
+- `FormBuilderValidators.path()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/path_validator.dart#L46). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.path(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.match(
+  RegExp(r'^((\/|\\|[a-zA-Z]:\/)?([^<>:"|?*]+(\/|\\)?)+)$'),
+  matchMsg: (_)=>'error text'
+);
+```
 
 ### Finance validators
 
-- `FormBuilderValidators.bic()` - requires the field's to be a valid BIC.
+- `FormBuilderValidators.bic()`
+```dart
+// Old API (no regex):
+FormBuilderValidators.bic(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.bic(
+  bicMsg: (_)=>'error text'
+);
+
+//------------------------------------------------------------------------------
+// Old API (with regex):
+FormBuilderValidators.bic(regex: someRegex);
+
+// New API:
+Validators.bic(isBic: (input)=>someRegex.hasMatch(input));
+```
+TODO continue from here!!!
 - `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
 - `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
 - `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.

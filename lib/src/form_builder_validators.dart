@@ -2059,9 +2059,9 @@ final class Validators {
   /// ```dart
   /// // Basic required field validation
   /// final validator = Validators.required<String>();
-  /// print(validator(null));     // Returns localized error message
-  /// print(validator(''));       // Returns localized error message
-  /// print(validator('value')); // Returns null (validation passed)
+  /// assert(validator(null) != null);     // Returns localized error message
+  /// assert(validator('') != null);       // Returns localized error message
+  /// assert(validator('value') == null); // Returns null (validation passed)
   ///
   /// // Chaining with another validator
   /// final complexValidator = Validators.required<String>(
@@ -2122,9 +2122,9 @@ final class Validators {
   /// );
   ///
   /// // Usage with different inputs
-  /// print(validator(null));     // Returns: null (valid)
-  /// print(validator(''));       // Returns: null (valid)
-  /// print(emailValidator('invalid@email')); // Returns: error message
+  /// assert(validator(null) == null);     // Returns: null (valid)
+  /// assert(validator('') == null);       // Returns: null (valid)
+  /// assert(emailValidator('invalid@email') != null); // Returns: error message
   /// ```
   ///
   /// ## Caveats
@@ -2171,13 +2171,13 @@ final class Validators {
   /// final defaultValue = 'default value';
   /// final validator = Validators.validateWithDefault('N/A', minLength);
   ///
-  /// print(validator(null));      // Returns null (valid)
-  /// print(validator('ab'));      // Returns 'Must be at least 3 characters'
-  /// print(validator('abc'));     // Returns null (valid)
+  /// assert(validator(null) == null);  // Returns null (valid)
+  /// assert(validator('ab') != null);  // Returns 'Must be at least 3 characters'
+  /// assert(validator('abc') == null); // Returns null (valid)
   /// // Equivalent to:
-  /// print(minLength(null ?? defaultValue));      // Returns null (valid)
-  /// print(minLength('ab' ?? defaultValue));      // Returns 'Must be at least 3 characters'
-  /// print(minLength('abc' ?? defaultValue));      // Returns null (valid)
+  /// assert(minLength(null ?? defaultValue) == null);  // Returns null (valid)
+  /// assert(minLength('ab' ?? defaultValue) != null);  // Returns 'Must be at least 3 characters'
+  /// assert(minLength('abc' ?? defaultValue) == null); // Returns null (valid)
   /// ```
   /// {@endtemplate}
   static Validator<T?> validateWithDefault<T extends Object>(
@@ -4100,10 +4100,60 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<String> creditCard({
+    // TODO(ArturAssisComp): turn this into a function, becoming more generic.
     RegExp? regex,
     String Function(String input)? creditCardMsg,
   }) =>
       val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
+
+  ///{@template validator_bic}
+  /// Creates a validator that checks if a string is a valid BIC (Bank Identifier Code).
+  ///
+  /// A BIC validator checks string inputs against standard BIC format regulations. The
+  /// validator returns `null` for valid BICs and an error message for invalid inputs.
+  ///
+  /// BIC codes must consist of 8 or 11 characters: 4 bank code letters, 2 country code
+  /// letters, 2 location code alphanumeric characters, and optionally 3 branch code
+  /// alphanumeric characters.
+  ///
+  /// ## Parameters
+  /// - `isBic` (`bool Function(String input)?`): Optional custom function to determine
+  ///   if a string is a valid BIC. If provided, this function overrides the default
+  ///   BIC validation logic.
+  /// - `bicMsg` (`String Function(String input)?`): Optional custom function to generate
+  ///   error messages for invalid BICs. If provided, this function overrides the default
+  ///   error message.
+  ///
+  /// ## Returns
+  /// A `Validator<String>` function that returns:
+  /// - `null` if the input is a valid BIC
+  /// - An error message string if the input is not a valid BIC
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Using default validation
+  /// final validator = bic();
+  /// assert(validator('DEUTDEFF') == null);          // Valid: 8-character BIC
+  /// assert(validator('DEUTDEFFXXX') == null);       // Valid: 11-character BIC
+  /// assert(validator('deut deff xxx') == null);     // Valid: spaces are removed and case is normalized
+  /// assert(validator('DEUT123') != null);           // Invalid: too short
+  /// assert(validator('DEUTDEFFXXXX') != null);      // Invalid: too long
+  /// assert(validator('123TDEFF') != null);          // Invalid: first 4 chars must be letters
+  ///
+  /// // Using custom validation and error message
+  /// final validator = bic(
+  ///   isBic: (value) => value.startsWith('DEUT'),
+  ///   bicMsg: (value) => 'BIC must start with DEUT, got: $value',
+  /// );
+  /// assert(validator('DEUTDEFF') == null);          // Valid: starts with DEUT
+  /// assert(validator('ABCDDEFF') != null);          // Invalid: custom error message
+  /// ```
+  ///{@endtemplate}
+  static Validator<String> bic({
+    c.bool Function(String input)? isBic,
+    String Function(String input)? bicMsg,
+  }) =>
+      val.bic(isBic: isBic, bicMsg: bicMsg);
 
 // Network validators
 
@@ -4131,8 +4181,8 @@ final class Validators {
   /// ```dart
   /// // Basic IPv4 validation
   /// final ipv4Validator = ip();
-  /// print(ipv4Validator('192.168.1.1')); // null (valid)
-  /// print(ipv4Validator('256.1.2.3')); // Returns error message (invalid)
+  /// assert(ipv4Validator('192.168.1.1') == null); // null (valid)
+  /// assert(ipv4Validator('256.1.2.3') != null); // Returns error message (invalid)
   ///
   /// // Custom error message for IPv6
   /// final ipv6Validator = ip(
@@ -4188,14 +4238,14 @@ final class Validators {
   /// ```dart
   /// // Basic URL validation
   /// final validator = url();
-  /// print(validator('https://example.com')); // Returns: null
+  /// assert(validator('https://example.com') == null); // Returns: null
   ///
   /// // Custom protocol validation
   /// final ftpValidator = url(
   ///   protocols: ['ftp'],
   ///   requireProtocol: true
   /// );
-  /// print(ftpValidator('ftp://server.com')); // Returns: null
+  /// assert(ftpValidator('ftp://server.com') == null); // Returns: null
   ///
   /// // With host filtering
   /// final restrictedValidator = url(

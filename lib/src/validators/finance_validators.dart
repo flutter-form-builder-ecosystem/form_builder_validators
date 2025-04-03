@@ -18,6 +18,19 @@ Validator<String> creditCard({
   };
 }
 
+/// {@macro validator_bic}
+Validator<String> bic({
+  bool Function(String input)? isBic,
+  String Function(String input)? bicMsg,
+}) {
+  return (String input) {
+    return (isBic?.call(input) ?? _isBIC(input))
+        ? null
+        : (bicMsg?.call(input) ??
+            FormBuilderLocalizations.current.bicErrorText);
+  };
+}
+
 //******************************************************************************
 //*                              Aux functions                                 *
 //******************************************************************************
@@ -50,4 +63,22 @@ bool _isCreditCard(String value, RegExp regex) {
   }
 
   return (sum % 10 == 0);
+}
+
+/// Check if the string is a valid BIC string.
+///
+/// ## Parameters:
+/// - [value] The string to be evaluated.
+///
+/// ## Returns:
+/// A boolean indicating whether the value is a valid BIC.
+bool _isBIC(String value) {
+  final String bic = value.replaceAll(' ', '').toUpperCase();
+  final RegExp regex = RegExp(r'^[A-Z]{4}[A-Z]{2}\w{2}(\w{3})?$');
+
+  if (bic.length != 8 && bic.length != 11) {
+    return false;
+  }
+
+  return regex.hasMatch(bic);
 }
