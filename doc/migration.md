@@ -633,10 +633,35 @@ FormBuilderValidators.bic(regex: someRegex);
 // New API:
 Validators.bic(isBic: (input)=>someRegex.hasMatch(input));
 ```
-TODO continue from here!!!
-- `FormBuilderValidators.creditCardCVC()` - requires the field's value to be a valid credit card CVC number.
-- `FormBuilderValidators.creditCardExpirationDate()` - requires the field's value to be a valid credit card expiration date and can check if not expired yet.
-- `FormBuilderValidators.creditCard()` - requires the field's value to be a valid credit card number.
+- `FormBuilderValidators.creditCardCVC()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_cvc_validator.dart#L29). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.creditCardCVC(
+  errorText: 'invalid CVC number'
+);
+
+// New API:
+Validators.and([
+  Validators.int(null, 'invalid CVC number'),
+  Validators.equalLength(3, equalLengthMsg: 'invalid CVC number'),
+]);
+```
+- `FormBuilderValidators.creditCardExpirationDate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_expiration_date_validator.dart#L52).
+- `FormBuilderValidators.creditCard()`
+```dart
+// Old API:
+FormBuilderValidators.creditCard(
+  errorText: 'invalid credit card',
+);
+
+// New API:
+Validators.creditCard(
+  creditCardMsg: 'invalid credit card',
+);
+
+```
+TODO continue from here!!!!
+
 - `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
 
 ### Identity validators
