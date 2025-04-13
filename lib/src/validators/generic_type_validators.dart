@@ -19,6 +19,24 @@ Validator<T> inList<T extends Object?>(
   };
 }
 
+/// {@macro validator_not_in_list}
+Validator<T> notInList<T extends Object?>(
+  List<T> values, {
+  String Function(T input, List<T> values)? notInListMsg,
+}) {
+  if (values.isEmpty) {
+    throw ArgumentError.value(
+        '[]', 'values', 'The list of values must not be empty');
+  }
+  final Set<T> setOfValues = values.toSet();
+  return (T input) {
+    return !setOfValues.contains(input)
+        ? null
+        : notInListMsg?.call(input, values) ??
+            FormBuilderLocalizations.current.doesNotContainElementErrorText;
+  };
+}
+
 /// {@macro validator_is_true}
 Validator<T> isTrue<T extends Object>(
     {String Function(T input)? isTrueMsg,

@@ -3551,7 +3551,7 @@ final class Validators {
   /// // Creating a validator with a custom error message generator
   /// final countryValidator = Validators.inList(
   ///   ['USA', 'Canada', 'Mexico'],
-  ///   isInListMsg: (input, values) =>
+  ///   inListMsg: (input, values) =>
   ///     'Country $input is not in allowed list: ${values.join(", ")}',
   /// );
   ///
@@ -3565,6 +3565,51 @@ final class Validators {
     String Function(T input, List<T> values)? inListMsg,
   }) =>
       val.inList(values, inListMsg: inListMsg);
+
+  /// {@template validator_not_in_list}
+  /// Creates a validator function that verifies if a given input is not in
+  /// `values`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of elements to validate. Must extend Object?, allowing nullable
+  /// types.
+  ///
+  /// ## Parameters
+  /// - `values` (`List<T>`): A non-empty list of invalid values to check
+  ///   against. The input will be validated against these values.
+  /// - `notInListMsg` (`String Function(T input, List<T> values)?`): Optional callback
+  ///   function that generates a custom error message when validation fails. The function
+  ///   receives the invalid input and the list of invalid values as parameters. If not provided,
+  ///   defaults to the localized error text from FormBuilderLocalizations.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<T>`  function that:
+  /// - Returns null if the input value does not exist in the provided list
+  /// - Returns a generated error message if the input was found in the list.
+  ///
+  /// ## Throws
+  /// - `AssertionError`: Thrown if the provided values list is empty, which would
+  /// make any input valid.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Creating a validator with a custom error message generator
+  /// final countryValidator = Validators.notInList(
+  ///   ['USA', 'Canada', 'Mexico'],
+  ///   notInListMsg: (input, values) =>
+  ///     'Country $input is in the forbidden list: ${values.join(", ")}',
+  /// );
+  ///
+  /// // Using the validator
+  /// final result = countryValidator('Brazil'); // Returns null (valid)
+  /// final valid = countryValidator('USA');     // Returns "Country USA is in the forbidden list: USA, Canada, Mexico"
+  /// ```
+  /// {@endtemplate}
+  static Validator<T> notInList<T extends Object?>(
+    List<T> values, {
+    String Function(T input, List<T> values)? notInListMsg,
+  }) =>
+      val.notInList(values, notInListMsg: notInListMsg);
 
   /// {@template validator_is_true}
   /// Creates a validator function that checks if a given input represents a `true`

@@ -673,8 +673,56 @@ Validators.iban(ibanMsg: (_)=>'invalid iban');
 
 ### Identity validators
 
-- `FormBuilderValidators.city()` - requires the field's value to be a valid city name.
-- `FormBuilderValidators.country()` - requires the field's value to be a valid country name.
+- `FormBuilderValidators.city()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/city_validator.dart#L53). Something close would be:
+```dart
+/// Old API:
+FormBuilderValidators.city(
+  regex: RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+  citiesWhitelist: ['CityA', 'CityB', 'CityC'],
+  citiesBlacklist: ['CityD', 'CityE'],
+  errorText: 'invalid city',
+);
+
+/// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+    matchMsg: (_)=>'invalid city'
+  ),
+  Validators.inList(
+    ['CityA', 'CityB', 'CityC'],
+    inListMsg: (_, __) => 'invalid city',
+  ),
+  Validators.notInList(
+    ['CityD', 'CityE'],
+    notInListMsg: (_, __) => 'invalid city',
+  ),
+]);
+```
+
+- `FormBuilderValidators.country()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/country_validator.dart#L42). Something close would be:
+```dart
+/// Old API:
+FormBuilderValidators.country(
+  countryWhitelist: ['CountryA', 'CountryB', 'CountryC'],
+  countryBlacklist: ['CountryD', 'CountryE'],
+  errorText: 'invalid country',
+);
+
+/// New API (expects input as String):
+Validators.and([
+  Validators.inList(
+    ['CountryA', 'CountryB', 'CountryC'],
+    inListMsg: (_, __) => 'invalid country',
+  ),
+  Validators.notInList(
+    ['CountryD', 'CountryE'],
+    notInListMsg: (_, __) => 'invalid country',
+  ),
+]);
+```
+
+TODO continue from here...
 - `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
 - `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
 - `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.

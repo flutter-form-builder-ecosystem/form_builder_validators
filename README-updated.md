@@ -156,6 +156,7 @@ TextFormField(
 Validators that check a generic type user input.
 
 - `Validators.inList(values)`: Checks if the field contains a value that is in the list `values`.
+- TODO [ ] `Validators.notInList(values)`: Checks if the field DOES NOT contain a value that is in the list `values`.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
 

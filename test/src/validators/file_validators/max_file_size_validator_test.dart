@@ -104,7 +104,8 @@ void main() {
             maxFileSize(max, base: base)(input),
             expected == null
                 ? isNull
-                : stringContainsInOrder([expected.max, expected.input]));
+                : stringContainsInOrder(
+                    <String>[expected.max, expected.input]));
       });
     }
 

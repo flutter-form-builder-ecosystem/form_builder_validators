@@ -64,6 +64,7 @@
   "containsErrorText": "Vērtībai jāsatur {value}.",
   "betweenErrorText": "Vērtībai jābūt starp {min} un {max}.",
   "containsElementErrorText": "Vērtībai jābūt sarakstā.",
+  "doesNotContainElementErrorText": "Vērtība nedrīkst būt sarakstā.",
   "ibanErrorText": "Vērtībai jābūt derīgam IBAN.",
   "uniqueErrorText": "Vērtībai jābūt unikālai.",
   "bicErrorText": "Vērtībai jābūt derīgam BIC.",

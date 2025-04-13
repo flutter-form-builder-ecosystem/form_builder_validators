@@ -64,6 +64,7 @@
   "containsErrorText": "Værdien skal indeholde {value}.",
   "betweenErrorText": "Værdien skal være mellem {min} og {max}.",
   "containsElementErrorText": "Værdien skal være på listen over tilladte værdier.",
+  "doesNotContainElementErrorText": "Værdien må ikke være på listen.",
   "ibanErrorText": "Dette felt kræver en gyldig IBAN.",
   "uniqueErrorText": "Dette felt skal være unikt.",
   "bicErrorText": "Dette felt kræver en gyldig BIC.",

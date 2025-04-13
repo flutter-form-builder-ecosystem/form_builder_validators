@@ -64,6 +64,7 @@
   "containsErrorText": "Стойността трябва да съдържа {value}.",
   "betweenErrorText": "Стойността трябва да е между {min} и {max}.",
   "containsElementErrorText": "Стойността трябва да е в списъка с допустими стойности.",
+  "doesNotContainElementErrorText": "Стойността не може да бъде в списъка.",
   "ibanErrorText": "Това поле изисква валиден IBAN.",
   "uniqueErrorText": "Това поле изисква уникална стойност.",
   "bicErrorText": "Това поле изисква валиден BIC код.",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart'
-    show Validators, Validator;
+    show Validator, Validators;
 
 /// alias for Validators class.
 typedef V = Validators;
@@ -244,6 +244,31 @@ class GenericExamplesPage extends StatelessWidget {
                     V.int(),
                     V.equalLength(3),
                   ]),
+                ),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'City',
+                  prefixIcon: Icon(Icons.location_city),
+                ),
+                validator: V.required(
+                  V.and(<Validator<String>>[
+                    V.match(
+                      RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+                      matchMsg: (_) => 'invalid city',
+                    ),
+                    V.inList(
+                      <String>['CityA', 'CityB', 'CityC'],
+                      inListMsg: (_, __) => 'invalid city',
+                    ),
+                    V.notInList(
+                      <String>['CityD', 'CityE'],
+                      notInListMsg: (_, __) => 'invalid city',
+                    ),
+                  ]),
+                  'invalid city',
                 ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,

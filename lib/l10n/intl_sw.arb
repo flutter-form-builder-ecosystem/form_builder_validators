@@ -64,6 +64,7 @@
   "containsErrorText": "Thamani lazima iwe na {value}.",
   "betweenErrorText": "Thamani lazima iwe kati ya {min} na {max}.",
   "containsElementErrorText": "Thamani lazima iwe kwenye orodha ya thamani zinazokubalika.",
+  "doesNotContainElementErrorText": "Thamani haiwezi kuwa kwenye orodha.",
   "ibanErrorText": "Sehemu hii inahitaji IBAN halali.",
   "uniqueErrorText": "Thamani lazima iwe ya kipekee.",
   "bicErrorText": "Sehemu hii inahitaji BIC halali.",
