@@ -31,6 +31,19 @@ Validator<String> bic({
   };
 }
 
+/// {@macro validator_iban}
+Validator<String> iban({
+  bool Function(String input)? isIban,
+  String Function(String input)? ibanMsg,
+}) {
+  return (String input) {
+    return isIban?.call(input) ?? _isIBAN(input)
+        ? null
+        : (ibanMsg?.call(input) ??
+            FormBuilderLocalizations.current.ibanErrorText);
+  };
+}
+
 //******************************************************************************
 //*                              Aux functions                                 *
 //******************************************************************************
@@ -81,4 +94,33 @@ bool _isBIC(String value) {
   }
 
   return regex.hasMatch(bic);
+}
+
+/// Check if the string is a valid IBAN.
+bool _isIBAN(String value) {
+  final String iban = value.replaceAll(' ', '').toUpperCase();
+
+  if (iban.length < 15) {
+    return false;
+  }
+
+  final String rearranged = iban.substring(4) + iban.substring(0, 4);
+  final String numericIban = rearranged.split('').map((String char) {
+    final int charCode = char.codeUnitAt(0);
+    return charCode >= 65 && charCode <= 90 ? (charCode - 55).toString() : char;
+  }).join();
+
+  int remainder = int.parse(numericIban.substring(0, 9)) % 97;
+  for (int i = 9; i < numericIban.length; i += 7) {
+    remainder = int.parse(
+          remainder.toString() +
+              numericIban.substring(
+                i,
+                i + 7 < numericIban.length ? i + 7 : numericIban.length,
+              ),
+        ) %
+        97;
+  }
+
+  return remainder == 1;
 }

@@ -4106,6 +4106,54 @@ final class Validators {
   }) =>
       val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
 
+  ///{@template validator_iban}
+  /// A validator function that checks if a string is a valid International Bank
+  /// Account Number (IBAN).
+  ///
+  /// Returns null if the input is a valid IBAN format, otherwise returns an
+  /// error message. The validator performs standard IBAN validation including
+  /// length check, character conversion, and checksum calculation according to
+  /// the ISO 13616 standard.
+  ///
+  /// ## Parameters
+  /// - `isIban` (`bool Function(String input)?`): Optional custom validation
+  ///   function that determines if the input is a valid IBAN. If provided, this
+  ///   function overrides the default validation logic.
+  /// - `ibanMsg` (`String Function(String input)?`): Optional function that
+  ///   returns a custom error message when validation fails. If not provided,
+  ///   the default localized error message is used.
+  ///
+  /// ## Returns
+  /// A `Validator<String>` function that accepts a string input and returns
+  /// null for valid IBANs or an error message string for invalid IBANs.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with default validation and error message
+  /// final validator = Validators.iban();
+  /// assert(validator('GB82 WEST 1234 5698 7654 32') == null); // Valid IBAN
+  /// assert(validator('invalid123') != null); // Invalid IBAN
+  ///
+  /// // Using custom validation logic
+  /// final customValidator = FormBuilderValidators.iban(
+  ///   isIban: (input) => input.startsWith('DE'),
+  ///   ibanMsg: (input) => 'Only German IBANs are accepted',
+  /// );
+  /// assert(customValidator('DE89 3704 0044 0532 0130 00') == null); // Valid German IBAN
+  /// assert(customValidator('GB82 WEST 1234 5698 7654 32') != null); // Not a German IBAN
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator removes all spaces from the input before validation
+  /// - The validation is case-insensitive as the input is converted to uppercase
+  /// - The minimum length check for IBANs is set to 15 characters (after removing spaces)
+  /// {@endtemplate}
+  static Validator<String> iban({
+    c.bool Function(String input)? isIban,
+    String Function(String input)? ibanMsg,
+  }) =>
+      val.iban(isIban: isIban, ibanMsg: ibanMsg);
+
   ///{@template validator_bic}
   /// Creates a validator that checks if a string is a valid BIC (Bank Identifier Code).
   ///

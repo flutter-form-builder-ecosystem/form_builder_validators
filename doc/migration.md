@@ -660,9 +660,16 @@ Validators.creditCard(
 );
 
 ```
-TODO continue from here!!!!
 
-- `FormBuilderValidators.iban()` - requires the field's to be a valid IBAN.
+- `FormBuilderValidators.iban()`
+```dart
+// Old API:
+// OBS.: There is a bug in the regex parameter. It is not used at all.
+FormBuilderValidators.iban(errorText: 'invalid iban');
+
+// New API:
+Validators.iban(ibanMsg: (_)=>'invalid iban');
+```
 
 ### Identity validators
 
