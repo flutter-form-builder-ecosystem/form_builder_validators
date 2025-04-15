@@ -675,7 +675,7 @@ Validators.iban(ibanMsg: (_)=>'invalid iban');
 
 - `FormBuilderValidators.city()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/city_validator.dart#L53). Something close would be:
 ```dart
-/// Old API:
+// Old API:
 FormBuilderValidators.city(
   regex: RegExp(r'^[A-Z][a-zA-Z\s]+$'),
   citiesWhitelist: ['CityA', 'CityB', 'CityC'],
@@ -683,7 +683,7 @@ FormBuilderValidators.city(
   errorText: 'invalid city',
 );
 
-/// New API (expects input as String):
+// New API (expects input as String):
 Validators.and([
   Validators.match(
     RegExp(r'^[A-Z][a-zA-Z\s]+$'),
@@ -702,14 +702,14 @@ Validators.and([
 
 - `FormBuilderValidators.country()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/country_validator.dart#L42). Something close would be:
 ```dart
-/// Old API:
+// Old API:
 FormBuilderValidators.country(
   countryWhitelist: ['CountryA', 'CountryB', 'CountryC'],
   countryBlacklist: ['CountryD', 'CountryE'],
   errorText: 'invalid country',
 );
 
-/// New API (expects input as String):
+// New API (expects input as String):
 Validators.and([
   Validators.inList(
     ['CountryA', 'CountryB', 'CountryC'],
@@ -722,15 +722,186 @@ Validators.and([
 ]);
 ```
 
-TODO continue from here...
-- `FormBuilderValidators.firstName()` - requires the field's value to be a valid first name.
-- `FormBuilderValidators.lastName()` - requires the field's value to be a valid last name.
-- `FormBuilderValidators.passportNumber()` - requires the field's value to be a valid passport number.
-- `FormBuilderValidators.password()` - requires the field's to be a valid password that matched required conditions.
-- `FormBuilderValidators.ssn()` - requires the field's to be a valid SSN (Social Security Number).
-- `FormBuilderValidators.state()` - requires the field's value to be a valid state name.
-- `FormBuilderValidators.street()` - requires the field's value to be a valid street name.
-- `FormBuilderValidators.username()` - requires the field's to be a valid username that matched required conditions.
+- `FormBuilderValidators.firstName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/firstname_validator.dart#L53). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.firstName(
+  regex: RegExp(r'^[A-Z][a-zA-Z]+$'),
+  firstNameWhitelist: ['NameA', 'NameB', 'NameC'],
+  firstNameBlacklist: ['NameD', 'NameE'],
+  errorText: 'invalid name',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Z][a-zA-Z]+$'),
+    matchMsg: (_)=>'invalid name'
+  ),
+  Validators.inList(
+    ['NameA', 'NameB', 'NameC'],
+    inListMsg: (_, __) => 'invalid name',
+  ),
+  Validators.notInList(
+    ['NameD', 'NameE'],
+    notInListMsg: (_, __) => 'invalid name',
+  ),
+]);
+```
+- `FormBuilderValidators.lastName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/lastname_validator.dart#L53). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.lastName(
+  regex: RegExp(r'^[A-Z][a-zA-Z]+$'),
+  lastNameWhitelist: ['NameA', 'NameB', 'NameC'],
+  lastNameBlacklist: ['NameD', 'NameE'],
+  errorText: 'invalid name',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Z][a-zA-Z]+$'),
+    matchMsg: (_)=>'invalid name'
+  ),
+  Validators.inList(
+    ['NameA', 'NameB', 'NameC'],
+    inListMsg: (_, __) => 'invalid name',
+  ),
+  Validators.notInList(
+    ['NameD', 'NameE'],
+    notInListMsg: (_, __) => 'invalid name',
+  ),
+]);
+```
+- `FormBuilderValidators.passport()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/passport_number_validator.dart#L53). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.passport(
+  regex: RegExp(r'^[A-Za-z0-9]{6,9}$'),
+  passportNumberNameWhitelist: ['PassA', 'PassB', 'PassC'],
+  passportNumberNameBlacklist: ['PassD', 'PassE'],
+  errorText: 'invalid passport',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Za-z0-9]{6,9}$'),
+    matchMsg: (_)=>'invalid passport'
+  ),
+  Validators.inList(
+    ['PassA', 'PassB', 'PassC'],
+    inListMsg: (_, __) => 'invalid passport',
+  ),
+  Validators.notInList(
+    ['PassD', 'PassE'],
+    notInListMsg: (_, __) => 'invalid passport',
+  ),
+]);
+```
+- `FormBuilderValidators.password()`
+```dart
+// Old API:
+FormBuilderValidators.password(
+  minLength: 1,
+  maxLength: 32,
+  minUppercaseCount: 2,
+  minLowercaseCount: 2,
+  minNumberCount: 2,
+  minSpecialCharCount: 2,
+  errorText: 'error text',
+);
+
+// New API:
+Validators.password(
+  minLength: 1,
+  maxLength: 32,
+  minUppercaseCount: 2,
+  minLowercaseCount: 2,
+  minNumberCount: 2,
+  minSpecialCharCount: 2,
+  passwordMsg:(_) => 'error text',
+);
+```
+- `FormBuilderValidators.ssn()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/ssn_validator.dart#L47)  
+- `FormBuilderValidators.state()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/state_validator.dart#L53). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.state(
+  regex: RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+  stateWhitelist: ['stateA', 'stateB', 'stateC'],
+  stateBlacklist: ['stateD', 'stateE'],
+  errorText: 'invalid state',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+    matchMsg: (_)=>'invalid state'
+  ),
+  Validators.inList(
+    ['stateA', 'stateB', 'stateC'],
+    inListMsg: (_, __) => 'invalid state',
+  ),
+  Validators.notInList(
+    ['stateD', 'stateE'],
+    notInListMsg: (_, __) => 'invalid state',
+  ),
+]);
+```
+- `FormBuilderValidators.street()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/street_validator.dart#L53). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.street(
+  regex: RegExp(r'^[A-Z0-9][a-zA-Z0-9\s]*$'),
+  streetWhitelist: ['streetA', 'streetB', 'streetC'],
+  streetBlacklist: ['streetD', 'streetE'],
+  errorText: 'invalid street',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    RegExp(r'^[A-Z0-9][a-zA-Z0-9\s]*$'),
+    matchMsg: (_)=>'invalid street'
+  ),
+  Validators.inList(
+    ['streetA', 'streetB', 'streetC'],
+    inListMsg: (_, __) => 'invalid street',
+  ),
+  Validators.notInList(
+    ['streetD', 'streetE'],
+    notInListMsg: (_, __) => 'invalid street',
+  ),
+]);
+```
+- `FormBuilderValidators.username()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/username_validator.dart#L71). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.username(
+  minLength:4,
+  maxLength:10,
+  allowNumbers:true,
+  allowUnderscore:false,
+  allowDots:false,
+  allowDash:false,
+  allowSpace:false,
+  allowSpecialChar:false,
+  errorText: 'invalid username',
+);
+
+// New API:
+Validators.and([
+  Validators.minLength(4, minLengthMsg: (_, __)=>'invalid username'),
+  Validators.maxLength(10, minLengthMsg: (_, __)=>'invalid username'),
+  Validators.hasMaxNumericChars(10, minLengthMsg: (_, __)=>'invalid username'),
+
+]);
+
+
+```
 - `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
 
 ### Network validators

@@ -156,14 +156,14 @@ TextFormField(
 Validators that check a generic type user input.
 
 - `Validators.inList(values)`: Checks if the field contains a value that is in the list `values`.
-- TODO [ ] `Validators.notInList(values)`: Checks if the field DOES NOT contain a value that is in the list `values`.
+- `Validators.notInList(values)`: Checks if the field DOES NOT contain a value that is in the list `values`.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
 
 ### Miscellaneous validators
 
 - TODO [ ] `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-- TODO `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
+- TODO [ ] `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
  
 ### Network validators
 
@@ -185,16 +185,25 @@ Validators that check a generic type user input.
 
 ### String validators
 
+TODO continue from here...
 - `Validators.contains(substring)` - Checks if the field contains the `substring`.
+- TODO [ ] `Validators.notContains(substring)` - Checks if the field does not contain the `substring`.
 - TODO [ ] `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
+- TODO [ ] `FormBuilderValidators.notEndsWith()` - requires the substring not to be the end of the field's value.
 - TODO [ ] `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
+- TODO [ ] `FormBuilderValidators.notStartsWith()` - requires the substring not to be the start of the field's value.
 - TODO [ ] `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
 - TODO [ ] `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `Validators.hasMinUppercaseChars(min:min)` - Checks if the field has a minimum number of uppercase chars.
+- TODO [ ] `Validators.hasMaxUppercaseChars(max:max)` - Checks if the field has a maximum number of uppercase chars.
 - `Validators.hasMinLowercaseChars(min:min)` - Checks if the field has a minimum number of lowercase chars.
+- TODO [ ] `Validators.hasMaxLowercaseChars(max:max)` - Checks if the field has a maximum number of lowercase chars.
 - `Validators.hasMinNumericChars(min:min)` - Checks if the field has a minimum number of numeric chars.
+- TODO [ ] `Validators.hasMaxNumericChars(max:max)` - Checks if the field has a maximum number of numeric chars.
 - `Validators.hasMinSpecialChars(min:min)` - Checks if the field has a minimum number of special chars.
+- TODO [ ] `Validators.hasMaxSpecialChars(max:max)` - Checks if the field has a maximum number of special chars.
 - `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
+- TODO [ ] `Validators.notMatch(regExp)` - Checks if the field does not match with the regular expression `regExp`.
 - `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
 - TODO [ ] `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
 - TODO [ ] `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
