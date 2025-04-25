@@ -169,7 +169,7 @@ Validators that check a generic type user input.
 
 - `Validators.ip()`: Checks if the field contains a properly formatted `Internet Protocol` (IP) address. It may check for either `IPv4`, or `IPv6` or even for both.
 - `Validators.url()`: Checks if the field contains a properly formatted `Uniform Resource Locators` (URL).
-- TODO [ ] `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
+- `FormBuilderValidators.email()`: Checks if the field contains a valid email.
 - TODO [ ] `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 
 ### Numeric validators

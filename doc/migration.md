@@ -902,12 +902,69 @@ Validators.and([
 
 
 ```
-- `FormBuilderValidators.zipCode()` - requires the field's to be a valid zip code.
+- `FormBuilderValidators.zipCode()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/zip_code_validator.dart#L43). Something close would be:
+```dart
+// Old API:
+FormBuilderValidators.zipCode(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.match(
+  RegExp(r'^\d{5}(?:[-\s]\d{4})?$'),
+  matchMsg: (_)=>'error text'
+);
+```
+
 
 ### Network validators
 
-- `FormBuilderValidators.email()` - requires the field's value to be a valid email address.
-- `FormBuilderValidators.ip()` - requires the field's value to be a valid IP address.
+- `FormBuilderValidators.email()`
+```dart
+// Old API:
+FormBuilderValidators.email(
+  regex: emailRegex,
+  errorText: 'invalid email',
+);
+
+// New API:
+Validators.email(
+  regex: emailRegex,
+  emailMsg: (_)=>'invalid email',
+);
+```
+
+- `FormBuilderValidators.ip()`
+```dart
+// For IPv4
+// Old API:
+FormBuilderValidators.ip(
+  regex: ipRegex,
+  errorText: 'invalid ipV4',
+);
+
+// New API:
+Validators.ip(
+  regex: ipRegex,
+  emailMsg: (_)=>'invalid ipV4',
+);
+
+// For IPv6
+// Old API:
+FormBuilderValidators.ip(
+  version: 6
+  regex: ipRegex,
+  errorText: 'invalid ipV4',
+);
+
+// New API:
+Validators.ip(
+  version: IpVersion.iPv6,
+  regex: ipRegex,
+  emailMsg: (_)=>'invalid ipV4',
+);
+```
+
 - `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
 - `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
 - `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
