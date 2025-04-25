@@ -273,6 +273,28 @@ class GenericExamplesPage extends StatelessWidget {
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Latitude',
+                  prefixIcon: Icon(Icons.add_location),
+                ),
+                validator: V.required(V.transformAndValidate(
+                    (String input) => input.replaceAll(',', '.'),
+                    next: V.double(V.between(-90, 90)))),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Longitude',
+                  prefixIcon: Icon(Icons.add_location),
+                ),
+                validator: V.required(V.transformAndValidate(
+                    (String input) => input.replaceAll(',', '.'),
+                    next: V.double(V.between(-180, 180)))),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
             ],
           ),
         ),

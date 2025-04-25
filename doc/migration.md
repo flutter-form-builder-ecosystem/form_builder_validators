@@ -965,8 +965,33 @@ Validators.ip(
 );
 ```
 
-- `FormBuilderValidators.latitude()` - requires the field's to be a valid latitude.
-- `FormBuilderValidators.longitude()` - requires the field's to be a valid longitude.
+- `FormBuilderValidators.latitude()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/network/latitude_validator.dart#L40). But something close would be: 
+```dart
+// Old API:
+FormBuilderValidators.latitude();
+
+// New API:
+Validators.transformAndValidate(
+  (String input) => input.replaceAll(',', '.'),
+  next: Validators.double(Validators.between(-90, 90)),
+);
+
+```
+
+- `FormBuilderValidators.longitude()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/network/longitude_validator.dart#L40). But something close would be:
+```dart
+// Old API:
+FormBuilderValidators.longitude();
+
+// New API:
+Validators.transformAndValidate(
+  (String input) => input.replaceAll(',', '.'),
+  next: Validators.double(Validators.between(-180, 180)),
+);
+
+```
+
+TODO continue from here...
 - `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 - `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
 - `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
