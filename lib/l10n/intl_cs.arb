@@ -64,6 +64,7 @@
   "containsErrorText": "Hodnota musí obsahovat {value}.",
   "betweenErrorText": "Hodnota musí být mezi {min} a {max}.",
   "containsElementErrorText": "Hodnota musí být v seznamu povolených hodnot.",
+  "doesNotContainElementErrorText": "Hodnota nesmí být v seznamu.",
   "ibanErrorText": "Pole vyžaduje platné IBAN.",
   "uniqueErrorText": "Hodnota musí být jedinečná.",
   "bicErrorText": "Pole vyžaduje platný BIC kód.",

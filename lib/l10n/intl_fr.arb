@@ -64,6 +64,7 @@
   "containsErrorText": "La valeur doit contenir {value}.",
   "betweenErrorText": "La valeur doit être comprise entre {min} et {max}.",
   "containsElementErrorText": "La valeur doit être dans la liste des valeurs autorisées.",
+  "doesNotContainElementErrorText": "La valeur ne peut pas être dans la liste.",
   "ibanErrorText": "Ce champ nécessite un IBAN valide.",
   "uniqueErrorText": "Ce champ doit être unique.",
   "bicErrorText": "Ce champ nécessite un code BIC valide.",

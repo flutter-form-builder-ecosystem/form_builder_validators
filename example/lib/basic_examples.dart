@@ -34,13 +34,13 @@ class BasicExamplesPage extends StatelessWidget {
                     labelText:
                         'Type "I want to delete" to confirm the action.'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: Validators.isEqual('I want to delete'),
+                validator: Validators.equal('I want to delete'),
               ),
               TextFormField(
                 decoration: const InputDecoration(
                     labelText: 'Username (should not be "RESERVED")'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: Validators.isNotEqual('RESERVED'),
+                validator: Validators.notEqual('RESERVED'),
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -54,7 +54,7 @@ class BasicExamplesPage extends StatelessWidget {
                     const InputDecoration(labelText: 'Input must not be null'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (String? input) {
-                  final String? isRequiredMsg = Validators.isRequired()(input);
+                  final String? isRequiredMsg = Validators.required()(input);
                   return isRequiredMsg
                       ?.toUpperCase()
                       .replaceFirst('OVERRIDE: ', '');
