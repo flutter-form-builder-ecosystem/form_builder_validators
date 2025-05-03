@@ -85,6 +85,22 @@ Validator<String> url({
   };
 }
 
+/// {@macro validator_mac_address}
+Validator<String> macAddress({
+  bool Function(String)? isMacAddress,
+  String Function(String input)? macAddressMsg,
+}) {
+  final RegExp defaultRegex = RegExp(
+    r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$|^([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})$',
+  );
+  return (String input) {
+    return (isMacAddress?.call(input) ?? defaultRegex.hasMatch(input))
+        ? null
+        : (macAddressMsg?.call(input) ??
+            FormBuilderLocalizations.current.macAddressErrorText);
+  };
+}
+
 //******************************************************************************
 //*                              Aux functions                                 *
 //******************************************************************************

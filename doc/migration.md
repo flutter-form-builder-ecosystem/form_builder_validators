@@ -991,8 +991,22 @@ Validators.transformAndValidate(
 
 ```
 
+- `FormBuilderValidators.macAddress()`
+```dart
+// Old API
+FormBuilderValidators.macAddress(
+  regex: regex,
+  errorText: 'error text'
+);
+
+// New API equivalent
+Validators.macAddress(
+  isMacAddress: (input) => regex.hasMatch(input),
+  macAddressMsg: (_) => 'error text'
+);
+```
+
 TODO continue from here...
-- `FormBuilderValidators.macAddress()` - requires the field's to be a valid MAC address.
 - `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
 - `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
 - `FormBuilderValidators.url()` - requires the field's value to be a valid URL.

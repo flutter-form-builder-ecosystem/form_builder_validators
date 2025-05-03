@@ -4367,4 +4367,50 @@ final class Validators {
         regex: regex,
         urlMsg: urlMsg,
       );
+
+  /// {@template validator_mac_address}
+  /// A validator function that checks if a given string represents a valid MAC
+  /// (Media Access Control) address. This validator supports standard MAC address
+  /// formats with customizable validation logic.
+  ///
+  /// The validator accepts MAC addresses in two common formats:
+  /// - Colon or hyphen separated: 00:1B:44:11:3A:B7 or 00-1B-44-11-3A-B7
+  /// - Dot separated: 0123.4567.89AB
+  ///
+  /// ## Parameters
+  /// - `isMacAddress` (`bool Function(String)?`): Optional custom validation function
+  ///   that overrides the default MAC address format checking. When provided and
+  ///   returns `true`, the string is considered valid
+  /// - `macAddressMsg` (`String Function(String input)?`): Custom error message
+  ///   generator function that takes the invalid MAC address as input
+  ///
+  /// ## Returns
+  /// Returns `null` if the MAC address is valid according to either the custom
+  /// validation function or the default regex pattern. Otherwise, returns an error
+  /// message string, either custom-generated via `macAddressMsg` or the default
+  /// localized MAC address error text.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic MAC address validation
+  /// final validator = macAddress();
+  /// assert(validator('00:1B:44:11:3A:B7') == null); // Returns: null
+  /// assert(validator('00-1B-44-11-3A-B7') == null); // Returns: null
+  /// assert(validator('0123.4567.89AB') == null); // Returns: null
+  ///
+  /// // With custom validation logic
+  /// final customValidator = macAddress(
+  ///   isMacAddress: (value) => value.length == 17,
+  ///   macAddressMsg: (input) => 'Invalid MAC: $input'
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> macAddress({
+    c.bool Function(String)? isMacAddress,
+    String Function(String input)? macAddressMsg,
+  }) =>
+      val.macAddress(
+        isMacAddress: isMacAddress,
+        macAddressMsg: macAddressMsg,
+      );
 }
