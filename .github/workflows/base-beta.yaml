@@ -1,13 +1,15 @@
-name: Base
+name: Base (beta)
 
 on:
+  schedule:
+    - cron: '0 0 */15 * *' # Runs every 15 days for verifying changes on Flutter beta channel
   push:
-    branches: [main]
+    branches: [beta]
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
 
   pull_request:
-    branches: [main]
+    branches: [beta]
 
   workflow_dispatch:
 
@@ -21,10 +23,12 @@ jobs:
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/minimal-quality.yaml@main
     with:
       codecov-name: form_builder_validators
+      fvm-flavor: beta
       enable-generate-l10n: true
   example:
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/build-examples.yaml@main
     with:
+      fvm-flavor: beta
       enable-generate-l10n: true
 
 
