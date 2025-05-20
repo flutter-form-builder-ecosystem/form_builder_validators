@@ -64,6 +64,7 @@
   "containsErrorText": "Valoarea trebuie să conțină {value}.",
   "betweenErrorText": "Valoarea trebuie să fie între {min} și {max}.",
   "containsElementErrorText": "Valoarea trebuie să fie în lista valorilor permise.",
+  "doesNotContainElementErrorText": "Valoarea nu poate fi în listă.",
   "ibanErrorText": "Acest câmp necesită un IBAN valid.",
   "uniqueErrorText": "Valoarea trebuie să fie unică.",
   "bicErrorText": "Acest câmp necesită un cod BIC valid.",

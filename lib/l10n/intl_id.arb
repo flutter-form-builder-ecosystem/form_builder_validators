@@ -64,6 +64,7 @@
   "containsErrorText": "Nilai harus mengandung {value}.",
   "betweenErrorText": "Nilai harus antara {min} dan {max}.",
   "containsElementErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan.",
+  "doesNotContainElementErrorText": "Nilai tidak boleh ada dalam daftar.",
   "ibanErrorText": "IBAN tidak valid.",
   "uniqueErrorText": "Nilai harus unik.",
   "bicErrorText": "BIC tidak valid.",
