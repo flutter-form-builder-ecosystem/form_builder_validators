@@ -1006,17 +1006,83 @@ Validators.macAddress(
 );
 ```
 
+- `FormBuilderValidators.phoneNumber()`
+```dart
+// Old API
+FormBuilderValidators.phoneNumber();
+
+// New API 
+Validators.phoneNumber();
+```
+
 TODO continue from here...
-- `FormBuilderValidators.phoneNumber()` - requires the field's value to be a valid phone number.
-- `FormBuilderValidators.portNumber()` - requires the field's to be a valid port number.
-- `FormBuilderValidators.url()` - requires the field's value to be a valid URL.
+- `FormBuilderValidators.portNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/network/port_number_validator.dart#L40). But, something close would be:
+```dart
+// Old API
+FormBuilderValidators.portNumber(
+  min: min,
+  max: max,
+  errorText: 'error text'
+);
+
+
+// New API:
+Validators.int(
+  Validators.between(min, max, betweenMsg: (_, __, ___, ____, _____)=>'error text'), 
+  'error text',
+);
+```
+
+- `FormBuilderValidators.url()` 
+```dart
+// Old API
+FormBuilderValidators.url();
+
+// New API equivalent
+Validators.url();
+```
+
 
 ### Numeric validators
 
-- `FormBuilderValidators.between()` - requires the field's to be between two numbers.
-- `FormBuilderValidators.evenNumber()` - requires the field's to be an even number.
-- `FormBuilderValidators.integer()` - requires the field's value to be an integer.
-- `FormBuilderValidators.max()` - requires the field's value to be less than or equal to the provided number.
+- `FormBuilderValidators.between()`
+```dart
+// Old API
+FormBuilderValidators.between(min, max, errorText: 'error msg');
+
+// New API equivalent
+Validators.between(min, max, betweenMsg:(_, __, ___, ____, _____)=>'error msg');
+```
+
+- `FormBuilderValidators.evenNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/even_number_validator.dart#L29). But, something close would be:
+```dart
+// Old API
+FormBuilderValidators.evenNumber(errorText: 'error text');
+
+
+// New API:
+Validators.int(
+  Validators.satisfy((input)=>input % 2 == 0, betweenMsg: (_)=>'error text'), 
+  'error text',
+);
+```
+- `FormBuilderValidators.integer()`: the radix is not supported.
+```dart
+// Old API
+FormBuilderValidators.integer();
+
+// New API (close):
+Validators.int();
+```
+TODO continue the implementation from gere...
+- `FormBuilderValidators.max()`: there is no equivalent ........
+```dart
+// Old API
+FormBuilderValidators.max(n);
+
+// New API (close):
+Validators.int();
+```
 - `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
 - `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
 - `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
