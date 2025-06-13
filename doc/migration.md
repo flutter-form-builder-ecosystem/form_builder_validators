@@ -642,8 +642,8 @@ FormBuilderValidators.creditCardCVC(
 
 // New API:
 Validators.and([
-  Validators.int(null, 'invalid CVC number'),
-  Validators.equalLength(3, equalLengthMsg: 'invalid CVC number'),
+  Validators.int(null, (_)=>'invalid CVC number'),
+  Validators.equalLength(3, equalLengthMsg: (_, __)=>'invalid CVC number'),
 ]);
 ```
 - `FormBuilderValidators.creditCardExpirationDate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_expiration_date_validator.dart#L52).
@@ -1015,7 +1015,6 @@ FormBuilderValidators.phoneNumber();
 Validators.phoneNumber();
 ```
 
-TODO continue from here...
 - `FormBuilderValidators.portNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/network/port_number_validator.dart#L40). But, something close would be:
 ```dart
 // Old API
@@ -1029,7 +1028,7 @@ FormBuilderValidators.portNumber(
 // New API:
 Validators.int(
   Validators.between(min, max, betweenMsg: (_, __, ___, ____, _____)=>'error text'), 
-  'error text',
+  (_)=>'error text',
 );
 ```
 
@@ -1051,7 +1050,10 @@ Validators.url();
 FormBuilderValidators.between(min, max, errorText: 'error msg');
 
 // New API equivalent
-Validators.between(min, max, betweenMsg:(_, __, ___, ____, _____)=>'error msg');
+Validators.num(
+  Validators.between(min, max, betweenMsg:(_, __, ___, ____, _____)=>'error msg'),
+  (_)=>'error msg',
+);
 ```
 
 - `FormBuilderValidators.evenNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/even_number_validator.dart#L29). But, something close would be:
@@ -1062,34 +1064,143 @@ FormBuilderValidators.evenNumber(errorText: 'error text');
 
 // New API:
 Validators.int(
-  Validators.satisfy((input)=>input % 2 == 0, betweenMsg: (_)=>'error text'), 
-  'error text',
+  Validators.satisfy((input)=>input % 2 == 0, satisfyMsg: (_)=>'error text'), 
+  (_)=>'error text',
 );
 ```
 - `FormBuilderValidators.integer()`: the radix is not supported.
 ```dart
 // Old API
-FormBuilderValidators.integer();
+FormBuilderValidators.integer(errorText: 'error text');
 
 // New API (close):
-Validators.int();
+Validators.int(null,(_)=> 'error text');
 ```
-TODO continue the implementation from gere...
-- `FormBuilderValidators.max()`: there is no equivalent ........
+
+- `FormBuilderValidators.max()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/max_validator.dart#L40). But, something close would be:
+```dart
+// Old API (inclusive: true)
+FormBuilderValidators.max(n, inclusive:true, errorText:'error msg');
+
+// New API (close):
+Validators.num(
+  Validators.lessThanOrEqualTo(n, lessThanOrEqualMsg: (_, __)=>'error msg'),
+  (_)=>'error msg',
+);
+
+//------------------------------------------------------------------------------
+
+// Old API (inclusive: false)
+FormBuilderValidators.max(n, inclusive:false, errorText:'error msg');
+
+// New API (close):
+Validators.num(
+  Validators.lessThan(n, lessThanMsg: (_, __)=>'error msg'),
+  (_)=>'error msg',
+);
+```
+
+- `FormBuilderValidators.min()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/min_validator.dart#L40). But, something close would be:
+```dart
+// Old API (inclusive: true)
+FormBuilderValidators.min(n, inclusive:true, errorText:'error msg');
+
+// New API (close):
+Validators.num(
+  Validators.greaterThanOrEqualTo(n, greaterThanOrEqualMsg: (_, __)=>'error msg'),
+  (_)=>'error msg',
+);
+
+//------------------------------------------------------------------------------
+
+// Old API (inclusive: false)
+FormBuilderValidators.min(n, inclusive:false, errorText:'error msg');
+
+// New API (close):
+Validators.num(
+  Validators.greaterThan(n, greaterThanMsg: (_, __)=>'error msg'),
+  (_)=>'error msg',
+);
+```
+
+- `FormBuilderValidators.negativeNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/negative_number_validator.dart#L29). But, something close would be:
+```dart
+// Old API:
+FormBuilderValidators.negativeNumber(errorText:'error text');
+
+// New API (close):
+Validators.num(
+  Validators.lessThan(0, lessThanMsg:(_, __)=>'error text'),
+  (_)=>'error msg',
+);
+```
+
+
+- `FormBuilderValidators.notZeroNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/not_zero_number_validator.dart#L29). But, something close would be:
+```dart
+// Old API:
+FormBuilderValidators.notZeroNumber(errorText:'error text');
+
+// New API (close):
+Validators.num(
+  Validators.notEqual(0, notEqualMsg: (_, __)=>'error text'),
+  (_)=>'error text',
+);
+```
+
+- `FormBuilderValidators.numeric()`:
 ```dart
 // Old API
-FormBuilderValidators.max(n);
+FormBuilderValidators.numeric(errorText: 'error text');
+
+// New API:
+Validators.num(null, (_)=>'error text');
+```
+
+- `FormBuilderValidators.oddNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/odd_number_validator.dart#L29). But, something close would be:
+```dart
+// Old API
+FormBuilderValidators.oddNumber(errorText: 'error text');
+
+
+// New API:
+Validators.int(
+  Validators.satisfy((input)=>input % 2 == 1, satisfyMsg: (_)=>'error text'), 
+  (_)=>'error text',
+);
+
+```
+- `FormBuilderValidators.positiveNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/positive_number_validator.dart#L29). But, something close would be:
+```dart
+// Old API:
+FormBuilderValidators.positiveNumber(errorText:'error text');
 
 // New API (close):
-Validators.int();
+Validators.num(
+  Validators.greaterThan(0, greaterThanMsg:(_, __)=>'error text'),
+  (_)=>'error msg',
+);
 ```
-- `FormBuilderValidators.min()` - requires the field's value to be greater than or equal to the provided number.
-- `FormBuilderValidators.negativeNumber()` - requires the field's to be a negative number.
-- `FormBuilderValidators.notZeroNumber()` - requires the field's to be not a number zero.
-- `FormBuilderValidators.numeric()` - requires the field's value to be a valid number.
-- `FormBuilderValidators.oddNumber()` - requires the field's to be an odd number.
-- `FormBuilderValidators.positiveNumber()` - requires the field's to be a positive number.
-- `FormBuilderValidators.prime()` - requires the field's to be a prime number.
+- `FormBuilderValidators.primeNumber()`: there is no equivalent to [this validator](). But, something close would be:
+```dart
+// Old API
+FormBuilderValidators.primeNumber(errorText: 'error text');
+
+
+// New API:
+bool isPrime(int number) {
+  if (number <= 1) return false;
+  for (int i = 2; i * i <= number; i++) {
+    if (number % i == 0) return false;
+  }
+  return true;
+}
+
+Validators.int(
+  Validators.satisfy((input)=>isPrime(input), satisfyMsg: (_)=>'error text'), 
+  (_)=>'error text',
+);
+```
 
 ### String validators
 
