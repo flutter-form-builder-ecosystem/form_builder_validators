@@ -250,18 +250,23 @@ FormBuilderValidators.range(
 );
 
 // New API equivalent
-Validators.between(
-  1,
-  100,
-  minInclusive: true,
-  maxInclusive: true,
-  betweenMsg: (_, __, ___, ____, _____) => 'Value must be between 1 and 100'
+Validators.num(
+  Validators.between(
+    1,
+    100,
+    minInclusive: true,
+    maxInclusive: true,
+    betweenMsg: (_, __, ___, ____, _____) => 'Value must be between 1 and 100',
+  ),
+  (_)=>'Value must be between 1 and 100',
 );
 ```
 - `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32), thus, a custom validator should be implemented.
   - Example: 
 
+
 ```dart
+// TODO use the `satisfy` validator.
 Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
   return (input){
     return values.where((element) => element == input).length > 1? errorText:null;
@@ -545,9 +550,12 @@ FormBuilderValidators.fileName(
 );
 
 // New API:
-Validators.match(
-    RegExp(r'^[a-zA-Z0-9_\-\.]+$'),
-    matchMsg: (_)=>'invalid file name',
+Validators.string(
+  Validators.match(
+      RegExp(r'^[a-zA-Z0-9_\-\.]+$'),
+      matchMsg: (_)=>'invalid file name',
+  ),
+  (_)=>'invalid file name',
 );
 ```
 
@@ -593,9 +601,12 @@ FormBuilderValidators.mimeType(
 );
 
 // New API:
-Validators.match(
-  RegExp(r'^[a-zA-Z0-9!#$&^_-]+\/[a-zA-Z0-9!#$&^_-]+$'),
-  matchMsg: (_)=>'error text'
+Validators.string(
+  Validators.match(
+    RegExp(r'^[a-zA-Z0-9!#$&^_-]+\/[a-zA-Z0-9!#$&^_-]+$'),
+    matchMsg: (_)=>'error text'
+  ),
+  (_)=>'error text',
 );
 ```
 - `FormBuilderValidators.path()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/path_validator.dart#L46). Something close would be:
@@ -606,9 +617,12 @@ FormBuilderValidators.path(
 );
 
 // New API:
-Validators.match(
-  RegExp(r'^((\/|\\|[a-zA-Z]:\/)?([^<>:"|?*]+(\/|\\)?)+)$'),
-  matchMsg: (_)=>'error text'
+Validators.string(
+  Validators.match(
+    RegExp(r'^((\/|\\|[a-zA-Z]:\/)?([^<>:"|?*]+(\/|\\)?)+)$'),
+    matchMsg: (_)=>'error text'
+  ),
+  (_)=>'error text',
 );
 ```
 
@@ -684,20 +698,23 @@ FormBuilderValidators.city(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Z][a-zA-Z\s]+$'),
-    matchMsg: (_)=>'invalid city'
-  ),
-  Validators.inList(
-    ['CityA', 'CityB', 'CityC'],
-    inListMsg: (_, __) => 'invalid city',
-  ),
-  Validators.notInList(
-    ['CityD', 'CityE'],
-    notInListMsg: (_, __) => 'invalid city',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+      matchMsg: (_)=>'invalid city'
+    ),
+    Validators.inList(
+      ['CityA', 'CityB', 'CityC'],
+      inListMsg: (_, __) => 'invalid city',
+    ),
+    Validators.notInList(
+      ['CityD', 'CityE'],
+      notInListMsg: (_, __) => 'invalid city',
+    ),
+  ]),
+  (_)=>'invalid city',
+);
 ```
 
 - `FormBuilderValidators.country()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/country_validator.dart#L42). Something close would be:
@@ -710,16 +727,20 @@ FormBuilderValidators.country(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.inList(
-    ['CountryA', 'CountryB', 'CountryC'],
-    inListMsg: (_, __) => 'invalid country',
-  ),
-  Validators.notInList(
-    ['CountryD', 'CountryE'],
-    notInListMsg: (_, __) => 'invalid country',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.inList(
+      ['CountryA', 'CountryB', 'CountryC'],
+      inListMsg: (_, __) => 'invalid country',
+    ),
+    Validators.notInList(
+      ['CountryD', 'CountryE'],
+      notInListMsg: (_, __) => 'invalid country',
+    ),
+  ]),
+  (_)=>'invalid country',
+
+);
 ```
 
 - `FormBuilderValidators.firstName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/firstname_validator.dart#L53). Something close would be:
@@ -733,20 +754,23 @@ FormBuilderValidators.firstName(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Z][a-zA-Z]+$'),
-    matchMsg: (_)=>'invalid name'
-  ),
-  Validators.inList(
-    ['NameA', 'NameB', 'NameC'],
-    inListMsg: (_, __) => 'invalid name',
-  ),
-  Validators.notInList(
-    ['NameD', 'NameE'],
-    notInListMsg: (_, __) => 'invalid name',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Z][a-zA-Z]+$'),
+      matchMsg: (_)=>'invalid name'
+    ),
+    Validators.inList(
+      ['NameA', 'NameB', 'NameC'],
+      inListMsg: (_, __) => 'invalid name',
+    ),
+    Validators.notInList(
+      ['NameD', 'NameE'],
+      notInListMsg: (_, __) => 'invalid name',
+    ),
+  ]),
+  (_)=>'invalid name',
+);
 ```
 - `FormBuilderValidators.lastName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/lastname_validator.dart#L53). Something close would be:
 ```dart
@@ -759,20 +783,23 @@ FormBuilderValidators.lastName(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Z][a-zA-Z]+$'),
-    matchMsg: (_)=>'invalid name'
-  ),
-  Validators.inList(
-    ['NameA', 'NameB', 'NameC'],
-    inListMsg: (_, __) => 'invalid name',
-  ),
-  Validators.notInList(
-    ['NameD', 'NameE'],
-    notInListMsg: (_, __) => 'invalid name',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Z][a-zA-Z]+$'),
+      matchMsg: (_)=>'invalid name'
+    ),
+    Validators.inList(
+      ['NameA', 'NameB', 'NameC'],
+      inListMsg: (_, __) => 'invalid name',
+    ),
+    Validators.notInList(
+      ['NameD', 'NameE'],
+      notInListMsg: (_, __) => 'invalid name',
+    ),
+  ]),
+  (_)=>'invalid name',
+);
 ```
 - `FormBuilderValidators.passport()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/passport_number_validator.dart#L53). Something close would be:
 ```dart
@@ -785,20 +812,23 @@ FormBuilderValidators.passport(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Za-z0-9]{6,9}$'),
-    matchMsg: (_)=>'invalid passport'
-  ),
-  Validators.inList(
-    ['PassA', 'PassB', 'PassC'],
-    inListMsg: (_, __) => 'invalid passport',
-  ),
-  Validators.notInList(
-    ['PassD', 'PassE'],
-    notInListMsg: (_, __) => 'invalid passport',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Za-z0-9]{6,9}$'),
+      matchMsg: (_)=>'invalid passport'
+    ),
+    Validators.inList(
+      ['PassA', 'PassB', 'PassC'],
+      inListMsg: (_, __) => 'invalid passport',
+    ),
+    Validators.notInList(
+      ['PassD', 'PassE'],
+      notInListMsg: (_, __) => 'invalid passport',
+    ),
+  ]),
+  (_)=>'invalid passport',
+);
 ```
 - `FormBuilderValidators.password()`
 ```dart
@@ -836,20 +866,23 @@ FormBuilderValidators.state(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Z][a-zA-Z\s]+$'),
-    matchMsg: (_)=>'invalid state'
-  ),
-  Validators.inList(
-    ['stateA', 'stateB', 'stateC'],
-    inListMsg: (_, __) => 'invalid state',
-  ),
-  Validators.notInList(
-    ['stateD', 'stateE'],
-    notInListMsg: (_, __) => 'invalid state',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Z][a-zA-Z\s]+$'),
+      matchMsg: (_)=>'invalid state'
+    ),
+    Validators.inList(
+      ['stateA', 'stateB', 'stateC'],
+      inListMsg: (_, __) => 'invalid state',
+    ),
+    Validators.notInList(
+      ['stateD', 'stateE'],
+      notInListMsg: (_, __) => 'invalid state',
+    ),
+  ]),
+  (_)=>'invalid state',
+);
 ```
 - `FormBuilderValidators.street()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/street_validator.dart#L53). Something close would be:
 ```dart
@@ -862,20 +895,23 @@ FormBuilderValidators.street(
 );
 
 // New API (expects input as String):
-Validators.and([
-  Validators.match(
-    RegExp(r'^[A-Z0-9][a-zA-Z0-9\s]*$'),
-    matchMsg: (_)=>'invalid street'
-  ),
-  Validators.inList(
-    ['streetA', 'streetB', 'streetC'],
-    inListMsg: (_, __) => 'invalid street',
-  ),
-  Validators.notInList(
-    ['streetD', 'streetE'],
-    notInListMsg: (_, __) => 'invalid street',
-  ),
-]);
+Validators.string(
+  Validators.and([
+    Validators.match(
+      RegExp(r'^[A-Z0-9][a-zA-Z0-9\s]*$'),
+      matchMsg: (_)=>'invalid street'
+    ),
+    Validators.inList(
+      ['streetA', 'streetB', 'streetC'],
+      inListMsg: (_, __) => 'invalid street',
+    ),
+    Validators.notInList(
+      ['streetD', 'streetE'],
+      notInListMsg: (_, __) => 'invalid street',
+    ),
+  ]),
+  (_)=>'invalid street',
+);
 ```
 - `FormBuilderValidators.username()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/username_validator.dart#L71). Something close would be:
 ```dart
@@ -893,12 +929,15 @@ FormBuilderValidators.username(
 );
 
 // New API:
-Validators.and([
-  Validators.minLength(4, minLengthMsg: (_, __)=>'invalid username'),
-  Validators.maxLength(10, minLengthMsg: (_, __)=>'invalid username'),
-  Validators.hasMaxNumericChars(10, minLengthMsg: (_, __)=>'invalid username'),
+Validators.string(
+  Validators.and([
+    Validators.minLength(4, minLengthMsg: (_, __)=>'invalid username'),
+    Validators.maxLength(10, minLengthMsg: (_, __)=>'invalid username'),
+    Validators.hasMaxNumericChars(10, minLengthMsg: (_, __)=>'invalid username'),
 
-]);
+  ]),
+  (_)=>'invalid username',
+);
 
 
 ```
@@ -910,9 +949,12 @@ FormBuilderValidators.zipCode(
 );
 
 // New API:
-Validators.match(
-  RegExp(r'^\d{5}(?:[-\s]\d{4})?$'),
-  matchMsg: (_)=>'error text'
+Validators.string(
+  Validators.match(
+    RegExp(r'^\d{5}(?:[-\s]\d{4})?$'),
+    matchMsg: (_)=>'error text'
+  ),
+  (_)=>'error text',
 );
 ```
 
@@ -1203,21 +1245,170 @@ Validators.int(
 ```
 
 ### String validators
+For the following group of validators, it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
 
-- `FormBuilderValidators.alphabetical()` - requires the field's to contain only alphabetical characters.
-- `FormBuilderValidators.contains()` - requires the substring to be in the field's value.
-- `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
-- `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
-- `FormBuilderValidators.matchNot()` - requires the field's value to not match the provided regex pattern.
-- `FormBuilderValidators.match()` - requires the field's value to match the provided regex pattern.
-- `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
-- `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
-- `FormBuilderValidators.singleLine()` - requires the field's string to be a single line of text.
-- `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
-- `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
+- `FormBuilderValidators.alphabetical()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/string/alphabetical_validator.dart#L45). But, something close would be:
+```dart
+// Old API:
+FormBuilderValidators.alphabetical(errorText:'error text');
+
+// New API (close):
+Validators.match(
+  RegExp(r'^[a-zA-Z]+$'),
+  matchMsg: (_)=>'error text'
+);
+```
+
+- `FormBuilderValidators.contains()`
+```dart
+// Old API:
+FormBuilderValidator.contains(
+  'substring', 
+  caseSensitive: false,
+  errorText:'error text',
+);
+
+// New API:
+Validators.contains(
+  'substring', 
+  caseSensitive:false,
+  containsMsg: (_, __)=>'error text',
+);
+```
+- `FormBuilderValidators.endsWith()`
+```dart
+// Old API:
+FormBuilderValidator.endsWith(
+  'suffix', 
+  errorText:'error text',
+);
+
+// New API:
+Validators.endsWith(
+  'suffix', 
+  endsWithMsg: (_, __)=>'error text',
+);
+```
+
+- `FormBuilderValidators.lowercase()`
+```dart
+// Old API:
+FormBuilderValidator.lowercase(
+  errorText:'error text',
+);
+
+// New API:
+Validators.lowercase(
+  lowercaseMsg: (_)=>'error text',
+);
+```
+
+- `FormBuilderValidators.matchNot()`
+```dart
+// Old API:
+FormBuilderValidator.matchNot(
+  regex,
+  errorText:'error text',
+);
+
+// New API:
+Validators.notMatch(
+  regex,
+  notMatchMsg: (_)=>'error text',
+);
+```
+
+
+- `FormBuilderValidators.match()`
+```dart
+// Old API:
+FormBuilderValidator.match(
+  regex,
+  errorText:'error text',
+);
+
+// New API:
+Validators.match(
+  regex,
+  matchMsg: (_)=>'error text',
+);
+```
+
+- `FormBuilderValidators.maxWordsCount()`
+```dart
+// Old API:
+FormBuilderValidator.maxWordsCount(
+  10,
+  errorText:'error text',
+);
+
+// New API:
+Validators.maxWordCount(
+  10,
+  maxWordCountMsg: (_, __)=>'error text',
+);
+```
+
+- `FormBuilderValidators.minWordsCount()`
+```dart
+// Old API:
+FormBuilderValidator.minWordsCount(
+  10,
+  errorText:'error text',
+);
+
+// New API:
+Validators.minWordCount(
+  10,
+  minWordCountMsg: (_, __)=>'error text',
+);
+```
+
+- `FormBuilderValidators.singleLine()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/string/single_line_validator.dart#L29). But, something close would be:
+```dart
+// Old API:
+FormBuilderValidators.singleLine(errorText:'error text');
+
+// New API:
+Validators.satisfy(
+  (input)=> !input.contains('\n') && !input.contains('\r'),
+  satisfyMsg: (_)=> 'error text',
+);
+```
+
+
+- `FormBuilderValidators.startsWith()`
+```dart
+// Old API:
+FormBuilderValidator.startsWith(
+  'suffix', 
+  errorText:'error text',
+);
+
+// New API:
+Validators.startsWith(
+  'suffix', 
+  startsWithMsg: (_, __)=>'error text',
+);
+```
+
+- `FormBuilderValidators.uppercase()`
+```dart
+// Old API:
+FormBuilderValidator.uppercase(
+  errorText:'error text',
+);
+
+// New API:
+Validators.uppercase(
+  uppercaseMsg: (_)=>'error text',
+);
+```
+
 
 ### Use-case validators
 
+<!-- TODO continue from here ... -->
 - `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
 - `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
 - `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
