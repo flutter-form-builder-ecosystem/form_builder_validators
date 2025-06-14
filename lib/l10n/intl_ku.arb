@@ -64,6 +64,7 @@
   "containsErrorText": "نرخ دەبێت تێبکەوێت {value}.",
   "betweenErrorText": "نرخ دەبێت لە نێوان {min} و {max} بێت.",
   "containsElementErrorText": "نرخ دەبێت لە لیست بێت.",
+  "doesNotContainElementErrorText": "Nirx nabe ku di lîsteyê de be.",
   "ibanErrorText": "نرخ دەبێت IBAN-ێکی دروست بێت.",
   "uniqueErrorText": "نرخ دەبێت یەکتر بێت.",
   "bicErrorText": "نرخ دەبێت BIC-ێکی دروست بێت.",

@@ -64,6 +64,7 @@
   "containsErrorText": "Arvon on sisällettävä {value}.",
   "betweenErrorText": "Arvon on oltava välillä {min} ja {max}.",
   "containsElementErrorText": "Arvon on oltava sallittujen arvojen luettelossa.",
+  "doesNotContainElementErrorText": "Arvo ei saa olla luettelossa.",
   "ibanErrorText": "Vaaditaan oikean muotoinen IBAN-tilinumero.",
   "uniqueErrorText": "Kentän arvon tulee olla uniikki.",
   "bicErrorText": "Vaaditaan oikean muotoinen BIC-koodi.",

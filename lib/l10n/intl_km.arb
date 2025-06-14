@@ -64,6 +64,7 @@
   "containsErrorText": "ទិន្នន័យ​នេះត្រូវតែរួមបញ្ចូលជាមួយ {value}។",
   "betweenErrorText": "ទិន្នន័យ​នេះត្រូវតែនៅចន្លោះ {min} និង {max}។",
   "containsElementErrorText": "ទិន្នន័យ​នេះ​ត្រូវតែមាននៅក្នុងបញ្ជីតម្លៃដែលអនុញ្ញាតតែប៉ុណ្ណោះ។",
+  "doesNotContainElementErrorText": "តម្លៃមិនអាចមានក្នុងបញ្ជីបានទេ។",
   "ibanErrorText": "ទិន្នន័យនេះត្រូវតែជា IBAN តែប៉ុណ្ណោះ។",
   "uniqueErrorText": "ទិន្នន័យនេះត្រូវតែជាទិន្នន័យតែមួយ។",
   "bicErrorText": "ទិន្នន័យនេះត្រូវតែជា BIC តែប៉ុណ្ណោះ។",
