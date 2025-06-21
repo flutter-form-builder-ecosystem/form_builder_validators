@@ -20,8 +20,9 @@ class HomePage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator:
-                    FormBuilderValidators.compose(<FormFieldValidator<String>>[
+                validator: FormBuilderValidators.compose(<
+                  FormFieldValidator<String>
+                >[
                   /// Makes this field required
                   FormBuilderValidators.required(),
 
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                       if (number < 0) return 'We cannot have a negative age';
                     }
                     return null;
-                  }
+                  },
                 ]),
               ),
               // Required Validator
@@ -160,8 +161,9 @@ class HomePage extends StatelessWidget {
                   labelText: 'Match Pattern',
                   prefixIcon: Icon(Icons.pattern),
                 ),
-                validator:
-                    FormBuilderValidators.match(RegExp(r'^[a-zA-Z0-9]+$')),
+                validator: FormBuilderValidators.match(
+                  RegExp(r'^[a-zA-Z0-9]+$'),
+                ),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -231,11 +233,11 @@ class HomePage extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 validator:
                     FormBuilderValidators.compose(<FormFieldValidator<String>>[
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.numeric(),
-                  FormBuilderValidators.min(0),
-                  FormBuilderValidators.max(120),
-                ]),
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.numeric(),
+                      FormBuilderValidators.min(0),
+                      FormBuilderValidators.max(120),
+                    ]),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
