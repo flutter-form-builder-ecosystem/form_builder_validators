@@ -21,8 +21,9 @@ void main() {
 
     test('should return the custom error message when the value is true', () {
       // Arrange
-      final IsFalseValidator validator =
-          IsFalseValidator(errorText: customErrorMessage);
+      final IsFalseValidator validator = IsFalseValidator(
+        errorText: customErrorMessage,
+      );
       const bool value = true;
 
       // Act
@@ -34,8 +35,9 @@ void main() {
 
     test('should return the custom error message when the value is null', () {
       // Arrange
-      final IsFalseValidator validator =
-          IsFalseValidator(errorText: customErrorMessage);
+      final IsFalseValidator validator = IsFalseValidator(
+        errorText: customErrorMessage,
+      );
       const bool? value = null;
 
       // Act
@@ -47,8 +49,9 @@ void main() {
 
     test('should return null when not checking for null', () {
       // Arrange
-      const IsFalseValidator validator =
-          IsFalseValidator(checkNullOrEmpty: false);
+      const IsFalseValidator validator = IsFalseValidator(
+        checkNullOrEmpty: false,
+      );
       const bool? value = null;
 
       // Act
@@ -59,20 +62,21 @@ void main() {
     });
 
     test(
-        'should return the default error message if the value is true and no custom message is set',
-        () {
-      // Arrange
-      const IsFalseValidator validator = IsFalseValidator();
-      const bool value = true;
+      'should return the default error message if the value is true and no custom message is set',
+      () {
+        // Arrange
+        const IsFalseValidator validator = IsFalseValidator();
+        const bool value = true;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.mustBeFalseErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.mustBeFalseErrorText),
+        );
+      },
+    );
   });
 }

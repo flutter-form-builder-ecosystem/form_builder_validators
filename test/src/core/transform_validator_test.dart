@@ -52,21 +52,24 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return error if the transformed non-string value is invalid',
-        () {
-      // Arrange
-      final TransformValidator<int> validator = TransformValidator<int>(
-        (int? value) => value! * 2,
-        (int? value) => value != null && value > 10 ? null : customErrorMessage,
-      );
-      const int value = 4;
+    test(
+      'should return error if the transformed non-string value is invalid',
+      () {
+        // Arrange
+        final TransformValidator<int> validator = TransformValidator<int>(
+          (int? value) => value! * 2,
+          (int? value) =>
+              value != null && value > 10 ? null : customErrorMessage,
+        );
+        const int value = 4;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage);
-    });
+        // Assert
+        expect(result, customErrorMessage);
+      },
+    );
 
     test('should return error if the value is null', () {
       // Arrange
@@ -83,37 +86,40 @@ void main() {
       expect(result, customErrorMessage);
     });
 
-    test('should return null if the transformed value matches the condition',
-        () {
-      // Arrange
-      final TransformValidator<String> validator = TransformValidator<String>(
-        (String? value) => value!.toUpperCase(),
-        FormBuilderValidators.equal('HELLO', errorText: customErrorMessage),
-      );
-      const String value = 'hello';
+    test(
+      'should return null if the transformed value matches the condition',
+      () {
+        // Arrange
+        final TransformValidator<String> validator = TransformValidator<String>(
+          (String? value) => value!.toUpperCase(),
+          FormBuilderValidators.equal('HELLO', errorText: customErrorMessage),
+        );
+        const String value = 'hello';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return error if the transformed value does not match the condition',
-        () {
-      // Arrange
-      final TransformValidator<String> validator = TransformValidator<String>(
-        (String? value) => value!.toUpperCase(),
-        FormBuilderValidators.equal('HELLO', errorText: customErrorMessage),
-      );
-      const String value = 'world';
+      'should return error if the transformed value does not match the condition',
+      () {
+        // Arrange
+        final TransformValidator<String> validator = TransformValidator<String>(
+          (String? value) => value!.toUpperCase(),
+          FormBuilderValidators.equal('HELLO', errorText: customErrorMessage),
+        );
+        const String value = 'world';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage);
-    });
+        // Assert
+        expect(result, customErrorMessage);
+      },
+    );
   });
 }

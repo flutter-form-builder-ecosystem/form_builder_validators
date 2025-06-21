@@ -18,6 +18,7 @@ class BetweenValidator<T> extends TranslatedValidator<T> {
   const BetweenValidator(
     this.min,
     this.max, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

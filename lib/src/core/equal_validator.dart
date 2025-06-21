@@ -14,6 +14,7 @@ class EqualValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the equal value validator.
   const EqualValidator(
     this.value, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

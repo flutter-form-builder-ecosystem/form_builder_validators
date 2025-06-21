@@ -31,11 +31,11 @@ class FormBuilderLocalizations {
   /// [GlobalWidgetsLocalizations.delegate] delegates.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// The supported locales.
   static const List<Locale> supportedLocales =
@@ -69,10 +69,10 @@ class FormBuilderLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      FormBuilderLocalizationsImpl.supportedLocales
-          .map((Locale e) => e.languageCode)
-          .contains(locale.languageCode);
+  bool isSupported(Locale locale) => FormBuilderLocalizationsImpl
+      .supportedLocales
+      .map((Locale e) => e.languageCode)
+      .contains(locale.languageCode);
 
   @override
   bool shouldReload(FormBuilderLocalizationsDelegate old) => false;

@@ -30,28 +30,25 @@ void main() {
 
         // Assert
         expect(result, isNotNull);
-        expect(
-          result,
-          equals(
-            FormBuilderLocalizations.current.floatErrorText,
-          ),
-        );
+        expect(result, equals(FormBuilderLocalizations.current.floatErrorText));
       });
 
       test(
-          'should return custom error message if the value is not a valid float string',
-          () {
-        // Arrange
-        final FloatValidator<String> validator =
-            FloatValidator<String>(errorText: customErrorMessage);
-        const String value = 'abc';
+        'should return custom error message if the value is not a valid float string',
+        () {
+          // Arrange
+          final FloatValidator<String> validator = FloatValidator<String>(
+            errorText: customErrorMessage,
+          );
+          const String value = 'abc';
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, equals(customErrorMessage));
-      });
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
     });
 
     group('num', () {
@@ -89,43 +86,43 @@ void main() {
 
         // Assert
         expect(result, isNotNull);
-        expect(
-          result,
-          equals(
-            FormBuilderLocalizations.current.floatErrorText,
-          ),
-        );
+        expect(result, equals(FormBuilderLocalizations.current.floatErrorText));
       });
 
       test(
-          'should return custom error message if the value is not a valid float',
-          () {
+        'should return custom error message if the value is not a valid float',
+        () {
+          // Arrange
+          final FloatValidator<String> validator = FloatValidator<String>(
+            errorText: customErrorMessage,
+          );
+          const String value = 'abc';
+
+          // Act
+          final String? result = validator.validate(value);
+
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
+    });
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
         // Arrange
-        final FloatValidator<String> validator =
-            FloatValidator<String>(errorText: customErrorMessage);
-        const String value = 'abc';
+        const FloatValidator<String> validator = FloatValidator<String>(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
         // Act
         final String? result = validator.validate(value);
 
         // Assert
-        expect(result, equals(customErrorMessage));
-      });
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const FloatValidator<String> validator =
-          FloatValidator<String>(checkNullOrEmpty: false);
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -137,58 +134,48 @@ void main() {
 
       // Assert
       expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
+      expect(result, equals(validator.errorText));
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const FloatValidator<String> validator =
-          FloatValidator<String>(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const FloatValidator<String> validator = FloatValidator<String>(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const FloatValidator<String> validator = FloatValidator<String>();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const FloatValidator<String> validator = FloatValidator<String>();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(validator.errorText));
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
       const FloatValidator<bool> validator = FloatValidator<bool>();
 
       // Act & Assert
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
   });
 }

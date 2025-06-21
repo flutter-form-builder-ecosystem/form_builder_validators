@@ -16,6 +16,7 @@ class MinWordsCountValidator extends TranslatedValidator<String> {
   /// Constructor for the minimum words count validator.
   const MinWordsCountValidator(
     this.minWordsCount, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

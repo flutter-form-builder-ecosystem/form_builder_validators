@@ -14,8 +14,9 @@ void main() {
           FormBuilderValidators.required();
       final FormFieldValidator<String> validator2 =
           FormBuilderValidators.minLength(5);
-      final FormFieldValidator<String> combinedValidator =
-          validator1.and(validator2);
+      final FormFieldValidator<String> combinedValidator = validator1.and(
+        validator2,
+      );
 
       // Act & Assert
       // Pass
@@ -31,9 +32,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.or(<FormFieldValidator<String>>[
-        FormBuilderValidators.endsWith('world'),
-        FormBuilderValidators.startsWith('Hello'),
-      ]);
+            FormBuilderValidators.endsWith('world'),
+            FormBuilderValidators.startsWith('Hello'),
+          ]);
 
       // Act & Assert
       // Pass
@@ -51,8 +52,9 @@ void main() {
       final FormFieldValidator<String> validator =
           FormBuilderValidators.required<String>();
       bool condition(String? value) => value != null && value.isNotEmpty;
-      final FormFieldValidator<String> conditionalValidator =
-          validator.when(condition);
+      final FormFieldValidator<String> conditionalValidator = validator.when(
+        condition,
+      );
 
       // Act & Assert
       // Pass
@@ -67,8 +69,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.required<String>();
-      final FormFieldValidator<String> conditionalValidator = validator
-          .unless((String? value) => value != null && value.isNotEmpty);
+      final FormFieldValidator<String> conditionalValidator = validator.unless(
+        (String? value) => value != null && value.isNotEmpty,
+      );
 
       // Act & Assert
       // Should skip validation if value is not null and not empty
@@ -92,9 +95,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.transform<String>(
-        (String? value) => value?.trim() ?? '',
-        FormBuilderValidators.required(),
-      );
+            (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(),
+          );
 
       // Act & Assert
       // Pass
@@ -107,9 +110,9 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.transform<String>(
-        (String? value) => value?.trim() ?? '',
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
 
       // Pass
       expect(validatorWithErrorMessage(' trimmed '), isNull);
@@ -118,33 +121,35 @@ void main() {
       expect(validatorWithErrorMessage('  '), customErrorMessage);
     });
 
-    test('FormFieldValidatorExtensions.transform with custom transformation',
-        () {
-      // Arrange
-      final FormFieldValidator<String> validator =
-          FormBuilderValidators.transform<String>(
-        (String? value) => value?.toUpperCase() ?? '',
-        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
-      );
+    test(
+      'FormFieldValidatorExtensions.transform with custom transformation',
+      () {
+        // Arrange
+        final FormFieldValidator<String> validator =
+            FormBuilderValidators.transform<String>(
+              (String? value) => value?.toUpperCase() ?? '',
+              FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+            );
 
-      // Act & Assert
-      // Pass
-      expect(validator('abc'), isNull);
-      expect(validator('ABC'), isNull);
+        // Act & Assert
+        // Pass
+        expect(validator('abc'), isNull);
+        expect(validator('ABC'), isNull);
 
-      // Fail
-      expect(validator('abc123'), isNotNull);
-      expect(validator(null), isNotNull);
-      expect(validator(''), isNotNull);
-    });
+        // Fail
+        expect(validator('abc123'), isNotNull);
+        expect(validator(null), isNotNull);
+        expect(validator(''), isNotNull);
+      },
+    );
 
     test('FormFieldValidatorExtensions.skipWhen', () {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.skipWhen<String>(
-        (String? value) => value == 'skip',
-        FormBuilderValidators.required(),
-      );
+            (String? value) => value == 'skip',
+            FormBuilderValidators.required(),
+          );
 
       // Act & Assert
       // Pass
@@ -156,9 +161,9 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.skipWhen<String>(
-        (String? value) => value == 'skip',
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => value == 'skip',
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
 
       // Pass
       expect(validatorWithErrorMessage('skip'), isNull);
@@ -172,8 +177,8 @@ void main() {
       String? logMessage;
       final FormFieldValidator<String> validator =
           FormBuilderValidators.log<String>(
-        log: (String? value) => logMessage = 'Logging: $value',
-      );
+            log: (String? value) => logMessage = 'Logging: $value',
+          );
 
       // Act
       validator('test');
@@ -201,8 +206,8 @@ void main() {
       final FormFieldValidator<String> validator =
           FormBuilderValidators.required();
       const String errorMessage = 'This field is required';
-      final FormFieldValidator<String> validatorWithMessage =
-          validator.withErrorMessage(errorMessage);
+      final FormFieldValidator<String> validatorWithMessage = validator
+          .withErrorMessage(errorMessage);
 
       // Act & Assert
       // Fail
@@ -221,8 +226,9 @@ void main() {
           FormBuilderValidators.minLength(5);
       final FormFieldValidator<String> validator3 =
           FormBuilderValidators.maxLength(10);
-      final FormFieldValidator<String> combinedValidator =
-          validator1.and(validator2.and(validator3));
+      final FormFieldValidator<String> combinedValidator = validator1.and(
+        validator2.and(validator3),
+      );
 
       // Act & Assert
       // Pass
@@ -242,10 +248,12 @@ void main() {
           FormBuilderValidators.endsWith('world');
       final FormFieldValidator<String> validator2 =
           FormBuilderValidators.startsWith('Hello');
-      final FormFieldValidator<String> validator3 =
-          FormBuilderValidators.equal('test');
-      final FormFieldValidator<String> combinedValidator =
-          validator1.or(validator2.or(validator3));
+      final FormFieldValidator<String> validator3 = FormBuilderValidators.equal(
+        'test',
+      );
+      final FormFieldValidator<String> combinedValidator = validator1.or(
+        validator2.or(validator3),
+      );
 
       // Act & Assert
       // Pass
@@ -259,32 +267,35 @@ void main() {
       expect(combinedValidator(''), isNotNull);
     });
 
-    test('FormFieldValidatorExtensions.transform with custom transformation',
-        () {
-      // Arrange
-      final FormFieldValidator<String> validator =
-          FormBuilderValidators.transform<String>(
-        (String? value) => value?.toUpperCase() ?? '',
-        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
-      );
+    test(
+      'FormFieldValidatorExtensions.transform with custom transformation',
+      () {
+        // Arrange
+        final FormFieldValidator<String> validator =
+            FormBuilderValidators.transform<String>(
+              (String? value) => value?.toUpperCase() ?? '',
+              FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+            );
 
-      // Act & Assert
-      // Pass
-      expect(validator('abc'), isNull);
-      expect(validator('ABC'), isNull);
+        // Act & Assert
+        // Pass
+        expect(validator('abc'), isNull);
+        expect(validator('ABC'), isNull);
 
-      // Fail
-      expect(validator('abc123'), isNotNull);
-      expect(validator(null), isNotNull);
-      expect(validator(''), isNotNull);
-    });
+        // Fail
+        expect(validator('abc123'), isNotNull);
+        expect(validator(null), isNotNull);
+        expect(validator(''), isNotNull);
+      },
+    );
 
     test('FormFieldValidatorExtensions.when with custom condition', () {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.required<String>();
-      final FormFieldValidator<String> conditionalValidator =
-          validator.when((String? value) => value != 'skip');
+      final FormFieldValidator<String> conditionalValidator = validator.when(
+        (String? value) => value != 'skip',
+      );
 
       // Act & Assert
       // Pass
@@ -300,8 +311,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.required<String>();
-      final FormFieldValidator<String> conditionalValidator =
-          validator.unless((String? value) => value == 'skip');
+      final FormFieldValidator<String> conditionalValidator = validator.unless(
+        (String? value) => value == 'skip',
+      );
 
       // Act & Assert
       // Pass
@@ -317,9 +329,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.skipWhen<String>(
-        (String? value) => value == 'SKIP',
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => value == 'SKIP',
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
 
       // Act & Assert
       // Pass
@@ -335,11 +347,11 @@ void main() {
       String? logMessage;
       final FormFieldValidator<String> validator =
           FormBuilderValidators.log<String>(
-        log: (String? value) {
-          logMessage = 'Custom Log: $value';
-          return '';
-        },
-      );
+            log: (String? value) {
+              logMessage = 'Custom Log: $value';
+              return '';
+            },
+          );
 
       // Act
       validator('test');
@@ -362,33 +374,35 @@ void main() {
       expect(logMessage, 'Custom Log: ');
     });
 
-    test('FormFieldValidatorExtensions.transform with trimming and uppercasing',
-        () {
-      // Arrange
-      final FormFieldValidator<String> validator =
-          FormBuilderValidators.transform<String>(
-        (String? value) => value?.trim().toUpperCase() ?? '',
-        FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
-      );
+    test(
+      'FormFieldValidatorExtensions.transform with trimming and uppercasing',
+      () {
+        // Arrange
+        final FormFieldValidator<String> validator =
+            FormBuilderValidators.transform<String>(
+              (String? value) => value?.trim().toUpperCase() ?? '',
+              FormBuilderValidators.match(RegExp(r'^[A-Z]+$')),
+            );
 
-      // Act & Assert
-      // Pass
-      expect(validator(' abc '), isNull);
-      expect(validator(' ABC '), isNull);
+        // Act & Assert
+        // Pass
+        expect(validator(' abc '), isNull);
+        expect(validator(' ABC '), isNull);
 
-      // Fail
-      expect(validator(' abc123 '), isNotNull);
-      expect(validator(null), isNotNull);
-      expect(validator(' '), isNotNull);
-    });
+        // Fail
+        expect(validator(' abc123 '), isNotNull);
+        expect(validator(null), isNotNull);
+        expect(validator(' '), isNotNull);
+      },
+    );
 
     test('FormFieldValidatorExtensions.transform', () {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.transform<String>(
-        (String? value) => value?.trim() ?? '',
-        FormBuilderValidators.required(),
-      );
+            (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(),
+          );
 
       // Act & Assert
       // Pass
@@ -401,9 +415,9 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.transform<String>(
-        (String? value) => value?.trim() ?? '',
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => value?.trim() ?? '',
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
 
       // Pass
       expect(validatorWithErrorMessage(' trimmed '), isNull);
@@ -416,9 +430,9 @@ void main() {
       // Arrange
       final FormFieldValidator<String> validator =
           FormBuilderValidators.skipWhen<String>(
-        (String? value) => value == 'skip',
-        FormBuilderValidators.required(),
-      );
+            (String? value) => value == 'skip',
+            FormBuilderValidators.required(),
+          );
 
       // Act & Assert
       // Pass
@@ -430,9 +444,9 @@ void main() {
 
       final FormFieldValidator<String> validatorWithErrorMessage =
           FormBuilderValidators.skipWhen<String>(
-        (String? value) => value == 'skip',
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => value == 'skip',
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
 
       // Pass
       expect(validatorWithErrorMessage('skip'), isNull);
@@ -446,11 +460,11 @@ void main() {
       String? logMessage;
       final FormFieldValidator<String> validator =
           FormBuilderValidators.log<String>(
-        log: (String? value) {
-          logMessage = 'Custom Log: $value';
-          return '';
-        },
-      );
+            log: (String? value) {
+              logMessage = 'Custom Log: $value';
+              return '';
+            },
+          );
 
       // Act
       validator('test');

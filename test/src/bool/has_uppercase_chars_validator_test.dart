@@ -9,110 +9,126 @@ void main() {
   group('Has uppercase chars -', () {
     final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator();
 
-    test('should return null when the value has at least 1 uppercase character',
-        () {
-      // Arrange
-      const String value = 'abcA';
+    test(
+      'should return null when the value has at least 1 uppercase character',
+      () {
+        // Arrange
+        const String value = 'abcA';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the value has at least 3 uppercase characters',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(atLeast: 3);
-      const String value = 'aAbBcC';
+      'should return null when the value has at least 3 uppercase characters',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          atLeast: 3,
+        );
+        const String value = 'aAbBcC';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the custom error message when the value has no uppercase characters',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(errorText: customErrorMessage);
-      const String value = 'abc';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the custom error message when the value has less than 3 uppercase characters',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(atLeast: 3, errorText: customErrorMessage);
-      const String value = 'aA';
+      'should return the custom error message when the value has no uppercase characters',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          errorText: customErrorMessage,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
-
-    test('should return null when the value has exactly 1 uppercase character',
-        () {
-      // Arrange
-      const String value = 'Password';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message when the value does not have enough uppercase characters',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(atLeast: 2, errorText: customErrorMessage);
-      const String value = 'aA';
+      'should return the custom error message when the value has less than 3 uppercase characters',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          atLeast: 3,
+          errorText: customErrorMessage,
+        );
+        const String value = 'aA';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const String value = '';
+      'should return null when the value has exactly 1 uppercase character',
+      () {
+        // Arrange
+        const String value = 'Password';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        FormBuilderLocalizations.current.containsUppercaseCharErrorText(1),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the custom error message when the value does not have enough uppercase characters',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          atLeast: 2,
+          errorText: customErrorMessage,
+        );
+        const String value = 'aA';
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const String value = '';
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(
+          result,
+          FormBuilderLocalizations.current.containsUppercaseCharErrorText(1),
+        );
+      },
+    );
 
     test('should return null when the value is an empty string', () {
       // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(checkNullOrEmpty: false);
+      final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+        checkNullOrEmpty: false,
+      );
       const String value = '';
 
       // Act
@@ -124,8 +140,9 @@ void main() {
 
     test('should return null when the value is null', () {
       // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(checkNullOrEmpty: false);
+      final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+        checkNullOrEmpty: false,
+      );
       const String? value = null;
 
       // Act
@@ -137,8 +154,9 @@ void main() {
 
     test('should return the default error message when the value is null', () {
       // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(errorText: customErrorMessage);
+      final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+        errorText: customErrorMessage,
+      );
       const String? value = null;
 
       // Act
@@ -149,49 +167,55 @@ void main() {
     });
 
     test(
-        'should return an error message when using a custom regex and the value does not match',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(regex: RegExp('[A-G]'));
-      const String value = 'HIJKLMNOP';
+      'should return an error message when using a custom regex and the value does not match',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          regex: RegExp('[A-G]'),
+        );
+        const String value = 'HIJKLMNOP';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-    });
+        // Assert
+        expect(result, isNotNull);
+      },
+    );
 
     test(
-        'should return the custom error message when the value has no uppercase characters and a custom regex is used',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
-        regex: RegExp('[d-z]'),
-        errorText: customErrorMessage,
-      );
-      const String value = 'abc';
+      'should return the custom error message when the value has no uppercase characters and a custom regex is used',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          regex: RegExp('[d-z]'),
+          errorText: customErrorMessage,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when using a custom regex and the value matches',
-        () {
-      // Arrange
-      final HasUppercaseCharsValidator validator =
-          HasUppercaseCharsValidator(regex: RegExp('[A-G]'));
-      const String value = 'ABC';
+    test(
+      'should return null when using a custom regex and the value matches',
+      () {
+        // Arrange
+        final HasUppercaseCharsValidator validator = HasUppercaseCharsValidator(
+          regex: RegExp('[A-G]'),
+        );
+        const String value = 'ABC';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
   });
 }

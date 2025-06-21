@@ -35,8 +35,9 @@ class PathValidator extends TranslatedValidator<String> {
   ///
   /// Examples: /path/to/file, C:/Users/Name/Documents
   /// {@endtemplate}
-  static final RegExp _filePath =
-      RegExp(r'^((\/|\\|[a-zA-Z]:\/)?([^<>:"|?*]+(\/|\\)?)+)$');
+  static final RegExp _filePath = RegExp(
+    r'^((\/|\\|[a-zA-Z]:\/)?([^<>:"|?*]+(\/|\\)?)+)$',
+  );
 
   @override
   String get translatedErrorText =>

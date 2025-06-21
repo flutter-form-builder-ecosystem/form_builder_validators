@@ -25,8 +25,8 @@ class CountryValidator extends TranslatedValidator<String> {
 
     /// {@macro base_validator_null_check}
     super.checkNullOrEmpty,
-  })  : countryWhitelist = countryWhitelist ?? <String>[],
-        countryBlacklist = countryBlacklist ?? <String>[];
+  }) : countryWhitelist = countryWhitelist ?? <String>[],
+       countryBlacklist = countryBlacklist ?? <String>[];
 
   /// A list of valid country names that are explicitly allowed.
   final List<String> countryWhitelist;

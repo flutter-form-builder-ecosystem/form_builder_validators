@@ -16,6 +16,7 @@ class MinLengthValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the minimum length validator.
   const MinLengthValidator(
     this.minLength, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

@@ -20,41 +20,48 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the default error message when the date is in the past',
-        () {
-      // Arrange
-      const DateFutureValidator validator = DateFutureValidator();
-      final DateTime pastDate =
-          DateTime.now().subtract(const Duration(days: 1));
-      final String value = pastDate.toIso8601String();
+    test(
+      'should return the default error message when the date is in the past',
+      () {
+        // Arrange
+        const DateFutureValidator validator = DateFutureValidator();
+        final DateTime pastDate = DateTime.now().subtract(
+          const Duration(days: 1),
+        );
+        final String value = pastDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText,
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText,
+          ),
+        );
+      },
+    );
 
-    test('should return the custom error message when the date is in the past',
-        () {
-      // Arrange
-      final DateFutureValidator validator =
-          DateFutureValidator(errorText: customErrorMessage);
-      final DateTime pastDate =
-          DateTime.now().subtract(const Duration(days: 1));
-      final String value = pastDate.toIso8601String();
+    test(
+      'should return the custom error message when the date is in the past',
+      () {
+        // Arrange
+        final DateFutureValidator validator = DateFutureValidator(
+          errorText: customErrorMessage,
+        );
+        final DateTime pastDate = DateTime.now().subtract(
+          const Duration(days: 1),
+        );
+        final String value = pastDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test('should return error when the date is today', () {
       // Arrange
@@ -69,19 +76,22 @@ void main() {
       expect(result, isNotNull);
     });
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const DateFutureValidator validator =
-          DateFutureValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const DateFutureValidator validator = DateFutureValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -94,44 +104,45 @@ void main() {
       // Assert
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText,
-        ),
+        equals(FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const DateFutureValidator validator =
-          DateFutureValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const DateFutureValidator validator = DateFutureValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const DateFutureValidator validator = DateFutureValidator();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const DateFutureValidator validator = DateFutureValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText,
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.dateMustBeInTheFutureErrorText,
+          ),
+        );
+      },
+    );
   });
 }

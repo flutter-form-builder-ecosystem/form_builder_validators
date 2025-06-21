@@ -54,38 +54,41 @@ void main() {
       expect(validator.validate('12:00'), isNull);
     });
 
-    test('should return the default error message for invalid time strings',
-        () {
-      // Arrange
-      final TimeValidator validator = TimeValidator();
+    test(
+      'should return the default error message for invalid time strings',
+      () {
+        // Arrange
+        final TimeValidator validator = TimeValidator();
 
-      // Act & Assert
-      expect(
-        validator.validate('13:00 AM'),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-      expect(
-        validator.validate('25:00'),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-      expect(
-        validator.validate('invalid-time'),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-      expect(
-        validator.validate(null),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-      expect(
-        validator.validate(''),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('13:00 AM'),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+        expect(
+          validator.validate('25:00'),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+        expect(
+          validator.validate('invalid-time'),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+        expect(
+          validator.validate(null),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+        expect(
+          validator.validate(''),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+      },
+    );
 
     test('should return the custom error message for invalid time strings', () {
       // Arrange
-      final TimeValidator validator =
-          TimeValidator(errorText: customErrorMessage);
+      final TimeValidator validator = TimeValidator(
+        errorText: customErrorMessage,
+      );
 
       // Act & Assert
       expect(validator.validate('25:00'), equals(customErrorMessage));
@@ -105,69 +108,77 @@ void main() {
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final TimeValidator validator = TimeValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final TimeValidator validator = TimeValidator(checkNullOrEmpty: false);
+        const String value = '';
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final TimeValidator validator = TimeValidator(checkNullOrEmpty: false);
-      const String? value = null;
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should use custom regex and return null for valid custom time strings',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
-      final TimeValidator validator = TimeValidator(regex: customRegex);
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final TimeValidator validator = TimeValidator(checkNullOrEmpty: false);
+        const String? value = null;
 
-      // Act & Assert
-      expect(validator.validate('9:30'), isNull);
-      expect(validator.validate('15:45'), isNull);
-    });
-
-    test(
-        'should use custom regex and return the default error message for invalid custom time strings',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
-      final TimeValidator validator = TimeValidator(regex: customRegex);
-
-      // Act & Assert
-      expect(
-        validator.validate('9:30 AM'),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-      expect(
-        validator.validate('invalid-time'),
-        equals(FormBuilderLocalizations.current.timeErrorText),
-      );
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should use custom regex and return the custom error message for invalid custom time strings',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
-      final TimeValidator validator =
-          TimeValidator(regex: customRegex, errorText: customErrorMessage);
+      'should use custom regex and return null for valid custom time strings',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
+        final TimeValidator validator = TimeValidator(regex: customRegex);
 
-      // Act & Assert
-      expect(validator.validate('9:30 AM'), equals(customErrorMessage));
-      expect(validator.validate('invalid-time'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('9:30'), isNull);
+        expect(validator.validate('15:45'), isNull);
+      },
+    );
+
+    test(
+      'should use custom regex and return the default error message for invalid custom time strings',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
+        final TimeValidator validator = TimeValidator(regex: customRegex);
+
+        // Act & Assert
+        expect(
+          validator.validate('9:30 AM'),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+        expect(
+          validator.validate('invalid-time'),
+          equals(FormBuilderLocalizations.current.timeErrorText),
+        );
+      },
+    );
+
+    test(
+      'should use custom regex and return the custom error message for invalid custom time strings',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^\d{1,2}:\d{2}$');
+        final TimeValidator validator = TimeValidator(
+          regex: customRegex,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(validator.validate('9:30 AM'), equals(customErrorMessage));
+        expect(validator.validate('invalid-time'), equals(customErrorMessage));
+      },
+    );
   });
 }

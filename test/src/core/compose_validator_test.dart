@@ -11,11 +11,12 @@ void main() {
   group('ComposeValidator -', () {
     test('should return null if all validators pass', () {
       // Arrange
-      final ComposeValidator<String> validator =
-          ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(),
-        FormBuilderValidators.minLength(3),
-      ]);
+      final ComposeValidator<String> validator = ComposeValidator<String>(
+        <FormFieldValidator<String>>[
+          FormBuilderValidators.required(),
+          FormBuilderValidators.minLength(3),
+        ],
+      );
       const String validValue = 'abc';
 
       // Act
@@ -29,9 +30,9 @@ void main() {
       // Arrange
       final ComposeValidator<String> validator =
           ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-        FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
-      ]);
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+            FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
+          ]);
       const String invalidValue = 'abc';
 
       // Act
@@ -41,49 +42,54 @@ void main() {
       expect(result, customErrorMessage2);
     });
 
-    test('should return the first error message if multiple validators fail',
-        () {
-      // Arrange
-      final ComposeValidator<String> validator =
-          ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-        FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
-      ]);
-      const String invalidValue = '';
+    test(
+      'should return the first error message if multiple validators fail',
+      () {
+        // Arrange
+        final ComposeValidator<String> validator = ComposeValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+            FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
+          ],
+        );
+        const String invalidValue = '';
 
-      // Act
-      final String? result = validator.validate(invalidValue);
+        // Act
+        final String? result = validator.validate(invalidValue);
 
-      // Assert
-      expect(result, customErrorMessage1);
-    });
+        // Assert
+        expect(result, customErrorMessage1);
+      },
+    );
 
     test(
-        'should return the custom error message from validator if value is null',
-        () {
-      // Arrange
-      final ComposeValidator<String> validator =
-          ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-      ]);
-      const String? value = null;
+      'should return the custom error message from validator if value is null',
+      () {
+        // Arrange
+        final ComposeValidator<String> validator = ComposeValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+          ],
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage1);
-    });
+        // Assert
+        expect(result, customErrorMessage1);
+      },
+    );
 
     test('should return null if value is null and null check is disabled', () {
       // Arrange
       final ComposeValidator<String> validator =
           ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(
-          errorText: customErrorMessage1,
-          checkNullOrEmpty: false,
-        ),
-      ]);
+            FormBuilderValidators.required(
+              errorText: customErrorMessage1,
+              checkNullOrEmpty: false,
+            ),
+          ]);
       const String? value = null;
 
       // Act
@@ -94,31 +100,33 @@ void main() {
     });
 
     test(
-        'should return the custom error message from validator if value is empty',
-        () {
-      // Arrange
-      final ComposeValidator<String> validator =
-          ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-      ]);
-      const String value = '';
+      'should return the custom error message from validator if value is empty',
+      () {
+        // Arrange
+        final ComposeValidator<String> validator = ComposeValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+          ],
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage1);
-    });
+        // Assert
+        expect(result, customErrorMessage1);
+      },
+    );
 
     test('should return null if value is empty and null check is disabled', () {
       // Arrange
       final ComposeValidator<String> validator =
           ComposeValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(
-          errorText: customErrorMessage1,
-          checkNullOrEmpty: false,
-        ),
-      ]);
+            FormBuilderValidators.required(
+              errorText: customErrorMessage1,
+              checkNullOrEmpty: false,
+            ),
+          ]);
       const String value = '';
 
       // Act

@@ -32,26 +32,26 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.numericErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.numericErrorText),
         );
       });
 
       test(
-          'should return custom error message if the value is not a valid number string',
-          () {
-        // Arrange
-        final NumericValidator<String> validator =
-            NumericValidator<String>(errorText: customErrorMessage);
-        const String value = 'abc';
+        'should return custom error message if the value is not a valid number string',
+        () {
+          // Arrange
+          final NumericValidator<String> validator = NumericValidator<String>(
+            errorText: customErrorMessage,
+          );
+          const String value = 'abc';
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, equals(customErrorMessage));
-      });
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
     });
 
     group('num', () {
@@ -79,41 +79,44 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.numericErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.numericErrorText),
         );
       });
 
       test(
-          'should return custom error message if the value is not a valid number',
-          () {
+        'should return custom error message if the value is not a valid number',
+        () {
+          // Arrange
+          final NumericValidator<String> validator = NumericValidator<String>(
+            errorText: customErrorMessage,
+          );
+          const String value = 'abc';
+
+          // Act
+          final String? result = validator.validate(value);
+
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
+    });
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
         // Arrange
-        final NumericValidator<String> validator =
-            NumericValidator<String>(errorText: customErrorMessage);
-        const String value = 'abc';
+        const NumericValidator<String> validator = NumericValidator<String>(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
         // Act
         final String? result = validator.validate(value);
 
         // Assert
-        expect(result, equals(customErrorMessage));
-      });
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const NumericValidator<String> validator =
-          NumericValidator<String>(checkNullOrEmpty: false);
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -125,58 +128,48 @@ void main() {
 
       // Assert
       expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
+      expect(result, equals(validator.errorText));
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const NumericValidator<String> validator =
-          NumericValidator<String>(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const NumericValidator<String> validator = NumericValidator<String>(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const NumericValidator<String> validator = NumericValidator<String>();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const NumericValidator<String> validator = NumericValidator<String>();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(validator.errorText));
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
       const NumericValidator<bool> validator = NumericValidator<bool>();
 
       // Act & Assert
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
   });
 }

@@ -47,8 +47,9 @@ class PhoneNumberValidator extends TranslatedValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    final String phoneNumber =
-        valueCandidate.replaceAll(' ', '').replaceAll('-', '');
+    final String phoneNumber = valueCandidate
+        .replaceAll(' ', '')
+        .replaceAll('-', '');
 
     if (!regex.hasMatch(phoneNumber)) {
       return errorText;
