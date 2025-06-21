@@ -57,28 +57,19 @@ class PasswordValidator extends BaseValidator<String> {
 
   @override
   String? validateValue(String valueCandidate) {
-    final String? result = FormBuilderValidators.compose<String>(
-      <FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(minLength),
-        FormBuilderValidators.maxLength(maxLength),
-        if (minUppercaseCount > 0)
-          FormBuilderValidators.hasUppercaseChars(
-            atLeast: minUppercaseCount,
-          ),
-        if (minLowercaseCount > 0)
-          FormBuilderValidators.hasLowercaseChars(
-            atLeast: minLowercaseCount,
-          ),
-        if (minNumberCount > 0)
-          FormBuilderValidators.hasNumericChars(
-            atLeast: minNumberCount,
-          ),
-        if (minSpecialCharCount > 0)
-          FormBuilderValidators.hasSpecialChars(
-            atLeast: minSpecialCharCount,
-          ),
-      ],
-    ).call(valueCandidate);
+    final String? result =
+        FormBuilderValidators.compose<String>(<FormFieldValidator<String>>[
+          FormBuilderValidators.minLength(minLength),
+          FormBuilderValidators.maxLength(maxLength),
+          if (minUppercaseCount > 0)
+            FormBuilderValidators.hasUppercaseChars(atLeast: minUppercaseCount),
+          if (minLowercaseCount > 0)
+            FormBuilderValidators.hasLowercaseChars(atLeast: minLowercaseCount),
+          if (minNumberCount > 0)
+            FormBuilderValidators.hasNumericChars(atLeast: minNumberCount),
+          if (minSpecialCharCount > 0)
+            FormBuilderValidators.hasSpecialChars(atLeast: minSpecialCharCount),
+        ]).call(valueCandidate);
     return result != null ? errorText ?? result : null;
   }
 }

@@ -16,6 +16,7 @@ class MaxLengthValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the maximum length validator.
   const MaxLengthValidator(
     this.maxLength, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

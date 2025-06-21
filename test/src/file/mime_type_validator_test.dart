@@ -31,27 +31,30 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the default error message for an invalid MIME type',
-        () {
-      // Arrange
-      final MimeTypeValidator validator = MimeTypeValidator();
-      const String value = 'invalid*235/mimetype';
+    test(
+      'should return the default error message for an invalid MIME type',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator();
+        const String value = 'invalid*235/mimetype';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
+        );
+      },
+    );
 
     test('should return the custom error message for an invalid MIME type', () {
       // Arrange
-      final MimeTypeValidator validator =
-          MimeTypeValidator(errorText: customErrorMessage);
+      final MimeTypeValidator validator = MimeTypeValidator(
+        errorText: customErrorMessage,
+      );
       const String value = 'invalid/test/mimetype';
 
       // Act
@@ -61,19 +64,22 @@ void main() {
       expect(result, equals(customErrorMessage));
     });
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final MimeTypeValidator validator =
-          MimeTypeValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -92,80 +98,90 @@ void main() {
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final MimeTypeValidator validator =
-          MimeTypeValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      final MimeTypeValidator validator = MimeTypeValidator();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
+        );
+      },
+    );
 
-    test('should return null for a valid MIME type within the allowed range',
-        () {
-      // Arrange
-      final MimeTypeValidator validator = MimeTypeValidator();
-      const String value = 'text/html';
+    test(
+      'should return null for a valid MIME type within the allowed range',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator();
+        const String value = 'text/html';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return the default error message for invalid MIME type format',
-        () {
-      // Arrange
-      final MimeTypeValidator validator = MimeTypeValidator();
-      const String value = 'invalid-mime-type';
+    test(
+      'should return the default error message for invalid MIME type format',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator();
+        const String value = 'invalid-mime-type';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.invalidMimeTypeErrorText),
+        );
+      },
+    );
 
-    test('should return the custom error message for invalid MIME type format',
-        () {
-      // Arrange
-      final MimeTypeValidator validator =
-          MimeTypeValidator(errorText: customErrorMessage);
-      const String value = 'invalid-mime-type';
+    test(
+      'should return the custom error message for invalid MIME type format',
+      () {
+        // Arrange
+        final MimeTypeValidator validator = MimeTypeValidator(
+          errorText: customErrorMessage,
+        );
+        const String value = 'invalid-mime-type';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
   });
 }

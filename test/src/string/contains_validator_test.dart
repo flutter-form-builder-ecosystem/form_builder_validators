@@ -9,101 +9,112 @@ void main() {
 
   group('ContainsValidator -', () {
     test(
-        'should return null if the value contains the substring (case sensitive)',
-        () {
-      // Arrange
-      const ContainsValidator validator = ContainsValidator(substring);
-      const String value = 'This is a test string.';
+      'should return null if the value contains the substring (case sensitive)',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(substring);
+        const String value = 'This is a test string.';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message if the value does not contain the substring (case sensitive)',
-        () {
-      // Arrange
-      const ContainsValidator validator = ContainsValidator(substring);
-      const String value = 'This is a Test string.';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.containsErrorText(substring),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null if the value contains the substring (case insensitive)',
-        () {
-      // Arrange
-      const ContainsValidator validator =
-          ContainsValidator(substring, caseSensitive: false);
-      const String value = 'This is a Test string.';
+      'should return the default error message if the value does not contain the substring (case sensitive)',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(substring);
+        const String value = 'This is a Test string.';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message if the value does not contain the substring (case insensitive)',
-        () {
-      // Arrange
-      const ContainsValidator validator =
-          ContainsValidator(substring, caseSensitive: false);
-      const String value = 'This is a string.';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.containsErrorText(substring),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.containsErrorText(substring)),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message if the value does not contain the substring (case sensitive)',
-        () {
-      // Arrange
-      final ContainsValidator validator =
-          ContainsValidator(substring, errorText: customErrorMessage);
-      const String value = 'This is a Test string.';
+      'should return null if the value contains the substring (case insensitive)',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(
+          substring,
+          caseSensitive: false,
+        );
+        const String value = 'This is a Test string.';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return null if the value is null and null check is disabled',
-        () {
-      // Arrange
-      const ContainsValidator validator =
-          ContainsValidator(substring, checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return the default error message if the value does not contain the substring (case insensitive)',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(
+          substring,
+          caseSensitive: false,
+        );
+        const String value = 'This is a string.';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.containsErrorText(substring)),
+        );
+      },
+    );
+
+    test(
+      'should return the custom error message if the value does not contain the substring (case sensitive)',
+      () {
+        // Arrange
+        final ContainsValidator validator = ContainsValidator(
+          substring,
+          errorText: customErrorMessage,
+        );
+        const String value = 'This is a Test string.';
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null if the value is null and null check is disabled',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(
+          substring,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message if the value is null', () {
       // Arrange
@@ -116,57 +127,59 @@ void main() {
       // Assert
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.containsErrorText(substring),
-        ),
+        equals(FormBuilderLocalizations.current.containsErrorText(substring)),
       );
     });
 
     test(
-        'should return null if the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const ContainsValidator validator =
-          ContainsValidator(substring, checkNullOrEmpty: false);
-      const String value = '';
+      'should return null if the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(
+          substring,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      const ContainsValidator validator = ContainsValidator(substring);
-      const String value = '';
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator(substring);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.containsErrorText(substring),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.containsErrorText(substring)),
+        );
+      },
+    );
 
-    test('should return the error message if the substring is an empty string',
-        () {
-      // Arrange
-      const ContainsValidator validator = ContainsValidator('');
-      const String value = 'test';
+    test(
+      'should return the error message if the substring is an empty string',
+      () {
+        // Arrange
+        const ContainsValidator validator = ContainsValidator('');
+        const String value = 'test';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(validator.errorText));
-    });
+        // Assert
+        expect(result, equals(validator.errorText));
+      },
+    );
   });
 }

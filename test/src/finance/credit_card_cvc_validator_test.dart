@@ -32,43 +32,46 @@ void main() {
     });
 
     test(
-        'should return the default error message if the CVC is invalid (less than 3 digits)',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator = CreditCardCvcValidator();
-      const String invalidCvc = '12';
+      'should return the default error message if the CVC is invalid (less than 3 digits)',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator();
+        const String invalidCvc = '12';
 
-      // Act
-      final String? result = validator.validate(invalidCvc);
+        // Act
+        final String? result = validator.validate(invalidCvc);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the default error message if the CVC is invalid (more than 4 digits)',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator = CreditCardCvcValidator();
-      const String invalidCvc = '12345';
+      'should return the default error message if the CVC is invalid (more than 4 digits)',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator();
+        const String invalidCvc = '12345';
 
-      // Act
-      final String? result = validator.validate(invalidCvc);
+        // Act
+        final String? result = validator.validate(invalidCvc);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
+        );
+      },
+    );
 
     test('should return the custom error message if the CVC is invalid', () {
       // Arrange
-      final CreditCardCvcValidator validator =
-          CreditCardCvcValidator(errorText: customErrorMessage);
+      final CreditCardCvcValidator validator = CreditCardCvcValidator(
+        errorText: customErrorMessage,
+      );
       const String invalidCvc = 'abc';
 
       // Act
@@ -78,19 +81,22 @@ void main() {
       expect(result, equals(customErrorMessage));
     });
 
-    test('should return null if the value is null and null check is disabled',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator =
-          CreditCardCvcValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null if the value is null and null check is disabled',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message if the value is null', () {
       // Arrange
@@ -108,52 +114,56 @@ void main() {
     });
 
     test(
-        'should return null if the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator =
-          CreditCardCvcValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null if the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator = CreditCardCvcValidator();
-      const String value = '';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the CVC contains non-numeric characters',
-        () {
-      // Arrange
-      const CreditCardCvcValidator validator = CreditCardCvcValidator();
-      const String invalidCvc = '12a';
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(invalidCvc);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return the default error message if the CVC contains non-numeric characters',
+      () {
+        // Arrange
+        const CreditCardCvcValidator validator = CreditCardCvcValidator();
+        const String invalidCvc = '12a';
+
+        // Act
+        final String? result = validator.validate(invalidCvc);
+
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardCVCErrorText),
+        );
+      },
+    );
   });
 }

@@ -65,7 +65,8 @@ class IbanValidator extends TranslatedValidator<String> {
 
     int remainder = int.parse(numericIban.substring(0, 9)) % 97;
     for (int i = 9; i < numericIban.length; i += 7) {
-      remainder = int.parse(
+      remainder =
+          int.parse(
             remainder.toString() +
                 numericIban.substring(
                   i,

@@ -16,6 +16,7 @@ class MatchValidator extends TranslatedValidator<String> {
   /// Constructor for the match validator.
   const MatchValidator(
     this.regex, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

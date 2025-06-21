@@ -9,8 +9,9 @@ void main() {
   group('MatchNotValidator -', () {
     test('should return null if the value does not match the regex', () {
       // Arrange
-      final MatchNotValidator validator =
-          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      final MatchNotValidator validator = MatchNotValidator(
+        RegExp(r'^[a-zA-Z]+$'),
+      );
       const String value = 'abcde';
 
       // Act
@@ -21,57 +22,63 @@ void main() {
     });
 
     test(
-        'should return the default error message if the value matches the regex',
-        () {
-      // Arrange
-      final MatchNotValidator validator =
-          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
-      const String value = '12345';
+      'should return the default error message if the value matches the regex',
+      () {
+        // Arrange
+        final MatchNotValidator validator = MatchNotValidator(
+          RegExp(r'^[a-zA-Z]+$'),
+        );
+        const String value = '12345';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
+      },
+    );
 
     test(
-        'should return the custom error message if the value matches the regex',
-        () {
-      // Arrange
-      final MatchNotValidator validator = MatchNotValidator(
-        RegExp(r'^[a-zA-Z]+$'),
-        errorText: customErrorMessage,
-      );
-      const String value = '12345';
+      'should return the custom error message if the value matches the regex',
+      () {
+        // Arrange
+        final MatchNotValidator validator = MatchNotValidator(
+          RegExp(r'^[a-zA-Z]+$'),
+          errorText: customErrorMessage,
+        );
+        const String value = '12345';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null if the value is null and null check is disabled',
-        () {
-      // Arrange
-      final MatchNotValidator validator = MatchNotValidator(
-        RegExp(r'^[a-zA-Z]+$'),
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return null if the value is null and null check is disabled',
+      () {
+        // Arrange
+        final MatchNotValidator validator = MatchNotValidator(
+          RegExp(r'^[a-zA-Z]+$'),
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message if the value is null', () {
       // Arrange
-      final MatchNotValidator validator =
-          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
+      final MatchNotValidator validator = MatchNotValidator(
+        RegExp(r'^[a-zA-Z]+$'),
+      );
       const String? value = null;
 
       // Act
@@ -82,35 +89,38 @@ void main() {
     });
 
     test(
-        'should return null if the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final MatchNotValidator validator = MatchNotValidator(
-        RegExp(r'^[a-zA-Z]+$'),
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return null if the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final MatchNotValidator validator = MatchNotValidator(
+          RegExp(r'^[a-zA-Z]+$'),
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      final MatchNotValidator validator =
-          MatchNotValidator(RegExp(r'^[a-zA-Z]+$'));
-      const String value = '';
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        final MatchNotValidator validator = MatchNotValidator(
+          RegExp(r'^[a-zA-Z]+$'),
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.matchErrorText));
+      },
+    );
   });
 }

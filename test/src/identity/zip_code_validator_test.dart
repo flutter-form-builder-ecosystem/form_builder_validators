@@ -9,8 +9,9 @@ void main() {
   group('ZipCodeValidator -', () {
     test('should return null if the ZIP code is valid (5 digits)', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String validZipCode = '12345';
 
       // Act
@@ -20,52 +21,62 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null if the ZIP code is valid (9 digits with hyphen)',
-        () {
-      // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
-      const String validZipCode = '12345-6789';
+    test(
+      'should return null if the ZIP code is valid (9 digits with hyphen)',
+      () {
+        // Arrange
+        final ZipCodeValidator validator = ZipCodeValidator(
+          errorText: customErrorMessage,
+        );
+        const String validZipCode = '12345-6789';
 
-      // Act
-      final String? result = validator.validate(validZipCode);
+        // Act
+        final String? result = validator.validate(validZipCode);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return null if the ZIP code is valid (9 digits with space)',
-        () {
-      // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
-      const String validZipCode = '12345 6789';
+    test(
+      'should return null if the ZIP code is valid (9 digits with space)',
+      () {
+        // Arrange
+        final ZipCodeValidator validator = ZipCodeValidator(
+          errorText: customErrorMessage,
+        );
+        const String validZipCode = '12345 6789';
 
-      // Act
-      final String? result = validator.validate(validZipCode);
+        // Act
+        final String? result = validator.validate(validZipCode);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return error if the ZIP code is invalid (letters included)',
-        () {
-      // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
-      const String invalidZipCode = '123ab';
+    test(
+      'should return error if the ZIP code is invalid (letters included)',
+      () {
+        // Arrange
+        final ZipCodeValidator validator = ZipCodeValidator(
+          errorText: customErrorMessage,
+        );
+        const String invalidZipCode = '123ab';
 
-      // Act
-      final String? result = validator.validate(invalidZipCode);
+        // Act
+        final String? result = validator.validate(invalidZipCode);
 
-      // Assert
-      expect(result, customErrorMessage);
-    });
+        // Assert
+        expect(result, customErrorMessage);
+      },
+    );
 
     test('should return error if the ZIP code is too short', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String shortZipCode = '1234';
 
       // Act
@@ -77,8 +88,9 @@ void main() {
 
     test('should return error if the ZIP code is too long', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String longZipCode = '12345678901';
 
       // Act
@@ -90,8 +102,9 @@ void main() {
 
     test('should return error if the ZIP code has invalid format', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String invalidFormatZipCode = '1234-56789';
 
       // Act
@@ -103,8 +116,9 @@ void main() {
 
     test('should return error if the value is null', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String? value = null;
 
       // Act
@@ -116,8 +130,9 @@ void main() {
 
     test('should return error if the value is empty', () {
       // Arrange
-      final ZipCodeValidator validator =
-          ZipCodeValidator(errorText: customErrorMessage);
+      final ZipCodeValidator validator = ZipCodeValidator(
+        errorText: customErrorMessage,
+      );
       const String value = '';
 
       // Act

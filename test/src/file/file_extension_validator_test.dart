@@ -7,100 +7,112 @@ void main() {
   final String customErrorMessage = faker.lorem.sentence();
 
   group('FileExtensionValidator -', () {
-    test('should return null when the file extension is in the allowed list',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = 'image.jpg';
+    test(
+      'should return null when the file extension is in the allowed list',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = 'image.jpg';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the file extension is in the allowed list with mixed case',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = 'image.JPG';
+      'should return null when the file extension is in the allowed list with mixed case',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = 'image.JPG';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the file extension is not in the allowed list',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = 'document.pdf';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current
-              .fileExtensionErrorText(allowedExtensions.join(', ')),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the custom error message when the file extension is not in the allowed list',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      final FileExtensionValidator validator = FileExtensionValidator(
-        allowedExtensions,
-        errorText: customErrorMessage,
-      );
-      const String value = 'document.pdf';
+      'should return the default error message when the file extension is not in the allowed list',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = 'document.pdf';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.fileExtensionErrorText(
+              allowedExtensions.join(', '),
+            ),
+          ),
+        );
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator = FileExtensionValidator(
-        allowedExtensions,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return the custom error message when the file extension is not in the allowed list',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        final FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+          errorText: customErrorMessage,
+        );
+        const String value = 'document.pdf';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
       const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
+      const FileExtensionValidator validator = FileExtensionValidator(
+        allowedExtensions,
+      );
       const String? value = null;
 
       // Act
@@ -111,78 +123,89 @@ void main() {
       expect(
         result,
         equals(
-          FormBuilderLocalizations.current
-              .fileExtensionErrorText(allowedExtensions.join(', ')),
+          FormBuilderLocalizations.current.fileExtensionErrorText(
+            allowedExtensions.join(', '),
+          ),
         ),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator = FileExtensionValidator(
-        allowedExtensions,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current
-              .fileExtensionErrorText(allowedExtensions.join(', ')),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.fileExtensionErrorText(
+              allowedExtensions.join(', '),
+            ),
+          ),
+        );
+      },
+    );
 
-    test('should return null when the value has a valid path with extension',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = 'path/to/image.jpg';
+    test(
+      'should return null when the value has a valid path with extension',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = 'path/to/image.jpg';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return the default error message for invalid file path format',
-        () {
-      // Arrange
-      const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
-      const FileExtensionValidator validator =
-          FileExtensionValidator(allowedExtensions);
-      const String value = 'invalidpath';
+    test(
+      'should return the default error message for invalid file path format',
+      () {
+        // Arrange
+        const List<String> allowedExtensions = <String>['jpg', 'png', 'gif'];
+        const FileExtensionValidator validator = FileExtensionValidator(
+          allowedExtensions,
+        );
+        const String value = 'invalidpath';
 
-      // Act & Assert
-      expect(() => validator.validate(value), throwsA(isA<AssertionError>()));
-    });
+        // Act & Assert
+        expect(() => validator.validate(value), throwsA(isA<AssertionError>()));
+      },
+    );
   });
 }

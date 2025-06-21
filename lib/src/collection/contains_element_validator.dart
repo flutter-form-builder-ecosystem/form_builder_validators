@@ -15,6 +15,7 @@ class ContainsElementValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the contains element validator.
   const ContainsElementValidator(
     this.values, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

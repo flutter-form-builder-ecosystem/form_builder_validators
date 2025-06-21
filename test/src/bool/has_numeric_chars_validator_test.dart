@@ -9,66 +9,77 @@ void main() {
   group('Has numeric chars -', () {
     final HasNumericCharsValidator validator = HasNumericCharsValidator();
 
-    test('should return null when the value has at least 1 numeric character',
-        () {
-      // Arrange
-      const String value = 'abc123';
+    test(
+      'should return null when the value has at least 1 numeric character',
+      () {
+        // Arrange
+        const String value = 'abc123';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test('should return null when the value has at least 3 numeric characters',
-        () {
-      // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(atLeast: 3);
-      const String value = 'a1b2c3';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the custom error message when the value has no numeric characters',
-        () {
-      // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(errorText: customErrorMessage);
-      const String value = 'abc';
+      'should return null when the value has at least 3 numeric characters',
+      () {
+        // Arrange
+        final HasNumericCharsValidator validator = HasNumericCharsValidator(
+          atLeast: 3,
+        );
+        const String value = 'a1b2c3';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the custom error message when the value has less than 3 numeric characters',
-        () {
-      // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(atLeast: 3, errorText: customErrorMessage);
-      const String value = 'a1b';
+      'should return the custom error message when the value has no numeric characters',
+      () {
+        // Arrange
+        final HasNumericCharsValidator validator = HasNumericCharsValidator(
+          errorText: customErrorMessage,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the custom error message when the value has less than 3 numeric characters',
+      () {
+        // Arrange
+        final HasNumericCharsValidator validator = HasNumericCharsValidator(
+          atLeast: 3,
+          errorText: customErrorMessage,
+        );
+        const String value = 'a1b';
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test('should return the error message when the value is empty', () {
       // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(errorText: customErrorMessage);
+      final HasNumericCharsValidator validator = HasNumericCharsValidator(
+        errorText: customErrorMessage,
+      );
       const String value = '';
 
       // Act
@@ -80,8 +91,9 @@ void main() {
 
     test('should return null when the value is empty', () {
       // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(checkNullOrEmpty: false);
+      final HasNumericCharsValidator validator = HasNumericCharsValidator(
+        checkNullOrEmpty: false,
+      );
       const String value = '';
 
       // Act
@@ -93,8 +105,9 @@ void main() {
 
     test('should return the error message when the value is null', () {
       // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(errorText: customErrorMessage);
+      final HasNumericCharsValidator validator = HasNumericCharsValidator(
+        errorText: customErrorMessage,
+      );
       const String? value = null;
 
       // Act
@@ -106,8 +119,9 @@ void main() {
 
     test('should return null when the value is null', () {
       // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(checkNullOrEmpty: false);
+      final HasNumericCharsValidator validator = HasNumericCharsValidator(
+        checkNullOrEmpty: false,
+      );
       const String? value = null;
 
       // Act
@@ -118,34 +132,38 @@ void main() {
     });
 
     test(
-        'should return the custom error message when using a custom regex and the value does not match',
-        () {
-      // Arrange
-      final HasNumericCharsValidator validator = HasNumericCharsValidator(
-        regex: RegExp('[0-9]'),
-        errorText: customErrorMessage,
-      );
-      const String value = 'abc';
+      'should return the custom error message when using a custom regex and the value does not match',
+      () {
+        // Arrange
+        final HasNumericCharsValidator validator = HasNumericCharsValidator(
+          regex: RegExp('[0-9]'),
+          errorText: customErrorMessage,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when using a custom regex and the value matches',
-        () {
-      // Arrange
-      final HasNumericCharsValidator validator =
-          HasNumericCharsValidator(regex: RegExp('[0-9]'));
-      const String value = 'abc123';
+    test(
+      'should return null when using a custom regex and the value matches',
+      () {
+        // Arrange
+        final HasNumericCharsValidator validator = HasNumericCharsValidator(
+          regex: RegExp('[0-9]'),
+        );
+        const String value = 'abc123';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
   });
 }

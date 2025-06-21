@@ -22,79 +22,80 @@ void main() {
     });
 
     test(
-        'should return the default error message when the value is shorter than the specified length',
-        () {
-      // Arrange
-      const int length = 5;
-      const EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length);
-      const String value = 'abc';
+      'should return the default error message when the value is shorter than the specified length',
+      () {
+        // Arrange
+        const int length = 5;
+        const EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length);
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
-      );
-    });
-
-    test(
-        'should return the default error message when the value is longer than the specified length',
-        () {
-      // Arrange
-      const int length = 5;
-      const EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length);
-      const String value = 'abcdef';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the value does not have the exact length',
-        () {
-      // Arrange
-      const int length = 5;
-      final EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length, errorText: customErrorMessage);
-      const String value = 'abc';
+      'should return the default error message when the value is longer than the specified length',
+      () {
+        // Arrange
+        const int length = 5;
+        const EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length);
+        const String value = 'abcdef';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
+        );
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const int length = 5;
-      const EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length, checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return the custom error message when the value does not have the exact length',
+      () {
+        // Arrange
+        const int length = 5;
+        final EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length, errorText: customErrorMessage);
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const int length = 5;
+        const EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length, checkNullOrEmpty: false);
+        const String? value = null;
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -110,49 +111,47 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
+        equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const int length = 5;
-      const EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length, checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const int length = 5;
+        const EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length, checkNullOrEmpty: false);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const int length = 5;
-      const EqualLengthValidator<String> validator =
-          EqualLengthValidator<String>(length);
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const int length = 5;
+        const EqualLengthValidator<String> validator =
+            EqualLengthValidator<String>(length);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
+        );
+      },
+    );
   });
 
   group('Equal length - List', () {
@@ -171,82 +170,83 @@ void main() {
     });
 
     test(
-        'should return the default error message when the list is shorter than the specified length',
-        () {
-      // Arrange
-      const int length = 3;
-      const EqualLengthValidator<List<String>> validator =
-          EqualLengthValidator<List<String>>(length);
-      const List<String> value = <String>['a', 'b'];
+      'should return the default error message when the list is shorter than the specified length',
+      () {
+        // Arrange
+        const int length = 3;
+        const EqualLengthValidator<List<String>> validator =
+            EqualLengthValidator<List<String>>(length);
+        const List<String> value = <String>['a', 'b'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
-      );
-    });
-
-    test(
-        'should return the default error message when the list is longer than the specified length',
-        () {
-      // Arrange
-      const int length = 3;
-      const EqualLengthValidator<List<String>> validator =
-          EqualLengthValidator<List<String>>(length);
-      const List<String> value = <String>['a', 'b', 'c', 'd'];
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the list does not have the exact length',
-        () {
-      // Arrange
-      const int length = 3;
-      final EqualLengthValidator<List<String>> validator =
-          EqualLengthValidator<List<String>>(
-        length,
-        errorText: customErrorMessage,
-      );
-      const List<String> value = <String>['a', 'b'];
+      'should return the default error message when the list is longer than the specified length',
+      () {
+        // Arrange
+        const int length = 3;
+        const EqualLengthValidator<List<String>> validator =
+            EqualLengthValidator<List<String>>(length);
+        const List<String> value = <String>['a', 'b', 'c', 'd'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
+        );
+      },
+    );
 
-    test('should return null when the list is null and null check is disabled',
-        () {
-      // Arrange
-      const int length = 3;
-      const EqualLengthValidator<List<String>> validator =
-          EqualLengthValidator<List<String>>(length, checkNullOrEmpty: false);
-      const List<String>? value = null;
+    test(
+      'should return the custom error message when the list does not have the exact length',
+      () {
+        // Arrange
+        const int length = 3;
+        final EqualLengthValidator<List<String>> validator =
+            EqualLengthValidator<List<String>>(
+              length,
+              errorText: customErrorMessage,
+            );
+        const List<String> value = <String>['a', 'b'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null when the list is null and null check is disabled',
+      () {
+        // Arrange
+        const int length = 3;
+        const EqualLengthValidator<List<String>> validator =
+            EqualLengthValidator<List<String>>(length, checkNullOrEmpty: false);
+        const List<String>? value = null;
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the list is null', () {
       // Arrange
@@ -262,26 +262,26 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
+        equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
       );
     });
 
-    test('should return null when the list is empty and null check is disabled',
-        () {
-      // Arrange
-      const int length = 3;
-      const EqualLengthValidator<List<String>> validator =
-          EqualLengthValidator<List<String>>(length, checkNullOrEmpty: false);
-      const List<String> value = <String>[];
+    test(
+      'should return null when the list is empty and null check is disabled',
+      () {
+        // Arrange
+        const int length = 3;
+        const EqualLengthValidator<List<String>> validator =
+            EqualLengthValidator<List<String>>(length, checkNullOrEmpty: false);
+        const List<String> value = <String>[];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the list is empty', () {
       // Arrange
@@ -297,9 +297,7 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.equalLengthErrorText(length),
-        ),
+        equals(FormBuilderLocalizations.current.equalLengthErrorText(length)),
       );
     });
   });

@@ -16,6 +16,7 @@ class StartsWithValidator extends TranslatedValidator<String> {
   /// Constructor for the starts with validator.
   const StartsWithValidator(
     this.prefix, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

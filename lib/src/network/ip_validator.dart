@@ -44,8 +44,9 @@ class IpValidator extends TranslatedValidator<String> {
   ///
   /// Examples: 192.168.1.1, 10.0.0.1
   /// {@endtemplate}
-  static final RegExp _ipv4Maybe =
-      RegExp(r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$');
+  static final RegExp _ipv4Maybe = RegExp(
+    r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$',
+  );
 
   /// {@template ipv6_template}
   /// This regex matches an IPv6 address.
