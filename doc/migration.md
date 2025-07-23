@@ -1408,16 +1408,180 @@ Validators.uppercase(
 
 ### Use-case validators
 
-<!-- TODO continue from here ... -->
-- `FormBuilderValidators.base64()` - requires the field's to be a valid base64 string.
-- `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
-- `FormBuilderValidators.duns()` - requires the field's value to be a valid DUNS.
-- `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
-- `FormBuilderValidators.json()` - requires the field's to be a valid json string.
-- `FormBuilderValidators.languageCode()` - requires the field's to be a valid language code.
-- `FormBuilderValidators.licensePlate()` - requires the field's to be a valid license plate.
-- `FormBuilderValidators.uuid()` - requires the field's to be a valid uuid.
-- `FormBuilderValidators.vin()` - requires the field's to be a valid VIN number.
+- `FormBuilderValidators.base64()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/base64_validator.dart#L31). Something close would be:
+```dart
+// Old API:
+FormBuilderValidator.base64(
+  errorText: 'error text',
+);
+
+// New API (equivalent):
+bool isBase64(String value) {
+    try {
+      base64Decode(value);
+      return true;
+    } catch (e) {
+      return false;
+    }
+}
+
+Validators.satisfy(
+  (input)=>isBase64(input), satisfyMsg: (_)=>'error text',
+); 
+```
+- `FormBuilderValidators.colorCode()`
+```dart
+// Old API:
+FormBuilderValidator.colorCode();
+
+// New API:
+Validators.colorCode();
+```
+
+- `FormBuilderValidators.duns()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/duns_validator.dart#L41). The equivalent would be:
+```dart
+// Old API:
+FormBuilderValidator.duns(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.match(
+  RegExp(r'^\d{9}$'),
+  matchMsg: (_)=>'error text',
+);
+```
+
+- `FormBuilderValidators.isbn()`
+```dart
+// Old API:
+FormBuilderValidator.isbn(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.isbn(
+  isbnMsg: (_)=> 'error text',
+);
+```
+- `FormBuilderValidators.json()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/json_validator.dart#L31) 
+```dart
+// Old API:
+FormBuilderValidator.json(
+  errorText: 'error text',
+);
+
+// New API (equivalent):
+bool isJson(String value) {
+    try {
+      jsonDecode(value);
+      return true;
+    } catch (e) {
+      return false;
+    }
+}
+
+Validators.satisfy(
+  (input)=>isJson(input), satisfyMsg: (_)=>'error text',
+); 
+```
+- `FormBuilderValidators.languageCode()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/language_code_validator.dart#L51).
+```dart
+// Old API:
+FormBuilderValidators.languageCode(
+  regex: regex,
+  languageCodeWhitelist: ['val1', 'val2', 'val3'],
+  languageCodeBlacklist: ['val4', 'val5'],
+  errorText: 'invalid language code',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    regex,
+    matchMsg: (_)=>'invalid language code'
+  ),
+  Validators.inList(
+    ['val1', 'val2', 'val3'],
+    inListMsg: (_, __) => 'invalid language code',
+  ),
+  Validators.notInList(
+    ['val1', 'val2', 'val3'],
+    notInListMsg: (_, __) => 'invalid language code',
+  ),
+]);
+```
+
+- `FormBuilderValidators.licensePlate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/licenseplate_validator.dart#L52).
+```dart
+// Old API:
+FormBuilderValidators.licensePlate(
+  regex: regex,
+  licensePlateWhitelist: ['val1', 'val2', 'val3'],
+  licensePlateBlacklist: ['val4', 'val5'],
+  errorText: 'invalid license plate',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    regex,
+    matchMsg: (_)=>'invalid license plate'
+  ),
+  Validators.inList(
+    ['val1', 'val2', 'val3'],
+    inListMsg: (_, __) => 'invalid license plate',
+  ),
+  Validators.notInList(
+    ['val1', 'val2', 'val3'],
+    notInListMsg: (_, __) => 'invalid license plate',
+  ),
+]);
+```
+- `FormBuilderValidators.uuid()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/uuid_validator.dart#L47).
+```dart
+// Old API:
+FormBuilderValidator.uuid(
+  errorText: 'error text',
+);
+
+// New API:
+Validators.match(
+  RegExp(
+    r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
+  ),
+  matchMsg: (_)=>'error text',
+);
+```
+
+- `FormBuilderValidators.vin()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/vin_validator.dart#L52).
+```dart
+// Old API:
+FormBuilderValidators.vin(
+  regex: regex,
+  licensePlateWhitelist: ['val1', 'val2', 'val3'],
+  licensePlateBlacklist: ['val4', 'val5'],
+  errorText: 'invalid vin',
+);
+
+// New API (expects input as String):
+Validators.and([
+  Validators.match(
+    regex,
+    matchMsg: (_)=>'invalid vin'
+  ),
+  Validators.inList(
+    ['val1', 'val2', 'val3'],
+    inListMsg: (_, __) => 'invalid vin',
+  ),
+  Validators.notInList(
+    ['val1', 'val2', 'val3'],
+    notInListMsg: (_, __) => 'invalid vin',
+  ),
+]);
+```
+
+
 
 ### Extension method validators
 
