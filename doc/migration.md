@@ -1587,11 +1587,11 @@ Validators.and([
 
 Used for chaining and combining multiple validators.
 
-- `FormBuilderValidator.and()` - Combines the current validator with another validator using logical AND.
-- `FormBuilderValidator.or()` - Combines the current validator with another validator using logical OR.
-- `FormBuilderValidator.when()` - Adds a condition to apply the validator only if the condition is met.
-- `FormBuilderValidator.unless()` - Adds a condition to apply the validator only if the condition is not met.
-- `FormBuilderValidator.transform()` - Transforms the value before applying the validator.
-- `FormBuilderValidator.skipWhen()` - Skips the validator if the condition is met.
-- `FormBuilderValidator.log()` - Logs the value during the validation process.
-- `FormBuilderValidator.withErrorMessage()` - Overrides the error message of the current validator.
+- `FormBuilderValidator.and()`: use `Validators.and` instead.
+- `FormBuilderValidator.or()`: use `Validators.or` instead.
+- `FormBuilderValidator.when()`: use `Validators.validateIf` instead.
+- `FormBuilderValidator.unless()`: use `Validators.skipIf`
+- `FormBuilderValidator.transform()`: use `Validators.transformAndValidate` instead.
+- `FormBuilderValidator.skipWhen()`: use `Validators.skipIf` instead.
+- `FormBuilderValidator.log()`: use `Validators.debugPrintValidator` instead
+- `FormBuilderValidator.withErrorMessage()`: there is no equivalent in the new api. 
