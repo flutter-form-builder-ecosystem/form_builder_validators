@@ -163,8 +163,8 @@ Validators that check a generic type user input.
 
 ### Miscellaneous validators
 
-- `Validators.colorCode()` - requires the field's value to be a valid color code.
-- TODO [ ] `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
+- `Validators.colorCode()`: checks if the field contains a valid color.
+- `Validators.isbn()`: checks if the field contains a valid ISBN code.
  
 ### Network validators
 

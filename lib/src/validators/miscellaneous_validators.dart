@@ -3,9 +3,9 @@ import '../../form_builder_validators.dart';
 /// {@macro validator_color_code}
 Validator<String> colorCode({
   Set<ColorFormat> formats = const <ColorFormat>{
-    ColorFormat.Hex,
-    ColorFormat.Rgb,
-    ColorFormat.Hsl,
+    ColorFormat.hex,
+    ColorFormat.rgb,
+    ColorFormat.hsl,
   },
   bool Function(String)? customColorCode,
   String Function(String input)? colorCodeMsg,
@@ -24,20 +24,58 @@ Validator<String> colorCode({
   };
 }
 
-// Aux
-enum ColorFormat {
-  Hex,
-  Rgb,
-  Hsl;
+/// {@macro validator_isbn}
+Validator<String> isbn({
+  String Function(String input)? isbnMsg,
+}) {
+  return (String input) {
+    return _isISBN(input)
+        ? null
+        : isbnMsg?.call(input) ??
+            FormBuilderLocalizations.current.isbnErrorText;
+  };
+}
 
-  // You can also add instance methods, constructors, etc.
-  String get displayName {
+// Aux
+/// {@template color_format}
+/// Enumeration defining the supported color format types for color code validation.
+/// This enum provides a standardized way to specify which color formats should be
+/// accepted during validation operations.
+///
+/// The enum supports three primary web-standard color formats:
+/// - Hexadecimal notation (e.g., #FF5733)
+/// - RGB functional notation (e.g., rgb(255, 87, 51))
+/// - HSL functional notation (e.g., hsl(14, 100%, 60%))
+///
+///
+/// ## Examples
+/// ```dart
+/// // Using individual formats
+/// final hexOnly = {ColorFormat.Hex};
+/// final rgbOnly = {ColorFormat.Rgb};
+///
+/// // Using multiple formats
+/// final webFormats = {ColorFormat.Hex, ColorFormat.Rgb};
+/// final allFormats = {ColorFormat.Hex, ColorFormat.Rgb, ColorFormat.Hsl};
+/// ```
+/// {@endtemplate}
+enum ColorFormat {
+  /// Hexadecimal color format using # prefix followed by 6 hex digits
+  hex,
+
+  /// RGB color format using rgb() functional notation with comma-separated values
+  rgb,
+
+  /// HSL color format using hsl() functional notation with hue, saturation, and lightness
+  hsl;
+
+  String get _displayName {
     switch (this) {
-      case ColorFormat.Hex:
+      case ColorFormat.hex:
         return 'HEX';
-      case ColorFormat.Rgb:
+      case ColorFormat.rgb:
         return 'RGB';
-      case ColorFormat.Hsl:
+      case ColorFormat.hsl:
         return 'HSL';
     }
   }
@@ -46,7 +84,7 @@ enum ColorFormat {
 String _toStringFormats(Set<ColorFormat> formats) {
   List<String> formatsBuilder = <String>[];
   for (final ColorFormat f in formats) {
-    formatsBuilder.add(f.displayName);
+    formatsBuilder.add(f._displayName);
   }
   return formatsBuilder.join(', ');
 }
@@ -97,11 +135,11 @@ bool _isColorCode(
 }) {
   for (final ColorFormat format in formats) {
     switch (format) {
-      case ColorFormat.Hex:
+      case ColorFormat.hex:
         if (_hex.hasMatch(value)) {
           return true;
         }
-      case ColorFormat.Rgb:
+      case ColorFormat.rgb:
         if (_rgb.hasMatch(value)) {
           final List<String> parts =
               value.substring(4, value.length - 1).split(',');
@@ -114,7 +152,7 @@ bool _isColorCode(
           return true;
         }
 
-      case ColorFormat.Hsl:
+      case ColorFormat.hsl:
         if (_hsl.hasMatch(value)) {
           final List<String?> parts =
               _hsl.firstMatch(value)!.groups(<int>[1, 2, 3]);
@@ -134,4 +172,44 @@ bool _isColorCode(
     }
   }
   return false;
+}
+
+/// Checks if the string is a valid ISBN (either ISBN-10 or ISBN-13).
+///
+/// ## Parameters:
+/// - [valueCandidate] The string to be checked.
+///
+/// ## Returns:
+/// A boolean indicating whether the string is a valid ISBN.
+bool _isISBN(String valueCandidate) {
+  final String isbn = valueCandidate.replaceAll('-', '').replaceAll(' ', '');
+
+  if (isbn.length == 10) {
+    if (!RegExp(r'^\d{9}[\dX]$').hasMatch(isbn)) return false;
+
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+      sum += int.parse(isbn[i]) * (10 - i);
+    }
+
+    final int checkDigit = (isbn[9] == 'X') ? 10 : int.parse(isbn[9]);
+    sum += checkDigit;
+
+    return sum % 11 == 0;
+  } else if (isbn.length == 13) {
+    if (!RegExp(r'^\d{13}$').hasMatch(isbn)) return false;
+
+    int sum = 0;
+    for (int i = 0; i < 12; i++) {
+      final int digit = int.parse(isbn[i]);
+      sum += (i.isEven) ? digit : digit * 3;
+    }
+
+    final int checkDigit = int.parse(isbn[12]);
+    final int calculatedCheckDigit = (10 - (sum % 10)) % 10;
+
+    return checkDigit == calculatedCheckDigit;
+  } else {
+    return false;
+  }
 }

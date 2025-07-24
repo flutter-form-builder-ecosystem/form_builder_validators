@@ -3827,9 +3827,9 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> colorCode({
     Set<val.ColorFormat> formats = const <val.ColorFormat>{
-      val.ColorFormat.Hex,
-      val.ColorFormat.Rgb,
-      val.ColorFormat.Hsl,
+      val.ColorFormat.hex,
+      val.ColorFormat.rgb,
+      val.ColorFormat.hsl,
     },
     c.bool Function(String)? customColorCode,
     String Function(String input)? colorCodeMsg,
@@ -3839,6 +3839,54 @@ final class Validators {
         customColorCode: customColorCode,
         colorCodeMsg: colorCodeMsg,
       );
+
+  /// {@template validator_isbn}
+  /// Creates a validator function that validates International Standard Book Number (ISBN) strings.
+  /// This validator supports both ISBN-10 and ISBN-13 formats and automatically handles
+  /// common formatting variations including hyphens and spaces.
+  ///
+  /// The validator performs comprehensive ISBN validation including checksum verification
+  /// to ensure the provided ISBN is mathematically valid according to the ISBN standard.
+  /// It accepts ISBNs with or without separating hyphens and handles the special 'X'
+  /// check digit used in ISBN-10 format.
+  ///
+  /// ## Parameters
+  /// - `isbnMsg` (`String Function(String input)?`): Optional callback function to
+  ///   generate custom error messages for invalid ISBN strings. Receives the invalid
+  ///   input as a parameter and should return a user-friendly error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the input is a valid ISBN-10 or ISBN-13
+  /// - Returns an error message if the input fails validation, either from `isbnMsg`
+  ///   or the default localized text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic ISBN validation
+  /// final isbnValidator = isbn();
+  /// assert(isbnValidator('978-0-13-110362-7') == null);  // Valid ISBN-13
+  /// assert(isbnValidator('0-13-110362-8') == null);      // Valid ISBN-10
+  /// assert(isbnValidator('invalid-isbn') != null);       // Invalid
+  ///
+  /// // Custom error message
+  /// final customValidator = isbn(
+  ///   isbnMsg: (input) => 'Please enter a valid ISBN-10 or ISBN-13',
+  /// );
+  ///
+  /// // Various valid formats
+  /// assert(isbnValidator('9780131103627') == null);      // No hyphens
+  /// assert(isbnValidator('978 0 13 110362 7') == null); // Spaces
+  /// assert(isbnValidator('013110362X') == null);         // ISBN-10 with X
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Formatting characters (hyphens and spaces) are automatically stripped during validation
+  /// {@endtemplate}
+  static Validator<String> isbn({
+    String Function(String input)? isbnMsg,
+  }) =>
+      val.isbn(isbnMsg: isbnMsg);
 
   // Numeric validators
   /// {@template validator_between}
