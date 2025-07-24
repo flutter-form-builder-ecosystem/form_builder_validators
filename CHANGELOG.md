@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.0.0
+- Deprecated `FormBuilderValidators` class with its static methods as validators.
+- Created a new API for the validators.
+  - Removed the `checkNullOrEmpty` parameter.
+  - Restructured validators (maintained some intact, removed others, split some into elementary ones)
+  - Decoupled null check and type check from the remaining validators.
+
+
 ## 11.1.1
 
 - Fix issue when build fails due to missing l10n files

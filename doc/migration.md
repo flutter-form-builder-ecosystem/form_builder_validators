@@ -1,8 +1,8 @@
 ## Migrations
 ### v11 to v12
-The next items of this section show how to convert from the old API functions to the closest equivalent using the new APIs. For each item, we try to show how the conversion is made from a validator with all its parameters being used, thus, if your case is simples, probably it will be enough to ignore the additional parameters in the example.
+The following items in this section show how to convert from the old API functions to the closest equivalent using the new APIs. For each item, we try to show how the conversion is made from a validator with all its parameters being used, thus, if your case is simples, probably it will be enough to ignore the additional parameters in the example.
 #### checkNullOrEmpty
-Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator from the old API has this parameter, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections. 
+Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator in the old API has this parameter, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections. 
 
 The conditions are:
 - `checkNullOrEmpty = true` 
@@ -25,7 +25,7 @@ Validators.optional(Validators.someEquivalentValidator(...));
 
 #### Bool validators
 
-For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
+For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), they are expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
 Apply the following logic to the next items:
 
 ```dart
@@ -266,13 +266,16 @@ Validators.num(
 
 
 ```dart
-// TODO use the `satisfy` validator.
 Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
   return (input){
     return values.where((element) => element == input).length > 1? errorText:null;
   };
-
 }
+// or
+Validators.satisfy(
+  (input)=>values.where((element) => element == input).length <= 1,
+  satisfyMsg: (_)=>errorText
+);
 ```
         
 ### Core validators
@@ -988,7 +991,7 @@ FormBuilderValidators.ip(
 // New API:
 Validators.ip(
   regex: ipRegex,
-  emailMsg: (_)=>'invalid ipV4',
+  ipMsg: (_)=>'invalid ipV4',
 );
 
 // For IPv6
@@ -1594,4 +1597,4 @@ Used for chaining and combining multiple validators.
 - `FormBuilderValidator.transform()`: use `Validators.transformAndValidate` instead.
 - `FormBuilderValidator.skipWhen()`: use `Validators.skipIf` instead.
 - `FormBuilderValidator.log()`: use `Validators.debugPrintValidator` instead
-- `FormBuilderValidator.withErrorMessage()`: there is no equivalent in the new api. 
+- `FormBuilderValidator.withErrorMessage()`: there is no equivalent in the new API. 

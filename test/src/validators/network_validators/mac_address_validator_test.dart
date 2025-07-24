@@ -51,7 +51,8 @@ void main() {
     test('should return the custom error message for invalid MAC addresses',
         () {
       // Arrange
-      final validator = macAddress(macAddressMsg: (_) => customErrorMessage);
+      final Validator<String> validator =
+          macAddress(macAddressMsg: (_) => customErrorMessage);
       const List<String> invalidMacAddresses = <String>[
         '00:1A:2B:3C:4D',
         '00:1A:2B:3C:4D:5E:6F',
@@ -72,7 +73,7 @@ void main() {
         'should return the default error message when the MAC address is an empty string',
         () {
       // Arrange
-      final validator = macAddress();
+      final Validator<String> validator = macAddress();
       const String emptyMacAddress = '';
 
       // Act
@@ -91,8 +92,8 @@ void main() {
       final RegExp customRegex = RegExp(
         r'^[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}$',
       );
-      final validator =
-          macAddress(isMacAddress: (i) => customRegex.hasMatch(i));
+      final Validator<String> validator =
+          macAddress(isMacAddress: (String i) => customRegex.hasMatch(i));
       const List<String> validMacAddresses = <String>[
         '00:1A:2B:3C:4D:5E',
         '00:1a:2b:3c:4d:5e',
@@ -113,8 +114,8 @@ void main() {
       final RegExp customRegex = RegExp(
         r'^[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}[:-]{1}[0-9A-Fa-f]{2}$',
       );
-      final validator = macAddress(
-        isMacAddress: (i) => customRegex.hasMatch(i),
+      final Validator<String> validator = macAddress(
+        isMacAddress: (String i) => customRegex.hasMatch(i),
         macAddressMsg: (_) => customErrorMessage,
       );
       const List<String> invalidMacAddresses = <String>[
