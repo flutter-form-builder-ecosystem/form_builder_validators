@@ -1,5 +1,6 @@
 {
   "@@locale": "th",
+  "satisfyErrorText": "ค่าไม่เป็นไปตามเงื่อนไข.",
   "andSeparator": " และ ",
   "betweenLengthErrorText": "ค่าต้องมีความยาวระหว่าง {min} และ {max} รวมทั้งสองค่า",
   "@betweenLengthErrorText": {

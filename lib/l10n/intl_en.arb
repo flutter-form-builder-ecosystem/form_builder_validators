@@ -339,6 +339,7 @@
     }
   },
   "macAddressErrorText": "Value must be a valid MAC address.",
+  "satisfyErrorText": "Value does not satisfy the condition.",
   "startsWithErrorText": "Value must start with {value}.",
   "@startsWithErrorText": {
     "placeholders": {

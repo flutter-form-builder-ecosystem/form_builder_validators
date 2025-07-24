@@ -1,5 +1,6 @@
 {
   "@@locale": "cs",
+  "satisfyErrorText": "Hodnota nesplňuje podmínku.",
   "andSeparator": " a ",
   "betweenLengthErrorText": "Hodnota musí mít délku mezi {min} a {max} včetně.",
   "@betweenLengthErrorText": {

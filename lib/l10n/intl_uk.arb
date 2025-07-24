@@ -1,5 +1,6 @@
 {
   "@@locale": "uk",
+  "satisfyErrorText": "Значення не задовольняє умову.",
   "andSeparator": " і ",
   "betweenLengthErrorText": "Значення повинно мати довжину від {min} до {max} включно.",
   "@betweenLengthErrorText": {

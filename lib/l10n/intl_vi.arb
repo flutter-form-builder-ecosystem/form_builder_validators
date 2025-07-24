@@ -1,5 +1,6 @@
 {
   "@@locale": "vi",
+  "satisfyErrorText": "Giá trị không thỏa mãn điều kiện.",
   "andSeparator": " và ",
   "betweenLengthErrorText": "Giá trị phải có độ dài trong khoảng từ {min} đến {max}, bao gồm cả hai giá trị.",
   "@betweenLengthErrorText": {

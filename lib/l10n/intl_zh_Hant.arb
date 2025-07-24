@@ -1,5 +1,6 @@
 {
   "@@locale": "zh_Hant",
+  "satisfyErrorText": "值不滿足條件。",
   "andSeparator": " 和 ",
   "betweenLengthErrorText": "值的長度必須在 {min} 和 {max} 之間（包含）。",
   "@betweenLengthErrorText": {

@@ -1,5 +1,6 @@
 {
   "@@locale": "ru",
+  "satisfyErrorText": "Значение не удовлетворяет условию.",
   "andSeparator": " и ",
   "betweenLengthErrorText": "Значение должно иметь длину от {min} до {max} включительно.",
   "@betweenLengthErrorText": {

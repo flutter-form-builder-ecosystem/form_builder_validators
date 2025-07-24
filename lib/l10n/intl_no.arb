@@ -1,5 +1,6 @@
 {
   "@@locale": "no",
+  "satisfyErrorText": "Verdi oppfyller ikke betingelsen.",
   "andSeparator": " og ",
   "betweenLengthErrorText": "Verdien må ha en lengde mellom {min} og {max}, inkludert.",
   "@betweenLengthErrorText": {

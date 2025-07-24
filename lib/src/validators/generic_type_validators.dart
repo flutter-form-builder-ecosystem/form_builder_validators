@@ -91,3 +91,16 @@ Validator<T> isFalse<T extends Object>(
   }
   return (false, null);
 }
+
+/// {@macro validator_satisfy}
+Validator<T> satisfy<T extends Object?>(
+  bool Function(T) condition, {
+  String Function(T input)? satisfyMsg,
+}) {
+  return (T input) {
+    return condition(input)
+        ? null
+        : satisfyMsg?.call(input) ??
+            FormBuilderLocalizations.current.satisfyErrorText;
+  };
+}

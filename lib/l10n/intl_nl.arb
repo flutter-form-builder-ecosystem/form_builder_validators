@@ -1,5 +1,6 @@
 {
   "@@locale": "nl",
+  "satisfyErrorText": "Waarde voldoet niet aan de voorwaarde.",
   "andSeparator": " en ",
   "betweenLengthErrorText": "De waarde moet een lengte hebben tussen {min} en {max}, inclusief.",
   "@betweenLengthErrorText": {

@@ -1,5 +1,6 @@
 {
   "@@locale": "tr",
+  "satisfyErrorText": "Değer koşulu karşılamıyor.",
   "andSeparator": " ve ",
   "betweenLengthErrorText": "Değer, {min} ile {max} arasında bir uzunluğa sahip olmalıdır, dahil.",
   "@betweenLengthErrorText": {

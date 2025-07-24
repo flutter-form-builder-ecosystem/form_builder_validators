@@ -1,5 +1,6 @@
 {
   "@@locale": "lo",
+  "satisfyErrorText": "ຄ່າບໍ່ຕອບສະໜອງເງື່ອນໄຂ.",
   "andSeparator": " ແລະ ",
   "betweenLengthErrorText": "ຄ່າຕ້ອງມີຄວາມຍາວລະຫວ່າງ {min} ແລະ {max}, ລວມທັງສອງຄ່າ.",
   "@betweenLengthErrorText": {

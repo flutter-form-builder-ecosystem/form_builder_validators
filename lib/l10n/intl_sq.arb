@@ -1,5 +1,6 @@
 {
   "@@locale": "sq",
+  "satisfyErrorText": "Vlera nuk plotëson kushtin.",
   "andSeparator": " dhe ",
   "betweenLengthErrorText": "Vlera duhet të ketë një gjatësi midis {min} dhe {max}, përfshirë.",
   "@betweenLengthErrorText": {

@@ -1,5 +1,6 @@
 {
   "@@locale": "ms",
+  "satisfyErrorText": "Nilai tidak memenuhi syarat.",
   "andSeparator": " dan ",
   "betweenLengthErrorText": "Nilai mesti mempunyai panjang antara {min} dan {max}, termasuk.",
   "@betweenLengthErrorText": {

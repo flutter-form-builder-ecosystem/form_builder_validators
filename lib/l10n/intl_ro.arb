@@ -1,5 +1,6 @@
 {
   "@@locale": "ro",
+  "satisfyErrorText": "Valoarea nu satisface condiția.",
   "andSeparator": " și ",
   "betweenLengthErrorText": "Valoarea trebuie să aibă o lungime între {min} și {max}, inclusiv.",
   "@betweenLengthErrorText": {

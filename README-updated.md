@@ -159,7 +159,7 @@ Validators that check a generic type user input.
 - `Validators.notInList(values)`: Checks if the field DOES NOT contain a value that is in the list `values`.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
-- TODO [ ] `Validators.satisfy(condition)`: Checks if the field satisfies the `condition`.
+- TODO [X] `Validators.satisfy(condition)`: Checks if the field satisfies the `condition`.
 
 ### Miscellaneous validators
 

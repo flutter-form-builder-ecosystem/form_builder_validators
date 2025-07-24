@@ -1,5 +1,6 @@
 {
   "@@locale": "ku",
+  "satisfyErrorText": "Nirx şert bicîh nake.",
   "andSeparator": " û ",
   "betweenLengthErrorText": "Nirx divê dirêjahiya wê di navbera {min} û {max} de be, tevlî wan.",
   "@betweenLengthErrorText": {

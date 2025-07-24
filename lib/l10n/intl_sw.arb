@@ -1,5 +1,6 @@
 {
   "@@locale": "sw",
+  "satisfyErrorText": "Thamani haifikii sharti.",
   "andSeparator": " na ",
   "betweenLengthErrorText": "Thamani lazima iwe na urefu kati ya {min} na {max}, ikijumuisha.",
   "@betweenLengthErrorText": {

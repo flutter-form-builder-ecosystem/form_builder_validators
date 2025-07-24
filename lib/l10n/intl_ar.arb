@@ -1,5 +1,6 @@
 {
   "@@locale": "ar",
+  "satisfyErrorText": "القيمة لا تحقق الشرط.",
   "andSeparator": " و ",
   "betweenLengthErrorText": "يجب أن يكون طول القيمة بين {min} و {max}، شاملة.",
   "@betweenLengthErrorText": {

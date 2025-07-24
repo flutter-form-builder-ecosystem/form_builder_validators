@@ -1,5 +1,6 @@
 {
   "@@locale": "sv",
+  "satisfyErrorText": "Värdet uppfyller inte villkoret.",
   "andSeparator": " och ",
   "betweenLengthErrorText": "Värdet måste ha en längd mellan {min} och {max}, inklusive.",
   "@betweenLengthErrorText": {

@@ -1,5 +1,6 @@
 {
   "@@locale": "fi",
+  "satisfyErrorText": "Arvo ei täytä ehtoa.",
   "andSeparator": " ja ",
   "betweenLengthErrorText": "Arvon pituuden on oltava välillä {min} ja {max}, mukaan lukien.",
   "@betweenLengthErrorText": {

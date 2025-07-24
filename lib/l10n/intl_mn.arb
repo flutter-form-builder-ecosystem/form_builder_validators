@@ -1,5 +1,6 @@
 {
   "@@locale": "mn",
+  "satisfyErrorText": "Утга нөхцлийг хангахгүй байна.",
   "andSeparator": " ба ",
   "betweenLengthErrorText": "Утгын урт нь {min}-с {max} хүртэл байх ёстой, оруулан тооцно.",
   "@betweenLengthErrorText": {

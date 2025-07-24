@@ -3715,6 +3715,60 @@ final class Validators {
       val.isFalse(
           isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
 
+  /// {@template validator_satisfy}
+  /// Creates a validator function that checks if a given input satisfies a custom
+  /// boolean condition. This is a general-purpose validator that allows you to
+  /// define arbitrary validation logic through a predicate function.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of input to validate. Can be any type including nullable
+  /// types.
+  ///
+  /// ## Parameters
+  /// - `condition` (`bool Function(T)`): A predicate function that defines the
+  ///   validation logic. Should return `true` for valid inputs and `false` for
+  ///   invalid inputs.
+  /// - `satisfyMsg` (`String Function(T input)?`): Optional callback function to
+  ///   generate custom error messages for inputs that fail validation. Receives
+  ///   the invalid input as a parameter.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<T>` function that:
+  /// - Returns `null` if the input satisfies the condition
+  /// - Returns an error message if the input fails validation, either from
+  ///   `satisfyMsg` or the default localized text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Validate that a number is positive
+  /// final positiveValidator = satisfy<int>(
+  ///   (value) => value > 0,
+  ///   satisfyMsg: (input) => '$input must be a positive number',
+  /// );
+  /// assert(positiveValidator(5) == null);     // Valid
+  /// assert(positiveValidator(-1) != null);    // Invalid
+  ///
+  /// // Validate string length
+  /// final lengthValidator = satisfy<String>(
+  ///   (value) => value.length >= 3,
+  ///   satisfyMsg: (input) => 'Text must be at least 3 characters long',
+  /// );
+  /// assert(lengthValidator('hello') == null); // Valid
+  /// assert(lengthValidator('hi') != null);    // Invalid
+  ///
+  /// // Complex validation with multiple conditions
+  /// final emailValidator = satisfy<String>(
+  ///   (email) => email.contains('@') && email.contains('.'),
+  ///   satisfyMsg: (input) => 'Please enter a valid email address',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<T> satisfy<T extends Object>(
+    c.bool Function(T) condition, {
+    String Function(T input)? satisfyMsg,
+  }) =>
+      val.satisfy(condition, satisfyMsg: satisfyMsg);
+
   // Numeric validators
   /// {@template validator_between}
   /// Creates a validator function that checks if a numeric input falls within a specified

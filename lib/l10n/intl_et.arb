@@ -1,5 +1,6 @@
 {
   "@@locale": "et",
+  "satisfyErrorText": "Väärtus ei vasta tingimustele.",
   "andSeparator": " ja ",
   "betweenLengthErrorText": "Väärtuse pikkus peab olema vahemikus {min} kuni {max}, kaasa arvatud.",
   "@betweenLengthErrorText": {

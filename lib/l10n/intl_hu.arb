@@ -1,5 +1,6 @@
 {
   "@@locale": "hu",
+  "satisfyErrorText": "Az érték nem teljesíti a feltételt.",
   "andSeparator": " és ",
   "betweenLengthErrorText": "Az értéknek {min} és {max} közötti hosszúságúnak kell lennie, beleértve.",
   "@betweenLengthErrorText": {

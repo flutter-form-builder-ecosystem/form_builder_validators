@@ -1,5 +1,6 @@
 {
   "@@locale": "bg",
+  "satisfyErrorText": "Стойността не отговаря на условието.",
   "andSeparator": " и ",
   "betweenLengthErrorText": "Стойността трябва да има дължина между {min} и {max}, включително.",
   "@betweenLengthErrorText": {

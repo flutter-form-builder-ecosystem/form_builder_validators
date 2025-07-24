@@ -1,5 +1,6 @@
 {
   "@@locale": "ne",
+  "satisfyErrorText": "मूल्यले सर्त पूरा गर्दैन।",
   "andSeparator": " र ",
   "betweenLengthErrorText": "मान को लम्बाई {min} र {max} बीचमा हुनुपर्छ, समावेश गरेर।",
   "@betweenLengthErrorText": {
