@@ -3769,6 +3769,77 @@ final class Validators {
   }) =>
       val.satisfy(condition, satisfyMsg: satisfyMsg);
 
+  // Miscellaneous validators
+  /// {@template validator_color_code}
+  /// Creates a validator function that validates color code strings in specified formats.
+  /// This validator supports hexadecimal, RGB, and HSL color formats and allows custom
+  /// validation logic for specialized color code requirements.
+  ///
+  /// ## Parameters
+  /// - `formats` (`Set<ColorFormat>`): The color formats to accept during validation.
+  ///   Defaults to supporting HEX, RGB, and HSL formats. Cannot be empty.
+  /// - `customColorCode` (`bool Function(String)?`): Optional custom validation function
+  ///   that overrides the default color code validation logic. Should return `true` for
+  ///   valid color codes and `false` for invalid ones.
+  /// - `colorCodeMsg` (`String Function(String input)?`): Optional callback function to
+  ///   generate custom error messages for invalid color codes. Receives the invalid
+  ///   input as a parameter.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the input is a valid color code in any of the specified formats
+  /// - Returns an error message if the input fails validation, either from `colorCodeMsg`
+  ///   or the default localized text
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: When the `formats` set is empty
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Validate HEX colors only
+  /// final hexValidator = colorCode(
+  ///   formats: {ColorFormat.Hex},
+  ///   colorCodeMsg: (input) => 'Please enter a valid HEX color',
+  /// );
+  /// assert(hexValidator('#FF5733') == null);     // Valid
+  /// assert(hexValidator('rgb(255, 87, 51)') != null); // Invalid format
+  ///
+  /// // Validate multiple formats
+  /// final multiValidator = colorCode(
+  ///   formats: {ColorFormat.Hex, ColorFormat.Rgb},
+  /// );
+  /// assert(multiValidator('#FF5733') == null);        // Valid HEX
+  /// assert(multiValidator('rgb(255, 87, 51)') == null); // Valid RGB
+  /// assert(multiValidator('hsl(14, 100%, 60%)') != null); // Invalid HSL
+  ///
+  /// // Custom validation logic
+  /// final customValidator = colorCode(
+  ///   customColorCode: (value) => value.startsWith('#') && value.length == 7,
+  ///   colorCodeMsg: (input) => 'Only 6-digit HEX colors allowed',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - RGB values are validated to be within the 0-255 range
+  /// - HSL hue values must be within 0-360 degrees
+  /// - HSL saturation and lightness values must be within 0-100 percent
+  /// - When `customColorCode` is provided, it completely overrides default validation
+  /// {@endtemplate}
+  static Validator<String> colorCode({
+    Set<val.ColorFormat> formats = const <val.ColorFormat>{
+      val.ColorFormat.Hex,
+      val.ColorFormat.Rgb,
+      val.ColorFormat.Hsl,
+    },
+    c.bool Function(String)? customColorCode,
+    String Function(String input)? colorCodeMsg,
+  }) =>
+      val.colorCode(
+        formats: formats,
+        customColorCode: customColorCode,
+        colorCodeMsg: colorCodeMsg,
+      );
+
   // Numeric validators
   /// {@template validator_between}
   /// Creates a validator function that checks if a numeric input falls within a specified

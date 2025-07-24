@@ -159,11 +159,11 @@ Validators that check a generic type user input.
 - `Validators.notInList(values)`: Checks if the field DOES NOT contain a value that is in the list `values`.
 - `Validators.isTrue()`: Checks if the field contains a boolean or a parsable `String` of the `true` value.
 - `Validators.isFalse()`: Checks if the field contains a boolean or a parsable `String` of the `false` value.
-- TODO [X] `Validators.satisfy(condition)`: Checks if the field satisfies the `condition`.
+- `Validators.satisfy(condition)`: Checks if the field satisfies the `condition`.
 
 ### Miscellaneous validators
 
-- TODO [ ] `FormBuilderValidators.colorCode()` - requires the field's value to be a valid color code.
+- `Validators.colorCode()` - requires the field's value to be a valid color code.
 - TODO [ ] `FormBuilderValidators.isbn()` - requires the field's to be a valid ISBN.
  
 ### Network validators
