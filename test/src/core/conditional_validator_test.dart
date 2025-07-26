@@ -11,9 +11,9 @@ void main() {
       // Arrange
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
-        (String? value) => false,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => false,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String value = '';
 
       // Act
@@ -23,30 +23,32 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return error if the condition is true and value is invalid',
-        () {
-      // Arrange
-      final ConditionalValidator<String> validator =
-          ConditionalValidator<String>(
-        (String? value) => true,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
-      const String value = '';
+    test(
+      'should return error if the condition is true and value is invalid',
+      () {
+        // Arrange
+        final ConditionalValidator<String> validator =
+            ConditionalValidator<String>(
+              (String? value) => true,
+              FormBuilderValidators.required(errorText: customErrorMessage),
+            );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage);
-    });
+        // Assert
+        expect(result, customErrorMessage);
+      },
+    );
 
     test('should return null if the condition is true and value is valid', () {
       // Arrange
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
-        (String? value) => true,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => true,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String value = 'valid';
 
       // Act
@@ -57,30 +59,31 @@ void main() {
     });
 
     test(
-        'should return null if the condition is false even if value is invalid',
-        () {
-      // Arrange
-      final ConditionalValidator<String> validator =
-          ConditionalValidator<String>(
-        (String? value) => false,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
-      const String value = '';
+      'should return null if the condition is false even if value is invalid',
+      () {
+        // Arrange
+        final ConditionalValidator<String> validator =
+            ConditionalValidator<String>(
+              (String? value) => false,
+              FormBuilderValidators.required(errorText: customErrorMessage),
+            );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should work with a custom condition', () {
       // Arrange
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
-        (String? value) => value == 'check',
-        FormBuilderValidators.minLength(6, errorText: customErrorMessage),
-      );
+            (String? value) => value == 'check',
+            FormBuilderValidators.minLength(6, errorText: customErrorMessage),
+          );
 
       // Act
       final String? result1 = validator.validate('check');
@@ -95,9 +98,9 @@ void main() {
       // Arrange
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
-        (String? value) => false,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => false,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String? value = null;
 
       // Act
@@ -111,9 +114,9 @@ void main() {
       // Arrange
       final ConditionalValidator<String> validator =
           ConditionalValidator<String>(
-        (String? value) => true,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            (String? value) => true,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String? value = null;
 
       // Act

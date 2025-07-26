@@ -85,14 +85,16 @@ class UsernameValidator extends TranslatedValidator<String> {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
-              .current.usernameCannotContainNumbersErrorText;
+                .current
+                .usernameCannotContainNumbersErrorText;
     }
 
     if (!allowUnderscore && valueCandidate.contains('_')) {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
-              .current.usernameCannotContainUnderscoreErrorText;
+                .current
+                .usernameCannotContainUnderscoreErrorText;
     }
 
     if (!allowDots && valueCandidate.contains('.')) {
@@ -105,14 +107,16 @@ class UsernameValidator extends TranslatedValidator<String> {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
-              .current.usernameCannotContainDashesErrorText;
+                .current
+                .usernameCannotContainDashesErrorText;
     }
 
     if (!allowSpace && valueCandidate.contains(' ')) {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
-              .current.usernameCannotContainSpacesErrorText;
+                .current
+                .usernameCannotContainSpacesErrorText;
     }
 
     if (!allowSpecialChar &&
@@ -120,7 +124,8 @@ class UsernameValidator extends TranslatedValidator<String> {
       return errorText != FormBuilderLocalizations.current.usernameErrorText
           ? errorText
           : FormBuilderLocalizations
-              .current.usernameCannotContainSpecialCharErrorText;
+                .current
+                .usernameCannotContainSpecialCharErrorText;
     }
 
     return null;

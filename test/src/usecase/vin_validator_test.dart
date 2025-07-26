@@ -71,72 +71,79 @@ void main() {
       );
     });
 
-    test('should return the default error message for blacklisted VIN strings',
-        () {
-      // Arrange
-      final VinValidator validator = VinValidator(
-        vinWhitelist: vinWhitelist,
-        vinBlacklist: vinBlacklist,
-      );
+    test(
+      'should return the default error message for blacklisted VIN strings',
+      () {
+        // Arrange
+        final VinValidator validator = VinValidator(
+          vinWhitelist: vinWhitelist,
+          vinBlacklist: vinBlacklist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('1HGCM82633A111111'),
-        equals(FormBuilderLocalizations.current.vinErrorText),
-      );
-      expect(
-        validator.validate('JH4KA8260MC222222'),
-        equals(FormBuilderLocalizations.current.vinErrorText),
-      );
-    });
-
-    test('should return the custom error message for blacklisted VIN strings',
-        () {
-      // Arrange
-      final VinValidator validator = VinValidator(
-        vinWhitelist: vinWhitelist,
-        vinBlacklist: vinBlacklist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(
-        validator.validate('1HGCM82633A111111'),
-        equals(customErrorMessage),
-      );
-      expect(
-        validator.validate('JH4KA8260MC222222'),
-        equals(customErrorMessage),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('1HGCM82633A111111'),
+          equals(FormBuilderLocalizations.current.vinErrorText),
+        );
+        expect(
+          validator.validate('JH4KA8260MC222222'),
+          equals(FormBuilderLocalizations.current.vinErrorText),
+        );
+      },
+    );
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final VinValidator validator = VinValidator(
-        vinWhitelist: vinWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return the custom error message for blacklisted VIN strings',
+      () {
+        // Arrange
+        final VinValidator validator = VinValidator(
+          vinWhitelist: vinWhitelist,
+          vinBlacklist: vinBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate('1HGCM82633A111111'),
+          equals(customErrorMessage),
+        );
+        expect(
+          validator.validate('JH4KA8260MC222222'),
+          equals(customErrorMessage),
+        );
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final VinValidator validator = VinValidator(
-        vinWhitelist: vinWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final VinValidator validator = VinValidator(
+          vinWhitelist: vinWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final VinValidator validator = VinValidator(
+          vinWhitelist: vinWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
   });
 }

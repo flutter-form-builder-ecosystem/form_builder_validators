@@ -14,10 +14,8 @@ import '../../form_builder_validators.dart';
 /// {@endtemplate}
 class SkipWhenValidator<T> extends BaseValidator<T> {
   /// Constructor for the skip when validator.
-  const SkipWhenValidator(
-    this.condition,
-    this.validator,
-  ) : super(checkNullOrEmpty: false);
+  const SkipWhenValidator(this.condition, this.validator)
+    : super(checkNullOrEmpty: false);
 
   /// A function that returns a boolean indicating whether the validator should be skipped.
   final bool Function(T? value) condition;

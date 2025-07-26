@@ -17,8 +17,9 @@ void main() {
   group('FirstNameValidator -', () {
     test('should return null for valid first name strings', () {
       // Arrange
-      final FirstNameValidator validator =
-          FirstNameValidator(firstNameWhitelist: firstNameWhitelist);
+      final FirstNameValidator validator = FirstNameValidator(
+        firstNameWhitelist: firstNameWhitelist,
+      );
 
       // Act & Assert
       expect(validator.validate('John'), isNull);
@@ -26,109 +27,119 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid first name strings',
-        () {
-      // Arrange
-      final FirstNameValidator validator =
-          FirstNameValidator(firstNameWhitelist: firstNameWhitelist);
+      'should return the default error message for invalid first name strings',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('john'),
-        equals(FormBuilderLocalizations.current.firstNameErrorText),
-      );
-      expect(
-        validator.validate('InvalidName123'),
-        equals(FormBuilderLocalizations.current.firstNameErrorText),
-      );
-    });
-
-    test(
-        'should return the custom error message for invalid first name strings',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('invalidname'), equals(customErrorMessage));
-      expect(validator.validate('123'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(
+          validator.validate('john'),
+          equals(FormBuilderLocalizations.current.firstNameErrorText),
+        );
+        expect(
+          validator.validate('InvalidName123'),
+          equals(FormBuilderLocalizations.current.firstNameErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the default error message for blacklisted first name strings',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-        firstNameBlacklist: firstNameBlacklist,
-      );
+      'should return the custom error message for invalid first name strings',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('BadName'),
-        equals(FormBuilderLocalizations.current.firstNameErrorText),
-      );
-    });
-
-    test(
-        'should return the custom error message for blacklisted first name strings',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-        firstNameBlacklist: firstNameBlacklist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('NoName'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('invalidname'), equals(customErrorMessage));
+        expect(validator.validate('123'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return the default error message for blacklisted first name strings',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+          firstNameBlacklist: firstNameBlacklist,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate('BadName'),
+          equals(FormBuilderLocalizations.current.firstNameErrorText),
+        );
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return the custom error message for blacklisted first name strings',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+          firstNameBlacklist: firstNameBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(validator.validate('NoName'), equals(customErrorMessage));
+      },
+    );
 
-    test('should return the default error message for non-whitelisted name',
-        () {
-      // Arrange
-      final FirstNameValidator validator = FirstNameValidator(
-        firstNameWhitelist: firstNameWhitelist,
-      );
+    test(
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      expect(
-        validator.validate('NonWhitelistedName'),
-        equals(FormBuilderLocalizations.current.firstNameErrorText),
-      );
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the default error message for non-whitelisted name',
+      () {
+        // Arrange
+        final FirstNameValidator validator = FirstNameValidator(
+          firstNameWhitelist: firstNameWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('NonWhitelistedName'),
+          equals(FormBuilderLocalizations.current.firstNameErrorText),
+        );
+      },
+    );
 
     test('should return the custom error message for non-whitelisted name', () {
       // Arrange

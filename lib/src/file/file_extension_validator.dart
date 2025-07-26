@@ -16,6 +16,7 @@ class FileExtensionValidator extends TranslatedValidator<String> {
   /// Constructor for the file extension validator.
   const FileExtensionValidator(
     this.allowedExtensions, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 
@@ -31,15 +32,14 @@ class FileExtensionValidator extends TranslatedValidator<String> {
       allowedExtensions.map((String e) => e.toLowerCase()).toList();
 
   @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.fileExtensionErrorText(
-        _allowedExtensionsLowerCase.join(', '),
-      );
+  String get translatedErrorText => FormBuilderLocalizations.current
+      .fileExtensionErrorText(_allowedExtensionsLowerCase.join(', '));
 
   @override
   String? validateValue(String valueCandidate) {
-    final String extension =
-        fileExtensionFromPath(valueCandidate).toLowerCase();
+    final String extension = fileExtensionFromPath(
+      valueCandidate,
+    ).toLowerCase();
 
     if (!_allowedExtensionsLowerCase.contains(extension)) {
       return errorText;

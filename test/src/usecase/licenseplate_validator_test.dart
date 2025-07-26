@@ -15,8 +15,9 @@ void main() {
   group('LicensePlateValidator -', () {
     test('should return null for valid license plate strings', () {
       // Arrange
-      final LicensePlateValidator validator =
-          LicensePlateValidator(licensePlateWhitelist: licensePlateWhitelist);
+      final LicensePlateValidator validator = LicensePlateValidator(
+        licensePlateWhitelist: licensePlateWhitelist,
+      );
 
       // Act & Assert
       expect(validator.validate('ABC123'), isNull);
@@ -25,159 +26,171 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid license plate strings',
-        () {
-      // Arrange
-      final LicensePlateValidator validator =
-          LicensePlateValidator(licensePlateWhitelist: licensePlateWhitelist);
+      'should return the default error message for invalid license plate strings',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('1234#567'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-      expect(
-        validator.validate('INVALID PLATE'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-      expect(
-        validator.validate('INVALID PLATE'),
-        equals(validator.errorText),
-      );
-    });
-
-    test(
-        'should return the custom error message for invalid license plate strings',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('1234#567'), equals(customErrorMessage));
-      expect(validator.validate('INVALID PLATE'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(
+          validator.validate('1234#567'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+        expect(
+          validator.validate('INVALID PLATE'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+        expect(
+          validator.validate('INVALID PLATE'),
+          equals(validator.errorText),
+        );
+      },
+    );
 
     test(
-        'should return the default error message for blacklisted license plate strings',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        licensePlateBlacklist: licensePlateBlacklist,
-      );
+      'should return the custom error message for invalid license plate strings',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('INVALID1'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-      expect(
-        validator.validate('BAD-PLATE'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-    });
+        // Act & Assert
+        expect(validator.validate('1234#567'), equals(customErrorMessage));
+        expect(validator.validate('INVALID PLATE'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message for blacklisted license plate strings',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        licensePlateBlacklist: licensePlateBlacklist,
-        errorText: customErrorMessage,
-      );
+      'should return the default error message for blacklisted license plate strings',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          licensePlateBlacklist: licensePlateBlacklist,
+        );
 
-      // Act & Assert
-      expect(validator.validate('INVALID1'), equals(customErrorMessage));
-      expect(validator.validate('BAD-PLATE'), equals(customErrorMessage));
-    });
-
-    test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate('INVALID1'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+        expect(
+          validator.validate('BAD-PLATE'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the value does not match the regex pattern',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        errorText: customErrorMessage,
-      );
+      'should return the custom error message for blacklisted license plate strings',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          licensePlateBlacklist: licensePlateBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(validator.validate('@@@###'), equals(customErrorMessage));
-    });
-
-    test(
-        'should return the default error message when the value does not match the regex pattern',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-      );
-
-      // Act & Assert
-      expect(
-        validator.validate('@@@###'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-    });
+        // Act & Assert
+        expect(validator.validate('INVALID1'), equals(customErrorMessage));
+        expect(validator.validate('BAD-PLATE'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message when the value is not in the whitelist',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-        errorText: customErrorMessage,
-      );
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      expect(validator.validate('NOTINLIST'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is not in the whitelist',
-        () {
-      // Arrange
-      final LicensePlateValidator validator = LicensePlateValidator(
-        licensePlateWhitelist: licensePlateWhitelist,
-      );
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act & Assert
-      expect(
-        validator.validate('NOTINLIST'),
-        equals(FormBuilderLocalizations.current.licensePlateErrorText),
-      );
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the custom error message when the value does not match the regex pattern',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(validator.validate('@@@###'), equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the default error message when the value does not match the regex pattern',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('@@@###'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return the custom error message when the value is not in the whitelist',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(validator.validate('NOTINLIST'), equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the default error message when the value is not in the whitelist',
+      () {
+        // Arrange
+        final LicensePlateValidator validator = LicensePlateValidator(
+          licensePlateWhitelist: licensePlateWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('NOTINLIST'),
+          equals(FormBuilderLocalizations.current.licensePlateErrorText),
+        );
+      },
+    );
   });
 }

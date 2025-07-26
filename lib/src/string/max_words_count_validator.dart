@@ -16,6 +16,7 @@ class MaxWordsCountValidator extends TranslatedValidator<String> {
   /// Constructor for the maximum words count validator.
   const MaxWordsCountValidator(
     this.maxWordsCount, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

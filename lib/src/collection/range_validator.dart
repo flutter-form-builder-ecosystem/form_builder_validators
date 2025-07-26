@@ -28,28 +28,28 @@ class RangeValidator<T> extends TranslatedValidator<T> {
 
     /// {@macro base_validator_null_check}
     super.checkNullOrEmpty,
-  })  : _minValidator = MinValidator<T>(
-          min,
-          inclusive: inclusive,
-          errorText: errorText,
-          checkNullOrEmpty: checkNullOrEmpty,
-        ),
-        _maxValidator = MaxValidator<T>(
-          max,
-          inclusive: inclusive,
-          errorText: errorText,
-          checkNullOrEmpty: checkNullOrEmpty,
-        ),
-        _minLengthValidator = MinLengthValidator<T>(
-          min.toInt(),
-          errorText: errorText,
-          checkNullOrEmpty: checkNullOrEmpty,
-        ),
-        _maxLengthValidator = MaxLengthValidator<T>(
-          max.toInt(),
-          errorText: errorText,
-          checkNullOrEmpty: checkNullOrEmpty,
-        );
+  }) : _minValidator = MinValidator<T>(
+         min,
+         inclusive: inclusive,
+         errorText: errorText,
+         checkNullOrEmpty: checkNullOrEmpty,
+       ),
+       _maxValidator = MaxValidator<T>(
+         max,
+         inclusive: inclusive,
+         errorText: errorText,
+         checkNullOrEmpty: checkNullOrEmpty,
+       ),
+       _minLengthValidator = MinLengthValidator<T>(
+         min.toInt(),
+         errorText: errorText,
+         checkNullOrEmpty: checkNullOrEmpty,
+       ),
+       _maxLengthValidator = MaxLengthValidator<T>(
+         max.toInt(),
+         errorText: errorText,
+         checkNullOrEmpty: checkNullOrEmpty,
+       );
 
   /// The minimum value of the range.
   final num min;
@@ -80,10 +80,12 @@ class RangeValidator<T> extends TranslatedValidator<T> {
   String? validateValue(T valueCandidate) {
     final String? minResult = _minValidator.validate(valueCandidate);
     final String? maxResult = _maxValidator.validate(valueCandidate);
-    final String? minLengthResult =
-        _minLengthValidator.validate(valueCandidate);
-    final String? maxLengthResult =
-        _maxLengthValidator.validate(valueCandidate);
+    final String? minLengthResult = _minLengthValidator.validate(
+      valueCandidate,
+    );
+    final String? maxLengthResult = _maxLengthValidator.validate(
+      valueCandidate,
+    );
 
     if ((minResult == null && maxResult == null) ||
         (minLengthResult == null && maxLengthResult == null)) {

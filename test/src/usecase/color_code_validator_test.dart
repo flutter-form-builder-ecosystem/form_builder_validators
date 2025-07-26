@@ -43,51 +43,61 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the default error message if the color code is invalid',
-        () {
-      // Arrange
-      final ColorCodeValidator validator = ColorCodeValidator();
-      const String invalidColor = 'invalid-color';
+    test(
+      'should return the default error message if the color code is invalid',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator();
+        const String invalidColor = 'invalid-color';
 
-      // Act
-      final String? result = validator.validate(invalidColor);
+        // Act
+        final String? result = validator.validate(invalidColor);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.colorCodeErrorText('hex, rgb, hsl'),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.colorCodeErrorText(
+              'hex, rgb, hsl',
+            ),
+          ),
+        );
+      },
+    );
 
-    test('should return the custom error message if the color code is invalid',
-        () {
-      // Arrange
-      final ColorCodeValidator validator =
-          ColorCodeValidator(errorText: customErrorMessage);
-      const String invalidColor = 'invalid-color';
+    test(
+      'should return the custom error message if the color code is invalid',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator(
+          errorText: customErrorMessage,
+        );
+        const String invalidColor = 'invalid-color';
 
-      // Act
-      final String? result = validator.validate(invalidColor);
+        // Act
+        final String? result = validator.validate(invalidColor);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null if the value is null and null check is disabled',
-        () {
-      // Arrange
-      final ColorCodeValidator validator =
-          ColorCodeValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null if the value is null and null check is disabled',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message if the value is null', () {
       // Arrange
@@ -107,38 +117,43 @@ void main() {
     });
 
     test(
-        'should return null if the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final ColorCodeValidator validator =
-          ColorCodeValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null if the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      final ColorCodeValidator validator = ColorCodeValidator();
-      const String value = '';
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.colorCodeErrorText('hex, rgb, hsl'),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.colorCodeErrorText(
+              'hex, rgb, hsl',
+            ),
+          ),
+        );
+      },
+    );
 
     test('should return null if the color code matches custom regex', () {
       // Arrange
@@ -156,21 +171,22 @@ void main() {
     });
 
     test(
-        'should return the custom error message if the color code does not match custom regex',
-        () {
-      // Arrange
-      final ColorCodeValidator validator = ColorCodeValidator(
-        regex: RegExp(r'^[A-Fa-f0-9]{6}$'),
-        formats: <String>[],
-        errorText: customErrorMessage,
-      );
-      const String invalidCustomColor = 'invalid';
+      'should return the custom error message if the color code does not match custom regex',
+      () {
+        // Arrange
+        final ColorCodeValidator validator = ColorCodeValidator(
+          regex: RegExp(r'^[A-Fa-f0-9]{6}$'),
+          formats: <String>[],
+          errorText: customErrorMessage,
+        );
+        const String invalidCustomColor = 'invalid';
 
-      // Act
-      final String? result = validator.validate(invalidCustomColor);
+        // Act
+        final String? result = validator.validate(invalidCustomColor);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
   });
 }

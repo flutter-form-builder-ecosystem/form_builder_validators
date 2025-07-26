@@ -2,7 +2,7 @@
 abstract class BaseValidator<T> {
   /// Creates a new instance of the validator.
   const BaseValidator({String? errorText, this.checkNullOrEmpty = true})
-      : _errorText = errorText;
+    : _errorText = errorText;
 
   /// Backing field for [errorText].
   final String? _errorText;

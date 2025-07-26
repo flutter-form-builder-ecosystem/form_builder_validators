@@ -15,7 +15,7 @@ import '../../form_builder_validators.dart';
 class DefaultValueValidator<T> extends BaseValidator<T> {
   /// Constructor for the default value validator.
   const DefaultValueValidator(this.defaultValue, this.validator)
-      : super(checkNullOrEmpty: false);
+    : super(checkNullOrEmpty: false);
 
   /// The default value to use if the valueCandidate is null.
   final T defaultValue;

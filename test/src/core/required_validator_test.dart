@@ -115,9 +115,7 @@ void main() {
     test('should return error text if the value is null for List type', () {
       // Arrange
       final RequiredValidator<List<String>?> validator =
-          RequiredValidator<List<String>?>(
-        errorText: customErrorMessage,
-      );
+          RequiredValidator<List<String>?>(errorText: customErrorMessage);
       const List<String>? value = null;
 
       // Act
@@ -147,8 +145,8 @@ void main() {
       // Arrange
       final RequiredValidator<Map<String, String>?> validator =
           RequiredValidator<Map<String, String>?>(
-        errorText: customErrorMessage,
-      );
+            errorText: customErrorMessage,
+          );
       const Map<String, String>? value = null;
 
       // Act

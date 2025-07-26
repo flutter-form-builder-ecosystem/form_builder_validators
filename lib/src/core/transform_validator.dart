@@ -14,10 +14,8 @@ import '../../form_builder_validators.dart';
 /// {@endtemplate}
 class TransformValidator<T> extends BaseValidator<T> {
   /// Constructor for the transform validator.
-  const TransformValidator(
-    this.transformer,
-    this.validator,
-  ) : super(checkNullOrEmpty: false);
+  const TransformValidator(this.transformer, this.validator)
+    : super(checkNullOrEmpty: false);
 
   /// A function that transforms the value before validation.
   final T? Function(T? value) transformer;

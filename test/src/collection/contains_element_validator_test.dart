@@ -33,47 +33,55 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return custom error message when the value is not in the list',
-        () {
-      // Arrange
-      const List<String> list = <String>['a', 'b', 'c'];
-      final ContainsElementValidator<String> validator =
-          ContainsElementValidator<String>(list, errorText: customErrorMessage);
+    test(
+      'should return custom error message when the value is not in the list',
+      () {
+        // Arrange
+        const List<String> list = <String>['a', 'b', 'c'];
+        final ContainsElementValidator<String> validator =
+            ContainsElementValidator<String>(
+              list,
+              errorText: customErrorMessage,
+            );
 
-      // Act
-      final String? result = validator.validate('d');
+        // Act
+        final String? result = validator.validate('d');
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const List<String> list = <String>['a', 'b', 'c'];
-      const ContainsElementValidator<String> validator =
-          ContainsElementValidator<String>(list, checkNullOrEmpty: false);
-
-      // Act
-      final String? result = validator.validate(null);
-
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return default error message when the value is not in the list',
-        () {
-      // Arrange
-      const List<String> list = <String>['a', 'b', 'c'];
-      const ContainsElementValidator<String> validator =
-          ContainsElementValidator<String>(list);
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const List<String> list = <String>['a', 'b', 'c'];
+        const ContainsElementValidator<String> validator =
+            ContainsElementValidator<String>(list, checkNullOrEmpty: false);
 
-      // Act
-      final String? result = validator.validate('d');
+        // Act
+        final String? result = validator.validate(null);
 
-      // Assert
-      expect(result, isNotNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return default error message when the value is not in the list',
+      () {
+        // Arrange
+        const List<String> list = <String>['a', 'b', 'c'];
+        const ContainsElementValidator<String> validator =
+            ContainsElementValidator<String>(list);
+
+        // Act
+        final String? result = validator.validate('d');
+
+        // Assert
+        expect(result, isNotNull);
+      },
+    );
   });
 }
