@@ -18,6 +18,7 @@ class DateRangeValidator extends TranslatedValidator<String> {
   const DateRangeValidator(
     this.minDate,
     this.maxDate, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

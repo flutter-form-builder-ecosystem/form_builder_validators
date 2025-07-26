@@ -1,5 +1,17 @@
 # Changelog
 
+## 11.2.0
+
+- Fix password validator when not showing default error message
+- Upgrade intl to 0.20.0
+- Update constraints to Dart 3.8
+- Update constraints to Flutter 3.32
+- Add linux setup on example
+
+## 11.1.2
+
+- Update intl constraints to allow versions until 0.21.0
+
 ## 11.1.1
 
 - Fix issue when build fails due to missing l10n files

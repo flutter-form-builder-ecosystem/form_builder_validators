@@ -21,8 +21,9 @@ void main() {
 
     test('should return error if the SSN is too short', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String shortSsn = '123-45-678';
 
       // Act
@@ -34,8 +35,9 @@ void main() {
 
     test('should return error if the SSN is too long', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String longSsn = '123-45-67890';
 
       // Act
@@ -47,8 +49,9 @@ void main() {
 
     test('should return error if the SSN has letters', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String invalidSsn = '123-AB-6789';
 
       // Act
@@ -60,8 +63,9 @@ void main() {
 
     test('should return error if the SSN has special characters', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String invalidSsn = '123-45-67!9';
 
       // Act
@@ -97,8 +101,9 @@ void main() {
 
     test('should return error if the SSN has only hyphens', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String invalidSsn = '---';
 
       // Act
@@ -110,8 +115,9 @@ void main() {
 
     test('should return error if the SSN is null', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String? nullSsn = null;
 
       // Act
@@ -123,8 +129,9 @@ void main() {
 
     test('should return error if the SSN is empty', () {
       // Arrange
-      final SsnValidator validator =
-          SsnValidator(errorText: customErrorMessage);
+      final SsnValidator validator = SsnValidator(
+        errorText: customErrorMessage,
+      );
       const String emptySsn = '';
 
       // Act

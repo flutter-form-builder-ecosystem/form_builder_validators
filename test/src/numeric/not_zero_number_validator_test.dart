@@ -34,9 +34,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.notZeroNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
         );
       });
 
@@ -81,9 +79,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.notZeroNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
         );
       });
 
@@ -101,19 +97,21 @@ void main() {
       });
     });
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const NotZeroNumberValidator<String> validator =
-          NotZeroNumberValidator<String>(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const NotZeroNumberValidator<String> validator =
+            NotZeroNumberValidator<String>(checkNullOrEmpty: false);
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -128,47 +126,42 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.notZeroNumberErrorText,
-        ),
+        equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const NotZeroNumberValidator<String> validator =
-          NotZeroNumberValidator<String>(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const NotZeroNumberValidator<String> validator =
+            NotZeroNumberValidator<String>(checkNullOrEmpty: false);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const NotZeroNumberValidator<String> validator =
-          NotZeroNumberValidator<String>();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const NotZeroNumberValidator<String> validator =
+            NotZeroNumberValidator<String>();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(validator.errorText));
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
@@ -176,49 +169,49 @@ void main() {
           NotZeroNumberValidator<bool>();
 
       // Act & Assert
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
 
     test(
-        'should return the default error message for non-numeric string values',
-        () {
-      // Arrange
-      const NotZeroNumberValidator<String> validator =
-          NotZeroNumberValidator<String>();
+      'should return the default error message for non-numeric string values',
+      () {
+        // Arrange
+        const NotZeroNumberValidator<String> validator =
+            NotZeroNumberValidator<String>();
 
-      // Act & Assert
-      expect(
-        validator.validate('abc'),
-        equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('abc'),
+          equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
+        );
+      },
+    );
 
-    test('should return the custom error message for non-numeric string values',
-        () {
-      // Arrange
-      final NotZeroNumberValidator<String> validator =
-          NotZeroNumberValidator<String>(
-        errorText: customErrorMessage,
-      );
+    test(
+      'should return the custom error message for non-numeric string values',
+      () {
+        // Arrange
+        final NotZeroNumberValidator<String> validator =
+            NotZeroNumberValidator<String>(errorText: customErrorMessage);
 
-      // Act & Assert
-      expect(validator.validate('abc'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('abc'), equals(customErrorMessage));
+      },
+    );
 
-    test('should return the default error message for unsupported value types',
-        () {
-      // Arrange
-      const NotZeroNumberValidator<bool> validator =
-          NotZeroNumberValidator<bool>();
+    test(
+      'should return the default error message for unsupported value types',
+      () {
+        // Arrange
+        const NotZeroNumberValidator<bool> validator =
+            NotZeroNumberValidator<bool>();
 
-      // Act & Assert
-      expect(
-        validator.validate(true),
-        equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate(true),
+          equals(FormBuilderLocalizations.current.notZeroNumberErrorText),
+        );
+      },
+    );
   });
 }

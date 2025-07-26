@@ -14,10 +14,8 @@ import '../../form_builder_validators.dart';
 /// {@endtemplate}
 class ConditionalValidator<T> extends BaseValidator<T> {
   /// Constructor for the conditional validator.
-  const ConditionalValidator(
-    this.condition,
-    this.validator,
-  ) : super(checkNullOrEmpty: false);
+  const ConditionalValidator(this.condition, this.validator)
+    : super(checkNullOrEmpty: false);
 
   /// A function that returns a boolean indicating whether the validator should be applied.
   final bool Function(T? value) condition;

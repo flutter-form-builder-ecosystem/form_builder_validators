@@ -30,118 +30,130 @@ void main() {
       }
     });
 
-    test('should return the default error message for invalid latitude values',
-        () {
-      // Arrange
-      const LatitudeValidator validator = LatitudeValidator();
-      const List<String> invalidLatitudes = <String>[
-        '91',
-        '-91',
-        '100',
-        '-100',
-        '123.456',
-        '-123.456',
-        'abc',
-        '45.678,',
-      ];
+    test(
+      'should return the default error message for invalid latitude values',
+      () {
+        // Arrange
+        const LatitudeValidator validator = LatitudeValidator();
+        const List<String> invalidLatitudes = <String>[
+          '91',
+          '-91',
+          '100',
+          '-100',
+          '123.456',
+          '-123.456',
+          'abc',
+          '45.678,',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidLatitudes) {
-        final String? result = validator.validate(value);
+        // Act & Assert
+        for (final String value in invalidLatitudes) {
+          final String? result = validator.validate(value);
+          expect(result, isNotNull);
+          expect(
+            result,
+            equals(FormBuilderLocalizations.current.latitudeErrorText),
+          );
+        }
+      },
+    );
+
+    test(
+      'should return the custom error message for invalid latitude values',
+      () {
+        // Arrange
+        final LatitudeValidator validator = LatitudeValidator(
+          errorText: customErrorMessage,
+        );
+        const List<String> invalidLatitudes = <String>[
+          '91',
+          '-91',
+          '100',
+          '-100',
+          '123.456',
+          '-123.456',
+          'abc',
+          '45.678,',
+        ];
+
+        // Act & Assert
+        for (final String value in invalidLatitudes) {
+          final String? result = validator.validate(value);
+          expect(result, equals(customErrorMessage));
+        }
+      },
+    );
+
+    test(
+      'should return null when the latitude is null and null check is disabled',
+      () {
+        // Arrange
+        const LatitudeValidator validator = LatitudeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? nullLatitude = null;
+
+        // Act
+        final String? result = validator.validate(nullLatitude);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the default error message when the latitude is null',
+      () {
+        // Arrange
+        const LatitudeValidator validator = LatitudeValidator();
+        const String? nullLatitude = null;
+
+        // Act
+        final String? result = validator.validate(nullLatitude);
+
+        // Assert
         expect(result, isNotNull);
         expect(
           result,
           equals(FormBuilderLocalizations.current.latitudeErrorText),
         );
-      }
-    });
-
-    test('should return the custom error message for invalid latitude values',
-        () {
-      // Arrange
-      final LatitudeValidator validator =
-          LatitudeValidator(errorText: customErrorMessage);
-      const List<String> invalidLatitudes = <String>[
-        '91',
-        '-91',
-        '100',
-        '-100',
-        '123.456',
-        '-123.456',
-        'abc',
-        '45.678,',
-      ];
-
-      // Act & Assert
-      for (final String value in invalidLatitudes) {
-        final String? result = validator.validate(value);
-        expect(result, equals(customErrorMessage));
-      }
-    });
+      },
+    );
 
     test(
-        'should return null when the latitude is null and null check is disabled',
-        () {
-      // Arrange
-      const LatitudeValidator validator =
-          LatitudeValidator(checkNullOrEmpty: false);
-      const String? nullLatitude = null;
+      'should return null when the latitude is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const LatitudeValidator validator = LatitudeValidator(
+          checkNullOrEmpty: false,
+        );
+        const String emptyLatitude = '';
 
-      // Act
-      final String? result = validator.validate(nullLatitude);
+        // Act
+        final String? result = validator.validate(emptyLatitude);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test('should return the default error message when the latitude is null',
-        () {
-      // Arrange
-      const LatitudeValidator validator = LatitudeValidator();
-      const String? nullLatitude = null;
-
-      // Act
-      final String? result = validator.validate(nullLatitude);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.latitudeErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the latitude is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const LatitudeValidator validator =
-          LatitudeValidator(checkNullOrEmpty: false);
-      const String emptyLatitude = '';
+      'should return the default error message when the latitude is an empty string',
+      () {
+        // Arrange
+        const LatitudeValidator validator = LatitudeValidator();
+        const String emptyLatitude = '';
 
-      // Act
-      final String? result = validator.validate(emptyLatitude);
+        // Act
+        final String? result = validator.validate(emptyLatitude);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the latitude is an empty string',
-        () {
-      // Arrange
-      const LatitudeValidator validator = LatitudeValidator();
-      const String emptyLatitude = '';
-
-      // Act
-      final String? result = validator.validate(emptyLatitude);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.latitudeErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.latitudeErrorText),
+        );
+      },
+    );
   });
 }

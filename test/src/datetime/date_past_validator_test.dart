@@ -10,8 +10,9 @@ void main() {
     test('should return null when the date is in the past', () {
       // Arrange
       const DatePastValidator validator = DatePastValidator();
-      final DateTime pastDate =
-          DateTime.now().subtract(const Duration(days: 1));
+      final DateTime pastDate = DateTime.now().subtract(
+        const Duration(days: 1),
+      );
       final String value = pastDate.toIso8601String();
 
       // Act
@@ -22,40 +23,41 @@ void main() {
     });
 
     test(
-        'should return the default error message when the date is in the future',
-        () {
-      // Arrange
-      const DatePastValidator validator = DatePastValidator();
-      final DateTime futureDate = DateTime.now().add(const Duration(days: 1));
-      final String value = futureDate.toIso8601String();
+      'should return the default error message when the date is in the future',
+      () {
+        // Arrange
+        const DatePastValidator validator = DatePastValidator();
+        final DateTime futureDate = DateTime.now().add(const Duration(days: 1));
+        final String value = futureDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInThePastErrorText,
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.dateMustBeInThePastErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the date is in the future',
-        () {
-      // Arrange
-      final DatePastValidator validator =
-          DatePastValidator(errorText: customErrorMessage);
-      final DateTime futureDate = DateTime.now().add(const Duration(days: 1));
-      final String value = futureDate.toIso8601String();
+      'should return the custom error message when the date is in the future',
+      () {
+        // Arrange
+        final DatePastValidator validator = DatePastValidator(
+          errorText: customErrorMessage,
+        );
+        final DateTime futureDate = DateTime.now().add(const Duration(days: 1));
+        final String value = futureDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     // TODO(ArturAssisComp): fix this test case. It passes when executed alone
     // but fails when executed with the complete test suite.
@@ -72,19 +74,22 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const DatePastValidator validator =
-          DatePastValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const DatePastValidator validator = DatePastValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -97,44 +102,43 @@ void main() {
       // Assert
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInThePastErrorText,
-        ),
+        equals(FormBuilderLocalizations.current.dateMustBeInThePastErrorText),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const DatePastValidator validator =
-          DatePastValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const DatePastValidator validator = DatePastValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const DatePastValidator validator = DatePastValidator();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const DatePastValidator validator = DatePastValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateMustBeInThePastErrorText,
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.dateMustBeInThePastErrorText),
+        );
+      },
+    );
   });
 }

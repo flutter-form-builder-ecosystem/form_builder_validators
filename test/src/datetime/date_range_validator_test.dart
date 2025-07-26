@@ -28,94 +28,125 @@ void main() {
     });
 
     test(
-        'should return the default error message when the date is before the range',
-        () {
-      // Arrange
-      final DateRangeValidator validator = DateRangeValidator(minDate, maxDate);
-      final DateTime beforeRangeDate =
-          DateTime.now().subtract(const Duration(days: 20));
-      final String value = beforeRangeDate.toIso8601String();
+      'should return the default error message when the date is before the range',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+        );
+        final DateTime beforeRangeDate = DateTime.now().subtract(
+          const Duration(days: 20),
+        );
+        final String value = beforeRangeDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateRangeErrorText(minDate, maxDate),
-        ),
-      );
-    });
-
-    test(
-        'should return the default error message when the date is after the range',
-        () {
-      // Arrange
-      final DateRangeValidator validator = DateRangeValidator(minDate, maxDate);
-      final DateTime afterRangeDate =
-          DateTime.now().add(const Duration(days: 20));
-      final String value = afterRangeDate.toIso8601String();
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateRangeErrorText(minDate, maxDate),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.dateRangeErrorText(
+              minDate,
+              maxDate,
+            ),
+          ),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the date is before the range',
-        () {
-      // Arrange
-      final DateRangeValidator validator =
-          DateRangeValidator(minDate, maxDate, errorText: customErrorMessage);
-      final DateTime beforeRangeDate =
-          DateTime.now().subtract(const Duration(days: 20));
-      final String value = beforeRangeDate.toIso8601String();
+      'should return the default error message when the date is after the range',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+        );
+        final DateTime afterRangeDate = DateTime.now().add(
+          const Duration(days: 20),
+        );
+        final String value = afterRangeDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.dateRangeErrorText(
+              minDate,
+              maxDate,
+            ),
+          ),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the date is after the range',
-        () {
-      // Arrange
-      final DateRangeValidator validator =
-          DateRangeValidator(minDate, maxDate, errorText: customErrorMessage);
-      final DateTime afterRangeDate =
-          DateTime.now().add(const Duration(days: 20));
-      final String value = afterRangeDate.toIso8601String();
+      'should return the custom error message when the date is before the range',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+          errorText: customErrorMessage,
+        );
+        final DateTime beforeRangeDate = DateTime.now().subtract(
+          const Duration(days: 20),
+        );
+        final String value = beforeRangeDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final DateRangeValidator validator =
-          DateRangeValidator(minDate, maxDate, checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return the custom error message when the date is after the range',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+          errorText: customErrorMessage,
+        );
+        final DateTime afterRangeDate = DateTime.now().add(
+          const Duration(days: 20),
+        );
+        final String value = afterRangeDate.toIso8601String();
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -135,37 +166,48 @@ void main() {
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final DateRangeValidator validator =
-          DateRangeValidator(minDate, maxDate, checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      final DateRangeValidator validator = DateRangeValidator(minDate, maxDate);
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        final DateRangeValidator validator = DateRangeValidator(
+          minDate,
+          maxDate,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.dateRangeErrorText(minDate, maxDate),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.dateRangeErrorText(
+              minDate,
+              maxDate,
+            ),
+          ),
+        );
+      },
+    );
   });
 }

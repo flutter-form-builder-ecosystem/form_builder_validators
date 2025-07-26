@@ -39,65 +39,79 @@ void main() {
     });
 
     test(
-        'should log valueCandidate.toString() if log function is null and valueCandidate is not null',
-        () {
-      // Arrange
-      const LogValidator<int> validator = LogValidator<int>();
-      const int value = 123;
+      'should log valueCandidate.toString() if log function is null and valueCandidate is not null',
+      () {
+        // Arrange
+        const LogValidator<int> validator = LogValidator<int>();
+        const int value = 123;
 
-      // Act & Assert
-      expect(() => validator.validate(value), prints('123\n'));
-    });
-
-    test('should log the custom message from log function with integer value',
-        () {
-      // Arrange
-      final LogValidator<int> validator = LogValidator<int>(
-        log: (int? value) => 'Custom log: $value',
-      );
-      const int value = 123;
-
-      // Act & Assert
-      expect(() => validator.validate(value), prints('Custom log: 123\n'));
-    });
+        // Act & Assert
+        expect(() => validator.validate(value), prints('123\n'));
+      },
+    );
 
     test(
-        'should log the errorText if valueCandidate is null with integer value',
-        () {
-      // Arrange
-      final LogValidator<int> validator = LogValidator<int>(
-        errorText: customErrorMessage,
-      );
-      const int? value = null;
+      'should log the custom message from log function with integer value',
+      () {
+        // Arrange
+        final LogValidator<int> validator = LogValidator<int>(
+          log: (int? value) => 'Custom log: $value',
+        );
+        const int value = 123;
 
-      // Act & Assert
-      expect(() => validator.validate(value), prints('$customErrorMessage\n'));
-    });
+        // Act & Assert
+        expect(() => validator.validate(value), prints('Custom log: 123\n'));
+      },
+    );
+
+    test(
+      'should log the errorText if valueCandidate is null with integer value',
+      () {
+        // Arrange
+        final LogValidator<int> validator = LogValidator<int>(
+          errorText: customErrorMessage,
+        );
+        const int? value = null;
+
+        // Act & Assert
+        expect(
+          () => validator.validate(value),
+          prints('$customErrorMessage\n'),
+        );
+      },
+    );
 
     // Additional test to cover debugPrint(errorText);
     test(
-        'should log the default errorText if valueCandidate is null and errorText is not provided',
-        () {
-      // Arrange
-      const LogValidator<String> validator = LogValidator<String>();
-      const String? value = null;
+      'should log the default errorText if valueCandidate is null and errorText is not provided',
+      () {
+        // Arrange
+        const LogValidator<String> validator = LogValidator<String>();
+        const String? value = null;
 
-      // Act & Assert
-      expect(() => validator.validate(value),
-          prints('${FormBuilderLocalizations.current.requiredErrorText}\n'));
-    });
+        // Act & Assert
+        expect(
+          () => validator.validate(value),
+          prints('${FormBuilderLocalizations.current.requiredErrorText}\n'),
+        );
+      },
+    );
 
     test(
-        'should log the custom errorText if valueCandidate is null and errorText is provided',
-        () {
-      // Arrange
-      final LogValidator<String> validator = LogValidator<String>(
-        errorText: customErrorMessage,
-      );
-      const String? value = null;
+      'should log the custom errorText if valueCandidate is null and errorText is provided',
+      () {
+        // Arrange
+        final LogValidator<String> validator = LogValidator<String>(
+          errorText: customErrorMessage,
+        );
+        const String? value = null;
 
-      // Act & Assert
-      expect(() => validator.validate(value), prints('$customErrorMessage\n'));
-    });
+        // Act & Assert
+        expect(
+          () => validator.validate(value),
+          prints('$customErrorMessage\n'),
+        );
+      },
+    );
   });
 }

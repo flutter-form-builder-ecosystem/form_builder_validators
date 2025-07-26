@@ -24,22 +24,27 @@ class GenericExamplesPage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator: V.isRequired(V.and(<Validator<String>>[
-                  V.isNum(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
+                validator: V.isRequired(
+                  V.and(<Validator<String>>[
+                    V.isNum(
+                      V.lessThan(70),
+                      (_) => 'La edad debe ser numérica.',
+                    ),
 
-                  /// Include your own custom `FormFieldValidator` function, if you want
-                  /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
-                  (String? val) {
-                    if (val != null) {
-                      final int? number = int.tryParse(val);
-                      // todo bug here: if it is not int, it accepts negative
-                      // numbers
-                      if (number == null) return null;
-                      if (number < 0) return 'We cannot have a negative age';
-                    }
-                    return null;
-                  }
-                ])),
+                    /// Include your own custom `FormFieldValidator` function, if you want
+                    /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
+                    (String? val) {
+                      if (val != null) {
+                        final int? number = int.tryParse(val);
+                        // todo bug here: if it is not int, it accepts negative
+                        // numbers
+                        if (number == null) return null;
+                        if (number < 0) return 'We cannot have a negative age';
+                      }
+                      return null;
+                    },
+                  ]),
+                ),
               ),
               // Required Validator
               TextFormField(
@@ -233,7 +238,8 @@ class GenericExamplesPage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: V.isRequired(
-                    V.isNum(V.and(<Validator<num>>[V.between(0, 120)]))),
+                  V.isNum(V.and(<Validator<num>>[V.between(0, 120)])),
+                ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),

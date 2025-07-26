@@ -21,41 +21,44 @@ void main() {
         expect(result, isNull);
       });
 
-      test('should return null if the value is equal to the max and inclusive',
-          () {
-        // Arrange
-        const num max = 10;
-        const MaxValidator<String> validator = MaxValidator<String>(max);
-        const String value = '10';
+      test(
+        'should return null if the value is equal to the max and inclusive',
+        () {
+          // Arrange
+          const num max = 10;
+          const MaxValidator<String> validator = MaxValidator<String>(max);
+          const String value = '10';
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, isNull);
-      });
+          // Assert
+          expect(result, isNull);
+        },
+      );
 
       test(
-          'should return error if the value is equal to the max and not inclusive',
-          () {
-        // Arrange
-        const num max = 10;
-        const MaxValidator<String> validator =
-            MaxValidator<String>(max, inclusive: false);
-        const String value = '10';
+        'should return error if the value is equal to the max and not inclusive',
+        () {
+          // Arrange
+          const num max = 10;
+          const MaxValidator<String> validator = MaxValidator<String>(
+            max,
+            inclusive: false,
+          );
+          const String value = '10';
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, isNotNull);
-        expect(
-          result,
-          equals(
-            FormBuilderLocalizations.current.maxErrorText(max),
-          ),
-        );
-      });
+          // Assert
+          expect(result, isNotNull);
+          expect(
+            result,
+            equals(FormBuilderLocalizations.current.maxErrorText(max)),
+          );
+        },
+      );
 
       test('should return error if the value is greater than the max', () {
         // Arrange
@@ -70,53 +73,58 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.maxErrorText(max),
-          ),
-        );
-      });
-
-      test(
-          'should return custom error message if the value is greater than the max',
-          () {
-        // Arrange
-        const num max = 10;
-        final MaxValidator<String> validator =
-            MaxValidator<String>(max, errorText: customErrorMessage);
-        const String value = '15';
-
-        // Act
-        final String? result = validator.validate(value);
-
-        // Assert
-        expect(result, equals(customErrorMessage));
-      });
-
-      test(
-          'should return the default error message for non-numeric string values',
-          () {
-        // Arrange
-        const num max = 10;
-        const MaxValidator<String> validator = MaxValidator<String>(max);
-
-        // Act & Assert
-        expect(
-          validator.validate('abc'),
           equals(FormBuilderLocalizations.current.maxErrorText(max)),
         );
       });
 
       test(
-          'should return the custom error message for non-numeric string values',
-          () {
-        // Arrange
-        const num max = 10;
-        final MaxValidator<String> validator =
-            MaxValidator<String>(max, errorText: customErrorMessage);
+        'should return custom error message if the value is greater than the max',
+        () {
+          // Arrange
+          const num max = 10;
+          final MaxValidator<String> validator = MaxValidator<String>(
+            max,
+            errorText: customErrorMessage,
+          );
+          const String value = '15';
 
-        // Act & Assert
-        expect(validator.validate('abc'), equals(customErrorMessage));
-      });
+          // Act
+          final String? result = validator.validate(value);
+
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
+
+      test(
+        'should return the default error message for non-numeric string values',
+        () {
+          // Arrange
+          const num max = 10;
+          const MaxValidator<String> validator = MaxValidator<String>(max);
+
+          // Act & Assert
+          expect(
+            validator.validate('abc'),
+            equals(FormBuilderLocalizations.current.maxErrorText(max)),
+          );
+        },
+      );
+
+      test(
+        'should return the custom error message for non-numeric string values',
+        () {
+          // Arrange
+          const num max = 10;
+          final MaxValidator<String> validator = MaxValidator<String>(
+            max,
+            errorText: customErrorMessage,
+          );
+
+          // Act & Assert
+          expect(validator.validate('abc'), equals(customErrorMessage));
+        },
+      );
     });
 
     group('num', () {
@@ -133,41 +141,44 @@ void main() {
         expect(result, isNull);
       });
 
-      test('should return null if the value is equal to the max and inclusive',
-          () {
-        // Arrange
-        const num max = 10;
-        const MaxValidator<num> validator = MaxValidator<num>(max);
-        const num value = 10;
+      test(
+        'should return null if the value is equal to the max and inclusive',
+        () {
+          // Arrange
+          const num max = 10;
+          const MaxValidator<num> validator = MaxValidator<num>(max);
+          const num value = 10;
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, isNull);
-      });
+          // Assert
+          expect(result, isNull);
+        },
+      );
 
       test(
-          'should return error if the value is equal to the max and not inclusive',
-          () {
-        // Arrange
-        const num max = 10;
-        const MaxValidator<num> validator =
-            MaxValidator<num>(max, inclusive: false);
-        const num value = 10;
+        'should return error if the value is equal to the max and not inclusive',
+        () {
+          // Arrange
+          const num max = 10;
+          const MaxValidator<num> validator = MaxValidator<num>(
+            max,
+            inclusive: false,
+          );
+          const num value = 10;
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, isNotNull);
-        expect(
-          result,
-          equals(
-            FormBuilderLocalizations.current.maxErrorText(max),
-          ),
-        );
-      });
+          // Assert
+          expect(result, isNotNull);
+          expect(
+            result,
+            equals(FormBuilderLocalizations.current.maxErrorText(max)),
+          );
+        },
+      );
 
       test('should return error if the value is greater than the max', () {
         // Arrange
@@ -182,43 +193,48 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.maxErrorText(max),
-          ),
+          equals(FormBuilderLocalizations.current.maxErrorText(max)),
         );
       });
 
       test(
-          'should return custom error message if the value is greater than the max',
-          () {
+        'should return custom error message if the value is greater than the max',
+        () {
+          // Arrange
+          const num max = 10;
+          final MaxValidator<num> validator = MaxValidator<num>(
+            max,
+            errorText: customErrorMessage,
+          );
+          const num value = 15;
+
+          // Act
+          final String? result = validator.validate(value);
+
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
+    });
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
         // Arrange
         const num max = 10;
-        final MaxValidator<num> validator =
-            MaxValidator<num>(max, errorText: customErrorMessage);
-        const num value = 15;
+        const MaxValidator<String> validator = MaxValidator<String>(
+          max,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
         // Act
         final String? result = validator.validate(value);
 
         // Assert
-        expect(result, equals(customErrorMessage));
-      });
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const num max = 10;
-      const MaxValidator<String> validator =
-          MaxValidator<String>(max, checkNullOrEmpty: false);
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -233,58 +249,52 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.maxErrorText(max),
-        ),
+        equals(FormBuilderLocalizations.current.maxErrorText(max)),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const num max = 10;
-      const MaxValidator<String> validator =
-          MaxValidator<String>(max, checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const num max = 10;
+        const MaxValidator<String> validator = MaxValidator<String>(
+          max,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const num max = 10;
-      const MaxValidator<String> validator = MaxValidator<String>(max);
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const num max = 10;
+        const MaxValidator<String> validator = MaxValidator<String>(max);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(validator.errorText));
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
       const MaxValidator<bool> validator = MaxValidator<bool>(1);
 
       // Act & Assert
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
   });
 }

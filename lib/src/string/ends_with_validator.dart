@@ -16,6 +16,7 @@ class EndsWithValidator extends TranslatedValidator<String> {
   /// Constructor for the ends with validator.
   const EndsWithValidator(
     this.suffix, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

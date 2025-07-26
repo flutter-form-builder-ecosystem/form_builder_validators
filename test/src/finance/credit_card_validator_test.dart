@@ -19,45 +19,50 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null if the credit card number is valid (MasterCard)',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String validMasterCard = '5500000000000004';
+    test(
+      'should return null if the credit card number is valid (MasterCard)',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String validMasterCard = '5500000000000004';
 
-      // Act
-      final String? result = validator.validate(validMasterCard);
+        // Act
+        final String? result = validator.validate(validMasterCard);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null if the credit card number is valid (American Express)',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String validAmexCard = '340000000000009';
+      'should return null if the credit card number is valid (American Express)',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String validAmexCard = '340000000000009';
 
-      // Act
-      final String? result = validator.validate(validAmexCard);
+        // Act
+        final String? result = validator.validate(validAmexCard);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
-    test('should return null if the credit card number is valid (Discover)',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String validDiscoverCard = '6011111111111117';
+    test(
+      'should return null if the credit card number is valid (Discover)',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String validDiscoverCard = '6011111111111117';
 
-      // Act
-      final String? result = validator.validate(validDiscoverCard);
+        // Act
+        final String? result = validator.validate(validDiscoverCard);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return null if the credit card number is valid (JCB)', () {
       // Arrange
@@ -71,64 +76,72 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null if the credit card number is valid (Diners Club)',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String validDinersClubCard = '30569309025904';
+    test(
+      'should return null if the credit card number is valid (Diners Club)',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String validDinersClubCard = '30569309025904';
 
-      // Act
-      final String? result = validator.validate(validDinersClubCard);
+        // Act
+        final String? result = validator.validate(validDinersClubCard);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the credit card number is invalid',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String invalidCard = '1234567890123456';
+      'should return the default error message if the credit card number is invalid',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String invalidCard = '1234567890123456';
 
-      // Act
-      final String? result = validator.validate(invalidCard);
+        // Act
+        final String? result = validator.validate(invalidCard);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message if the credit card number is invalid',
-        () {
-      // Arrange
-      final CreditCardValidator validator =
-          CreditCardValidator(errorText: customErrorMessage);
-      const String invalidCard = '1234567890123456';
+      'should return the custom error message if the credit card number is invalid',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator(
+          errorText: customErrorMessage,
+        );
+        const String invalidCard = '1234567890123456';
 
-      // Act
-      final String? result = validator.validate(invalidCard);
+        // Act
+        final String? result = validator.validate(invalidCard);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null if the value is null and null check is disabled',
-        () {
-      // Arrange
-      final CreditCardValidator validator =
-          CreditCardValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null if the value is null and null check is disabled',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message if the value is null', () {
       // Arrange
@@ -146,52 +159,56 @@ void main() {
     });
 
     test(
-        'should return null if the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final CreditCardValidator validator =
-          CreditCardValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null if the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator(
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String value = '';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardErrorText),
-      );
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message if the credit card number fails the Luhn check',
-        () {
-      // Arrange
-      final CreditCardValidator validator = CreditCardValidator();
-      const String invalidLuhnCard = '4111111111111112'; // Fails Luhn check
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(invalidLuhnCard);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.creditCardErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return the default error message if the credit card number fails the Luhn check',
+      () {
+        // Arrange
+        final CreditCardValidator validator = CreditCardValidator();
+        const String invalidLuhnCard = '4111111111111112'; // Fails Luhn check
+
+        // Act
+        final String? result = validator.validate(invalidLuhnCard);
+
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.creditCardErrorText),
+        );
+      },
+    );
   });
 }

@@ -96,8 +96,9 @@ class ColorCodeValidator extends TranslatedValidator<String> {
       if (format == 'hex' && _hex.hasMatch(value)) {
         return true;
       } else if (format == 'rgb' && _rgb.hasMatch(value)) {
-        final List<String> parts =
-            value.substring(4, value.length - 1).split(',');
+        final List<String> parts = value
+            .substring(4, value.length - 1)
+            .split(',');
         for (final String part in parts) {
           final int colorValue = int.tryParse(part.trim()) ?? -1;
           if (colorValue < 0 || colorValue > 255) {
@@ -106,8 +107,11 @@ class ColorCodeValidator extends TranslatedValidator<String> {
         }
         return true;
       } else if (format == 'hsl' && _hsl.hasMatch(value)) {
-        final List<String?> parts =
-            _hsl.firstMatch(value)!.groups(<int>[1, 2, 3]);
+        final List<String?> parts = _hsl.firstMatch(value)!.groups(<int>[
+          1,
+          2,
+          3,
+        ]);
         final int hue = int.tryParse(parts[0]!) ?? -1;
         final int saturation = int.tryParse(parts[1]!) ?? -1;
         final int lightness = int.tryParse(parts[2]!) ?? -1;

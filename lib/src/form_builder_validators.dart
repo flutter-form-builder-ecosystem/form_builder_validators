@@ -26,13 +26,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      HasLowercaseCharsValidator(
-        atLeast: atLeast,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => HasLowercaseCharsValidator(
+    atLeast: atLeast,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum
   ///  number of numeric characters.
@@ -50,13 +49,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      HasNumericCharsValidator(
-        atLeast: atLeast,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => HasNumericCharsValidator(
+    atLeast: atLeast,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum
   /// number of special characters.
@@ -74,13 +72,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      HasSpecialCharsValidator(
-        atLeast: atLeast,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => HasSpecialCharsValidator(
+    atLeast: atLeast,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a minimum
   /// number of uppercase characters.
@@ -98,13 +95,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      HasUppercaseCharsValidator(
-        atLeast: atLeast,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => HasUppercaseCharsValidator(
+    atLeast: atLeast,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a bool and
   /// false.
@@ -115,11 +111,10 @@ class FormBuilderValidators {
   static FormFieldValidator<bool> isFalse({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IsFalseValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IsFalseValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a bool and
   /// true.
@@ -130,11 +125,10 @@ class FormBuilderValidators {
   static FormFieldValidator<bool> isTrue({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IsTrueValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IsTrueValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be in a
   /// list of values.
@@ -147,12 +141,11 @@ class FormBuilderValidators {
     List<T> values, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      ContainsElementValidator<T>(
-        values,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => ContainsElementValidator<T>(
+    values,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the length of the field to be equal to
   /// the provided length. Works with String, iterable, and int types.
@@ -167,13 +160,12 @@ class FormBuilderValidators {
     bool allowEmpty = false,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      EqualLengthValidator<T>(
-        length,
-        allowEmpty: allowEmpty,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => EqualLengthValidator<T>(
+    length,
+    allowEmpty: allowEmpty,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the length of the field's value to be
   /// less than or equal to the provided maximum length.
@@ -186,12 +178,11 @@ class FormBuilderValidators {
     int maxLength, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MaxLengthValidator<T>(
-        maxLength,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MaxLengthValidator<T>(
+    maxLength,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the length of the field's value to be
   /// greater than or equal to the provided minimum length.
@@ -204,12 +195,11 @@ class FormBuilderValidators {
     int minLength, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MinLengthValidator<T>(
-        minLength,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MinLengthValidator<T>(
+    minLength,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be within
   /// a certain range.
@@ -226,14 +216,13 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      RangeValidator<T>(
-        min,
-        max,
-        inclusive: inclusive,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => RangeValidator<T>(
+    min,
+    max,
+    inclusive: inclusive,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that checks if the value is unique in a list
   /// of values.
@@ -246,12 +235,11 @@ class FormBuilderValidators {
     List<T> values, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      UniqueValidator<T>(
-        values,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => UniqueValidator<T>(
+    values,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that runs validators and collects all error messages.
   ///
@@ -259,8 +247,7 @@ class FormBuilderValidators {
   /// - [validators] The list of validators to run.
   static FormFieldValidator<T> aggregate<T>(
     List<FormFieldValidator<T>> validators,
-  ) =>
-      AggregateValidator<T>(validators).validate;
+  ) => AggregateValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that combines multiple validators into one.
   /// This validator applies each provided validator sequentially,
@@ -270,8 +257,7 @@ class FormBuilderValidators {
   /// - [validators] The list of validators to compose.
   static FormFieldValidator<T> compose<T>(
     List<FormFieldValidator<T>> validators,
-  ) =>
-      ComposeValidator<T>(validators).validate;
+  ) => ComposeValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that applies another validator conditionally.
   ///
@@ -282,8 +268,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> conditional<T>(
     bool Function(T? value) condition,
     FormFieldValidator<T> validator,
-  ) =>
-      ConditionalValidator<T>(condition, validator).validate;
+  ) => ConditionalValidator<T>(condition, validator).validate;
 
   /// [FormFieldValidator] that transforms the value to a default if it's null
   /// or empty before running the validator.
@@ -294,8 +279,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> defaultValue<T>(
     T defaultValue,
     FormFieldValidator<T> validator,
-  ) =>
-      DefaultValueValidator<T>(defaultValue, validator).validate;
+  ) => DefaultValueValidator<T>(defaultValue, validator).validate;
 
   /// [FormFieldValidator] that requires the field's value be equal
   /// to the provided value.
@@ -308,12 +292,11 @@ class FormBuilderValidators {
     Object value, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      EqualValidator<T>(
-        value,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => EqualValidator<T>(
+    value,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that logs the value at a specific point in the
   /// validation chain.
@@ -325,11 +308,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> log<T>({
     String Function(T? value)? log,
     String? errorText,
-  }) =>
-      LogValidator<T>(
-        log: log,
-        errorText: errorText,
-      ).validate;
+  }) => LogValidator<T>(log: log, errorText: errorText).validate;
 
   /// [FormFieldValidator] that requires the field's value be not equal
   /// to the provided value.
@@ -342,21 +321,18 @@ class FormBuilderValidators {
     Object value, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      NotEqualValidator<T>(
-        value,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => NotEqualValidator<T>(
+    value,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that combines multiple validators,
   /// passing validation if any return null.
   ///
   /// ## Parameters:
   /// - [validators] The list of validators to compose.
-  static FormFieldValidator<T> or<T>(
-    List<FormFieldValidator<T>> validators,
-  ) =>
+  static FormFieldValidator<T> or<T>(List<FormFieldValidator<T>> validators) =>
       OrValidator<T>(validators).validate;
 
   /// [FormFieldValidator] that requires the field have a non-empty value.
@@ -367,11 +343,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> required<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      RequiredValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => RequiredValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that skips the validation when a certain
   /// condition is met.
@@ -382,8 +357,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> skipWhen<T>(
     bool Function(T? value) condition,
     FormFieldValidator<T> validator,
-  ) =>
-      SkipWhenValidator<T>(condition, validator).validate;
+  ) => SkipWhenValidator<T>(condition, validator).validate;
 
   /// [FormFieldValidator] that transforms the value before applying
   /// the validator.
@@ -394,8 +368,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> transform<T>(
     T Function(T? value) transformer,
     FormFieldValidator<T> validator,
-  ) =>
-      TransformValidator<T>(transformer, validator).validate;
+  ) => TransformValidator<T>(transformer, validator).validate;
 
   /// [FormFieldValidator] that requires the field's value to be in the future.
   ///
@@ -406,11 +379,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> dateFuture({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DateFutureValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DateFutureValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid time
   /// in the past.
@@ -422,11 +394,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> datePast({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DatePastValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DatePastValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a date within
   /// a certain range.
@@ -444,13 +415,12 @@ class FormBuilderValidators {
     DateTime maxDate, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DateRangeValidator(
-        minDate,
-        maxDate,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DateRangeValidator(
+    minDate,
+    maxDate,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid date string.
@@ -461,11 +431,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> date({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DateValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DateValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid date.
   ///
@@ -475,11 +444,10 @@ class FormBuilderValidators {
   static FormFieldValidator<DateTime?> dateTime({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DateTimeValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DateTimeValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid time.
   ///
@@ -510,11 +478,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> time({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      TimeValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => TimeValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid time zone.
 
@@ -526,12 +493,11 @@ class FormBuilderValidators {
     List<String>? validTimeZones,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      TimeZoneValidator(
-        validTimeZones: validTimeZones,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => TimeZoneValidator(
+    validTimeZones: validTimeZones,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to a valid file extension.
   ///
@@ -543,12 +509,11 @@ class FormBuilderValidators {
     List<String> allowedExtensions, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      FileExtensionValidator(
-        allowedExtensions,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => FileExtensionValidator(
+    allowedExtensions,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid file name.
@@ -560,12 +525,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      FileNameValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => FileNameValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that restricts the size of a file to be less than or
   /// equal to the provided maximum size.
@@ -579,13 +543,12 @@ class FormBuilderValidators {
     bool base1024Conversion = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      FileSizeValidator(
-        maxSize,
-        base1024Conversion: base1024Conversion,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => FileSizeValidator(
+    maxSize,
+    base1024Conversion: base1024Conversion,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid MIME type.
   /// The MIME type should be in the format `type/subtype`.
@@ -598,12 +561,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MimeTypeValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MimeTypeValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid file
   /// or folder path.
@@ -616,11 +578,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> path({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PathValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PathValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid BIC.
   ///
@@ -634,12 +595,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      BicValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => BicValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// credit card CVC.
@@ -650,11 +610,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      CreditCardCvcValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => CreditCardCvcValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// credit card expiration date.
@@ -672,13 +631,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      CreditCardExpirationDateValidator(
-        checkForExpiration: checkForExpiration,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => CreditCardExpirationDateValidator(
+    checkForExpiration: checkForExpiration,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid credit card number.
@@ -692,11 +650,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> creditCard({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      CreditCardValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => CreditCardValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IBAN.
   ///
@@ -710,12 +667,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IbanValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IbanValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid city.
   ///
@@ -731,14 +687,13 @@ class FormBuilderValidators {
     List<String> citiesBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      CityValidator(
-        regex: regex,
-        citiesWhitelist: citiesWhitelist,
-        citiesBlacklist: citiesBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => CityValidator(
+    regex: regex,
+    citiesWhitelist: citiesWhitelist,
+    citiesBlacklist: citiesBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid country.
   ///
@@ -752,13 +707,12 @@ class FormBuilderValidators {
     List<String> countryBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      CountryValidator(
-        countryWhitelist: countryWhitelist,
-        countryBlacklist: countryBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => CountryValidator(
+    countryWhitelist: countryWhitelist,
+    countryBlacklist: countryBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid first name.
   ///
@@ -774,14 +728,13 @@ class FormBuilderValidators {
     List<String> firstNameBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      FirstNameValidator(
-        regex: regex,
-        firstNameWhitelist: firstNameWhitelist,
-        firstNameBlacklist: firstNameBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => FirstNameValidator(
+    regex: regex,
+    firstNameWhitelist: firstNameWhitelist,
+    firstNameBlacklist: firstNameBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid last name.
   ///
@@ -797,14 +750,13 @@ class FormBuilderValidators {
     List<String> lastNameBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LastNameValidator(
-        regex: regex,
-        lastNameWhitelist: lastNameWhitelist,
-        lastNameBlacklist: lastNameBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LastNameValidator(
+    regex: regex,
+    lastNameWhitelist: lastNameWhitelist,
+    lastNameBlacklist: lastNameBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid passport number.
   ///
@@ -820,14 +772,13 @@ class FormBuilderValidators {
     List<String> passportNumberBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PassportNumberValidator(
-        regex: regex,
-        passportNumberWhitelist: passportNumberWhitelist,
-        passportNumberBlacklist: passportNumberBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PassportNumberValidator(
+    regex: regex,
+    passportNumberWhitelist: passportNumberWhitelist,
+    passportNumberBlacklist: passportNumberBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid state.
   ///
@@ -843,14 +794,13 @@ class FormBuilderValidators {
     List<String> stateBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      StateValidator(
-        regex: regex,
-        stateWhitelist: stateWhitelist,
-        stateBlacklist: stateBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => StateValidator(
+    regex: regex,
+    stateWhitelist: stateWhitelist,
+    stateBlacklist: stateBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid street address.
   ///
@@ -866,14 +816,13 @@ class FormBuilderValidators {
     List<String> streetBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      StreetValidator(
-        regex: regex,
-        streetWhitelist: streetWhitelist,
-        streetBlacklist: streetBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => StreetValidator(
+    regex: regex,
+    streetWhitelist: streetWhitelist,
+    streetBlacklist: streetBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// password.
@@ -896,17 +845,16 @@ class FormBuilderValidators {
     int minSpecialCharCount = 1,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PasswordValidator(
-        minLength: minLength,
-        maxLength: maxLength,
-        minUppercaseCount: minUppercaseCount,
-        minLowercaseCount: minLowercaseCount,
-        minNumberCount: minNumberCount,
-        minSpecialCharCount: minSpecialCharCount,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PasswordValidator(
+    minLength: minLength,
+    maxLength: maxLength,
+    minUppercaseCount: minUppercaseCount,
+    minLowercaseCount: minLowercaseCount,
+    minNumberCount: minNumberCount,
+    minSpecialCharCount: minSpecialCharCount,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid SSN (Social Security Number).
@@ -917,11 +865,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> ssn({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      SsnValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => SsnValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid username.
@@ -949,19 +896,18 @@ class FormBuilderValidators {
     bool allowSpecialChar = false,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      UsernameValidator(
-        minLength: minLength,
-        maxLength: maxLength,
-        allowNumbers: allowNumbers,
-        allowUnderscore: allowUnderscore,
-        allowDots: allowDots,
-        allowDash: allowDash,
-        allowSpace: allowSpace,
-        allowSpecialChar: allowSpecialChar,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => UsernameValidator(
+    minLength: minLength,
+    maxLength: maxLength,
+    allowNumbers: allowNumbers,
+    allowUnderscore: allowUnderscore,
+    allowDots: allowDots,
+    allowDash: allowDash,
+    allowSpace: allowSpace,
+    allowSpecialChar: allowSpecialChar,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid zip code.
   ///
@@ -971,11 +917,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> zipCode({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      ZipCodeValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => ZipCodeValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid email address.
@@ -990,12 +935,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      EmailValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => EmailValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid IP address.
   ///
@@ -1013,13 +957,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IpValidator(
-        version: version,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IpValidator(
+    version: version,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// latitude.
@@ -1030,11 +973,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> latitude({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LatitudeValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LatitudeValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// longitude.
@@ -1045,11 +987,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> longitude({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LongitudeValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LongitudeValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// MAC address.
@@ -1063,12 +1004,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MacAddressValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MacAddressValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid phone number.
@@ -1084,12 +1024,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PhoneNumberValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PhoneNumberValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// port number.
@@ -1104,13 +1043,12 @@ class FormBuilderValidators {
     int max = 65535,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PortNumberValidator(
-        min: min,
-        max: max,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PortNumberValidator(
+    min: min,
+    max: max,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid URL.
   ///
@@ -1137,18 +1075,17 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      UrlValidator(
-        protocols: protocols,
-        requireTld: requireTld,
-        requireProtocol: requireProtocol,
-        allowUnderscore: allowUnderscore,
-        hostWhitelist: hostWhitelist,
-        hostBlacklist: hostBlacklist,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => UrlValidator(
+    protocols: protocols,
+    requireTld: requireTld,
+    requireProtocol: requireProtocol,
+    allowUnderscore: allowUnderscore,
+    hostWhitelist: hostWhitelist,
+    hostBlacklist: hostBlacklist,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be between
   /// two numbers.
@@ -1165,13 +1102,12 @@ class FormBuilderValidators {
     num max, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      BetweenValidator<T>(
-        min,
-        max,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => BetweenValidator<T>(
+    min,
+    max,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an even number.
   ///
@@ -1181,11 +1117,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> evenNumber({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      EvenNumberValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => EvenNumberValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid float.
   ///
@@ -1196,11 +1131,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> float<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      FloatValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => FloatValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid hexadecimal.
   ///
@@ -1211,11 +1145,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> hexadecimal({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      HexadecimalValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => HexadecimalValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the value to be a valid integer.
   ///
@@ -1227,12 +1160,11 @@ class FormBuilderValidators {
     int? radix,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IntegerValidator(
-        radix: radix,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IntegerValidator(
+    radix: radix,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be less than
   /// (or equal) to the provided number.
@@ -1247,13 +1179,12 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MaxValidator<T>(
-        max,
-        inclusive: inclusive,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MaxValidator<T>(
+    max,
+    inclusive: inclusive,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be greater than
   /// (or equal) to the provided number.
@@ -1268,13 +1199,12 @@ class FormBuilderValidators {
     bool inclusive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MinValidator<T>(
-        min,
-        inclusive: inclusive,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MinValidator<T>(
+    min,
+    inclusive: inclusive,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// negative number.
@@ -1285,11 +1215,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> negativeNumber<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      NegativeNumberValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => NegativeNumberValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a number that
   /// is not zero.
@@ -1300,11 +1229,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> notZeroNumber<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      NotZeroNumberValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => NotZeroNumberValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid number.
   ///
@@ -1314,11 +1242,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> numeric<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      NumericValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => NumericValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be an odd number.
   ///
@@ -1328,11 +1255,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> oddNumber({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      OddNumberValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => OddNumberValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// positive number.
@@ -1343,11 +1269,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> positiveNumber<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PositiveNumberValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PositiveNumberValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid prime number.
   ///
@@ -1358,11 +1283,10 @@ class FormBuilderValidators {
   static FormFieldValidator<T> primeNumber<T>({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      PrimeNumberValidator<T>(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => PrimeNumberValidator<T>(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain only alphabetical characters.
   ///
@@ -1376,12 +1300,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      AlphabeticalValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => AlphabeticalValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to contain a
   /// specific value.
@@ -1397,13 +1320,12 @@ class FormBuilderValidators {
     bool caseSensitive = true,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      ContainsValidator(
-        substring,
-        caseSensitive: caseSensitive,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => ContainsValidator(
+    substring,
+    caseSensitive: caseSensitive,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to end with
   /// a specific value.
@@ -1417,12 +1339,11 @@ class FormBuilderValidators {
     String suffix, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      EndsWithValidator(
-        suffix,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => EndsWithValidator(
+    suffix,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be lowercase.
   ///
@@ -1432,11 +1353,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> lowercase({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LowercaseValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LowercaseValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value not to match
   /// the provided regex pattern.
@@ -1450,12 +1370,11 @@ class FormBuilderValidators {
     RegExp regex, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MatchNotValidator(
-        regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MatchNotValidator(
+    regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to match the
   /// provided regex pattern.
@@ -1469,12 +1388,11 @@ class FormBuilderValidators {
     RegExp regex, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MatchValidator(
-        regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MatchValidator(
+    regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the word count of the field's value
   /// to be less than or equal to the provided maximum count.
@@ -1487,12 +1405,11 @@ class FormBuilderValidators {
     int maxWordsCount, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MaxWordsCountValidator(
-        maxWordsCount,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MaxWordsCountValidator(
+    maxWordsCount,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the word count of the field's value
   /// to be greater than or equal to the provided minimum count.
@@ -1505,12 +1422,11 @@ class FormBuilderValidators {
     int minWordsCount, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      MinWordsCountValidator(
-        minWordsCount,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => MinWordsCountValidator(
+    minWordsCount,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a single line.
   ///
@@ -1520,11 +1436,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> singleLine({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      SingleLineValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => SingleLineValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to start with
   /// a specific value.
@@ -1538,12 +1453,11 @@ class FormBuilderValidators {
     String prefix, {
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      StartsWithValidator(
-        prefix,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => StartsWithValidator(
+    prefix,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be uppercase.
   ///
@@ -1553,11 +1467,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> uppercase({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      UppercaseValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => UppercaseValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// base64 string.
@@ -1568,11 +1481,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> base64({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      Base64Validator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => Base64Validator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a
   /// valid color code.
@@ -1594,13 +1506,12 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      ColorCodeValidator(
-        formats: formats,
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => ColorCodeValidator(
+    formats: formats,
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid DUNS number.
   ///
@@ -1613,12 +1524,11 @@ class FormBuilderValidators {
     RegExp? regex,
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      DunsValidator(
-        regex: regex,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => DunsValidator(
+    regex: regex,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid ISBN.
   ///
@@ -1628,11 +1538,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> isbn({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      IsbnValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => IsbnValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be valid JSON.
   ///
@@ -1642,11 +1551,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> json({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      JsonValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => JsonValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid language code.
   ///
@@ -1663,14 +1571,13 @@ class FormBuilderValidators {
     List<String> languageCodeBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LanguageCodeValidator(
-        regex: regex,
-        languageCodeWhitelist: languageCodeWhitelist,
-        languageCodeBlacklist: languageCodeBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LanguageCodeValidator(
+    regex: regex,
+    languageCodeWhitelist: languageCodeWhitelist,
+    languageCodeBlacklist: languageCodeBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid license plate.
   ///
@@ -1687,14 +1594,13 @@ class FormBuilderValidators {
     List<String> licensePlateBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      LicensePlateValidator(
-        regex: regex,
-        licensePlateWhitelist: licensePlateWhitelist,
-        licensePlateBlacklist: licensePlateBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => LicensePlateValidator(
+    regex: regex,
+    licensePlateWhitelist: licensePlateWhitelist,
+    licensePlateBlacklist: licensePlateBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid
   /// UUID.
@@ -1707,11 +1613,10 @@ class FormBuilderValidators {
   static FormFieldValidator<String> uuid({
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      UuidValidator(
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => UuidValidator(
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 
   /// [FormFieldValidator] that requires the field's value to be a valid VIN.
   ///
@@ -1728,14 +1633,13 @@ class FormBuilderValidators {
     List<String> vinBlacklist = const <String>[],
     String? errorText,
     bool checkNullOrEmpty = true,
-  }) =>
-      VinValidator(
-        regex: regex,
-        vinWhitelist: vinWhitelist,
-        vinBlacklist: vinBlacklist,
-        errorText: errorText,
-        checkNullOrEmpty: checkNullOrEmpty,
-      ).validate;
+  }) => VinValidator(
+    regex: regex,
+    vinWhitelist: vinWhitelist,
+    vinBlacklist: vinBlacklist,
+    errorText: errorText,
+    checkNullOrEmpty: checkNullOrEmpty,
+  ).validate;
 }
 
 /// A class that is used as an aggregator/namespace for all the available

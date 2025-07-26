@@ -10,8 +10,9 @@ void main() {
     test('should return null when the value has the exact minimum length', () {
       // Arrange
       const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength);
+      const MinLengthValidator<String> validator = MinLengthValidator<String>(
+        minLength,
+      );
       const String value = 'abcde';
 
       // Act
@@ -21,79 +22,92 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null when the value is longer than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength);
-      const String value = 'abcdef';
+    test(
+      'should return null when the value is longer than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 5;
+        const MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+        );
+        const String value = 'abcdef';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is shorter than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength);
-      const String value = 'abc';
+      'should return the default error message when the value is shorter than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 5;
+        const MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.minLengthErrorText(minLength),
+          ),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the value is shorter than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 5;
-      final MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength, errorText: customErrorMessage);
-      const String value = 'abc';
+      'should return the custom error message when the value is shorter than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 5;
+        final MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+          errorText: customErrorMessage,
+        );
+        const String value = 'abc';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength, checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const int minLength = 5;
+        const MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
       const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength);
+      const MinLengthValidator<String> validator = MinLengthValidator<String>(
+        minLength,
+      );
       const String? value = null;
 
       // Act
@@ -103,49 +117,52 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
+        equals(FormBuilderLocalizations.current.minLengthErrorText(minLength)),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength, checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const int minLength = 5;
+        const MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const int minLength = 5;
-      const MinLengthValidator<String> validator =
-          MinLengthValidator<String>(minLength);
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const int minLength = 5;
+        const MinLengthValidator<String> validator = MinLengthValidator<String>(
+          minLength,
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.minLengthErrorText(minLength),
+          ),
+        );
+      },
+    );
   });
 
   group('Min length - List', () {
@@ -163,76 +180,85 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null when the list is longer than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 3;
-      const MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(minLength);
-      const List<String> value = <String>['a', 'b', 'c', 'd'];
+    test(
+      'should return null when the list is longer than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 3;
+        const MinLengthValidator<List<String>> validator =
+            MinLengthValidator<List<String>>(minLength);
+        const List<String> value = <String>['a', 'b', 'c', 'd'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the list is shorter than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 3;
-      const MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(minLength);
-      const List<String> value = <String>['a', 'b'];
+      'should return the default error message when the list is shorter than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 3;
+        const MinLengthValidator<List<String>> validator =
+            MinLengthValidator<List<String>>(minLength);
+        const List<String> value = <String>['a', 'b'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.minLengthErrorText(minLength),
+          ),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the list is shorter than the minimum length',
-        () {
-      // Arrange
-      const int minLength = 3;
-      final MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(
-        minLength,
-        errorText: customErrorMessage,
-      );
-      const List<String> value = <String>['a', 'b'];
+      'should return the custom error message when the list is shorter than the minimum length',
+      () {
+        // Arrange
+        const int minLength = 3;
+        final MinLengthValidator<List<String>> validator =
+            MinLengthValidator<List<String>>(
+              minLength,
+              errorText: customErrorMessage,
+            );
+        const List<String> value = <String>['a', 'b'];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when the list is null and null check is disabled',
-        () {
-      // Arrange
-      const int minLength = 3;
-      const MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(minLength, checkNullOrEmpty: false);
-      const List<String>? value = null;
+    test(
+      'should return null when the list is null and null check is disabled',
+      () {
+        // Arrange
+        const int minLength = 3;
+        const MinLengthValidator<List<String>> validator =
+            MinLengthValidator<List<String>>(
+              minLength,
+              checkNullOrEmpty: false,
+            );
+        const List<String>? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the list is null', () {
       // Arrange
@@ -248,26 +274,29 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
+        equals(FormBuilderLocalizations.current.minLengthErrorText(minLength)),
       );
     });
 
-    test('should return null when the list is empty and null check is disabled',
-        () {
-      // Arrange
-      const int minLength = 3;
-      const MinLengthValidator<List<String>> validator =
-          MinLengthValidator<List<String>>(minLength, checkNullOrEmpty: false);
-      const List<String> value = <String>[];
+    test(
+      'should return null when the list is empty and null check is disabled',
+      () {
+        // Arrange
+        const int minLength = 3;
+        const MinLengthValidator<List<String>> validator =
+            MinLengthValidator<List<String>>(
+              minLength,
+              checkNullOrEmpty: false,
+            );
+        const List<String> value = <String>[];
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the list is empty', () {
       // Arrange
@@ -283,9 +312,7 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.minLengthErrorText(minLength),
-        ),
+        equals(FormBuilderLocalizations.current.minLengthErrorText(minLength)),
       );
     });
   });
