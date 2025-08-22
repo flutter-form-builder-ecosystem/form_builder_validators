@@ -108,31 +108,9 @@ Validators.hasMinUppercaseChars(
 For the remaining `isFalse` and `isTrue`, it is not necessary to wrap them with `Validators.string` even if the form widget does not provide `String` input.
 
 
-- `FormBuilderValidators.isFalse`
-```dart
-// Old API
-FormBuilderValidators.isFalse(
-  errorText: 'Value must be false'
-);
+- `FormBuilderValidators.isFalse`: equivalent to `Validators.isFalse`.
 
-// New API equivalent
-Validators.isFalse(
-  isFalseMsg: (_) => 'Value must be false'
-);
-```
-
-- `FormBuilderValidators.isTrue`
-```dart
-// Old API
-FormBuilderValidators.isTrue(
-  errorText: 'Value must be true'
-);
-
-// New API equivalent
-Validators.isTrue(
-  isTrueMsg: (_) => 'Value must be true'
-);
-```
+- `FormBuilderValidators.isTrue`: equivalent to `Validators.isTrue`.
 
 #### Collection validators
 - `FormBuilderValidators.containsElement`
@@ -174,35 +152,9 @@ Validators.or([
 ]);
 ```
 
-- `FormBuilderValidators.maxLength`
-```dart
-// Old API
-FormBuilderValidators.maxLength(
-  50,
-  errorText: 'Must be no more than 50 characters'
-);
+- `FormBuilderValidators.maxLength`: equivalent to `Validators.maxLength`.
 
-// New API equivalent
-Validators.maxLength(
-  50,
-  maxLengthMsg: (_, __) => 'Must be no more than 50 characters'
-);
-```
-
-- `FormBuilderValidators.minLength`
-```dart
-// Old API
-FormBuilderValidators.minLength(
-  8,
-  errorText: 'Must be at least 8 characters'
-);
-
-// New API equivalent
-Validators.minLength(
-  8,
-  minLengthMsg: (_, __) => 'Must be at least 8 characters'
-);
-```
+- `FormBuilderValidators.minLength`: equivalent to `Validators.minLength`.
 
 - `FormBuilderValidators.range` (for collections)
 ```dart

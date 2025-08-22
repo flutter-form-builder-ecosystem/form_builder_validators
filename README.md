@@ -354,8 +354,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 
 ## Migrations
 ### v11 to v12
-- Deprecate `FormBuilderValidators` class with its static methods as validators.
-- Instead, you should use `Validators` class.
+- Deprecate `FormBuilderValidators` class with its static methods as validators. Instead, you should use `Validators` class.
 - Check the file [migrations](./doc/migration.md) for detailed instructions.
 
 ### v10 to v11

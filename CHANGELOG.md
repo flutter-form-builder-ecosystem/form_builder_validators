@@ -6,6 +6,7 @@
   - Removed the `checkNullOrEmpty` parameter.
   - Restructured validators (maintained some intact, removed others, split some into elementary ones)
   - Decoupled null check and type check from the remaining validators.
+- The migration guide can be found on `doc/api/migration` and the reference to the old API implementation on [this link]()
 
 
 ## 11.1.1
