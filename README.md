@@ -197,8 +197,8 @@ Validators that check a generic type user input.
 - `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
 - `Validators.notMatch(regExp)` - Checks if the field does not match with the regular expression `regExp`.
 - `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
-- TODO [ ] `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
-- TODO [ ] `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.
+- `Validators.maxWordsCount(max)` - Checks if the field contains no more than `max` words.
+- `Validators.minWordsCount(min)` - Checks if the field contains no less than `min` words.
 
 ### Type Validators
 - `Validators.string(next)`: Checks if the field contains a valid `String` and passes the input as `String` to the `next` validator.

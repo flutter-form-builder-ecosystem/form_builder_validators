@@ -241,3 +241,43 @@ Validator<String> uppercase({String Function(String input)? uppercaseMsg}) {
               FormBuilderLocalizations.current.uppercaseErrorText;
   };
 }
+
+int _countWords(String s) => s
+    .trim()
+    .split(RegExp(r'\s+'))
+    .where(
+      (String s) => s.isNotEmpty,
+    ) // this avoid the bug of splitting "" into [""].
+    .length;
+
+/// {@macro validator_max_words_count}
+Validator<String> maxWordsCount(
+  int max, {
+  String Function(String input, int max)? maxWordsCountMsg,
+}) {
+  if (max < 0) {
+    throw ArgumentError.value(max, 'max', 'This argument must not be negative');
+  }
+  return (String input) {
+    return _countWords(input) <= max
+        ? null
+        : maxWordsCountMsg?.call(input, max) ??
+              FormBuilderLocalizations.current.maxWordsCountErrorText(max);
+  };
+}
+
+/// {@macro validator_min_words_count}
+Validator<String> minWordsCount(
+  int min, {
+  String Function(String input, int min)? minWordsCountMsg,
+}) {
+  if (min < 0) {
+    throw ArgumentError.value(min, 'min', 'This argument must not be negative');
+  }
+  return (String input) {
+    return _countWords(input) >= min
+        ? null
+        : minWordsCountMsg?.call(input, min) ??
+              FormBuilderLocalizations.current.minWordsCountErrorText(min);
+  };
+}

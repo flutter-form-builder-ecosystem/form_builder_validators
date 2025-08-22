@@ -3180,6 +3180,113 @@ final class Validators {
     String Function(String input)? uuidMsg,
   }) => val.uuid(regex: regex, uuidMsg: uuidMsg);
 
+  /// {@template validator_max_words_count}
+  /// Creates a validator function that enforces a maximum word count constraint
+  /// on string input. Words are identified as sequences of non-whitespace characters
+  /// separated by one or more whitespace characters.
+  ///
+  /// ## Parameters
+  /// - `max` (`int`): The maximum number of words allowed in the input string.
+  ///   Must be a non-negative integer. Setting to 0 will only accept empty or
+  ///   whitespace-only strings.
+  /// - `maxWordsCountMsg` (`String Function(String input, int max)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   input string and the maximum word count as parameters, returning a
+  ///   customized error message string. If not provided, the validator uses
+  ///   the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (word count is within limit)
+  /// - Returns an error message string when validation fails (word count exceeds maximum)
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: Thrown if `max` is negative
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Bio field with word limit
+  /// final bioValidator = maxWordsCount(5);
+  /// assert(bioValidator('Short bio') == null); // Valid: 2 words
+  /// assert(bioValidator('This is a longer bio with exactly ten words here') != null); // Invalid: 10 words
+  ///
+  /// // Tweet-like validator with custom message
+  /// final tweetValidator = maxWordsCount(
+  ///   30,
+  ///   maxWordsCountMsg: (_, max) => 'Tweet too long! Maximum $max words allowed'
+  /// );
+  ///
+  /// // Edge cases
+  /// final strictValidator = maxWordsCount(0);
+  /// assert(strictValidator('') == null); // Valid: empty string
+  /// assert(strictValidator('   ') == null); // Valid: only whitespace
+  /// assert(strictValidator('word') != null); // Invalid: 1 word exceeds 0
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Words are counted after trimming the input and splitting by any whitespace
+  /// - Multiple consecutive spaces are treated as a single word separator
+  /// - Empty strings and strings with only whitespace count as 0 words when trimmed
+  /// {@endtemplate}
+  static Validator<String> maxWordsCount(
+    c.int max, {
+    String Function(String input, c.int max)? maxWordsCountMsg,
+  }) => val.maxWordsCount(max, maxWordsCountMsg: maxWordsCountMsg);
+
+  /// {@template validator_min_words_count}
+  /// Creates a validator function that enforces a minimum word count requirement
+  /// on string input. Words are identified as sequences of non-whitespace characters
+  /// separated by one or more whitespace characters.
+  ///
+  /// ## Parameters
+  /// - `min` (`int`): The minimum number of words required in the input string.
+  ///   Must be a non-negative integer. Setting to 0 will accept any input including
+  ///   empty strings.
+  /// - `minWordsCountMsg` (`String Function(String input, int min)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   input string and the minimum word count as parameters, returning a
+  ///   customized error message string. If not provided, the validator uses
+  ///   the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (word count meets minimum requirement)
+  /// - Returns an error message string when validation fails (word count below minimum)
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: Thrown if `min` is negative
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Description field requiring substance
+  /// final descriptionValidator = minWordsCount(10);
+  /// assert(descriptionValidator('A comprehensive description with more than ten words in it') == null); // Valid
+  /// assert(descriptionValidator('Too short') != null); // Invalid: only 2 words
+  ///
+  /// // Review validator with custom message
+  /// final reviewValidator = minWordsCount(
+  ///   25,
+  ///   minWordsCountMsg: (_, min) => 'Please write at least $min words for a helpful review'
+  /// );
+  ///
+  /// // Edge cases with whitespace
+  /// final minOneValidator = minWordsCount(1);
+  /// assert(minOneValidator('word') == null); // Valid: exactly 1 word
+  /// assert(minOneValidator('   word   ') == null); // Valid: 1 word after trimming
+  /// assert(minOneValidator('') != null); // Invalid: 0 words
+  /// assert(minOneValidator('   ') != null); // Invalid: 0 words after trimming
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Words are counted after trimming the input and splitting by any whitespace
+  /// - Multiple consecutive spaces are treated as a single word separator
+  /// - Empty strings and strings with only whitespace will fail validation if `min` > 0
+  /// {@endtemplate}
+  static Validator<String> minWordsCount(
+    c.int min, {
+    String Function(String input, c.int min)? minWordsCountMsg,
+  }) => val.minWordsCount(min, minWordsCountMsg: minWordsCountMsg);
+
   // Collection validators
   /// {@template validator_equal_length}
   /// Creates a validator function that checks if the input collection's length equals
