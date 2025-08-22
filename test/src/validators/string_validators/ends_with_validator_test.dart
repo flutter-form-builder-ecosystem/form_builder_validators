@@ -123,7 +123,7 @@ void main() {
       final val.Validator<String> v = val.endsWith(
         'suffix test',
         caseSensitive: false,
-        endsWithMsg: (_, __) => errorMsg,
+        endsWithMsg: (_, _) => errorMsg,
       );
 
       expect(v('This must pass: suffix tesT'), isNull);

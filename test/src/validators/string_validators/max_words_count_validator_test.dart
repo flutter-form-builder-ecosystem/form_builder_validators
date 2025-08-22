@@ -63,7 +63,7 @@ void main() {
           // Arrange
           final Validator<String> validator = maxWordsCount(
             4,
-            maxWordsCountMsg: (_, __) => customErrorMessage,
+            maxWordsCountMsg: (_, _) => customErrorMessage,
           );
           const String value = 'only five words\n! .';
 

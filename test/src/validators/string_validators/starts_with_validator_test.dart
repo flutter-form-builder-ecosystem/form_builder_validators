@@ -129,7 +129,7 @@ void main() {
       final val.Validator<String> v = val.startsWith(
         'prefix test',
         caseSensitive: false,
-        startsWithMsg: (_, __) => errorMsg,
+        startsWithMsg: (_, _) => errorMsg,
       );
 
       expect(v('pREfix TESt: This must pass'), isNull);

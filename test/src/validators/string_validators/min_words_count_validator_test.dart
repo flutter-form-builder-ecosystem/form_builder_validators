@@ -61,7 +61,7 @@ void main() {
           // Arrange
           final Validator<String> validator = minWordsCount(
             4,
-            minWordsCountMsg: (_, __) => customErrorMessage,
+            minWordsCountMsg: (_, _) => customErrorMessage,
           );
           const String value = 'only three words';
 

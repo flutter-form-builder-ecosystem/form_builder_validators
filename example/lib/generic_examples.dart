@@ -262,11 +262,11 @@ class GenericExamplesPage extends StatelessWidget {
                       'CityA',
                       'CityB',
                       'CityC',
-                    ], inListMsg: (_, __) => 'invalid city'),
+                    ], inListMsg: (_, _) => 'invalid city'),
                     V.notInList(<String>[
                       'CityD',
                       'CityE',
-                    ], notInListMsg: (_, __) => 'invalid city'),
+                    ], notInListMsg: (_, _) => 'invalid city'),
                   ]),
                   'invalid city',
                 ),
