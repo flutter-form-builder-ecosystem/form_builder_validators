@@ -188,7 +188,7 @@ Validators that check a generic type user input.
 - `Validators.contains(substring)` - Checks if the field contains the `substring`.
 - `Validators.startsWith()` - Checks if the field starts with `prefix`.
 - `Validators.endsWith()` - Checks if the field ends with `suffix`.
-- TODO [ ] `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
+- `Validators.lowercase()` - Checks if the field does not have any upper case char.
 - TODO [ ] `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `Validators.hasMinUppercaseChars(min:min)` - Checks if the field has a minimum number of uppercase chars.
 - `Validators.hasMinLowercaseChars(min:min)` - Checks if the field has a minimum number of lowercase chars.

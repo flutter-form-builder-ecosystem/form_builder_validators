@@ -2725,6 +2725,44 @@ final class Validators {
     endsWithMsg: endsWithMsg,
   );
 
+  /// {@template validator_lowercase}
+  /// Creates a validator function that checks if a string does not contain uppercase
+  /// characters.
+  ///
+  /// ## Parameters
+  /// - `lowercaseMsg` (`String Function(String input)?`): Optional callback
+  ///   function for generating custom error messages. Receives the user input
+  ///   as a parameter and returns a customized error message string. If not
+  ///   provided, the validator uses the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string does not contain uppercase characters)
+  /// - Returns an error message string when validation fails (uppercase characters detected)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic lowercase validation
+  /// final validator = lowercase();
+  /// assert(validator('hello world') == null); // Valid
+  /// assert(validator('hello123') == null); // Valid (numbers allowed)
+  /// assert(validator('Hello World') != null); // Invalid (contains uppercase)
+  ///
+  /// // Custom error message
+  /// final customValidator = lowercase(
+  ///   lowercaseMsg: (input) => 'Username "$input" must be in lowercase only'
+  /// );
+  /// assert(customValidator('UserName') != null); // Returns custom message
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Numbers, special characters, and whitespace are considered valid
+  /// - Only alphabetic characters are checked for case requirements
+  /// {@endtemplate}
+  static Validator<String> lowercase({
+    String Function(String input)? lowercaseMsg,
+  }) => val.lowercase(lowercaseMsg: lowercaseMsg);
+
   /// {@template validator_has_min_uppercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
   /// minimum number of uppercase characters. The validator returns `null` for

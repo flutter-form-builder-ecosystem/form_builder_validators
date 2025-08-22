@@ -208,3 +208,23 @@ Validator<String> endsWith(
         FormBuilderLocalizations.current.endsWithErrorText(suffix);
   };
 }
+
+/// {@macro validator_lowercase}
+Validator<String> lowercase({String Function(String input)? lowercaseMsg}) {
+  return (String input) {
+    return input.toLowerCase() == input
+        ? null
+        : lowercaseMsg?.call(input) ??
+              FormBuilderLocalizations.current.lowercaseErrorText;
+  };
+}
+
+/// {@macro validator_uppercase}
+Validator<String> uppercase({String Function(String input)? uppercaseMsg}) {
+  return (String input) {
+    return input.toUpperCase() == input
+        ? null
+        : uppercaseMsg?.call(input) ??
+              FormBuilderLocalizations.current.uppercaseErrorText;
+  };
+}
