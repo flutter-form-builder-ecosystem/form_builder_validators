@@ -32,36 +32,41 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the default error message if the ISBN-10 is invalid',
-        () {
-      // Arrange
-      final Validator<String> validator = isbn();
-      const String invalidIsbn10 = '0-306-40615-3';
+    test(
+      'should return the default error message if the ISBN-10 is invalid',
+      () {
+        // Arrange
+        final Validator<String> validator = isbn();
+        const String invalidIsbn10 = '0-306-40615-3';
 
-      // Act
-      final String? result = validator(invalidIsbn10);
+        // Act
+        final String? result = validator(invalidIsbn10);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
+      },
+    );
 
-    test('should return the default error message if the ISBN-13 is invalid',
-        () {
-      // Arrange
-      final Validator<String> validator = isbn();
-      const String invalidIsbn13 = '978-3-16-148410-1';
+    test(
+      'should return the default error message if the ISBN-13 is invalid',
+      () {
+        // Arrange
+        final Validator<String> validator = isbn();
+        const String invalidIsbn13 = '978-3-16-148410-1';
 
-      // Act
-      final String? result = validator(invalidIsbn13);
+        // Act
+        final String? result = validator(invalidIsbn13);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
+      },
+    );
 
     test('should return the custom error message if the ISBN is invalid', () {
       // Arrange
-      final Validator<String> validator =
-          isbn(isbnMsg: (_) => customErrorMessage);
+      final Validator<String> validator = isbn(
+        isbnMsg: (_) => customErrorMessage,
+      );
       const String invalidIsbn = '978-3-16-148410-1';
 
       // Act
@@ -72,18 +77,19 @@ void main() {
     });
 
     test(
-        'should return the default error message if the ISBN length is neither 10 nor 13 characters',
-        () {
-      // Arrange
-      final Validator<String> validator = isbn();
-      const String invalidIsbn = '123456789';
+      'should return the default error message if the ISBN length is neither 10 nor 13 characters',
+      () {
+        // Arrange
+        final Validator<String> validator = isbn();
+        const String invalidIsbn = '123456789';
 
-      // Act
-      final String? result = validator(invalidIsbn);
+        // Act
+        final String? result = validator(invalidIsbn);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.isbnErrorText));
+      },
+    );
 
     test('should return null if the ISBN-10 is valid without hyphens', () {
       // Arrange

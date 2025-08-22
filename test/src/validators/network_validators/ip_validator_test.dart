@@ -8,8 +8,8 @@ void main() {
   final Faker faker = Faker.instance;
   group('Validator: ip', () {
     group('Validate ipV4', () {
-      final List<({String input, bool isValid})> testCases =
-          <({String input, bool isValid})>[
+      final List<({String input, bool isValid})>
+      testCases = <({String input, bool isValid})>[
         // Invalid cases
         (input: '', isValid: false),
         (input: '  ', isValid: false),
@@ -33,7 +33,6 @@ void main() {
         (input: '192.168.1.1\n', isValid: false), // Newline
         (input: '192.168.1.1\t', isValid: false), // Tab
         (input: '192,168,1,1', isValid: false), // Wrong separator
-
         // Valid cases
         (input: faker.internet.ip(), isValid: true),
         (input: '0.0.0.0', isValid: true),
@@ -50,17 +49,19 @@ void main() {
       final Validator<String> v = ip();
       for (final (input: String input, isValid: bool isValid) in testCases) {
         test(
-            'should return ${isValid ? 'null' : 'error message for ipV4'} for input "$input"',
-            () => expect(
-                v(input),
-                isValid
-                    ? isNull
-                    : equals(FormBuilderLocalizations.current.ipErrorText)));
+          'should return ${isValid ? 'null' : 'error message for ipV4'} for input "$input"',
+          () => expect(
+            v(input),
+            isValid
+                ? isNull
+                : equals(FormBuilderLocalizations.current.ipErrorText),
+          ),
+        );
       }
     });
     group('Validate ipV6', () {
-      final List<({String input, bool isValid})> testCases =
-          <({String input, bool isValid})>[
+      final List<({String input, bool isValid})>
+      testCases = <({String input, bool isValid})>[
         // Invalid cases
         (input: '', isValid: false), // Empty string
         (input: '  ', isValid: false), // Whitespace only
@@ -70,22 +71,22 @@ void main() {
         (input: '192.168.1.256', isValid: false), // Invalid ipV4
         (
           input: faker.internet.ip(),
-          isValid: false
+          isValid: false,
         ), // Valid ipV4 (but invalid ipV6)
         (input: '0.0.0.0', isValid: false), // Valid ipV4 (but invalid ipV6)
         (input: '127.0.0.1', isValid: false), // Valid ipV4 (but invalid ipV6)
         (input: '12345::', isValid: false), // Invalid short IPv6
         (
           input: 'GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG',
-          isValid: false
+          isValid: false,
         ), // Invalid hex
         (
           input: '2001:0db8:85a3::8a2e:037j:7334',
-          isValid: false
+          isValid: false,
         ), // Invalid hex 'j'
         (
           input: '2001:0db8:85a3::8a2e:037z:7334',
-          isValid: false
+          isValid: false,
         ), // Invalid hex 'z'
         (input: '::12345', isValid: false), // Invalid compressed IPv6
         (input: '1::1::1', isValid: false), // Multiple compression markers
@@ -93,46 +94,47 @@ void main() {
         (input: 'fe80:2030:31:24', isValid: false), // Incomplete IPv6
         (
           input: '1200:0000:AB00:1234:O000:2552:7777:1313',
-          isValid: false
+          isValid: false,
         ), // 'O' vs '0'
-
         // Valid cases
         (input: '::1', isValid: true), // IPv6 loopback
         (
           input: '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
-          isValid: true
+          isValid: true,
         ), // Full IPv6
         (
           input: '2001:db8:85a3:0:0:8a2e:370:7334',
-          isValid: true
+          isValid: true,
         ), // IPv6 with zeros
         (
           input: '2001:db8:85a3::8a2e:370:7334',
-          isValid: true
+          isValid: true,
         ), // Compressed IPv6
         (input: 'fe80::1', isValid: true), // Link-local IPv6
         (input: '::ffff:192.0.2.128', isValid: true), // IPv4-mapped IPv6
         (input: '2001:db8::', isValid: true), // Network address
         (
           input: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
-          isValid: true
+          isValid: true,
         ), // Max value
       ];
 
       final Validator<String> v = ip(version: IpVersion.iPv6);
       for (final (input: String input, isValid: bool isValid) in testCases) {
         test(
-            'should return ${isValid ? 'null' : 'error message for ipV6'} for input "$input"',
-            () => expect(
-                v(input),
-                isValid
-                    ? isNull
-                    : equals(FormBuilderLocalizations.current.ipErrorText)));
+          'should return ${isValid ? 'null' : 'error message for ipV6'} for input "$input"',
+          () => expect(
+            v(input),
+            isValid
+                ? isNull
+                : equals(FormBuilderLocalizations.current.ipErrorText),
+          ),
+        );
       }
     });
     group('Validate ipV4 or ipV6', () {
-      final List<({String input, bool isValid})> testCases =
-          <({String input, bool isValid})>[
+      final List<({String input, bool isValid})>
+      testCases = <({String input, bool isValid})>[
         // Invalid cases
         (input: '', isValid: false),
         (input: '  ', isValid: false),
@@ -155,15 +157,15 @@ void main() {
         (input: '12345::', isValid: false), // Invalid short IPv6
         (
           input: 'GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG:GGGG',
-          isValid: false
+          isValid: false,
         ), // Invalid hex
         (
           input: '2001:0db8:85a3::8a2e:037j:7334',
-          isValid: false
+          isValid: false,
         ), // Invalid hex 'j'
         (
           input: '2001:0db8:85a3::8a2e:037z:7334',
-          isValid: false
+          isValid: false,
         ), // Invalid hex 'z'
         (input: '::12345', isValid: false), // Invalid compressed IPv6
         (input: '1::1::1', isValid: false), // Multiple compression markers
@@ -171,9 +173,8 @@ void main() {
         (input: 'fe80:2030:31:24', isValid: false), // Incomplete IPv6
         (
           input: '1200:0000:AB00:1234:O000:2552:7777:1313',
-          isValid: false
+          isValid: false,
         ), // 'O' vs '0'
-
         // Valid cases
         (input: faker.internet.ip(), isValid: true),
         (input: '0.0.0.0', isValid: true),
@@ -188,34 +189,36 @@ void main() {
         (input: '::1', isValid: true), // IPv6 loopback
         (
           input: '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
-          isValid: true
+          isValid: true,
         ), // Full IPv6
         (
           input: '2001:db8:85a3:0:0:8a2e:370:7334',
-          isValid: true
+          isValid: true,
         ), // IPv6 with zeros
         (
           input: '2001:db8:85a3::8a2e:370:7334',
-          isValid: true
+          isValid: true,
         ), // Compressed IPv6
         (input: 'fe80::1', isValid: true), // Link-local IPv6
         (input: '::ffff:192.0.2.128', isValid: true), // IPv4-mapped IPv6
         (input: '2001:db8::', isValid: true), // Network address
         (
           input: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
-          isValid: true
+          isValid: true,
         ), // Max value
       ];
 
       final Validator<String> v = ip(version: IpVersion.any);
       for (final (input: String input, isValid: bool isValid) in testCases) {
         test(
-            'should return ${isValid ? 'null' : 'error message for ipV4/6'} for input "$input"',
-            () => expect(
-                v(input),
-                isValid
-                    ? isNull
-                    : equals(FormBuilderLocalizations.current.ipErrorText)));
+          'should return ${isValid ? 'null' : 'error message for ipV4/6'} for input "$input"',
+          () => expect(
+            v(input),
+            isValid
+                ? isNull
+                : equals(FormBuilderLocalizations.current.ipErrorText),
+          ),
+        );
       }
     });
 
@@ -228,11 +231,15 @@ void main() {
     });
 
     test('should validate with custom regex', () {
-      final Validator<String> validator =
-          ip(version: IpVersion.any, regex: RegExp('this is valid'));
+      final Validator<String> validator = ip(
+        version: IpVersion.any,
+        regex: RegExp('this is valid'),
+      );
 
       expect(
-          validator('1.2.3.4'), FormBuilderLocalizations.current.ipErrorText);
+        validator('1.2.3.4'),
+        FormBuilderLocalizations.current.ipErrorText,
+      );
       expect(validator('this is valid'), isNull);
     });
   });

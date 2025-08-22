@@ -7,8 +7,9 @@ Validator<T?> required<T extends Object>([
   String? requiredMsg,
 ]) {
   String? finalValidator(T? value) {
-    final (bool isValid, T? transformedValue) =
-        _isRequiredValidateAndConvert(value);
+    final (bool isValid, T? transformedValue) = _isRequiredValidateAndConvert(
+      value,
+    );
     if (!isValid) {
       return requiredMsg ?? FormBuilderLocalizations.current.requiredErrorText;
     }
@@ -20,7 +21,9 @@ Validator<T?> required<T extends Object>([
 
 /// {@macro validator_validate_with_default}
 Validator<T?> validateWithDefault<T extends Object>(
-    T defaultValue, Validator<T> next) {
+  T defaultValue,
+  Validator<T> next,
+) {
   return (T? value) => next(value ?? defaultValue);
 }
 
@@ -30,8 +33,9 @@ Validator<T?> optional<T extends Object>([
   String Function(T input, String nextErrorMsg)? optionalMsg,
 ]) {
   return (T? input) {
-    final (bool isValid, T? transformedValue) =
-        _isRequiredValidateAndConvert(input);
+    final (bool isValid, T? transformedValue) = _isRequiredValidateAndConvert(
+      input,
+    );
     if (!isValid) {
       // field not provided
       return null;

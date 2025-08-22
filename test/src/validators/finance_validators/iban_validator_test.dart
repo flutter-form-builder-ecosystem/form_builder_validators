@@ -46,60 +46,65 @@ void main() {
     });
 
     test(
-        'should return the custom error message if the IBAN Validator<String> is invalid',
-        () {
-      // Arrange
-      final Validator<String> validator =
-          iban(ibanMsg: (_) => customErrorMessage);
-      const String invalidIban = 'DE89370400440532013001';
+      'should return the custom error message if the IBAN Validator<String> is invalid',
+      () {
+        // Arrange
+        final Validator<String> validator = iban(
+          ibanMsg: (_) => customErrorMessage,
+        );
+        const String invalidIban = 'DE89370400440532013001';
 
-      // Act
-      final String? result = validator(invalidIban);
+        // Act
+        final String? result = validator(invalidIban);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
-
-    test(
-        'should return the default error message if the value is an empty string',
-        () {
-      // Arrange
-      final Validator<String> validator = iban();
-      const String value = '';
-
-      // Act
-      final String? result = validator(value);
-
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.ibanErrorText));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the default error message if the IBAN length is less than 15 characters',
-        () {
-      // Arrange
-      final Validator<String> validator = iban();
-      const String shortIban = 'DE8937040044';
+      'should return the default error message if the value is an empty string',
+      () {
+        // Arrange
+        final Validator<String> validator = iban();
+        const String value = '';
 
-      // Act
-      final String? result = validator(shortIban);
+        // Act
+        final String? result = validator(value);
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.ibanErrorText));
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.ibanErrorText));
+      },
+    );
 
     test(
-        'should return null if the IBAValidator<String> N length is exactly 15 characters and valid',
-        () {
-      // Arrange
-      final Validator<String> validator = iban();
-      const String validShortIban = 'AL47212110090000000235698741';
+      'should return the default error message if the IBAN length is less than 15 characters',
+      () {
+        // Arrange
+        final Validator<String> validator = iban();
+        const String shortIban = 'DE8937040044';
 
-      // Act
-      final String? result = validator(validShortIban);
+        // Act
+        final String? result = validator(shortIban);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.ibanErrorText));
+      },
+    );
+
+    test(
+      'should return null if the IBAValidator<String> N length is exactly 15 characters and valid',
+      () {
+        // Arrange
+        final Validator<String> validator = iban();
+        const String validShortIban = 'AL47212110090000000235698741';
+
+        // Act
+        final String? result = validator(validShortIban);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
   });
 }

@@ -17,8 +17,9 @@ Validator<IN> transformAndValidate<IN extends Object?, OUT extends Object?>(
           (transformedResultTypeDescription == null
               ? FormBuilderLocalizations.current.transformAndValidateErrorTextV1
               : FormBuilderLocalizations.current
-                  .transformAndValidateErrorTextV2(
-                      transformedResultTypeDescription));
+                    .transformAndValidateErrorTextV2(
+                      transformedResultTypeDescription,
+                    ));
     }
   };
 }

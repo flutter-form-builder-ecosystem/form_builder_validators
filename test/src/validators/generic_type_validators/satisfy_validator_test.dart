@@ -8,8 +8,10 @@ void main() {
       expect(v.satisfy((Object? i) => true)('input'), isNull);
     });
     test('Should validate always false condition', () {
-      expect(v.satisfy((Object? i) => false)('input'),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
+      expect(
+        v.satisfy((Object? i) => false)('input'),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
     });
     test('Should validate if it is a positive even integer', () {
       final Validator<Object> validator = v.satisfy<Object>((Object input) {
@@ -21,16 +23,26 @@ void main() {
         }
         return false;
       });
-      expect(validator('input'),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
-      expect(validator('12'),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
-      expect(validator(-12),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
-      expect(validator(0),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
-      expect(validator(3),
-          equals(FormBuilderLocalizations.current.satisfyErrorText));
+      expect(
+        validator('input'),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
+      expect(
+        validator('12'),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
+      expect(
+        validator(-12),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
+      expect(
+        validator(0),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
+      expect(
+        validator(3),
+        equals(FormBuilderLocalizations.current.satisfyErrorText),
+      );
       expect(validator(2), isNull);
       expect(validator(10000), isNull);
     });
@@ -38,8 +50,9 @@ void main() {
     test('Should validate with custom message', () {
       const String errorMsg = 'error message';
       final Validator<double> validator = v.satisfy<double>(
-          (double i) => i > 23.4 && i <= 56.0,
-          satisfyMsg: (_) => errorMsg);
+        (double i) => i > 23.4 && i <= 56.0,
+        satisfyMsg: (_) => errorMsg,
+      );
 
       expect(validator(12), equals(errorMsg));
       expect(validator(23.4), equals(errorMsg));

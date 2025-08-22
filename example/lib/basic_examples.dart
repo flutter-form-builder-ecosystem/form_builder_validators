@@ -11,7 +11,8 @@ class BasicExamplesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Basic Examples (one validator per example)')),
+        title: const Text('Basic Examples (one validator per example)'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: SingleChildScrollView(
@@ -31,14 +32,15 @@ class BasicExamplesPage extends StatelessWidget {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                    labelText:
-                        'Type "I want to delete" to confirm the action.'),
+                  labelText: 'Type "I want to delete" to confirm the action.',
+                ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: Validators.equal('I want to delete'),
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                    labelText: 'Username (should not be "RESERVED")'),
+                  labelText: 'Username (should not be "RESERVED")',
+                ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: Validators.notEqual('RESERVED'),
               ),
@@ -50,14 +52,16 @@ class BasicExamplesPage extends StatelessWidget {
                 ),
               ),
               TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Input must not be null'),
+                decoration: const InputDecoration(
+                  labelText: 'Input must not be null',
+                ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (String? input) {
                   final String? isRequiredMsg = Validators.required()(input);
-                  return isRequiredMsg
-                      ?.toUpperCase()
-                      .replaceFirst('OVERRIDE: ', '');
+                  return isRequiredMsg?.toUpperCase().replaceFirst(
+                    'OVERRIDE: ',
+                    '',
+                  );
                 },
               ),
             ],

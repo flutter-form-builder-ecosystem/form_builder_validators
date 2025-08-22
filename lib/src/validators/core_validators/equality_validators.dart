@@ -10,8 +10,9 @@ Validator<T> equal<T extends Object?>(
     return referenceValue == input
         ? null
         : equalMsg?.call(input, referenceValue) ??
-            FormBuilderLocalizations.current
-                .equalErrorText(referenceValue.toString());
+              FormBuilderLocalizations.current.equalErrorText(
+                referenceValue.toString(),
+              );
   };
 }
 
@@ -24,7 +25,8 @@ Validator<T> notEqual<T extends Object?>(
     return referenceValue != input
         ? null
         : notEqualMsg?.call(input, referenceValue) ??
-            FormBuilderLocalizations.current
-                .notEqualErrorText(referenceValue.toString());
+              FormBuilderLocalizations.current.notEqualErrorText(
+                referenceValue.toString(),
+              );
   };
 }

@@ -29,11 +29,14 @@ Validator<T> string<T extends Object>([
 }
 
 /// {@macro validator_int}
-Validator<T> isInt<T extends Object>(
-    [Validator<int>? next, String Function(T input)? isIntMsg]) {
+Validator<T> isInt<T extends Object>([
+  Validator<int>? next,
+  String Function(T input)? isIntMsg,
+]) {
   String? finalValidator(T input) {
-    final (bool isValid, int? typeTransformedValue) =
-        _isIntValidateAndConvert(input);
+    final (bool isValid, int? typeTransformedValue) = _isIntValidateAndConvert(
+      input,
+    );
     if (!isValid) {
       return isIntMsg?.call(input) ??
           FormBuilderLocalizations.current.integerErrorText;
@@ -58,11 +61,14 @@ Validator<T> isInt<T extends Object>(
 }
 
 /// {@macro validator_num}
-Validator<T> isNum<T extends Object>(
-    [Validator<num>? next, String Function(T input)? isNumMsg]) {
+Validator<T> isNum<T extends Object>([
+  Validator<num>? next,
+  String Function(T input)? isNumMsg,
+]) {
   String? finalValidator(T input) {
-    final (bool isValid, num? typeTransformedValue) =
-        _isNumValidateAndConvert(input);
+    final (bool isValid, num? typeTransformedValue) = _isNumValidateAndConvert(
+      input,
+    );
     if (!isValid) {
       return isNumMsg?.call(input) ??
           FormBuilderLocalizations.current.numericErrorText;
@@ -87,8 +93,10 @@ Validator<T> isNum<T extends Object>(
 }
 
 /// {@macro validator_double}
-Validator<T> isDouble<T extends Object>(
-    [Validator<double>? next, String Function(T input)? isDoubleMsg]) {
+Validator<T> isDouble<T extends Object>([
+  Validator<double>? next,
+  String Function(T input)? isDoubleMsg,
+]) {
   String? finalValidator(T input) {
     final (bool isValid, double? typeTransformedValue) =
         _isDoubleValidateAndConvert(input);
@@ -118,15 +126,21 @@ Validator<T> isDouble<T extends Object>(
 }
 
 /// {@macro validator_bool}
-Validator<T> isBool<T extends Object>(
-    [Validator<bool>? next,
-    String Function(T input)? isBoolMsg,
-    bool caseSensitive = false,
-    bool trim = true]) {
+Validator<T> isBool<T extends Object>([
+  Validator<bool>? next,
+  String Function(T input)? isBoolMsg,
+  bool caseSensitive = false,
+  bool trim = true,
+]) {
   String? finalValidator(T input) {
-    final (bool isValid, bool? typeTransformedValue) =
-        _isBoolValidateAndConvert(input,
-            caseSensitive: caseSensitive, trim: trim);
+    final (
+      bool isValid,
+      bool? typeTransformedValue,
+    ) = _isBoolValidateAndConvert(
+      input,
+      caseSensitive: caseSensitive,
+      trim: trim,
+    );
     if (!isValid) {
       return isBoolMsg?.call(input) ??
           FormBuilderLocalizations.current.booleanErrorText;
@@ -137,14 +151,19 @@ Validator<T> isBool<T extends Object>(
   return finalValidator;
 }
 
-(bool, bool?) _isBoolValidateAndConvert<T extends Object>(T value,
-    {bool caseSensitive = false, bool trim = true}) {
+(bool, bool?) _isBoolValidateAndConvert<T extends Object>(
+  T value, {
+  bool caseSensitive = false,
+  bool trim = true,
+}) {
   if (value is bool) {
     return (true, value);
   }
   if (value is String) {
-    final bool? candidateValue = bool.tryParse(trim ? value.trim() : value,
-        caseSensitive: caseSensitive);
+    final bool? candidateValue = bool.tryParse(
+      trim ? value.trim() : value,
+      caseSensitive: caseSensitive,
+    );
     if (candidateValue != null) {
       return (true, candidateValue);
     }

@@ -14,8 +14,11 @@ Validator<String> password({
   String Function(String input)? passwordMsg,
 }) {
   if (maxLength < minLength) {
-    throw ArgumentError.value(maxLength, 'maxLength',
-        'The maxLength may not be less than minLength (=$minLength)');
+    throw ArgumentError.value(
+      maxLength,
+      'maxLength',
+      'The maxLength may not be less than minLength (=$minLength)',
+    );
   }
   final Validator<String> andValidator = and(<Validator<String>>[
     collection_val.minLength(minLength),
@@ -44,7 +47,7 @@ Validator<String> phoneNumber({
     return (regex ?? _phoneNumberRegex).hasMatch(phoneNumber)
         ? null
         : phoneNumberMsg?.call(input) ??
-            FormBuilderLocalizations.current.phoneErrorText;
+              FormBuilderLocalizations.current.phoneErrorText;
   };
 }
 
@@ -60,6 +63,6 @@ Validator<String> email({
     return (regex ?? defaultRegex).hasMatch(input.toLowerCase())
         ? null
         : emailMsg?.call(input) ??
-            FormBuilderLocalizations.current.emailErrorText;
+              FormBuilderLocalizations.current.emailErrorText;
   };
 }

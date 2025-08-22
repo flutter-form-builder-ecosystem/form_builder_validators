@@ -14,7 +14,7 @@ Validator<String> creditCard({
     return _isCreditCard(input, regex ?? _creditCardRegex)
         ? null
         : creditCardMsg?.call(input) ??
-            FormBuilderLocalizations.current.creditCardErrorText;
+              FormBuilderLocalizations.current.creditCardErrorText;
   };
 }
 
@@ -27,7 +27,7 @@ Validator<String> bic({
     return (isBic?.call(input) ?? _isBIC(input))
         ? null
         : (bicMsg?.call(input) ??
-            FormBuilderLocalizations.current.bicErrorText);
+              FormBuilderLocalizations.current.bicErrorText);
   };
 }
 
@@ -40,7 +40,7 @@ Validator<String> iban({
     return isIban?.call(input) ?? _isIBAN(input)
         ? null
         : (ibanMsg?.call(input) ??
-            FormBuilderLocalizations.current.ibanErrorText);
+              FormBuilderLocalizations.current.ibanErrorText);
   };
 }
 
@@ -112,7 +112,8 @@ bool _isIBAN(String value) {
 
   int remainder = int.parse(numericIban.substring(0, 9)) % 97;
   for (int i = 9; i < numericIban.length; i += 7) {
-    remainder = int.parse(
+    remainder =
+        int.parse(
           remainder.toString() +
               numericIban.substring(
                 i,

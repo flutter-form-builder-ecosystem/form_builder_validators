@@ -12,27 +12,29 @@ Validator<String> colorCode({
 }) {
   if (formats.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'formats', 'The set of formats allowed must not be empty');
+      '[]',
+      'formats',
+      'The set of formats allowed must not be empty',
+    );
   }
 
   return (String input) {
     return customColorCode?.call(input) ?? _isColorCode(input, formats: formats)
         ? null
         : colorCodeMsg?.call(input) ??
-            FormBuilderLocalizations.current
-                .colorCodeErrorText(_toStringFormats(formats));
+              FormBuilderLocalizations.current.colorCodeErrorText(
+                _toStringFormats(formats),
+              );
   };
 }
 
 /// {@macro validator_isbn}
-Validator<String> isbn({
-  String Function(String input)? isbnMsg,
-}) {
+Validator<String> isbn({String Function(String input)? isbnMsg}) {
   return (String input) {
     return _isISBN(input)
         ? null
         : isbnMsg?.call(input) ??
-            FormBuilderLocalizations.current.isbnErrorText;
+              FormBuilderLocalizations.current.isbnErrorText;
   };
 }
 
@@ -129,10 +131,7 @@ final RegExp _hsl = RegExp(
 ///
 /// ## Returns:
 /// A boolean indicating whether the string is a valid color code.
-bool _isColorCode(
-  String value, {
-  required Set<ColorFormat> formats,
-}) {
+bool _isColorCode(String value, {required Set<ColorFormat> formats}) {
   for (final ColorFormat format in formats) {
     switch (format) {
       case ColorFormat.hex:
@@ -141,8 +140,9 @@ bool _isColorCode(
         }
       case ColorFormat.rgb:
         if (_rgb.hasMatch(value)) {
-          final List<String> parts =
-              value.substring(4, value.length - 1).split(',');
+          final List<String> parts = value
+              .substring(4, value.length - 1)
+              .split(',');
           for (final String part in parts) {
             final int colorValue = int.tryParse(part.trim()) ?? -1;
             if (colorValue < 0 || colorValue > 255) {
@@ -154,8 +154,11 @@ bool _isColorCode(
 
       case ColorFormat.hsl:
         if (_hsl.hasMatch(value)) {
-          final List<String?> parts =
-              _hsl.firstMatch(value)!.groups(<int>[1, 2, 3]);
+          final List<String?> parts = _hsl.firstMatch(value)!.groups(<int>[
+            1,
+            2,
+            3,
+          ]);
           final int hue = int.tryParse(parts[0]!) ?? -1;
           final int saturation = int.tryParse(parts[1]!) ?? -1;
           final int lightness = int.tryParse(parts[2]!) ?? -1;

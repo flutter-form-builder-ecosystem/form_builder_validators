@@ -12,8 +12,9 @@ Validator<DateTime> after(
             (inclusive ? input.isAtSameMomentAs(reference) : false)
         ? null
         : afterMsg?.call(input, reference) ??
-            FormBuilderLocalizations.current
-                .dateMustBeAfterErrorText(reference.toLocal());
+              FormBuilderLocalizations.current.dateMustBeAfterErrorText(
+                reference.toLocal(),
+              );
   };
 }
 
@@ -28,8 +29,9 @@ Validator<DateTime> before(
             (inclusive ? input.isAtSameMomentAs(reference) : false)
         ? null
         : beforeMsg?.call(input, reference) ??
-            FormBuilderLocalizations.current
-                .dateMustBeBeforeErrorText(reference.toLocal());
+              FormBuilderLocalizations.current.dateMustBeBeforeErrorText(
+                reference.toLocal(),
+              );
   };
 }
 
@@ -38,12 +40,14 @@ Validator<DateTime> betweenDateTime(
   DateTime minReference,
   DateTime maxReference, {
   String Function(DateTime input, DateTime minReference, DateTime maxReference)?
-      betweenDateTimeMsg,
+  betweenDateTimeMsg,
   bool minInclusive = false,
   bool maxInclusive = false,
 }) {
-  assert(minReference.isBefore(maxReference),
-      'leftReference must be before rightReference');
+  assert(
+    minReference.isBefore(maxReference),
+    'leftReference must be before rightReference',
+  );
   return (DateTime input) {
     return (input.isBefore(maxReference) ||
                 (maxInclusive
@@ -53,7 +57,9 @@ Validator<DateTime> betweenDateTime(
                 (minInclusive ? input.isAtSameMomentAs(minReference) : false))
         ? null
         : betweenDateTimeMsg?.call(input, minReference, maxReference) ??
-            FormBuilderLocalizations.current.dateMustBeBetweenErrorText(
-                minReference.toLocal(), maxReference.toLocal());
+              FormBuilderLocalizations.current.dateMustBeBetweenErrorText(
+                minReference.toLocal(),
+                maxReference.toLocal(),
+              );
   };
 }

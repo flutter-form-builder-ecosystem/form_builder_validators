@@ -25,16 +25,17 @@ void main() {
     });
 
     test(
-        'Should check if the input value is not null/empty with composed validator `v`',
-        () {
-      final Validator<int?> v = required(isMultipleBy6);
+      'Should check if the input value is not null/empty with composed validator `v`',
+      () {
+        final Validator<int?> v = required(isMultipleBy6);
 
-      expect(v(null), equals(defaultError));
-      expect(v(0), isNull);
-      expect(v(1), equals(errorMultBy6));
-      expect(v(5), equals(errorMultBy6));
-      expect(v(6), isNull);
-    });
+        expect(v(null), equals(defaultError));
+        expect(v(0), isNull);
+        expect(v(1), equals(errorMultBy6));
+        expect(v(5), equals(errorMultBy6));
+        expect(v(6), isNull);
+      },
+    );
 
     test('Should return custom message for null input', () {
       const String customMsg = 'custom error message ';

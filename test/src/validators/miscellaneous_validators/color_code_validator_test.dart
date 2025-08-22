@@ -44,37 +44,44 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return the default error message if the color code is invalid',
-        () {
-      // Arrange
-      final Validator<String> validator = colorCode();
-      const String invalidColor = 'invalid-color';
+    test(
+      'should return the default error message if the color code is invalid',
+      () {
+        // Arrange
+        final Validator<String> validator = colorCode();
+        const String invalidColor = 'invalid-color';
 
-      // Act
-      final String? result = validator(invalidColor);
+        // Act
+        final String? result = validator(invalidColor);
 
-      // Assert
-      expect(
-        result,
-        equals(
-          FormBuilderLocalizations.current.colorCodeErrorText('HEX, RGB, HSL'),
-        ),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(
+            FormBuilderLocalizations.current.colorCodeErrorText(
+              'HEX, RGB, HSL',
+            ),
+          ),
+        );
+      },
+    );
 
-    test('should return the custom error message if the color code is invalid',
-        () {
-      // Arrange
-      final Validator<String> validator =
-          colorCode(colorCodeMsg: (_) => customErrorMessage);
-      const String invalidColor = 'invalid-color';
+    test(
+      'should return the custom error message if the color code is invalid',
+      () {
+        // Arrange
+        final Validator<String> validator = colorCode(
+          colorCodeMsg: (_) => customErrorMessage,
+        );
+        const String invalidColor = 'invalid-color';
 
-      // Act
-      final String? result = validator(invalidColor);
+        // Act
+        final String? result = validator(invalidColor);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
     test('should return null if the color code matches custom regex', () {
       // Arrange
@@ -92,22 +99,23 @@ void main() {
     });
 
     test(
-        'should return the custom error message if the color code does not match custom regex',
-        () {
-      // Arrang
-      final Validator<String> validator = colorCode(
-        customColorCode: (String input) =>
-            RegExp(r'^[A-Fa-f0-9]{6}$').hasMatch(input),
-        colorCodeMsg: (_) => customErrorMessage,
-      );
+      'should return the custom error message if the color code does not match custom regex',
+      () {
+        // Arrang
+        final Validator<String> validator = colorCode(
+          customColorCode: (String input) =>
+              RegExp(r'^[A-Fa-f0-9]{6}$').hasMatch(input),
+          colorCodeMsg: (_) => customErrorMessage,
+        );
 
-      const String invalidCustomColor = 'invalid';
+        const String invalidCustomColor = 'invalid';
 
-      // Act
-      final String? result = validator(invalidCustomColor);
+        // Act
+        final String? result = validator(invalidCustomColor);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
   });
 }

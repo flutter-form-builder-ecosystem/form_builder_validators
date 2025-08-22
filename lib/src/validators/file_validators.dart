@@ -50,11 +50,16 @@ Validator<int> maxFileSize(
       return maxFileSizeMsg(input, max, base);
     }
 
-    final (String formattedMax, String formattedInput) =
-        formatBoth(max, input, base);
+    final (String formattedMax, String formattedInput) = formatBoth(
+      max,
+      input,
+      base,
+    );
 
-    return FormBuilderLocalizations.current
-        .fileSizeErrorText(formattedMax, formattedInput);
+    return FormBuilderLocalizations.current.fileSizeErrorText(
+      formattedMax,
+      formattedInput,
+    );
   };
 }
 
@@ -66,7 +71,10 @@ Validator<int> maxFileSize(
 (String v1, String v2) formatBoth(int v1, int v2, Base b) {
   if (v1 == v2) {
     throw ArgumentError.value(
-        v2, 'input', "'input' must be different from 'max'");
+      v2,
+      'input',
+      "'input' must be different from 'max'",
+    );
   }
   assert(v1 != v2);
   final int base = b.base;
@@ -98,7 +106,8 @@ Validator<int> maxFileSize(
     }
   }
   throw StateError(
-      "Unable to format 'max' and 'input' to distinct string representations despite having different values (max=$v1, input=$v2)");
+    "Unable to format 'max' and 'input' to distinct string representations despite having different values (max=$v1, input=$v2)",
+  );
 }
 
 /// Helper function to format bytes into a human-readable string (e.g., KB, MB, GB).

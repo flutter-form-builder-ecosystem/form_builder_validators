@@ -50,7 +50,7 @@ Validator<String> ip({
 const List<String> kDefaultUrlValidationProtocols = <String>[
   'http',
   'https',
-  'ftp'
+  'ftp',
 ];
 
 /// {@macro validator_url}
@@ -65,10 +65,12 @@ Validator<String> url({
   String Function(String input)? urlMsg,
 }) {
   final List<String> immutableProtocols = List<String>.unmodifiable(protocols);
-  final List<String> immutableHostAllowList =
-      List<String>.unmodifiable(hostAllowList);
-  final List<String> immutableHostBlockList =
-      List<String>.unmodifiable(hostBlockList);
+  final List<String> immutableHostAllowList = List<String>.unmodifiable(
+    hostAllowList,
+  );
+  final List<String> immutableHostBlockList = List<String>.unmodifiable(
+    hostBlockList,
+  );
   return (String value) {
     return (regex != null && !regex.hasMatch(value)) ||
             !_isURL(
@@ -97,7 +99,7 @@ Validator<String> macAddress({
     return (isMacAddress?.call(input) ?? defaultRegex.hasMatch(input))
         ? null
         : (macAddressMsg?.call(input) ??
-            FormBuilderLocalizations.current.macAddressErrorText);
+              FormBuilderLocalizations.current.macAddressErrorText);
   };
 }
 
@@ -105,8 +107,9 @@ Validator<String> macAddress({
 //*                              Aux functions                                 *
 //******************************************************************************
 const int _maxUrlLength = 2083;
-final RegExp _ipv4Maybe =
-    RegExp(r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$');
+final RegExp _ipv4Maybe = RegExp(
+  r'^(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)\.(\d?\d?\d)$',
+);
 final RegExp _ipv6 = RegExp(
   r'^((?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]+|::(ffff(?::0{1,4})?:)?(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))$',
 );

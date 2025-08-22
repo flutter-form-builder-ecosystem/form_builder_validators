@@ -8,14 +8,17 @@ Validator<T> inList<T extends Object?>(
 }) {
   if (values.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'values', 'The list of values must not be empty');
+      '[]',
+      'values',
+      'The list of values must not be empty',
+    );
   }
   final Set<T> setOfValues = values.toSet();
   return (T input) {
     return setOfValues.contains(input)
         ? null
         : inListMsg?.call(input, values) ??
-            FormBuilderLocalizations.current.containsElementErrorText;
+              FormBuilderLocalizations.current.containsElementErrorText;
   };
 }
 
@@ -26,25 +29,31 @@ Validator<T> notInList<T extends Object?>(
 }) {
   if (values.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'values', 'The list of values must not be empty');
+      '[]',
+      'values',
+      'The list of values must not be empty',
+    );
   }
   final Set<T> setOfValues = values.toSet();
   return (T input) {
     return !setOfValues.contains(input)
         ? null
         : notInListMsg?.call(input, values) ??
-            FormBuilderLocalizations.current.doesNotContainElementErrorText;
+              FormBuilderLocalizations.current.doesNotContainElementErrorText;
   };
 }
 
 /// {@macro validator_is_true}
-Validator<T> isTrue<T extends Object>(
-    {String Function(T input)? isTrueMsg,
-    bool caseSensitive = false,
-    bool trim = true}) {
+Validator<T> isTrue<T extends Object>({
+  String Function(T input)? isTrueMsg,
+  bool caseSensitive = false,
+  bool trim = true,
+}) {
   return (T input) {
-    final (bool isValid, bool? typeTransformedValue) =
-        _isBoolValidateAndConvert(
+    final (
+      bool isValid,
+      bool? typeTransformedValue,
+    ) = _isBoolValidateAndConvert(
       input,
       caseSensitive: caseSensitive,
       trim: trim,
@@ -58,13 +67,16 @@ Validator<T> isTrue<T extends Object>(
 }
 
 /// {@macro validator_false}
-Validator<T> isFalse<T extends Object>(
-    {String Function(T input)? isFalseMsg,
-    bool caseSensitive = false,
-    bool trim = true}) {
+Validator<T> isFalse<T extends Object>({
+  String Function(T input)? isFalseMsg,
+  bool caseSensitive = false,
+  bool trim = true,
+}) {
   return (T input) {
-    final (bool isValid, bool? typeTransformedValue) =
-        _isBoolValidateAndConvert(
+    final (
+      bool isValid,
+      bool? typeTransformedValue,
+    ) = _isBoolValidateAndConvert(
       input,
       caseSensitive: caseSensitive,
       trim: trim,
@@ -77,14 +89,19 @@ Validator<T> isFalse<T extends Object>(
   };
 }
 
-(bool, bool?) _isBoolValidateAndConvert<T extends Object>(T value,
-    {bool caseSensitive = false, bool trim = true}) {
+(bool, bool?) _isBoolValidateAndConvert<T extends Object>(
+  T value, {
+  bool caseSensitive = false,
+  bool trim = true,
+}) {
   if (value is bool) {
     return (true, value);
   }
   if (value is String) {
-    final bool? candidateValue = bool.tryParse(trim ? value.trim() : value,
-        caseSensitive: caseSensitive);
+    final bool? candidateValue = bool.tryParse(
+      trim ? value.trim() : value,
+      caseSensitive: caseSensitive,
+    );
     if (candidateValue != null) {
       return (true, candidateValue);
     }
@@ -101,6 +118,6 @@ Validator<T> satisfy<T extends Object?>(
     return condition(input)
         ? null
         : satisfyMsg?.call(input) ??
-            FormBuilderLocalizations.current.satisfyErrorText;
+              FormBuilderLocalizations.current.satisfyErrorText;
   };
 }

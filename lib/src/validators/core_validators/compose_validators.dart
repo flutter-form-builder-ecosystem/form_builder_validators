@@ -12,7 +12,10 @@ Validator<T> and<T extends Object>(
 }) {
   if (validators.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'validators', 'The list of validators must not be empty');
+      '[]',
+      'validators',
+      'The list of validators must not be empty',
+    );
   }
   final List<Validator<T>> immutableValidators =
       List<Validator<T>>.unmodifiable(validators);
@@ -44,7 +47,10 @@ Validator<T> or<T extends Object>(
 }) {
   if (validators.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'validators', 'The list of validators must not be empty');
+      '[]',
+      'validators',
+      'The list of validators must not be empty',
+    );
   }
   final List<Validator<T>> immutableValidators =
       List<Validator<T>>.unmodifiable(validators);

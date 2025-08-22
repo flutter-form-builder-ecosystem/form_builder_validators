@@ -16,7 +16,10 @@ Validator<String> matchesAllowedExtensions(
 }) {
   if (extensions.isEmpty) {
     throw ArgumentError.value(
-        '[]', 'extensions', 'The list of extensions must not be empty');
+      '[]',
+      'extensions',
+      'The list of extensions must not be empty',
+    );
   }
   int maxLevel = 1;
   for (final (int i, String ex) in extensions.indexed) {
@@ -50,8 +53,8 @@ Validator<String> matchesAllowedExtensions(
     return extensionsFromUserInput.intersection(extensionsSet).isNotEmpty
         ? null
         : matchesAllowedExtensionsMsg?.call(extensions) ??
-            FormBuilderLocalizations.current.fileExtensionErrorText(
-              extensions.join(', '),
-            );
+              FormBuilderLocalizations.current.fileExtensionErrorText(
+                extensions.join(', '),
+              );
   };
 }
