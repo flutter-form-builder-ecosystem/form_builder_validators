@@ -253,22 +253,12 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.location_city),
                 ),
                 validator: V.required(
-                  V.and(<Validator<String>>[
-                    V.match(
-                      RegExp(r'^[A-Z][a-zA-Z\s]+$'),
-                      matchMsg: (_) => 'invalid city',
-                    ),
-                    V.inList(<String>[
-                      'CityA',
-                      'CityB',
-                      'CityC',
-                    ], inListMsg: (_, _) => 'invalid city'),
-                    V.notInList(<String>[
-                      'CityD',
-                      'CityE',
-                    ], notInListMsg: (_, _) => 'invalid city'),
-                  ]),
-                  'invalid city',
+                  V.inList(
+                    <String>['CityA', 'CityB', 'CityC'],
+                    inListMsg: (_, List<String> validOptions) =>
+                        'Please choose from: ${validOptions.join(', ')}',
+                  ),
+                  'Please select a city',
                 ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
