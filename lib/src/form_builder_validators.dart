@@ -2668,6 +2668,63 @@ final class Validators {
     startsWithMsg: startsWithMsg,
   );
 
+  /// {@template validator_ends_with}
+  /// Creates a validator function that checks if a string ends with a specific
+  /// suffix. The validation can be performed with or without case sensitivity.
+  ///
+  /// ## Parameters
+  /// - `suffix` (`String`): The text pattern that must appear at the end
+  ///   of the validated string. An empty suffix will always result in successful
+  ///   validation as all strings technically end with an empty string.
+  /// - `caseSensitive` (`bool`): Controls whether the suffix matching should be
+  ///   case-sensitive. Defaults to `true`. When set to `false`, both the input
+  ///   value and suffix are converted to lowercase before comparison.
+  /// - `endsWithMsg` (`String Function(String suffix, String input)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   suffix pattern and the user input as parameters, returning a customized
+  ///   error message string. If not provided, the validator uses the default
+  ///   localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string ends with the suffix)
+  /// - Returns an error message string when validation fails (suffix not found at end)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // URL protocol validation (case-sensitive)
+  /// final httpsValidator = endsWith('.com');
+  /// assert(httpsValidator('https://example.com') == null); // Valid
+  /// assert(httpsValidator('http://example.org') != null); // Invalid
+  /// assert(httpsValidator('hTTp://example.COM') != null); // Invalid: case sensitive
+  ///
+  /// // Case-insensitive prefix validation
+  /// final greetingValidator = endsWith('world', caseSensitive: false);
+  /// assert(greetingValidator('Hello world') == null); // Valid
+  /// assert(greetingValidator('Hello WORLD') == null); // Valid
+  /// assert(greetingValidator('hello world ') == null); // Invalid: ends with space.
+  /// assert(greetingValidator('Hello world!') != null); // Invalid
+  ///
+  /// // Custom error message for API key validation
+  /// final apiKeyValidator = endsWith(
+  ///   '-abc',
+  ///   endsWithMsg: (suffix, _) => 'API key must end with "$suffix"'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Empty suffixes always pass validation and return `null`
+  /// {@endtemplate}
+  static Validator<String> endsWith(
+    String suffix, {
+    c.bool caseSensitive = true,
+    String Function(String suffix, String input)? endsWithMsg,
+  }) => val.endsWith(
+    suffix,
+    caseSensitive: caseSensitive,
+    endsWithMsg: endsWithMsg,
+  );
+
   /// {@template validator_has_min_uppercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
   /// minimum number of uppercase characters. The validator returns `null` for
