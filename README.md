@@ -328,9 +328,7 @@ TextFormField(
         /// Ensures positive values only. We could also have used `Validators.greaterThanOrEqualTo(0)` instead.
         (String? val) {
             if (val != null) {
-              final int? number = int.tryParse(val);
-              // todo bug here: if it is not int, it accepts negative
-              // numbers
+              final num? number = num.tryParse(val);
               if (number == null) return null;
               if (number < 0) return 'We cannot have a negative age';
             }
@@ -375,7 +373,7 @@ String? isEven(int? userInput) {
   return (userInput != null && userInput % 2 == 0) ? null : 'This field must be even';
 }
 ```
-The challenge with the previous approach is that we must handle null checks in every validator
+The challenge with the previous approaches (< v.11.x.x) is that we must handle null checks in every validator
 implementation. This leads to:
   1. Tangled validator logic: Each validator must handle both validation rules and null checking,making the code harder to understand and maintain.
   2. Code duplication: When composing validators, the same null-checking logic must be repeated across multiple validators, violating the DRY principle.
@@ -389,7 +387,7 @@ String? isEven(int? userInput) {
 }
 ```
 
-This package introduces a more precise approach that separates null-value handling from the actual
+From version 12.0.0, this package introduces a more precise approach that separates null-value handling from the actual
 validation logic. Instead of the previous isEven implementation, we can compose two focused validators:
 
 ```dart

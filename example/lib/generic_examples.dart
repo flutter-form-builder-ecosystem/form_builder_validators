@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_builder_validators/form_builder_validators.dart'
-    show Validator, Validators;
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 /// alias for Validators class.
 typedef V = Validators;
@@ -24,8 +23,9 @@ class GenericExamplesPage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator: V.required(V.and(<Validator<String>>[
-                  V.num(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
+                validator: V.required(
+                  V.and(<Validator<String>>[
+                    V.num(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
                     /// Include your own custom `FormFieldValidator` function, if you want
                     /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
@@ -230,7 +230,8 @@ class GenericExamplesPage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: V.required(
-                    V.num(V.and(<Validator<num>>[V.between(0, 120)]))),
+                  V.num(V.and(<Validator<num>>[V.between(0, 120)])),
+                ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -241,10 +242,7 @@ class GenericExamplesPage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
                 validator: V.required(
-                  V.and(<Validator<String>>[
-                    V.int(),
-                    V.equalLength(3),
-                  ]),
+                  V.and(<Validator<String>>[V.int(), V.equalLength(3)]),
                 ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
@@ -260,14 +258,15 @@ class GenericExamplesPage extends StatelessWidget {
                       RegExp(r'^[A-Z][a-zA-Z\s]+$'),
                       matchMsg: (_) => 'invalid city',
                     ),
-                    V.inList(
-                      <String>['CityA', 'CityB', 'CityC'],
-                      inListMsg: (_, __) => 'invalid city',
-                    ),
-                    V.notInList(
-                      <String>['CityD', 'CityE'],
-                      notInListMsg: (_, __) => 'invalid city',
-                    ),
+                    V.inList(<String>[
+                      'CityA',
+                      'CityB',
+                      'CityC',
+                    ], inListMsg: (_, __) => 'invalid city'),
+                    V.notInList(<String>[
+                      'CityD',
+                      'CityE',
+                    ], notInListMsg: (_, __) => 'invalid city'),
                   ]),
                   'invalid city',
                 ),
@@ -279,9 +278,12 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Latitude',
                   prefixIcon: Icon(Icons.add_location),
                 ),
-                validator: V.required(V.transformAndValidate(
+                validator: V.required(
+                  V.transformAndValidate(
                     (String input) => input.replaceAll(',', '.'),
-                    next: V.double(V.between(-90, 90)))),
+                    next: V.double(V.between(-90, 90)),
+                  ),
+                ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -290,9 +292,12 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Longitude',
                   prefixIcon: Icon(Icons.add_location),
                 ),
-                validator: V.required(V.transformAndValidate(
+                validator: V.required(
+                  V.transformAndValidate(
                     (String input) => input.replaceAll(',', '.'),
-                    next: V.double(V.between(-180, 180)))),
+                    next: V.double(V.between(-180, 180)),
+                  ),
+                ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
               ),

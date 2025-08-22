@@ -4548,7 +4548,6 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<String> creditCard({
-    // TODO(ArturAssisComp): turn this into a function, becoming more generic.
     RegExp? regex,
     String Function(String input)? creditCardMsg,
   }) => val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
