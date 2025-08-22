@@ -195,7 +195,7 @@ Validators that check a generic type user input.
 - `Validators.hasMinNumericChars(min:min)` - Checks if the field has a minimum number of numeric chars.
 - `Validators.hasMinSpecialChars(min:min)` - Checks if the field has a minimum number of special chars.
 - `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
-- TODO [ ] `Validators.notMatch(regExp)` - Checks if the field does not match with the regular expression `regExp`.
+- `Validators.notMatch(regExp)` - Checks if the field does not match with the regular expression `regExp`.
 - `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
 - TODO [ ] `FormBuilderValidators.maxWordsCount()` - requires the word count of the field's value to be less than or equal to the provided maximum count.
 - TODO [ ] `FormBuilderValidators.minWordsCount()` - requires the word count of the field's value to be greater than or equal to the provided minimum count.

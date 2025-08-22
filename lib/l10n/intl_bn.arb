@@ -1,5 +1,6 @@
 {
   "@@locale": "bn",
+  "notMatchErrorText": "মানটি প্যাটার্নের সাথে মেলে না",
   "satisfyErrorText": "মান শর্ত পূরণ করে না।",
   "andSeparator": " এবং ",
   "betweenLengthErrorText": "মানটির দৈর্ঘ্য {min} এবং {max} এর মধ্যে হতে হবে, সহ.",

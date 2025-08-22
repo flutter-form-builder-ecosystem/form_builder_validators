@@ -1,5 +1,6 @@
 {
   "@@locale": "km",
+  "notMatchErrorText": "តម្លៃមិនត្រូវផ្គូផ្គងជាមួយគំរូ",
   "satisfyErrorText": "តម្លៃមិនបំពេញលក្ខខណ្ឌ។",
   "andSeparator": " និង ",
   "betweenLengthErrorText": "តម្លៃត្រូវតែមានប្រវែងរវាង {min} និង {max} រួមបញ្ចូលទាំងពីរ។",

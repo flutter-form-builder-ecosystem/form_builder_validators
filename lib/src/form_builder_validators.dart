@@ -3080,19 +3080,56 @@ final class Validators {
   ///   emailRegExp,
   ///   matchMsg: (_)=>'Please enter a valid email address',
   /// );
-  /// print(emailValidator('user@example.com')); // Returns null
-  /// print(emailValidator('invalid-email')); // Returns error message
+  /// assert(emailValidator('user@example.com') == null); // Valid
+  /// assert(emailValidator('invalid-email') != null); // Invalid
   /// ```
-  ///
-  /// ## Caveats
-  /// - Complex regular expressions may impact performance for large inputs
-  /// - Consider using more specific validators for common patterns like email
-  ///   or phone number validation
   /// {@endtemplate}
   static Validator<String> match(
     RegExp regExp, {
     String Function(String input)? matchMsg,
   }) => val.match(regExp, matchMsg: matchMsg);
+
+  /// {@template validator_not_match}
+  /// Creates a validator function that checks if the [String] input does not match a given
+  /// regular expression pattern. The validator returns `null` for valid input and
+  /// an error message for invalid input.
+  ///
+  /// If validation fails and no custom error message is provided via [notMatchMsg],
+  /// returns the default localized error message from
+  /// `FormBuilderLocalizations.current.notMatchErrorText`.
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp`): The regular expression pattern not allowed to match against the input
+  ///   string.
+  /// - `notMatchMsg` (`String Function(String input)?`): Optional custom error message
+  /// to display when the validation fails. If not provided, uses the default
+  /// localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that takes a string input and returns:
+  /// - `null` if the input does not match the provided regular expression pattern
+  /// - An error message string if the validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic validation to reject input containing special characters
+  /// final noSpecialCharsValidator = notMatch(
+  ///   RegExp(r'[!@#$%^&*(),.?":{}|<>]'),
+  ///   notMatchMsg: (_) => 'Special characters are not allowed',
+  /// );
+  /// assert(noSpecialCharsValidator('username123') == null); // Valid - no special chars
+  /// assert(noSpecialCharsValidator('user@name') != null); // Invalid - contains @
+  ///
+  /// // Using default error message (no custom message provided)
+  /// final noDigitsValidator = notMatch(RegExp(r'\d'));
+  /// assert(noDigitsValidator('hello world') == null); // Valid - no digits
+  /// assert(noDigitsValidator('hello123') != null); // Invalid - contains digits
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> notMatch(
+    RegExp regExp, {
+    String Function(String input)? notMatchMsg,
+  }) => val.notMatch(regExp, notMatchMsg: notMatchMsg);
 
   /// {@template validator_uuid}
   /// A validator function that checks if a given string matches the UUID format.

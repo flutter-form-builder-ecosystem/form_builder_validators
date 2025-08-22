@@ -1,5 +1,6 @@
 {
   "@@locale": "zh",
+  "notMatchErrorText": "值不应与模式匹配",
   "satisfyErrorText": "值不满足条件。",
   "andSeparator": " 和 ",
   "betweenLengthErrorText": "值的长度必须在 {min} 和 {max} 之间（包含）。",

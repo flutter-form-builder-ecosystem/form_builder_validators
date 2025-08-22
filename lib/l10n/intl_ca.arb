@@ -1,5 +1,6 @@
 {
   "@@locale": "ca",
+  "notMatchErrorText": "El valor no ha de coincidir amb el patró",
   "satisfyErrorText": "El valor no compleix la condició.",
   "andSeparator": " i ",
   "betweenLengthErrorText": "El valor ha de tenir una longitud entre {min} i {max}, inclosos.",

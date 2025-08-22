@@ -132,6 +132,19 @@ Validator<String> match(
   };
 }
 
+/// {@macro validator_not_match}
+Validator<String> notMatch(
+  RegExp regExp, {
+  String Function(String input)? notMatchMsg,
+}) {
+  return (String input) {
+    return !regExp.hasMatch(input)
+        ? null
+        : notMatchMsg?.call(input) ??
+              FormBuilderLocalizations.current.notMatchErrorText;
+  };
+}
+
 final RegExp _uuidRegex = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
 );

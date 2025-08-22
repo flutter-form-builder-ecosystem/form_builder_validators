@@ -1,5 +1,6 @@
 {
   "@@locale": "he",
+  "notMatchErrorText": "הערך לא צריך להתאים לתבנית",
   "satisfyErrorText": "הערך אינו עומד בתנאי.",
   "andSeparator": " ו ",
   "betweenLengthErrorText": "הערך חייב להיות באורך שבין {min} ל-{max}, כולל.",

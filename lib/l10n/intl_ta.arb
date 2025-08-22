@@ -1,5 +1,6 @@
 {
   "@@locale": "ta",
+  "notMatchErrorText": "மதிப்பு வடிவத்துடன் பொருந்தக்கூடாது",
   "satisfyErrorText": "மதிப்பு நிபந்தனையை பூர்த்தி செய்யவில்லை।",
   "andSeparator": " மற்றும் ",
   "betweenLengthErrorText": "மதிப்பு {min} மற்றும் {max} இடையே நீளம் கொண்டிருக்க வேண்டும், உள்ளடங்கலாக.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "lv",
+  "notMatchErrorText": "Vērtībai nevajadzētu atbilst paraugam",
   "satisfyErrorText": "Vērtība neatbilst nosacījumam.",
   "andSeparator": " un ",
   "betweenLengthErrorText": "Vērtības garumam jābūt starp {min} un {max}, ieskaitot.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "ja",
+  "notMatchErrorText": "値はパターンと一致してはいけません",
   "satisfyErrorText": "値が条件を満たしていません。",
   "andSeparator": " と ",
   "betweenLengthErrorText": "値の長さは{min}から{max}の間（両端を含む）である必要があります。",

@@ -1,5 +1,6 @@
 {
   "@@locale": "bs",
+  "notMatchErrorText": "Vrijednost se ne smije poklapati s uzorkom",
   "satisfyErrorText": "Vrednost ne zadovoljava uslov.",
   "andSeparator": " i ",
   "betweenLengthErrorText": "Vrijednost mora imati dužinu između {min} i {max}, uključivo.",

@@ -1,5 +1,6 @@
 {
   "@@locale": "sl",
+  "notMatchErrorText": "Vrednost se ne sme ujemati z vzorcem",
   "satisfyErrorText": "Vrednost ne izpolnjuje pogoja.",
   "andSeparator": " in ",
   "betweenLengthErrorText": "Vrednost mora imeti dolžino med {min} in {max}, vključno.",

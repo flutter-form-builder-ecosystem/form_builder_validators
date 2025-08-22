@@ -1,5 +1,6 @@
 {
   "@@locale": "da",
+  "notMatchErrorText": "Værdien må ikke matche mønsteret",
   "satisfyErrorText": "Værdien opfylder ikke betingelsen.",
   "andSeparator": " og ",
   "betweenLengthErrorText": "Værdien skal have en længde mellem {min} og {max}, inklusive.",

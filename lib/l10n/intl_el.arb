@@ -1,5 +1,6 @@
 {
   "@@locale": "el",
+  "notMatchErrorText": "Η τιμή δεν πρέπει να ταιριάζει με το μοτίβο",
   "satisfyErrorText": "Η αξία δεν ικανοποιεί τη συνθήκη.",
   "andSeparator": " και ",
   "betweenLengthErrorText": "Η τιμή πρέπει να έχει μήκος μεταξύ {min} και {max}, συμπεριλαμβανομένων.",

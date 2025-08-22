@@ -1,5 +1,6 @@
 {
   "@@locale": "ko",
+  "notMatchErrorText": "값은 패턴과 일치하면 안 됩니다",
   "satisfyErrorText": "값이 조건을 만족하지 않습니다.",
   "andSeparator": " 그리고 ",
   "betweenLengthErrorText": "값의 길이는 {min}에서 {max} 사이여야 합니다(포함).",

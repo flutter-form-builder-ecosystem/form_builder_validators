@@ -1,5 +1,6 @@
 {
   "@@locale": "de",
+  "notMatchErrorText": "Der Wert darf nicht dem Muster entsprechen",
   "satisfyErrorText": "Der Wert erfüllt die Bedingung nicht.",
   "andSeparator": " und ",
   "betweenLengthErrorText": "Der Wert muss eine Länge zwischen {min} und {max} haben, einschließlich.",

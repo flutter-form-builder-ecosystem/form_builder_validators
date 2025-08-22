@@ -1,5 +1,6 @@
 {
   "@@locale": "hi",
+  "notMatchErrorText": "मान पैटर्न से मेल नहीं खाना चाहिए",
   "satisfyErrorText": "मान शर्त को पूरा नहीं करता।",
   "andSeparator": " और ",
   "betweenLengthErrorText": "मान की लंबाई {min} और {max} के बीच होनी चाहिए, सहित.",

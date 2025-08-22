@@ -1,5 +1,6 @@
 {
   "@@locale": "et",
+  "notMatchErrorText": "Väärtus ei tohi mustrile vastata",
   "satisfyErrorText": "Väärtus ei vasta tingimustele.",
   "andSeparator": " ja ",
   "betweenLengthErrorText": "Väärtuse pikkus peab olema vahemikus {min} kuni {max}, kaasa arvatud.",

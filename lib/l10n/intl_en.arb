@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+  "notMatchErrorText": "Value must not match pattern",
   "andSeparator": " and ",
   "betweenLengthErrorText": "Value must have a length that is between {min} and {max}, inclusive.",
   "@betweenLengthErrorText": {
