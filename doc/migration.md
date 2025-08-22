@@ -215,8 +215,6 @@ Validators.num(
 ```
 - `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32), thus, a custom validator should be implemented.
   - Example: 
-
-
 ```dart
 Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
   return (input){
@@ -338,20 +336,7 @@ Validators.notEqual(
 );
 ```
 
-- `FormBuilderValidators.or`
-```dart
-// Old API
-FormBuilderValidators.or([
-  validator1,
-  validator2
-]);
-
-// New API equivalent
-Validators.or([
-  validator1,
-  validator2
-]);
-```
+- `FormBuilderValidators.or`: equivalent to `Validators.or`.
 
 - `FormBuilderValidators.required`
 ```dart
@@ -457,7 +442,7 @@ Validators.dateTime(
 // Old API:
 FormBuilderValidators.dateTime(errorText: 'Invalid date time');
 
-// New API (close):
+// New API :
 final errorText = 'Invalid date time';
 Validators.required(Validators.dateTime(null, (_)=>errorText), errorText);
 ```
@@ -616,19 +601,8 @@ Validators.and([
 ]);
 ```
 - `FormBuilderValidators.creditCardExpirationDate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_expiration_date_validator.dart#L52).
-- `FormBuilderValidators.creditCard()`
-```dart
-// Old API:
-FormBuilderValidators.creditCard(
-  errorText: 'invalid credit card',
-);
 
-// New API:
-Validators.creditCard(
-  creditCardMsg: 'invalid credit card',
-);
-
-```
+- `FormBuilderValidators.creditCard()`: equivalent to `Validators.creditCard`. 
 
 - `FormBuilderValidators.iban()`
 ```dart
@@ -785,30 +759,8 @@ Validators.string(
   (_)=>'invalid passport',
 );
 ```
-- `FormBuilderValidators.password()`
-```dart
-// Old API:
-FormBuilderValidators.password(
-  minLength: 1,
-  maxLength: 32,
-  minUppercaseCount: 2,
-  minLowercaseCount: 2,
-  minNumberCount: 2,
-  minSpecialCharCount: 2,
-  errorText: 'error text',
-);
+- `FormBuilderValidators.password()`: equivalent to `Validators.password`.
 
-// New API:
-Validators.password(
-  minLength: 1,
-  maxLength: 32,
-  minUppercaseCount: 2,
-  minLowercaseCount: 2,
-  minNumberCount: 2,
-  minSpecialCharCount: 2,
-  passwordMsg:(_) => 'error text',
-);
-```
 - `FormBuilderValidators.ssn()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/ssn_validator.dart#L47)  
 - `FormBuilderValidators.state()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/state_validator.dart#L53). Something close would be:
 ```dart
@@ -916,20 +868,7 @@ Validators.string(
 
 ### Network validators
 
-- `FormBuilderValidators.email()`
-```dart
-// Old API:
-FormBuilderValidators.email(
-  regex: emailRegex,
-  errorText: 'invalid email',
-);
-
-// New API:
-Validators.email(
-  regex: emailRegex,
-  emailMsg: (_)=>'invalid email',
-);
-```
+- `FormBuilderValidators.email()`: equivalent to `Validators.email`.
 
 - `FormBuilderValidators.ip()`
 ```dart
@@ -1003,14 +942,7 @@ Validators.macAddress(
 );
 ```
 
-- `FormBuilderValidators.phoneNumber()`
-```dart
-// Old API
-FormBuilderValidators.phoneNumber();
-
-// New API 
-Validators.phoneNumber();
-```
+- `FormBuilderValidators.phoneNumber()`: equivalent to `Validators.phoneNumber`.
 
 - `FormBuilderValidators.portNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/network/port_number_validator.dart#L40). But, something close would be:
 ```dart
@@ -1029,14 +961,7 @@ Validators.int(
 );
 ```
 
-- `FormBuilderValidators.url()` 
-```dart
-// Old API
-FormBuilderValidators.url();
-
-// New API equivalent
-Validators.url();
-```
+- `FormBuilderValidators.url()`: equivalent to `Validators.url`. 
 
 
 ### Numeric validators
@@ -1070,7 +995,7 @@ Validators.int(
 // Old API
 FormBuilderValidators.integer(errorText: 'error text');
 
-// New API (close):
+// New API:
 Validators.int(null,(_)=> 'error text');
 ```
 
@@ -1079,7 +1004,7 @@ Validators.int(null,(_)=> 'error text');
 // Old API (inclusive: true)
 FormBuilderValidators.max(n, inclusive:true, errorText:'error msg');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.lessThanOrEqualTo(n, lessThanOrEqualMsg: (_, __)=>'error msg'),
   (_)=>'error msg',
@@ -1090,7 +1015,7 @@ Validators.num(
 // Old API (inclusive: false)
 FormBuilderValidators.max(n, inclusive:false, errorText:'error msg');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.lessThan(n, lessThanMsg: (_, __)=>'error msg'),
   (_)=>'error msg',
@@ -1102,7 +1027,7 @@ Validators.num(
 // Old API (inclusive: true)
 FormBuilderValidators.min(n, inclusive:true, errorText:'error msg');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.greaterThanOrEqualTo(n, greaterThanOrEqualMsg: (_, __)=>'error msg'),
   (_)=>'error msg',
@@ -1113,7 +1038,7 @@ Validators.num(
 // Old API (inclusive: false)
 FormBuilderValidators.min(n, inclusive:false, errorText:'error msg');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.greaterThan(n, greaterThanMsg: (_, __)=>'error msg'),
   (_)=>'error msg',
@@ -1125,7 +1050,7 @@ Validators.num(
 // Old API:
 FormBuilderValidators.negativeNumber(errorText:'error text');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.lessThan(0, lessThanMsg:(_, __)=>'error text'),
   (_)=>'error msg',
@@ -1138,7 +1063,7 @@ Validators.num(
 // Old API:
 FormBuilderValidators.notZeroNumber(errorText:'error text');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.notEqual(0, notEqualMsg: (_, __)=>'error text'),
   (_)=>'error text',
@@ -1172,7 +1097,7 @@ Validators.int(
 // Old API:
 FormBuilderValidators.positiveNumber(errorText:'error text');
 
-// New API (close):
+// New API:
 Validators.num(
   Validators.greaterThan(0, greaterThanMsg:(_, __)=>'error text'),
   (_)=>'error msg',
@@ -1207,56 +1132,18 @@ For the following group of validators, it is expected to receive a `String` as u
 // Old API:
 FormBuilderValidators.alphabetical(errorText:'error text');
 
-// New API (close):
+// New API :
 Validators.match(
   RegExp(r'^[a-zA-Z]+$'),
   matchMsg: (_)=>'error text'
 );
 ```
 
-- `FormBuilderValidators.contains()`
-```dart
-// Old API:
-FormBuilderValidator.contains(
-  'substring', 
-  caseSensitive: false,
-  errorText:'error text',
-);
+- `FormBuilderValidators.contains()`: equivalent to `Validators.contains`.
 
-// New API:
-Validators.contains(
-  'substring', 
-  caseSensitive:false,
-  containsMsg: (_, __)=>'error text',
-);
-```
-- `FormBuilderValidators.endsWith()`
-```dart
-// Old API:
-FormBuilderValidator.endsWith(
-  'suffix', 
-  errorText:'error text',
-);
+- `FormBuilderValidators.endsWith()`: equivalent to `Validators.endsWith`.
 
-// New API:
-Validators.endsWith(
-  'suffix', 
-  endsWithMsg: (_, __)=>'error text',
-);
-```
-
-- `FormBuilderValidators.lowercase()`
-```dart
-// Old API:
-FormBuilderValidator.lowercase(
-  errorText:'error text',
-);
-
-// New API:
-Validators.lowercase(
-  lowercaseMsg: (_)=>'error text',
-);
-```
+- `FormBuilderValidators.lowercase()`: equivalent to `Validators.lowercase`.
 
 - `FormBuilderValidators.matchNot()`
 ```dart
@@ -1274,20 +1161,7 @@ Validators.notMatch(
 ```
 
 
-- `FormBuilderValidators.match()`
-```dart
-// Old API:
-FormBuilderValidator.match(
-  regex,
-  errorText:'error text',
-);
-
-// New API:
-Validators.match(
-  regex,
-  matchMsg: (_)=>'error text',
-);
-```
+- `FormBuilderValidators.match()`: equivalent to `Validators.match`.
 
 - `FormBuilderValidators.maxWordsCount()`
 ```dart
@@ -1332,33 +1206,9 @@ Validators.satisfy(
 ```
 
 
-- `FormBuilderValidators.startsWith()`
-```dart
-// Old API:
-FormBuilderValidator.startsWith(
-  'suffix', 
-  errorText:'error text',
-);
+- `FormBuilderValidators.startsWith()`: equivalent to `Validators.startsWith`.
 
-// New API:
-Validators.startsWith(
-  'suffix', 
-  startsWithMsg: (_, __)=>'error text',
-);
-```
-
-- `FormBuilderValidators.uppercase()`
-```dart
-// Old API:
-FormBuilderValidator.uppercase(
-  errorText:'error text',
-);
-
-// New API:
-Validators.uppercase(
-  uppercaseMsg: (_)=>'error text',
-);
-```
+- `FormBuilderValidators.uppercase()`: equivalent to `Validators.uppercase`.
 
 
 ### Use-case validators
@@ -1384,14 +1234,7 @@ Validators.satisfy(
   (input)=>isBase64(input), satisfyMsg: (_)=>'error text',
 ); 
 ```
-- `FormBuilderValidators.colorCode()`
-```dart
-// Old API:
-FormBuilderValidator.colorCode();
-
-// New API:
-Validators.colorCode();
-```
+- `FormBuilderValidators.colorCode()`: equivalent to `Validators.colorCode`.
 
 - `FormBuilderValidators.duns()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/duns_validator.dart#L41). The equivalent would be:
 ```dart
@@ -1407,18 +1250,8 @@ Validators.match(
 );
 ```
 
-- `FormBuilderValidators.isbn()`
-```dart
-// Old API:
-FormBuilderValidator.isbn(
-  errorText: 'error text',
-);
+- `FormBuilderValidators.isbn()`: equivalent to `Validators.isbn`.
 
-// New API:
-Validators.isbn(
-  isbnMsg: (_)=> 'error text',
-);
-```
 - `FormBuilderValidators.json()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/json_validator.dart#L31) 
 ```dart
 // Old API:
