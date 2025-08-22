@@ -23,6 +23,19 @@ FormBuilderValidators.someValidator(..., checkNullOrEmpty:false);
 Validators.optional(Validators.someEquivalentValidator(...));
 ```
 
+#### Terminology Update
+In versions prior to 11.x.x, validators used outdated "whitelist/blacklist" terminology. Starting from version 12.x.x, we've updated to:
+- **Whitelist** → **Allow list** (the only permitted values)
+- **Blacklist** → **Block list** (forbidden values)
+
+##### Best Practices for Allow/Block Logic
+For validators that support Allow/Block lists, follow these logical patterns:
+- **Allow list only**: Specify the only permitted values
+- **Block list + regex**: Use regex for format validation combined with forbidden values
+
+> **Note about examples**: For the validators that use allow/block lists, the migration examples below show all three patterns (regex, allow list, and block list) together purely for demonstration purposes. In practice, using both allow and block lists simultaneously is typically unnecessary and may create conflicting logic.
+
+
 #### Bool validators
 
 For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), they are expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
