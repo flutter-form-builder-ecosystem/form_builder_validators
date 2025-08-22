@@ -8,6 +8,17 @@
   - Decoupled null check and type check from the remaining validators.
 - The migration guide can be found on `doc/api/migration` and the reference to the old API implementation on [this link]()
 
+## 11.2.0
+
+- Fix password validator when not showing default error message
+- Upgrade intl to 0.20.0
+- Update constraints to Dart 3.8
+- Update constraints to Flutter 3.32
+- Add linux setup on example
+
+## 11.1.2
+
+- Update intl constraints to allow versions until 0.21.0
 
 ## 11.1.1
 

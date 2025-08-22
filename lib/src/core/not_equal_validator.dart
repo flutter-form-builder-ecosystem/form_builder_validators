@@ -14,6 +14,7 @@ class NotEqualValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the not equal value validator.
   const NotEqualValidator(
     this.value, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

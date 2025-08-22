@@ -33,97 +33,97 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid prime number strings',
-        () {
-      // Arrange
-      const PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>();
+      'should return the default error message for invalid prime number strings',
+      () {
+        // Arrange
+        const PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>();
 
-      // Act & Assert
-      expect(
-        validator.validate('4'),
-        equals(FormBuilderLocalizations.current.primeNumberErrorText),
-      );
-      expect(
-        validator.validate('10'),
-        equals(FormBuilderLocalizations.current.primeNumberErrorText),
-      );
-      expect(
-        validator.validate('10'),
-        equals(validator.errorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('4'),
+          equals(FormBuilderLocalizations.current.primeNumberErrorText),
+        );
+        expect(
+          validator.validate('10'),
+          equals(FormBuilderLocalizations.current.primeNumberErrorText),
+        );
+        expect(validator.validate('10'), equals(validator.errorText));
+      },
+    );
 
     test(
-        'should return the custom error message for invalid prime number strings',
-        () {
-      // Arrange
-      final PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>(
-        errorText: customErrorMessage,
-      );
+      'should return the custom error message for invalid prime number strings',
+      () {
+        // Arrange
+        final PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>(errorText: customErrorMessage);
 
-      // Act & Assert
-      expect(validator.validate('4'), equals(customErrorMessage));
-      expect(validator.validate('10'), equals(customErrorMessage));
-    });
-
-    test('should return the default error message for invalid prime numbers',
-        () {
-      // Arrange
-      const PrimeNumberValidator<int> validator = PrimeNumberValidator<int>();
-
-      // Act & Assert
-      expect(
-        validator.validate(4),
-        equals(FormBuilderLocalizations.current.primeNumberErrorText),
-      );
-      expect(
-        validator.validate(10),
-        equals(FormBuilderLocalizations.current.primeNumberErrorText),
-      );
-    });
-
-    test('should return the custom error message for invalid prime numbers',
-        () {
-      // Arrange
-      final PrimeNumberValidator<num> validator = PrimeNumberValidator<num>(
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate(4), equals(customErrorMessage));
-      expect(validator.validate(10), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('4'), equals(customErrorMessage));
+        expect(validator.validate('10'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>(
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return the default error message for invalid prime numbers',
+      () {
+        // Arrange
+        const PrimeNumberValidator<int> validator = PrimeNumberValidator<int>();
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate(4),
+          equals(FormBuilderLocalizations.current.primeNumberErrorText),
+        );
+        expect(
+          validator.validate(10),
+          equals(FormBuilderLocalizations.current.primeNumberErrorText),
+        );
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>(
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return the custom error message for invalid prime numbers',
+      () {
+        // Arrange
+        final PrimeNumberValidator<num> validator = PrimeNumberValidator<num>(
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(validator.validate(4), equals(customErrorMessage));
+        expect(validator.validate(10), equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>(checkNullOrEmpty: false);
+        const String value = '';
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>(checkNullOrEmpty: false);
+        const String? value = null;
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
@@ -134,36 +134,34 @@ void main() {
         validator.validate(true),
         equals(FormBuilderLocalizations.current.primeNumberErrorText),
       );
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
 
     test(
-        'should return the default error message for non-numeric string values',
-        () {
-      // Arrange
-      const PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>();
+      'should return the default error message for non-numeric string values',
+      () {
+        // Arrange
+        const PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>();
 
-      // Act & Assert
-      expect(
-        validator.validate('abc'),
-        equals(FormBuilderLocalizations.current.primeNumberErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('abc'),
+          equals(FormBuilderLocalizations.current.primeNumberErrorText),
+        );
+      },
+    );
 
-    test('should return the custom error message for non-numeric string values',
-        () {
-      // Arrange
-      final PrimeNumberValidator<String> validator =
-          PrimeNumberValidator<String>(
-        errorText: customErrorMessage,
-      );
+    test(
+      'should return the custom error message for non-numeric string values',
+      () {
+        // Arrange
+        final PrimeNumberValidator<String> validator =
+            PrimeNumberValidator<String>(errorText: customErrorMessage);
 
-      // Act & Assert
-      expect(validator.validate('abc'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('abc'), equals(customErrorMessage));
+      },
+    );
   });
 }

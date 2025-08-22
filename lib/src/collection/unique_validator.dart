@@ -14,6 +14,7 @@ class UniqueValidator<T> extends TranslatedValidator<T> {
   /// Constructor for the unique value validator.
   const UniqueValidator(
     this.values, {
+
     /// {@macro base_validator_error_text}
     super.errorText,
 

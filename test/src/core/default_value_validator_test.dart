@@ -12,9 +12,9 @@ void main() {
       const String defaultValue = 'default';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String? value = null;
 
       // Act
@@ -29,9 +29,9 @@ void main() {
       const String defaultValue = 'default';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String value = 'provided';
 
       // Act
@@ -46,9 +46,9 @@ void main() {
       const String defaultValue = '';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String? value = null;
 
       // Act
@@ -63,9 +63,9 @@ void main() {
       const String defaultValue = 'default';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String value = '';
 
       // Act
@@ -80,9 +80,9 @@ void main() {
       const String defaultValue = 'default';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String value = 'valid';
 
       // Act
@@ -97,9 +97,9 @@ void main() {
       const String defaultValue = 'valid';
       final DefaultValueValidator<String> validator =
           DefaultValueValidator<String>(
-        defaultValue,
-        FormBuilderValidators.required(errorText: customErrorMessage),
-      );
+            defaultValue,
+            FormBuilderValidators.required(errorText: customErrorMessage),
+          );
       const String? value = null;
 
       // Act

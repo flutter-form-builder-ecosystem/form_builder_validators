@@ -21,49 +21,54 @@ void main() {
     });
 
     test(
-        'should return the default error message when the value is an invalid date string',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator();
-      const String value = 'invalid-date';
+      'should return the default error message when the value is an invalid date string',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator();
+        const String value = 'invalid-date';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.dateStringErrorText),
-      );
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.dateStringErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the value is an invalid date string',
-        () {
-      // Arrange
-      final DateValidator validator =
-          DateValidator(errorText: customErrorMessage);
-      const String value = 'invalid-date';
+      'should return the custom error message when the value is an invalid date string',
+      () {
+        // Arrange
+        final DateValidator validator = DateValidator(
+          errorText: customErrorMessage,
+        );
+        const String value = 'invalid-date';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, equals(customErrorMessage));
-    });
+        // Assert
+        expect(result, equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator(checkNullOrEmpty: false);
-      const String? value = null;
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator(checkNullOrEmpty: false);
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -81,62 +86,67 @@ void main() {
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator(checkNullOrEmpty: false);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator();
-      const String value = '';
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(
-        result,
-        equals(FormBuilderLocalizations.current.dateStringErrorText),
-      );
-    });
-
-    test('should return null when the value is a valid date string with time',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator();
-      final DateTime now = DateTime.now();
-      final String value = now.toIso8601String();
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the value is a valid date string without time',
-        () {
-      // Arrange
-      const DateValidator validator = DateValidator();
-      const String value = '2024-01-01';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(
+          result,
+          equals(FormBuilderLocalizations.current.dateStringErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return null when the value is a valid date string with time',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator();
+        final DateTime now = DateTime.now();
+        final String value = now.toIso8601String();
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is a valid date string without time',
+      () {
+        // Arrange
+        const DateValidator validator = DateValidator();
+        const String value = '2024-01-01';
+
+        // Act
+        final String? result = validator.validate(value);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
   });
 }

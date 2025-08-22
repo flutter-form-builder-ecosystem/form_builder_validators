@@ -17,26 +17,30 @@ void main() {
   group('City -', () {
     test('should return null for valid city strings', () {
       // Arrange
-      final CityValidator validator =
-          CityValidator(citiesWhitelist: citiesWhitelist);
+      final CityValidator validator = CityValidator(
+        citiesWhitelist: citiesWhitelist,
+      );
 
       // Act & Assert
       expect(validator.validate('New York'), isNull);
       expect(validator.validate('Los Angeles'), isNull);
     });
 
-    test('should return the default error message for invalid city strings',
-        () {
-      // Arrange
-      final CityValidator validator =
-          CityValidator(citiesWhitelist: citiesWhitelist);
+    test(
+      'should return the default error message for invalid city strings',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('InvalidCity'),
-        equals(FormBuilderLocalizations.current.cityErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('InvalidCity'),
+          equals(FormBuilderLocalizations.current.cityErrorText),
+        );
+      },
+    );
 
     test('should return the custom error message for invalid city strings', () {
       // Arrange
@@ -49,33 +53,37 @@ void main() {
       expect(validator.validate('InvalidCity'), equals(customErrorMessage));
     });
 
-    test('should return the default error message for blacklisted city strings',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-        citiesBlacklist: citiesBlacklist,
-      );
+    test(
+      'should return the default error message for blacklisted city strings',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+          citiesBlacklist: citiesBlacklist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('Gotham'),
-        equals(FormBuilderLocalizations.current.cityErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('Gotham'),
+          equals(FormBuilderLocalizations.current.cityErrorText),
+        );
+      },
+    );
 
-    test('should return the custom error message for blacklisted city strings',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-        citiesBlacklist: citiesBlacklist,
-        errorText: customErrorMessage,
-      );
+    test(
+      'should return the custom error message for blacklisted city strings',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+          citiesBlacklist: citiesBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(validator.validate('Metropolis'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('Metropolis'), equals(customErrorMessage));
+      },
+    );
 
     test('should return null for valid city strings matching the regex', () {
       // Arrange
@@ -89,60 +97,65 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid city strings not matching the regex',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-      );
+      'should return the default error message for invalid city strings not matching the regex',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('new york'),
-        equals(FormBuilderLocalizations.current.cityErrorText),
-      );
-    });
-
-    test(
-        'should return the custom error message for invalid city strings not matching the regex',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('new york'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(
+          validator.validate('new york'),
+          equals(FormBuilderLocalizations.current.cityErrorText),
+        );
+      },
+    );
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return the custom error message for invalid city strings not matching the regex',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(validator.validate('new york'), equals(customErrorMessage));
+      },
+    );
 
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final CityValidator validator = CityValidator(
-        citiesWhitelist: citiesWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
+    test(
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final CityValidator validator = CityValidator(
+          citiesWhitelist: citiesWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
   });
 }

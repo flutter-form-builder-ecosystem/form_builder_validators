@@ -12,9 +12,9 @@ void main() {
       // Arrange
       final OrValidator<String> validator =
           OrValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.minLength(5, errorText: 'Min length error'),
-        FormBuilderValidators.email(errorText: 'Email error'),
-      ]);
+            FormBuilderValidators.minLength(5, errorText: 'Min length error'),
+            FormBuilderValidators.email(errorText: 'Email error'),
+          ]);
       const String value = 'test@example.com';
 
       // Act
@@ -26,12 +26,11 @@ void main() {
 
     test('should return error if all validators fail', () {
       // Arrange
-      final OrValidator<String> validator = OrValidator<String>(
-        <FormFieldValidator<String>>[
-          FormBuilderValidators.minLength(5, errorText: 'Min length error'),
-          FormBuilderValidators.email(errorText: customErrorMessage),
-        ],
-      );
+      final OrValidator<String> validator =
+          OrValidator<String>(<FormFieldValidator<String>>[
+            FormBuilderValidators.minLength(5, errorText: 'Min length error'),
+            FormBuilderValidators.email(errorText: customErrorMessage),
+          ]);
       const String value = 'abc';
 
       // Act
@@ -45,13 +44,13 @@ void main() {
       // Arrange
       final OrValidator<String> validator =
           OrValidator<String>(<FormFieldValidator<String>>[
-        (String? value) => value != null && value.contains('test')
-            ? null
-            : 'Contains "test" error',
-        (String? value) => value != null && value.length > 10
-            ? null
-            : 'Length greater than 10 error',
-      ]);
+            (String? value) => value != null && value.contains('test')
+                ? null
+                : 'Contains "test" error',
+            (String? value) => value != null && value.length > 10
+                ? null
+                : 'Length greater than 10 error',
+          ]);
       const String value = 'test_value';
 
       // Act
@@ -63,15 +62,14 @@ void main() {
 
     test('should return error if all custom validators fail', () {
       // Arrange
-      final OrValidator<String> validator = OrValidator<String>(
-        <FormFieldValidator<String>>[
-          (String? value) => value != null && value.contains('test')
-              ? null
-              : 'Contains "test" error',
-          (String? value) =>
-              value != null && value.length > 10 ? null : customErrorMessage,
-        ],
-      );
+      final OrValidator<String> validator =
+          OrValidator<String>(<FormFieldValidator<String>>[
+            (String? value) => value != null && value.contains('test')
+                ? null
+                : 'Contains "test" error',
+            (String? value) =>
+                value != null && value.length > 10 ? null : customErrorMessage,
+          ]);
       const String value = 'value';
 
       // Act
@@ -85,9 +83,9 @@ void main() {
       // Arrange
       final OrValidator<int> validator =
           OrValidator<int>(<FormFieldValidator<int>>[
-        FormBuilderValidators.min(5, errorText: 'Min error'),
-        FormBuilderValidators.max(10, errorText: 'Max error'),
-      ]);
+            FormBuilderValidators.min(5, errorText: 'Min error'),
+            FormBuilderValidators.max(10, errorText: 'Max error'),
+          ]);
       const int value = 7;
 
       // Act
@@ -101,9 +99,9 @@ void main() {
       // Arrange
       final OrValidator<double> validator =
           OrValidator<double>(<FormFieldValidator<double>>[
-        FormBuilderValidators.min(5.0, errorText: 'Min error'),
-        FormBuilderValidators.max(10.0, errorText: 'Max error'),
-      ]);
+            FormBuilderValidators.min(5.0, errorText: 'Min error'),
+            FormBuilderValidators.max(10.0, errorText: 'Max error'),
+          ]);
       const double value = 7;
 
       // Act

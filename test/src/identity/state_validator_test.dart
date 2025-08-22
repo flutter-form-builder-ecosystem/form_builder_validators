@@ -17,131 +17,145 @@ void main() {
   group('StateValidator -', () {
     test('should return null for valid state strings', () {
       // Arrange
-      final StateValidator validator =
-          StateValidator(stateWhitelist: stateWhitelist);
+      final StateValidator validator = StateValidator(
+        stateWhitelist: stateWhitelist,
+      );
 
       // Act & Assert
       expect(validator.validate('California'), isNull);
       expect(validator.validate('New York'), isNull);
     });
 
-    test('should return the default error message for invalid state strings',
-        () {
-      // Arrange
-      final StateValidator validator =
-          StateValidator(stateWhitelist: stateWhitelist);
+    test(
+      'should return the default error message for invalid state strings',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('california'),
-        equals(FormBuilderLocalizations.current.stateErrorText),
-      );
-      expect(
-        validator.validate('InvalidState123'),
-        equals(FormBuilderLocalizations.current.stateErrorText),
-      );
-    });
-
-    test('should return the custom error message for invalid state strings',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('invalidstate'), equals(customErrorMessage));
-      expect(validator.validate('12345'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(
+          validator.validate('california'),
+          equals(FormBuilderLocalizations.current.stateErrorText),
+        );
+        expect(
+          validator.validate('InvalidState123'),
+          equals(FormBuilderLocalizations.current.stateErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the default error message for blacklisted state strings',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        stateBlacklist: stateBlacklist,
-      );
+      'should return the custom error message for invalid state strings',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('BadState'),
-        equals(FormBuilderLocalizations.current.stateErrorText),
-      );
-    });
-
-    test('should return the custom error message for blacklisted state strings',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        stateBlacklist: stateBlacklist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('InvalidState'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('invalidstate'), equals(customErrorMessage));
+        expect(validator.validate('12345'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
+      'should return the default error message for blacklisted state strings',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          stateBlacklist: stateBlacklist,
+        );
 
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate('BadState'),
+          equals(FormBuilderLocalizations.current.stateErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the default error message for non-whitelisted state name',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-      );
+      'should return the custom error message for blacklisted state strings',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          stateBlacklist: stateBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('NonWhitelistedState'),
-        equals(FormBuilderLocalizations.current.stateErrorText),
-      );
-    });
+        // Act & Assert
+        expect(validator.validate('InvalidState'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message for non-whitelisted state name',
-        () {
-      // Arrange
-      final StateValidator validator = StateValidator(
-        stateWhitelist: stateWhitelist,
-        errorText: customErrorMessage,
-      );
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      expect(
-        validator.validate('NonWhitelistedState'),
-        equals(customErrorMessage),
-      );
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
+
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the default error message for non-whitelisted state name',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('NonWhitelistedState'),
+          equals(FormBuilderLocalizations.current.stateErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return the custom error message for non-whitelisted state name',
+      () {
+        // Arrange
+        final StateValidator validator = StateValidator(
+          stateWhitelist: stateWhitelist,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('NonWhitelistedState'),
+          equals(customErrorMessage),
+        );
+      },
+    );
   });
 }

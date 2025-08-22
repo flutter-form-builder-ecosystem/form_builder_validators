@@ -17,8 +17,9 @@ void main() {
   group('LanguageCodeValidator -', () {
     test('should return null for valid language code strings', () {
       // Arrange
-      final LanguageCodeValidator validator =
-          LanguageCodeValidator(languageCodeWhitelist: languageCodeWhitelist);
+      final LanguageCodeValidator validator = LanguageCodeValidator(
+        languageCodeWhitelist: languageCodeWhitelist,
+      );
 
       // Act & Assert
       expect(validator.validate('en'), isNull);
@@ -27,160 +28,169 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid language code strings',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator =
-          LanguageCodeValidator(languageCodeWhitelist: languageCodeWhitelist);
+      'should return the default error message for invalid language code strings',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('english'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-      expect(
-        validator.validate('EN'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-      expect(
-        validator.validate('123'),
-        equals(validator.errorText),
-      );
-    });
-
-    test(
-        'should return the custom error message for invalid language code strings',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        errorText: customErrorMessage,
-      );
-
-      // Act & Assert
-      expect(validator.validate('english'), equals(customErrorMessage));
-      expect(validator.validate('EN'), equals(customErrorMessage));
-      expect(validator.validate('123'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(
+          validator.validate('english'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+        expect(
+          validator.validate('EN'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+        expect(validator.validate('123'), equals(validator.errorText));
+      },
+    );
 
     test(
-        'should return the default error message for blacklisted language code strings',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        languageCodeBlacklist: languageCodeBlacklist,
-      );
+      'should return the custom error message for invalid language code strings',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(
-        validator.validate('xx'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-      expect(
-        validator.validate('yy'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-    });
+        // Act & Assert
+        expect(validator.validate('english'), equals(customErrorMessage));
+        expect(validator.validate('EN'), equals(customErrorMessage));
+        expect(validator.validate('123'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message for blacklisted language code strings',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        languageCodeBlacklist: languageCodeBlacklist,
-        errorText: customErrorMessage,
-      );
+      'should return the default error message for blacklisted language code strings',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          languageCodeBlacklist: languageCodeBlacklist,
+        );
 
-      // Act & Assert
-      expect(validator.validate('xx'), equals(customErrorMessage));
-      expect(validator.validate('yy'), equals(customErrorMessage));
-    });
-
-    test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String value = '';
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        checkNullOrEmpty: false,
-      );
-      const String? value = null;
-
-      // Act & Assert
-      final String? result = validator.validate(value);
-      expect(result, isNull);
-    });
+        // Act & Assert
+        expect(
+          validator.validate('xx'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+        expect(
+          validator.validate('yy'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+      },
+    );
 
     test(
-        'should return the custom error message when the value does not match the regex pattern',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        errorText: customErrorMessage,
-      );
+      'should return the custom error message for blacklisted language code strings',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          languageCodeBlacklist: languageCodeBlacklist,
+          errorText: customErrorMessage,
+        );
 
-      // Act & Assert
-      expect(validator.validate('@@'), equals(customErrorMessage));
-    });
-
-    test(
-        'should return the default error message when the value does not match the regex pattern',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-      );
-
-      // Act & Assert
-      expect(
-        validator.validate('@@'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-    });
+        // Act & Assert
+        expect(validator.validate('xx'), equals(customErrorMessage));
+        expect(validator.validate('yy'), equals(customErrorMessage));
+      },
+    );
 
     test(
-        'should return the custom error message when the value is not in the whitelist',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-        errorText: customErrorMessage,
-      );
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String value = '';
 
-      // Act & Assert
-      expect(validator.validate('xx'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is not in the whitelist',
-        () {
-      // Arrange
-      final LanguageCodeValidator validator = LanguageCodeValidator(
-        languageCodeWhitelist: languageCodeWhitelist,
-      );
+      'should return null when the value is null and null check is disabled',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          checkNullOrEmpty: false,
+        );
+        const String? value = null;
 
-      // Act & Assert
-      expect(
-        validator.validate('xx'),
-        equals(FormBuilderLocalizations.current.languageCodeErrorText),
-      );
-    });
+        // Act & Assert
+        final String? result = validator.validate(value);
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the custom error message when the value does not match the regex pattern',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(validator.validate('@@'), equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the default error message when the value does not match the regex pattern',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('@@'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+      },
+    );
+
+    test(
+      'should return the custom error message when the value is not in the whitelist',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+          errorText: customErrorMessage,
+        );
+
+        // Act & Assert
+        expect(validator.validate('xx'), equals(customErrorMessage));
+      },
+    );
+
+    test(
+      'should return the default error message when the value is not in the whitelist',
+      () {
+        // Arrange
+        final LanguageCodeValidator validator = LanguageCodeValidator(
+          languageCodeWhitelist: languageCodeWhitelist,
+        );
+
+        // Act & Assert
+        expect(
+          validator.validate('xx'),
+          equals(FormBuilderLocalizations.current.languageCodeErrorText),
+        );
+      },
+    );
   });
 }

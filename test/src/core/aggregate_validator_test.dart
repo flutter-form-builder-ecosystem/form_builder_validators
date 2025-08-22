@@ -11,11 +11,12 @@ void main() {
   group('AggregateValidator -', () {
     test('should return null if all validators pass', () {
       // Arrange
-      final AggregateValidator<String> validator =
-          AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(),
-        FormBuilderValidators.minLength(3),
-      ]);
+      final AggregateValidator<String> validator = AggregateValidator<String>(
+        <FormFieldValidator<String>>[
+          FormBuilderValidators.required(),
+          FormBuilderValidators.minLength(3),
+        ],
+      );
       const String validValue = 'abc';
 
       // Act
@@ -29,9 +30,9 @@ void main() {
       // Arrange
       final AggregateValidator<String> validator =
           AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-        FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
-      ]);
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+            FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
+          ]);
       const String invalidValue = 'abc';
 
       // Act
@@ -41,48 +42,54 @@ void main() {
       expect(result, customErrorMessage2);
     });
 
-    test('should return multiple error messages if multiple validators fail',
-        () {
-      // Arrange
-      final AggregateValidator<String> validator =
-          AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-        FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
-      ]);
-      const String invalidValue = '';
+    test(
+      'should return multiple error messages if multiple validators fail',
+      () {
+        // Arrange
+        final AggregateValidator<String> validator = AggregateValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+            FormBuilderValidators.minLength(5, errorText: customErrorMessage2),
+          ],
+        );
+        const String invalidValue = '';
 
-      // Act
-      final String? result = validator.validate(invalidValue);
+        // Act
+        final String? result = validator.validate(invalidValue);
 
-      // Assert
-      expect(result, '$customErrorMessage1\n$customErrorMessage2');
-    });
+        // Assert
+        expect(result, '$customErrorMessage1\n$customErrorMessage2');
+      },
+    );
 
-    test('should return custom error message from validator if value is null',
-        () {
-      // Arrange
-      final AggregateValidator<String> validator =
-          AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-      ]);
-      const String? value = null;
+    test(
+      'should return custom error message from validator if value is null',
+      () {
+        // Arrange
+        final AggregateValidator<String> validator = AggregateValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+          ],
+        );
+        const String? value = null;
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage1);
-    });
+        // Assert
+        expect(result, customErrorMessage1);
+      },
+    );
 
     test('should return null if value is null and null check is disabled', () {
       // Arrange
       final AggregateValidator<String> validator =
           AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(
-          errorText: customErrorMessage1,
-          checkNullOrEmpty: false,
-        ),
-      ]);
+            FormBuilderValidators.required(
+              errorText: customErrorMessage1,
+              checkNullOrEmpty: false,
+            ),
+          ]);
       const String? value = null;
 
       // Act
@@ -92,31 +99,34 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return custom error message from validator if value is empty',
-        () {
-      // Arrange
-      final AggregateValidator<String> validator =
-          AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(errorText: customErrorMessage1),
-      ]);
-      const String value = '';
+    test(
+      'should return custom error message from validator if value is empty',
+      () {
+        // Arrange
+        final AggregateValidator<String> validator = AggregateValidator<String>(
+          <FormFieldValidator<String>>[
+            FormBuilderValidators.required(errorText: customErrorMessage1),
+          ],
+        );
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, customErrorMessage1);
-    });
+        // Assert
+        expect(result, customErrorMessage1);
+      },
+    );
 
     test('should return null if value is empty and null check is disabled', () {
       // Arrange
       final AggregateValidator<String> validator =
           AggregateValidator<String>(<FormFieldValidator<String>>[
-        FormBuilderValidators.required(
-          errorText: customErrorMessage1,
-          checkNullOrEmpty: false,
-        ),
-      ]);
+            FormBuilderValidators.required(
+              errorText: customErrorMessage1,
+              checkNullOrEmpty: false,
+            ),
+          ]);
       const String value = '';
 
       // Act

@@ -34,9 +34,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.negativeNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
         );
       });
 
@@ -53,9 +51,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.negativeNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
         );
       });
 
@@ -73,19 +69,20 @@ void main() {
       });
 
       test(
-          'should return custom error message if the value is a positive number',
-          () {
-        // Arrange
-        final NegativeNumberValidator<String> validator =
-            NegativeNumberValidator<String>(errorText: customErrorMessage);
-        const String value = '5';
+        'should return custom error message if the value is a positive number',
+        () {
+          // Arrange
+          final NegativeNumberValidator<String> validator =
+              NegativeNumberValidator<String>(errorText: customErrorMessage);
+          const String value = '5';
 
-        // Act
-        final String? result = validator.validate(value);
+          // Act
+          final String? result = validator.validate(value);
 
-        // Assert
-        expect(result, equals(customErrorMessage));
-      });
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
     });
 
     group('num', () {
@@ -115,9 +112,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.negativeNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
         );
       });
 
@@ -134,9 +129,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.negativeNumberErrorText,
-          ),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
         );
       });
 
@@ -154,34 +147,37 @@ void main() {
       });
 
       test(
-          'should return custom error message if the value is a positive number',
-          () {
+        'should return custom error message if the value is a positive number',
+        () {
+          // Arrange
+          final NegativeNumberValidator<num> validator =
+              NegativeNumberValidator<num>(errorText: customErrorMessage);
+          const num value = 5;
+
+          // Act
+          final String? result = validator.validate(value);
+
+          // Assert
+          expect(result, equals(customErrorMessage));
+        },
+      );
+    });
+
+    test(
+      'should return null when the value is null and null check is disabled',
+      () {
         // Arrange
-        final NegativeNumberValidator<num> validator =
-            NegativeNumberValidator<num>(errorText: customErrorMessage);
-        const num value = 5;
+        const NegativeNumberValidator<String> validator =
+            NegativeNumberValidator<String>(checkNullOrEmpty: false);
+        const String? value = null;
 
         // Act
         final String? result = validator.validate(value);
 
         // Assert
-        expect(result, equals(customErrorMessage));
-      });
-    });
-
-    test('should return null when the value is null and null check is disabled',
-        () {
-      // Arrange
-      const NegativeNumberValidator<String> validator =
-          NegativeNumberValidator<String>(checkNullOrEmpty: false);
-      const String? value = null;
-
-      // Act
-      final String? result = validator.validate(value);
-
-      // Assert
-      expect(result, isNull);
-    });
+        expect(result, isNull);
+      },
+    );
 
     test('should return the default error message when the value is null', () {
       // Arrange
@@ -196,47 +192,42 @@ void main() {
       expect(result, isNotNull);
       expect(
         result,
-        equals(
-          FormBuilderLocalizations.current.negativeNumberErrorText,
-        ),
+        equals(FormBuilderLocalizations.current.negativeNumberErrorText),
       );
     });
 
     test(
-        'should return null when the value is an empty string and null check is disabled',
-        () {
-      // Arrange
-      const NegativeNumberValidator<String> validator =
-          NegativeNumberValidator<String>(checkNullOrEmpty: false);
-      const String value = '';
+      'should return null when the value is an empty string and null check is disabled',
+      () {
+        // Arrange
+        const NegativeNumberValidator<String> validator =
+            NegativeNumberValidator<String>(checkNullOrEmpty: false);
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return the default error message when the value is an empty string',
-        () {
-      // Arrange
-      const NegativeNumberValidator<String> validator =
-          NegativeNumberValidator<String>();
-      const String value = '';
+      'should return the default error message when the value is an empty string',
+      () {
+        // Arrange
+        const NegativeNumberValidator<String> validator =
+            NegativeNumberValidator<String>();
+        const String value = '';
 
-      // Act
-      final String? result = validator.validate(value);
+        // Act
+        final String? result = validator.validate(value);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(
-        result,
-        equals(
-          validator.errorText,
-        ),
-      );
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(validator.errorText));
+      },
+    );
 
     test('should return the default error message for invalid value types', () {
       // Arrange
@@ -244,49 +235,49 @@ void main() {
           NegativeNumberValidator<bool>();
 
       // Act & Assert
-      expect(
-        validator.validate(false),
-        equals(validator.errorText),
-      );
+      expect(validator.validate(false), equals(validator.errorText));
     });
 
     test(
-        'should return the default error message for non-numeric string values',
-        () {
-      // Arrange
-      const NegativeNumberValidator<String> validator =
-          NegativeNumberValidator<String>();
+      'should return the default error message for non-numeric string values',
+      () {
+        // Arrange
+        const NegativeNumberValidator<String> validator =
+            NegativeNumberValidator<String>();
 
-      // Act & Assert
-      expect(
-        validator.validate('abc'),
-        equals(FormBuilderLocalizations.current.negativeNumberErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate('abc'),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
+        );
+      },
+    );
 
-    test('should return the custom error message for non-numeric string values',
-        () {
-      // Arrange
-      final NegativeNumberValidator<String> validator =
-          NegativeNumberValidator<String>(
-        errorText: customErrorMessage,
-      );
+    test(
+      'should return the custom error message for non-numeric string values',
+      () {
+        // Arrange
+        final NegativeNumberValidator<String> validator =
+            NegativeNumberValidator<String>(errorText: customErrorMessage);
 
-      // Act & Assert
-      expect(validator.validate('abc'), equals(customErrorMessage));
-    });
+        // Act & Assert
+        expect(validator.validate('abc'), equals(customErrorMessage));
+      },
+    );
 
-    test('should return the default error message for unsupported value types',
-        () {
-      // Arrange
-      const NegativeNumberValidator<bool> validator =
-          NegativeNumberValidator<bool>();
+    test(
+      'should return the default error message for unsupported value types',
+      () {
+        // Arrange
+        const NegativeNumberValidator<bool> validator =
+            NegativeNumberValidator<bool>();
 
-      // Act & Assert
-      expect(
-        validator.validate(true),
-        equals(FormBuilderLocalizations.current.negativeNumberErrorText),
-      );
-    });
+        // Act & Assert
+        expect(
+          validator.validate(true),
+          equals(FormBuilderLocalizations.current.negativeNumberErrorText),
+        );
+      },
+    );
   });
 }

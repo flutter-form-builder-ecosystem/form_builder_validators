@@ -28,98 +28,112 @@ void main() {
       }
     });
 
-    test('should return the default error message for invalid phone numbers',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator = PhoneNumberValidator();
-      const List<String> invalidPhoneNumbers = <String>[
-        'phone123',
-        '123-abc-7890',
-      ];
+    test(
+      'should return the default error message for invalid phone numbers',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator();
+        const List<String> invalidPhoneNumbers = <String>[
+          'phone123',
+          '123-abc-7890',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidPhoneNumbers) {
-        final String? result = validator.validate(value);
+        // Act & Assert
+        for (final String value in invalidPhoneNumbers) {
+          final String? result = validator.validate(value);
+          expect(result, isNotNull);
+          expect(
+            result,
+            equals(FormBuilderLocalizations.current.phoneErrorText),
+          );
+        }
+      },
+    );
+
+    test(
+      'should return the custom error message for invalid phone numbers',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator(
+          errorText: customErrorMessage,
+        );
+        const List<String> invalidPhoneNumbers = <String>[
+          'phone123',
+          '123-abc-7890',
+        ];
+
+        // Act & Assert
+        for (final String value in invalidPhoneNumbers) {
+          final String? result = validator.validate(value);
+          expect(result, equals(customErrorMessage));
+        }
+      },
+    );
+
+    test(
+      'should return null when the phone number is null and null check is disabled',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator(
+          checkNullOrEmpty: false,
+        );
+        const String? nullPhoneNumber = null;
+
+        // Act
+        final String? result = validator.validate(nullPhoneNumber);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the default error message when the phone number is null',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator();
+        const String? nullPhoneNumber = null;
+
+        // Act
+        final String? result = validator.validate(nullPhoneNumber);
+
+        // Assert
         expect(result, isNotNull);
         expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-      }
-    });
-
-    test('should return the custom error message for invalid phone numbers',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator =
-          PhoneNumberValidator(errorText: customErrorMessage);
-      const List<String> invalidPhoneNumbers = <String>[
-        'phone123',
-        '123-abc-7890',
-      ];
-
-      // Act & Assert
-      for (final String value in invalidPhoneNumbers) {
-        final String? result = validator.validate(value);
-        expect(result, equals(customErrorMessage));
-      }
-    });
+      },
+    );
 
     test(
-        'should return null when the phone number is null and null check is disabled',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator =
-          PhoneNumberValidator(checkNullOrEmpty: false);
-      const String? nullPhoneNumber = null;
+      'should return null when the phone number is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator(
+          checkNullOrEmpty: false,
+        );
+        const String emptyPhoneNumber = '';
 
-      // Act
-      final String? result = validator.validate(nullPhoneNumber);
+        // Act
+        final String? result = validator.validate(emptyPhoneNumber);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the phone number is null',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator = PhoneNumberValidator();
-      const String? nullPhoneNumber = null;
-
-      // Act
-      final String? result = validator.validate(nullPhoneNumber);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the phone number is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator =
-          PhoneNumberValidator(checkNullOrEmpty: false);
-      const String emptyPhoneNumber = '';
+      'should return the default error message when the phone number is an empty string',
+      () {
+        // Arrange
+        final PhoneNumberValidator validator = PhoneNumberValidator();
+        const String emptyPhoneNumber = '';
 
-      // Act
-      final String? result = validator.validate(emptyPhoneNumber);
+        // Act
+        final String? result = validator.validate(emptyPhoneNumber);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the phone number is an empty string',
-        () {
-      // Arrange
-      final PhoneNumberValidator validator = PhoneNumberValidator();
-      const String emptyPhoneNumber = '';
-
-      // Act
-      final String? result = validator.validate(emptyPhoneNumber);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
+      },
+    );
   });
 }

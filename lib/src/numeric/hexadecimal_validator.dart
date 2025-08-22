@@ -40,9 +40,7 @@ class HexadecimalValidator extends TranslatedValidator<String> {
   ///
   /// Examples: 1A3F, a1b2c3, 0x4faDA5
   /// {@endtemplate}
-  static final RegExp _hexadecimalRegex = RegExp(
-    r'^(0[xX])?[0-9a-fA-F]+$',
-  );
+  static final RegExp _hexadecimalRegex = RegExp(r'^(0[xX])?[0-9a-fA-F]+$');
 
   @override
   String? validateValue(String valueCandidate) {

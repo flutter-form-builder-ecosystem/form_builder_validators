@@ -42,28 +42,29 @@ void main() {
       }
     });
 
-    test('should return the default error message for invalid IPv4 addresses',
-        () {
-      // Arrange
-      final IpValidator validator = IpValidator();
-      const List<String> invalidIPv4s = <String>[
-        '256.256.256.256',
-        '192.168.1.256',
-        '192.168.1',
-        '192.168.1.1.1',
-        '192.168.1.a',
-      ];
+    test(
+      'should return the default error message for invalid IPv4 addresses',
+      () {
+        // Arrange
+        final IpValidator validator = IpValidator();
+        const List<String> invalidIPv4s = <String>[
+          '256.256.256.256',
+          '192.168.1.256',
+          '192.168.1',
+          '192.168.1.1.1',
+          '192.168.1.a',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidIPv4s) {
-        final String? result = validator.validate(value);
-        expect(result, isNotNull);
-        expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidIPv4s) {
+          final String? result = validator.validate(value);
+          expect(result, isNotNull);
+          expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
+        }
+      },
+    );
 
-    test('should return the default error message for invalid IPv6 addresses',
-        () {
+    test('should return the default error message for invalid IPv6 addresses', () {
       // Arrange
       final IpValidator validator = IpValidator(version: 6);
       const List<String> invalidIPv6s = <String>[
@@ -85,9 +86,7 @@ void main() {
 
     test('should return the custom error message for invalid IP addresses', () {
       // Arrange
-      final IpValidator validator = IpValidator(
-        errorText: customErrorMessage,
-      );
+      final IpValidator validator = IpValidator(errorText: customErrorMessage);
       const List<String> invalidIPs = <String>[
         '256.256.256.256',
         '192.168.1.256',
@@ -103,124 +102,133 @@ void main() {
       }
     });
 
-    test('should return null for valid IP addresses according to custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
-      final IpValidator validator = IpValidator(regex: customRegex);
-      const List<String> validIPs = <String>[
-        '192.168.1.1',
-        '192.168.1.255',
-        '192.168.1.100',
-      ];
+    test(
+      'should return null for valid IP addresses according to custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
+        final IpValidator validator = IpValidator(regex: customRegex);
+        const List<String> validIPs = <String>[
+          '192.168.1.1',
+          '192.168.1.255',
+          '192.168.1.100',
+        ];
 
-      // Act & Assert
-      for (final String value in validIPs) {
-        expect(validator.validate(value), isNull);
-      }
-    });
+        // Act & Assert
+        for (final String value in validIPs) {
+          expect(validator.validate(value), isNull);
+        }
+      },
+    );
 
     test(
-        'should return the default error message for invalid IP addresses according to custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
-      final IpValidator validator = IpValidator(regex: customRegex);
-      const List<String> invalidIPs = <String>[
-        '192.168.2.1',
-        '10.0.0.1',
-        '172.16.0.1',
-        '255.255.255.255',
-        '0.0.0.0',
-      ];
+      'should return the default error message for invalid IP addresses according to custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
+        final IpValidator validator = IpValidator(regex: customRegex);
+        const List<String> invalidIPs = <String>[
+          '192.168.2.1',
+          '10.0.0.1',
+          '172.16.0.1',
+          '255.255.255.255',
+          '0.0.0.0',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidIPs) {
-        final String? result = validator.validate(value);
+        // Act & Assert
+        for (final String value in invalidIPs) {
+          final String? result = validator.validate(value);
+          expect(result, isNotNull);
+          expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
+        }
+      },
+    );
+
+    test(
+      'should return the custom error message for invalid IP addresses according to custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
+        final IpValidator validator = IpValidator(
+          regex: customRegex,
+          errorText: customErrorMessage,
+        );
+        const List<String> invalidIPs = <String>[
+          '192.168.2.1',
+          '10.0.0.1',
+          '172.16.0.1',
+          '255.255.255.255',
+          '0.0.0.0',
+        ];
+
+        // Act & Assert
+        for (final String value in invalidIPs) {
+          final String? result = validator.validate(value);
+          expect(result, equals(customErrorMessage));
+        }
+      },
+    );
+
+    test(
+      'should return null when the IP address is null and null check is disabled',
+      () {
+        // Arrange
+        final IpValidator validator = IpValidator(checkNullOrEmpty: false);
+        const String? nullIp = null;
+
+        // Act
+        final String? result = validator.validate(nullIp);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the default error message when the IP address is null',
+      () {
+        // Arrange
+        final IpValidator validator = IpValidator();
+        const String? nullIp = null;
+
+        // Act
+        final String? result = validator.validate(nullIp);
+
+        // Assert
         expect(result, isNotNull);
         expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
-      }
-    });
+      },
+    );
 
     test(
-        'should return the custom error message for invalid IP addresses according to custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^192\.168\.1\.\d{1,3}$');
-      final IpValidator validator = IpValidator(
-        regex: customRegex,
-        errorText: customErrorMessage,
-      );
-      const List<String> invalidIPs = <String>[
-        '192.168.2.1',
-        '10.0.0.1',
-        '172.16.0.1',
-        '255.255.255.255',
-        '0.0.0.0',
-      ];
+      'should return null when the IP address is an empty string and null check is disabled',
+      () {
+        // Arrange
+        final IpValidator validator = IpValidator(checkNullOrEmpty: false);
+        const String emptyIp = '';
 
-      // Act & Assert
-      for (final String value in invalidIPs) {
-        final String? result = validator.validate(value);
-        expect(result, equals(customErrorMessage));
-      }
-    });
+        // Act
+        final String? result = validator.validate(emptyIp);
+
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test(
-        'should return null when the IP address is null and null check is disabled',
-        () {
-      // Arrange
-      final IpValidator validator = IpValidator(checkNullOrEmpty: false);
-      const String? nullIp = null;
+      'should return the default error message when the IP address is an empty string',
+      () {
+        // Arrange
+        final IpValidator validator = IpValidator();
+        const String emptyIp = '';
 
-      // Act
-      final String? result = validator.validate(nullIp);
+        // Act
+        final String? result = validator.validate(emptyIp);
 
-      // Assert
-      expect(result, isNull);
-    });
-
-    test('should return the default error message when the IP address is null',
-        () {
-      // Arrange
-      final IpValidator validator = IpValidator();
-      const String? nullIp = null;
-
-      // Act
-      final String? result = validator.validate(nullIp);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
-    });
-
-    test(
-        'should return null when the IP address is an empty string and null check is disabled',
-        () {
-      // Arrange
-      final IpValidator validator = IpValidator(checkNullOrEmpty: false);
-      const String emptyIp = '';
-
-      // Act
-      final String? result = validator.validate(emptyIp);
-
-      // Assert
-      expect(result, isNull);
-    });
-
-    test(
-        'should return the default error message when the IP address is an empty string',
-        () {
-      // Arrange
-      final IpValidator validator = IpValidator();
-      const String emptyIp = '';
-
-      // Act
-      final String? result = validator.validate(emptyIp);
-
-      // Assert
-      expect(result, isNotNull);
-      expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(FormBuilderLocalizations.current.ipErrorText));
+      },
+    );
   });
 }
