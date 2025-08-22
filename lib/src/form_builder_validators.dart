@@ -10,7 +10,6 @@ import 'validators/network_validators.dart';
 import 'validators/validators.dart' as val;
 
 @Deprecated('use the base class Validators instead')
-
 /// Provides utility methods for creating various [FormFieldValidator]s.
 class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to contain a minimum
@@ -1698,12 +1697,13 @@ final class Validators {
     String suffix = '',
     String? separator,
     c.bool printErrorAsSoonAsPossible = true,
-  }) =>
-      val.and<T>(validators,
-          prefix: prefix,
-          suffix: suffix,
-          separator: separator,
-          printErrorAsSoonAsPossible: printErrorAsSoonAsPossible);
+  }) => val.and<T>(
+    validators,
+    prefix: prefix,
+    suffix: suffix,
+    separator: separator,
+    printErrorAsSoonAsPossible: printErrorAsSoonAsPossible,
+  );
 
   /// {@template validator_or}
   /// Creates a composite validator that applies multiple validation rules from
@@ -1740,13 +1740,12 @@ final class Validators {
     String prefix = '',
     String suffix = '',
     String? separator,
-  }) =>
-      val.or<T>(
-        validators,
-        prefix: prefix,
-        suffix: suffix,
-        separator: separator,
-      );
+  }) => val.or<T>(
+    validators,
+    prefix: prefix,
+    suffix: suffix,
+    separator: separator,
+  );
 
   // Conditional validators
   /// {@template validator_validate_if}
@@ -1777,8 +1776,9 @@ final class Validators {
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
   static Validator<T> validateIf<T extends Object?>(
-          c.bool Function(T value) condition, Validator<T> v) =>
-      val.validateIf<T>(condition, v);
+    c.bool Function(T value) condition,
+    Validator<T> v,
+  ) => val.validateIf<T>(condition, v);
 
   /// {@template validator_skip_if}
   /// Creates a validator that conditionally bypasses validation based on a
@@ -1807,8 +1807,9 @@ final class Validators {
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
   static Validator<T> skipIf<T extends Object?>(
-          c.bool Function(T value) condition, Validator<T> v) =>
-      val.skipIf<T>(condition, v);
+    c.bool Function(T value) condition,
+    Validator<T> v,
+  ) => val.skipIf<T>(condition, v);
 
   // Debug print validator
   /// {@template validator_debug_print_validator}
@@ -1834,9 +1835,10 @@ final class Validators {
   /// ## Type Parameters
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
-  static Validator<T> debugPrintValidator<T extends Object?>(
-          {Validator<T>? next, String Function(T input)? logOnInput}) =>
-      val.debugPrintValidator(next: next, logOnInput: logOnInput);
+  static Validator<T> debugPrintValidator<T extends Object?>({
+    Validator<T>? next,
+    String Function(T input)? logOnInput,
+  }) => val.debugPrintValidator(next: next, logOnInput: logOnInput);
 
   // Equality validators
   /// {@template validator_equal}
@@ -1884,8 +1886,7 @@ final class Validators {
   static Validator<T> equal<T extends Object?>(
     T value, {
     String Function(T input, T referenceValue)? equalMsg,
-  }) =>
-      val.equal(value, equalMsg: equalMsg);
+  }) => val.equal(value, equalMsg: equalMsg);
 
   /// {@template validator_not_equal}
   /// Creates a validator that checks if a given input is not equal to
@@ -1930,8 +1931,7 @@ final class Validators {
   static Validator<T> notEqual<T extends Object?>(
     T value, {
     String Function(T input, T referenceValue)? notEqualMsg,
-  }) =>
-      val.notEqual(value, notEqualMsg: notEqualMsg);
+  }) => val.notEqual(value, notEqualMsg: notEqualMsg);
 
   // Required validators
   /// {@template validator_required}
@@ -1981,8 +1981,7 @@ final class Validators {
   static Validator<T?> required<T extends Object>([
     Validator<T>? next,
     String? requiredMsg,
-  ]) =>
-      val.required(next, requiredMsg);
+  ]) => val.required(next, requiredMsg);
 
   /// {@template validator_optional}
   /// Creates a validator function that makes a field optional while allowing additional validation
@@ -2038,8 +2037,7 @@ final class Validators {
   static Validator<T?> optional<T extends Object>([
     Validator<T>? next,
     String Function(T input, String nextErrorMsg)? optionalMsg,
-  ]) =>
-      val.optional(next, optionalMsg);
+  ]) => val.optional(next, optionalMsg);
 
   /// {@template validator_validate_with_default}
   /// Creates a validator function that applies a default value before validation,
@@ -2085,8 +2083,9 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<T?> validateWithDefault<T extends Object>(
-          T defaultValue, Validator<T> next) =>
-      val.validateWithDefault(defaultValue, next);
+    T defaultValue,
+    Validator<T> next,
+  ) => val.validateWithDefault(defaultValue, next);
 
   // Transform Validator
 
@@ -2140,18 +2139,17 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<IN>
-      transformAndValidate<IN extends Object?, OUT extends Object?>(
+  transformAndValidate<IN extends Object?, OUT extends Object?>(
     OUT Function(IN) transformFunction, {
     Validator<OUT>? next,
     String Function(IN)? transformAndValidateMsg,
     String? transformedResultTypeDescription,
-  }) =>
-          val.transformAndValidate(
-            transformFunction,
-            next: next,
-            transformAndValidateMsg: transformAndValidateMsg,
-            transformedResultTypeDescription: transformedResultTypeDescription,
-          );
+  }) => val.transformAndValidate(
+    transformFunction,
+    next: next,
+    transformAndValidateMsg: transformAndValidateMsg,
+    transformedResultTypeDescription: transformedResultTypeDescription,
+  );
 
   // Type Validator
   /// {@template validator_string}
@@ -2205,8 +2203,7 @@ final class Validators {
   static Validator<T> string<T extends Object>([
     Validator<String>? next,
     String Function(T input)? stringMsg,
-  ]) =>
-      val.string(next, stringMsg);
+  ]) => val.string(next, stringMsg);
 
   /// {@template validator_int}
   /// Creates a validator that verifies if an input value is an [int] or can be
@@ -2259,8 +2256,7 @@ final class Validators {
   static Validator<T> int<T extends Object>([
     Validator<c.int>? next,
     String Function(T input)? intMsg,
-  ]) =>
-      val.isInt(next, intMsg);
+  ]) => val.isInt(next, intMsg);
 
   /// {@template validator_double}
   /// Creates a validator that verifies if an input value is a [double] or can be
@@ -2315,8 +2311,7 @@ final class Validators {
   static Validator<T> double<T extends Object>([
     Validator<c.double>? next,
     String Function(T input)? doubleMsg,
-  ]) =>
-      val.isDouble(next, doubleMsg);
+  ]) => val.isDouble(next, doubleMsg);
 
   /// {@template validator_num}
   /// Creates a validator that verifies if an input value is a [num] or can be
@@ -2371,8 +2366,7 @@ final class Validators {
   static Validator<T> num<T extends Object>([
     Validator<c.num>? next,
     String Function(T input)? numMsg,
-  ]) =>
-      val.isNum(next, numMsg);
+  ]) => val.isNum(next, numMsg);
 
   /// {@template validator_bool}
   /// Creates a validator that verifies if an input value is a [bool] or can be
@@ -2439,12 +2433,12 @@ final class Validators {
   /// ## Caveats
   /// - If the input is [String], it will be parsed by the [bool.tryParse] method
   /// {@endtemplate}
-  static Validator<T> bool<T extends Object>(
-          [Validator<c.bool>? next,
-          String Function(T input)? boolMsg,
-          c.bool caseSensitive = false,
-          c.bool trim = true]) =>
-      val.isBool(next, boolMsg, caseSensitive, trim);
+  static Validator<T> bool<T extends Object>([
+    Validator<c.bool>? next,
+    String Function(T input)? boolMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = true,
+  ]) => val.isBool(next, boolMsg, caseSensitive, trim);
 
   /// {@template validator_date_time}
   /// Creates a validator that verifies if an input value is a [DateTime] or can be
@@ -2503,8 +2497,7 @@ final class Validators {
   static Validator<T> dateTime<T extends Object>([
     Validator<DateTime>? next,
     String Function(T input)? dateTimeMsg,
-  ]) =>
-      val.dateTime(next, dateTimeMsg);
+  ]) => val.dateTime(next, dateTimeMsg);
 
   // Path validators
   /// {@template validator_matches_allowed_extensions}
@@ -2559,12 +2552,11 @@ final class Validators {
     List<String> extensions, {
     String Function(List<String>)? matchesAllowedExtensionsMsg,
     c.bool caseSensitive = true,
-  }) =>
-      val.matchesAllowedExtensions(
-        extensions,
-        matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
-        caseSensitive: caseSensitive,
-      );
+  }) => val.matchesAllowedExtensions(
+    extensions,
+    matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
+    caseSensitive: caseSensitive,
+  );
 
   // String validators
 
@@ -2592,12 +2584,12 @@ final class Validators {
   /// ```dart
   /// // Case-sensitive validation
   /// final validator = contains('test');
-  /// print(validator('This is a test')); // Returns: null
-  /// print(validator('This is a TEST')); // Returns: error message
+  /// assert(validator('This is a test') == null); // Valid
+  /// assert(validator('This is a TEST') != null); // Not Valid: TEST != test when case sensitive.
   ///
   /// // Case-insensitive validation
   /// final caseInsensitiveValidator = contains('test', caseSensitive: false);
-  /// print(caseInsensitiveValidator('This is a TEST')); // Returns: null
+  /// assert(caseInsensitiveValidator('This is a TEST') == null); // Valid
   ///
   /// // Custom error message
   /// final customValidator = contains(
@@ -2613,12 +2605,68 @@ final class Validators {
     String substring, {
     c.bool caseSensitive = true,
     String Function(String substring, String input)? containsMsg,
-  }) =>
-      val.contains(
-        substring,
-        caseSensitive: caseSensitive,
-        containsMsg: containsMsg,
-      );
+  }) => val.contains(
+    substring,
+    caseSensitive: caseSensitive,
+    containsMsg: containsMsg,
+  );
+
+  /// {@template validator_starts_with}
+  /// Creates a validator function that checks if a string begins with a specific
+  /// prefix. The validation can be performed with or without case sensitivity.
+  ///
+  /// ## Parameters
+  /// - `prefix` (`String`): The text pattern that must appear at the beginning
+  ///   of the validated string. An empty prefix will always result in successful
+  ///   validation as all strings technically start with an empty string.
+  /// - `caseSensitive` (`bool`): Controls whether the prefix matching should be
+  ///   case-sensitive. Defaults to `true`. When set to `false`, both the input
+  ///   value and prefix are converted to lowercase before comparison.
+  /// - `startsWithMsg` (`String Function(String prefix, String input)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   prefix pattern and the user input as parameters, returning a customized
+  ///   error message string. If not provided, the validator uses the default
+  ///   localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string starts with the prefix)
+  /// - Returns an error message string when validation fails (prefix not found at start)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // URL protocol validation (case-sensitive)
+  /// final httpsValidator = startsWith('https://');
+  /// assert(httpsValidator('https://example.com') == null); // Valid
+  /// assert(httpsValidator('http://example.com') != null); // Invalid: missing `s`
+  /// assert(httpsValidator('hTTp://example.com') != null); // Invalid: case sensitive
+  ///
+  /// // Case-insensitive prefix validation
+  /// final greetingValidator = startsWith('hello', caseSensitive: false);
+  /// assert(greetingValidator('Hello World') == null); // Valid
+  /// assert(greetingValidator('HELLO there') == null); // Valid
+  /// assert(greetingValidator('  hello there') == null); // Invalid: starts with space.
+  /// assert(greetingValidator('Hi there') != null); // Invalid
+  ///
+  /// // Custom error message for API key validation
+  /// final apiKeyValidator = startsWith(
+  ///   'sk-',
+  ///   startsWithMsg: (prefix, _) => 'API key must begin with "$prefix"'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Empty prefixes always pass validation and return `null`
+  /// {@endtemplate}
+  static Validator<String> startsWith(
+    String prefix, {
+    c.bool caseSensitive = true,
+    String Function(String prefix, String input)? startsWithMsg,
+  }) => val.startsWith(
+    prefix,
+    caseSensitive: caseSensitive,
+    startsWithMsg: startsWithMsg,
+  );
 
   /// {@template validator_has_min_uppercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2674,12 +2722,11 @@ final class Validators {
     c.int min = 1,
     c.int Function(String input)? customUppercaseCounter,
     String Function(String input, c.int min)? hasMinUppercaseCharsMsg,
-  }) =>
-      val.hasMinUppercaseChars(
-        min: min,
-        customUppercaseCounter: customUppercaseCounter,
-        hasMinUppercaseCharsMsg: hasMinUppercaseCharsMsg,
-      );
+  }) => val.hasMinUppercaseChars(
+    min: min,
+    customUppercaseCounter: customUppercaseCounter,
+    hasMinUppercaseCharsMsg: hasMinUppercaseCharsMsg,
+  );
 
   /// {@template validator_has_min_lowercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2735,12 +2782,11 @@ final class Validators {
     c.int min = 1,
     c.int Function(String input)? customLowercaseCounter,
     String Function(String input, c.int min)? hasMinLowercaseCharsMsg,
-  }) =>
-      val.hasMinLowercaseChars(
-        min: min,
-        customLowercaseCounter: customLowercaseCounter,
-        hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
-      );
+  }) => val.hasMinLowercaseChars(
+    min: min,
+    customLowercaseCounter: customLowercaseCounter,
+    hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
+  );
 
   /// {@template validator_has_min_numeric_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2801,12 +2847,11 @@ final class Validators {
     c.int min = 1,
     c.int Function(String input)? customNumericCounter,
     String Function(String input, c.int min)? hasMinNumericCharsMsg,
-  }) =>
-      val.hasMinNumericChars(
-        min: min,
-        customNumericCounter: customNumericCounter,
-        hasMinNumericCharsMsg: hasMinNumericCharsMsg,
-      );
+  }) => val.hasMinNumericChars(
+    min: min,
+    customNumericCounter: customNumericCounter,
+    hasMinNumericCharsMsg: hasMinNumericCharsMsg,
+  );
 
   /// {@template validator_has_min_special_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2868,12 +2913,11 @@ final class Validators {
     c.int min = 1,
     c.int Function(String input)? customSpecialCounter,
     String Function(String input, c.int min)? hasMinSpecialCharsMsg,
-  }) =>
-      val.hasMinSpecialChars(
-        min: min,
-        customSpecialCounter: customSpecialCounter,
-        hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
-      );
+  }) => val.hasMinSpecialChars(
+    min: min,
+    customSpecialCounter: customSpecialCounter,
+    hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
+  );
 
   /// {@template validator_match}
   /// Creates a validator function that checks if the [String] input matches a given
@@ -2915,8 +2959,7 @@ final class Validators {
   static Validator<String> match(
     RegExp regExp, {
     String Function(String input)? matchMsg,
-  }) =>
-      val.match(regExp, matchMsg: matchMsg);
+  }) => val.match(regExp, matchMsg: matchMsg);
 
   /// {@template validator_uuid}
   /// A validator function that checks if a given string matches the UUID format.
@@ -2965,10 +3008,9 @@ final class Validators {
   static Validator<String> uuid({
     RegExp? regex,
     String Function(String input)? uuidMsg,
-  }) =>
-      val.uuid(regex: regex, uuidMsg: uuidMsg);
+  }) => val.uuid(regex: regex, uuidMsg: uuidMsg);
 
-// Collection validators
+  // Collection validators
   /// {@template validator_equal_length}
   /// Creates a validator function that checks if the input collection's length equals
   /// the specified length. The validator returns `null` for valid input and an error
@@ -3028,12 +3070,10 @@ final class Validators {
   /// than validation failures. Validate input types before passing them to
   /// this validator.
   /// {@endtemplate}
-  static Validator<T> equalLength<T extends Object>(c.int expectedLength,
-          {String Function(T input, c.int expectedLength)? equalLengthMsg}) =>
-      val.equalLength(
-        expectedLength,
-        equalLengthMsg: equalLengthMsg,
-      );
+  static Validator<T> equalLength<T extends Object>(
+    c.int expectedLength, {
+    String Function(T input, c.int expectedLength)? equalLengthMsg,
+  }) => val.equalLength(expectedLength, equalLengthMsg: equalLengthMsg);
 
   /// {@template validator_min_length}
   /// Creates a validator function that checks if the input collection's length is
@@ -3091,9 +3131,10 @@ final class Validators {
   /// than validation failures. Validate input types before passing them to
   /// this validator.
   /// {@endtemplate}
-  static Validator<T> minLength<T extends Object>(c.int min,
-          {String Function(T input, c.int min)? minLengthMsg}) =>
-      val.minLength(min, minLengthMsg: minLengthMsg);
+  static Validator<T> minLength<T extends Object>(
+    c.int min, {
+    String Function(T input, c.int min)? minLengthMsg,
+  }) => val.minLength(min, minLengthMsg: minLengthMsg);
 
   /// {@template validator_max_length}
   /// Creates a validator function that checks if the input collection's length is
@@ -3150,9 +3191,10 @@ final class Validators {
   /// than validation failures. Validate input types before passing them to
   /// this validator.
   /// {@endtemplate}
-  static Validator<T> maxLength<T extends Object>(c.int max,
-          {String Function(T input, c.int max)? maxLengthMsg}) =>
-      val.maxLength(max, maxLengthMsg: maxLengthMsg);
+  static Validator<T> maxLength<T extends Object>(
+    c.int max, {
+    String Function(T input, c.int max)? maxLengthMsg,
+  }) => val.maxLength(max, maxLengthMsg: maxLengthMsg);
 
   /// {@template validator_between_length}
   /// Creates a validator function that checks if the input collection's length falls
@@ -3221,9 +3263,8 @@ final class Validators {
     c.int min,
     c.int max, {
     String Function(T input, {required c.int min, required c.int max})?
-        betweenLengthMsg,
-  }) =>
-      val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
+    betweenLengthMsg,
+  }) => val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
 
   // DateTime Validators
   /// {@template validator_after}
@@ -3266,8 +3307,7 @@ final class Validators {
     DateTime reference, {
     String Function(DateTime input, DateTime reference)? afterMsg,
     c.bool inclusive = false,
-  }) =>
-      val.after(reference, afterMsg: afterMsg, inclusive: inclusive);
+  }) => val.after(reference, afterMsg: afterMsg, inclusive: inclusive);
 
   /// {@template validator_before}
   /// Creates a [DateTime] validator that checks if an input date occurs before
@@ -3310,8 +3350,7 @@ final class Validators {
     DateTime reference, {
     String Function(DateTime input, DateTime reference)? beforeMsg,
     c.bool inclusive = false,
-  }) =>
-      val.before(reference, beforeMsg: beforeMsg, inclusive: inclusive);
+  }) => val.before(reference, beforeMsg: beforeMsg, inclusive: inclusive);
 
   /// {@template validator_between_date_time}
   /// Creates a [DateTime] validator that checks if an input date falls within a specified
@@ -3373,15 +3412,20 @@ final class Validators {
     DateTime minReference,
     DateTime maxReference, {
     String Function(
-            DateTime input, DateTime minReference, DateTime maxReference)?
-        betweenDateTimeMsg,
+      DateTime input,
+      DateTime minReference,
+      DateTime maxReference,
+    )?
+    betweenDateTimeMsg,
     c.bool leftInclusive = false,
     c.bool rightInclusive = false,
-  }) =>
-      val.betweenDateTime(minReference, maxReference,
-          betweenDateTimeMsg: betweenDateTimeMsg,
-          minInclusive: leftInclusive,
-          maxInclusive: rightInclusive);
+  }) => val.betweenDateTime(
+    minReference,
+    maxReference,
+    betweenDateTimeMsg: betweenDateTimeMsg,
+    minInclusive: leftInclusive,
+    maxInclusive: rightInclusive,
+  );
 
   /// {@template validator_max_file_size}
   /// Validates that a file size in bytes is less than or equal to `max`.
@@ -3422,8 +3466,7 @@ final class Validators {
     c.int max, {
     val.Base base = val.Base.b1024,
     String Function(c.int input, c.int max, val.Base base)? maxFileSizeMsg,
-  }) =>
-      val.maxFileSize(max, base: base, maxFileSizeMsg: maxFileSizeMsg);
+  }) => val.maxFileSize(max, base: base, maxFileSizeMsg: maxFileSizeMsg);
 
   // Generic type validators
   /// {@template validator_in_list}
@@ -3467,8 +3510,7 @@ final class Validators {
   static Validator<T> inList<T extends Object?>(
     List<T> values, {
     String Function(T input, List<T> values)? inListMsg,
-  }) =>
-      val.inList(values, inListMsg: inListMsg);
+  }) => val.inList(values, inListMsg: inListMsg);
 
   /// {@template validator_not_in_list}
   /// Creates a validator function that verifies if a given input is not in
@@ -3512,8 +3554,7 @@ final class Validators {
   static Validator<T> notInList<T extends Object?>(
     List<T> values, {
     String Function(T input, List<T> values)? notInListMsg,
-  }) =>
-      val.notInList(values, notInListMsg: notInListMsg);
+  }) => val.notInList(values, notInListMsg: notInListMsg);
 
   /// {@template validator_is_true}
   /// Creates a validator function that checks if a given input represents a `true`
@@ -3560,12 +3601,15 @@ final class Validators {
   /// assert(strictValidator(' true') != null);  // Invalid: no trimming
   /// ```
   /// {@endtemplate}
-  static Validator<T> isTrue<T extends Object>(
-          {String Function(T input)? isTrueMsg,
-          c.bool caseSensitive = false,
-          c.bool trim = true}) =>
-      val.isTrue(
-          isTrueMsg: isTrueMsg, caseSensitive: caseSensitive, trim: trim);
+  static Validator<T> isTrue<T extends Object>({
+    String Function(T input)? isTrueMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = true,
+  }) => val.isTrue(
+    isTrueMsg: isTrueMsg,
+    caseSensitive: caseSensitive,
+    trim: trim,
+  );
 
   /// {@template validator_is_false}
   /// Creates a validator function that checks if a given input represents a `false`
@@ -3612,12 +3656,15 @@ final class Validators {
   /// assert(strictValidator(' false') != null); // Invalid: no trimming
   /// ```
   /// {@endtemplate}
-  static Validator<T> isFalse<T extends Object>(
-          {String Function(T input)? isFalseMsg,
-          c.bool caseSensitive = false,
-          c.bool trim = false}) =>
-      val.isFalse(
-          isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
+  static Validator<T> isFalse<T extends Object>({
+    String Function(T input)? isFalseMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = false,
+  }) => val.isFalse(
+    isFalseMsg: isFalseMsg,
+    caseSensitive: caseSensitive,
+    trim: trim,
+  );
 
   /// {@template validator_satisfy}
   /// Creates a validator function that checks if a given input satisfies a custom
@@ -3670,8 +3717,7 @@ final class Validators {
   static Validator<T> satisfy<T extends Object>(
     c.bool Function(T) condition, {
     String Function(T input)? satisfyMsg,
-  }) =>
-      val.satisfy(condition, satisfyMsg: satisfyMsg);
+  }) => val.satisfy(condition, satisfyMsg: satisfyMsg);
 
   // Miscellaneous validators
   /// {@template validator_color_code}
@@ -3737,12 +3783,11 @@ final class Validators {
     },
     c.bool Function(String)? customColorCode,
     String Function(String input)? colorCodeMsg,
-  }) =>
-      val.colorCode(
-        formats: formats,
-        customColorCode: customColorCode,
-        colorCodeMsg: colorCodeMsg,
-      );
+  }) => val.colorCode(
+    formats: formats,
+    customColorCode: customColorCode,
+    colorCodeMsg: colorCodeMsg,
+  );
 
   /// {@template validator_isbn}
   /// Creates a validator function that validates International Standard Book Number (ISBN) strings.
@@ -3787,9 +3832,7 @@ final class Validators {
   /// ## Caveats
   /// - Formatting characters (hyphens and spaces) are automatically stripped during validation
   /// {@endtemplate}
-  static Validator<String> isbn({
-    String Function(String input)? isbnMsg,
-  }) =>
+  static Validator<String> isbn({String Function(String input)? isbnMsg}) =>
       val.isbn(isbnMsg: isbnMsg);
 
   // Numeric validators
@@ -3846,23 +3889,26 @@ final class Validators {
   /// ## Caveats
   /// - The default behavior uses inclusive bounds (`>=` and `<=`)
   /// {@endtemplate}
-  static Validator<T> between<T extends c.num>(T min, T max,
-          {c.bool minInclusive = true,
-          c.bool maxInclusive = true,
-          String Function(
-            T input,
-            T min,
-            T max,
-            c.bool minInclusive,
-            c.bool maxInclusive,
-          )? betweenMsg}) =>
-      val.between(
-        min,
-        max,
-        minInclusive: minInclusive,
-        maxInclusive: maxInclusive,
-        betweenMsg: betweenMsg,
-      );
+  static Validator<T> between<T extends c.num>(
+    T min,
+    T max, {
+    c.bool minInclusive = true,
+    c.bool maxInclusive = true,
+    String Function(
+      T input,
+      T min,
+      T max,
+      c.bool minInclusive,
+      c.bool maxInclusive,
+    )?
+    betweenMsg,
+  }) => val.between(
+    min,
+    max,
+    minInclusive: minInclusive,
+    maxInclusive: maxInclusive,
+    betweenMsg: betweenMsg,
+  );
 
   /// {@template validator_greater_than}
   /// Creates a validator function that checks if a numeric input exceeds `reference`.
@@ -3897,9 +3943,10 @@ final class Validators {
   /// ## Caveats
   /// - The validator uses strict greater than comparison (`>`)
   /// {@endtemplate}
-  static Validator<T> greaterThan<T extends c.num>(T reference,
-          {String Function(c.num input, c.num reference)? greaterThanMsg}) =>
-      val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
+  static Validator<T> greaterThan<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? greaterThanMsg,
+  }) => val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
 
   /// {@template validator_greater_than_or_equal_to}
   /// Creates a validator function that checks if a numeric input is greater than
@@ -3937,11 +3984,13 @@ final class Validators {
   /// ## Caveats
   /// - The validator uses greater than or equal to comparison (`>=`)
   /// {@endtemplate}
-  static Validator<T> greaterThanOrEqualTo<T extends c.num>(T reference,
-          {String Function(c.num input, c.num reference)?
-              greaterThanOrEqualToMsg}) =>
-      val.greaterThanOrEqualTo(reference,
-          greaterThanOrEqualToMsg: greaterThanOrEqualToMsg);
+  static Validator<T> greaterThanOrEqualTo<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? greaterThanOrEqualToMsg,
+  }) => val.greaterThanOrEqualTo(
+    reference,
+    greaterThanOrEqualToMsg: greaterThanOrEqualToMsg,
+  );
 
   /// {@template validator_less_than}
   /// Creates a validator function that checks if a numeric input is less than `reference`.
@@ -3976,9 +4025,10 @@ final class Validators {
   /// ## Caveats
   /// - The validator uses strict less than comparison (`<`)
   /// {@endtemplate}
-  static Validator<T> lessThan<T extends c.num>(T reference,
-          {String Function(c.num input, c.num reference)? lessThanMsg}) =>
-      val.lessThan(reference, lessThanMsg: lessThanMsg);
+  static Validator<T> lessThan<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? lessThanMsg,
+  }) => val.lessThan(reference, lessThanMsg: lessThanMsg);
 
   /// {@template validator_less_than_or_equal_to}
   /// Creates a validator function that checks if a numeric input is less than
@@ -4016,11 +4066,13 @@ final class Validators {
   /// ## Caveats
   /// - The validator uses less than or equal to comparison (`<=`)
   /// {@endtemplate}
-  static Validator<T> lessThanOrEqualTo<T extends c.num>(T reference,
-          {String Function(c.num input, c.num reference)?
-              lessThanOrEqualToMsg}) =>
-      val.lessThanOrEqualTo(reference,
-          lessThanOrEqualToMsg: lessThanOrEqualToMsg);
+  static Validator<T> lessThanOrEqualTo<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? lessThanOrEqualToMsg,
+  }) => val.lessThanOrEqualTo(
+    reference,
+    lessThanOrEqualToMsg: lessThanOrEqualToMsg,
+  );
 
   // User information validators
 
@@ -4065,8 +4117,7 @@ final class Validators {
   static Validator<String> email({
     RegExp? regex,
     String Function(String input)? emailMsg,
-  }) =>
-      val.email(regex: regex, emailMsg: emailMsg);
+  }) => val.email(regex: regex, emailMsg: emailMsg);
 
   /// {@template validator_password}
   /// Creates a composite validator for password validation that enforces multiple
@@ -4118,16 +4169,15 @@ final class Validators {
     c.int minNumberCount = 1,
     c.int minSpecialCharCount = 1,
     String Function(String input)? passwordMsg,
-  }) =>
-      val.password(
-        minLength: minLength,
-        maxLength: maxLength,
-        minUppercaseCount: minUppercaseCount,
-        minLowercaseCount: minLowercaseCount,
-        minNumberCount: minNumberCount,
-        minSpecialCharCount: minSpecialCharCount,
-        passwordMsg: passwordMsg,
-      );
+  }) => val.password(
+    minLength: minLength,
+    maxLength: maxLength,
+    minUppercaseCount: minUppercaseCount,
+    minLowercaseCount: minLowercaseCount,
+    minNumberCount: minNumberCount,
+    minSpecialCharCount: minSpecialCharCount,
+    passwordMsg: passwordMsg,
+  );
 
   /// {@template validator_phoneNumber}
   /// A validator function for phone number validation that supports various international
@@ -4171,8 +4221,7 @@ final class Validators {
   static Validator<String> phoneNumber({
     RegExp? regex,
     String Function(String input)? phoneNumberMsg,
-  }) =>
-      val.phoneNumber(regex: regex, phoneNumberMsg: phoneNumberMsg);
+  }) => val.phoneNumber(regex: regex, phoneNumberMsg: phoneNumberMsg);
 
   // Finance validators
   /// {@template validator_credit_card}
@@ -4225,8 +4274,7 @@ final class Validators {
     // TODO(ArturAssisComp): turn this into a function, becoming more generic.
     RegExp? regex,
     String Function(String input)? creditCardMsg,
-  }) =>
-      val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
+  }) => val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
 
   ///{@template validator_iban}
   /// A validator function that checks if a string is a valid International Bank
@@ -4273,8 +4321,7 @@ final class Validators {
   static Validator<String> iban({
     c.bool Function(String input)? isIban,
     String Function(String input)? ibanMsg,
-  }) =>
-      val.iban(isIban: isIban, ibanMsg: ibanMsg);
+  }) => val.iban(isIban: isIban, ibanMsg: ibanMsg);
 
   ///{@template validator_bic}
   /// Creates a validator that checks if a string is a valid BIC (Bank Identifier Code).
@@ -4322,10 +4369,9 @@ final class Validators {
   static Validator<String> bic({
     c.bool Function(String input)? isBic,
     String Function(String input)? bicMsg,
-  }) =>
-      val.bic(isBic: isBic, bicMsg: bicMsg);
+  }) => val.bic(isBic: isBic, bicMsg: bicMsg);
 
-// Network validators
+  // Network validators
 
   /// {@template validator_ip}
   /// Creates a validator function for IP address validation, supporting both IPv4 and IPv6 formats.
@@ -4368,12 +4414,7 @@ final class Validators {
     IpVersion version = IpVersion.iPv4,
     RegExp? regex,
     String Function(String input)? ipMsg,
-  }) =>
-      val.ip(
-        version: version,
-        regex: regex,
-        ipMsg: ipMsg,
-      );
+  }) => val.ip(version: version, regex: regex, ipMsg: ipMsg);
 
   /// {@template validator_url}
   /// A validator function that checks if a given string represents a valid URL
@@ -4433,17 +4474,16 @@ final class Validators {
     List<String> hostBlockList = const <String>[],
     RegExp? regex,
     String Function(String input)? urlMsg,
-  }) =>
-      val.url(
-        protocols: protocols,
-        requireTld: requireTld,
-        requireProtocol: requireProtocol,
-        allowUnderscore: allowUnderscore,
-        hostAllowList: hostAllowList,
-        hostBlockList: hostBlockList,
-        regex: regex,
-        urlMsg: urlMsg,
-      );
+  }) => val.url(
+    protocols: protocols,
+    requireTld: requireTld,
+    requireProtocol: requireProtocol,
+    allowUnderscore: allowUnderscore,
+    hostAllowList: hostAllowList,
+    hostBlockList: hostBlockList,
+    regex: regex,
+    urlMsg: urlMsg,
+  );
 
   /// {@template validator_mac_address}
   /// A validator function that checks if a given string represents a valid MAC
@@ -4486,8 +4526,5 @@ final class Validators {
     c.bool Function(String)? isMacAddress,
     String Function(String input)? macAddressMsg,
   }) =>
-      val.macAddress(
-        isMacAddress: isMacAddress,
-        macAddressMsg: macAddressMsg,
-      );
+      val.macAddress(isMacAddress: isMacAddress, macAddressMsg: macAddressMsg);
 }

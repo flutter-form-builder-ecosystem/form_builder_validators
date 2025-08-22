@@ -1,7 +1,7 @@
 # Changelog
 
 ## 12.0.0
-- Deprecated `FormBuilderValidators` class with its static methods as validators.
+- Deprecated `FormBuilderValidators` class with its static methods as validators. Use `Validators` instead.
 - Created a new API for the validators.
   - Removed the `checkNullOrEmpty` parameter.
   - Restructured validators (maintained some intact, removed others, split some into elementary ones)

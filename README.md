@@ -146,7 +146,6 @@ TextFormField(
 ### File validators
 
 - `Validators.maxFileSize(max, base:base)`: Checks if the field contains a file size that is less than the `max` size with `base` 1000 or 1024.
-- TODO [ ] `Validators.minFileSize(min, base:base)`: Checks if the field contains a file size that is less than the `max` size with `base` 1000 or 1024.
 
 ### Finance validators
 
@@ -187,21 +186,14 @@ Validators that check a generic type user input.
 ### String validators
 
 - `Validators.contains(substring)` - Checks if the field contains the `substring`.
-- TODO [ ] `Validators.notContains(substring)` - Checks if the field does not contain the `substring`.
+- `Validators.startsWith()` - Checks if the field starts with `prefix`.
 - TODO [ ] `FormBuilderValidators.endsWith()` - requires the substring to be the end of the field's value.
-- TODO [ ] `FormBuilderValidators.notEndsWith()` - requires the substring not to be the end of the field's value.
-- TODO [ ] `FormBuilderValidators.startsWith()` - requires the substring to be the start of the field's value.
-- TODO [ ] `FormBuilderValidators.notStartsWith()` - requires the substring not to be the start of the field's value.
 - TODO [ ] `FormBuilderValidators.lowercase()` - requires the field's value to be lowercase.
 - TODO [ ] `FormBuilderValidators.uppercase()` - requires the field's value to be uppercase.
 - `Validators.hasMinUppercaseChars(min:min)` - Checks if the field has a minimum number of uppercase chars.
-- TODO [ ] `Validators.hasMaxUppercaseChars(max:max)` - Checks if the field has a maximum number of uppercase chars.
 - `Validators.hasMinLowercaseChars(min:min)` - Checks if the field has a minimum number of lowercase chars.
-- TODO [ ] `Validators.hasMaxLowercaseChars(max:max)` - Checks if the field has a maximum number of lowercase chars.
 - `Validators.hasMinNumericChars(min:min)` - Checks if the field has a minimum number of numeric chars.
-- TODO [ ] `Validators.hasMaxNumericChars(max:max)` - Checks if the field has a maximum number of numeric chars.
 - `Validators.hasMinSpecialChars(min:min)` - Checks if the field has a minimum number of special chars.
-- TODO [ ] `Validators.hasMaxSpecialChars(max:max)` - Checks if the field has a maximum number of special chars.
 - `Validators.match(regExp)` - Checks if the field matches with the regular expression `regExp`.
 - TODO [ ] `Validators.notMatch(regExp)` - Checks if the field does not match with the regular expression `regExp`.
 - `Validators.uuid()` - Checks if the field is a valid Universally Unique Identifier (UUID).
