@@ -1,5 +1,7 @@
 {
   "@@locale": "de",
+  "notMatchErrorText": "Der Wert darf nicht dem Muster entsprechen",
+  "satisfyErrorText": "Der Wert erfüllt die Bedingung nicht.",
   "andSeparator": " und ",
   "betweenLengthErrorText": "Der Wert muss eine Länge zwischen {min} und {max} haben, einschließlich.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Der Wert muss {value} enthalten.",
   "betweenErrorText": "Der Wert muss zwischen {min} und {max} liegen.",
   "containsElementErrorText": "Der Wert muss in der Liste der zulässigen Werte sein.",
+  "doesNotContainElementErrorText": "Wert darf nicht in der Liste enthalten sein.",
   "ibanErrorText": "Dieses Feld erfordert eine gültige IBAN.",
   "uniqueErrorText": "Dieses Feld erfordert einen eindeutigen Wert.",
   "bicErrorText": "Dieses Feld erfordert eine gültige BIC.",

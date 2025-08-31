@@ -10,8 +10,9 @@ void main() {
   group('Validator: email', () {
     test('should return null if the email address is valid', () {
       // Arrange
-      final Validator<String> validator =
-          email(emailMsg: (_) => customErrorMessage);
+      final Validator<String> validator = email(
+        emailMsg: (_) => customErrorMessage,
+      );
       const String validEmail = 'user@example.com';
 
       // Act
@@ -21,24 +22,28 @@ void main() {
       expect(result, isNull);
     });
 
-    test('should return null if the email address is a valid generated email',
-        () {
-      // Arrange
-      final Validator<String> validator =
-          email(emailMsg: (_) => customErrorMessage);
-      final String validEmail = faker.internet.email();
+    test(
+      'should return null if the email address is a valid generated email',
+      () {
+        // Arrange
+        final Validator<String> validator = email(
+          emailMsg: (_) => customErrorMessage,
+        );
+        final String validEmail = faker.internet.email();
 
-      // Act
-      final String? result = validator(validEmail);
+        // Act
+        final String? result = validator(validEmail);
 
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
 
     test('should return the error text if the email address is invalid', () {
       // Arrange
-      final Validator<String> validator =
-          email(emailMsg: (_) => customErrorMessage);
+      final Validator<String> validator = email(
+        emailMsg: (_) => customErrorMessage,
+      );
       const String invalidEmail = 'invalid-email';
 
       // Act
@@ -50,8 +55,9 @@ void main() {
 
     test('should return the error text if the email address is empty', () {
       // Arrange
-      final Validator<String> validator =
-          email(emailMsg: (_) => customErrorMessage);
+      final Validator<String> validator = email(
+        emailMsg: (_) => customErrorMessage,
+      );
       const String emptyEmail = '';
 
       // Act
@@ -63,8 +69,9 @@ void main() {
 
     test('should return the error text if the email address is whitespace', () {
       // Arrange
-      final Validator<String> validator =
-          email(emailMsg: (_) => customErrorMessage);
+      final Validator<String> validator = email(
+        emailMsg: (_) => customErrorMessage,
+      );
       const String whitespaceEmail = ' ';
 
       // Act
@@ -75,49 +82,56 @@ void main() {
     });
 
     test(
-        'should return the default error text if the email address is invalid and no custom error message is provided',
-        () {
-      // Arrange
-      final Validator<String> validator = email();
-      const String invalidEmail = 'invalid-email';
+      'should return the default error text if the email address is invalid and no custom error message is provided',
+      () {
+        // Arrange
+        final Validator<String> validator = email();
+        const String invalidEmail = 'invalid-email';
 
-      // Act
-      final String? result = validator(invalidEmail);
+        // Act
+        final String? result = validator(invalidEmail);
 
-      // Assert
-      expect(result, FormBuilderLocalizations.current.emailErrorText);
-    });
-
-    test(
-        'should return null if the email address is valid according to a custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^[\w\.-]+@example\.com$');
-      final Validator<String> validator =
-          email(regex: customRegex, emailMsg: (_) => customErrorMessage);
-      const String validEmail = 'user@example.com';
-
-      // Act
-      final String? result = validator(validEmail);
-
-      // Assert
-      expect(result, isNull);
-    });
+        // Assert
+        expect(result, FormBuilderLocalizations.current.emailErrorText);
+      },
+    );
 
     test(
-        'should return the custom error text if the email address is invalid according to a custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex = RegExp(r'^[\w\.-]+@example\.com$');
-      final Validator<String> validator =
-          email(regex: customRegex, emailMsg: (_) => customErrorMessage);
-      const String invalidEmail = 'user@notexample.com';
+      'should return null if the email address is valid according to a custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^[\w.-]+@example\.com$');
+        final Validator<String> validator = email(
+          regex: customRegex,
+          emailMsg: (_) => customErrorMessage,
+        );
+        const String validEmail = 'user@example.com';
 
-      // Act
-      final String? result = validator(invalidEmail);
+        // Act
+        final String? result = validator(validEmail);
 
-      // Assert
-      expect(result, customErrorMessage);
-    });
+        // Assert
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'should return the custom error text if the email address is invalid according to a custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(r'^[\w.-]+@example\.com$');
+        final Validator<String> validator = email(
+          regex: customRegex,
+          emailMsg: (_) => customErrorMessage,
+        );
+        const String invalidEmail = 'user@notexample.com';
+
+        // Act
+        final String? result = validator(invalidEmail);
+
+        // Assert
+        expect(result, customErrorMessage);
+      },
+    );
   });
 }

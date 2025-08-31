@@ -46,34 +46,32 @@ class _HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-                onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => BasicExamplesPage(),
-                      ),
-                    ),
-                child: Text('Basic Examples')),
-            SizedBox(
-              height: 15,
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => BasicExamplesPage(),
+                ),
+              ),
+              child: Text('Basic Examples'),
             ),
+            SizedBox(height: 15),
             ElevatedButton(
-                onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) =>
-                            GenericExamplesPage(),
-                      ),
-                    ),
-                child: Text('Generic Examples')),
-            SizedBox(
-              height: 15,
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => GenericExamplesPage(),
+                ),
+              ),
+              child: Text('Generic Examples'),
             ),
+            SizedBox(height: 15),
             ElevatedButton(
-                onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) =>
-                            FormsWithValidateGranularly(),
-                      ),
-                    ),
-                child: Text('Validate Granularly'))
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      FormsWithValidateGranularly(),
+                ),
+              ),
+              child: Text('Validate Granularly'),
+            ),
           ],
         ),
       ),

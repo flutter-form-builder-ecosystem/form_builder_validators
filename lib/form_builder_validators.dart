@@ -31,7 +31,6 @@ export 'localization/intl/messages_tr.dart';
 export 'localization/intl/messages_uk.dart';
 export 'localization/intl/messages_zh.dart';
 export 'localization/l10n.dart';
-// DEPRECATED START
 export 'src/base_validator.dart';
 export 'src/bool/bool.dart';
 export 'src/collection/collection.dart';
@@ -39,10 +38,7 @@ export 'src/core/core.dart';
 export 'src/datetime/datetime.dart';
 export 'src/file/file.dart';
 export 'src/finance/finance.dart';
-// DEPRECATED END
 export 'src/form_builder_validators.dart';
-export 'src/validators/constants.dart';
-// DEPRECATED START
 export 'src/form_field_validator_extensions.dart';
 export 'src/identity/identity.dart';
 export 'src/network/network.dart';
@@ -50,4 +46,4 @@ export 'src/numeric/numeric.dart';
 export 'src/string/string.dart';
 export 'src/translated_validator.dart';
 export 'src/usecase/usecase.dart';
-// DEPRECATED END
+export 'src/validators/constants.dart';

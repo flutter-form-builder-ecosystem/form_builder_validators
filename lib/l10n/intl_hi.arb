@@ -1,5 +1,7 @@
 {
   "@@locale": "hi",
+  "notMatchErrorText": "मान पैटर्न से मेल नहीं खाना चाहिए",
+  "satisfyErrorText": "मान शर्त को पूरा नहीं करता।",
   "andSeparator": " और ",
   "betweenLengthErrorText": "मान की लंबाई {min} और {max} के बीच होनी चाहिए, सहित.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "मान में {value} होना चाहिए।",
   "betweenErrorText": "मान {min} और {max} के बीच होना चाहिए।",
   "containsElementErrorText": "मान सूची में होना चाहिए।",
+  "doesNotContainElementErrorText": "मान सूची में नहीं हो सकता.",
   "ibanErrorText": "मान को वैध IBAN होना चाहिए।",
   "uniqueErrorText": "मान अद्वितीय होनी चाहिए।",
   "bicErrorText": "मान को वैध BIC होना चाहिए।",

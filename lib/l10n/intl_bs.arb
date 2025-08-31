@@ -1,5 +1,7 @@
 {
   "@@locale": "bs",
+  "notMatchErrorText": "Vrijednost se ne smije poklapati s uzorkom",
+  "satisfyErrorText": "Vrednost ne zadovoljava uslov.",
   "andSeparator": " i ",
   "betweenLengthErrorText": "Vrijednost mora imati dužinu između {min} i {max}, uključivo.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Vrijednost mora sadržavati {value}.",
   "betweenErrorText": "Vrijednost mora biti između {min} i {max}.",
   "containsElementErrorText": "Vrijednost mora biti na listi dopuštenih vrijednosti.",
+  "doesNotContainElementErrorText": "Vrijednost ne smije biti na listi.",
   "ibanErrorText": "Unesite validan IBAN.",
   "uniqueErrorText": "Vrijednost mora biti jedinstvena.",
   "bicErrorText": "Unesite validan BIC.",

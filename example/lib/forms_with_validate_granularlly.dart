@@ -75,8 +75,12 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your full name',
                     prefixIcon: Icon(Icons.person),
                   ),
-                  validator: V.isRequired(V.match(RegExp('[A-Z].*'),
-                      matchMsg: (_) => 'The name must start with uppercase')),
+                  validator: V.required(
+                    V.match(
+                      RegExp('[A-Z].*'),
+                      matchMsg: (_) => 'The name must start with uppercase',
+                    ),
+                  ),
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 16),
@@ -87,7 +91,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your email',
                     prefixIcon: Icon(Icons.email),
                   ),
-                  validator: V.isRequired(V.email()),
+                  validator: V.required(V.email()),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),
@@ -100,9 +104,14 @@ class _BodyState extends State<_Body> {
                     hintText: 'YYYY-MM-DD',
                     prefixIcon: Icon(Icons.calendar_today),
                   ),
-                  validator: V.isRequired(V.isDateTime(V.isBefore(
-                      DateTime.now(),
-                      isBeforeMsg: (_, __) => 'Date must be in the past.'))),
+                  validator: V.required(
+                    V.dateTime(
+                      V.before(
+                        DateTime.now(),
+                        beforeMsg: (_, _) => 'Date must be in the past.',
+                      ),
+                    ),
+                  ),
                   keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.next,
                   onTap: () async {
@@ -127,9 +136,16 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.height),
                     suffixText: 'm',
                   ),
-                  validator: V.isRequired(V.isNum(V.between(0.5, 2.5,
-                      betweenMsg: (_, num min, num max, __, ___) =>
-                          'Please enter a realistic height [$min-${max}m]'))),
+                  validator: V.required(
+                    V.num(
+                      V.between(
+                        0.5,
+                        2.5,
+                        betweenMsg: (_, num min, num max, _, _) =>
+                            'Please enter a realistic height [$min-${max}m]',
+                      ),
+                    ),
+                  ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                 ),
@@ -142,9 +158,16 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.monitor_weight),
                     suffixText: 'kg',
                   ),
-                  validator: V.isOptional(V.isNum(V.between(20, 300,
-                      betweenMsg: (_, num min, num max, ____, _____) =>
-                          'weight must be in [$min, ${max}kg]'))),
+                  validator: V.optional(
+                    V.num(
+                      V.between(
+                        20,
+                        300,
+                        betweenMsg: (_, num min, num max, _, _) =>
+                            'weight must be in [$min, ${max}kg]',
+                      ),
+                    ),
+                  ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                 ),
@@ -156,7 +179,7 @@ class _BodyState extends State<_Body> {
                     hintText: 'Enter your phone number',
                     prefixIcon: Icon(Icons.phone),
                   ),
-                  validator: V.isRequired(),
+                  validator: V.required(),
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                 ),
@@ -169,22 +192,28 @@ class _BodyState extends State<_Body> {
                     prefixIcon: Icon(Icons.bloodtype),
                   ),
                   items: validBloodTypeOptions
-                      .map((String e) =>
-                          DropdownMenuItem<String>(value: e, child: Text(e)))
+                      .map(
+                        (String e) =>
+                            DropdownMenuItem<String>(value: e, child: Text(e)),
+                      )
                       .followedBy(<DropdownMenuItem<String>>[
-                    DropdownMenuItem<String>(
-                      value: 'invalid option 1',
-                      child: Text('Invalid option 1'),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'invalid option 2',
-                      child: Text('Invalid option 2'),
-                    ),
-                  ]).toList(),
-                  validator: V.isRequired(V.containsElement(
+                        DropdownMenuItem<String>(
+                          value: 'invalid option 1',
+                          child: Text('Invalid option 1'),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: 'invalid option 2',
+                          child: Text('Invalid option 2'),
+                        ),
+                      ])
+                      .toList(),
+                  validator: V.required(
+                    V.inList(
                       validBloodTypeOptions,
-                      containsElementMsg: (_, List<String> v) =>
-                          'The option must be one of: ${v.join(', ')}.')),
+                      inListMsg: (_, List<String> v) =>
+                          'The option must be one of: ${v.join(', ')}.',
+                    ),
+                  ),
                   onChanged: (String? value) {
                     setState(() {
                       selectedBloodType = value;
@@ -197,29 +226,36 @@ class _BodyState extends State<_Body> {
                     final Iterable<String> invalidFields = _formKey
                         .currentState!
                         .validateGranularly()
-                        .map((FormFieldState<Object?> e) => e.widget.key
-                            .toString()
-                            .replaceAll('[<\'', '')
-                            .replaceAll('\'>]', ''));
+                        .map(
+                          (FormFieldState<Object?> e) => e.widget.key
+                              .toString()
+                              .replaceAll('[<\'', '')
+                              .replaceAll('\'>]', ''),
+                        );
                     if (invalidFields.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Form submitted successfully!'),
-                        duration: Duration(seconds: 2),
-                        elevation: 5,
-                        behavior: SnackBarBehavior.floating,
-                        width: 350,
-                        backgroundColor: Colors.green,
-                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Form submitted successfully!'),
+                          duration: Duration(seconds: 2),
+                          elevation: 5,
+                          behavior: SnackBarBehavior.floating,
+                          width: 350,
+                          backgroundColor: Colors.green,
+                        ),
+                      );
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content:
-                            Text('Invalid fields: ${invalidFields.join(', ')}'),
-                        duration: Duration(seconds: 2),
-                        elevation: 5,
-                        behavior: SnackBarBehavior.floating,
-                        width: 350,
-                        backgroundColor: Colors.green,
-                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Invalid fields: ${invalidFields.join(', ')}',
+                          ),
+                          duration: Duration(seconds: 2),
+                          elevation: 5,
+                          behavior: SnackBarBehavior.floating,
+                          width: 350,
+                          backgroundColor: Colors.green,
+                        ),
+                      );
                     }
                   },
                   child: const Padding(

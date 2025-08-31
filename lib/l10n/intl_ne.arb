@@ -1,5 +1,7 @@
 {
   "@@locale": "ne",
+  "notMatchErrorText": "मान ढाँचासँग मेल खानु हुँदैन",
+  "satisfyErrorText": "मूल्यले सर्त पूरा गर्दैन।",
   "andSeparator": " र ",
   "betweenLengthErrorText": "मान को लम्बाई {min} र {max} बीचमा हुनुपर्छ, समावेश गरेर।",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "मानले {value} समावेश गर्नुपर्छ।",
   "betweenErrorText": "मान {min} र {max} को बीचमा हुनुपर्छ।",
   "containsElementErrorText": "मान अनुमत मानहरूको सूचीमा हुनुपर्छ।",
+  "doesNotContainElementErrorText": "मान सूचीमा नहुन सक्छ।",
   "ibanErrorText": "यो क्षेत्रलाई मान्य IBAN चाहिन्छ।",
   "uniqueErrorText": "यो क्षेत्रलाई मान्य एकमात्र डाटा चाहिन्छ।",
   "bicErrorText": "यो क्षेत्रलाई मान्य BIC कोड चाहिन्छ।",

@@ -1,49 +1,53 @@
 import '../../localization/l10n.dart';
 import 'constants.dart';
 
-/// {@macro validator_is_after}
-Validator<DateTime> isAfter(
+/// {@macro validator_after}
+Validator<DateTime> after(
   DateTime reference, {
-  String Function(DateTime input, DateTime reference)? isAfterMsg,
+  String Function(DateTime input, DateTime reference)? afterMsg,
   bool inclusive = false,
 }) {
   return (DateTime input) {
     return input.isAfter(reference) ||
             (inclusive ? input.isAtSameMomentAs(reference) : false)
         ? null
-        : isAfterMsg?.call(input, reference) ??
-            FormBuilderLocalizations.current
-                .dateMustBeAfterErrorText(reference.toLocal());
+        : afterMsg?.call(input, reference) ??
+              FormBuilderLocalizations.current.dateMustBeAfterErrorText(
+                reference.toLocal(),
+              );
   };
 }
 
-/// {@macro validator_is_before}
-Validator<DateTime> isBefore(
+/// {@macro validator_before}
+Validator<DateTime> before(
   DateTime reference, {
-  String Function(DateTime input, DateTime reference)? isBeforeMsg,
+  String Function(DateTime input, DateTime reference)? beforeMsg,
   bool inclusive = false,
 }) {
   return (DateTime input) {
     return input.isBefore(reference) ||
             (inclusive ? input.isAtSameMomentAs(reference) : false)
         ? null
-        : isBeforeMsg?.call(input, reference) ??
-            FormBuilderLocalizations.current
-                .dateMustBeBeforeErrorText(reference.toLocal());
+        : beforeMsg?.call(input, reference) ??
+              FormBuilderLocalizations.current.dateMustBeBeforeErrorText(
+                reference.toLocal(),
+              );
   };
 }
 
-/// {@macro validator_is_date_time_between}
-Validator<DateTime> isDateTimeBetween(
+/// {@macro validator_between_date_time}
+Validator<DateTime> betweenDateTime(
   DateTime minReference,
   DateTime maxReference, {
   String Function(DateTime input, DateTime minReference, DateTime maxReference)?
-      isDateTimeBetweenMsg,
+  betweenDateTimeMsg,
   bool minInclusive = false,
   bool maxInclusive = false,
 }) {
-  assert(minReference.isBefore(maxReference),
-      'leftReference must be before rightReference');
+  assert(
+    minReference.isBefore(maxReference),
+    'leftReference must be before rightReference',
+  );
   return (DateTime input) {
     return (input.isBefore(maxReference) ||
                 (maxInclusive
@@ -52,8 +56,10 @@ Validator<DateTime> isDateTimeBetween(
             (input.isAfter(minReference) ||
                 (minInclusive ? input.isAtSameMomentAs(minReference) : false))
         ? null
-        : isDateTimeBetweenMsg?.call(input, minReference, maxReference) ??
-            FormBuilderLocalizations.current.dateMustBeBetweenErrorText(
-                minReference.toLocal(), maxReference.toLocal());
+        : betweenDateTimeMsg?.call(input, minReference, maxReference) ??
+              FormBuilderLocalizations.current.dateMustBeBetweenErrorText(
+                minReference.toLocal(),
+                maxReference.toLocal(),
+              );
   };
 }

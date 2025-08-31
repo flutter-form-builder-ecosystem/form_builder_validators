@@ -1,5 +1,7 @@
 {
   "@@locale": "zh_Hant",
+  "notMatchErrorText": "值不應與模式匹配",
+  "satisfyErrorText": "值不滿足條件。",
   "andSeparator": " 和 ",
   "betweenLengthErrorText": "值的長度必須在 {min} 和 {max} 之間（包含）。",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "值必須包含 {value}。",
   "betweenErrorText": "值必須在 {min} 和 {max} 之間。",
   "containsElementErrorText": "值必須在允許的值列表中。",
+  "doesNotContainElementErrorText": "值不能在列表中。",
   "ibanErrorText": "此欄位需要有效的 IBAN。",
   "uniqueErrorText": "此欄位需要唯一的值。",
   "bicErrorText": "此欄位需要有效的 BIC 編碼。",

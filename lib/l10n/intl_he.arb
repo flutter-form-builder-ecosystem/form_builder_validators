@@ -1,5 +1,7 @@
 {
   "@@locale": "he",
+  "notMatchErrorText": "הערך לא צריך להתאים לתבנית",
+  "satisfyErrorText": "הערך אינו עומד בתנאי.",
   "andSeparator": " ו ",
   "betweenLengthErrorText": "הערך חייב להיות באורך שבין {min} ל-{max}, כולל.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "הערך חייב להכיל את {value}.",
   "betweenErrorText": "הערך חייב להיות בין {min} לבין {max}.",
   "containsElementErrorText": "הערך חייב להיות ברשימת הערכים המותרים.",
+  "doesNotContainElementErrorText": "הערך לא יכול להיות ברשימה.",
   "ibanErrorText": "שדה זה דורש מספר IBAN תקין.",
   "uniqueErrorText": "שדה זה דורש ערך ייחודי.",
   "bicErrorText": "שדה זה דורש מזהה BIC תקין.",

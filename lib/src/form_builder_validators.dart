@@ -1,4 +1,7 @@
 // coverage:ignore-file
+import 'dart:core' as c;
+import 'dart:core';
+
 import 'package:flutter/widgets.dart';
 
 import '../form_builder_validators.dart';
@@ -7,7 +10,6 @@ import 'validators/network_validators.dart';
 import 'validators/validators.dart' as val;
 
 @Deprecated('use the base class Validators instead')
-
 /// Provides utility methods for creating various [FormFieldValidator]s.
 class FormBuilderValidators {
   /// [FormFieldValidator] that requires the field's value to contain a minimum
@@ -1642,6 +1644,8 @@ class FormBuilderValidators {
   ).validate;
 }
 
+//********************************* NEW API ********************************************************************************
+
 /// A class that is used as an aggregator/namespace for all the available
 /// validators in this package.
 final class Validators {
@@ -1692,13 +1696,14 @@ final class Validators {
     String prefix = '',
     String suffix = '',
     String? separator,
-    bool printErrorAsSoonAsPossible = true,
-  }) =>
-      val.and<T>(validators,
-          prefix: prefix,
-          suffix: suffix,
-          separator: separator,
-          printErrorAsSoonAsPossible: printErrorAsSoonAsPossible);
+    c.bool printErrorAsSoonAsPossible = true,
+  }) => val.and<T>(
+    validators,
+    prefix: prefix,
+    suffix: suffix,
+    separator: separator,
+    printErrorAsSoonAsPossible: printErrorAsSoonAsPossible,
+  );
 
   /// {@template validator_or}
   /// Creates a composite validator that applies multiple validation rules from
@@ -1735,13 +1740,12 @@ final class Validators {
     String prefix = '',
     String suffix = '',
     String? separator,
-  }) =>
-      val.or<T>(
-        validators,
-        prefix: prefix,
-        suffix: suffix,
-        separator: separator,
-      );
+  }) => val.or<T>(
+    validators,
+    prefix: prefix,
+    suffix: suffix,
+    separator: separator,
+  );
 
   // Conditional validators
   /// {@template validator_validate_if}
@@ -1772,8 +1776,9 @@ final class Validators {
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
   static Validator<T> validateIf<T extends Object?>(
-          bool Function(T value) condition, Validator<T> v) =>
-      val.validateIf<T>(condition, v);
+    c.bool Function(T value) condition,
+    Validator<T> v,
+  ) => val.validateIf<T>(condition, v);
 
   /// {@template validator_skip_if}
   /// Creates a validator that conditionally bypasses validation based on a
@@ -1802,8 +1807,9 @@ final class Validators {
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
   static Validator<T> skipIf<T extends Object?>(
-          bool Function(T value) condition, Validator<T> v) =>
-      val.skipIf<T>(condition, v);
+    c.bool Function(T value) condition,
+    Validator<T> v,
+  ) => val.skipIf<T>(condition, v);
 
   // Debug print validator
   /// {@template validator_debug_print_validator}
@@ -1829,12 +1835,13 @@ final class Validators {
   /// ## Type Parameters
   /// - `T`: Type of value being validated, may be a nullable Object
   /// {@endtemplate}
-  static Validator<T> debugPrintValidator<T extends Object?>(
-          {Validator<T>? next, String Function(T input)? logOnInput}) =>
-      val.debugPrintValidator(next: next, logOnInput: logOnInput);
+  static Validator<T> debugPrintValidator<T extends Object?>({
+    Validator<T>? next,
+    String Function(T input)? logOnInput,
+  }) => val.debugPrintValidator(next: next, logOnInput: logOnInput);
 
   // Equality validators
-  /// {@template validator_is_equal}
+  /// {@template validator_equal}
   /// Creates a validator that checks if a given input matches `referenceValue`
   /// using the equality (`==`) operator.
   ///
@@ -1842,7 +1849,7 @@ final class Validators {
   /// ## Parameters
   /// - `referenceValue` (`T`): The value to compare against the input. This serves as
   ///   the reference for equality checking.
-  /// - `isEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+  /// - `equalMsg` (`String Function(T input, T referenceValue)?`): Optional
   /// custom error message generator. Takes the `input` and the `referenceValue`
   /// as parameters and returns a custom error message.
   ///
@@ -1859,14 +1866,14 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage for password confirmation
-  /// final confirmAction = isEqual('Type this to confirm the action');
+  /// final confirmAction = Validator.equal('Type this to confirm the action');
   /// assert(confirmAction('Type this to confirm the action') == null); // null returned (validation passes)
   /// assert(confirmAction(12345) != null); // Error message returned
   ///
   /// // Using custom error message
-  /// final specificValueValidator = isEqual<int>(
+  /// final specificValueValidator = Validator.equal<int>(
   ///   42,
-  ///   isEqualMsg: (_, value) => 'Value must be exactly $value',
+  ///   equalMsg: (_, value) => 'Value must be exactly $value',
   /// );
   /// ```
   ///
@@ -1876,20 +1883,19 @@ final class Validators {
   /// - The error message uses the string representation of the value via
   ///   `toString()`, which might not be ideal for all types.
   /// {@endtemplate}
-  static Validator<T> isEqual<T extends Object?>(
+  static Validator<T> equal<T extends Object?>(
     T value, {
-    String Function(T input, T referenceValue)? isEqualMsg,
-  }) =>
-      val.isEqual(value, isEqualMsg: isEqualMsg);
+    String Function(T input, T referenceValue)? equalMsg,
+  }) => val.equal(value, equalMsg: equalMsg);
 
-  /// {@template validator_is_not_equal}
+  /// {@template validator_not_equal}
   /// Creates a validator that checks if a given input is not equal to
   /// `referenceValue` using the not-equal (`!=`) operator.
   ///
   /// ## Parameters
   /// - `referenceValue` (`T`): The reference value to compare against. Input must
   /// not equal this value to pass validation.
-  /// - `isNotEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
+  /// - `notEqualMsg` (`String Function(T input, T referenceValue)?`): Optional
   /// custom error message generator. Takes the `input` and the `referenceValue`
   /// as parameters and returns a custom error message.
   ///
@@ -1905,14 +1911,14 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage with strings
-  /// final validator = isNotEqual<String>('reserved');
+  /// final validator = Validators.notEqual<String>('reserved');
   /// assert(validator('not-reserved') == null); // null (validation passes)
   /// assert(validator('reserved') != null); // "Value must not be equal to reserved"
   ///
   /// // Custom error message
-  /// final customValidator = isNotEqual<int>(
+  /// final customValidator = Validators.notEqual<int>(
   ///   42,
-  ///   isNotEqualMsg: (_, value) => 'Please choose a number other than $value',
+  ///   notEqualMsg: (_, value) => 'Please choose a number other than $value',
   /// );
   /// ```
   ///
@@ -1922,14 +1928,13 @@ final class Validators {
   /// - The error message uses the string representation of the value via
   ///   `toString()`, which might not be ideal for all types
   /// {@endtemplate}
-  static Validator<T> isNotEqual<T extends Object?>(
+  static Validator<T> notEqual<T extends Object?>(
     T value, {
-    String Function(T input, T referenceValue)? isNotEqualMsg,
-  }) =>
-      val.isNotEqual(value, isNotEqualMsg: isNotEqualMsg);
+    String Function(T input, T referenceValue)? notEqualMsg,
+  }) => val.notEqual(value, notEqualMsg: notEqualMsg);
 
   // Required validators
-  /// {@template validator_is_required}
+  /// {@template validator_required}
   /// Generates a validator function that enforces required field validation for
   /// form inputs. This validator ensures that a field has a non-null, non-empty
   /// value before any subsequent validation is performed.
@@ -1944,7 +1949,7 @@ final class Validators {
   /// - `next` (`Validator<T>?`): An optional subsequent validator function that
   ///   will be applied after the required validation passes. This allows for
   ///   chaining multiple validation rules.
-  /// - `isRequiredMsg` (`String?`): An optional custom error message to display
+  /// - `requiredMsg` (`String?`): An optional custom error message to display
   ///   when the field is empty or null. If not provided, defaults to the
   ///   localized required field error text.
   ///
@@ -1957,13 +1962,13 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic required field validation
-  /// final validator = isRequired<String>();
-  /// print(validator(null));     // Returns localized error message
-  /// print(validator(''));       // Returns localized error message
-  /// print(validator('value')); // Returns null (validation passed)
+  /// final validator = Validators.required<String>();
+  /// assert(validator(null) != null);     // Returns localized error message
+  /// assert(validator('') != null);       // Returns localized error message
+  /// assert(validator('value') == null); // Returns null (validation passed)
   ///
   /// // Chaining with another validator
-  /// final complexValidator = isRequired<String>(
+  /// final complexValidator = Validators.required<String>(
   ///   (value) => value.length < 10 ? 'Too long' : null,
   ///   'Custom required message'
   /// );
@@ -1973,11 +1978,66 @@ final class Validators {
   /// - The validator assumes empty strings/maps/iterables, white strings, and null
   /// values are equivalent for validation purposes
   /// {@endtemplate}
-  static Validator<T?> isRequired<T extends Object>([
+  static Validator<T?> required<T extends Object>([
     Validator<T>? next,
-    String? isRequiredMsg,
-  ]) =>
-      val.isRequired(next, isRequiredMsg);
+    String? requiredMsg,
+  ]) => val.required(next, requiredMsg);
+
+  /// {@template validator_optional}
+  /// Creates a validator function that makes a field optional while allowing additional validation
+  /// rules. This validator is particularly useful in form validation scenarios where certain
+  /// fields are not mandatory but still need to conform to specific rules when provided.
+  ///
+  /// The validator handles various input types including strings, iterables, and maps,
+  /// considering them as "not provided" when they are null, empty, or contain only whitespace
+  /// (for strings).
+  ///
+  /// ## Type Parameters
+  /// - `T`: Represents the non-nullable version of the field's type that will be
+  /// passed to any subsequent validators. Once a non-null value is passed, downstream
+  /// validators are guaranteed to receive a non-null value, eliminating the need
+  /// for additional null checks.
+  ///
+  /// ## Parameters
+  /// - `next` (`Validator<T>?`): An optional subsequent validator function that will be
+  ///   applied only if the input value is provided (non-null and non-empty). This allows
+  ///   for chaining validation rules.
+  /// - `optionalMsg` (`String Function(T input, String nextErrorMessage)?`): An
+  /// optional error message that takes the `input` and the `nextErrorMessage` as
+  /// parameters and returns the custom error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<T?>` function that:
+  /// - Returns `null` if the input is not provided (indicating valid optional field)
+  /// - Returns `null` if the non-null/non-empty input passes the `next` validation
+  /// rules.
+  /// - Returns a formatted error message string if validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic optional string validator
+  /// final validator = Validators.optional<String>();
+  ///
+  /// // Optional validator with additional email validation
+  /// final emailValidator = Validators.optional<String>(
+  ///   validateEmail,
+  ///   (_, error) => 'Invalid email format: $error',
+  /// );
+  ///
+  /// // Usage with different inputs
+  /// assert(validator(null) == null);     // Returns: null (valid)
+  /// assert(validator('') == null);       // Returns: null (valid)
+  /// assert(emailValidator('invalid@email') != null); // Returns: error message
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator assumes empty strings/maps/iterables, white strings, and null values are
+  /// equivalent for validation purposes, all them are considered valid.
+  /// {@endtemplate}
+  static Validator<T?> optional<T extends Object>([
+    Validator<T>? next,
+    String Function(T input, String nextErrorMsg)? optionalMsg,
+  ]) => val.optional(next, optionalMsg);
 
   /// {@template validator_validate_with_default}
   /// Creates a validator function that applies a default value before validation,
@@ -2011,77 +2071,21 @@ final class Validators {
   ///
   /// // Wrap it with a default value of 'N/A'
   /// final defaultValue = 'default value';
-  /// final validator = validateWithDefault('N/A', minLength);
+  /// final validator = Validators.validateWithDefault('N/A', minLength);
   ///
-  /// print(validator(null));      // Returns null (valid)
-  /// print(validator('ab'));      // Returns 'Must be at least 3 characters'
-  /// print(validator('abc'));     // Returns null (valid)
+  /// assert(validator(null) == null);  // Returns null (valid)
+  /// assert(validator('ab') != null);  // Returns 'Must be at least 3 characters'
+  /// assert(validator('abc') == null); // Returns null (valid)
   /// // Equivalent to:
-  /// print(minLength(null ?? defaultValue));      // Returns null (valid)
-  /// print(minLength('ab' ?? defaultValue));      // Returns 'Must be at least 3 characters'
-  /// print(minLength('abc' ?? defaultValue));      // Returns null (valid)
+  /// assert(minLength(null ?? defaultValue) == null);  // Returns null (valid)
+  /// assert(minLength('ab' ?? defaultValue) != null);  // Returns 'Must be at least 3 characters'
+  /// assert(minLength('abc' ?? defaultValue) == null); // Returns null (valid)
   /// ```
   /// {@endtemplate}
   static Validator<T?> validateWithDefault<T extends Object>(
-          T defaultValue, Validator<T> next) =>
-      val.validateWithDefault(defaultValue, next);
-
-  /// {@template validator_is_optional}
-  /// Creates a validator function that makes a field optional while allowing additional validation
-  /// rules. This validator is particularly useful in form validation scenarios where certain
-  /// fields are not mandatory but still need to conform to specific rules when provided.
-  ///
-  /// The validator handles various input types including strings, iterables, and maps,
-  /// considering them as "not provided" when they are null, empty, or contain only whitespace
-  /// (for strings).
-  ///
-  /// ## Type Parameters
-  /// - `T`: Represents the non-nullable version of the field's type that will be
-  /// passed to any subsequent validators. Once a non-null value is passed, downstream
-  /// validators are guaranteed to receive a non-null value, eliminating the need
-  /// for additional null checks.
-  ///
-  /// ## Parameters
-  /// - `next` (`Validator<T>?`): An optional subsequent validator function that will be
-  ///   applied only if the input value is provided (non-null and non-empty). This allows
-  ///   for chaining validation rules.
-  /// - `isOptionalMsg` (`String Function(T input, String nextErrorMessage)?`): An
-  /// optional error message that takes the `input` and the `nextErrorMessage` as
-  /// parameters and returns the custom error message.
-  ///
-  /// ## Returns
-  /// Returns a `Validator<T?>` function that:
-  /// - Returns `null` if the input is not provided (indicating valid optional field)
-  /// - Returns `null` if the non-null/non-empty input passes the `next` validation
-  /// rules.
-  /// - Returns a formatted error message string if validation fails
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic optional string validator
-  /// final validator = isOptional<String>();
-  ///
-  /// // Optional validator with additional email validation
-  /// final emailValidator = isOptional<String>(
-  ///   validateEmail,
-  ///   (_, error) => 'Invalid email format: $error',
-  /// );
-  ///
-  /// // Usage with different inputs
-  /// print(validator(null));     // Returns: null (valid)
-  /// print(validator(''));       // Returns: null (valid)
-  /// print(emailValidator('invalid@email')); // Returns: error message
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The validator assumes empty strings/maps/iterables, white strings, and null values are
-  /// equivalent for validation purposes, all them are considered valid.
-  /// {@endtemplate}
-  static Validator<T?> isOptional<T extends Object>([
-    Validator<T>? next,
-    String Function(T input, String nextErrorMsg)? isOptionalMsg,
-  ]) =>
-      val.isOptional(next, isOptionalMsg);
+    T defaultValue,
+    Validator<T> next,
+  ) => val.validateWithDefault(defaultValue, next);
 
   // Transform Validator
 
@@ -2135,21 +2139,20 @@ final class Validators {
   /// ```
   /// {@endtemplate}
   static Validator<IN>
-      transformAndValidate<IN extends Object?, OUT extends Object?>(
+  transformAndValidate<IN extends Object?, OUT extends Object?>(
     OUT Function(IN) transformFunction, {
     Validator<OUT>? next,
     String Function(IN)? transformAndValidateMsg,
     String? transformedResultTypeDescription,
-  }) =>
-          val.transformAndValidate(
-            transformFunction,
-            next: next,
-            transformAndValidateMsg: transformAndValidateMsg,
-            transformedResultTypeDescription: transformedResultTypeDescription,
-          );
+  }) => val.transformAndValidate(
+    transformFunction,
+    next: next,
+    transformAndValidateMsg: transformAndValidateMsg,
+    transformedResultTypeDescription: transformedResultTypeDescription,
+  );
 
   // Type Validator
-  /// {@template validator_is_string}
+  /// {@template validator_string}
   /// Creates a validator that verifies if an input value is a [String]. If the
   /// check succeeds, the transformed value will be passed to the `next`
   /// validator.
@@ -2161,7 +2164,7 @@ final class Validators {
   /// - `next` (`Validator<String>?`): An optional subsequent validator that processes
   ///   the input after successful string validation. Receives the validated input
   ///   as a [String].
-  /// - `isStringMsg` (`String Function(T input)?`): An optional custom error message
+  /// - `stringMsg` (`String Function(T input)?`): An optional custom error message
   ///   generator function that takes the input as parameter and returns a customized error
   ///   message.
   ///
@@ -2174,18 +2177,18 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic string validation
-  /// final validator = isString<Object>();
+  /// final validator = Validators.string<Object>();
   /// print(validator('valid string')); // null
   /// print(validator(123)); // 'Must be a string'
   ///
   /// // With custom error message
-  /// final customValidator = isString<dynamic>(
-  ///   isStringMsg: (input) => '${input.toString()} is not a valid String.',
+  /// final customValidator = Validators.string<dynamic>(
+  ///   stringMsg: (input) => '${input.toString()} is not a valid String.',
   /// );
   /// print(customValidator(42)); // '42 is not a valid string'
   ///
   /// // Chaining validators
-  /// final chainedValidator = isString<Object>(
+  /// final chainedValidator = Validators.string<Object>(
   ///   (value) => value.isEmpty ? 'String cannot be empty' : null,
   /// );
   /// print(chainedValidator('')); // 'String cannot be empty'
@@ -2197,13 +2200,12 @@ final class Validators {
   /// example, if the input is a number, it will never transform it to the string
   /// version by calling `toString` method.
   /// {@endtemplate}
-  static Validator<T> isString<T extends Object>([
+  static Validator<T> string<T extends Object>([
     Validator<String>? next,
-    String Function(T input)? isStringMsg,
-  ]) =>
-      val.isString(next, isStringMsg);
+    String Function(T input)? stringMsg,
+  ]) => val.string(next, stringMsg);
 
-  /// {@template validator_is_int}
+  /// {@template validator_int}
   /// Creates a validator that verifies if an input value is an [int] or can be
   /// parsed into an [int]. If the check succeeds, the transformed value will be
   /// passed to the `next` validator.
@@ -2219,7 +2221,7 @@ final class Validators {
   /// ## Parameters
   /// - `next` (`Validator<int>?`): An optional subsequent validator that receives
   ///   the converted integer value for additional validation
-  /// - `isIntMsg` (`String Function(T input)?`): Optional custom error message
+  /// - `intMsg` (`String Function(T input)?`): Optional custom error message
   ///   generator function that receives the invalid input and returns an error
   ///   message
   ///
@@ -2233,17 +2235,17 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic integer validation
-  /// final validator = isInt();
+  /// final validator = Validators.int();
   /// print(validator(42));        // null (valid)
   /// print(validator('123'));     // null (valid)
   /// print(validator('abc'));     // 'This field requires a valid integer.'
   ///
   /// // With custom error message
-  /// final customValidator = isInt(null, (input) => 'Custom error for: $input');
+  /// final customValidator = Validators.int(null, (input) => 'Custom error for: $input');
   /// print(customValidator('abc')); // 'Custom error for: abc'
   ///
   /// // With chained validation
-  /// final rangeValidator = isInt((value) =>
+  /// final rangeValidator = Validators.int((value) =>
   ///     value > 100 ? 'Must be less than 100' : null);
   /// print(rangeValidator('150')); // 'Must be less than 100'
   /// ```
@@ -2251,13 +2253,12 @@ final class Validators {
   /// ## Caveats
   /// - If the input is [String], it will be parsed by the [int.tryParse] method.
   /// {@endtemplate}
-  static Validator<T> isInt<T extends Object>([
-    Validator<int>? next,
-    String Function(T input)? isIntMsg,
-  ]) =>
-      val.isInt(next, isIntMsg);
+  static Validator<T> int<T extends Object>([
+    Validator<c.int>? next,
+    String Function(T input)? intMsg,
+  ]) => val.isInt(next, intMsg);
 
-  /// {@template validator_is_double}
+  /// {@template validator_double}
   /// Creates a validator that verifies if an input value is a [double] or can be
   /// parsed into a [double]. If the check succeeds, the transformed value will be
   /// passed to the `next` validator.
@@ -2273,7 +2274,7 @@ final class Validators {
   /// ## Parameters
   /// - `next` (`Validator<double>?`): An optional subsequent validator that receives
   ///   the converted numeric value for additional validation
-  /// - `isDoubleMsg` (`String Function(T input)?`): Optional custom error message
+  /// - `doubleMsg` (`String Function(T input)?`): Optional custom error message
   ///   generator function that receives the invalid input and returns an error
   ///   message
   ///
@@ -2287,7 +2288,7 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic number validation
-  /// final validator = isDouble();
+  /// final validator = Validators.double();
   /// print(validator(42.0));        // null (valid)
   /// print(validator(3.14));      // null (valid)
   /// print(validator('123.45'));  // null (valid)
@@ -2295,11 +2296,11 @@ final class Validators {
   /// print(validator('abc'));     // 'Please enter a valid number'
   ///
   /// // With custom error message
-  /// final customValidator = isDouble(null, (input) => 'Invalid number: $input');
+  /// final customValidator = Validators.double(null, (input) => 'Invalid number: $input');
   /// print(customValidator('abc')); // 'Invalid number: abc'
   ///
   /// // With chained validation
-  /// final rangeValidator = isDouble((value) =>
+  /// final rangeValidator = Validators.double((value) =>
   ///     value > 1000 ? 'Must be less than 1000' : null);
   /// print(rangeValidator('1500')); // 'Must be less than 1000'
   /// ```
@@ -2307,13 +2308,12 @@ final class Validators {
   /// ## Caveats
   /// - If the input is [String], it will be parsed by the [double.tryParse] method.
   /// {@endtemplate}
-  static Validator<T> isDouble<T extends Object>([
-    Validator<double>? next,
-    String Function(T input)? isDoubleMsg,
-  ]) =>
-      val.isDouble(next, isDoubleMsg);
+  static Validator<T> double<T extends Object>([
+    Validator<c.double>? next,
+    String Function(T input)? doubleMsg,
+  ]) => val.isDouble(next, doubleMsg);
 
-  /// {@template validator_is_num}
+  /// {@template validator_num}
   /// Creates a validator that verifies if an input value is a [num] or can be
   /// parsed into a [num]. If the check succeeds, the transformed value will be
   /// passed to the `next` validator.
@@ -2329,7 +2329,7 @@ final class Validators {
   /// ## Parameters
   /// - `next` (`Validator<num>?`): An optional subsequent validator that receives
   ///   the converted numeric value for additional validation
-  /// - `isNumMsg` (`String Function(T input)?`): Optional custom error message
+  /// - `numMsg` (`String Function(T input)?`): Optional custom error message
   ///   generator function that receives the invalid input and returns an error
   ///   message
   ///
@@ -2343,7 +2343,7 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic number validation
-  /// final validator = isNum();
+  /// final validator = Validators.num();
   /// print(validator(42));        // null (valid)
   /// print(validator(3.14));      // null (valid)
   /// print(validator('123.45'));  // null (valid)
@@ -2351,11 +2351,11 @@ final class Validators {
   /// print(validator('abc'));     // 'Please enter a valid number'
   ///
   /// // With custom error message
-  /// final customValidator = isNum(null, (input) => 'Invalid number: $input');
+  /// final customValidator = Validators.num(null, (input) => 'Invalid number: $input');
   /// print(customValidator('abc')); // 'Invalid number: abc'
   ///
   /// // With chained validation
-  /// final rangeValidator = isNum((value) =>
+  /// final rangeValidator = Validators.num((value) =>
   ///     value > 1000 ? 'Must be less than 1000' : null);
   /// print(rangeValidator('1500')); // 'Must be less than 1000'
   /// ```
@@ -2363,13 +2363,12 @@ final class Validators {
   /// ## Caveats
   /// - If the input is [String], it will be parsed by the [num.tryParse] method.
   /// {@endtemplate}
-  static Validator<T> isNum<T extends Object>([
-    Validator<num>? next,
-    String Function(T input)? isNumMsg,
-  ]) =>
-      val.isNum(next, isNumMsg);
+  static Validator<T> num<T extends Object>([
+    Validator<c.num>? next,
+    String Function(T input)? numMsg,
+  ]) => val.isNum(next, numMsg);
 
-  /// {@template validator_is_bool}
+  /// {@template validator_bool}
   /// Creates a validator that verifies if an input value is a [bool] or can be
   /// parsed into a [bool]. If the check succeeds, the transformed value will be
   /// passed to the `next` validator.
@@ -2385,7 +2384,7 @@ final class Validators {
   /// ## Parameters
   /// - `next` (`Validator<bool>?`): An optional subsequent validator that receives
   ///   the converted boolean value for additional validation
-  /// - `isBoolMsg` (`String Function(T input)?`): Optional custom error message
+  /// - `boolMsg` (`String Function(T input)?`): Optional custom error message
   ///   generator function that receives the invalid input and returns an error
   ///   message
   /// - `caseSensitive` (`bool`): Controls whether string parsing is case-sensitive.
@@ -2405,7 +2404,7 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic boolean validation
-  /// final validator = isBool();
+  /// final validator = Validators.bool();
   /// print(validator(true));       // null (valid)
   /// print(validator('true'));     // null (valid)
   /// print(validator('TRUE'));     // null (valid)
@@ -2413,20 +2412,20 @@ final class Validators {
   /// print(validator('abc'));      // 'This field requires a valid boolean (true or false).'
   ///
   /// // With case sensitivity
-  /// final strictValidator = isBool(null, null, true);
+  /// final strictValidator = Validators.bool(null, null, true);
   /// print(strictValidator('True')); // 'This field requires a valid boolean (true or false).'
   /// print(strictValidator('true')); // null (valid)
   ///
   /// // Without trimming
-  /// final noTrimValidator = isBool(null, null, false, false);
+  /// final noTrimValidator = Validators.bool(null, null, false, false);
   /// print(noTrimValidator(' true')); // 'This field requires a valid boolean (true or false).'
   ///
   /// // With custom error message
-  /// final customValidator = isBool(null, (input) => 'Invalid boolean: $input');
+  /// final customValidator = Validators.bool(null, (input) => 'Invalid boolean: $input');
   /// print(customValidator('abc')); // 'Invalid boolean: abc'
   ///
   /// // With chained validation
-  /// final customValidator = isBool((value) =>
+  /// final customValidator = Validators.bool((value) =>
   ///     value == true ? 'Must be false' : null);
   /// print(customValidator('true')); // 'Must be false'
   /// ```
@@ -2434,14 +2433,14 @@ final class Validators {
   /// ## Caveats
   /// - If the input is [String], it will be parsed by the [bool.tryParse] method
   /// {@endtemplate}
-  static Validator<T> isBool<T extends Object>(
-          [Validator<bool>? next,
-          String Function(T input)? isBoolMsg,
-          bool caseSensitive = false,
-          bool trim = true]) =>
-      val.isBool(next, isBoolMsg, caseSensitive, trim);
+  static Validator<T> bool<T extends Object>([
+    Validator<c.bool>? next,
+    String Function(T input)? boolMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = true,
+  ]) => val.isBool(next, boolMsg, caseSensitive, trim);
 
-  /// {@template validator_is_date_time}
+  /// {@template validator_date_time}
   /// Creates a validator that verifies if an input value is a [DateTime] or can be
   /// parsed into a [DateTime]. If the check succeeds, the transformed value will be
   /// passed to the `next` validator.
@@ -2457,7 +2456,7 @@ final class Validators {
   /// ## Parameters
   /// - `next` (`Validator<DateTime>?`): An optional subsequent validator that
   ///   receives the converted datetime value for additional validation
-  /// - `isDateTimeMsg` (`String Function(T input)?`): Optional custom error message
+  /// - `dateTimeMsg` (`String Function(T input)?`): Optional custom error message
   ///   generator function that receives the invalid input and returns an error
   ///   message
   ///
@@ -2471,21 +2470,21 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic datetime validation
-  /// final validator = isDateTime();
+  /// final validator = Validators.dateTime();
   /// print(validator(DateTime.now()));          // null (valid)
   /// print(validator('2024-12-31'));           // null (valid)
   /// print(validator('2024-12-31T23:59:59'));  // null (valid)
   /// print(validator('not a date'));           // 'This field requires a valid datetime.'
   ///
   /// // With custom error message
-  /// final customValidator = isDateTime(
+  /// final customValidator = Validators.dateTime(
   ///   null,
   ///   (input) => 'Invalid date format: $input'
   /// );
   /// print(customValidator('abc')); // 'Invalid date format: abc'
   ///
   /// // With chained validation
-  /// final futureValidator = isDateTime((value) =>
+  /// final futureValidator = Validators.dateTime((value) =>
   ///     value.isBefore(DateTime.now()) ? 'Date must be in the future' : null);
   /// print(futureValidator('2020-01-01')); // 'Date must be in the future'
   /// ```
@@ -2495,11 +2494,10 @@ final class Validators {
   /// - The function parses a subset of ISO 8601, which includes the subset
   /// accepted by RFC 3339.
   /// {@endtemplate}
-  static Validator<T> isDateTime<T extends Object>([
+  static Validator<T> dateTime<T extends Object>([
     Validator<DateTime>? next,
-    String Function(T input)? isDateTimeMsg,
-  ]) =>
-      val.isDateTime(next, isDateTimeMsg);
+    String Function(T input)? dateTimeMsg,
+  ]) => val.dateTime(next, dateTimeMsg);
 
   // Path validators
   /// {@template validator_matches_allowed_extensions}
@@ -2553,65 +2551,14 @@ final class Validators {
   static Validator<String> matchesAllowedExtensions(
     List<String> extensions, {
     String Function(List<String>)? matchesAllowedExtensionsMsg,
-    bool caseSensitive = true,
-  }) =>
-      val.matchesAllowedExtensions(
-        extensions,
-        matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
-        caseSensitive: caseSensitive,
-      );
+    c.bool caseSensitive = true,
+  }) => val.matchesAllowedExtensions(
+    extensions,
+    matchesAllowedExtensionsMsg: matchesAllowedExtensionsMsg,
+    caseSensitive: caseSensitive,
+  );
 
   // String validators
-
-  /// {@template validator_uuid}
-  /// A validator function that checks if a given string matches the UUID format.
-  ///
-  /// Creates a validator that ensures the input string conforms to the standard
-  /// UUID (Universally Unique Identifier) format, consisting of 32 hexadecimal
-  /// digits displayed in 5 groups separated by hyphens (8-4-4-4-12).
-  ///
-  /// ## Parameters
-  /// - `regex` (`RegExp?`): Optional custom regular expression pattern to override
-  ///   the default UUID validation pattern. Useful for supporting different UUID
-  ///   formats or adding additional constraints.
-  /// - `uuidMsg` (`String Function(String input)?`): Optional callback function that
-  ///   generates a custom error message based on the invalid input. If not provided,
-  ///   defaults to the standard form builder localization error text.
-  ///
-  /// ## Returns
-  /// Returns a `Validator<String>` function that accepts a string input and returns:
-  /// - `null` if the input is valid
-  /// - An error message string if the input is invalid
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Using default UUID validation
-  /// final validator = uuid();
-  /// print(validator('123e4567-e89b-12d3-a456-426614174000')); // null
-  /// print(validator('invalid-uuid')); // Returns error message
-  ///
-  /// // Using custom error message
-  /// final customValidator = uuid(
-  ///   uuidMsg: (input) => 'Invalid UUID format: $input',
-  /// );
-  ///
-  /// // Using custom regex pattern
-  /// final customPatternValidator = uuid(
-  ///   regex: RegExp(r'^[0-9]{8}-[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{12}$'),
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The default regex pattern accepts both uppercase and lowercase hexadecimal
-  ///   digits (0-9, a-f, A-F)
-  /// - The validation only checks the format, not the actual UUID version or
-  ///   variant compliance
-  /// {@endtemplate}
-  static Validator<String> uuid({
-    RegExp? regex,
-    String Function(String input)? uuidMsg,
-  }) =>
-      val.uuid(regex: regex, uuidMsg: uuidMsg);
 
   /// {@template validator_contains}
   /// Creates a validator function that checks if a string contains a specific
@@ -2637,12 +2584,12 @@ final class Validators {
   /// ```dart
   /// // Case-sensitive validation
   /// final validator = contains('test');
-  /// print(validator('This is a test')); // Returns: null
-  /// print(validator('This is a TEST')); // Returns: error message
+  /// assert(validator('This is a test') == null); // Valid
+  /// assert(validator('This is a TEST') != null); // Not Valid: TEST != test when case sensitive.
   ///
   /// // Case-insensitive validation
   /// final caseInsensitiveValidator = contains('test', caseSensitive: false);
-  /// print(caseInsensitiveValidator('This is a TEST')); // Returns: null
+  /// assert(caseInsensitiveValidator('This is a TEST') == null); // Valid
   ///
   /// // Custom error message
   /// final customValidator = contains(
@@ -2656,14 +2603,203 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> contains(
     String substring, {
-    bool caseSensitive = true,
+    c.bool caseSensitive = true,
     String Function(String substring, String input)? containsMsg,
-  }) =>
-      val.contains(
-        substring,
-        caseSensitive: caseSensitive,
-        containsMsg: containsMsg,
-      );
+  }) => val.contains(
+    substring,
+    caseSensitive: caseSensitive,
+    containsMsg: containsMsg,
+  );
+
+  /// {@template validator_starts_with}
+  /// Creates a validator function that checks if a string begins with a specific
+  /// prefix. The validation can be performed with or without case sensitivity.
+  ///
+  /// ## Parameters
+  /// - `prefix` (`String`): The text pattern that must appear at the beginning
+  ///   of the validated string. An empty prefix will always result in successful
+  ///   validation as all strings technically start with an empty string.
+  /// - `caseSensitive` (`bool`): Controls whether the prefix matching should be
+  ///   case-sensitive. Defaults to `true`. When set to `false`, both the input
+  ///   value and prefix are converted to lowercase before comparison.
+  /// - `startsWithMsg` (`String Function(String prefix, String input)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   prefix pattern and the user input as parameters, returning a customized
+  ///   error message string. If not provided, the validator uses the default
+  ///   localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string starts with the prefix)
+  /// - Returns an error message string when validation fails (prefix not found at start)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // URL protocol validation (case-sensitive)
+  /// final httpsValidator = startsWith('https://');
+  /// assert(httpsValidator('https://example.com') == null); // Valid
+  /// assert(httpsValidator('http://example.com') != null); // Invalid: missing `s`
+  /// assert(httpsValidator('hTTp://example.com') != null); // Invalid: case sensitive
+  ///
+  /// // Case-insensitive prefix validation
+  /// final greetingValidator = startsWith('hello', caseSensitive: false);
+  /// assert(greetingValidator('Hello World') == null); // Valid
+  /// assert(greetingValidator('HELLO there') == null); // Valid
+  /// assert(greetingValidator('  hello there') == null); // Invalid: starts with space.
+  /// assert(greetingValidator('Hi there') != null); // Invalid
+  ///
+  /// // Custom error message for API key validation
+  /// final apiKeyValidator = startsWith(
+  ///   'sk-',
+  ///   startsWithMsg: (prefix, _) => 'API key must begin with "$prefix"'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Empty prefixes always pass validation and return `null`
+  /// {@endtemplate}
+  static Validator<String> startsWith(
+    String prefix, {
+    c.bool caseSensitive = true,
+    String Function(String prefix, String input)? startsWithMsg,
+  }) => val.startsWith(
+    prefix,
+    caseSensitive: caseSensitive,
+    startsWithMsg: startsWithMsg,
+  );
+
+  /// {@template validator_ends_with}
+  /// Creates a validator function that checks if a string ends with a specific
+  /// suffix. The validation can be performed with or without case sensitivity.
+  ///
+  /// ## Parameters
+  /// - `suffix` (`String`): The text pattern that must appear at the end
+  ///   of the validated string. An empty suffix will always result in successful
+  ///   validation as all strings technically end with an empty string.
+  /// - `caseSensitive` (`bool`): Controls whether the suffix matching should be
+  ///   case-sensitive. Defaults to `true`. When set to `false`, both the input
+  ///   value and suffix are converted to lowercase before comparison.
+  /// - `endsWithMsg` (`String Function(String suffix, String input)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   suffix pattern and the user input as parameters, returning a customized
+  ///   error message string. If not provided, the validator uses the default
+  ///   localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string ends with the suffix)
+  /// - Returns an error message string when validation fails (suffix not found at end)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // URL protocol validation (case-sensitive)
+  /// final httpsValidator = endsWith('.com');
+  /// assert(httpsValidator('https://example.com') == null); // Valid
+  /// assert(httpsValidator('http://example.org') != null); // Invalid
+  /// assert(httpsValidator('hTTp://example.COM') != null); // Invalid: case sensitive
+  ///
+  /// // Case-insensitive prefix validation
+  /// final greetingValidator = endsWith('world', caseSensitive: false);
+  /// assert(greetingValidator('Hello world') == null); // Valid
+  /// assert(greetingValidator('Hello WORLD') == null); // Valid
+  /// assert(greetingValidator('hello world ') == null); // Invalid: ends with space.
+  /// assert(greetingValidator('Hello world!') != null); // Invalid
+  ///
+  /// // Custom error message for API key validation
+  /// final apiKeyValidator = endsWith(
+  ///   '-abc',
+  ///   endsWithMsg: (suffix, _) => 'API key must end with "$suffix"'
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Empty suffixes always pass validation and return `null`
+  /// {@endtemplate}
+  static Validator<String> endsWith(
+    String suffix, {
+    c.bool caseSensitive = true,
+    String Function(String suffix, String input)? endsWithMsg,
+  }) => val.endsWith(
+    suffix,
+    caseSensitive: caseSensitive,
+    endsWithMsg: endsWithMsg,
+  );
+
+  /// {@template validator_lowercase}
+  /// Creates a validator function that checks if a string does not contain uppercase
+  /// characters.
+  ///
+  /// ## Parameters
+  /// - `lowercaseMsg` (`String Function(String input)?`): Optional callback
+  ///   function for generating custom error messages. Receives the user input
+  ///   as a parameter and returns a customized error message string. If not
+  ///   provided, the validator uses the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string does not contain uppercase characters)
+  /// - Returns an error message string when validation fails (uppercase characters detected)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic lowercase validation
+  /// final validator = lowercase();
+  /// assert(validator('hello world') == null); // Valid
+  /// assert(validator('hello123') == null); // Valid (numbers allowed)
+  /// assert(validator('Hello World') != null); // Invalid (contains uppercase)
+  ///
+  /// // Custom error message
+  /// final customValidator = lowercase(
+  ///   lowercaseMsg: (input) => 'Username "$input" must be in lowercase only'
+  /// );
+  /// assert(customValidator('UserName') != null); // Returns custom message
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Numbers, special characters, and whitespace are considered valid
+  /// - Only alphabetic characters are checked for case requirements
+  /// {@endtemplate}
+  static Validator<String> lowercase({
+    String Function(String input)? lowercaseMsg,
+  }) => val.lowercase(lowercaseMsg: lowercaseMsg);
+
+  /// {@template validator_uppercase}
+  /// Creates a validator function that checks if a string does not contain lowercase
+  /// characters.
+  ///
+  /// ## Parameters
+  /// - `uppercaseMsg` (`String Function(String input)?`): Optional callback
+  ///   function for generating custom error messages. Receives the user input
+  ///   as a parameter and returns a customized error message string. If not
+  ///   provided, the validator uses the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (string does not contain lowercase characters)
+  /// - Returns an error message string when validation fails (lowercase characters detected)
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic uppercase validation
+  /// final validator = uppercase();
+  /// assert(validator('HELLO WORLD') == null); // Valid
+  /// assert(validator('HELLO123') == null); // Valid (numbers allowed)
+  /// assert(validator('Hello World') != null); // Invalid (contains lowercase)
+  ///
+  /// // Custom error message
+  /// final customValidator = uppercase(
+  ///   uppercaseMsg: (input) => 'Username "$input" must be in uppercase only'
+  /// );
+  /// assert(customValidator('UserName') != null); // Returns custom message
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Numbers, special characters, and whitespace are considered valid
+  /// - Only alphabetic characters are checked for case requirements
+  /// {@endtemplate}
+  static Validator<String> uppercase({
+    String Function(String input)? uppercaseMsg,
+  }) => val.uppercase(uppercaseMsg: uppercaseMsg);
 
   /// {@template validator_has_min_uppercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2716,15 +2852,14 @@ final class Validators {
   ///   be provided for special language requirements
   /// {@endtemplate}
   static Validator<String> hasMinUppercaseChars({
-    int min = 1,
-    int Function(String)? customUppercaseCounter,
-    String Function(String input, int min)? hasMinUppercaseCharsMsg,
-  }) =>
-      val.hasMinUppercaseChars(
-        min: min,
-        customUppercaseCounter: customUppercaseCounter,
-        hasMinUppercaseCharsMsg: hasMinUppercaseCharsMsg,
-      );
+    c.int min = 1,
+    c.int Function(String input)? customUppercaseCounter,
+    String Function(String input, c.int min)? hasMinUppercaseCharsMsg,
+  }) => val.hasMinUppercaseChars(
+    min: min,
+    customUppercaseCounter: customUppercaseCounter,
+    hasMinUppercaseCharsMsg: hasMinUppercaseCharsMsg,
+  );
 
   /// {@template validator_has_min_lowercase_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2738,9 +2873,9 @@ final class Validators {
   /// ## Parameters
   /// - `min` (`int`): The minimum number of lowercase characters required. Defaults
   ///   to 1.
-  /// - `customLowercaseCounter` (`int Function(String)?`): Optional custom function
-  ///   to count lowercase characters. If not provided, uses a default Unicode-based
-  ///   counter.
+  /// - `customLowercaseCounter` (`int Function(String input)?`): Optional custom function
+  ///   to count lowercase characters. It receives the user input as parameter.
+  ///   If not provided, uses a default Unicode-based counter.
   /// - `hasMinLowercaseCharsMsg` (`String Function(String input, int min)?`):
   ///   Optional function to generate custom error messages. Receives the input and
   ///   the minimum lowercase count required and returns an error message string.
@@ -2777,15 +2912,14 @@ final class Validators {
   ///   be provided for special language requirements
   /// {@endtemplate}
   static Validator<String> hasMinLowercaseChars({
-    int min = 1,
-    int Function(String)? customLowercaseCounter,
-    String Function(String input, int min)? hasMinLowercaseCharsMsg,
-  }) =>
-      val.hasMinLowercaseChars(
-        min: min,
-        customLowercaseCounter: customLowercaseCounter,
-        hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
-      );
+    c.int min = 1,
+    c.int Function(String input)? customLowercaseCounter,
+    String Function(String input, c.int min)? hasMinLowercaseCharsMsg,
+  }) => val.hasMinLowercaseChars(
+    min: min,
+    customLowercaseCounter: customLowercaseCounter,
+    hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
+  );
 
   /// {@template validator_has_min_numeric_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2799,7 +2933,7 @@ final class Validators {
   /// ## Parameters
   /// - `min` (`int`): The minimum number of numeric characters required. Defaults
   ///   to 1.
-  /// - `customNumericCounter` (`int Function(String)?`): Optional custom function
+  /// - `customNumericCounter` (`int Function(String input)?`): Optional custom function
   ///   to count numeric characters. If not provided, uses a default regex-based
   ///   counter matching digits 0-9.
   /// - `hasMinNumericCharsMsg` (`String Function(String input, int min)?`):
@@ -2843,15 +2977,14 @@ final class Validators {
   ///   function should be provided for special numbering requirements
   /// {@endtemplate}
   static Validator<String> hasMinNumericChars({
-    int min = 1,
-    int Function(String)? customNumericCounter,
-    String Function(String input, int min)? hasMinNumericCharsMsg,
-  }) =>
-      val.hasMinNumericChars(
-        min: min,
-        customNumericCounter: customNumericCounter,
-        hasMinNumericCharsMsg: hasMinNumericCharsMsg,
-      );
+    c.int min = 1,
+    c.int Function(String input)? customNumericCounter,
+    String Function(String input, c.int min)? hasMinNumericCharsMsg,
+  }) => val.hasMinNumericChars(
+    min: min,
+    customNumericCounter: customNumericCounter,
+    hasMinNumericCharsMsg: hasMinNumericCharsMsg,
+  );
 
   /// {@template validator_has_min_special_chars}
   /// Creates a validator function that checks if the [String] input contains a
@@ -2910,15 +3043,14 @@ final class Validators {
   ///   should be provided for specific character set requirements
   /// {@endtemplate}
   static Validator<String> hasMinSpecialChars({
-    int min = 1,
-    int Function(String)? customSpecialCounter,
-    String Function(String input, int min)? hasMinSpecialCharsMsg,
-  }) =>
-      val.hasMinSpecialChars(
-        min: min,
-        customSpecialCounter: customSpecialCounter,
-        hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
-      );
+    c.int min = 1,
+    c.int Function(String input)? customSpecialCounter,
+    String Function(String input, c.int min)? hasMinSpecialCharsMsg,
+  }) => val.hasMinSpecialChars(
+    min: min,
+    customSpecialCounter: customSpecialCounter,
+    hasMinSpecialCharsMsg: hasMinSpecialCharsMsg,
+  );
 
   /// {@template validator_match}
   /// Creates a validator function that checks if the [String] input matches a given
@@ -2948,22 +3080,278 @@ final class Validators {
   ///   emailRegExp,
   ///   matchMsg: (_)=>'Please enter a valid email address',
   /// );
-  /// print(emailValidator('user@example.com')); // Returns null
-  /// print(emailValidator('invalid-email')); // Returns error message
+  /// assert(emailValidator('user@example.com') == null); // Valid
+  /// assert(emailValidator('invalid-email') != null); // Invalid
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> match(
+    RegExp regExp, {
+    String Function(String input)? matchMsg,
+  }) => val.match(regExp, matchMsg: matchMsg);
+
+  /// {@template validator_not_match}
+  /// Creates a validator function that checks if the [String] input does not match a given
+  /// regular expression pattern. The validator returns `null` for valid input and
+  /// an error message for invalid input.
+  ///
+  /// If validation fails and no custom error message is provided via [notMatchMsg],
+  /// returns the default localized error message from
+  /// `FormBuilderLocalizations.current.notMatchErrorText`.
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp`): The regular expression pattern not allowed to match against the input
+  ///   string.
+  /// - `notMatchMsg` (`String Function(String input)?`): Optional custom error message
+  /// to display when the validation fails. If not provided, uses the default
+  /// localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that takes a string input and returns:
+  /// - `null` if the input does not match the provided regular expression pattern
+  /// - An error message string if the validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic validation to reject input containing special characters
+  /// final noSpecialCharsValidator = notMatch(
+  ///   RegExp(r'[!@#$%^&*(),.?":{}|<>]'),
+  ///   notMatchMsg: (_) => 'Special characters are not allowed',
+  /// );
+  /// assert(noSpecialCharsValidator('username123') == null); // Valid - no special chars
+  /// assert(noSpecialCharsValidator('user@name') != null); // Invalid - contains @
+  ///
+  /// // Using default error message (no custom message provided)
+  /// final noDigitsValidator = notMatch(RegExp(r'\d'));
+  /// assert(noDigitsValidator('hello world') == null); // Valid - no digits
+  /// assert(noDigitsValidator('hello123') != null); // Invalid - contains digits
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> notMatch(
+    RegExp regExp, {
+    String Function(String input)? notMatchMsg,
+  }) => val.notMatch(regExp, notMatchMsg: notMatchMsg);
+
+  /// {@template validator_uuid}
+  /// A validator function that checks if a given string matches the UUID format.
+  ///
+  /// Creates a validator that ensures the input string conforms to the standard
+  /// UUID (Universally Unique Identifier) format, consisting of 32 hexadecimal
+  /// digits displayed in 5 groups separated by hyphens (8-4-4-4-12).
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp?`): Optional custom regular expression pattern to override
+  ///   the default UUID validation pattern. Useful for supporting different UUID
+  ///   formats or adding additional constraints.
+  /// - `uuidMsg` (`String Function(String input)?`): Optional callback function that
+  ///   generates a custom error message based on the invalid input. If not provided,
+  ///   defaults to the standard form builder localization error text.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that accepts a string input and returns:
+  /// - `null` if the input is valid
+  /// - An error message string if the input is invalid
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Using default UUID validation
+  /// final validator = uuid();
+  /// print(validator('123e4567-e89b-12d3-a456-426614174000')); // null
+  /// print(validator('invalid-uuid')); // Returns error message
+  ///
+  /// // Using custom error message
+  /// final customValidator = uuid(
+  ///   uuidMsg: (input) => 'Invalid UUID format: $input',
+  /// );
+  ///
+  /// // Using custom regex pattern
+  /// final customPatternValidator = uuid(
+  ///   regex: RegExp(r'^[0-9]{8}-[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{12}$'),
+  /// );
   /// ```
   ///
   /// ## Caveats
-  /// - Complex regular expressions may impact performance for large inputs
-  /// - Consider using more specific validators for common patterns like email
-  ///   or phone number validation
+  /// - The default regex pattern accepts both uppercase and lowercase hexadecimal
+  ///   digits (0-9, a-f, A-F)
+  /// - The validation only checks the format, not the actual UUID version or
+  ///   variant compliance
   /// {@endtemplate}
-  static Validator<String> match(
-    RegExp regex, {
-    String Function(String input)? matchMsg,
-  }) =>
-      val.match(regex, matchMsg: matchMsg);
+  static Validator<String> uuid({
+    RegExp? regex,
+    String Function(String input)? uuidMsg,
+  }) => val.uuid(regex: regex, uuidMsg: uuidMsg);
 
-// Collection validators
+  /// {@template validator_max_words_count}
+  /// Creates a validator function that enforces a maximum word count constraint
+  /// on string input. Words are identified as sequences of non-whitespace characters
+  /// separated by one or more whitespace characters.
+  ///
+  /// ## Parameters
+  /// - `max` (`int`): The maximum number of words allowed in the input string.
+  ///   Must be a non-negative integer. Setting to 0 will only accept empty or
+  ///   whitespace-only strings.
+  /// - `maxWordsCountMsg` (`String Function(String input, int max)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   input string and the maximum word count as parameters, returning a
+  ///   customized error message string. If not provided, the validator uses
+  ///   the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (word count is within limit)
+  /// - Returns an error message string when validation fails (word count exceeds maximum)
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: Thrown if `max` is negative
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Bio field with word limit
+  /// final bioValidator = maxWordsCount(5);
+  /// assert(bioValidator('Short bio') == null); // Valid: 2 words
+  /// assert(bioValidator('This is a longer bio with exactly ten words here') != null); // Invalid: 10 words
+  ///
+  /// // Tweet-like validator with custom message
+  /// final tweetValidator = maxWordsCount(
+  ///   30,
+  ///   maxWordsCountMsg: (_, max) => 'Tweet too long! Maximum $max words allowed'
+  /// );
+  ///
+  /// // Edge cases
+  /// final strictValidator = maxWordsCount(0);
+  /// assert(strictValidator('') == null); // Valid: empty string
+  /// assert(strictValidator('   ') == null); // Valid: only whitespace
+  /// assert(strictValidator('word') != null); // Invalid: 1 word exceeds 0
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Words are counted after trimming the input and splitting by any whitespace
+  /// - Multiple consecutive spaces are treated as a single word separator
+  /// - Empty strings and strings with only whitespace count as 0 words when trimmed
+  /// {@endtemplate}
+  static Validator<String> maxWordsCount(
+    c.int max, {
+    String Function(String input, c.int max)? maxWordsCountMsg,
+  }) => val.maxWordsCount(max, maxWordsCountMsg: maxWordsCountMsg);
+
+  /// {@template validator_min_words_count}
+  /// Creates a validator function that enforces a minimum word count requirement
+  /// on string input. Words are identified as sequences of non-whitespace characters
+  /// separated by one or more whitespace characters.
+  ///
+  /// ## Parameters
+  /// - `min` (`int`): The minimum number of words required in the input string.
+  ///   Must be a non-negative integer. Setting to 0 will accept any input including
+  ///   empty strings.
+  /// - `minWordsCountMsg` (`String Function(String input, int min)?`): Optional
+  ///   callback function for generating custom error messages. Receives the
+  ///   input string and the minimum word count as parameters, returning a
+  ///   customized error message string. If not provided, the validator uses
+  ///   the default localized error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` when validation succeeds (word count meets minimum requirement)
+  /// - Returns an error message string when validation fails (word count below minimum)
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: Thrown if `min` is negative
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Description field requiring substance
+  /// final descriptionValidator = minWordsCount(10);
+  /// assert(descriptionValidator('A comprehensive description with more than ten words in it') == null); // Valid
+  /// assert(descriptionValidator('Too short') != null); // Invalid: only 2 words
+  ///
+  /// // Review validator with custom message
+  /// final reviewValidator = minWordsCount(
+  ///   25,
+  ///   minWordsCountMsg: (_, min) => 'Please write at least $min words for a helpful review'
+  /// );
+  ///
+  /// // Edge cases with whitespace
+  /// final minOneValidator = minWordsCount(1);
+  /// assert(minOneValidator('word') == null); // Valid: exactly 1 word
+  /// assert(minOneValidator('   word   ') == null); // Valid: 1 word after trimming
+  /// assert(minOneValidator('') != null); // Invalid: 0 words
+  /// assert(minOneValidator('   ') != null); // Invalid: 0 words after trimming
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Words are counted after trimming the input and splitting by any whitespace
+  /// - Multiple consecutive spaces are treated as a single word separator
+  /// - Empty strings and strings with only whitespace will fail validation if `min` > 0
+  /// {@endtemplate}
+  static Validator<String> minWordsCount(
+    c.int min, {
+    String Function(String input, c.int min)? minWordsCountMsg,
+  }) => val.minWordsCount(min, minWordsCountMsg: minWordsCountMsg);
+
+  // Collection validators
+  /// {@template validator_equal_length}
+  /// Creates a validator function that checks if the input collection's length equals
+  /// the specified length. The validator returns `null` for valid input and an error
+  /// message for invalid input.
+  ///
+  /// If validation fails and no custom error message generator is provided via
+  /// [equalLengthMsg], returns the default localized error message from
+  /// `FormBuilderLocalizations.current.equalLengthErrorText(expectedLength)`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of input to validate. Must be a collection, in other words,
+  /// it must be one of `String`, `Iterable` or `Map`.
+  ///
+  /// ## Parameters
+  /// - `expectedLength` (`int`): The exact length required. Must be non-negative.
+  /// - `equalLengthMsg` (`String Function(T input, int expectedLength)?`): Optional
+  ///   function to generate custom error messages. Receives the input and the
+  ///   expected length, returning an error message string.
+  ///
+  /// ## Return Value
+  /// A `Validator<T>` function that produces:
+  /// - `null` for valid inputs (length == expectedLength)
+  /// - An error message string for invalid inputs (length != expectedLength)
+  ///
+  /// ## Throws
+  /// - `ArgumentError` when:
+  ///   - [expectedLength] is negative
+  ///   - input runtime type is not a collection
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // String validation
+  /// final stringValidator = equalLength<String>(3);
+  /// print(stringValidator('abc')); // Returns null
+  /// print(stringValidator('ab')); // Returns error message
+  /// print(stringValidator('abcd')); // Returns error message
+  ///
+  /// // List validation
+  /// final listValidator = equalLength<List>(2);
+  /// print(listValidator([1, 2])); // Returns null
+  /// print(listValidator([1])); // Returns error message
+  /// print(listValidator([1, 2, 3])); // Returns error message
+  ///
+  /// // Custom error message
+  /// final customValidator = equalLength<String>(
+  ///   5,
+  ///   equalLengthMsg: (_, expectedLength) =>
+  ///     'Text must be exactly $expectedLength chars long!',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Type parameter `T` must be restricted to `String`, `Map`, or `Iterable`.
+  /// While the compiler cannot enforce this restriction, it is the developer's
+  /// responsibility to maintain this constraint.
+  /// - The validator treats non-collection inputs as implementation errors rather
+  /// than validation failures. Validate input types before passing them to
+  /// this validator.
+  /// {@endtemplate}
+  static Validator<T> equalLength<T extends Object>(
+    c.int expectedLength, {
+    String Function(T input, c.int expectedLength)? equalLengthMsg,
+  }) => val.equalLength(expectedLength, equalLengthMsg: equalLengthMsg);
+
   /// {@template validator_min_length}
   /// Creates a validator function that checks if the input collection's length is
   /// greater than or equal to `min`. The validator returns `null` for valid input
@@ -3020,9 +3408,10 @@ final class Validators {
   /// than validation failures. Validate input types before passing them to
   /// this validator.
   /// {@endtemplate}
-  static Validator<T> minLength<T extends Object>(int min,
-          {String Function(T input, int min)? minLengthMsg}) =>
-      val.minLength(min, minLengthMsg: minLengthMsg);
+  static Validator<T> minLength<T extends Object>(
+    c.int min, {
+    String Function(T input, c.int min)? minLengthMsg,
+  }) => val.minLength(min, minLengthMsg: minLengthMsg);
 
   /// {@template validator_max_length}
   /// Creates a validator function that checks if the input collection's length is
@@ -3079,9 +3468,10 @@ final class Validators {
   /// than validation failures. Validate input types before passing them to
   /// this validator.
   /// {@endtemplate}
-  static Validator<T> maxLength<T extends Object>(int max,
-          {String Function(T input, int max)? maxLengthMsg}) =>
-      val.maxLength(max, maxLengthMsg: maxLengthMsg);
+  static Validator<T> maxLength<T extends Object>(
+    c.int max, {
+    String Function(T input, c.int max)? maxLengthMsg,
+  }) => val.maxLength(max, maxLengthMsg: maxLengthMsg);
 
   /// {@template validator_between_length}
   /// Creates a validator function that checks if the input collection's length falls
@@ -3147,88 +3537,21 @@ final class Validators {
   /// this validator.
   /// {@endtemplate}
   static Validator<T> betweenLength<T extends Object>(
-    int min,
-    int max, {
-    String Function(T input, {required int min, required int max})?
-        betweenLengthMsg,
-  }) =>
-      val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
-
-  /// {@template validator_equal_length}
-  /// Creates a validator function that checks if the input collection's length equals
-  /// the specified length. The validator returns `null` for valid input and an error
-  /// message for invalid input.
-  ///
-  /// If validation fails and no custom error message generator is provided via
-  /// [equalLengthMsg], returns the default localized error message from
-  /// `FormBuilderLocalizations.current.equalLengthErrorText(expectedLength)`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: The type of input to validate. Must be a collection, in other words,
-  /// it must be one of `String`, `Iterable` or `Map`.
-  ///
-  /// ## Parameters
-  /// - `expectedLength` (`int`): The exact length required. Must be non-negative.
-  /// - `equalLengthMsg` (`String Function(T input, int expectedLength)?`): Optional
-  ///   function to generate custom error messages. Receives the input and the
-  ///   expected length, returning an error message string.
-  ///
-  /// ## Return Value
-  /// A `Validator<T>` function that produces:
-  /// - `null` for valid inputs (length == expectedLength)
-  /// - An error message string for invalid inputs (length != expectedLength)
-  ///
-  /// ## Throws
-  /// - `ArgumentError` when:
-  ///   - [expectedLength] is negative
-  ///   - input runtime type is not a collection
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // String validation
-  /// final stringValidator = equalLength<String>(3);
-  /// print(stringValidator('abc')); // Returns null
-  /// print(stringValidator('ab')); // Returns error message
-  /// print(stringValidator('abcd')); // Returns error message
-  ///
-  /// // List validation
-  /// final listValidator = equalLength<List>(2);
-  /// print(listValidator([1, 2])); // Returns null
-  /// print(listValidator([1])); // Returns error message
-  /// print(listValidator([1, 2, 3])); // Returns error message
-  ///
-  /// // Custom error message
-  /// final customValidator = equalLength<String>(
-  ///   5,
-  ///   equalLengthMsg: (_, expectedLength) =>
-  ///     'Text must be exactly $expectedLength chars long!',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - Type parameter `T` must be restricted to `String`, `Map`, or `Iterable`.
-  /// While the compiler cannot enforce this restriction, it is the developer's
-  /// responsibility to maintain this constraint.
-  /// - The validator treats non-collection inputs as implementation errors rather
-  /// than validation failures. Validate input types before passing them to
-  /// this validator.
-  /// {@endtemplate}
-  static Validator<T> equalLength<T extends Object>(int expectedLength,
-          {String Function(T input, int expectedLength)? equalLengthMsg}) =>
-      val.equalLength(
-        expectedLength,
-        equalLengthMsg: equalLengthMsg,
-      );
+    c.int min,
+    c.int max, {
+    String Function(T input, {required c.int min, required c.int max})?
+    betweenLengthMsg,
+  }) => val.betweenLength(min, max, betweenLengthMsg: betweenLengthMsg);
 
   // DateTime Validators
-  /// {@template validator_is_after}
+  /// {@template validator_after}
   /// Creates a [DateTime] validator that checks if an input date occurs after
   /// `reference`.
   ///
   /// ## Parameters
   /// - `reference` (`DateTime`): The baseline date against which the input will be compared.
   ///   This serves as the minimum acceptable date (exclusive by default).
-  /// - `isAfterMsg` (`String Function(DateTime input, DateTime reference)?`): Optional custom
+  /// - `afterMsg` (`String Function(DateTime input, DateTime reference)?`): Optional custom
   ///   error message generator. When provided, it receives both the input and reference
   ///   dates to construct a context-aware error message.
   /// - `inclusive` (`bool`): When set to `true`, allows the input date to exactly match
@@ -3242,36 +3565,35 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage requiring date after January 1st, 2025
-  /// final validator = isAfter(DateTime(2025));
+  /// final validator = Validators.after(DateTime(2025));
   ///
   /// // Inclusive validation allowing exact match
-  /// final inclusiveValidator = isAfter(
+  /// final inclusiveValidator = Validators.after(
   ///   DateTime(2024),
   ///   inclusive: true,
   /// );
   ///
   /// // Custom error message
-  /// final customValidator = isAfter(
+  /// final customValidator = Validators.after(
   ///   DateTime(2024),
   ///   isAfterMsg: (_, ref) => 'Please select a date after ${ref.toString()}',
   /// );
   /// ```
   /// {@endtemplate}
-  static Validator<DateTime> isAfter(
+  static Validator<DateTime> after(
     DateTime reference, {
-    String Function(DateTime input, DateTime reference)? isAfterMsg,
-    bool inclusive = false,
-  }) =>
-      val.isAfter(reference, isAfterMsg: isAfterMsg, inclusive: inclusive);
+    String Function(DateTime input, DateTime reference)? afterMsg,
+    c.bool inclusive = false,
+  }) => val.after(reference, afterMsg: afterMsg, inclusive: inclusive);
 
-  /// {@template validator_is_before}
+  /// {@template validator_before}
   /// Creates a [DateTime] validator that checks if an input date occurs before
   /// `reference`.
   ///
   /// ## Parameters
   /// - `reference` (`DateTime`): The baseline date against which the input will be compared.
   ///   This serves as the maximum acceptable date (exclusive by default).
-  /// - `isBeforeMsg` (`String Function(DateTime input, DateTime reference)?`): Optional custom
+  /// - `beforeMsg` (`String Function(DateTime input, DateTime reference)?`): Optional custom
   ///   error message generator. When provided, it receives both the input and reference
   ///   dates to construct a context-aware error message.
   /// - `inclusive` (`bool`): When set to `true`, allows the input date to exactly match
@@ -3286,29 +3608,28 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage requiring date before January 1st, 2025
-  /// final validator = isBefore(DateTime(2025));
+  /// final validator = Validators.before(DateTime(2025));
   ///
   /// // Inclusive validation allowing exact match
-  /// final inclusiveValidator = isBefore(
+  /// final inclusiveValidator = Validators.before(
   ///   DateTime(2024),
   ///   inclusive: true,
   /// );
   ///
   /// // Custom error message
-  /// final customValidator = isBefore(
+  /// final customValidator = Validators.before(
   ///   DateTime(2024),
   ///   isBeforeMsg: (_, ref) => 'Please select a date before ${ref.toString()}',
   /// );
   /// ```
   /// {@endtemplate}
-  static Validator<DateTime> isBefore(
+  static Validator<DateTime> before(
     DateTime reference, {
-    String Function(DateTime input, DateTime reference)? isBeforeMsg,
-    bool inclusive = false,
-  }) =>
-      val.isBefore(reference, isBeforeMsg: isBeforeMsg, inclusive: inclusive);
+    String Function(DateTime input, DateTime reference)? beforeMsg,
+    c.bool inclusive = false,
+  }) => val.before(reference, beforeMsg: beforeMsg, inclusive: inclusive);
 
-  /// {@template validator_is_date_time_between}
+  /// {@template validator_between_date_time}
   /// Creates a [DateTime] validator that checks if an input date falls within a specified
   /// range defined by `minReference` and `maxReference`.
   ///
@@ -3321,7 +3642,7 @@ final class Validators {
   ///   Input dates must occur after this date (or equal to it if `minInclusive` is true).
   /// - `maxReference` (`DateTime`): The upper bound of the acceptable date range.
   ///   Input dates must occur before this date (or equal to it if `maxInclusive` is true).
-  /// - `isDateTimeBetweenMsg` (`String Function(DateTime, DateTime, DateTime)?`): Optional
+  /// - `betweenDateTimeMsg` (`String Function(DateTime, DateTime, DateTime)?`): Optional
   ///   custom error message generator. When provided, it receives the input date and both
   ///   reference dates to construct a context-aware error message.
   /// - `minInclusive` (`bool`): When set to `true`, allows the input date to exactly match
@@ -3342,13 +3663,13 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Basic usage requiring date between 2023 and 2025
-  /// final validator = isDateTimeBetween(
+  /// final validator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
   /// );
   ///
   /// // Inclusive validation allowing exact matches
-  /// final inclusiveValidator = isDateTimeBetween(
+  /// final inclusiveValidator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
   ///   minInclusive: true,
@@ -3356,30 +3677,76 @@ final class Validators {
   /// );
   ///
   /// // Custom error message
-  /// final customValidator = isDateTimeBetween(
+  /// final customValidator = Validators.betweenDateTime(
   ///   DateTime(2023),
   ///   DateTime(2025),
-  ///   isDateTimeBetweenMsg: (_, min, max) =>
+  ///   betweenDateTimeMsg: (_, min, max) =>
   ///     'Please select a date between ${min.toString()} and ${max.toString()}',
   /// );
   /// ```
   /// {@endtemplate}
-  static Validator<DateTime> isDateTimeBetween(
+  static Validator<DateTime> betweenDateTime(
     DateTime minReference,
     DateTime maxReference, {
     String Function(
-            DateTime input, DateTime minReference, DateTime maxReference)?
-        isDateTimeBetweenMsg,
-    bool leftInclusive = false,
-    bool rightInclusive = false,
-  }) =>
-      val.isDateTimeBetween(minReference, maxReference,
-          isDateTimeBetweenMsg: isDateTimeBetweenMsg,
-          minInclusive: leftInclusive,
-          maxInclusive: rightInclusive);
+      DateTime input,
+      DateTime minReference,
+      DateTime maxReference,
+    )?
+    betweenDateTimeMsg,
+    c.bool leftInclusive = false,
+    c.bool rightInclusive = false,
+  }) => val.betweenDateTime(
+    minReference,
+    maxReference,
+    betweenDateTimeMsg: betweenDateTimeMsg,
+    minInclusive: leftInclusive,
+    maxInclusive: rightInclusive,
+  );
+
+  /// {@template validator_max_file_size}
+  /// Validates that a file size in bytes is less than or equal to `max`.
+  ///
+  /// This validator compares the input integer (representing bytes) against a
+  /// maximum size threshold (`max`). The comparison can be performed using
+  /// either 1000-based units (B, kB, MB, etc.) or 1024-based units (B, KiB,
+  /// MiB, etc.) depending on the selected [base].
+  ///
+  /// ## Parameters
+  /// - `max` (`int`): The maximum allowed file size in bytes
+  /// - `base` (`Base`): The base unit system to use for calculations and error messages.
+  ///   Defaults to [Base.b1024]
+  /// - `maxFileSizeMsg` (`String Function(int input, int max, Base base)?`):
+  ///   Optional custom error message generator that receives the input size,
+  ///   maximum size, and base to produce a tailored error message
+  ///
+  /// ## Returns
+  /// A [Validator] function that returns `null` when the input is valid (less than or equal
+  /// to the maximum size), or an error message string when validation fails
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Create a validator restricting files to 5 MiB using 1024-based units
+  /// final validator = maxFileSize(5 * 1024 * 1024);
+  ///
+  /// // Create a validator restricting files to 5 MB using 1000-based units
+  /// final validator = maxFileSize(5 * 1000 * 1000, base: Base.b1000);
+  ///
+  /// // Using a custom error message
+  /// final validator = maxFileSize(
+  ///   10 * 1024 * 1024,
+  ///   maxFileSizeMsg: (input, max, base) => 'File too large: ${formatBytes(input, base)}',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<c.int> maxFileSize(
+    c.int max, {
+    val.Base base = val.Base.b1024,
+    String Function(c.int input, c.int max, val.Base base)? maxFileSizeMsg,
+  }) => val.maxFileSize(max, base: base, maxFileSizeMsg: maxFileSizeMsg);
 
   // Generic type validators
-  /// {@template validator_contains_element}
+  /// {@template validator_in_list}
   /// Creates a validator function that verifies if a given input is in `values`.
   ///
   /// ## Type Parameters
@@ -3389,7 +3756,7 @@ final class Validators {
   /// ## Parameters
   /// - `values` (`List<T>`): A non-empty list of valid values to check against. The input
   ///   will be validated against these values.
-  /// - `containsElementMsg` (`String Function(T input, List<T> values)?`): Optional callback
+  /// - `inListMsg` (`String Function(T input, List<T> values)?`): Optional callback
   ///   function that generates a custom error message when validation fails. The function
   ///   receives the invalid input and the list of valid values as parameters. If not provided,
   ///   defaults to the localized error text from FormBuilderLocalizations.
@@ -3406,9 +3773,9 @@ final class Validators {
   /// ## Examples
   /// ```dart
   /// // Creating a validator with a custom error message generator
-  /// final countryValidator = containsElement(
+  /// final countryValidator = Validators.inList(
   ///   ['USA', 'Canada', 'Mexico'],
-  ///   containsElementMsg: (input, values) =>
+  ///   inListMsg: (input, values) =>
   ///     'Country $input is not in allowed list: ${values.join(", ")}',
   /// );
   ///
@@ -3417,11 +3784,54 @@ final class Validators {
   /// final valid = countryValidator('USA');     // Returns null (valid)
   /// ```
   /// {@endtemplate}
-  static Validator<T> containsElement<T extends Object?>(
+  static Validator<T> inList<T extends Object?>(
     List<T> values, {
-    String Function(T input, List<T> values)? containsElementMsg,
-  }) =>
-      val.containsElement(values, containsElementMsg: containsElementMsg);
+    String Function(T input, List<T> values)? inListMsg,
+  }) => val.inList(values, inListMsg: inListMsg);
+
+  /// {@template validator_not_in_list}
+  /// Creates a validator function that verifies if a given input is not in
+  /// `values`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of elements to validate. Must extend Object?, allowing nullable
+  /// types.
+  ///
+  /// ## Parameters
+  /// - `values` (`List<T>`): A non-empty list of invalid values to check
+  ///   against. The input will be validated against these values.
+  /// - `notInListMsg` (`String Function(T input, List<T> values)?`): Optional callback
+  ///   function that generates a custom error message when validation fails. The function
+  ///   receives the invalid input and the list of invalid values as parameters. If not provided,
+  ///   defaults to the localized error text from FormBuilderLocalizations.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<T>`  function that:
+  /// - Returns null if the input value does not exist in the provided list
+  /// - Returns a generated error message if the input was found in the list.
+  ///
+  /// ## Throws
+  /// - `AssertionError`: Thrown if the provided values list is empty, which would
+  /// make any input valid.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Creating a validator with a custom error message generator
+  /// final countryValidator = Validators.notInList(
+  ///   ['USA', 'Canada', 'Mexico'],
+  ///   notInListMsg: (input, values) =>
+  ///     'Country $input is in the forbidden list: ${values.join(", ")}',
+  /// );
+  ///
+  /// // Using the validator
+  /// final result = countryValidator('Brazil'); // Returns null (valid)
+  /// final valid = countryValidator('USA');     // Returns "Country USA is in the forbidden list: USA, Canada, Mexico"
+  /// ```
+  /// {@endtemplate}
+  static Validator<T> notInList<T extends Object?>(
+    List<T> values, {
+    String Function(T input, List<T> values)? notInListMsg,
+  }) => val.notInList(values, notInListMsg: notInListMsg);
 
   /// {@template validator_is_true}
   /// Creates a validator function that checks if a given input represents a `true`
@@ -3468,12 +3878,15 @@ final class Validators {
   /// assert(strictValidator(' true') != null);  // Invalid: no trimming
   /// ```
   /// {@endtemplate}
-  static Validator<T> isTrue<T extends Object>(
-          {String Function(T input)? isTrueMsg,
-          bool caseSensitive = false,
-          bool trim = true}) =>
-      val.isTrue(
-          isTrueMsg: isTrueMsg, caseSensitive: caseSensitive, trim: trim);
+  static Validator<T> isTrue<T extends Object>({
+    String Function(T input)? isTrueMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = true,
+  }) => val.isTrue(
+    isTrueMsg: isTrueMsg,
+    caseSensitive: caseSensitive,
+    trim: trim,
+  );
 
   /// {@template validator_is_false}
   /// Creates a validator function that checks if a given input represents a `false`
@@ -3520,171 +3933,186 @@ final class Validators {
   /// assert(strictValidator(' false') != null); // Invalid: no trimming
   /// ```
   /// {@endtemplate}
-  static Validator<T> isFalse<T extends Object>(
-          {String Function(T input)? isFalseMsg,
-          bool caseSensitive = false,
-          bool trim = false}) =>
-      val.isFalse(
-          isFalseMsg: isFalseMsg, caseSensitive: caseSensitive, trim: trim);
+  static Validator<T> isFalse<T extends Object>({
+    String Function(T input)? isFalseMsg,
+    c.bool caseSensitive = false,
+    c.bool trim = false,
+  }) => val.isFalse(
+    isFalseMsg: isFalseMsg,
+    caseSensitive: caseSensitive,
+    trim: trim,
+  );
+
+  /// {@template validator_satisfy}
+  /// Creates a validator function that checks if a given input satisfies a custom
+  /// boolean condition. This is a general-purpose validator that allows you to
+  /// define arbitrary validation logic through a predicate function.
+  ///
+  /// ## Type Parameters
+  /// - `T`: The type of input to validate. Can be any type including nullable
+  /// types.
+  ///
+  /// ## Parameters
+  /// - `condition` (`bool Function(T)`): A predicate function that defines the
+  ///   validation logic. Should return `true` for valid inputs and `false` for
+  ///   invalid inputs.
+  /// - `satisfyMsg` (`String Function(T input)?`): Optional callback function to
+  ///   generate custom error messages for inputs that fail validation. Receives
+  ///   the invalid input as a parameter.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<T>` function that:
+  /// - Returns `null` if the input satisfies the condition
+  /// - Returns an error message if the input fails validation, either from
+  ///   `satisfyMsg` or the default localized text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Validate that a number is positive
+  /// final positiveValidator = satisfy<int>(
+  ///   (value) => value > 0,
+  ///   satisfyMsg: (input) => '$input must be a positive number',
+  /// );
+  /// assert(positiveValidator(5) == null);     // Valid
+  /// assert(positiveValidator(-1) != null);    // Invalid
+  ///
+  /// // Validate string length
+  /// final lengthValidator = satisfy<String>(
+  ///   (value) => value.length >= 3,
+  ///   satisfyMsg: (input) => 'Text must be at least 3 characters long',
+  /// );
+  /// assert(lengthValidator('hello') == null); // Valid
+  /// assert(lengthValidator('hi') != null);    // Invalid
+  ///
+  /// // Complex validation with multiple conditions
+  /// final emailValidator = satisfy<String>(
+  ///   (email) => email.contains('@') && email.contains('.'),
+  ///   satisfyMsg: (input) => 'Please enter a valid email address',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<T> satisfy<T extends Object>(
+    c.bool Function(T) condition, {
+    String Function(T input)? satisfyMsg,
+  }) => val.satisfy(condition, satisfyMsg: satisfyMsg);
+
+  // Miscellaneous validators
+  /// {@template validator_color_code}
+  /// Creates a validator function that validates color code strings in specified formats.
+  /// This validator supports hexadecimal, RGB, and HSL color formats and allows custom
+  /// validation logic for specialized color code requirements.
+  ///
+  /// ## Parameters
+  /// - `formats` (`Set<ColorFormat>`): The color formats to accept during validation.
+  ///   Defaults to supporting HEX, RGB, and HSL formats. Cannot be empty.
+  /// - `customColorCode` (`bool Function(String)?`): Optional custom validation function
+  ///   that overrides the default color code validation logic. Should return `true` for
+  ///   valid color codes and `false` for invalid ones.
+  /// - `colorCodeMsg` (`String Function(String input)?`): Optional callback function to
+  ///   generate custom error messages for invalid color codes. Receives the invalid
+  ///   input as a parameter.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the input is a valid color code in any of the specified formats
+  /// - Returns an error message if the input fails validation, either from `colorCodeMsg`
+  ///   or the default localized text
+  ///
+  /// ## Throws
+  /// - `ArgumentError`: When the `formats` set is empty
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Validate HEX colors only
+  /// final hexValidator = colorCode(
+  ///   formats: {ColorFormat.Hex},
+  ///   colorCodeMsg: (input) => 'Please enter a valid HEX color',
+  /// );
+  /// assert(hexValidator('#FF5733') == null);     // Valid
+  /// assert(hexValidator('rgb(255, 87, 51)') != null); // Invalid format
+  ///
+  /// // Validate multiple formats
+  /// final multiValidator = colorCode(
+  ///   formats: {ColorFormat.Hex, ColorFormat.Rgb},
+  /// );
+  /// assert(multiValidator('#FF5733') == null);        // Valid HEX
+  /// assert(multiValidator('rgb(255, 87, 51)') == null); // Valid RGB
+  /// assert(multiValidator('hsl(14, 100%, 60%)') != null); // Invalid HSL
+  ///
+  /// // Custom validation logic
+  /// final customValidator = colorCode(
+  ///   customColorCode: (value) => value.startsWith('#') && value.length == 7,
+  ///   colorCodeMsg: (input) => 'Only 6-digit HEX colors allowed',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - RGB values are validated to be within the 0-255 range
+  /// - HSL hue values must be within 0-360 degrees
+  /// - HSL saturation and lightness values must be within 0-100 percent
+  /// - When `customColorCode` is provided, it completely overrides default validation
+  /// {@endtemplate}
+  static Validator<String> colorCode({
+    Set<val.ColorFormat> formats = const <val.ColorFormat>{
+      val.ColorFormat.hex,
+      val.ColorFormat.rgb,
+      val.ColorFormat.hsl,
+    },
+    c.bool Function(String)? customColorCode,
+    String Function(String input)? colorCodeMsg,
+  }) => val.colorCode(
+    formats: formats,
+    customColorCode: customColorCode,
+    colorCodeMsg: colorCodeMsg,
+  );
+
+  /// {@template validator_isbn}
+  /// Creates a validator function that validates International Standard Book Number (ISBN) strings.
+  /// This validator supports both ISBN-10 and ISBN-13 formats and automatically handles
+  /// common formatting variations including hyphens and spaces.
+  ///
+  /// The validator performs comprehensive ISBN validation including checksum verification
+  /// to ensure the provided ISBN is mathematically valid according to the ISBN standard.
+  /// It accepts ISBNs with or without separating hyphens and handles the special 'X'
+  /// check digit used in ISBN-10 format.
+  ///
+  /// ## Parameters
+  /// - `isbnMsg` (`String Function(String input)?`): Optional callback function to
+  ///   generate custom error messages for invalid ISBN strings. Receives the invalid
+  ///   input as a parameter and should return a user-friendly error message.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the input is a valid ISBN-10 or ISBN-13
+  /// - Returns an error message if the input fails validation, either from `isbnMsg`
+  ///   or the default localized text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic ISBN validation
+  /// final isbnValidator = isbn();
+  /// assert(isbnValidator('978-0-13-110362-7') == null);  // Valid ISBN-13
+  /// assert(isbnValidator('0-13-110362-8') == null);      // Valid ISBN-10
+  /// assert(isbnValidator('invalid-isbn') != null);       // Invalid
+  ///
+  /// // Custom error message
+  /// final customValidator = isbn(
+  ///   isbnMsg: (input) => 'Please enter a valid ISBN-10 or ISBN-13',
+  /// );
+  ///
+  /// // Various valid formats
+  /// assert(isbnValidator('9780131103627') == null);      // No hyphens
+  /// assert(isbnValidator('978 0 13 110362 7') == null); // Spaces
+  /// assert(isbnValidator('013110362X') == null);         // ISBN-10 with X
+  /// ```
+  ///
+  /// ## Caveats
+  /// - Formatting characters (hyphens and spaces) are automatically stripped during validation
+  /// {@endtemplate}
+  static Validator<String> isbn({String Function(String input)? isbnMsg}) =>
+      val.isbn(isbnMsg: isbnMsg);
 
   // Numeric validators
-  /// {@template validator_greater_than}
-  /// Creates a validator function that checks if a numeric input exceeds `reference`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
-  /// `num` validations
-  ///
-  /// ## Parameters
-  /// - `reference` (`T`): The threshold value that the input must exceed
-  /// - `greaterThanMsg` (`String Function(T input, T reference)?`): Optional custom error
-  ///   message generator that takes the input value and threshold as parameters
-  ///
-  /// ## Returns
-  /// Returns a [Validator] function that:
-  /// - Returns `null` if the input is greater than the threshold value `reference`
-  /// - Returns an error message string if validation fails, either from the custom
-  ///   `greaterThanMsg` function or the default localized error text
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic usage with integers
-  /// final ageValidator = greaterThan<int>(18);
-  ///
-  /// // Custom error message
-  /// final priceValidator = greaterThan<double>(
-  ///   0.0,
-  ///   greaterThanMsg: (_, ref) => 'Price must be greater than \$${ref.toStringAsFixed(2)}',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The validator uses strict greater than comparison (`>`)
-  /// {@endtemplate}
-  static Validator<T> greaterThan<T extends num>(T reference,
-          {String Function(num input, num reference)? greaterThanMsg}) =>
-      val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
-
-  /// {@template validator_greater_than_or_equal_to}
-  /// Creates a validator function that checks if a numeric input is greater than
-  /// or equal to `reference`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
-  /// `num` validations
-  ///
-  /// ## Parameters
-  /// - `reference` (`T`): The threshold value that the input must be greater than or equal to
-  /// - `greaterThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
-  ///   message generator that takes the input value and threshold as parameters
-  ///
-  /// ## Returns
-  /// Returns a [Validator] function that:
-  /// - Returns `null` if the input is greater than or equal to the threshold value
-  /// `reference`
-  /// - Returns an error message string if validation fails, either from the custom
-  ///   `greaterThanOrEqualToMsg` function or the default localized error text from
-  ///   [FormBuilderLocalizations]
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic usage with integers
-  /// final ageValidator = greaterThanOrEqualTo<int>(18);
-  ///
-  /// // Custom error message
-  /// final priceValidator = greaterThanOrEqualTo<double>(
-  ///   0.0,
-  ///   greaterThanOrEqualToMsg: (_, ref) => 'Price must be at least \$${ref.toStringAsFixed(2)}',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The validator uses greater than or equal to comparison (`>=`)
-  /// {@endtemplate}
-  static Validator<T> greaterThanOrEqualTo<T extends num>(T reference,
-          {String Function(num input, num reference)?
-              greaterThanOrEqualToMsg}) =>
-      val.greaterThanOrEqualTo(reference,
-          greaterThanOrEqualToMsg: greaterThanOrEqualToMsg);
-
-  /// {@template validator_less_than}
-  /// Creates a validator function that checks if a numeric input is less than `reference`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
-  /// `num` validations
-  ///
-  /// ## Parameters
-  /// - `reference` (`T`): The threshold value that the input must be less than
-  /// - `lessThanMsg` (`String Function(T input, T reference)?`): Optional custom error
-  ///   message generator that takes the input value and threshold as parameters
-  ///
-  /// ## Returns
-  /// Returns a [Validator] function that:
-  /// - Returns `null` if the input is less than the threshold value `reference`
-  /// - Returns an error message string if validation fails, either from the custom
-  ///   `lessThanMsg` function or the default localized error text
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic usage with integers
-  /// final maxAgeValidator = lessThan<int>(100);
-  ///
-  /// // Custom error message
-  /// final discountValidator = lessThan<double>(
-  ///   1.0,
-  ///   lessThanMsg: (_, ref) => 'Discount must be less than ${(ref * 100).toStringAsFixed(0)}%',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The validator uses strict less than comparison (`<`)
-  /// {@endtemplate}
-  static Validator<T> lessThan<T extends num>(T reference,
-          {String Function(num input, num reference)? lessThanMsg}) =>
-      val.lessThan(reference, lessThanMsg: lessThanMsg);
-
-  /// {@template validator_less_than_or_equal_to}
-  /// Creates a validator function that checks if a numeric input is less than
-  /// or equal to `reference`.
-  ///
-  /// ## Type Parameters
-  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
-  /// `num` validations
-  ///
-  /// ## Parameters
-  /// - `reference` (`T`): The threshold value that the input must be less than or equal to
-  /// - `lessThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
-  ///   message generator that takes the input value and threshold as parameters
-  ///
-  /// ## Returns
-  /// Returns a [Validator] function that:
-  /// - Returns `null` if the input is less than or equal to the threshold value
-  /// `reference`
-  /// - Returns an error message string if validation fails, either from the custom
-  ///   `lessThanOrEqualToMsg` function or the default localized error text from
-  ///   [FormBuilderLocalizations]
-  ///
-  /// ## Examples
-  /// ```dart
-  /// // Basic usage with integers
-  /// final maxAgeValidator = lessThanOrEqualTo<int>(100);
-  ///
-  /// // Custom error message
-  /// final maxPriceValidator = lessThanOrEqualTo<double>(
-  ///   999.99,
-  ///   lessThanOrEqualToMsg: (_, ref) => 'Price cannot exceed \$${ref.toStringAsFixed(2)}',
-  /// );
-  /// ```
-  ///
-  /// ## Caveats
-  /// - The validator uses less than or equal to comparison (`<=`)
-  /// {@endtemplate}
-  static Validator<T> lessThanOrEqualTo<T extends num>(T reference,
-          {String Function(num input, num reference)? lessThanOrEqualToMsg}) =>
-      val.lessThanOrEqualTo(reference,
-          lessThanOrEqualToMsg: lessThanOrEqualToMsg);
-
   /// {@template validator_between}
   /// Creates a validator function that checks if a numeric input falls within a specified
   /// range defined by `min` and `max` values.
@@ -3738,25 +4166,236 @@ final class Validators {
   /// ## Caveats
   /// - The default behavior uses inclusive bounds (`>=` and `<=`)
   /// {@endtemplate}
-  static Validator<T> between<T extends num>(T min, T max,
-          {bool minInclusive = true,
-          bool maxInclusive = true,
-          String Function(
-            T input,
-            T min,
-            T max,
-            bool minInclusive,
-            bool maxInclusive,
-          )? betweenMsg}) =>
-      val.between(
-        min,
-        max,
-        minInclusive: minInclusive,
-        maxInclusive: maxInclusive,
-        betweenMsg: betweenMsg,
-      );
+  static Validator<T> between<T extends c.num>(
+    T min,
+    T max, {
+    c.bool minInclusive = true,
+    c.bool maxInclusive = true,
+    String Function(
+      T input,
+      T min,
+      T max,
+      c.bool minInclusive,
+      c.bool maxInclusive,
+    )?
+    betweenMsg,
+  }) => val.between(
+    min,
+    max,
+    minInclusive: minInclusive,
+    maxInclusive: maxInclusive,
+    betweenMsg: betweenMsg,
+  );
+
+  /// {@template validator_greater_than}
+  /// Creates a validator function that checks if a numeric input exceeds `reference`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+  /// `num` validations
+  ///
+  /// ## Parameters
+  /// - `reference` (`T`): The threshold value that the input must exceed
+  /// - `greaterThanMsg` (`String Function(T input, T reference)?`): Optional custom error
+  ///   message generator that takes the input value and threshold as parameters
+  ///
+  /// ## Returns
+  /// Returns a [Validator] function that:
+  /// - Returns `null` if the input is greater than the threshold value `reference`
+  /// - Returns an error message string if validation fails, either from the custom
+  ///   `greaterThanMsg` function or the default localized error text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with integers
+  /// final ageValidator = greaterThan<int>(18);
+  ///
+  /// // Custom error message
+  /// final priceValidator = greaterThan<double>(
+  ///   0.0,
+  ///   greaterThanMsg: (_, ref) => 'Price must be greater than \$${ref.toStringAsFixed(2)}',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator uses strict greater than comparison (`>`)
+  /// {@endtemplate}
+  static Validator<T> greaterThan<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? greaterThanMsg,
+  }) => val.greaterThan(reference, greaterThanMsg: greaterThanMsg);
+
+  /// {@template validator_greater_than_or_equal_to}
+  /// Creates a validator function that checks if a numeric input is greater than
+  /// or equal to `reference`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+  /// `num` validations
+  ///
+  /// ## Parameters
+  /// - `reference` (`T`): The threshold value that the input must be greater than or equal to
+  /// - `greaterThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
+  ///   message generator that takes the input value and threshold as parameters
+  ///
+  /// ## Returns
+  /// Returns a [Validator] function that:
+  /// - Returns `null` if the input is greater than or equal to the threshold value
+  /// `reference`
+  /// - Returns an error message string if validation fails, either from the custom
+  ///   `greaterThanOrEqualToMsg` function or the default localized error text from
+  ///   [FormBuilderLocalizations]
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with integers
+  /// final ageValidator = greaterThanOrEqualTo<int>(18);
+  ///
+  /// // Custom error message
+  /// final priceValidator = greaterThanOrEqualTo<double>(
+  ///   0.0,
+  ///   greaterThanOrEqualToMsg: (_, ref) => 'Price must be at least \$${ref.toStringAsFixed(2)}',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator uses greater than or equal to comparison (`>=`)
+  /// {@endtemplate}
+  static Validator<T> greaterThanOrEqualTo<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? greaterThanOrEqualToMsg,
+  }) => val.greaterThanOrEqualTo(
+    reference,
+    greaterThanOrEqualToMsg: greaterThanOrEqualToMsg,
+  );
+
+  /// {@template validator_less_than}
+  /// Creates a validator function that checks if a numeric input is less than `reference`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+  /// `num` validations
+  ///
+  /// ## Parameters
+  /// - `reference` (`T`): The threshold value that the input must be less than
+  /// - `lessThanMsg` (`String Function(T input, T reference)?`): Optional custom error
+  ///   message generator that takes the input value and threshold as parameters
+  ///
+  /// ## Returns
+  /// Returns a [Validator] function that:
+  /// - Returns `null` if the input is less than the threshold value `reference`
+  /// - Returns an error message string if validation fails, either from the custom
+  ///   `lessThanMsg` function or the default localized error text
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with integers
+  /// final maxAgeValidator = lessThan<int>(100);
+  ///
+  /// // Custom error message
+  /// final discountValidator = lessThan<double>(
+  ///   1.0,
+  ///   lessThanMsg: (_, ref) => 'Discount must be less than ${(ref * 100).toStringAsFixed(0)}%',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator uses strict less than comparison (`<`)
+  /// {@endtemplate}
+  static Validator<T> lessThan<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? lessThanMsg,
+  }) => val.lessThan(reference, lessThanMsg: lessThanMsg);
+
+  /// {@template validator_less_than_or_equal_to}
+  /// Creates a validator function that checks if a numeric input is less than
+  /// or equal to `reference`.
+  ///
+  /// ## Type Parameters
+  /// - `T`: A numeric type that extends [num], allowing `int`, `double` or
+  /// `num` validations
+  ///
+  /// ## Parameters
+  /// - `reference` (`T`): The threshold value that the input must be less than or equal to
+  /// - `lessThanOrEqualToMsg` (`String Function(T input, T reference)?`): Optional custom error
+  ///   message generator that takes the input value and threshold as parameters
+  ///
+  /// ## Returns
+  /// Returns a [Validator] function that:
+  /// - Returns `null` if the input is less than or equal to the threshold value
+  /// `reference`
+  /// - Returns an error message string if validation fails, either from the custom
+  ///   `lessThanOrEqualToMsg` function or the default localized error text from
+  ///   [FormBuilderLocalizations]
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with integers
+  /// final maxAgeValidator = lessThanOrEqualTo<int>(100);
+  ///
+  /// // Custom error message
+  /// final maxPriceValidator = lessThanOrEqualTo<double>(
+  ///   999.99,
+  ///   lessThanOrEqualToMsg: (_, ref) => 'Price cannot exceed \$${ref.toStringAsFixed(2)}',
+  /// );
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator uses less than or equal to comparison (`<=`)
+  /// {@endtemplate}
+  static Validator<T> lessThanOrEqualTo<T extends c.num>(
+    T reference, {
+    String Function(c.num input, c.num reference)? lessThanOrEqualToMsg,
+  }) => val.lessThanOrEqualTo(
+    reference,
+    lessThanOrEqualToMsg: lessThanOrEqualToMsg,
+  );
 
   // User information validators
+
+  /// {@template validator_email}
+  /// A validator function that checks if a given string is a valid email address.
+  /// Uses either a custom or default RFC 5322 compliant regular expression for validation.
+  ///
+  /// ## Parameters
+  /// - `regex` (`RegExp?`): Optional custom regular expression for email validation.
+  ///   If not provided, uses a default RFC 5322 compliant pattern that supports:
+  ///   - ASCII characters
+  ///   - Unicode characters (including IDN domains)
+  ///   - Special characters in local part
+  ///   - Quoted strings
+  ///   - Multiple dots
+  ///
+  /// - `emailMsg` (`String Function(String input)?`): Optional custom error message
+  ///   generator function that takes the invalid input and returns a custom error
+  ///   message. If not provided, uses the default localized error text.
+  ///
+  /// ## Returns
+  /// Returns a `Validator<String>` function that:
+  /// - Returns `null` if the email is valid
+  /// - Returns an error message string if the email is invalid
+  ///
+  /// ## Examples
+  /// Basic usage with default settings:
+  /// ```dart
+  /// final emailValidator = email();
+  /// final result = emailValidator('user@example.com');
+  /// print(result); // null (valid email)
+  /// ```
+  ///
+  /// Using custom regex and error message:
+  /// ```dart
+  /// final customValidator = email(
+  ///   regex: RegExp(r'^[a-zA-Z0-9.]+@company\.com$'),
+  ///   emailMsg: (input) => '$input is not a valid company email',
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> email({
+    RegExp? regex,
+    String Function(String input)? emailMsg,
+  }) => val.email(regex: regex, emailMsg: emailMsg);
+
   /// {@template validator_password}
   /// Creates a composite validator for password validation that enforces multiple
   /// password strength requirements simultaneously.
@@ -3800,23 +4439,22 @@ final class Validators {
   ///   are not available to the user.
   /// {@endtemplate}
   static Validator<String> password({
-    int minLength = 8,
-    int maxLength = 32,
-    int minUppercaseCount = 1,
-    int minLowercaseCount = 1,
-    int minNumberCount = 1,
-    int minSpecialCharCount = 1,
+    c.int minLength = 8,
+    c.int maxLength = 32,
+    c.int minUppercaseCount = 1,
+    c.int minLowercaseCount = 1,
+    c.int minNumberCount = 1,
+    c.int minSpecialCharCount = 1,
     String Function(String input)? passwordMsg,
-  }) =>
-      val.password(
-        minLength: minLength,
-        maxLength: maxLength,
-        minUppercaseCount: minUppercaseCount,
-        minLowercaseCount: minLowercaseCount,
-        minNumberCount: minNumberCount,
-        minSpecialCharCount: minSpecialCharCount,
-        passwordMsg: passwordMsg,
-      );
+  }) => val.password(
+    minLength: minLength,
+    maxLength: maxLength,
+    minUppercaseCount: minUppercaseCount,
+    minLowercaseCount: minLowercaseCount,
+    minNumberCount: minNumberCount,
+    minSpecialCharCount: minSpecialCharCount,
+    passwordMsg: passwordMsg,
+  );
 
   /// {@template validator_phoneNumber}
   /// A validator function for phone number validation that supports various international
@@ -3860,52 +4498,7 @@ final class Validators {
   static Validator<String> phoneNumber({
     RegExp? regex,
     String Function(String input)? phoneNumberMsg,
-  }) =>
-      val.phoneNumber(regex: regex, phoneNumberMsg: phoneNumberMsg);
-
-  /// {@template validator_email}
-  /// A validator function that checks if a given string is a valid email address.
-  /// Uses either a custom or default RFC 5322 compliant regular expression for validation.
-  ///
-  /// ## Parameters
-  /// - `regex` (`RegExp?`): Optional custom regular expression for email validation.
-  ///   If not provided, uses a default RFC 5322 compliant pattern that supports:
-  ///   - ASCII characters
-  ///   - Unicode characters (including IDN domains)
-  ///   - Special characters in local part
-  ///   - Quoted strings
-  ///   - Multiple dots
-  ///
-  /// - `emailMsg` (`String Function(String input)?`): Optional custom error message
-  ///   generator function that takes the invalid input and returns a custom error
-  ///   message. If not provided, uses the default localized error text.
-  ///
-  /// ## Returns
-  /// Returns a `Validator<String>` function that:
-  /// - Returns `null` if the email is valid
-  /// - Returns an error message string if the email is invalid
-  ///
-  /// ## Examples
-  /// Basic usage with default settings:
-  /// ```dart
-  /// final emailValidator = email();
-  /// final result = emailValidator('user@example.com');
-  /// print(result); // null (valid email)
-  /// ```
-  ///
-  /// Using custom regex and error message:
-  /// ```dart
-  /// final customValidator = email(
-  ///   regex: RegExp(r'^[a-zA-Z0-9.]+@company\.com$'),
-  ///   emailMsg: (input) => '$input is not a valid company email',
-  /// );
-  /// ```
-  /// {@endtemplate}
-  static Validator<String> email({
-    RegExp? regex,
-    String Function(String input)? emailMsg,
-  }) =>
-      val.email(regex: regex, emailMsg: emailMsg);
+  }) => val.phoneNumber(regex: regex, phoneNumberMsg: phoneNumberMsg);
 
   // Finance validators
   /// {@template validator_credit_card}
@@ -3957,10 +4550,104 @@ final class Validators {
   static Validator<String> creditCard({
     RegExp? regex,
     String Function(String input)? creditCardMsg,
-  }) =>
-      val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
+  }) => val.creditCard(regex: regex, creditCardMsg: creditCardMsg);
 
-// Network validators
+  ///{@template validator_iban}
+  /// A validator function that checks if a string is a valid International Bank
+  /// Account Number (IBAN).
+  ///
+  /// Returns null if the input is a valid IBAN format, otherwise returns an
+  /// error message. The validator performs standard IBAN validation including
+  /// length check, character conversion, and checksum calculation according to
+  /// the ISO 13616 standard.
+  ///
+  /// ## Parameters
+  /// - `isIban` (`bool Function(String input)?`): Optional custom validation
+  ///   function that determines if the input is a valid IBAN. If provided, this
+  ///   function overrides the default validation logic.
+  /// - `ibanMsg` (`String Function(String input)?`): Optional function that
+  ///   returns a custom error message when validation fails. If not provided,
+  ///   the default localized error message is used.
+  ///
+  /// ## Returns
+  /// A `Validator<String>` function that accepts a string input and returns
+  /// null for valid IBANs or an error message string for invalid IBANs.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic usage with default validation and error message
+  /// final validator = Validators.iban();
+  /// assert(validator('GB82 WEST 1234 5698 7654 32') == null); // Valid IBAN
+  /// assert(validator('invalid123') != null); // Invalid IBAN
+  ///
+  /// // Using custom validation logic
+  /// final customValidator = FormBuilderValidators.iban(
+  ///   isIban: (input) => input.startsWith('DE'),
+  ///   ibanMsg: (input) => 'Only German IBANs are accepted',
+  /// );
+  /// assert(customValidator('DE89 3704 0044 0532 0130 00') == null); // Valid German IBAN
+  /// assert(customValidator('GB82 WEST 1234 5698 7654 32') != null); // Not a German IBAN
+  /// ```
+  ///
+  /// ## Caveats
+  /// - The validator removes all spaces from the input before validation
+  /// - The validation is case-insensitive as the input is converted to uppercase
+  /// - The minimum length check for IBANs is set to 15 characters (after removing spaces)
+  /// {@endtemplate}
+  static Validator<String> iban({
+    c.bool Function(String input)? isIban,
+    String Function(String input)? ibanMsg,
+  }) => val.iban(isIban: isIban, ibanMsg: ibanMsg);
+
+  ///{@template validator_bic}
+  /// Creates a validator that checks if a string is a valid BIC (Bank Identifier Code).
+  ///
+  /// A BIC validator checks string inputs against standard BIC format regulations. The
+  /// validator returns `null` for valid BICs and an error message for invalid inputs.
+  ///
+  /// BIC codes must consist of 8 or 11 characters: 4 bank code letters, 2 country code
+  /// letters, 2 location code alphanumeric characters, and optionally 3 branch code
+  /// alphanumeric characters.
+  ///
+  /// ## Parameters
+  /// - `isBic` (`bool Function(String input)?`): Optional custom function to determine
+  ///   if a string is a valid BIC. If provided, this function overrides the default
+  ///   BIC validation logic.
+  /// - `bicMsg` (`String Function(String input)?`): Optional custom function to generate
+  ///   error messages for invalid BICs. If provided, this function overrides the default
+  ///   error message.
+  ///
+  /// ## Returns
+  /// A `Validator<String>` function that returns:
+  /// - `null` if the input is a valid BIC
+  /// - An error message string if the input is not a valid BIC
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Using default validation
+  /// final validator = bic();
+  /// assert(validator('DEUTDEFF') == null);          // Valid: 8-character BIC
+  /// assert(validator('DEUTDEFFXXX') == null);       // Valid: 11-character BIC
+  /// assert(validator('deut deff xxx') == null);     // Valid: spaces are removed and case is normalized
+  /// assert(validator('DEUT123') != null);           // Invalid: too short
+  /// assert(validator('DEUTDEFFXXXX') != null);      // Invalid: too long
+  /// assert(validator('123TDEFF') != null);          // Invalid: first 4 chars must be letters
+  ///
+  /// // Using custom validation and error message
+  /// final validator = bic(
+  ///   isBic: (value) => value.startsWith('DEUT'),
+  ///   bicMsg: (value) => 'BIC must start with DEUT, got: $value',
+  /// );
+  /// assert(validator('DEUTDEFF') == null);          // Valid: starts with DEUT
+  /// assert(validator('ABCDDEFF') != null);          // Invalid: custom error message
+  /// ```
+  ///{@endtemplate}
+  static Validator<String> bic({
+    c.bool Function(String input)? isBic,
+    String Function(String input)? bicMsg,
+  }) => val.bic(isBic: isBic, bicMsg: bicMsg);
+
+  // Network validators
 
   /// {@template validator_ip}
   /// Creates a validator function for IP address validation, supporting both IPv4 and IPv6 formats.
@@ -3986,8 +4673,8 @@ final class Validators {
   /// ```dart
   /// // Basic IPv4 validation
   /// final ipv4Validator = ip();
-  /// print(ipv4Validator('192.168.1.1')); // null (valid)
-  /// print(ipv4Validator('256.1.2.3')); // Returns error message (invalid)
+  /// assert(ipv4Validator('192.168.1.1') == null); // null (valid)
+  /// assert(ipv4Validator('256.1.2.3') != null); // Returns error message (invalid)
   ///
   /// // Custom error message for IPv6
   /// final ipv6Validator = ip(
@@ -4003,12 +4690,7 @@ final class Validators {
     IpVersion version = IpVersion.iPv4,
     RegExp? regex,
     String Function(String input)? ipMsg,
-  }) =>
-      val.ip(
-        version: version,
-        regex: regex,
-        ipMsg: ipMsg,
-      );
+  }) => val.ip(version: version, regex: regex, ipMsg: ipMsg);
 
   /// {@template validator_url}
   /// A validator function that checks if a given string represents a valid URL
@@ -4043,14 +4725,14 @@ final class Validators {
   /// ```dart
   /// // Basic URL validation
   /// final validator = url();
-  /// print(validator('https://example.com')); // Returns: null
+  /// assert(validator('https://example.com') == null); // Returns: null
   ///
   /// // Custom protocol validation
   /// final ftpValidator = url(
   ///   protocols: ['ftp'],
   ///   requireProtocol: true
   /// );
-  /// print(ftpValidator('ftp://server.com')); // Returns: null
+  /// assert(ftpValidator('ftp://server.com') == null); // Returns: null
   ///
   /// // With host filtering
   /// final restrictedValidator = url(
@@ -4061,22 +4743,64 @@ final class Validators {
   /// {@endtemplate}
   static Validator<String> url({
     List<String> protocols = val.kDefaultUrlValidationProtocols,
-    bool requireTld = true,
-    bool requireProtocol = false,
-    bool allowUnderscore = false,
+    c.bool requireTld = true,
+    c.bool requireProtocol = false,
+    c.bool allowUnderscore = false,
     List<String> hostAllowList = const <String>[],
     List<String> hostBlockList = const <String>[],
     RegExp? regex,
     String Function(String input)? urlMsg,
+  }) => val.url(
+    protocols: protocols,
+    requireTld: requireTld,
+    requireProtocol: requireProtocol,
+    allowUnderscore: allowUnderscore,
+    hostAllowList: hostAllowList,
+    hostBlockList: hostBlockList,
+    regex: regex,
+    urlMsg: urlMsg,
+  );
+
+  /// {@template validator_mac_address}
+  /// A validator function that checks if a given string represents a valid MAC
+  /// (Media Access Control) address. This validator supports standard MAC address
+  /// formats with customizable validation logic.
+  ///
+  /// The validator accepts MAC addresses in two common formats:
+  /// - Colon or hyphen separated: 00:1B:44:11:3A:B7 or 00-1B-44-11-3A-B7
+  /// - Dot separated: 0123.4567.89AB
+  ///
+  /// ## Parameters
+  /// - `isMacAddress` (`bool Function(String)?`): Optional custom validation function
+  ///   that overrides the default MAC address format checking. When provided and
+  ///   returns `true`, the string is considered valid
+  /// - `macAddressMsg` (`String Function(String input)?`): Custom error message
+  ///   generator function that takes the invalid MAC address as input
+  ///
+  /// ## Returns
+  /// Returns `null` if the MAC address is valid according to either the custom
+  /// validation function or the default regex pattern. Otherwise, returns an error
+  /// message string, either custom-generated via `macAddressMsg` or the default
+  /// localized MAC address error text.
+  ///
+  /// ## Examples
+  /// ```dart
+  /// // Basic MAC address validation
+  /// final validator = macAddress();
+  /// assert(validator('00:1B:44:11:3A:B7') == null); // Returns: null
+  /// assert(validator('00-1B-44-11-3A-B7') == null); // Returns: null
+  /// assert(validator('0123.4567.89AB') == null); // Returns: null
+  ///
+  /// // With custom validation logic
+  /// final customValidator = macAddress(
+  ///   isMacAddress: (value) => value.length == 17,
+  ///   macAddressMsg: (input) => 'Invalid MAC: $input'
+  /// );
+  /// ```
+  /// {@endtemplate}
+  static Validator<String> macAddress({
+    c.bool Function(String)? isMacAddress,
+    String Function(String input)? macAddressMsg,
   }) =>
-      val.url(
-        protocols: protocols,
-        requireTld: requireTld,
-        requireProtocol: requireProtocol,
-        allowUnderscore: allowUnderscore,
-        hostAllowList: hostAllowList,
-        hostBlockList: hostBlockList,
-        regex: regex,
-        urlMsg: urlMsg,
-      );
+      val.macAddress(isMacAddress: isMacAddress, macAddressMsg: macAddressMsg);
 }

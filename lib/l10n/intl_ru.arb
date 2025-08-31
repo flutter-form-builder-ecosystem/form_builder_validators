@@ -1,5 +1,7 @@
 {
   "@@locale": "ru",
+  "notMatchErrorText": "Значение не должно соответствовать шаблону",
+  "satisfyErrorText": "Значение не удовлетворяет условию.",
   "andSeparator": " и ",
   "betweenLengthErrorText": "Значение должно иметь длину от {min} до {max} включительно.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Значение должно содержать {value}.",
   "betweenErrorText": "Значение должно быть между {min} и {max}.",
   "containsElementErrorText": "Значение должно быть в списке допустимых значений.",
+  "doesNotContainElementErrorText": "Значение не может быть в списке.",
   "ibanErrorText": "Поле должно быть действительным IBAN номером.",
   "uniqueErrorText": "Поле должно быть уникальным.",
   "bicErrorText": "Поле должно быть действительным BIC кодом.",

@@ -1,5 +1,7 @@
 {
   "@@locale": "ms",
+  "notMatchErrorText": "Nilai tidak sepatutnya sepadan dengan corak",
+  "satisfyErrorText": "Nilai tidak memenuhi syarat.",
   "andSeparator": " dan ",
   "betweenLengthErrorText": "Nilai mesti mempunyai panjang antara {min} dan {max}, termasuk.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Nilai mesti mengandungi {value}.",
   "betweenErrorText": "Nilai mesti antara {min} dan {max}.",
   "containsElementErrorText": "Nilai mesti berada dalam senarai nilai yang dibenarkan.",
+  "doesNotContainElementErrorText": "Nilai tidak boleh berada dalam senarai.",
   "ibanErrorText": "Ruangan ini memerlukan IBAN yang sah.",
   "uniqueErrorText": "Ruangan ini memerlukan nilai yang unik.",
   "bicErrorText": "Ruangan ini memerlukan BIC yang sah.",

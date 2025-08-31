@@ -32,8 +32,9 @@ void main() {
 
     test('should return null for valid URLs with custom protocols', () {
       // Arrange
-      final Validator<String> validator =
-          url(protocols: <String>['http', 'https']);
+      final Validator<String> validator = url(
+        protocols: <String>['http', 'https'],
+      );
       const List<String> validUrls = <String>[
         'http://example.com',
         'https://example.com',
@@ -74,8 +75,9 @@ void main() {
 
     test('should return the custom error message for invalid URLs', () {
       // Arrange
-      final Validator<String> validator =
-          url(urlMsg: (_) => customErrorMessage);
+      final Validator<String> validator = url(
+        urlMsg: (_) => customErrorMessage,
+      );
       const List<String> invalidUrls = <String>[
         'example',
         'http:/example.com',
@@ -97,8 +99,9 @@ void main() {
 
     test('should return null for valid URLs with custom regex', () {
       // Arrange
-      final RegExp customRegex =
-          RegExp(r'^(http|https)://[a-zA-Z0-9\-_]+\.[a-zA-Z]{2,}$');
+      final RegExp customRegex = RegExp(
+        r'^(http|https)://[a-zA-Z0-9\-_]+\.[a-zA-Z]{2,}$',
+      );
       final Validator<String> validator = url(regex: customRegex);
       const List<String> validUrls = <String>[
         'http://example.com',
@@ -112,42 +115,47 @@ void main() {
     });
 
     test(
-        'should return the custom error message for invalid URLs with custom regex',
-        () {
-      // Arrange
-      final RegExp customRegex =
-          RegExp(r'^(http|https)://[a-zA-Z0-9\-_]+\.[a-zA-Z]{2,}$');
-      final Validator<String> validator =
-          url(regex: customRegex, urlMsg: (_) => customErrorMessage);
-      const List<String> invalidUrls = <String>[
-        'ftp://example.com',
-        'http://example',
-        'https://example',
-        'http://example..com',
-        'https://example..com',
-      ];
+      'should return the custom error message for invalid URLs with custom regex',
+      () {
+        // Arrange
+        final RegExp customRegex = RegExp(
+          r'^(http|https)://[a-zA-Z0-9\-_]+\.[a-zA-Z]{2,}$',
+        );
+        final Validator<String> validator = url(
+          regex: customRegex,
+          urlMsg: (_) => customErrorMessage,
+        );
+        const List<String> invalidUrls = <String>[
+          'ftp://example.com',
+          'http://example',
+          'https://example',
+          'http://example..com',
+          'https://example..com',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidUrls) {
-        final String? result = validator(value);
-        expect(result, equals(customErrorMessage));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidUrls) {
+          final String? result = validator(value);
+          expect(result, equals(customErrorMessage));
+        }
+      },
+    );
 
     test(
-        'should return the default error message when the URL is an empty string',
-        () {
-      // Arrange
-      final Validator<String> validator = url();
-      const String emptyUrl = '';
+      'should return the default error message when the URL is an empty string',
+      () {
+        // Arrange
+        final Validator<String> validator = url();
+        const String emptyUrl = '';
 
-      // Act
-      final String? result = validator(emptyUrl);
+        // Act
+        final String? result = validator(emptyUrl);
 
-      // Assert
-      expect(result, isNotNull);
-      expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
-    });
+        // Assert
+        expect(result, isNotNull);
+        expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
+      },
+    );
 
     test('should return null for valid URLs with allowed underscore', () {
       // Arrange
@@ -167,25 +175,26 @@ void main() {
     });
 
     test(
-        'should return the default error message for invalid URLs with disallowed underscore',
-        () {
-      // Arrange
-      final Validator<String> validator = url();
-      const List<String> invalidUrls = <String>[
-        'http://example_com.com',
-        'https://example_com.com',
-        'ftp://example_com.com',
-        'http://subdomain_example.com',
-        'https://subdomain_example.com',
-      ];
+      'should return the default error message for invalid URLs with disallowed underscore',
+      () {
+        // Arrange
+        final Validator<String> validator = url();
+        const List<String> invalidUrls = <String>[
+          'http://example_com.com',
+          'https://example_com.com',
+          'ftp://example_com.com',
+          'http://subdomain_example.com',
+          'https://subdomain_example.com',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidUrls) {
-        final String? result = validator(value);
-        expect(result, isNotNull);
-        expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidUrls) {
+          final String? result = validator(value);
+          expect(result, isNotNull);
+          expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
+        }
+      },
+    );
 
     test('should return null for valid URLs with host whitelist', () {
       // Arrange
@@ -206,31 +215,33 @@ void main() {
     });
 
     test(
-        'should return the default error message for URLs not in the host whitelist',
-        () {
-      // Arrange
-      final Validator<String> validator = url(
-        hostAllowList: <String>['example.com', 'subdomain.example.com'],
-      );
-      const List<String> invalidUrls = <String>[
-        'http://notexample.com',
-        'https://notexample.com',
-        'http://example.org',
-        'https://example.org',
-      ];
+      'should return the default error message for URLs not in the host whitelist',
+      () {
+        // Arrange
+        final Validator<String> validator = url(
+          hostAllowList: <String>['example.com', 'subdomain.example.com'],
+        );
+        const List<String> invalidUrls = <String>[
+          'http://notexample.com',
+          'https://notexample.com',
+          'http://example.org',
+          'https://example.org',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidUrls) {
-        final String? result = validator(value);
-        expect(result, isNotNull);
-        expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidUrls) {
+          final String? result = validator(value);
+          expect(result, isNotNull);
+          expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
+        }
+      },
+    );
 
     test('should return null for valid URLs not in the host blacklist', () {
       // Arrange
-      final Validator<String> validator =
-          url(hostBlockList: <String>['banned.com', 'blocked.com']);
+      final Validator<String> validator = url(
+        hostBlockList: <String>['banned.com', 'blocked.com'],
+      );
       const List<String> validUrls = <String>[
         'http://example.com',
         'https://example.com',
@@ -245,25 +256,27 @@ void main() {
     });
 
     test(
-        'should return the default error message for URLs in the host blacklist',
-        () {
-      // Arrange
-      final Validator<String> validator =
-          url(hostBlockList: <String>['banned.com', 'blocked.com']);
-      const List<String> invalidUrls = <String>[
-        'http://banned.com',
-        'https://banned.com',
-        'http://blocked.com',
-        'https://blocked.com',
-      ];
+      'should return the default error message for URLs in the host blacklist',
+      () {
+        // Arrange
+        final Validator<String> validator = url(
+          hostBlockList: <String>['banned.com', 'blocked.com'],
+        );
+        const List<String> invalidUrls = <String>[
+          'http://banned.com',
+          'https://banned.com',
+          'http://blocked.com',
+          'https://blocked.com',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidUrls) {
-        final String? result = validator(value);
-        expect(result, isNotNull);
-        expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidUrls) {
+          final String? result = validator(value);
+          expect(result, isNotNull);
+          expect(result, equals(FormBuilderLocalizations.current.urlErrorText));
+        }
+      },
+    );
 
     test('should return null for valid URLs with user authentication', () {
       // Arrange
@@ -285,90 +298,119 @@ void main() {
 
     group('Validator immutability', () {
       test(
-          'should maintain validation rules when protocol input list is changed',
-          () {
-        final List<String> protocols = <String>['a', 'b'];
-        final Validator<String> v = url(protocols: protocols);
+        'should maintain validation rules when protocol input list is changed',
+        () {
+          final List<String> protocols = <String>['a', 'b'];
+          final Validator<String> v = url(protocols: protocols);
 
-        expect(v('a://user@example.com'), isNull);
-        expect(v('b://user@example.com'), isNull);
-        expect(v('c://user@example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
+          expect(v('a://user@example.com'), isNull);
+          expect(v('b://user@example.com'), isNull);
+          expect(
+            v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
 
-        protocols.removeLast();
-        expect(v('a://user@example.com'), isNull);
-        expect(v('b://user@example.com'), isNull);
-        expect(v('c://user@example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
+          protocols.removeLast();
+          expect(v('a://user@example.com'), isNull);
+          expect(v('b://user@example.com'), isNull);
+          expect(
+            v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
 
-        protocols.add('b');
-        expect(v('a://user@example.com'), isNull);
-        expect(v('b://user@example.com'), isNull);
-        expect(v('c://user@example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
+          protocols.add('b');
+          expect(v('a://user@example.com'), isNull);
+          expect(v('b://user@example.com'), isNull);
+          expect(
+            v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
 
-        protocols.add('c');
-        expect(v('a://user@example.com'), isNull);
-        expect(v('b://user@example.com'), isNull);
-        expect(v('c://user@example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-      });
+          protocols.add('c');
+          expect(v('a://user@example.com'), isNull);
+          expect(v('b://user@example.com'), isNull);
+          expect(
+            v('c://user@example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+        },
+      );
       test(
-          'should maintain validation rules when protocol allow list is changed',
-          () {
-        final List<String> allow = <String>[
-          'example.com',
-          'subdomain.example.com'
-        ];
-        final Validator<String> v = url(hostAllowList: allow);
+        'should maintain validation rules when protocol allow list is changed',
+        () {
+          final List<String> allow = <String>[
+            'example.com',
+            'subdomain.example.com',
+          ];
+          final Validator<String> v = url(hostAllowList: allow);
 
-        expect(v('https://example.com'), isNull);
-        expect(v('https://subdomain.example.com'), isNull);
-        expect(v('https://exampleNotAllowed.com'),
-            FormBuilderLocalizations.current.urlErrorText);
+          expect(v('https://example.com'), isNull);
+          expect(v('https://subdomain.example.com'), isNull);
+          expect(
+            v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
 
-        allow.removeLast();
-        expect(v('https://example.com'), isNull);
-        expect(v('https://subdomain.example.com'), isNull);
-        expect(v('https://exampleNotAllowed.com'),
-            FormBuilderLocalizations.current.urlErrorText);
+          allow.removeLast();
+          expect(v('https://example.com'), isNull);
+          expect(v('https://subdomain.example.com'), isNull);
+          expect(
+            v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
 
-        allow.add('exampleNotAllowed.com');
-        expect(v('https://example.com'), isNull);
-        expect(v('https://subdomain.example.com'), isNull);
-        expect(v('https://exampleNotAllowed.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-      });
+          allow.add('exampleNotAllowed.com');
+          expect(v('https://example.com'), isNull);
+          expect(v('https://subdomain.example.com'), isNull);
+          expect(
+            v('https://exampleNotAllowed.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+        },
+      );
 
       test(
-          'should maintain validation rules when protocol block list is changed',
-          () {
-        final List<String> block = <String>[
-          'example.com',
-          'subdomain.example.com'
-        ];
-        final Validator<String> v = url(hostBlockList: block);
+        'should maintain validation rules when protocol block list is changed',
+        () {
+          final List<String> block = <String>[
+            'example.com',
+            'subdomain.example.com',
+          ];
+          final Validator<String> v = url(hostBlockList: block);
 
-        expect(v('https://example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://subdomain.example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://exampleNotAllowed.com'), isNull);
+          expect(
+            v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(
+            v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(v('https://exampleNotAllowed.com'), isNull);
 
-        block.removeLast();
-        expect(v('https://example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://subdomain.example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://exampleNotAllowed.com'), isNull);
+          block.removeLast();
+          expect(
+            v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(
+            v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(v('https://exampleNotAllowed.com'), isNull);
 
-        block.add('exampleNotAllowed.com');
-        expect(v('https://example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://subdomain.example.com'),
-            FormBuilderLocalizations.current.urlErrorText);
-        expect(v('https://exampleNotAllowed.com'), isNull);
-      });
+          block.add('exampleNotAllowed.com');
+          expect(
+            v('https://example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(
+            v('https://subdomain.example.com'),
+            FormBuilderLocalizations.current.urlErrorText,
+          );
+          expect(v('https://exampleNotAllowed.com'), isNull);
+        },
+      );
     });
   });
 }

@@ -1,5 +1,7 @@
 {
   "@@locale": "id",
+  "notMatchErrorText": "Nilai tidak boleh cocok dengan pola",
+  "satisfyErrorText": "Nilai tidak memenuhi kondisi.",
   "andSeparator": " dan ",
   "betweenLengthErrorText": "Nilai harus memiliki panjang antara {min} dan {max}, inklusif.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Nilai harus mengandung {value}.",
   "betweenErrorText": "Nilai harus antara {min} dan {max}.",
   "containsElementErrorText": "Nilai harus ada dalam daftar nilai yang diizinkan.",
+  "doesNotContainElementErrorText": "Nilai tidak boleh ada dalam daftar.",
   "ibanErrorText": "IBAN tidak valid.",
   "uniqueErrorText": "Nilai harus unik.",
   "bicErrorText": "BIC tidak valid.",

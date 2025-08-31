@@ -1,5 +1,7 @@
 {
   "@@locale": "vi",
+  "notMatchErrorText": "Giá trị không được khớp với mẫu",
+  "satisfyErrorText": "Giá trị không thỏa mãn điều kiện.",
   "andSeparator": " và ",
   "betweenLengthErrorText": "Giá trị phải có độ dài trong khoảng từ {min} đến {max}, bao gồm cả hai giá trị.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Giá trị phải chứa {value}.",
   "betweenErrorText": "Giá trị phải nằm trong khoảng từ {min} đến {max}.",
   "containsElementErrorText": "Giá trị phải nằm trong danh sách các giá trị hợp lệ.",
+  "doesNotContainElementErrorText": "Giá trị không được có trong danh sách.",
   "ibanErrorText": "Yêu cầu nhập đúng số IBAN.",
   "uniqueErrorText": "Yêu cầu giá trị duy nhất.",
   "bicErrorText": "Yêu cầu nhập đúng mã BIC.",

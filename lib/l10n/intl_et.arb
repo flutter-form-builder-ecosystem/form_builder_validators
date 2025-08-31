@@ -1,5 +1,7 @@
 {
   "@@locale": "et",
+  "notMatchErrorText": "Väärtus ei tohi mustrile vastata",
+  "satisfyErrorText": "Väärtus ei vasta tingimustele.",
   "andSeparator": " ja ",
   "betweenLengthErrorText": "Väärtuse pikkus peab olema vahemikus {min} kuni {max}, kaasa arvatud.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Väärtus peab sisaldama {value}.",
   "betweenErrorText": "Väärtus peab olema vahemikus {min} kuni {max}.",
   "containsElementErrorText": "Väärtus peab olema lubatud väärtuste nimekirjas.",
+  "doesNotContainElementErrorText": "Väärtus ei tohi olla nimekirjas.",
   "ibanErrorText": "See väli nõuab kehtivat IBAN-i.",
   "uniqueErrorText": "See väli peab olema unikaalne.",
   "bicErrorText": "See väli nõuab kehtivat BIC koodi.",

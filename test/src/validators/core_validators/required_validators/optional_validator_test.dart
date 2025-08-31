@@ -8,12 +8,12 @@ String? isMultipleBy6(int value) {
 }
 
 void main() {
-  final String defaultError =
-      FormBuilderLocalizations.current.isOptionalErrorText(errorMultBy6);
+  final String defaultError = FormBuilderLocalizations.current
+      .isOptionalErrorText(errorMultBy6);
 
-  group('Validator: isOptional', () {
+  group('Validator: optional', () {
     test('Should make the input optional', () {
-      final Validator<Object?> v = isOptional();
+      final Validator<Object?> v = optional();
 
       expect(v(null), isNull);
       expect(v(''), isNull);
@@ -25,7 +25,7 @@ void main() {
     });
 
     test('Should make the input optional with composed validator `v`', () {
-      final Validator<int?> v = isOptional(isMultipleBy6);
+      final Validator<int?> v = optional(isMultipleBy6);
 
       expect(v(null), isNull);
       expect(v(0), isNull);
@@ -36,9 +36,8 @@ void main() {
 
     test('Should return custom message for invalid input', () {
       const String customMsg = 'custom error message ';
-      final Validator<Object?> v = isOptional(null, (_, __) => customMsg);
-      final Validator<int?> v1 =
-          isOptional(isMultipleBy6, (_, __) => customMsg);
+      final Validator<Object?> v = optional(null, (_, _) => customMsg);
+      final Validator<int?> v1 = optional(isMultipleBy6, (_, _) => customMsg);
 
       expect(v(null), isNull);
       expect(v(''), isNull);

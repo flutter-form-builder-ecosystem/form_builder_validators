@@ -12,29 +12,35 @@ void main() {
   String? isLaterThan1995(DateTime input) =>
       input.year > 1995 ? null : errorMsg;
 
-  group('Validator: isString', () {
+  group('Validator: string', () {
     test('Should only check if the input is a String', () {
-      final Validator<Object> v = isString();
+      final Validator<Object> v = string();
 
       expect(
-          v(123), equals(FormBuilderLocalizations.current.isStringErrorText));
+        v(123),
+        equals(FormBuilderLocalizations.current.isStringErrorText),
+      );
       expect(v('123'), isNull);
       expect(v('1'), isNull);
       expect(v(''), isNull);
     });
-    test('Should check if the input is a String with length greater than 3',
-        () {
-      final Validator<Object> v = isString(hasLengthGreaterThan3);
+    test(
+      'Should check if the input is a String with length greater than 3',
+      () {
+        final Validator<Object> v = string(hasLengthGreaterThan3);
 
-      expect(
-          v(123), equals(FormBuilderLocalizations.current.isStringErrorText));
-      expect(v('1234'), isNull);
-      expect(v('12'), errorMsg);
-      expect(v(''), errorMsg);
-    });
+        expect(
+          v(123),
+          equals(FormBuilderLocalizations.current.isStringErrorText),
+        );
+        expect(v('1234'), isNull);
+        expect(v('12'), errorMsg);
+        expect(v(''), errorMsg);
+      },
+    );
     test('Should check if the input is a String with using custom error', () {
       const String customError = 'custom error';
-      final Validator<Object> v = isString(null, (_) => customError);
+      final Validator<Object> v = string(null, (_) => customError);
 
       expect(v(123), equals(customError));
       expect(v('1234'), isNull);
@@ -46,14 +52,22 @@ void main() {
     test('Should only check if the input is an int/parsable to int', () {
       final Validator<Object> v = isInt();
 
-      expect(v('not an int'),
-          equals(FormBuilderLocalizations.current.integerErrorText));
       expect(
-          v('1-3'), equals(FormBuilderLocalizations.current.integerErrorText));
-      expect(v('123.0'),
-          equals(FormBuilderLocalizations.current.integerErrorText));
+        v('not an int'),
+        equals(FormBuilderLocalizations.current.integerErrorText),
+      );
       expect(
-          v(123.0), equals(FormBuilderLocalizations.current.integerErrorText));
+        v('1-3'),
+        equals(FormBuilderLocalizations.current.integerErrorText),
+      );
+      expect(
+        v('123.0'),
+        equals(FormBuilderLocalizations.current.integerErrorText),
+      );
+      expect(
+        v(123.0),
+        equals(FormBuilderLocalizations.current.integerErrorText),
+      );
       expect(v('123'), isNull);
       expect(v('1'), isNull);
       expect(v(24), isNull);
@@ -65,8 +79,10 @@ void main() {
     test('Should check if the input is an even integer', () {
       final Validator<Object> v = isInt(isEven);
 
-      expect(v('not an int'),
-          equals(FormBuilderLocalizations.current.integerErrorText));
+      expect(
+        v('not an int'),
+        equals(FormBuilderLocalizations.current.integerErrorText),
+      );
       expect(v('1234'), isNull);
       expect(v(-4), isNull);
       expect(v('1233'), equals(errorMsg));
@@ -85,12 +101,18 @@ void main() {
     test('Should only check if the input is a num/parsable to num', () {
       final Validator<Object> v = isNum();
 
-      expect(v('not an num'),
-          equals(FormBuilderLocalizations.current.numericErrorText));
       expect(
-          v('1-3'), equals(FormBuilderLocalizations.current.numericErrorText));
+        v('not an num'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(
-          v(true), equals(FormBuilderLocalizations.current.numericErrorText));
+        v('1-3'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
+      expect(
+        v(true),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(v('123.0'), isNull);
       expect(v('123'), isNull);
       expect(v('1'), isNull);
@@ -103,8 +125,10 @@ void main() {
     test('Should check if the input is an numeric greater than 9', () {
       final Validator<Object> v = isNum(greaterThan9);
 
-      expect(v('not an int'),
-          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+        v('not an int'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(v('1234'), isNull);
       expect(v(10), isNull);
       expect(v(9), equals(errorMsg));
@@ -126,12 +150,18 @@ void main() {
     test('Should only check if the input is a double/parsable to double', () {
       final Validator<Object> v = isDouble();
 
-      expect(v('not an double'),
-          equals(FormBuilderLocalizations.current.numericErrorText));
       expect(
-          v('1-3'), equals(FormBuilderLocalizations.current.numericErrorText));
+        v('not an double'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(
-          v(true), equals(FormBuilderLocalizations.current.numericErrorText));
+        v('1-3'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
+      expect(
+        v(true),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(v('123.0'), isNull);
       expect(v('123'), isNull);
       expect(v('1'), isNull);
@@ -144,8 +174,10 @@ void main() {
     test('Should check if the input is a double greater than 9', () {
       final Validator<Object> v = isDouble(greaterThan9);
 
-      expect(v('not an int'),
-          equals(FormBuilderLocalizations.current.numericErrorText));
+      expect(
+        v('not an int'),
+        equals(FormBuilderLocalizations.current.numericErrorText),
+      );
       expect(v('1234'), isNull);
       expect(v(10.0), isNull);
       expect(v(9.0), equals(errorMsg));
@@ -168,15 +200,23 @@ void main() {
       // defaults to case insensitive and trim
       final Validator<Object> v = isBool();
 
-      expect(v('not a bool'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
+      expect(
+        v('not a bool'),
+        equals(FormBuilderLocalizations.current.booleanErrorText),
+      );
       expect(v('T'), equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('isTrue'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('true.'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('true true'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
+      expect(
+        v('isTrue'),
+        equals(FormBuilderLocalizations.current.booleanErrorText),
+      );
+      expect(
+        v('true.'),
+        equals(FormBuilderLocalizations.current.booleanErrorText),
+      );
+      expect(
+        v('true true'),
+        equals(FormBuilderLocalizations.current.booleanErrorText),
+      );
       expect(v(true), isNull);
       expect(v(1 > 2), isNull);
       expect(v(false), isNull);
@@ -186,34 +226,54 @@ void main() {
       expect(v('true\n'), isNull);
     });
     test(
-        'Should only check if the input is a bool/parsable to bool without trim and with case sensitiveness',
-        () {
-      final Validator<Object> v = isBool(null, null, true, false);
+      'Should only check if the input is a bool/parsable to bool without trim and with case sensitiveness',
+      () {
+        final Validator<Object> v = isBool(null, null, true, false);
 
-      expect(v('not a bool'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('T'), equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('isTrue'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('true.'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v(true), isNull);
-      expect(v(1 > 2), isNull);
-      expect(v(false), isNull);
-      expect(
-          v('True'), equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(
-          v('TrUe'), equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v(' true'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-      expect(v('true\n'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
-    });
+        expect(
+          v('not a bool'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v('T'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v('isTrue'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v('true.'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(v(true), isNull);
+        expect(v(1 > 2), isNull);
+        expect(v(false), isNull);
+        expect(
+          v('True'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v('TrUe'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v(' true'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+        expect(
+          v('true\n'),
+          equals(FormBuilderLocalizations.current.booleanErrorText),
+        );
+      },
+    );
     test('Should check if the input is true', () {
       final Validator<Object> v = isBool(isT);
 
-      expect(v('not a bool'),
-          equals(FormBuilderLocalizations.current.booleanErrorText));
+      expect(
+        v('not a bool'),
+        equals(FormBuilderLocalizations.current.booleanErrorText),
+      );
       expect(v(true), isNull);
       expect(v(1 > 2), equals(errorMsg));
       expect(v(false), equals(errorMsg));
@@ -230,17 +290,22 @@ void main() {
     });
   });
 
-  group('Validator: isDateTime', () {
-    test('Should only check if the input is an DateTime/parsable to DateTime',
-        () {
-      final Validator<Object> v = isDateTime();
+  group('Validator: dateTime', () {
+    test('Should only check if the input is an DateTime/parsable to DateTime', () {
+      final Validator<Object> v = dateTime();
 
-      expect(v('not an DateTime'),
-          equals(FormBuilderLocalizations.current.dateTimeErrorText));
-      expect(v('1/2.0/2023.0'),
-          equals(FormBuilderLocalizations.current.dateTimeErrorText));
       expect(
-          v(123.0), equals(FormBuilderLocalizations.current.dateTimeErrorText));
+        v('not an DateTime'),
+        equals(FormBuilderLocalizations.current.dateTimeErrorText),
+      );
+      expect(
+        v('1/2.0/2023.0'),
+        equals(FormBuilderLocalizations.current.dateTimeErrorText),
+      );
+      expect(
+        v(123.0),
+        equals(FormBuilderLocalizations.current.dateTimeErrorText),
+      );
 
       expect(
         v('1992-04-20'),
@@ -316,18 +381,22 @@ void main() {
         reason: 'Current DateTime object is valid',
       );
     });
-    test('Should check if the input is a DateTime with year later than 1995',
-        () {
-      final Validator<Object> v = isDateTime(isLaterThan1995);
+    test(
+      'Should check if the input is a DateTime with year later than 1995',
+      () {
+        final Validator<Object> v = dateTime(isLaterThan1995);
 
-      expect(v('not a datetime'),
-          equals(FormBuilderLocalizations.current.dateTimeErrorText));
-      expect(v('12330803'), equals(errorMsg));
-    });
+        expect(
+          v('not a datetime'),
+          equals(FormBuilderLocalizations.current.dateTimeErrorText),
+        );
+        expect(v('12330803'), equals(errorMsg));
+      },
+    );
 
     test('Should check if the input is a DateTime using custom error', () {
       const String customError = 'custom error';
-      final Validator<Object> v = isDateTime(null, (_) => customError);
+      final Validator<Object> v = dateTime(null, (_) => customError);
 
       expect(v('not datetime'), equals(customError));
       expect(v('1289-02-12'), isNull);

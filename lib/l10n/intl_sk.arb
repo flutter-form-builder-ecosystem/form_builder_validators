@@ -1,5 +1,7 @@
 {
   "@@locale": "sk",
+  "notMatchErrorText": "Hodnota sa nesmie zhodovať so vzorom",
+  "satisfyErrorText": "Hodnota nespĺňa podmienku.",
   "andSeparator": " a ",
   "betweenLengthErrorText": "Hodnota musí mať dĺžku medzi {min} a {max}, vrátane.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Hodnota musí obsahovať {value}.",
   "betweenErrorText": "Hodnota musí byť medzi {min} a {max}.",
   "containsElementErrorText": "Hodnota musí byť v zozname povolených hodnôt.",
+  "doesNotContainElementErrorText": "Hodnota nesmie byť v zozname.",
   "ibanErrorText": "Toto pole vyžaduje platné IBAN číslo.",
   "uniqueErrorText": "Toto pole vyžaduje unikátnu hodnotu.",
   "bicErrorText": "Toto pole vyžaduje platný BIC kód.",

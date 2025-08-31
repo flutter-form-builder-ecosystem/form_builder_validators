@@ -1,5 +1,7 @@
 {
   "@@locale": "sq",
+  "notMatchErrorText": "Vlera nuk duhet të përputhet me modelin",
+  "satisfyErrorText": "Vlera nuk plotëson kushtin.",
   "andSeparator": " dhe ",
   "betweenLengthErrorText": "Vlera duhet të ketë një gjatësi midis {min} dhe {max}, përfshirë.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Vlera duhet të përmbajë {value}.",
   "betweenErrorText": "Vlera duhet të jetë ndërmjet {min} dhe {max}.",
   "containsElementErrorText": "Vlera duhet të jetë në listën e vlefshme.",
+  "doesNotContainElementErrorText": "Vlera nuk mund të jetë në listë.",
   "ibanErrorText": "Kjo fushë kërkon një IBAN të vlefshëm.",
   "uniqueErrorText": "Kjo vlerë duhet të jetë unike.",
   "bicErrorText": "Kjo fushë kërkon një kod BIC të vlefshëm.",

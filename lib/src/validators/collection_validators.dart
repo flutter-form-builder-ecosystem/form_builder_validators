@@ -2,8 +2,10 @@ import '../../localization/l10n.dart';
 import 'constants.dart';
 
 /// {@macro validator_min_length}
-Validator<T> minLength<T extends Object>(int min,
-    {String Function(T input, int min)? minLengthMsg}) {
+Validator<T> minLength<T extends Object>(
+  int min, {
+  String Function(T input, int min)? minLengthMsg,
+}) {
   if (min < 0) {
     throw ArgumentError.value(min, 'min', 'This argument may not be negative');
   }
@@ -24,14 +26,16 @@ Validator<T> minLength<T extends Object>(int min,
     }
     return valueLength < min
         ? minLengthMsg?.call(input, min) ??
-            FormBuilderLocalizations.current.minLengthErrorText(min)
+              FormBuilderLocalizations.current.minLengthErrorText(min)
         : null;
   };
 }
 
 /// {@macro validator_max_length}
-Validator<T> maxLength<T extends Object>(int max,
-    {String Function(T input, int max)? maxLengthMsg}) {
+Validator<T> maxLength<T extends Object>(
+  int max, {
+  String Function(T input, int max)? maxLengthMsg,
+}) {
   if (max < 0) {
     throw ArgumentError.value(max, 'max', 'This argument may not be negative');
   }
@@ -54,7 +58,7 @@ Validator<T> maxLength<T extends Object>(int max,
 
     return valueLength > max
         ? maxLengthMsg?.call(input, max) ??
-            FormBuilderLocalizations.current.maxLengthErrorText(max)
+              FormBuilderLocalizations.current.maxLengthErrorText(max)
         : null;
   };
 }
@@ -64,7 +68,7 @@ Validator<T> betweenLength<T extends Object>(
   int min,
   int max, {
   String Function(T input, {required int min, required int max})?
-      betweenLengthMsg,
+  betweenLengthMsg,
 }) {
   if (min < 0) {
     throw ArgumentError.value(min, 'min', 'This argument may not be negative');
@@ -94,17 +98,22 @@ Validator<T> betweenLength<T extends Object>(
     }
     return (valueLength < min || valueLength > max)
         ? betweenLengthMsg?.call(input, min: min, max: max) ??
-            FormBuilderLocalizations.current.betweenLengthErrorText(min, max)
+              FormBuilderLocalizations.current.betweenLengthErrorText(min, max)
         : null;
   };
 }
 
 /// {@macro validator_equal_length}
-Validator<T> equalLength<T extends Object>(int expectedLength,
-    {String Function(T input, int expectedLength)? equalLengthMsg}) {
+Validator<T> equalLength<T extends Object>(
+  int expectedLength, {
+  String Function(T input, int expectedLength)? equalLengthMsg,
+}) {
   if (expectedLength < 0) {
     throw ArgumentError.value(
-        expectedLength, 'expectedLength', 'This argument may not be negative');
+      expectedLength,
+      'expectedLength',
+      'This argument may not be negative',
+    );
   }
 
   return (T input) {
@@ -126,8 +135,9 @@ Validator<T> equalLength<T extends Object>(int expectedLength,
 
     return valueLength != expectedLength
         ? equalLengthMsg?.call(input, expectedLength) ??
-            FormBuilderLocalizations.current
-                .equalLengthErrorText(expectedLength)
+              FormBuilderLocalizations.current.equalLengthErrorText(
+                expectedLength,
+              )
         : null;
   };
 }

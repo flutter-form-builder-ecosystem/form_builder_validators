@@ -1,5 +1,7 @@
 {
   "@@locale": "nl",
+  "notMatchErrorText": "De waarde mag niet overeenkomen met het patroon",
+  "satisfyErrorText": "Waarde voldoet niet aan de voorwaarde.",
   "andSeparator": " en ",
   "betweenLengthErrorText": "De waarde moet een lengte hebben tussen {min} en {max}, inclusief.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "De waarde moet {value} bevatten.",
   "betweenErrorText": "De waarde moet tussen {min} en {max} liggen.",
   "containsElementErrorText": "De waarde moet in de lijst met toegestane waarden staan.",
+  "doesNotContainElementErrorText": "Waarde mag niet in de lijst staan.",
   "ibanErrorText": "Een geldige IBAN is vereist.",
   "uniqueErrorText": "De waarde moet uniek zijn.",
   "bicErrorText": "Een geldige BIC is vereist.",

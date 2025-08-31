@@ -1,5 +1,7 @@
 {
   "@@locale": "bn",
+  "notMatchErrorText": "মানটি প্যাটার্নের সাথে মেলে না",
+  "satisfyErrorText": "মান শর্ত পূরণ করে না।",
   "andSeparator": " এবং ",
   "betweenLengthErrorText": "মানটির দৈর্ঘ্য {min} এবং {max} এর মধ্যে হতে হবে, সহ.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "মানটি {value} ধারণ করতে হবে।",
   "betweenErrorText": "মানটি {min} এবং {max} এর মধ্যে হতে হবে।",
   "containsElementErrorText": "মানটি অনুমোদিত তালিকার মধ্যে থাকতে হবে।",
+  "doesNotContainElementErrorText": "মান তালিকায় থাকতে পারবে না।",
   "ibanErrorText": "একটি বৈধ IBAN প্রয়োজন।",
   "uniqueErrorText": "মানটি অবশ্যই অনন্য মানগুলির মধ্যে অদ্বিতীয় হতে হবে।",
   "bicErrorText": "একটি বৈধ BIC প্রয়োজন।",

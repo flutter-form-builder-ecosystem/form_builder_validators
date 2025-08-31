@@ -1,5 +1,7 @@
 {
   "@@locale": "ar",
+  "notMatchErrorText": "يجب ألا تتطابق القيمة مع النمط",
+  "satisfyErrorText": "القيمة لا تحقق الشرط.",
   "andSeparator": " و ",
   "betweenLengthErrorText": "يجب أن يكون طول القيمة بين {min} و {max}، شاملة.",
   "@betweenLengthErrorText": {
@@ -62,6 +64,7 @@
   "startsWithErrorText": "القيمة يجب أن تبدأ بـ {value}.",
   "endsWithErrorText": "القيمة يجب أن تنتهي بـ {value}.",
   "containsErrorText": "القيمة يجب أن تحتوي على {value}.",
+  "doesNotContainElementErrorText": "القيمة قد لا تكون في القائمة.",
   "betweenErrorText": "القيمة يجب أن تكون بين {min} و {max}.",
   "containsElementErrorText": "القيمة يجب أن تكون ضمن القائمة المسموح بها.",
   "ibanErrorText": "هذا الحقل يتطلب IBAN صالح.",

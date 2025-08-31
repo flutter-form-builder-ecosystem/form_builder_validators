@@ -1,5 +1,7 @@
 {
   "@@locale": "no",
+  "notMatchErrorText": "Verdien skal ikke matche mønsteret",
+  "satisfyErrorText": "Verdi oppfyller ikke betingelsen.",
   "andSeparator": " og ",
   "betweenLengthErrorText": "Verdien må ha en lengde mellom {min} og {max}, inkludert.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Verdien må inneholde {value}.",
   "betweenErrorText": "Verdien må være mellom {min} og {max}.",
   "containsElementErrorText": "Verdien må være i listen over tillatte verdier.",
+  "doesNotContainElementErrorText": "Verdien kan ikke være i listen.",
   "ibanErrorText": "Dette feltet krever en gyldig IBAN.",
   "uniqueErrorText": "Dette feltet krever en unik verdi.",
   "bicErrorText": "Dette feltet krever en gyldig BIC.",

@@ -29,51 +29,60 @@ void main() {
       }
     });
 
-    test('should return the default error message for invalid phone numbers',
-        () {
-      // Arrange
-      final Validator<String> validator = phoneNumber();
-      const List<String> invalidPhoneNumbers = <String>[
-        'phone123',
-        '123-abc-7890',
-      ];
+    test(
+      'should return the default error message for invalid phone numbers',
+      () {
+        // Arrange
+        final Validator<String> validator = phoneNumber();
+        const List<String> invalidPhoneNumbers = <String>[
+          'phone123',
+          '123-abc-7890',
+        ];
 
-      // Act & Assert
-      for (final String value in invalidPhoneNumbers) {
-        final String? result = validator(value);
-        expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-      }
-    });
-
-    test('should return the custom error message for invalid phone numbers',
-        () {
-      // Arrange
-      final Validator<String> validator =
-          phoneNumber(phoneNumberMsg: (_) => customErrorMessage);
-      const List<String> invalidPhoneNumbers = <String>[
-        'phone123',
-        '123-abc-7890',
-      ];
-
-      // Act & Assert
-      for (final String value in invalidPhoneNumbers) {
-        final String? result = validator(value);
-        expect(result, equals(customErrorMessage));
-      }
-    });
+        // Act & Assert
+        for (final String value in invalidPhoneNumbers) {
+          final String? result = validator(value);
+          expect(
+            result,
+            equals(FormBuilderLocalizations.current.phoneErrorText),
+          );
+        }
+      },
+    );
 
     test(
-        'should return the default error message when the phone number is an empty string',
-        () {
-      // Arrange
-      final Validator<String> validator = phoneNumber();
-      const String emptyPhoneNumber = '';
+      'should return the custom error message for invalid phone numbers',
+      () {
+        // Arrange
+        final Validator<String> validator = phoneNumber(
+          phoneNumberMsg: (_) => customErrorMessage,
+        );
+        const List<String> invalidPhoneNumbers = <String>[
+          'phone123',
+          '123-abc-7890',
+        ];
 
-      // Act
-      final String? result = validator(emptyPhoneNumber);
+        // Act & Assert
+        for (final String value in invalidPhoneNumbers) {
+          final String? result = validator(value);
+          expect(result, equals(customErrorMessage));
+        }
+      },
+    );
 
-      // Assert
-      expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
-    });
+    test(
+      'should return the default error message when the phone number is an empty string',
+      () {
+        // Arrange
+        final Validator<String> validator = phoneNumber();
+        const String emptyPhoneNumber = '';
+
+        // Act
+        final String? result = validator(emptyPhoneNumber);
+
+        // Assert
+        expect(result, equals(FormBuilderLocalizations.current.phoneErrorText));
+      },
+    );
   });
 }

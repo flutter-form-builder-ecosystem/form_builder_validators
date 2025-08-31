@@ -1,5 +1,7 @@
 {
   "@@locale": "ca",
+  "notMatchErrorText": "El valor no ha de coincidir amb el patró",
+  "satisfyErrorText": "El valor no compleix la condició.",
   "andSeparator": " i ",
   "betweenLengthErrorText": "El valor ha de tenir una longitud entre {min} i {max}, inclosos.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "El valor ha de contenir {value}.",
   "betweenErrorText": "El valor ha d'estar entre {min} i {max}.",
   "containsElementErrorText": "El valor ha d'estar en la llista de valors permesos.",
+  "doesNotContainElementErrorText": "El valor no pot estar a la llista.",
   "ibanErrorText": "Aquest camp requereix un IBAN vàlid.",
   "uniqueErrorText": "Aquest camp requereix un valor únic.",
   "bicErrorText": "Aquest camp requereix un codi BIC vàlid.",

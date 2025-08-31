@@ -1,5 +1,7 @@
 {
   "@@locale": "cs",
+  "notMatchErrorText": "Hodnota nesmí odpovídat vzoru",
+  "satisfyErrorText": "Hodnota nesplňuje podmínku.",
   "andSeparator": " a ",
   "betweenLengthErrorText": "Hodnota musí mít délku mezi {min} a {max} včetně.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Hodnota musí obsahovat {value}.",
   "betweenErrorText": "Hodnota musí být mezi {min} a {max}.",
   "containsElementErrorText": "Hodnota musí být v seznamu povolených hodnot.",
+  "doesNotContainElementErrorText": "Hodnota nesmí být v seznamu.",
   "ibanErrorText": "Pole vyžaduje platné IBAN.",
   "uniqueErrorText": "Hodnota musí být jedinečná.",
   "bicErrorText": "Pole vyžaduje platný BIC kód.",

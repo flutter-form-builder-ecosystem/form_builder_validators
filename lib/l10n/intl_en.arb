@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+  "notMatchErrorText": "Value must not match pattern",
   "andSeparator": " and ",
   "betweenLengthErrorText": "Value must have a length that is between {min} and {max}, inclusive.",
   "@betweenLengthErrorText": {
@@ -339,6 +340,7 @@
     }
   },
   "macAddressErrorText": "Value must be a valid MAC address.",
+  "satisfyErrorText": "Value does not satisfy the condition.",
   "startsWithErrorText": "Value must start with {value}.",
   "@startsWithErrorText": {
     "placeholders": {
@@ -380,6 +382,7 @@
     }
   },
   "containsElementErrorText": "Value must be in list.",
+  "doesNotContainElementErrorText": "Value may not be in list.",
   "ibanErrorText": "Value must be a valid IBAN.",
   "uniqueErrorText": "Value must be unique.",
   "bicErrorText": "Value must be a valid BIC.",

@@ -1,5 +1,7 @@
 {
   "@@locale": "el",
+  "notMatchErrorText": "Η τιμή δεν πρέπει να ταιριάζει με το μοτίβο",
+  "satisfyErrorText": "Η αξία δεν ικανοποιεί τη συνθήκη.",
   "andSeparator": " και ",
   "betweenLengthErrorText": "Η τιμή πρέπει να έχει μήκος μεταξύ {min} και {max}, συμπεριλαμβανομένων.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Η τιμή πρέπει να περιέχει {value}.",
   "betweenErrorText": "Η τιμή πρέπει να είναι μεταξύ {min} και {max}.",
   "containsElementErrorText": "Η τιμή πρέπει να είναι στη λίστα των επιτρεπόμενων τιμών.",
+  "doesNotContainElementErrorText": "Η τιμή δεν μπορεί να είναι στη λίστα.",
   "ibanErrorText": "Η τιμή πρέπει να είναι έγκυρο IBAN.",
   "uniqueErrorText": "Η τιμή πρέπει να είναι μοναδική.",
   "bicErrorText": "Η τιμή πρέπει να είναι έγκυρος BIC.",

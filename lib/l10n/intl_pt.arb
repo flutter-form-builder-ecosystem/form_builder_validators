@@ -1,5 +1,7 @@
 {
   "@@locale": "pt",
+  "notMatchErrorText": "O valor não deve corresponder ao padrão",
+  "satisfyErrorText": "O valor não satisfaz a condição.",
   "andSeparator": " e ",
   "betweenLengthErrorText": "O valor deve ter um comprimento entre {min} e {max}, inclusive.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "O valor deve conter {value}.",
   "betweenErrorText": "O valor deve estar entre {min} e {max}.",
   "containsElementErrorText": "O valor deve estar na lista de valores permitidos.",
+  "doesNotContainElementErrorText": "O valor não pode estar na lista.",
   "ibanErrorText": "Este campo requer um IBAN válido.",
   "uniqueErrorText": "Este campo requer um valor único.",
   "bicErrorText": "Este campo requer um código BIC válido.",

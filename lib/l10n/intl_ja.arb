@@ -1,5 +1,7 @@
 {
   "@@locale": "ja",
+  "notMatchErrorText": "値はパターンと一致してはいけません",
+  "satisfyErrorText": "値が条件を満たしていません。",
   "andSeparator": " と ",
   "betweenLengthErrorText": "値の長さは{min}から{max}の間（両端を含む）である必要があります。",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "値は{value}を含む必要があります。",
   "betweenErrorText": "値は{min}から{max}の間である必要があります。",
   "containsElementErrorText": "値は許可された値のリストに含まれている必要があります。",
+  "doesNotContainElementErrorText": "値はリストに含まれていない可能性があります。",
   "ibanErrorText": "有効なIBANを入力してください。",
   "uniqueErrorText": "値は一意である必要があります。",
   "bicErrorText": "有効なBICを入力してください。",

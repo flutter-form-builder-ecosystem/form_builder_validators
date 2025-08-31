@@ -1,5 +1,7 @@
 {
   "@@locale": "pl",
+  "notMatchErrorText": "Wartość nie powinna pasować do wzorca",
+  "satisfyErrorText": "Wartość nie spełnia warunku.",
   "andSeparator": " i ",
   "betweenLengthErrorText": "Wartość musi mieć długość pomiędzy {min} a {max}, włącznie.",
   "@betweenLengthErrorText": {
@@ -64,6 +66,7 @@
   "containsErrorText": "Wartość musi zawierać {value}.",
   "betweenErrorText": "Wartość musi być pomiędzy {min} a {max}.",
   "containsElementErrorText": "Wartość musi być na liście dozwolonych wartości.",
+  "doesNotContainElementErrorText": "Wartość nie może znajdować się na liście.",
   "ibanErrorText": "To pole wymaga prawidłowego numeru IBAN.",
   "uniqueErrorText": "To pole wymaga unikalnej wartości.",
   "bicErrorText": "To pole wymaga prawidłowego numeru BIC.",

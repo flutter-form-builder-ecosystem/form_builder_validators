@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.0.0
+- Deprecated `FormBuilderValidators` class with its static methods as validators. Use `Validators` instead.
+- Created a new API for the validators.
+  - Removed the `checkNullOrEmpty` parameter.
+  - Restructured validators (maintained some intact, removed others, split some into elementary ones)
+  - Decoupled null check and type check from the remaining validators.
+- The migration guide can be found on `doc/api/migration` and the reference to the old API implementation on [this link]()
+
 ## 11.2.0
 
 - Fix password validator when not showing default error message

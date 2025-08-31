@@ -7,45 +7,45 @@ void main() {
     group('Valid inclusive comparisons', () {
       final List<(List<(num, bool)>, {num max, int min})> testCases =
           <(List<(num, bool)>, {num max, int min})>[
-        (
-          min: 0,
-          max: 0,
-          <(num, bool)>[
-            // (input, isValid)
-            (-1, false),
-            (-0.1, false),
-            (0, true),
-            (0.001, false),
-            (10, false),
-          ]
-        ),
-        (
-          min: 7,
-          max: 10.90,
-          <(num, bool)>[
-            // (input, isValid)
-            (6.7, false),
-            (6.9, false),
-            (7, true),
-            (7.1, true),
-            (10, true),
-            (10.9, true),
-            (10.91, false),
-            (110, false),
-          ]
-        ),
-        (
-          min: -232,
-          max: 510,
-          <(num, bool)>[
-            // (input, isValid)
-            (-1000, false),
-            (6.7, true),
-            (110, true),
-            (4510, false),
-          ]
-        ),
-      ];
+            (
+              min: 0,
+              max: 0,
+              <(num, bool)>[
+                // (input, isValid)
+                (-1, false),
+                (-0.1, false),
+                (0, true),
+                (0.001, false),
+                (10, false),
+              ],
+            ),
+            (
+              min: 7,
+              max: 10.90,
+              <(num, bool)>[
+                // (input, isValid)
+                (6.7, false),
+                (6.9, false),
+                (7, true),
+                (7.1, true),
+                (10, true),
+                (10.9, true),
+                (10.91, false),
+                (110, false),
+              ],
+            ),
+            (
+              min: -232,
+              max: 510,
+              <(num, bool)>[
+                // (input, isValid)
+                (-1000, false),
+                (6.7, true),
+                (110, true),
+                (4510, false),
+              ],
+            ),
+          ];
       for (final (List<(num, bool)>, {num max, int min}) testCase
           in testCases) {
         final int min = testCase.min;
@@ -55,9 +55,12 @@ void main() {
           final String errorMsg = FormBuilderLocalizations.current
               .betweenNumErrorText(min, max, 'true', 'true');
           for (final (num input, bool isValid) in testCase.$1) {
-            expect(v(input), isValid ? isNull : errorMsg,
-                reason:
-                    '"$input" should ${isValid ? '' : 'not'} be between [$min, $max]');
+            expect(
+              v(input),
+              isValid ? isNull : errorMsg,
+              reason:
+                  '"$input" should ${isValid ? '' : 'not'} be between [$min, $max]',
+            );
           }
         });
       }
@@ -77,8 +80,12 @@ void main() {
       final Validator<num> vRight = between(left, right, maxInclusive: false);
       final String rightErrorMsg = FormBuilderLocalizations.current
           .betweenNumErrorText(left, right, 'true', 'false');
-      final Validator<num> vBoth =
-          between(left, right, minInclusive: false, maxInclusive: false);
+      final Validator<num> vBoth = between(
+        left,
+        right,
+        minInclusive: false,
+        maxInclusive: false,
+      );
       final String bothErrorMsg = FormBuilderLocalizations.current
           .betweenNumErrorText(left, right, 'false', 'false');
 
@@ -137,8 +144,11 @@ void main() {
     });
     test('Should validate with custom message', () {
       const String msg = 'error msg';
-      final Validator<int> v =
-          between(0, 34, betweenMsg: (_, __, ___, ____, _____) => msg);
+      final Validator<int> v = between(
+        0,
+        34,
+        betweenMsg: (_, _, _, _, _) => msg,
+      );
 
       expect(v(3), isNull);
       expect(v(-1234), msg);

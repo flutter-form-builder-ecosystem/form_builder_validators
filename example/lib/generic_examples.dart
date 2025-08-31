@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_builder_validators/form_builder_validators.dart'
-    show Validators, Validator;
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 /// alias for Validators class.
 typedef V = Validators;
@@ -24,12 +23,9 @@ class GenericExamplesPage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.always,
-                validator: V.isRequired(
+                validator: V.required(
                   V.and(<Validator<String>>[
-                    V.isNum(
-                      V.lessThan(70),
-                      (_) => 'La edad debe ser numérica.',
-                    ),
+                    V.num(V.lessThan(70), (_) => 'La edad debe ser numérica.'),
 
                     /// Include your own custom `FormFieldValidator` function, if you want
                     /// Ensures positive values only. We could also have used `FormBuilderValidators.min( 0)` instead
@@ -52,7 +48,7 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Required Field',
                   prefixIcon: Icon(Icons.star),
                 ),
-                validator: V.isRequired(),
+                validator: V.required(),
                 autofillHints: const <String>[AutofillHints.name],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -64,12 +60,11 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.numbers),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.isRequired(V.isNum()),
+                validator: V.required(V.num()),
                 autofillHints: const <String>[AutofillHints.oneTimeCode],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
-              /* TODO implement the email and url validator
               // Email Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -77,7 +72,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.email),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                validator: v.email(),
+                validator: V.required(V.email()),
                 autofillHints: const <String>[AutofillHints.email],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
@@ -89,19 +84,18 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.link),
                 ),
                 keyboardType: TextInputType.url,
-                validator: v.url(),
+                validator: V.required(V.url()),
                 autofillHints: const <String>[AutofillHints.url],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
-               */
               // Min Length Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Min Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: V.isRequired(V.minLength(5)),
+                validator: V.required(V.minLength(5)),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -111,7 +105,7 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Max Length Field',
                   prefixIcon: Icon(Icons.text_fields),
                 ),
-                validator: V.isRequired(V.maxLength(10)),
+                validator: V.required(V.maxLength(10)),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -122,7 +116,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_neg_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.isRequired(V.isNum(V.greaterThan(10))),
+                validator: V.required(V.num(V.greaterThan(10))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -133,7 +127,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.exposure_plus_1),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.isRequired(V.isNum(V.lessThan(100))),
+                validator: V.required(V.num(V.lessThan(100))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -143,34 +137,31 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'Equal Field',
                   prefixIcon: Icon(Icons.check),
                 ),
-                validator: V.isEqual('test'),
+                validator: V.equal('test'),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
-              /* TODO implement contains substring
               // Contains Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Contains "test"',
                   prefixIcon: Icon(Icons.search),
                 ),
-                validator: FormBuilderValidators.contains('test'),
+                validator: V.required(V.contains('test')),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
 
-               */
               // Match Validator
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Match Pattern',
                   prefixIcon: Icon(Icons.pattern),
                 ),
-                validator: V.isRequired(V.match(RegExp(r'^[a-zA-Z0-9]+$'))),
+                validator: V.required(V.match(RegExp(r'^[a-zA-Z0-9]+$'))),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
-              /* TODO implement id, uuid, credit cart, and phone number validators
               // IP Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -178,7 +169,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.computer),
                 ),
                 keyboardType: TextInputType.number,
-                validator: v.ip(),
+                validator: V.required(V.ip()),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -189,7 +180,7 @@ class GenericExamplesPage extends StatelessWidget {
                   labelText: 'UUID Field',
                   prefixIcon: Icon(Icons.code),
                 ),
-                validator: v.uuid(),
+                validator: V.required(V.uuid()),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
@@ -200,11 +191,12 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.credit_card),
                 ),
                 keyboardType: TextInputType.number,
-                validator: FormBuilderValidators.creditCard(),
+                validator: V.required(V.creditCard()),
                 autofillHints: const <String>[AutofillHints.creditCardNumber],
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.always,
               ),
+              /* TODO implement id, uuid, credit cart, and phone number validators
               // Phone Number Validator
               TextFormField(
                 decoration: const InputDecoration(
@@ -225,7 +217,7 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock),
                 ),
                 obscureText: true,
-                validator: V.isRequired(V.password()),
+                validator: V.required(V.password()),
                 autofillHints: const <String>[AutofillHints.password],
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,
@@ -237,8 +229,64 @@ class GenericExamplesPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.calendar_today),
                 ),
                 keyboardType: TextInputType.number,
-                validator: V.isRequired(
-                  V.isNum(V.and(<Validator<num>>[V.between(0, 120)])),
+                validator: V.required(
+                  V.num(V.and(<Validator<num>>[V.between(0, 120)])),
+                ),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'CVC number validator',
+                  prefixIcon: Icon(Icons.numbers),
+                ),
+                keyboardType: TextInputType.number,
+                validator: V.required(
+                  V.and(<Validator<String>>[V.int(), V.equalLength(3)]),
+                ),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'City',
+                  prefixIcon: Icon(Icons.location_city),
+                ),
+                validator: V.required(
+                  V.inList(
+                    <String>['CityA', 'CityB', 'CityC'],
+                    inListMsg: (_, List<String> validOptions) =>
+                        'Please choose from: ${validOptions.join(', ')}',
+                  ),
+                  'Please select a city',
+                ),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Latitude',
+                  prefixIcon: Icon(Icons.add_location),
+                ),
+                validator: V.required(
+                  V.transformAndValidate(
+                    (String input) => input.replaceAll(',', '.'),
+                    next: V.double(V.between(-90, 90)),
+                  ),
+                ),
+                textInputAction: TextInputAction.done,
+                autovalidateMode: AutovalidateMode.always,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Longitude',
+                  prefixIcon: Icon(Icons.add_location),
+                ),
+                validator: V.required(
+                  V.transformAndValidate(
+                    (String input) => input.replaceAll(',', '.'),
+                    next: V.double(V.between(-180, 180)),
+                  ),
                 ),
                 textInputAction: TextInputAction.done,
                 autovalidateMode: AutovalidateMode.always,

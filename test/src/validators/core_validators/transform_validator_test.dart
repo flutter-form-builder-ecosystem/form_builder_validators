@@ -13,19 +13,25 @@ void main() {
       final Validator<String> v = transformAndValidate(int.parse);
 
       expect(v('12'), isNull);
-      expect(v('not integer'),
-          FormBuilderLocalizations.current.transformAndValidateErrorTextV1);
+      expect(
+        v('not integer'),
+        FormBuilderLocalizations.current.transformAndValidateErrorTextV1,
+      );
     });
     test('Should transform and apply a next validator', () {
-      final Validator<String> v =
-          transformAndValidate(int.parse, next: isEvenGreaterThan56);
+      final Validator<String> v = transformAndValidate(
+        int.parse,
+        next: isEvenGreaterThan56,
+      );
 
       expect(v('12'), defaultMsg);
       expect(v('56'), defaultMsg);
       expect(v('59'), defaultMsg);
       expect(v('60'), isNull);
-      expect(v('not integer'),
-          FormBuilderLocalizations.current.transformAndValidateErrorTextV1);
+      expect(
+        v('not integer'),
+        FormBuilderLocalizations.current.transformAndValidateErrorTextV1,
+      );
     });
     test('Should return a custom transformation error message', () {
       const String customErrorMsg = 'custom error msg';
@@ -42,21 +48,24 @@ void main() {
       expect(v('not integer'), customErrorMsg);
     });
     test(
-        'Should return an error message with transformed result type description',
-        () {
-      const String t = 'integer';
-      final Validator<String> v = transformAndValidate(
-        int.parse,
-        next: isEvenGreaterThan56,
-        transformedResultTypeDescription: t,
-      );
+      'Should return an error message with transformed result type description',
+      () {
+        const String t = 'integer';
+        final Validator<String> v = transformAndValidate(
+          int.parse,
+          next: isEvenGreaterThan56,
+          transformedResultTypeDescription: t,
+        );
 
-      expect(v('12'), defaultMsg);
-      expect(v('56'), defaultMsg);
-      expect(v('59'), defaultMsg);
-      expect(v('60'), isNull);
-      expect(v('not integer'),
-          FormBuilderLocalizations.current.transformAndValidateErrorTextV2(t));
-    });
+        expect(v('12'), defaultMsg);
+        expect(v('56'), defaultMsg);
+        expect(v('59'), defaultMsg);
+        expect(v('60'), isNull);
+        expect(
+          v('not integer'),
+          FormBuilderLocalizations.current.transformAndValidateErrorTextV2(t),
+        );
+      },
+    );
   });
 }
