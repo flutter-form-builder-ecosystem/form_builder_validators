@@ -1,8 +1,11 @@
 /// Base class for all validators.
 abstract class BaseValidator<T> {
   /// Creates a new instance of the validator.
-  const BaseValidator({String? errorText, this.checkNullOrEmpty = true})
-    : _errorText = errorText;
+  const BaseValidator({
+    String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
+    this.checkNullOrEmpty = true,
+  }) : _errorText = errorText;
 
   /// Backing field for [errorText].
   final String? _errorText;

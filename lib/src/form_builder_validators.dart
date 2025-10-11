@@ -27,6 +27,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => HasLowercaseCharsValidator(
     atLeast: atLeast,
@@ -50,6 +51,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => HasNumericCharsValidator(
     atLeast: atLeast,
@@ -73,6 +75,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => HasSpecialCharsValidator(
     atLeast: atLeast,
@@ -96,6 +99,7 @@ class FormBuilderValidators {
     int atLeast = 1,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => HasUppercaseCharsValidator(
     atLeast: atLeast,
@@ -112,6 +116,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<bool> isFalse({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IsFalseValidator(
     errorText: errorText,
@@ -126,6 +131,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<bool> isTrue({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IsTrueValidator(
     errorText: errorText,
@@ -142,6 +148,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> containsElement<T>(
     List<T> values, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => ContainsElementValidator<T>(
     values,
@@ -161,6 +168,7 @@ class FormBuilderValidators {
     int length, {
     bool allowEmpty = false,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => EqualLengthValidator<T>(
     length,
@@ -179,6 +187,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> maxLength<T>(
     int maxLength, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MaxLengthValidator<T>(
     maxLength,
@@ -196,6 +205,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> minLength<T>(
     int minLength, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MinLengthValidator<T>(
     minLength,
@@ -217,6 +227,7 @@ class FormBuilderValidators {
     num max, {
     bool inclusive = true,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => RangeValidator<T>(
     min,
@@ -236,6 +247,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> unique<T>(
     List<T> values, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => UniqueValidator<T>(
     values,
@@ -293,6 +305,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> equal<T>(
     Object value, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => EqualValidator<T>(
     value,
@@ -322,6 +335,7 @@ class FormBuilderValidators {
   static FormFieldValidator<T> notEqual<T>(
     Object value, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => NotEqualValidator<T>(
     value,
@@ -344,6 +358,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> required<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => RequiredValidator<T>(
     errorText: errorText,
@@ -380,6 +395,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> dateFuture({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DateFutureValidator(
     errorText: errorText,
@@ -395,6 +411,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> datePast({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DatePastValidator(
     errorText: errorText,
@@ -416,6 +433,7 @@ class FormBuilderValidators {
     DateTime minDate,
     DateTime maxDate, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DateRangeValidator(
     minDate,
@@ -432,6 +450,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> date({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DateValidator(
     errorText: errorText,
@@ -445,6 +464,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<DateTime?> dateTime({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DateTimeValidator(
     errorText: errorText,
@@ -479,6 +499,7 @@ class FormBuilderValidators {
   /// {@macro time_template}
   static FormFieldValidator<String> time({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => TimeValidator(
     errorText: errorText,
@@ -494,6 +515,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> timeZone({
     List<String>? validTimeZones,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => TimeZoneValidator(
     validTimeZones: validTimeZones,
@@ -510,6 +532,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> fileExtension(
     List<String> allowedExtensions, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => FileExtensionValidator(
     allowedExtensions,
@@ -526,6 +549,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> fileName({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => FileNameValidator(
     regex: regex,
@@ -544,6 +568,7 @@ class FormBuilderValidators {
     int maxSize, {
     bool base1024Conversion = true,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => FileSizeValidator(
     maxSize,
@@ -562,6 +587,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> mimeType({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MimeTypeValidator(
     regex: regex,
@@ -579,6 +605,7 @@ class FormBuilderValidators {
   /// {@macro file_path_template}
   static FormFieldValidator<String> path({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PathValidator(
     errorText: errorText,
@@ -596,6 +623,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> bic({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => BicValidator(
     regex: regex,
@@ -611,6 +639,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> creditCardCVC({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => CreditCardCvcValidator(
     errorText: errorText,
@@ -632,6 +661,7 @@ class FormBuilderValidators {
     bool checkForExpiration = true,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => CreditCardExpirationDateValidator(
     checkForExpiration: checkForExpiration,
@@ -651,6 +681,7 @@ class FormBuilderValidators {
   /// {@macro credit_card_template}
   static FormFieldValidator<String> creditCard({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => CreditCardValidator(
     errorText: errorText,
@@ -668,6 +699,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> iban({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IbanValidator(
     regex: regex,
@@ -688,6 +720,7 @@ class FormBuilderValidators {
     List<String> citiesWhitelist = const <String>[],
     List<String> citiesBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => CityValidator(
     regex: regex,
@@ -708,6 +741,7 @@ class FormBuilderValidators {
     List<String> countryWhitelist = const <String>[],
     List<String> countryBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => CountryValidator(
     countryWhitelist: countryWhitelist,
@@ -729,6 +763,7 @@ class FormBuilderValidators {
     List<String> firstNameWhitelist = const <String>[],
     List<String> firstNameBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => FirstNameValidator(
     regex: regex,
@@ -751,6 +786,7 @@ class FormBuilderValidators {
     List<String> lastNameWhitelist = const <String>[],
     List<String> lastNameBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LastNameValidator(
     regex: regex,
@@ -773,6 +809,7 @@ class FormBuilderValidators {
     List<String> passportNumberWhitelist = const <String>[],
     List<String> passportNumberBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PassportNumberValidator(
     regex: regex,
@@ -795,6 +832,7 @@ class FormBuilderValidators {
     List<String> stateWhitelist = const <String>[],
     List<String> stateBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => StateValidator(
     regex: regex,
@@ -817,6 +855,7 @@ class FormBuilderValidators {
     List<String> streetWhitelist = const <String>[],
     List<String> streetBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => StreetValidator(
     regex: regex,
@@ -846,6 +885,7 @@ class FormBuilderValidators {
     int minNumberCount = 1,
     int minSpecialCharCount = 1,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PasswordValidator(
     minLength: minLength,
@@ -866,6 +906,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> ssn({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => SsnValidator(
     errorText: errorText,
@@ -897,6 +938,7 @@ class FormBuilderValidators {
     bool allowSpace = false,
     bool allowSpecialChar = false,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => UsernameValidator(
     minLength: minLength,
@@ -918,6 +960,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> zipCode({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => ZipCodeValidator(
     errorText: errorText,
@@ -936,6 +979,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> email({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => EmailValidator(
     regex: regex,
@@ -958,6 +1002,7 @@ class FormBuilderValidators {
     int version = 4,
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IpValidator(
     version: version,
@@ -974,6 +1019,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> latitude({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LatitudeValidator(
     errorText: errorText,
@@ -988,6 +1034,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> longitude({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LongitudeValidator(
     errorText: errorText,
@@ -1005,6 +1052,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> macAddress({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MacAddressValidator(
     regex: regex,
@@ -1025,6 +1073,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> phoneNumber({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PhoneNumberValidator(
     regex: regex,
@@ -1044,6 +1093,7 @@ class FormBuilderValidators {
     int min = 0,
     int max = 65535,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PortNumberValidator(
     min: min,
@@ -1076,6 +1126,7 @@ class FormBuilderValidators {
     List<String> hostBlacklist = const <String>[],
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => UrlValidator(
     protocols: protocols,
@@ -1103,6 +1154,7 @@ class FormBuilderValidators {
     num min,
     num max, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => BetweenValidator<T>(
     min,
@@ -1118,6 +1170,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> evenNumber({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => EvenNumberValidator(
     errorText: errorText,
@@ -1132,6 +1185,7 @@ class FormBuilderValidators {
   /// {@macro float_template}
   static FormFieldValidator<T> float<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => FloatValidator<T>(
     errorText: errorText,
@@ -1146,6 +1200,7 @@ class FormBuilderValidators {
   /// {@macro hexadecimal_template}
   static FormFieldValidator<String> hexadecimal({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => HexadecimalValidator(
     errorText: errorText,
@@ -1161,6 +1216,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> integer({
     int? radix,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IntegerValidator(
     radix: radix,
@@ -1180,6 +1236,7 @@ class FormBuilderValidators {
     num max, {
     bool inclusive = true,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MaxValidator<T>(
     max,
@@ -1200,6 +1257,7 @@ class FormBuilderValidators {
     num min, {
     bool inclusive = true,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MinValidator<T>(
     min,
@@ -1216,6 +1274,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> negativeNumber<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => NegativeNumberValidator<T>(
     errorText: errorText,
@@ -1230,6 +1289,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> notZeroNumber<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => NotZeroNumberValidator<T>(
     errorText: errorText,
@@ -1243,6 +1303,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> numeric<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => NumericValidator<T>(
     errorText: errorText,
@@ -1256,6 +1317,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> oddNumber({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => OddNumberValidator(
     errorText: errorText,
@@ -1270,6 +1332,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<T> positiveNumber<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PositiveNumberValidator<T>(
     errorText: errorText,
@@ -1284,6 +1347,7 @@ class FormBuilderValidators {
   /// {@macro prime_number_template}
   static FormFieldValidator<T> primeNumber<T>({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => PrimeNumberValidator<T>(
     errorText: errorText,
@@ -1301,6 +1365,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> alphabetical({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => AlphabeticalValidator(
     regex: regex,
@@ -1321,6 +1386,7 @@ class FormBuilderValidators {
     String substring, {
     bool caseSensitive = true,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => ContainsValidator(
     substring,
@@ -1340,6 +1406,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> endsWith(
     String suffix, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => EndsWithValidator(
     suffix,
@@ -1354,6 +1421,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> lowercase({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LowercaseValidator(
     errorText: errorText,
@@ -1371,6 +1439,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> matchNot(
     RegExp regex, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MatchNotValidator(
     regex,
@@ -1389,6 +1458,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> match(
     RegExp regex, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MatchValidator(
     regex,
@@ -1406,6 +1476,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> maxWordsCount(
     int maxWordsCount, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MaxWordsCountValidator(
     maxWordsCount,
@@ -1423,6 +1494,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> minWordsCount(
     int minWordsCount, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => MinWordsCountValidator(
     minWordsCount,
@@ -1437,6 +1509,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> singleLine({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => SingleLineValidator(
     errorText: errorText,
@@ -1454,6 +1527,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> startsWith(
     String prefix, {
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => StartsWithValidator(
     prefix,
@@ -1468,6 +1542,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> uppercase({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => UppercaseValidator(
     errorText: errorText,
@@ -1482,6 +1557,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> base64({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => Base64Validator(
     errorText: errorText,
@@ -1507,6 +1583,7 @@ class FormBuilderValidators {
     List<String> formats = const <String>['hex', 'rgb', 'hsl'],
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => ColorCodeValidator(
     formats: formats,
@@ -1525,6 +1602,7 @@ class FormBuilderValidators {
   static FormFieldValidator<String> duns({
     RegExp? regex,
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => DunsValidator(
     regex: regex,
@@ -1539,6 +1617,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> isbn({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => IsbnValidator(
     errorText: errorText,
@@ -1552,6 +1631,7 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   static FormFieldValidator<String> json({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => JsonValidator(
     errorText: errorText,
@@ -1572,6 +1652,7 @@ class FormBuilderValidators {
     List<String> languageCodeWhitelist = const <String>[],
     List<String> languageCodeBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LanguageCodeValidator(
     regex: regex,
@@ -1595,6 +1676,7 @@ class FormBuilderValidators {
     List<String> licensePlateWhitelist = const <String>[],
     List<String> licensePlateBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => LicensePlateValidator(
     regex: regex,
@@ -1614,6 +1696,7 @@ class FormBuilderValidators {
   /// {@macro uuid_template}
   static FormFieldValidator<String> uuid({
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => UuidValidator(
     errorText: errorText,
@@ -1634,6 +1717,7 @@ class FormBuilderValidators {
     List<String> vinWhitelist = const <String>[],
     List<String> vinBlacklist = const <String>[],
     String? errorText,
+    @Deprecated('This will be remove. Use new API. Details on migration.md')
     bool checkNullOrEmpty = true,
   }) => VinValidator(
     regex: regex,

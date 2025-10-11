@@ -1,0 +1,19 @@
+version: 1
+transforms:
+  - title: 'Rename to new API class name'
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      class: 'FormBuilderValidators'
+    changes:
+      - kind: 'rename'
+        newName: 'Validators'
+  - title: 'Remove deprecated checkNullOrEmpty property on FormBuilderValidators'
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      constructor: ''
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'removeParameter'
+        name: 'checkNullOrEmpty'
