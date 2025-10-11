@@ -1,11 +1,19 @@
 ## Migrations
+
 ### v11 to v12
+
 The following items in this section show how to convert from the old API functions to the closest equivalent using the new APIs. For each item, we try to show how the conversion is made from a validator with all its parameters being used, thus, if your case is simples, probably it will be enough to ignore the additional parameters in the example.
+
 #### checkNullOrEmpty
-Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator in the old API has this parameter, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections. 
+
+> Dart fix status: ✅️🚧 Partial. Remove `checkNullOrEmpty` but need add `Validators.required` or `Validators.optinal` around each validator.
+
+Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator in the old API has this parameter, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections.
 
 The conditions are:
-- `checkNullOrEmpty = true` 
+
+- `checkNullOrEmpty = true`
+
 ```dart
 // Old API
 FormBuilderValidators.someValidator(..., checkNullOrEmpty:true);
@@ -14,7 +22,9 @@ FormBuilderValidators.someValidator(..., checkNullOrEmpty:true);
 Validators.required(Validators.someEquivalentValidator(...));
 
 ```
-- `checkNullOrEmpty = false` 
+
+- `checkNullOrEmpty = false`
+
 ```dart
 // Old API
 FormBuilderValidators.someValidator(..., checkNullOrEmpty:false);
@@ -24,21 +34,26 @@ Validators.optional(Validators.someEquivalentValidator(...));
 ```
 
 #### Terminology Update
+
+> Dart fix status: ❌️ Not implemented.
+
 In versions prior to 11.x.x, validators used outdated "whitelist/blacklist" terminology. Starting from version 12.x.x, we've updated to:
+
 - **Whitelist** → **Allow list** (the only permitted values)
 - **Blacklist** → **Block list** (forbidden values)
 
 ##### Best Practices for Allow/Block Logic
+
 For validators that support Allow/Block lists, follow these logical patterns:
+
 - **Allow list only**: Specify the only permitted values
 - **Block list + regex**: Use regex for format validation combined with forbidden values
 
 > **Note about examples**: For the validators that use allow/block lists, the migration examples below show all three patterns (regex, allow list, and block list) together purely for demonstration purposes. In practice, using both allow and block lists simultaneously is typically unnecessary and may create conflicting logic.
 
-
 #### Bool validators
 
-For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), they are expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
+For the following group of validators (`hasLowercaseChars`, `hasNumericChars`, `hasSpecialChars`, and `hasUppercaseChars`), they are expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`).
 Apply the following logic to the next items:
 
 ```dart
@@ -51,6 +66,7 @@ Validators.string(Validators.hasMinSomethingChars(...));
 ```
 
 - `FormBuilderValidators.hasLowercaseChars`
+
 ```dart
 // Old API
 FormBuilderValidators.hasLowercaseChars(
@@ -68,6 +84,7 @@ Validators.hasMinLowercaseChars(
 ```
 
 - `FormBuilderValidators.hasNumericChars`
+
 ```dart
 // Old API
 FormBuilderValidators.hasNumericChars(
@@ -85,6 +102,7 @@ Validators.hasMinNumericChars(
 ```
 
 - `FormBuilderValidators.hasSpecialChars`
+
 ```dart
 // Old API
 FormBuilderValidators.hasSpecialChars(
@@ -102,6 +120,7 @@ Validators.hasMinSpecialChars(
 ```
 
 - `FormBuilderValidators.hasUppercaseChars`
+
 ```dart
 // Old API
 FormBuilderValidators.hasUppercaseChars(
@@ -117,16 +136,17 @@ Validators.hasMinUppercaseChars(
   hasMinUppercaseCharsMsg: (_, __) => 'Need at least 2 uppercase letters'
 );
 ```
-    
-For the remaining `isFalse` and `isTrue`, it is not necessary to wrap them with `Validators.string` even if the form widget does not provide `String` input.
 
+For the remaining `isFalse` and `isTrue`, it is not necessary to wrap them with `Validators.string` even if the form widget does not provide `String` input.
 
 - `FormBuilderValidators.isFalse`: equivalent to `Validators.isFalse`.
 
 - `FormBuilderValidators.isTrue`: equivalent to `Validators.isTrue`.
 
 #### Collection validators
+
 - `FormBuilderValidators.containsElement`
+
 ```dart
 // Old API
 FormBuilderValidators.containsElement(
@@ -140,8 +160,9 @@ Validators.inList(
   inListMsg: (_, __) => 'Value must be in the list'
 );
 ```
+
 - `FormBuilderValidators.equalLength`
-  - The parameter `allowEmpty` was removed and [additional logic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/equal_length_validator.dart#L40) must be provided to handle the case in which this parameter is true. 
+  - The parameter `allowEmpty` was removed and [additional logic](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/equal_length_validator.dart#L40) must be provided to handle the case in which this parameter is true.
 
 ```dart
 // Old API
@@ -170,6 +191,7 @@ Validators.or([
 - `FormBuilderValidators.minLength`: equivalent to `Validators.minLength`.
 
 - `FormBuilderValidators.range` (for collections)
+
 ```dart
 // Old API (inclusive: true)
 FormBuilderValidators.range(
@@ -205,6 +227,7 @@ Validators.betweenLength(
 ```
 
 - `FormBuilderValidators.range` (for numeric values)
+
 ```dart
 // Old API
 FormBuilderValidators.range(
@@ -226,8 +249,10 @@ Validators.num(
   (_)=>'Value must be between 1 and 100',
 );
 ```
+
 - `FormBuilderValidators.unique([v1, v2, v3], errorText:'some error')`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/collection/unique_validator.dart#L32), thus, a custom validator should be implemented.
-  - Example: 
+  - Example:
+
 ```dart
 Validator<T> unique<T extends Object>(List<T> values, {String? errorText}){
   return (input){
@@ -240,10 +265,11 @@ Validators.satisfy(
   satisfyMsg: (_)=>errorText
 );
 ```
-        
+
 ### Core validators
 
 - `FormBuilderValidators.aggregate`
+
 ```dart
 // Old API
 FormBuilderValidators.aggregate([
@@ -261,6 +287,7 @@ Validators.and(
 ```
 
 - `FormBuilderValidators.compose`
+
 ```dart
 // Old API
 FormBuilderValidators.compose([
@@ -276,6 +303,7 @@ Validators.and([
 ```
 
 - `FormBuilderValidators.conditional`
+
 ```dart
 // Old API
 FormBuilderValidators.conditional(
@@ -291,6 +319,7 @@ Validators.validateIf(
 ```
 
 - `FormBuilderValidators.defaultValue`
+
 ```dart
 // Old API
 FormBuilderValidators.defaultValue(
@@ -306,6 +335,7 @@ Validators.validateWithDefault(
 ```
 
 - `FormBuilderValidators.equal`
+
 ```dart
 // Old API
 FormBuilderValidators.equal(
@@ -321,6 +351,7 @@ Validators.equal(
 ```
 
 - `FormBuilderValidators.log`
+
 ```dart
 // Old API
 FormBuilderValidators.log(
@@ -335,6 +366,7 @@ Validators.debugPrintValidator(
 ```
 
 - `FormBuilderValidators.notEqual`
+
 ```dart
 // Old API
 FormBuilderValidators.notEqual(
@@ -352,6 +384,7 @@ Validators.notEqual(
 - `FormBuilderValidators.or`: equivalent to `Validators.or`.
 
 - `FormBuilderValidators.required`
+
 ```dart
 // Old API
 FormBuilderValidators.required(
@@ -366,6 +399,7 @@ Validators.required(
 ```
 
 - `FormBuilderValidators.skipWhen`
+
 ```dart
 // Old API
 FormBuilderValidators.skipWhen(
@@ -381,6 +415,7 @@ Validators.skipIf(
 ```
 
 - `FormBuilderValidators.transform`
+
 ```dart
 // Old API
 FormBuilderValidators.transform(
@@ -398,7 +433,7 @@ Validators.transformAndValidate(
 ### Datetime validators
 
 - `FormBuilderValidators.dateFuture()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/date_future_validator.dart#L29), thus, a custom validator should be implemented.
-  - Example: 
+  - Example:
 
 ```dart
 // Old API:
@@ -411,10 +446,10 @@ Validators.dateTime(
         afterMsg: (_, __)=>'Date must be in the future',
     ),
 );
-``` 
+```
 
 - `FormBuilderValidators.datePast()`:there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/date_past_validator.dart#L29), thus, a custom validator should be implemented.
-  - Example: 
+  - Example:
 
 ```dart
 // Old API:
@@ -427,7 +462,7 @@ Validators.dateTime(
         beforeMsg: (_, __)=>'Date must be in the past',
     ),
 );
-``` 
+```
 
 - `FormBuilderValidators.dateRange()`
 
@@ -449,7 +484,7 @@ Validators.dateTime(
 );
 ```
 
-- `FormBuilderValidators.dateTime()`: this validator only checks if the input of type `DateTime?` is not null. Something close would be the following example: 
+- `FormBuilderValidators.dateTime()`: this validator only checks if the input of type `DateTime?` is not null. Something close would be the following example:
 
 ```dart
 // Old API:
@@ -461,6 +496,7 @@ Validators.required(Validators.dateTime(null, (_)=>errorText), errorText);
 ```
 
 - `FormBuilderValidators.date()`
+
 ```dart
 // Old API
 FormBuilderValidators.date(errorText: 'Invalid date time');
@@ -468,10 +504,12 @@ FormBuilderValidators.date(errorText: 'Invalid date time');
 // New API
 Validators.dateTime(null, (_)=>'Invalid date time');
 ```
+
 - `FormBuilderValidators.time()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/time_validator.dart#L48). But it is a combination of `Validators.dateTime` with `Validators.match` using some specific regex.
 
-- `FormBuilderValidators.timeZone()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/timezone_validator.dart#L75). 
+- `FormBuilderValidators.timeZone()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/datetime/timezone_validator.dart#L75).
 Something close would be:
+
 ```dart
 Validators.inList(validTimezones, inListMsg: (_, __)=> 'Invalid timezone')
 ```
@@ -479,6 +517,7 @@ Validators.inList(validTimezones, inListMsg: (_, __)=> 'Invalid timezone')
 ### File validators
 
 - `FormBuilderValidators.fileExtension()`
+
 ```dart
 // Old API:
 FormBuilderValidators.fileExtension(
@@ -494,8 +533,10 @@ Validators.matchesAllowedExtensions(
   caseSensitive: false,
 );
 ```
+
 - `FormBuilderValidators.fileName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/file_name_validator.dart#L46). Something close would be:
-```dart 
+
+```dart
 // Old API:
 FormBuilderValidators.fileName(
     regex: RegExp(r'^[a-zA-Z0-9_\-\.]+$'),
@@ -513,6 +554,7 @@ Validators.string(
 ```
 
 - `FormBuilderValidators.fileSize()`
+
 ```dart
 // base1024Conversion:true
 // Old API:
@@ -544,7 +586,9 @@ Validators.maxFileSize(
     maxFileSizeMsg: (_, __, ___)=>'error text',
 );
 ```
+
 - `FormBuilderValidators.mimeType()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/mime_type_validator.dart#L47). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.mimeType(
@@ -562,7 +606,9 @@ Validators.string(
   (_)=>'error text',
 );
 ```
+
 - `FormBuilderValidators.path()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/file/path_validator.dart#L46). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.path(
@@ -582,6 +628,7 @@ Validators.string(
 ### Finance validators
 
 - `FormBuilderValidators.bic()`
+
 ```dart
 // Old API (no regex):
 FormBuilderValidators.bic(
@@ -600,7 +647,9 @@ FormBuilderValidators.bic(regex: someRegex);
 // New API:
 Validators.bic(isBic: (input)=>someRegex.hasMatch(input));
 ```
+
 - `FormBuilderValidators.creditCardCVC()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_cvc_validator.dart#L29). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.creditCardCVC(
@@ -613,11 +662,13 @@ Validators.and([
   Validators.equalLength(3, equalLengthMsg: (_, __)=>'invalid CVC number'),
 ]);
 ```
+
 - `FormBuilderValidators.creditCardExpirationDate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_expiration_date_validator.dart#L52).
 
-- `FormBuilderValidators.creditCard()`: equivalent to `Validators.creditCard`. 
+- `FormBuilderValidators.creditCard()`: equivalent to `Validators.creditCard`.
 
 - `FormBuilderValidators.iban()`
+
 ```dart
 // Old API:
 // OBS.: There is a bug in the regex parameter. It is not used at all.
@@ -630,6 +681,7 @@ Validators.iban(ibanMsg: (_)=>'invalid iban');
 ### Identity validators
 
 - `FormBuilderValidators.city()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/city_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.city(
@@ -660,6 +712,7 @@ Validators.string(
 ```
 
 - `FormBuilderValidators.country()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/country_validator.dart#L42). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.country(
@@ -686,6 +739,7 @@ Validators.string(
 ```
 
 - `FormBuilderValidators.firstName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/firstname_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.firstName(
@@ -714,7 +768,9 @@ Validators.string(
   (_)=>'invalid name',
 );
 ```
+
 - `FormBuilderValidators.lastName()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/lastname_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.lastName(
@@ -743,7 +799,9 @@ Validators.string(
   (_)=>'invalid name',
 );
 ```
+
 - `FormBuilderValidators.passport()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/passport_number_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.passport(
@@ -772,10 +830,12 @@ Validators.string(
   (_)=>'invalid passport',
 );
 ```
+
 - `FormBuilderValidators.password()`: equivalent to `Validators.password`.
 
 - `FormBuilderValidators.ssn()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/ssn_validator.dart#L47)  
 - `FormBuilderValidators.state()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/state_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.state(
@@ -804,7 +864,9 @@ Validators.string(
   (_)=>'invalid state',
 );
 ```
+
 - `FormBuilderValidators.street()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/street_validator.dart#L53). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.street(
@@ -833,7 +895,9 @@ Validators.string(
   (_)=>'invalid street',
 );
 ```
+
 - `FormBuilderValidators.username()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/username_validator.dart#L71). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.username(
@@ -861,7 +925,9 @@ Validators.string(
 
 
 ```
+
 - `FormBuilderValidators.zipCode()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/zip_code_validator.dart#L43). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.zipCode(
@@ -878,12 +944,12 @@ Validators.string(
 );
 ```
 
-
 ### Network validators
 
 - `FormBuilderValidators.email()`: equivalent to `Validators.email`.
 
 - `FormBuilderValidators.ip()`
+
 ```dart
 // For IPv4
 // Old API:
@@ -914,7 +980,8 @@ Validators.ip(
 );
 ```
 
-- `FormBuilderValidators.latitude()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/network/latitude_validator.dart#L40). But something close would be: 
+- `FormBuilderValidators.latitude()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/network/latitude_validator.dart#L40). But something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.latitude();
@@ -928,6 +995,7 @@ Validators.transformAndValidate(
 ```
 
 - `FormBuilderValidators.longitude()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/network/longitude_validator.dart#L40). But something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.longitude();
@@ -941,6 +1009,7 @@ Validators.transformAndValidate(
 ```
 
 - `FormBuilderValidators.macAddress()`
+
 ```dart
 // Old API
 FormBuilderValidators.macAddress(
@@ -958,6 +1027,7 @@ Validators.macAddress(
 - `FormBuilderValidators.phoneNumber()`: equivalent to `Validators.phoneNumber`.
 
 - `FormBuilderValidators.portNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/network/port_number_validator.dart#L40). But, something close would be:
+
 ```dart
 // Old API
 FormBuilderValidators.portNumber(
@@ -974,12 +1044,12 @@ Validators.int(
 );
 ```
 
-- `FormBuilderValidators.url()`: equivalent to `Validators.url`. 
-
+- `FormBuilderValidators.url()`: equivalent to `Validators.url`.
 
 ### Numeric validators
 
 - `FormBuilderValidators.between()`
+
 ```dart
 // Old API
 FormBuilderValidators.between(min, max, errorText: 'error msg');
@@ -992,6 +1062,7 @@ Validators.num(
 ```
 
 - `FormBuilderValidators.evenNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/even_number_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API
 FormBuilderValidators.evenNumber(errorText: 'error text');
@@ -1003,7 +1074,9 @@ Validators.int(
   (_)=>'error text',
 );
 ```
+
 - `FormBuilderValidators.integer()`: the radix is not supported.
+
 ```dart
 // Old API
 FormBuilderValidators.integer(errorText: 'error text');
@@ -1013,6 +1086,7 @@ Validators.int(null,(_)=> 'error text');
 ```
 
 - `FormBuilderValidators.max()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/max_validator.dart#L40). But, something close would be:
+
 ```dart
 // Old API (inclusive: true)
 FormBuilderValidators.max(n, inclusive:true, errorText:'error msg');
@@ -1036,6 +1110,7 @@ Validators.num(
 ```
 
 - `FormBuilderValidators.min()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/min_validator.dart#L40). But, something close would be:
+
 ```dart
 // Old API (inclusive: true)
 FormBuilderValidators.min(n, inclusive:true, errorText:'error msg');
@@ -1059,6 +1134,7 @@ Validators.num(
 ```
 
 - `FormBuilderValidators.negativeNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/negative_number_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.negativeNumber(errorText:'error text');
@@ -1070,8 +1146,8 @@ Validators.num(
 );
 ```
 
-
 - `FormBuilderValidators.notZeroNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/not_zero_number_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.notZeroNumber(errorText:'error text');
@@ -1084,6 +1160,7 @@ Validators.num(
 ```
 
 - `FormBuilderValidators.numeric()`:
+
 ```dart
 // Old API
 FormBuilderValidators.numeric(errorText: 'error text');
@@ -1093,6 +1170,7 @@ Validators.num(null, (_)=>'error text');
 ```
 
 - `FormBuilderValidators.oddNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/odd_number_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API
 FormBuilderValidators.oddNumber(errorText: 'error text');
@@ -1105,7 +1183,9 @@ Validators.int(
 );
 
 ```
+
 - `FormBuilderValidators.positiveNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/numeric/positive_number_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.positiveNumber(errorText:'error text');
@@ -1116,7 +1196,9 @@ Validators.num(
   (_)=>'error msg',
 );
 ```
-- `FormBuilderValidators.primeNumber()`: there is no equivalent to [this validator](). But, something close would be:
+
+- `FormBuilderValidators.primeNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/b4cd402cf033ecc27cdbb6c7356c1474ec6812c4/lib/src/numeric/prime_validator.dart#L14). But, something close would be:
+
 ```dart
 // Old API
 FormBuilderValidators.primeNumber(errorText: 'error text');
@@ -1138,9 +1220,11 @@ Validators.int(
 ```
 
 ### String validators
-For the following group of validators, it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`). 
+
+For the following group of validators, it is expected to receive a `String` as user input. Thus, if your form widget does not guarantee a `String` input (e.g. it may receive an `Object`), you must wrap the equivalent validator with the type validator for strings (`Validators.string`).
 
 - `FormBuilderValidators.alphabetical()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/string/alphabetical_validator.dart#L45). But, something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.alphabetical(errorText:'error text');
@@ -1159,6 +1243,7 @@ Validators.match(
 - `FormBuilderValidators.lowercase()`: equivalent to `Validators.lowercase`.
 
 - `FormBuilderValidators.matchNot()`
+
 ```dart
 // Old API:
 FormBuilderValidator.matchNot(
@@ -1173,10 +1258,10 @@ Validators.notMatch(
 );
 ```
 
-
 - `FormBuilderValidators.match()`: equivalent to `Validators.match`.
 
 - `FormBuilderValidators.maxWordsCount()`
+
 ```dart
 // Old API:
 FormBuilderValidator.maxWordsCount(
@@ -1192,6 +1277,7 @@ Validators.maxWordCount(
 ```
 
 - `FormBuilderValidators.minWordsCount()`
+
 ```dart
 // Old API:
 FormBuilderValidator.minWordsCount(
@@ -1207,6 +1293,7 @@ Validators.minWordCount(
 ```
 
 - `FormBuilderValidators.singleLine()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/string/single_line_validator.dart#L29). But, something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidators.singleLine(errorText:'error text');
@@ -1218,15 +1305,14 @@ Validators.satisfy(
 );
 ```
 
-
 - `FormBuilderValidators.startsWith()`: equivalent to `Validators.startsWith`.
 
 - `FormBuilderValidators.uppercase()`: equivalent to `Validators.uppercase`.
 
-
 ### Use-case validators
 
 - `FormBuilderValidators.base64()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/base64_validator.dart#L31). Something close would be:
+
 ```dart
 // Old API:
 FormBuilderValidator.base64(
@@ -1247,9 +1333,11 @@ Validators.satisfy(
   (input)=>isBase64(input), satisfyMsg: (_)=>'error text',
 ); 
 ```
+
 - `FormBuilderValidators.colorCode()`: equivalent to `Validators.colorCode`.
 
 - `FormBuilderValidators.duns()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/duns_validator.dart#L41). The equivalent would be:
+
 ```dart
 // Old API:
 FormBuilderValidator.duns(
@@ -1265,7 +1353,8 @@ Validators.match(
 
 - `FormBuilderValidators.isbn()`: equivalent to `Validators.isbn`.
 
-- `FormBuilderValidators.json()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/json_validator.dart#L31) 
+- `FormBuilderValidators.json()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/json_validator.dart#L31)
+
 ```dart
 // Old API:
 FormBuilderValidator.json(
@@ -1286,7 +1375,9 @@ Validators.satisfy(
   (input)=>isJson(input), satisfyMsg: (_)=>'error text',
 ); 
 ```
+
 - `FormBuilderValidators.languageCode()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/language_code_validator.dart#L51).
+
 ```dart
 // Old API:
 FormBuilderValidators.languageCode(
@@ -1314,6 +1405,7 @@ Validators.and([
 ```
 
 - `FormBuilderValidators.licensePlate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/licenseplate_validator.dart#L52).
+
 ```dart
 // Old API:
 FormBuilderValidators.licensePlate(
@@ -1339,7 +1431,9 @@ Validators.and([
   ),
 ]);
 ```
+
 - `FormBuilderValidators.uuid()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/uuid_validator.dart#L47).
+
 ```dart
 // Old API:
 FormBuilderValidator.uuid(
@@ -1356,6 +1450,7 @@ Validators.match(
 ```
 
 - `FormBuilderValidators.vin()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/usecase/vin_validator.dart#L52).
+
 ```dart
 // Old API:
 FormBuilderValidators.vin(
@@ -1382,8 +1477,6 @@ Validators.and([
 ]);
 ```
 
-
-
 ### Extension method validators
 
 Used for chaining and combining multiple validators.
@@ -1395,4 +1488,4 @@ Used for chaining and combining multiple validators.
 - `FormBuilderValidator.transform()`: use `Validators.transformAndValidate` instead.
 - `FormBuilderValidator.skipWhen()`: use `Validators.skipIf` instead.
 - `FormBuilderValidator.log()`: use `Validators.debugPrintValidator` instead
-- `FormBuilderValidator.withErrorMessage()`: there is no equivalent in the new API. 
+- `FormBuilderValidator.withErrorMessage()`: there is no equivalent in the new API.
