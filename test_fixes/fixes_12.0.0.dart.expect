@@ -20,6 +20,28 @@ class BasicExamplesPage extends StatelessWidget {
           TextFormField(validator: Validators.equal('-')),
           TextFormField(validator: Validators.notEqual('-')),
           TextFormField(
+            validator: Validators.equal(
+              'test',
+            ),
+          ),
+          TextFormField(
+            validator: Validators.notEqual(
+              'test',
+            ),
+          ),
+          TextFormField(
+            validator: Validators.required(),
+          ),
+          TextFormField(
+            validator: Validators.required(),
+          ),
+          TextFormField(
+            validator: Validators.email(),
+          ),
+          TextFormField(
+            validator: Validators.email(),
+          ),
+          TextFormField(
             validator: (String? input) {
               final String? isRequiredMsg = Validators.required()(
                 input,
