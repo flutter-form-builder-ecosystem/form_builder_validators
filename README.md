@@ -236,6 +236,7 @@ Validators support default `errorText` messages in these languages:
 - Finnish (fi)
 - Farsi/Persian (fa)
 - French (fr)
+- Georgian (ka)
 - German (de)
 - Greek (el)
 - Hebrew (he)
