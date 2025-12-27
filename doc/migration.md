@@ -65,6 +65,7 @@ FormBuilderValidators.hasMinSomethingChars(...);
 Validators.string(Validators.hasMinSomethingChars(...));
 ```
 
+> [x] dart fix: OK
 - `FormBuilderValidators.hasLowercaseChars`
 
 ```dart
@@ -83,6 +84,7 @@ Validators.hasMinLowercaseChars(
 );
 ```
 
+> [ ] dart fix: ??
 - `FormBuilderValidators.hasNumericChars`
 
 ```dart

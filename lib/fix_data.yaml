@@ -1,19 +1,625 @@
+# Docs: https://github.com/flutter/flutter/blob/master/docs/contributing/Data-driven-Fixes.md
+# Rules:
+# 1. You do not talk about dart_fixes.yaml
+# 2. Newer transforms come first
 version: 1
 transforms:
-  - title: 'Rename to new API class name'
-    date: 2025-10-01
+  # hasLowercaseChars - Parameters: atLeast, regex, errorText, checkNullOrEmpty
+  - title: 'Migrate hasLowercaseChars'
+    date: 2025-01-15
     element:
-      uris: [ 'form_builder_validators.dart' ]
-      class: 'FormBuilderValidators'
-    changes:
-      - kind: 'rename'
-        newName: 'Validators'
-  - title: 'Remove deprecated checkNullOrEmpty property on FormBuilderValidators'
-    date: 2025-10-01
-    element:
-      uris: [ 'form_builder_validators.dart' ]
-      constructor: ''
+      uris: ['form_builder_validators.dart']
+      method: 'hasLowercaseChars'
       inClass: 'FormBuilderValidators'
-    changes:
-      - kind: 'removeParameter'
-        name: 'checkNullOrEmpty'
+    variables:
+      atLeast:
+        kind: fragment
+        value: 'arguments[atLeast]'
+      errorText:
+        kind: fragment
+        value: 'arguments[errorText]'
+      regex:
+        kind: fragment
+        value: 'arguments[regex]'
+      checkNullOrEmpty:
+        kind: fragment
+        value: 'arguments[checkNullOrEmpty]'
+    oneOf:
+      # ===== checkNullOrEmpty: false (use Validators.optional) =====
+
+      # F1: checkNullOrEmpty:false + atLeast + errorText + regex
+      - if: "checkNullOrEmpty == 'false' && atLeast != '' && errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # F2: checkNullOrEmpty:false + atLeast + errorText
+      - if: "checkNullOrEmpty == 'false' && atLeast != '' && errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # F3: checkNullOrEmpty:false + atLeast + regex
+      - if: "checkNullOrEmpty == 'false' && atLeast != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # F4: checkNullOrEmpty:false + errorText + regex
+      - if: "checkNullOrEmpty == 'false' && errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # F5: checkNullOrEmpty:false + atLeast
+      - if: "checkNullOrEmpty == 'false' && atLeast != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+
+      # F6: checkNullOrEmpty:false + errorText
+      - if: "checkNullOrEmpty == 'false' && errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # F7: checkNullOrEmpty:false + regex
+      - if: "checkNullOrEmpty == 'false' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # F8: checkNullOrEmpty:false only
+      - if: "checkNullOrEmpty == 'false'"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'optional'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars())'
+
+      # ===== checkNullOrEmpty: true (use Validators.required) =====
+
+      # T1: checkNullOrEmpty:true + atLeast + errorText + regex
+      - if: "checkNullOrEmpty == 'true' && atLeast != '' && errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # T2: checkNullOrEmpty:true + atLeast + errorText
+      - if: "checkNullOrEmpty == 'true' && atLeast != '' && errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # T3: checkNullOrEmpty:true + atLeast + regex
+      - if: "checkNullOrEmpty == 'true' && atLeast != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # T4: checkNullOrEmpty:true + errorText + regex
+      - if: "checkNullOrEmpty == 'true' && errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # T5: checkNullOrEmpty:true + atLeast
+      - if: "checkNullOrEmpty == 'true' && atLeast != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+
+      # T6: checkNullOrEmpty:true + errorText
+      - if: "checkNullOrEmpty == 'true' && errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # T7: checkNullOrEmpty:true + regex
+      - if: "checkNullOrEmpty == 'true' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # T8: checkNullOrEmpty:true only
+      - if: "checkNullOrEmpty == 'true'"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'checkNullOrEmpty'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars())'
+
+      # ===== Default cases (checkNullOrEmpty not provided = true) =====
+
+      # D1: atLeast + errorText + regex
+      - if: "atLeast != '' && errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # D2: atLeast + errorText
+      - if: "atLeast != '' && errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, msg: {% errorText %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # D3: atLeast + regex
+      - if: "atLeast != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}, customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # D4: errorText + regex
+      - if: "errorText != '' && regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length, msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # D5: Only atLeast
+      - if: "atLeast != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'atLeast'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(min: {% atLeast %}))'
+              variables:
+                atLeast:
+                  kind: fragment
+                  value: 'arguments[atLeast]'
+
+      # D6: Only errorText
+      - if: "errorText != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'errorText'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(msg: {% errorText %}))'
+              variables:
+                errorText:
+                  kind: fragment
+                  value: 'arguments[errorText]'
+
+      # D7: Only regex
+      - if: "regex != ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'removeParameter'
+            name: 'regex'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => {% regex %}.allMatches(input).length))'
+              variables:
+                regex:
+                  kind: fragment
+                  value: 'arguments[regex]'
+
+      # D8: No parameters (default)
+      - if: "atLeast == '' && errorText == '' && regex == '' && checkNullOrEmpty == ''"
+        changes:
+          - kind: 'replacedBy'
+            newElement:
+              uris: ['form_builder_validators.dart']
+              method: 'required'
+              inClass: 'Validators'
+          - kind: 'addParameter'
+            index: 0
+            name: 'next'
+            style: 'required_positional'
+            argumentValue:
+              expression: 'Validators.string(Validators.hasMinLowercaseChars())'

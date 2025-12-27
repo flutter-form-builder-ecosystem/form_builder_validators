@@ -23,6 +23,9 @@ class FormBuilderValidators {
   /// - [checkNullOrEmpty] Whether to check for null or empty values.
   ///
   /// {@macro lowercase_chars_template}
+  @Deprecated(
+    'Use Validators.string(Validators.hasMinLowercaseChars(...)) instead. See migration guide.',
+  )
   static FormFieldValidator<String> hasLowercaseChars({
     int atLeast = 1,
     RegExp? regex,
@@ -2995,15 +2998,26 @@ final class Validators {
   ///   work correctly for all languages. Custom lowercase counter function should
   ///   be provided for special language requirements
   /// {@endtemplate}
+  // TODO: update the documentation and change the implementation to handle the new msg arg. Also, update about the argument condition error
   static Validator<String> hasMinLowercaseChars({
     c.int min = 1,
     c.int Function(String input)? customLowercaseCounter,
+    String? msg,
     String Function(String input, c.int min)? hasMinLowercaseCharsMsg,
-  }) => val.hasMinLowercaseChars(
-    min: min,
-    customLowercaseCounter: customLowercaseCounter,
-    hasMinLowercaseCharsMsg: hasMinLowercaseCharsMsg,
-  );
+  }) {
+    if (msg != null && hasMinLowercaseCharsMsg != null) {
+      throw ArgumentError(
+        'Cannot provide both msg and hasMinLowercaseCharsMsg. Use only one.',
+      );
+    }
+    return val.hasMinLowercaseChars(
+      min: min,
+      customLowercaseCounter: customLowercaseCounter,
+      hasMinLowercaseCharsMsg: msg != null
+          ? (_, _) => msg
+          : hasMinLowercaseCharsMsg,
+    );
+  }
 
   /// {@template validator_has_min_numeric_chars}
   /// Creates a validator function that checks if the [String] input contains a

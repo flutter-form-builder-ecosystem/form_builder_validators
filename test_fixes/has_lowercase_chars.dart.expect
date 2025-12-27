@@ -1,0 +1,135 @@
+import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
+
+void main() {
+  // ===== checkNullOrEmpty: false cases (Validators.optional) =====
+
+  // F1: checkNullOrEmpty:false + atLeast + errorText + regex
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(min: 3, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Need 3')),
+  );
+
+  // F2: checkNullOrEmpty:false + atLeast + errorText
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(min: 2, msg: 'Need 2')),
+  );
+
+  // F3: checkNullOrEmpty:false + atLeast + regex
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(min: 4, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)),
+  );
+
+  // F4: checkNullOrEmpty:false + errorText + regex
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Error')),
+  );
+
+  // F5: checkNullOrEmpty:false + atLeast
+  Validators.optional(Validators.string(Validators.hasMinLowercaseChars(min: 5)));
+
+  // F6: checkNullOrEmpty:false + errorText
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(msg: 'Must have lowercase')),
+  );
+
+  // F7: checkNullOrEmpty:false + regex
+  Validators.optional(
+    Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)),
+  );
+
+  // F8: checkNullOrEmpty:false only
+  Validators.optional(Validators.string(Validators.hasMinLowercaseChars()));
+
+  // ===== checkNullOrEmpty: true cases (Validators.required) =====
+
+  // T1: checkNullOrEmpty:true + atLeast + errorText + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(min: 3, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Need 3')),
+  );
+
+  // T2: checkNullOrEmpty:true + atLeast + errorText
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(min: 2, msg: 'Need 2')),
+  );
+
+  // T3: checkNullOrEmpty:true + atLeast + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(min: 4, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)),
+  );
+
+  // T4: checkNullOrEmpty:true + errorText + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Error')),
+  );
+
+  // T5: checkNullOrEmpty:true + atLeast
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(min: 5)));
+
+  // T6: checkNullOrEmpty:true + errorText
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(msg: 'Must have lowercase')),
+  );
+
+  // T7: checkNullOrEmpty:true + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)),
+  );
+
+  // T8: checkNullOrEmpty:true only
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars()));
+
+  // ===== Default cases (checkNullOrEmpty not provided = true) =====
+
+  // D1: atLeast + errorText + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(min: 3, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Need 3')),
+  );
+
+  // D2: atLeast + errorText
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(min: 2, msg: 'Need 2')));
+
+  // D3: atLeast + regex
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(min: 4, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)));
+
+  // D4: errorText + regex
+  Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Error')),
+  );
+
+  // D5: Only atLeast
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(min: 5)));
+
+  // D6: Only errorText
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(msg: 'Must have lowercase')));
+
+  // D7: Only regex
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars(customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length)));
+
+  // D8: No parameters
+  Validators.required(Validators.string(Validators.hasMinLowercaseChars()));
+
+  // ===== Real-world usage examples =====
+
+  // Used in TextFormField
+  TextFormField(
+    decoration: const InputDecoration(labelText: 'Password'),
+    validator: Validators.required(
+      Validators.string(Validators.hasMinLowercaseChars(min: 2, msg: 'Password needs at least 2 lowercase letters')),
+    ),
+  );
+
+  // Used in Form with optional field
+  Form(
+    child: TextFormField(
+      decoration: const InputDecoration(labelText: 'Nickname (optional)'),
+      validator: Validators.optional(
+        Validators.string(Validators.hasMinLowercaseChars(msg: 'If provided, must have lowercase')),
+      ),
+    ),
+  );
+
+  // Assigned to variable
+  final passwordValidator = Validators.required(
+    Validators.string(Validators.hasMinLowercaseChars(min: 3, customLowercaseCounter: (input) => RegExp(r'[a-z]').allMatches(input).length, msg: 'Need 3 lowercase')),
+  );
+}
