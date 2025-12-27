@@ -1,7 +1,7 @@
 # Docs: https://github.com/flutter/flutter/blob/master/docs/contributing/Data-driven-Fixes.md
 # Rules:
 # 1. You do not talk about dart_fixes.yaml
-# 2. Newer transforms come last (to maintain the same order of the contributing guide)
+# 2. Newer transforms come last (to maintain the same order of the migration guide)
 version: 1
 transforms:
   # hasLowercaseChars - Parameters: atLeast, regex, errorText, checkNullOrEmpty
