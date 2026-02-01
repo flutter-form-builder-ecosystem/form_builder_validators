@@ -20,12 +20,16 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: read
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/minimal-quality.yaml@main
     with:
       codecov-name: form_builder_validators
       fvm-flavor: beta
       enable-generate-l10n: true
   example:
+    permissions:
+      contents: read
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/build-examples.yaml@main
     with:
       fvm-flavor: beta

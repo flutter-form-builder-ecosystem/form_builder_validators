@@ -5,6 +5,7 @@ on:
     branches: [main]
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+\+[0-9]+' 
 
   pull_request:
     branches: [main]
@@ -18,11 +19,15 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: read
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/minimal-quality.yaml@main
     with:
       codecov-name: form_builder_validators
       enable-generate-l10n: true
   example:
+    permissions:
+      contents: read
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/build-examples.yaml@main
     with:
       enable-generate-l10n: true
