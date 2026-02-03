@@ -1,16 +1,36 @@
-# example
+# Example Project for form_builder_validators
 
-Example app for form_builder_validators
+This project demonstrates how to use the `form_builder_validators` package in a Flutter application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get started with this example project, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. **Clone the repository**:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+   ```bash
+   git clone <repository-url>
+   cd form_builder_validators/example
+   ```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. **Install dependencies**:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. **Run the application**:
+
+   ```bash
+   flutter run
+   ```
+
+## Features
+
+- Demonstrates how to implement various validators using the `form_builder_validators` package.
+- Provides examples of built-in validators for common validation scenarios.
+- Shows integration with form builder for seamless validation experience.
+
+## Acknowledgments
+
+- [form_builder_validators](https://pub.dev/packages/form_builder_validators) - The package used in this example.
