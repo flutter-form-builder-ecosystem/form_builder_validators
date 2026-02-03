@@ -1,5 +1,13 @@
 # Changelog
 
+## 11.3.0
+
+- Add Georgian language support on PR [#159](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/159). Thanks to [@p-shapovalov](https://github.com/p-shapovalov)
+- Update constraints to Flutter 3.38
+- Update constraints to Dart 3.10
+- Update dependencies
+- Update readme
+
 ## 11.2.0
 
 - Fix password validator when not showing default error message
