@@ -37,6 +37,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
+      pages: write
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/deployment.yaml@main
     with: 
       enable-generate-l10n: true
