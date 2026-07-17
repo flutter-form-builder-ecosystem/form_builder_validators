@@ -180,5 +180,25 @@ void main() {
         );
       },
     );
+
+    test('should support dynamic function callbacks for comparison value', () {
+      // Arrange
+      String dynamicTarget = 'initial';
+      final NotEqualValidator<String> validator = NotEqualValidator<String>(
+        () => dynamicTarget,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert 1: Fails matching initial
+      expect(validator.validate('initial'), customErrorMessage);
+      expect(validator.validate('changed'), isNull);
+
+      // Act: Update dynamicTarget
+      dynamicTarget = 'changed';
+
+      // Act & Assert 2: Now fails matching changed, not initial
+      expect(validator.validate('changed'), customErrorMessage);
+      expect(validator.validate('initial'), isNull);
+    });
   });
 }

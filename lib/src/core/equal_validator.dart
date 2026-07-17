@@ -25,12 +25,14 @@ class EqualValidator<T> extends TranslatedValidator<T> {
   /// The value to compare against.
   final Object value;
 
-  @override
-  String get translatedErrorText =>
-      FormBuilderLocalizations.current.equalErrorText(value.toString());
+  Object? get _resolvedValue =>
+      value is Function ? (value as Function)() : value;
 
   @override
-  String? validateValue(T valueCandidate) {
-    return valueCandidate != value ? errorText : null;
-  }
+  String get translatedErrorText => FormBuilderLocalizations.current
+      .equalErrorText(_resolvedValue?.toString() ?? '');
+
+  @override
+  String? validateValue(T valueCandidate) =>
+      valueCandidate != _resolvedValue ? errorText : null;
 }
