@@ -213,9 +213,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.minCountErrorText(minLength),
-          ),
+          equals(FormBuilderLocalizations.current.minCountErrorText(minLength)),
         );
       },
     );

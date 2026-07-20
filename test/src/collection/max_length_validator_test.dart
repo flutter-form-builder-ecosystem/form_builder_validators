@@ -213,9 +213,7 @@ void main() {
         expect(result, isNotNull);
         expect(
           result,
-          equals(
-            FormBuilderLocalizations.current.maxCountErrorText(maxLength),
-          ),
+          equals(FormBuilderLocalizations.current.maxCountErrorText(maxLength)),
         );
       },
     );
