@@ -214,7 +214,7 @@ void main() {
         expect(
           result,
           equals(
-            FormBuilderLocalizations.current.minLengthErrorText(minLength),
+            FormBuilderLocalizations.current.minCountErrorText(minLength),
           ),
         );
       },
@@ -314,6 +314,36 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.minLengthErrorText(minLength)),
       );
+    });
+  });
+
+  group('MinLengthValidator - Iterable error text', () {
+    test('should return the count error text for a too short list', () {
+      const MinLengthValidator<List<String>> validator =
+          MinLengthValidator<List<String>>(2);
+
+      final String? result = validator.validate(<String>['a']);
+
+      expect(result, FormBuilderLocalizations.current.minCountErrorText(2));
+    });
+
+    test('should keep the length error text for a too short string', () {
+      const MinLengthValidator<String> validator = MinLengthValidator<String>(
+        2,
+      );
+
+      final String? result = validator.validate('a');
+
+      expect(result, FormBuilderLocalizations.current.minLengthErrorText(2));
+    });
+
+    test('should keep a custom error text for a too short list', () {
+      final MinLengthValidator<List<String>> validator =
+          MinLengthValidator<List<String>>(2, errorText: customErrorMessage);
+
+      final String? result = validator.validate(<String>['a']);
+
+      expect(result, customErrorMessage);
     });
   });
 }

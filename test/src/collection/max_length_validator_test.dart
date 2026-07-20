@@ -214,7 +214,7 @@ void main() {
         expect(
           result,
           equals(
-            FormBuilderLocalizations.current.maxLengthErrorText(maxLength),
+            FormBuilderLocalizations.current.maxCountErrorText(maxLength),
           ),
         );
       },
@@ -314,6 +314,36 @@ void main() {
         result,
         equals(FormBuilderLocalizations.current.maxLengthErrorText(maxLength)),
       );
+    });
+  });
+
+  group('MaxLengthValidator - Iterable error text', () {
+    test('should return the count error text for a too long list', () {
+      const MaxLengthValidator<List<String>> validator =
+          MaxLengthValidator<List<String>>(2);
+
+      final String? result = validator.validate(<String>['a', 'b', 'c']);
+
+      expect(result, FormBuilderLocalizations.current.maxCountErrorText(2));
+    });
+
+    test('should keep the length error text for a too long string', () {
+      const MaxLengthValidator<String> validator = MaxLengthValidator<String>(
+        2,
+      );
+
+      final String? result = validator.validate('abc');
+
+      expect(result, FormBuilderLocalizations.current.maxLengthErrorText(2));
+    });
+
+    test('should keep a custom error text for a too long list', () {
+      final MaxLengthValidator<List<String>> validator =
+          MaxLengthValidator<List<String>>(2, errorText: customErrorMessage);
+
+      final String? result = validator.validate(<String>['a', 'b', 'c']);
+
+      expect(result, customErrorMessage);
     });
   });
 }

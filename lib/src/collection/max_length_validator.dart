@@ -39,6 +39,12 @@ class MaxLengthValidator<T> extends TranslatedValidator<T> {
     if (valueCandidate is Iterable) valueLength = valueCandidate.length;
     if (valueCandidate is Map) valueLength = valueCandidate.length;
 
-    return valueLength > maxLength ? errorText : null;
+    if (!(valueLength > maxLength)) {
+      return null;
+    }
+    if (valueCandidate is! String && !hasCustomErrorText) {
+      return FormBuilderLocalizations.current.maxCountErrorText(maxLength);
+    }
+    return errorText;
   }
 }
