@@ -37,6 +37,7 @@ Also included is the `l10n` / `i18n` of error text messages to multiple language
   - [Basic use](#basic-use)
   - [Specific uses](#specific-uses)
     - [Composing multiple validators](#composing-multiple-validators)
+    - [Keep optional fields optional](#keep-optional-fields-optional)
     - [Modify the default error message in a specific language](#modify-the-default-error-message-in-a-specific-language)
 - [Migrations](#migrations)
   - [v7 to v8](#v7-to-v8)
@@ -325,6 +326,30 @@ TextFormField(
 ),
 ```
 
+#### Keep optional fields optional
+
+From v11, every validator rejects a null or empty value by default (`checkNullOrEmpty: true`). A field that only uses `maxLength`, `email`, or similar therefore fails when the user leaves it blank, even without `FormBuilderValidators.required()`.
+
+Pass `checkNullOrEmpty: false` on validators that should allow an empty field:
+
+```Dart
+TextFormField(
+    decoration: InputDecoration(labelText: 'Middle name'),
+    validator: FormBuilderValidators.maxLength(64, checkNullOrEmpty: false),
+),
+```
+
+Or when composing several checks:
+
+```Dart
+validator: FormBuilderValidators.compose([
+    FormBuilderValidators.maxLength(64, checkNullOrEmpty: false),
+    FormBuilderValidators.alphabetical(checkNullOrEmpty: false),
+]),
+```
+
+Keep `FormBuilderValidators.required()` for fields that must have a value.
+
 #### Modify the default error message in a specific language
 
 see [override_form_builder_localizations_en](example/lib/override_form_builder_localizations_en.dart) for more detail.
@@ -333,7 +358,7 @@ see [override_form_builder_localizations_en](example/lib/override_form_builder_l
 
 ### v10 to v11
 
-- All validators now first check for null or empty value and return an error if so. You can set `checkNullOrEmpty` to `false` if you want to avoid this behavior.
+- All validators now first check for null or empty value and return an error if so (`checkNullOrEmpty` defaults to `true`). An optional field that only uses `maxLength`, `email`, or similar will fail when left blank. Set `checkNullOrEmpty: false` on those validators to keep the field optional. See [Keep optional fields optional](#keep-optional-fields-optional).
 - `dateString()` changed to `date()` for constancy in api naming. Simply change the name to fix the code.
 - The positional parameter for the validator  [`match()`](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/93d6fb230c706a6415a3a85973fc37fabbd82588/lib/src/form_builder_validators.dart#L1433) is not a `String` pattern anymore, but a `RegExp` regex.
 
