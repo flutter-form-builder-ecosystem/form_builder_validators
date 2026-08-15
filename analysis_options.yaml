@@ -5,6 +5,14 @@ analyzer:
     strict-casts: true
   exclude:
     - lib/localization/intl/**
+    - test_fixes/**
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
     
 linter:
   rules:

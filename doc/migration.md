@@ -4,9 +4,11 @@
 
 The following items in this section show how to convert from the old API functions to the closest equivalent using the new APIs. For each item, we try to show how the conversion is made from a validator with all its parameters being used, thus, if your case is simples, probably it will be enough to ignore the additional parameters in the example.
 
+> **Dart fix support**: some of the migrations below can be applied automatically with [`dart fix`](https://dart.dev/tools/dart-fix) thanks to the data-driven fixes declared in `lib/fix_data.yaml`. Each section notes its "Dart fix status". Because data-driven fixes cannot wrap an expression inside another call nor transform an argument value (e.g. a `String` into a closure), most fixes are only **partial**: they rename the class/method and drop removed parameters, but you must finish the migration by hand (for example, wrapping with `Validators.required`/`Validators.optional` or converting `errorText` into the corresponding `xxxMsg` closure).
+
 #### checkNullOrEmpty
 
-> Dart fix status: ✅️🚧 Partial. Remove `checkNullOrEmpty` but need add `Validators.required` or `Validators.optinal` around each validator.
+> Dart fix status: ✅️🚧 Partial. `dart fix` removes the `checkNullOrEmpty` argument, but you still need to add `Validators.required` or `Validators.optional` around each validator by hand (data-driven fixes cannot wrap an expression inside another call).
 
 Before specifying the equivalent to each validator, it is important to deal with the `checkNullOrEmpty` parameter. Every validator in the old API has this parameter, thus we are going to use this section to specify how to handle this situation for most of the cases and we will assume that this aspect is already handled for the following sections.
 
@@ -381,7 +383,7 @@ Validators.notEqual(
 );
 ```
 
-- `FormBuilderValidators.or`: equivalent to `Validators.or`.
+- `FormBuilderValidators.or`: equivalent to `Validators.or`. Dart fix status: ✅️ Automated.
 
 - `FormBuilderValidators.required`
 
@@ -665,7 +667,7 @@ Validators.and([
 
 - `FormBuilderValidators.creditCardExpirationDate()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/finance/credit_card_expiration_date_validator.dart#L52).
 
-- `FormBuilderValidators.creditCard()`: equivalent to `Validators.creditCard`.
+- `FormBuilderValidators.creditCard()`: equivalent to `Validators.creditCard`. Dart fix status: ✅️ Automated (only when no `errorText` argument is used; otherwise migrate by hand).
 
 - `FormBuilderValidators.iban()`
 
@@ -831,7 +833,7 @@ Validators.string(
 );
 ```
 
-- `FormBuilderValidators.password()`: equivalent to `Validators.password`.
+- `FormBuilderValidators.password()`: equivalent to `Validators.password`. Dart fix status: ✅️ Automated (only when no `errorText` argument is used; otherwise migrate by hand).
 
 - `FormBuilderValidators.ssn()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/ssn_validator.dart#L47)  
 - `FormBuilderValidators.state()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/17e982bb849dc68365f8fbc93d5a2323ee891c89/lib/src/identity/state_validator.dart#L53). Something close would be:
@@ -946,7 +948,7 @@ Validators.string(
 
 ### Network validators
 
-- `FormBuilderValidators.email()`: equivalent to `Validators.email`.
+- `FormBuilderValidators.email()`: equivalent to `Validators.email`. Dart fix status: ✅️ Automated (only when no `errorText` argument is used; otherwise migrate by hand).
 
 - `FormBuilderValidators.ip()`
 
@@ -1024,7 +1026,7 @@ Validators.macAddress(
 );
 ```
 
-- `FormBuilderValidators.phoneNumber()`: equivalent to `Validators.phoneNumber`.
+- `FormBuilderValidators.phoneNumber()`: equivalent to `Validators.phoneNumber`. Dart fix status: ✅️ Automated (only when no `errorText` argument is used; otherwise migrate by hand).
 
 - `FormBuilderValidators.portNumber()`: there is no equivalent to [this validator](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/eafb7662827fe938034be6d2081c9d2844a46c10/lib/src/network/port_number_validator.dart#L40). But, something close would be:
 

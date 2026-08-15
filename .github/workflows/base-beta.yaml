@@ -25,6 +25,7 @@ jobs:
       codecov-name: form_builder_validators
       fvm-flavor: beta
       enable-generate-l10n: true
+      enable-fix-tests: true
   example:
     uses: flutter-form-builder-ecosystem/.github/.github/workflows/build-examples.yaml@main
     with:

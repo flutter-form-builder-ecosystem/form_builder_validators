@@ -17,3 +17,69 @@ transforms:
     changes:
       - kind: 'removeParameter'
         name: 'checkNullOrEmpty'
+
+  # Validators that moved unchanged from FormBuilderValidators to Validators.
+  # These only apply when no custom message argument (errorText) is used, since
+  # the new API replaces `errorText: String?` with a `xxxMsg` closure that
+  # cannot be expressed with data-driven fixes. Usages with `errorText` are
+  # left as compile errors to be migrated manually. See doc/migration.md.
+  - title: "Migrate 'email' to Validators"
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      method: 'email'
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'replacedBy'
+        newElement:
+          uris: [ 'form_builder_validators.dart' ]
+          method: 'email'
+          inClass: 'Validators'
+  - title: "Migrate 'creditCard' to Validators"
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      method: 'creditCard'
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'replacedBy'
+        newElement:
+          uris: [ 'form_builder_validators.dart' ]
+          method: 'creditCard'
+          inClass: 'Validators'
+  - title: "Migrate 'phoneNumber' to Validators"
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      method: 'phoneNumber'
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'replacedBy'
+        newElement:
+          uris: [ 'form_builder_validators.dart' ]
+          method: 'phoneNumber'
+          inClass: 'Validators'
+  - title: "Migrate 'password' to Validators"
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      method: 'password'
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'replacedBy'
+        newElement:
+          uris: [ 'form_builder_validators.dart' ]
+          method: 'password'
+          inClass: 'Validators'
+  - title: "Migrate 'or' to Validators"
+    date: 2025-10-01
+    element:
+      uris: [ 'form_builder_validators.dart' ]
+      method: 'or'
+      inClass: 'FormBuilderValidators'
+    changes:
+      - kind: 'replacedBy'
+        newElement:
+          uris: [ 'form_builder_validators.dart' ]
+          method: 'or'
+          inClass: 'Validators'

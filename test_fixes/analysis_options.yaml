@@ -1,1 +1,11 @@
-include: package:flutter_lints/flutter.yaml
+# This ensures that parent analysis options do not accidentally break the fix
+# tests.
+#
+# Since these test cases live inside the `form_builder_validators` package, the
+# lint `deprecated_member_use_from_same_package` is required in order to
+# trigger the fixes. Customer code (which lives outside of the package) will be
+# triggered by the analyzer hint `deprecated_member_use`, which is enabled by
+# default.
+linter:
+  rules:
+    - deprecated_member_use_from_same_package

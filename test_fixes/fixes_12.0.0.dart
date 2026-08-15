@@ -43,6 +43,17 @@ class BasicExamplesPage extends StatelessWidget {
           TextFormField(
             validator: FormBuilderValidators.email(checkNullOrEmpty: false),
           ),
+          // Category 1: pure moves to Validators (no custom message argument).
+          TextFormField(validator: FormBuilderValidators.email()),
+          TextFormField(validator: FormBuilderValidators.creditCard()),
+          TextFormField(validator: FormBuilderValidators.phoneNumber()),
+          TextFormField(validator: FormBuilderValidators.password()),
+          TextFormField(
+            validator: FormBuilderValidators.or(<FormFieldValidator<String>>[
+              FormBuilderValidators.email(),
+              FormBuilderValidators.phoneNumber(),
+            ]),
+          ),
           TextFormField(
             validator: (String? input) {
               final String? isRequiredMsg = FormBuilderValidators.required()(
