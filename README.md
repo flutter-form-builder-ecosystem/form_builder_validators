@@ -239,6 +239,7 @@ Validators support default `errorText` messages in these languages:
 - Polish (pl)
 - Portuguese (pt)
 - Romanian (ro)
+- Romansh (rm)
 - Russian (ru)
 - Slovak (sk)
 - Slovenian (sl)
