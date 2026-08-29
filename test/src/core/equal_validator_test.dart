@@ -172,5 +172,25 @@ void main() {
         expect(result, customErrorMessage);
       },
     );
+
+    test('should support dynamic function callbacks for comparison value', () {
+      // Arrange
+      String dynamicTarget = 'initial';
+      final EqualValidator<String> validator = EqualValidator<String>(
+        () => dynamicTarget,
+        errorText: customErrorMessage,
+      );
+
+      // Act & Assert 1: Matches initial
+      expect(validator.validate('initial'), isNull);
+      expect(validator.validate('changed'), customErrorMessage);
+
+      // Act: Update dynamicTarget
+      dynamicTarget = 'changed';
+
+      // Act & Assert 2: Now matches changed, not initial
+      expect(validator.validate('changed'), isNull);
+      expect(validator.validate('initial'), customErrorMessage);
+    });
   });
 }

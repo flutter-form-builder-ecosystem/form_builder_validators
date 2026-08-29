@@ -175,7 +175,7 @@
 
 ## 8.4.0
 
-- Refactor l10n generator. Thanks [@ipcjs]()
+- Refactor l10n generator. Thanks [@ipcjs](https://github.com/ipcjs)
 - Add property to allow empty on equalLength validator. Thanks [@CircleCurve](https://github.com/CircleCurve)
 - Add support for more languages
   - Czech. Thanks [@edlman](https://github.com/flutter-form-builder-ecosystem/form_builder_validators/pull/3)
