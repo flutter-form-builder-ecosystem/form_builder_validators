@@ -8,6 +8,9 @@ abstract class TranslatedValidator<T> extends BaseValidator<T> {
   @override
   String get errorText => super.errorText ?? translatedErrorText;
 
+  /// Whether a custom error message was provided to the constructor.
+  bool get hasCustomErrorText => super.errorText != null;
+
   /// The translated error message returned if the value is invalid.
   String get translatedErrorText;
 }

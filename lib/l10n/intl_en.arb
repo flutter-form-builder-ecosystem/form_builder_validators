@@ -33,6 +33,14 @@
       }
     }
   },
+  "maxCountErrorText": "Value must have a count less than or equal to {maxCount}.",
+  "@maxCountErrorText": {
+    "placeholders": {
+      "maxCount": {
+        "type": "int"
+      }
+    }
+  },
   "maxLengthErrorText": "Value must have a length less than or equal to {maxLength}.",
   "@maxLengthErrorText": {
     "placeholders": {
@@ -57,6 +65,14 @@
       "min": {
         "type": "num",
         "description": "The minimum value allowed"
+      }
+    }
+  },
+  "minCountErrorText": "Value must have a count greater than or equal to {minCount}.",
+  "@minCountErrorText": {
+    "placeholders": {
+      "minCount": {
+        "type": "int"
       }
     }
   },

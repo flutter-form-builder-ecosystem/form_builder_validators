@@ -39,6 +39,12 @@ class MinLengthValidator<T> extends TranslatedValidator<T> {
     if (valueCandidate is Iterable) valueLength = valueCandidate.length;
     if (valueCandidate is Map) valueLength = valueCandidate.length;
 
-    return valueLength < minLength ? errorText : null;
+    if (!(valueLength < minLength)) {
+      return null;
+    }
+    if (valueCandidate is! String && !hasCustomErrorText) {
+      return FormBuilderLocalizations.current.minCountErrorText(minLength);
+    }
+    return errorText;
   }
 }
