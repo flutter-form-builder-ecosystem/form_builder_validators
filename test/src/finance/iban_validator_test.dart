@@ -143,5 +143,26 @@ void main() {
         expect(result, isNull);
       },
     );
+
+    for (final String invalidIban in <String>[
+      'DE89370400440532013000.',
+      'DE893704004405320130\u00e900',
+      'DE89370400440532013000\n',
+      'DE89-3704-0044-0532-0130-00',
+      'DE89370400440532013_00',
+      'DE89370400440532013+00',
+    ]) {
+      test(
+        'should return the error message instead of throwing for ${invalidIban.codeUnits}',
+        () {
+          final IbanValidator validator = IbanValidator();
+
+          expect(
+            validator.validate(invalidIban),
+            equals(FormBuilderLocalizations.current.ibanErrorText),
+          );
+        },
+      );
+    }
   });
 }
